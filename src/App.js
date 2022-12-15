@@ -1,25 +1,21 @@
-import logo from './logo.svg';
+
 import './App.css';
+import EmailVerify from './component/Authentication/EmailVerify/emailVerify';
+import ForgotPwd from './component/Authentication/ForgotPassword/forgotPwd';
+import Login from './component/Authentication/Login/login';
+import AuthOtp from './component/Authentication/OTP/otp';
+import ResetPwd from './component/Authentication/ResetPassword/resetPwd';
+import SignUp from './component/Authentication/SignUp/signUp';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <>
+    <Login />
+    {/* <ForgotPwd /> */}
+    {/* <AuthOtp title="Otp" /> */}
+    {/* <ResetPwd /> */}
+    {/* <EmailVerify /> */}
+    {/* <SignUp /> */}
+  </>
 }
 
 export default App;

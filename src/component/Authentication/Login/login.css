@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+body{
+    background:#373636;
+    overflow-x: hidden;
+    z-index:1;
+    /* opacity:0.4; */
+}
+#loginImage{
+    position:absolute;
+    top:11vh;
+    left:-7vw;
+    width: 55vw;
+height: 62vh;
+}
+.authOuterBg{
+    position: absolute;
+    width: 80vw;
+    height: 85vh;
+    left: 9.5vw;
+    top: 9vh;
+    background: #252525;
+    box-shadow: 8px 8px 12px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    z-index:2;
+}
+.authHead{
+    position: absolute;
+left: 42vw;
+top: -1.5vh;
+font-family: "Montserrat";
+font-style: normal;
+font-weight: 600;
+font-size: 2.6rem;
+line-height: 68px;
+color: #FFFFFF;
+}
+.authEmail{
+    position: absolute;
+width: 180px;
+height: 20px;
+left: 42vw;
+top: 20vh;
+font-family: "Montserrat";
+font-style: normal;
+font-weight: 400;
+font-size: 0.95rem;
+line-height: 24px;
+color: rgba(255, 255, 255, 0.8);  
+}
+.authEmailInput{
+    background:none;
+    border:none;
+    outline:none;
+    position: absolute;
+width:27vw;
+height: 5.5vh;
+left: 42vw;
+top: 27vh;
+background: #2F2B2B;
+border-radius: 8px;
+border: 1px solid rgba(255, 255, 255, 0.2);  
+padding-left:3vw;
+color: rgba(255, 255, 255, 0.85);  
+font-family: "Montserrat";
+font-style: normal;
+font-weight: 400;
+font-size: 0.9em;
+line-height: 16px;
+}
+::placeholder{
+    font-family: "Montserrat";
+font-style: normal;
+font-weight: 400;
+font-size: 13.5px;
+line-height: 16px;
+color: rgba(255, 255, 255, 0.2);
+}
+.invalidEmail{
+    position: absolute;
+width: 129px;
+height: 15px;
+left: 42vw;
+top: 31.7vh;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 15px;
+color: #F79E9E;
+/* opacity: 0.9; */
+
+}
+.authPwd{
+    position: absolute;
+    width: 180px;
+    height: 20px;
+    left: 42vw;
+    top: 35.5vh;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.95rem;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.8);  
+}
+.authPwdInput{
+    background:none;
+    border:none;
+    outline:none;
+    position: absolute;
+width:27vw;
+height: 5.5vh;
+left: 42vw;
+top: 42.5vh;
+background: #2F2B2B;
+border-radius: 8px;
+border: 1px solid rgba(255, 255, 255, 0.2);    
+color: rgba(255, 255, 255, 0.85);  
+padding-left:3vw;
+font-family: "Montserrat";
+font-style: normal;
+font-weight: 400;
+font-size: 0.9rem;
+line-height: 16px;
+}
+.fgtPwd{
+    position: absolute;
+width: 172px;
+height: 24px;
+left: 63.4vw;
+top: 48vh;
+cursor:pointer;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 0.85rem;
+line-height: 24px;
+color: #57E891;
+}
+.authSignIn{
+position: absolute;
+width: 10vw;
+height: 6vh;
+left: 42vw;
+top:58vh;
+border: 1.6px solid  rgba(255, 255, 255, 0.8);
+background: #47C87A;
+border-radius: 8px;
+font-family: "Montserrat";
+font-style: normal;
+font-weight: 500;
+font-size: 1rem;
+line-height: 29px;
+color: rgba(255, 255, 255, 0.8);
+cursor:pointer;
+}
+.authSignUp{
+    position: absolute;
+    width: 10vw;
+    height: 6vh;
+    left: 54vw;
+    top:58vh;
+    border: 1.6px solid #47C87A;
+    background:none;
+    border-radius: 8px;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 29px;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    }

@@ -1,0 +1,48 @@
+.signInvalidEmail{
+    position: absolute;
+    width: 129px;
+    height: 15px;
+    left: 42vw;
+    top: 47.5vh;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #F79E9E;
+}
+#signName{
+    width:20vw;
+}
+.signPwd{
+    position: absolute;
+    width: 180px;
+    height: 20px;
+    left: 42vw;
+    top: 51vh;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.9rem;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.8);
+}
+.signPwdInput{
+    background:none;
+    border:none;
+    outline:none;
+    position: absolute;
+    width:30vw;
+    height: 5.5vh;
+    left: 42vw;
+    top: 58vh;
+    background: #2F2B2B;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);    
+}
+#signUpBtn{
+    top:73vh;
+}
+#signInvalidPwd{
+    top:63vh;
+}

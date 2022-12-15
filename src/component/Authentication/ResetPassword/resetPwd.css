@@ -1,0 +1,65 @@
+.authRstFgtPwdBtn{
+    position: absolute;
+width: 30.5vw;
+height: 6vh;
+left: 42vw;
+top:60vh;
+border: 1.6px solid  rgba(255, 255, 255, 0.8);
+background: #47C87A;
+border-radius: 8px;
+font-family: "Montserrat";
+font-style: normal;
+font-weight: 500;
+font-size: 1rem;
+line-height: 29px;
+color: rgba(255, 255, 255, 0.8);
+}
+.authRstPwd{
+    position: absolute;
+    width: 180px;
+    height: 20px;
+    left: 42vw;
+    top: 38vh;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.9rem;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.8);  
+}
+.fgtRstPwd{
+    position: absolute;
+    /* width: 129px; */
+    height: 15px;
+    left: 42vw;
+    top: 49.7vh;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #F79E9E;
+}
+.invalidPwd{
+    position: absolute;
+    height: 15px;
+    width:30vw;
+    left: 42vw;
+    top: 31.8vh;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 13px;
+    color: #F79E9E;
+}
+#authRstCfmPwd{
+    top:45vh;
+}
+#rstPwdImg{
+    position:absolute;
+    top:11vh;
+    left:-7vw;
+    width: 55vw;
+height: 62vh;
+}

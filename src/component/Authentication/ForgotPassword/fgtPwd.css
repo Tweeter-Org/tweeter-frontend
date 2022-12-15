@@ -1,0 +1,63 @@
+.authFgtHead{
+    position: absolute;
+    width: 50vw;
+    height: 60px;
+    left: 42vw;
+    top: 23vh;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 0.8);  
+}
+.authFgtEmailInput{
+    background:none;
+    border:none;
+    outline:none;
+    position: absolute;
+width:30vw;
+height: 5.5vh;
+left: 42vw;
+top: 30.4vh;
+background: #2F2B2B;
+border-radius: 8px;
+border: 1px solid rgba(238, 231, 231, 0.2);
+}
+.invalidFgtEmail{
+    position: absolute;
+    width: 129px;
+    height: 15px;
+    left: 42vw;
+    top: 35.3vh;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #F79E9E;
+}
+.authFgtPwdBtn{
+    position: absolute;
+width: 30vw;
+height: 6vh;
+left: 42vw;
+top:45vh;
+border: 1.6px solid  rgba(255, 255, 255, 0.8);
+background: #47C87A;
+border-radius: 8px;
+font-family: "Montserrat";
+font-style: normal;
+font-weight: 500;
+font-size: 1rem;
+line-height: 29px;
+color: rgba(255, 255, 255, 0.8);
+}
+#fgtPwdImage{
+    width:45vw;
+    position:absolute;
+    top:21vh;
+    left:-2vw;
+    height:40vh;
+   
+}
