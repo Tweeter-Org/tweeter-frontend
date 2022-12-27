@@ -1,22 +1,108 @@
-import React from 'react'
-import loginImage from "../../Assets/loginImage.svg";
+import React, { useState , useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import {SignUpUser} from '../../../react-redux/actions/authAction';
+import { Spinner } from 'react-bootstrap';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./signUp.css";
+import { useNavigate } from 'react-router-dom';
+import ToasterError from '../../Assets/ToasterError';
+import emailIcon from "../../Assets/email.svg";
+import lockIcon from "../../Assets/lock.svg";
+import Background from '../Background';
+import arrow from "../../Assets/arrow-back.svg";
+
 function SignUp(){
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [checkEmail, setCheckEmail] = useState(false)
+    const [checkName, setCheckName] = useState(false)
+    const [callApi, setCallApi] = useState(false)
+    const rightemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    useEffect(()=>{
+        if(rightemail.test(email)){
+            document.getElementsByClassName('signInvalidEmail')[0].style.display="none";
+            setCheckEmail(true)
+        }
+        else if(email){
+            document.getElementsByClassName('signInvalidEmail')[0].style.display="block";
+            setCheckEmail(false)
+        }
+    },[email])
+    
+   const rightname = /^[a-z ,.'-]+$/i;
+    useEffect(()=>{
+        if(rightname.test(name)){
+            document.getElementById('signName').style.display="none";
+            setCheckName(true)
+        }
+        else if(name){
+            document.getElementById('signName').style.display="block";
+            setCheckName(false)
+        }
+    },[name])
+
+    const dispatch= useDispatch();
+    useEffect(()=>{
+        if(checkEmail && checkName) setCallApi(true);
+        else setCallApi(false)
+
+    },[checkEmail,checkName])
+
+    const responseApi = useSelector((state)=>state.AuthReducer)
+            const {loading, response, error, toSignOtp} = responseApi
+    useEffect(()=>{
+        if(loading===true){
+            document.body.style.opacity = 0.5;
+        }
+        else{
+            document.body.style.opacity = 1;
+        }
+    },[loading])
+
+    const navigate = useNavigate();
+   
+    useEffect(()=>{
+        if(error!==""){
+            toast.error(`${error}`, {
+                position: "top-center",
+                theme: "light",
+                });
+        }
+    },[error])
+    
+    useEffect(()=>{
+        if(response!==""){
+            toast.success(`${response}`, {
+                position: "top-center",
+                theme: "light",
+                });
+        }
+    },[response])
+
+    useEffect(()=>{
+        if( toSignOtp){
+            navigate("/verifyemail")
+        }
+    },[ toSignOtp])
+  
 return <>
-    <div className='authOuterBg'>
-    <img src={loginImage} id="loginImage"/>
-    <p className='authHead'>Sign Up</p>
-    <p className='authEmail'>Name</p>
-    <input type="text" className="authEmailInput" placeholder="Enter your name"/>
-    <p className='invalidEmail' id="signName">Name should consists of alphabet</p>
-    <p className='authPwd'>Email Address</p>
-    <input type="text" className="authPwdInput"  placeholder="Enter your email"/>
+{/* <ToasterError error={error} /> */}
+<Background />
+<div className='loginBg' id="signUpBlock">
+    <img src={arrow} id="arrow" onClick={()=>{navigate("/")}}/>
+    <p className='authHead' id="authreset">Sign Up</p>
+    <p className='authEmail' id="resetPwdHead">Name</p>
+    <input type="text" className="authEmailInput" id="resetPwdHeadInput" placeholder="Enter your name" value={name} onChange={(e)=>setName(e.target.value)} />
+    <p id="signName">Name should consists of alphabet</p>
+    <img src={emailIcon} id="emailIconS" />
+    <p className='authPwd' id="signEmail">Email Address</p>
+    <input type="text" className="authPwdInput" id="signEmailInput" placeholder="Enter your email"  value={email} onChange={(e)=>setEmail(e.target.value)}/>
     <p className='signInvalidEmail'>Invalid Email Address</p>
-    <p className='signPwd'>Password</p>
-    <input type="text" className="signPwdInput"  placeholder="Password"/>
-    <p className='invalidPwd' id="signInvalidPwd">Password must be 1 uppercase 1 lowercase 1 number 1 special digit character and 8 or more characters</p>
-    <button type="button" className='authSignIn' id="signUpBtn">Sign Up</button>
+    <button type="button" className='authSignIn' id="signUpBtn" onClick={()=>{dispatch(SignUpUser(email, callApi),localStorage.setItem("signupemail",email), sessionStorage.setItem("NameToBeUsed",name))}}>Sign Up</button>
     </div>
+    {loading===true?<Spinner animation="border" variant="light" id="loadSpinner" />:null}
+    <ToastContainer />
 </>
 }
 

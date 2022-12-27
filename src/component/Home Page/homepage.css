@@ -1,0 +1,247 @@
+.tweetComp {
+    /* position: absolute; */
+    /* display:flex;
+    flex-basis: auto;
+    flex-direction: column; */
+    width: 44vw;
+    height:fit-content;
+    height:68vh;
+    margin-left: 23.5vw;
+    margin-bottom: 3vh;
+    background: #1A1C1E;
+    border-radius: 16px;
+    z-index: 5;
+}
+
+#tweetComp2 {
+    display:block;
+    height:28vh;
+    /* height: fit-content; */
+    /* background-color: blue; */
+}
+
+.displaypie {
+    position: absolute;
+    left: 342px;
+    width: 43px;
+    height: 39.09px;
+    /* margin-left: 24px; */
+    margin-top: 20px;
+    border-radius: 50%;
+    background: #D9D9D9;
+    z-index: 6;
+}
+
+.username {
+    position: absolute;
+    width: 136px;
+    height: 27px;
+    left: 402px;
+    margin-top: 28px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 27px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.tweetImage {
+    height: auto;
+    height:250px;
+    width: 590px;
+    /* max-width: 100%; */
+    position: absolute;
+    left: 325px;
+    margin-top: 80px;
+}
+
+.tweetText {
+    width: 42.7vw;
+    height: 20vh;
+    position: absolute;
+    left: 325px;
+    /* bottom:50px; */
+    margin-top: 340px;
+
+    color: white;
+    opacity: 0.9;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.tweetText2 {
+    width: 42.7vw;
+    height: 20vh;
+    position: absolute;
+    left: 342px;
+    margin-top: 75px;
+    color: white;
+    opacity: 0.9;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.tweetvideo {
+    height: 250px;
+    width: 590px;
+    position: absolute;
+    left: 325px;
+    margin-top: 80px;
+}
+
+#likeIcon {
+    position: absolute;
+    left: 342px;
+    width: 22px;
+    height: 22px;
+    /* left: 12px; */
+    margin-top: 376px;
+}
+
+#likeIcon2 {
+    position: absolute;
+    left: 342px;
+    width: 22px;
+    height: 22px;
+    /* left: 12px; */
+    margin-top: 125px;
+}
+
+#shareIcon {
+    position: absolute;
+    left: 742px;
+    width: 24px;
+    height: 24px;
+    /* left: 399px; */
+    margin-top: 376px;
+}
+
+#shareIcon2 {
+    position: absolute;
+    left: 742px;
+    width: 24px;
+    height: 24px;
+    /* left: 399px; */
+    margin-top: 125px;
+}
+
+#commentIcon {
+    position: absolute;
+    width: 23px;
+    height: 21px;
+    left: 452px;
+    margin-top: 377px;
+}
+
+#commentIcon2 {
+    position: absolute;
+    width: 23px;
+    height: 21px;
+    left: 452px;
+    margin-top: 128px;
+}
+
+#retweetIcon {
+    position: absolute;
+    width: 25.2px;
+    height: 21px;
+    left: 607px;
+    margin-top: 377px;
+}
+
+#retweetIcon2 {
+    position: absolute;
+    width: 25.2px;
+    height: 21px;
+    left: 607px;
+    margin-top: 125px;
+}
+
+.tweetLike {
+    position: absolute;
+    width: 32px;
+    height: 18px;
+    left: 372px;
+    margin-top: 378px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+
+#tweetLike2 {
+    margin-top: 127px;
+}
+
+.tweetComm {
+    position: absolute;
+    width: 78px;
+    height: 18px;
+    left: 482px;
+    margin-top: 378px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+
+#tweetComm2 {
+    margin-top: 129px;
+}
+
+.tweetRetweet {
+    position: absolute;
+    width: 64px;
+    height: 18px;
+    left: 637px;
+    margin-top: 378px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+
+#tweetRetweet2 {
+    margin-top: 129px;
+}
+
+.tweetShare {
+    position: absolute;
+    width: 44px;
+    height: 18px;
+    left: 772px;
+    margin-top: 378px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+
+#tweetShare {
+    margin-top: 129px;
+}
+
+.tweetFlexBox {
+    margin-top: 15vh;
+    display: flex;
+    flex-direction: column;
+}

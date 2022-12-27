@@ -1,65 +1,188 @@
 .authRstFgtPwdBtn{
-    position: absolute;
-width: 30.5vw;
-height: 6vh;
-left: 42vw;
-top:60vh;
-border: 1.6px solid  rgba(255, 255, 255, 0.8);
-background: #47C87A;
-border-radius: 8px;
-font-family: "Montserrat";
-font-style: normal;
-font-weight: 500;
-font-size: 1rem;
-line-height: 29px;
-color: rgba(255, 255, 255, 0.8);
+width:30vw;
+top:62vh;
+height:6.5vh;
+left:2.3vw;
+}
+#authreset{
+    top:10vh;
+}
+#resetPwdHead{
+    top:21vh;
+}
+#resetPwdHeadInput{
+    top:25vh;
 }
 .authRstPwd{
     position: absolute;
-    width: 180px;
-    height: 20px;
-    left: 42vw;
-    top: 38vh;
-    font-family: "Montserrat";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 0.9rem;
-    line-height: 24px;
-    color: rgba(255, 255, 255, 0.8);  
-}
-.fgtRstPwd{
-    position: absolute;
-    /* width: 129px; */
-    height: 15px;
-    left: 42vw;
-    top: 49.7vh;
+    left: 2.5vw;
+    top: 41vh;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 1rem;
+    line-height: 20px; 
+    color: rgba(255, 255, 255, 0.9); 
+}
+.fgtRstPwd{
+    position: absolute;
+    height: 15px;
+    width:29vw;
+    left: 2.5vw;
+    top: 52.6vh;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
     line-height: 15px;
     color: #F79E9E;
 }
 .invalidPwd{
     position: absolute;
     height: 15px;
-    width:30vw;
-    left: 42vw;
-    top: 31.8vh;
+    width:29vw;
+    left: 2.5vw;
+    top: 31vh;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
-    line-height: 13px;
-    color: #F79E9E;
+    font-size: 13px;
+    line-height: 15px;
+    color: #f18f8f;
+}
+#resetpwd1{
+    top:32.5vh;
 }
 #authRstCfmPwd{
     top:45vh;
 }
-#rstPwdImg{
+#rstLock1{
     position:absolute;
-    top:11vh;
-    left:-7vw;
-    width: 55vw;
-height: 62vh;
+    left:0.7vw;
+    top:26.5vh;
+    height:3.4vh;
+    width:6.5vw;
+    z-index:4;
+    opacity:0.7;
+}
+#rstLock2{
+    position:absolute;
+    left:0.7vw;
+    top:46.7vh;
+    height:3.4vh;
+    width:6.5vw;
+    z-index:4;
+    opacity:0.7;
+}
+#LEye1{
+    color:white;
+    opacity:0.7;
+    position:absolute;
+    top:27vh;
+    left:30vw;
+    z-index:4;
+    cursor:pointer;
+}
+#LEye2{
+    color:white;
+    opacity:0.7;
+position:absolute;
+top:47vh;
+left:30vw;
+z-index:4;
+cursor:pointer;
+}
+
+@media (max-width:550px){
+    #LEye1, #LEye2{
+        left:77vw;
+    }
+    #rstLock1, #rstLock2{
+        left:4.5vw;
+    }
+    .invalidPwd , .fgtRstPwd{
+        font-size: 12px;
+        width:84vw;
+    }
+    .authRstFgtPwdBtn{
+        width:83vw;
+    }
+}
+
+@media (max-width:360px) and (min-width:360px){
+    #resetBack{
+        /* width:97vw; */
+        left:11vw;
+    }
+    #authreset{
+        top:8vh;
+        width:100vw;
+        font-size: 2.3rem;
+    }
+}
+@media (min-width:700px) and (max-width:950px){
+    #resetBack{
+        left:6vw;
+    }
+    #authreset{
+        font-size: 3.8rem;
+    }
+    #LEye1, #LEye2{
+        left:79.5vw;
+        /* top:57vh; */
+        font-size: 3vw;
+        /* width:20vw; */
+    }
+    #LEye1{
+        top:26vh;
+    }
+    #rstLock1{
+        top:25.3vh;
+    }
+    #LEye2{
+        top:42.15vh;
+    }
+    #rstLock1, #rstLock2{
+        left:4vw;
+    }
+    #rstLock2{
+        top:41.5vh;
+    }
+    .invalidPwd , .fgtRstPwd{
+        font-size: 17px;
+        width:80vw;
+    }
+    #resetPwdHeadInput{
+        top:23.5vh;
+    }
+    .authRstFgtPwdBtn{
+        width:83vw;
+        font-size: 1.6rem;
+        top:58vh;
+    }
+    #resetpwd1{
+        top:31vh;
+        left:4vw;
+    }
+    .authRstPwd{
+        top:37vh;
+        left:4vw;
+        font-size: 1.25rem;
+    }
+    #authRstCfmPwd{
+        top:39.6vh;
+    }
+    .fgtRstPwd{
+        left:4vw;
+        top:47vh;
+    }
+}
+
+@media (max-width:280px) and (min-width:280px){
+    #authreset{
+        top:7vh;
+        width:80vw;
+        line-height: 35px;
+        font-size: 2rem;
+    }
 }

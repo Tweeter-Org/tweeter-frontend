@@ -1,0 +1,25 @@
+.error{
+    font-family: "Montserrat";
+font-style: normal;
+font-weight: 700;
+font-size: 3.5rem;
+color: #57E891;
+text-align: center;
+margin-top:5vh;
+}
+.errorHead{
+    font-family: "Montserrat";
+font-style: italic;
+font-weight: 700;
+font-size: 2rem;
+color:rgb(255,255,255,0.8);
+text-align: center;
+/* margin-top:vh; */
+}
+#errorimage{
+    position:absolute;
+    top:35vh;
+    left:24vw;
+    width:50vw;
+    height:40vh;
+}
