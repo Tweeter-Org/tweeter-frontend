@@ -10,6 +10,12 @@ import Picker from "emoji-picker-react"
 function CreateTweet (){
     const [text, setText] = useState("");
     const [showEmoji, setShowEmoji] = useState(false)
+    const [sendImage, setSendImage]= useState([]);
+    function handleSendImage(e){
+        console.log(e.target.files);
+        setSendImage(e.target.files[0])
+    }
+    console.log(sendImage)
     function handleEmojis(){
         setShowEmoji(!showEmoji)
     }
@@ -20,7 +26,7 @@ function CreateTweet (){
     const navigate= useNavigate();
     console.log(text)
     return <>
-    <div className="createTweetDiv">
+    <div className="createTweetDiv" id="CREATETWEET">
         <span className="ctCircle" />
         <p className="ctName">Peter Beans</p>
         <p className="ctUserName">@peter beans</p>
@@ -30,7 +36,7 @@ function CreateTweet (){
         </div>
         <div className="CTUPLIMG">
         <img src={imageIcon} className="ctImage" />
-        {/* <input type="file" id="ctuploadImg" accept="image/png, image/jpg, image/jpeg"/> */}
+        <input type="file" id="ctuploadImg" accept="image/png, image/jpg, image/jpeg" onChange={handleSendImage} />
         <p className="ctImageText">Image</p>
         </div>
        

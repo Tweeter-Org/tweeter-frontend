@@ -16,7 +16,6 @@ function HomePage (){
         dispatch(TweetFeedAction())
     },[])
    console.log(tweetData)
-   console.log(tweetData.length)
    const tweetLength = tweetData.length
 console.log(tweetArray)
 
@@ -32,8 +31,8 @@ useEffect(()=>{
     return <>
     <Sidebar />
     <div className="tweetFlexBox">
-    {tweetLength>0?(tweetData.map((tweet)=>{
-        return <Tweet text={tweet.text} image={tweet.image} video={tweet.video} username={tweet.user.user_name}/>;
+    {tweetLength>0?(tweetData.map((tweet, index)=>{
+        return <Tweet text={tweet.text} image={tweet.image} video={tweet.video} username={tweet.user.user_name} tweetId={tweet._id} number={index} />;
     })):null}
     </div>
     {(loadingTweet===true)?<Spinner animation="border" variant="light" id="loadSpinner" />:null}

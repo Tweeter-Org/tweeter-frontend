@@ -1,14 +1,16 @@
 import { combineReducers } from "redux";
 
-import { TweetFeedReducer} from "./TweetFeedReducer";
+import { TweetFeedReducer } from "./TweetFeedReducer";
 import SearchReducer from "./SearchReducer";
 import GoogleReducer from "./GoogleReducer";
 import AuthReducer from "./authReducer";
-
+import TweetLikeReducer from "./TweetLikeReducer";
 const rootReducer = combineReducers({
-     AuthReducer,
-      TweetFeedReducer
-      ,SearchReducer, GoogleReducer
-   })
+   AuthReducer,
+   TweetFeedReducer,
+   SearchReducer,
+   GoogleReducer,
+   TweetLikeReducer
+})
 
-  export default rootReducer
+export default rootReducer

@@ -103,6 +103,7 @@
     height: 22px;
     /* left: 12px; */
     margin-top: 376px;
+    cursor: pointer;
 }
 
 #likeIcon2 {
@@ -112,6 +113,7 @@
     height: 22px;
     /* left: 12px; */
     margin-top: 125px;
+    cursor: pointer;
 }
 
 #shareIcon {
@@ -121,6 +123,7 @@
     height: 24px;
     /* left: 399px; */
     margin-top: 376px;
+    cursor: pointer;
 }
 
 #shareIcon2 {
@@ -130,6 +133,7 @@
     height: 24px;
     /* left: 399px; */
     margin-top: 125px;
+    cursor: pointer;
 }
 
 #commentIcon {
@@ -138,6 +142,7 @@
     height: 21px;
     left: 452px;
     margin-top: 377px;
+    cursor: pointer;
 }
 
 #commentIcon2 {
@@ -146,6 +151,7 @@
     height: 21px;
     left: 452px;
     margin-top: 128px;
+    cursor: pointer;
 }
 
 #retweetIcon {
@@ -154,6 +160,7 @@
     height: 21px;
     left: 607px;
     margin-top: 377px;
+    cursor: pointer;
 }
 
 #retweetIcon2 {
@@ -162,6 +169,7 @@
     height: 21px;
     left: 607px;
     margin-top: 125px;
+    cursor: pointer;
 }
 
 .tweetLike {
@@ -181,6 +189,7 @@
 
 #tweetLike2 {
     margin-top: 127px;
+    
 }
 
 .tweetComm {
@@ -258,6 +267,7 @@
     box-shadow: 0px 264px 106px rgba(23, 25, 28, 0.01), 0px 149px 89px rgba(23, 25, 28, 0.05), 0px 66px 66px rgba(23, 25, 28, 0.09), 0px 17px 36px rgba(23, 25, 28, 0.1), 0px 0px 0px rgba(23, 25, 28, 0.1);
     border-radius: 16px;
     border: 0.7px solid rgba(255, 255, 255, 0.2);
+    z-index:10;
 }
 
 .ctCircle {
