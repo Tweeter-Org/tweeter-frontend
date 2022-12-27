@@ -2,20 +2,37 @@
     position: absolute;
     width: 172px;
     height: 24px;
-    left: 66vw;
-    top: 34.5vh;
+    left: 22vw;
+    top: 35.5vh;
     cursor:pointer;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     line-height: 24px;
     color: #57E891;
 }
-#otpimage{
-    position:absolute;
-    top:14vh;
-    left:-3vw;
-    width:46vw;
-    height:52vh;
+#timer {
+    position: absolute;
+    top:35.5vh;
+    left:29vw;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.9rem;
+    line-height: 24px;
+    color: #57E891; 
+}
+@media (max-width:1000px){
+    #otpHead{
+        width:50vw;
+    }
+    .resendFgtOtp{
+        left:47vw;
+        top:32vh;
+    }
+    #timer{
+        top:32vh;
+        left:72vw;
+    }
 }

@@ -1,0 +1,187 @@
+.navbar {
+    box-sizing: border-box;
+    position: fixed;
+    width: 85vw;
+    height: 10vh;
+    left: 20vw;
+    top: 0vh;
+    background: #1A1C1E;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    z-index:100;
+}
+
+.navbarIcon {
+    position: absolute;
+    width: 2.4vw;
+    height: 5vh;
+    left: 3vw;
+    top: 2.5vh;
+}
+
+.navbarHead {
+    position: absolute;
+    width: 6.3vw;
+    height: 4.3vh;
+    left: 6.4vw;
+    top: 3.1vh;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+
+    color: rgba(255, 255, 255, 0.9);
+}
+
+#navbarLine {
+    position: absolute;
+    width: 8.7vw;
+    height: 0vh;
+    left: 44vw;
+    top: 0vh;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+.sidebar {
+    box-sizing: border-box;
+    z-index:101;
+    position: fixed;
+    width: 20.5vw;
+    height: 164vh;
+    left: 0vw;
+    top: 0vh;
+    background: #1A1C1E;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.logoHead {
+    position: absolute;
+    width: 8vw;
+    height: 6.5vh;
+    left: 4.5vw;
+    top: 5vh;
+
+    font-family: 'Kaushan Script';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 51px;
+    color: #47C87A;
+}
+
+.sbList {
+    list-style: none;
+    position: absolute;
+    left: 2.5vw;
+    top: 20.5vh;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 26px;
+    color: rgba(255, 255, 255, 0.9);
+
+}
+
+.sbListItem {
+    margin-bottom: 6vh;
+    cursor: pointer;
+}
+.sbListIcon{
+    padding-right: 2vw;
+    color:"blue"
+    /* width:10px; */
+}
+.searchFlexBox{
+    position:absolute;
+    left:65px;
+    /* margin-top:5px; */
+    display: flex;
+    flex-direction: column;
+}
+.searchbar{
+    border:none;
+    outline:none;
+    position: fixed;
+width: 360px;
+height: 36px;
+left: 960px;
+top: 2.2vh;
+background: #484D4A;
+border-radius: 8px;
+z-index:102;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 22px;
+/* identical to box height */
+display:inline-block;
+padding-left:5vw;
+padding-top:0.5vh;
+color: rgba(255, 255, 255, 0.8);
+
+}
+::placeholder{
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+/* font-size: 18px; */
+font-size: 16px;
+line-height: 22px;
+color: rgba(255, 255, 255, 0.2);
+}
+.searchcomp{
+    display:block;
+    /* margin-top:100px; */
+    margin-bottom:10px;
+    margin-left: 900px;
+    width:340px;
+    height:10vh;
+    background: #1A1C1E;
+    border-radius: 8px;    
+}
+#displaySearch{
+    left:67vw;
+    margin-top:2vh;
+    width:45px;
+}
+.searchName{
+    position:absolute;
+    left:71.2vw;
+    margin-top:1.7vh;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    color: rgba(255, 255, 255, 0.9);
+    
+}
+.searchUsername{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 0.5);
+    position:absolute;
+    left:71.2vw;
+    margin-top:6vh;
+    
+}
+.searchAlter{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 20px;
+    position:fixed;
+    top:20vh;
+    width:15vw;
+    left:78vw;
+    color: rgba(255, 255, 255, 0.6);
+}

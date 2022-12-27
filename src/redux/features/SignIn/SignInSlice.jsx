@@ -3,11 +3,57 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState={
-    email:"",
-    password:""
+   loading:false,
+   response:"",
+   error:""
 }
 
-const SignInUser = createAsyncThunk("user/SignInUser",()=>{
-    
+//action
+const SignInUser = createAsyncThunk("login/SignInUser",(data)=>{
+    // if(isAuthEmail){
+        // console.log(isAuthEmail)
+       const api = axios.post("https://twitterbackend-production-93ac.up.railway.app/login",data)
+    //    .then((res)=>{
+    //     return res;
+    //    })
+    //    .catch((err)=>{
+    //     // return err;
+    //    })
+        return api;
+    // }
 })
-// export SignInUser
+
+// builder to listen to changes to action 
+// action.payload = return from action
+const loginSlice = createSlice({
+    name:"login",
+    initialState,
+    extraReducers:(builder)=>{
+        builder.addCase(SignInUser.pending, (state, action)=>{
+            console.log(action)
+            state.loading = true
+        })
+        builder.addCase(SignInUser.fulfilled, function(state, action){
+            console.log(action)
+            console.log(action.payload)
+            return (
+                state.loading = false,
+                state.response = action.payload.data.msg,
+                state.error = ""
+            )
+            // return state;
+        })
+        builder.addCase(SignInUser.rejected,(state,action)=>{
+            console.log(action)
+            // console.log(action.payload)
+            return (
+                state.loading = false,
+                state.response = "",
+                state.error = "failed"
+            )
+        })
+    },
+})
+
+export default loginSlice.reducer
+export {SignInUser}
