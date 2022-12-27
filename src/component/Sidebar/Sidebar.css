@@ -95,6 +95,25 @@
     color:"blue"
     /* width:10px; */
 }
+.sideBarTweetBtn{
+    position: absolute;
+    width: 160px;
+    height: 40px;
+    left: 4.7vw;
+    top: 75vh;
+    border:none;
+    background: rgb(71, 200, 122,0.9);
+    border-radius: 12px;
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 1rem;
+line-height: 21px;
+color: rgba(255, 255, 255, 0.9);
+}
+
+/* SEARCH BAR */
+
 .searchFlexBox{
     position:absolute;
     left:65px;

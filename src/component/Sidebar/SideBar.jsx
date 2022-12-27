@@ -10,6 +10,7 @@ import SearchComp from "./SearchComp";
 import { useDispatch, useSelector } from "react-redux";
 import SearchUser from "../../react-redux/actions/SearchApi";
 import { Spinner } from 'react-bootstrap';
+import { useNavigate } from "react-router";
 
 function Sidebar (){
     var title="Home";
@@ -33,7 +34,7 @@ function Sidebar (){
         }
     }
 
-    const [search, setSearch] = useState("");
+    const [search, setSearch] = useState("a");
     const dispatch = useDispatch();
     const {list, tomap, loading} = useSelector((S)=>S.SearchReducer)
     const [searchListArray, setSearchListArray] = useState([]);
@@ -41,18 +42,8 @@ function Sidebar (){
         setSearch(e.target.value)
         dispatch(SearchUser(search));
         console.log(list.result)
-        // if(tomap){
-        //     // if(list.result.length>0){
-        //     console.log(list.result.length)
-        //     setSearchListArray(list.result)
-        //     }
-        //     else{
-        //         setSearchListArray([])
-        //     }
         }
    
- 
-    
     useEffect(()=>{
         if(tomap){
             if(list.result.length>0){
@@ -74,7 +65,9 @@ function Sidebar (){
             document.body.style.opacity = 1;
         }
     },[loading])
+    const navigate = useNavigate();
 console.log(searchListArray)
+
     return <>
     <div className="navbar">
         <img src={home} className="navbarIcon"/>
@@ -90,6 +83,7 @@ console.log(searchListArray)
             <li className="sbListItem" onClick={()=>{showTitle(3)}}><span className="sbListIcon"><img src={message} /></span>Messages</li>
             <li className="sbListItem" onClick={()=>{showTitle(4)}}><span className="sbListIcon"><img src={profile} /></span>Profile</li>
         </ul>
+        <button className="sideBarTweetBtn" onClick={()=>{navigate("/createtweet")}}>Create Tweet</button>
     </div>
     <div><input className="searchbar" type="text" value={search} onChange={handleSearch} placeholder="Search" /></div>
     <div className="searchFlexBox">

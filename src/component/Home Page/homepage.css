@@ -4,8 +4,8 @@
     flex-basis: auto;
     flex-direction: column; */
     width: 44vw;
-    height:fit-content;
-    height:68vh;
+    height: fit-content;
+    height: 68vh;
     margin-left: 23.5vw;
     margin-bottom: 3vh;
     background: #1A1C1E;
@@ -14,8 +14,8 @@
 }
 
 #tweetComp2 {
-    display:block;
-    height:28vh;
+    display: block;
+    height: 28vh;
     /* height: fit-content; */
     /* background-color: blue; */
 }
@@ -48,7 +48,7 @@
 
 .tweetImage {
     height: auto;
-    height:250px;
+    height: 250px;
     width: 590px;
     /* max-width: 100%; */
     position: absolute;
@@ -244,4 +244,203 @@
     margin-top: 15vh;
     display: flex;
     flex-direction: column;
+}
+
+/*CREATE TWEET*/
+
+.createTweetDiv {
+    position: absolute;
+    width: 40vw;
+    height: 50vh;
+    left: 30vw;
+    top: 17vh;
+    background: #1A1C1E;
+    box-shadow: 0px 264px 106px rgba(23, 25, 28, 0.01), 0px 149px 89px rgba(23, 25, 28, 0.05), 0px 66px 66px rgba(23, 25, 28, 0.09), 0px 17px 36px rgba(23, 25, 28, 0.1), 0px 0px 0px rgba(23, 25, 28, 0.1);
+    border-radius: 16px;
+    border: 0.7px solid rgba(255, 255, 255, 0.2);
+}
+
+.ctCircle {
+    position: absolute;
+    width: 4vw;
+    height: 7.5vh;
+    left: 1.5vw;
+    top: 3vh;
+    border-radius: 50%;
+    background: #D9D9D9;
+}
+
+.ctName {
+    position: absolute;
+    width: 20vw;
+    height: 3vh;
+    left: 6.5vw;
+    top: 3vh;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 27px;
+    color: rgba(255, 255, 255, 0.9);
+
+}
+
+.ctUserName {
+    position: absolute;
+    width: 117px;
+    height: 20px;
+    left: 6.5vw;
+    top: 7vh;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 20px;
+    color: rgb(71, 200, 122, 0.8);
+}
+
+.ctTagline {
+    position: absolute;
+    width: 40vw;
+    height: 3vh;
+    left: 1.5vw;
+    top: 15vh;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.45rem;
+    line-height: 29px;
+
+    color: rgba(255, 255, 255, 0.6);
+
+}
+
+.ctWriteTweet {
+    position: absolute;
+    top: 30vh;
+    left: 1.5vw;
+    width: 36.5vw;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.ctWriteTweetInput {
+    width:36.5vw;
+    border: none;
+    outline: none;
+    background: none;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 0.9);
+
+}
+#ctuploadImg{
+    background:none;
+    border:none;
+    outline:none;
+    position:absolute;
+    top:20vh;
+}
+.ctCancelTweet {
+    outline: none;
+    background: none;
+    box-sizing: border-box;
+    position: absolute;
+    width: 8vw;
+    height: 36px;
+    left: 22.5vw;
+    top: 42vh;
+    border: 1px solid #47C87A;
+    border-radius: 12px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.ctCreateTweet {
+    border: none;
+    position: absolute;
+    width: 8vw;
+    height: 36px;
+    left: 31vw;
+    top: 42vh;
+    background: #47C87A;
+    border-radius: 12px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.ctImage {
+    position: absolute;
+    top: 42vh;
+    left: 1.5vw;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.ctVideo {
+    position: absolute;
+    top: 41.5vh;
+    height: 33px;
+    left: 4.5vw;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.ctSmile {
+    position: absolute;
+    top: 42.4vh;
+    left: 7.7vw;
+    opacity: 0.8;
+    cursor: pointer;
+}
+.ctEmoji{
+    position: absolute;
+    top:50vh;
+}
+.emojipicker{
+    position:absolute;
+    /* top:2vh; */
+    left:-25.5vw;
+}
+.ctImageText {
+    position: absolute;
+    top: 46.5vh;
+    left: 1.2vw;
+    font-size: 0.7rem;
+    font-family: 'Montserrat';
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.ctVideoText {
+    position: absolute;
+    top: 46.5vh;
+    left: 4.5vw;
+    font-size: 0.7rem;
+    font-family: 'Montserrat';
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.ctSmileText {
+    position: absolute;
+    top: 46.5vh;
+    left: 7.4vw;
+    font-size: 0.7rem;
+    font-family: 'Montserrat';
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.6);
 }

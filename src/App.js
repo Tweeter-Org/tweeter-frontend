@@ -11,11 +11,15 @@ import Error from './component/Assets/Error404/Error';
 import SignUpTwo from './component/Authentication/SignUpTwo/SignUpTwo';
 import Sidebar from './component/Sidebar/SideBar';
 import HomePage from './component/Home Page/homePage';
+import CreateTweet from './component/Home Page/createTweet';
+import EmojiPicker from 'emoji-picker-react';
 
 function App() {
   return <>
   <BrowserRouter>
+  {/* <CreateTweet /> */}
     <Routes>
+    <Route path="/createtweet" exact element={<CreateTweet />} />
     <Route path="/sidebar" exact element={<Sidebar />} />
     <Route path="/home" exact element={<HomePage />} />
     <Route path="/" exact element={<Login />} />
@@ -25,6 +29,7 @@ function App() {
       <Route exact path="/verifyemail" element={<EmailVerify/>} />
       <Route exact path="/reset" element={<ResetPwd />} />
       <Route exact path="/signuptwo" element={<SignUpTwo />} />
+      <Route exact path="/emojipicker" element={<EmojiPicker />} />
     </Routes> 
   </BrowserRouter>
   </>
