@@ -1,43 +1,45 @@
-.tweetComp {
-    /* position: absolute; */
-    /* display:flex;
-    flex-basis: auto;
-    flex-direction: column; */
-    width: 44vw;
-    height: fit-content;
-    height: 68vh;
+.tweetComp{
+    display: flex;
+    flex-direction: column;
+    height:fit-content;
+    width:45vw;
     margin-left: 23.5vw;
     margin-bottom: 3vh;
-    /* background: #1A1C1E; */
     background-color: rgb(22, 23, 24);
     border-radius: 16px;
     z-index: 5;
+    padding:2vh 1vw;
+    justify-content: space-evenly;
+    text-transform: capitalize;
+
 }
-#tweetComp2 {
-    display: block;
-    height: 28vh;
-    /* height: fit-content; */
-    /* background-color: blue; */
+.firstTweetBlock{
+    display: flex;
+}
+.secondTweetBlock{
+    display:flex;
+   justify-content: space-around;
+}
+.iconBlock{
+    display: flex;
 }
 
-.displaypie {
-    position: absolute;
-    left: 342px;
+ .displaypie {
     width: 43px;
     height: 39.09px;
-    /* margin-left: 24px; */
-    margin-top: 20px;
+    margin-right: 1vw;
     border-radius: 50%;
     background: #D9D9D9;
     z-index: 6;
 }
 
+#picincircle{
+    width: 43px;
+    height: 39.09px;
+}
 .username {
-    position: absolute;
     width: 136px;
     height: 27px;
-    left: 402px;
-    margin-top: 28px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
@@ -48,37 +50,14 @@
 
 .tweetImage {
     height: auto;
-    height: 250px;
     width: 590px;
-    /* max-width: 100%; */
-    position: absolute;
-    left: 325px;
-    margin-top: 80px;
+    margin-top:2vh;
 }
 
 .tweetText {
     width: 42.7vw;
-    height: 20vh;
-    position: absolute;
-    left: 325px;
-    /* bottom:50px; */
-    margin-top: 340px;
-
-    color: white;
-    opacity: 0.9;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 15px;
-    line-height: 18px;
-}
-
-.tweetText2 {
-    width: 42.7vw;
-    height: 20vh;
-    position: absolute;
-    left: 342px;
-    margin-top: 75px;
+    margin-top:2vh;
+    margin-bottom:2vh;
     color: white;
     opacity: 0.9;
     font-family: 'Montserrat';
@@ -89,95 +68,45 @@
 }
 
 .tweetvideo {
-    height: 250px;
+    height:auto;
     width: 590px;
-    position: absolute;
-    left: 325px;
-    margin-top: 80px;
+    margin-top:2vh;
 }
 
 #likeIcon {
-    position: absolute;
-    left: 342px;
     width: 22px;
     height: 22px;
-    /* left: 12px; */
-    margin-top: 376px;
-    cursor: pointer;
-}
-
-#likeIcon2 {
-    position: absolute;
-    left: 342px;
-    width: 22px;
-    height: 22px;
-    /* left: 12px; */
-    margin-top: 125px;
+    margin-top: 0.2vh;
+    margin-right: 0.5vw;
     cursor: pointer;
 }
 
 #shareIcon {
-    position: absolute;
-    left: 742px;
     width: 24px;
     height: 24px;
-    /* left: 399px; */
-    margin-top: 376px;
-    cursor: pointer;
-}
-
-#shareIcon2 {
-    position: absolute;
-    left: 742px;
-    width: 24px;
-    height: 24px;
-    /* left: 399px; */
-    margin-top: 125px;
+    margin-right: 0.5vw;
     cursor: pointer;
 }
 
 #commentIcon {
-    position: absolute;
     width: 23px;
     height: 21px;
-    left: 452px;
-    margin-top: 377px;
-    cursor: pointer;
-}
-
-#commentIcon2 {
-    position: absolute;
-    width: 23px;
-    height: 21px;
-    left: 452px;
-    margin-top: 128px;
+    margin-top:0.5vh;
+    margin-right: 0.5vw;
     cursor: pointer;
 }
 
 #retweetIcon {
-    position: absolute;
     width: 25.2px;
     height: 21px;
-    left: 607px;
-    margin-top: 377px;
-    cursor: pointer;
-}
-
-#retweetIcon2 {
-    position: absolute;
-    width: 25.2px;
-    height: 21px;
-    left: 607px;
-    margin-top: 125px;
+    margin-right: 0.5vw;
     cursor: pointer;
 }
 
 .tweetLike {
-    position: absolute;
+    margin-top: 0.4vh;
     width: 32px;
     height: 18px;
-    left: 372px;
-    margin-top: 378px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
@@ -185,19 +114,12 @@
     line-height: 18px;
     color: rgba(255, 255, 255, 0.8);
     cursor: pointer;
-}
-
-#tweetLike2 {
-    margin-top: 127px;
-    
 }
 
 .tweetComm {
-    position: absolute;
+    margin-top: 0.4vh;
     width: 78px;
     height: 18px;
-    left: 482px;
-    margin-top: 378px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
@@ -205,18 +127,11 @@
     line-height: 18px;
     color: rgba(255, 255, 255, 0.8);
     cursor: pointer;
-}
-
-#tweetComm2 {
-    margin-top: 129px;
 }
 
 .tweetRetweet {
-    position: absolute;
     width: 64px;
     height: 18px;
-    left: 637px;
-    margin-top: 378px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
@@ -224,18 +139,12 @@
     line-height: 18px;
     color: rgba(255, 255, 255, 0.8);
     cursor: pointer;
-}
-
-#tweetRetweet2 {
-    margin-top: 129px;
+    margin-top: 0.5vh;
 }
 
 .tweetShare {
-    position: absolute;
     width: 44px;
     height: 18px;
-    left: 772px;
-    margin-top: 378px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
@@ -243,17 +152,14 @@
     line-height: 18px;
     color: rgba(255, 255, 255, 0.8);
     cursor: pointer;
-}
-
-#tweetShare {
-    margin-top: 129px;
+    margin-top: 0.5vh;
 }
 
 .tweetFlexBox {
     margin-top: 15vh;
     display: flex;
     flex-direction: column;
-}
+} 
 
 /*CREATE TWEET*/
 
@@ -261,7 +167,7 @@
     position: fixed;
     width: 40vw;
     height: 50vh;
-    left: 32vw;
+    left: 29vw;
     top:15vh;
     background: #070808;
     background-color: #121212;

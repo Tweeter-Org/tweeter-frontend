@@ -166,7 +166,14 @@ color: rgba(255, 255, 255, 0.2);
     /* background-color: #161718; */
     border-radius: 8px;    
 }
-#displaySearch{
+.displaySearchPic{
+    width: 43px;
+    height: 39.09px;
+    margin-right: 1vw;
+    border-radius: 50%;
+    background: #D9D9D9;
+    z-index: 6;
+    position:absolute;
     left:67vw;
     margin-top:2vh;
     width:45px;

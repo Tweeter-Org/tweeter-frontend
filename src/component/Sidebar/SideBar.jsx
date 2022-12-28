@@ -67,12 +67,14 @@ function Sidebar (){
         }
     },[loading])
     const navigate = useNavigate();
+    console.log(searchListArray)
   
 function xyz(){
     document.getElementById("CREATETWEET").style.display="block"
-    document.getElementsByClassName("poopupbg1")[0].style.opacity=0.2;
-    document.getElementsByClassName("poopupbg2")[0].style.opacity=0.2;
-    document.getElementsByClassName("poopupbg3")[0].style.opacity=0.2;
+    document.getElementsByClassName("poopupbg1")[0].style.opacity=0.1;
+    document.getElementsByClassName("poopupbg2")[0].style.opacity=0.1;
+    document.getElementsByClassName("poopupbg3")[0].style.opacity=0.1;
+    document.getElementsByClassName("poopupbg4")[0].style.opacity = 0.1;
     document.getElementById("CREATETWEET").style.opacity=1;
 }
     return <>
@@ -95,7 +97,7 @@ function xyz(){
         <button className="sideBarTweetBtn" onClick={()=>{xyz()}}>Create Tweet</button>
     </div>
     <div><input className="searchbar" type="text" value={search} onChange={handleSearch} placeholder="Search" /></div>
-    <div className="searchFlexBox">
+    <div className="searchFlexBox poopupbg4">
          {(searchListArray.length>0)?(searchListArray.map((searchh)=>{
             return <SearchComp name={searchh.name} username={searchh.user_name} />
         })):<p className="searchAlter">No search found</p>}
