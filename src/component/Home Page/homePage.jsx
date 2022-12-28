@@ -30,7 +30,7 @@ useEffect(()=>{
 
     return <>
     <Sidebar />
-    <div className="tweetFlexBox">
+    <div className="tweetFlexBox poopupbg3">
     {tweetLength>0?(tweetData.map((tweet, index)=>{
         return <Tweet text={tweet.text} image={tweet.image} video={tweet.video} username={tweet.user.user_name} tweetId={tweet._id} number={index} />;
     })):null}

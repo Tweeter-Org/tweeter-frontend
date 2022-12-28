@@ -201,7 +201,7 @@ const initialState ={
         }
         case "SIGNUP_TWO_FAILED":{
             console.log(action.payload)
-            console.log(action.payload.response.data.msg)
+            // console.log(action.payload.response.data.msg)
             return {
                 loading:false,
                 response:"",

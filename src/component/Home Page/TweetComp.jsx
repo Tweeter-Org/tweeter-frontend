@@ -11,12 +11,11 @@ function Tweet(props) {
     const video = props.video
     const image = props.image
     const id = props.number;
+console.log(video, image)
     const dispatch = useDispatch();
+    const { response, isLiked } = useSelector((l) => l.TweetLikeReducer)
     function handleTweetLike(tweetid) {
         dispatch(TweetLikeAction(tweetid))
-    }
-    const { response, isLiked } = useSelector((l) => l.TweetLikeReducer)
-    useEffect(() => {
         if (isLiked) {
             if (response === "Liked") {
                 document.getElementById("likeIcon").style.color = "green"
@@ -28,7 +27,7 @@ function Tweet(props) {
             }
                 
         }
-    }, [isLiked, response])
+    }
 
     return <>
         {(image != null || video != null) ? (

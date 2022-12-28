@@ -8,11 +8,11 @@
     height: 68vh;
     margin-left: 23.5vw;
     margin-bottom: 3vh;
-    background: #1A1C1E;
+    /* background: #1A1C1E; */
+    background-color: rgb(22, 23, 24);
     border-radius: 16px;
     z-index: 5;
 }
-
 #tweetComp2 {
     display: block;
     height: 28vh;
@@ -258,18 +258,22 @@
 /*CREATE TWEET*/
 
 .createTweetDiv {
-    position: absolute;
+    position: fixed;
     width: 40vw;
     height: 50vh;
-    left: 30vw;
-    top: 17vh;
-    background: #1A1C1E;
+    left: 32vw;
+    top:15vh;
+    background: #070808;
+    background-color: #121212;
     box-shadow: 0px 264px 106px rgba(23, 25, 28, 0.01), 0px 149px 89px rgba(23, 25, 28, 0.05), 0px 66px 66px rgba(23, 25, 28, 0.09), 0px 17px 36px rgba(23, 25, 28, 0.1), 0px 0px 0px rgba(23, 25, 28, 0.1);
     border-radius: 16px;
     border: 0.7px solid rgba(255, 255, 255, 0.2);
-    z-index:10;
+    z-index:15;
 }
-
+#CREATETWEET{
+    /* margin-top: 500px; */
+    display:none;
+}
 .ctCircle {
     position: absolute;
     width: 4vw;
@@ -355,6 +359,7 @@
     outline:none;
     position:absolute;
     top:20vh;
+    /* display: none; */
 }
 .ctCancelTweet {
     outline: none;

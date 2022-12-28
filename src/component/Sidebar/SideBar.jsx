@@ -12,6 +12,8 @@ import SearchUser from "../../react-redux/actions/SearchApi";
 import { Spinner } from 'react-bootstrap';
 import { useNavigate } from "react-router";
 import { HashLink } from "react-router-hash-link";
+import AnchorLink from "react-anchor-link-smooth-scroll";
+import CreateTweet from "../Home Page/createTweet";
 
 function Sidebar (){
     var title="Home";
@@ -65,14 +67,21 @@ function Sidebar (){
         }
     },[loading])
     const navigate = useNavigate();
-
+  
+function xyz(){
+    document.getElementById("CREATETWEET").style.display="block"
+    document.getElementsByClassName("poopupbg1")[0].style.opacity=0.2;
+    document.getElementsByClassName("poopupbg2")[0].style.opacity=0.2;
+    document.getElementsByClassName("poopupbg3")[0].style.opacity=0.2;
+    document.getElementById("CREATETWEET").style.opacity=1;
+}
     return <>
-    <div className="navbar">
+    <div className="navbar poopupbg1">
         <img src={home} className="navbarIcon"/>
         <p className="navbarHead">{title}</p>
         <span id="navbarLine" />
     </div>
-    <div className="sidebar">
+    <div className="sidebar poopupbg2">
         <p className="logoHead">Tweeter</p>
         <ul className="sbList">
             <li className="sbListItem" onClick={()=>{showTitle(0)}}><span className="sbListIcon"><img src={home} /></span>Home</li>
@@ -81,8 +90,9 @@ function Sidebar (){
             <li className="sbListItem" onClick={()=>{showTitle(3)}}><span className="sbListIcon"><img src={message} /></span>Messages</li>
             <li className="sbListItem" onClick={()=>{showTitle(4)}}><span className="sbListIcon"><img src={profile} /></span>Profile</li>
         </ul>
-        {/* <HashLink to="#CREATETWEET"><button className="sideBarTweetBtn" >Create Tweet</button></HashLink> */}
-        <button className="sideBarTweetBtn" onClick={()=>{navigate("/createtweet")}}>Create Tweet</button>
+        {/* <AnchorLink href="#CREATETWEET"><button className="sideBarTweetBtn" >Create Tweet</button></AnchorLink> */}
+        {/* <HashLink to="#CREATETWEET"><button className="sideBarTweetBtn" onClick={()=>{document.getElementById("CREATETWEET").style.display="block"}}>Create Tweet</button></HashLink> */}
+        <button className="sideBarTweetBtn" onClick={()=>{xyz()}}>Create Tweet</button>
     </div>
     <div><input className="searchbar" type="text" value={search} onChange={handleSearch} placeholder="Search" /></div>
     <div className="searchFlexBox">
@@ -90,6 +100,7 @@ function Sidebar (){
             return <SearchComp name={searchh.name} username={searchh.user_name} />
         })):<p className="searchAlter">No search found</p>}
     </div>
+    <CreateTweet />
     {(loading===true)?<Spinner animation="border" variant="light" id="loadSpinner" />:null}
     </>
 }

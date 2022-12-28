@@ -11,6 +11,7 @@ import Background from '../Background';
 import arrow from "../../Assets/arrow-back.svg";
 import {SignUpResend} from '../../../react-redux/actions/authAction';
 // import SpinnerLoad from '../../Assets/Spinner';
+import "../ForgotPassword/fgtPwd.css"
 
 function AuthOtp(){
 
@@ -84,14 +85,14 @@ return <>
     <p className='authHead' id="authHeadTwo">Email Verification</p>
     <p className='authFgtHead'>Enter Otp sent to {email}</p>
     <input type="text" className="authFgtEmailInput" placeholder="0  0  0  0  0  0" value={otp} onChange={(e)=>setOtp(e.target.value)}/>
-    <p className='invalidFgtEmail'>Incorrect Otp</p>
-    <p className='resendFgtOtp' disabled={seconds!==0?true:false} onClick={()=>{dispatch(SignUpResend(email),setSeconds(59))}}>Resend Otp in</p>
+    {/* <p className='invalidFgtEmail'>Incorrect Otp</p> */}
+    <p className='resendFgtOtp' id="emailOtp" disabled={seconds!==0?true:false} onClick={()=>{dispatch(SignUpResend(email),setSeconds(59))}}>Resend Otp in</p>
     <span id="timer">00:{seconds}</span>
     <button className='authFgtPwdBtn' onClick={()=>{dispatch(EmailAction(data))}} >Continue</button>
     </div>             
     {/* {loadEm===true?<Spinner animation="border" variant="light" id="loadSpinner" />:null}    */}
     <ToastContainer />                                                                                                  
-    {/* {loading===true?<SpinnerLoad loading={loading} />:null} */}
+    {loading===true?<Spinner animation="border" variant="light" id="loadSpinner" />:null}
 </>
 }
 

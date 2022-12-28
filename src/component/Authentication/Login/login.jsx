@@ -88,11 +88,11 @@ function Login() {
         }  
     },[displayToaster])
 
-    // useEffect(()=>{
-    //     if(toFgtPwd){
-    //         navigate("/fgtpwd")
-    //     }
-    // },[toFgtPwd])
+    useEffect(()=>{
+        if(toFgtPwd){
+            navigate("/home")
+        }
+    },[toFgtPwd])
     
     useEffect(()=>{
         if(responseGoogle!="")

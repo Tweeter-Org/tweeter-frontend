@@ -139,13 +139,13 @@ const SignUpResend=(email)=>{
 export {SignUpResend} 
 
 const accessToken = localStorage.getItem("access token")
-console.log(accessToken)
+// console.log(accessToken)
 const config={
     headers:{
         "Authorization" : `Bearer ${accessToken}`
     }
 }
-console.log(config)
+// console.log(config)
 const SignUpTwoUser = (data) => {
     return async function (dispatch) {
         // if(condition){

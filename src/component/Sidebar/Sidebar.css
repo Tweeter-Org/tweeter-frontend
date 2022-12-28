@@ -5,7 +5,8 @@
     height: 10vh;
     left: 20vw;
     top: 0vh;
-    background: #1A1C1E;
+    /* background: #1A1C1E; */
+    background-color: #161718;
     border: 1px solid rgba(255, 255, 255, 0.08);
     z-index:100;
 }
@@ -47,13 +48,14 @@
 
 .sidebar {
     box-sizing: border-box;
-    z-index:101;
+    z-index:105;
     position: fixed;
     width: 20.5vw;
     height: 164vh;
     left: 0vw;
     top: 0vh;
-    background: #1A1C1E;
+    /* background: #1A1C1E; */
+    background-color: #161718;
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -161,6 +163,7 @@ color: rgba(255, 255, 255, 0.2);
     width:340px;
     height:10vh;
     background: #1A1C1E;
+    /* background-color: #161718; */
     border-radius: 8px;    
 }
 #displaySearch{
