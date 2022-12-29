@@ -9,32 +9,38 @@ import { Spinner } from 'react-bootstrap';
 function HomePage (){
     const dispatch = useDispatch();
 
-    const {loadingTweet, tweetData} = useSelector((s)=>s.TweetFeedReducer)
+    const {loading, tweetData} = useSelector((s)=>s.TweetFeedReducer)
 
     useEffect(()=>{
         dispatch(TweetFeedAction())
     },[])
    console.log(tweetData)
    const tweetLength = tweetData.length
+   
+   const [load, setLoad] = useState(loading)
+   useEffect(()=>{
+      if(tweetLength>0)
+      setLoad(false)
+  },[tweetLength])
 
 useEffect(()=>{
-    if(loadingTweet===true){
+    if(load===true){
         document.body.style.opacity = 0.5;
     }
     else{
         document.body.style.opacity = 1;
     }
-},[loadingTweet])
+},[load])
 
     return <>
     <Sidebar />
     
     <div className="tweetFlexBox poopupbg3">
     {tweetLength>0?(tweetData.map((tweet, index)=>{
-        return <Tweet text={tweet.text} image={tweet.image} video={tweet.video} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} />;
+        return <Tweet text={tweet.text} image={tweet.image} video={tweet.video} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarkb ="false" />;
     })):null}
     </div>
-    {(loadingTweet===true)?<Spinner animation="border" variant="light" id="loadSpinner" />:null}
+    {(load===true)?<Spinner animation="border" variant="light" id="loadSpinner" />:null}
     </>
 }
 export default HomePage
