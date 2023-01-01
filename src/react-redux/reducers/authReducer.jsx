@@ -26,7 +26,8 @@ const initialState ={
                 response:action.payload.msg,
                 user:action.payload.user,
                 error:"",
-                toFgtPwd:true
+                toFgtPwd:true,
+                toHome:true,
             }
         }
         case "REQUEST_FAILED":{
@@ -203,7 +204,8 @@ const initialState ={
                 loading:false,
                 response:action.payload.msg,
                 error:"",
-                toHome:true
+                toHome:true,
+                user:action.payload.user,
             }
         }
         case "SIGNUP_TWO_FAILED":{

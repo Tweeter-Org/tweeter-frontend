@@ -50,6 +50,7 @@
 
 .tweetImage {
     height: auto;
+    /* width:fit-content; */
     width: 590px;
     margin-top:2vh;
 }
@@ -106,7 +107,7 @@
 .bookmarkIcon{
     width: 20px;
     height: 20px;
-    margin-left:25vw;
+    margin-left:27vw;
     opacity:0.8;  
     cursor: pointer;
 }

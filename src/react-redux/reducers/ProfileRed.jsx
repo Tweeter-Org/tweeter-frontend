@@ -4,8 +4,9 @@ const initialState={
     loading:false,
     profile:{},
     error:"",
-    accessProfile:false
-
+    accessProfile:false,
+editprofile:{},
+ifedit:false
 }
 
 
@@ -18,6 +19,20 @@ export function ProfileReducer(state=initialState, action){
         case "VIEW_PROFILE_FAIL":return{
             ...state, loading:false, error:action.payload, accessProfile:false
         }
+        case "EDIT_PROFILE":return {...state, loading:true, ifedit:false}
+        case "EDIT_PROFILE_SUCCED":{
+            console.log(action.payload)
+            return{
+                ...state, loading:false, editprofile:action.payload.data, accessProfile:true, ifedit:true
+            }
+
+        }  
+        case "EDIT_PROFILE_FAIL":{
+            console.log(action.payload)
+            return{
+            ...state, loading:false, editprofile:action.payload, accessProfile:false, ifedit:true
+        }
+    }
         default :return state
     }
 }

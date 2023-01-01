@@ -115,7 +115,13 @@ color: rgba(255, 255, 255, 0.9);
 }
 
 /* SEARCH BAR */
-
+a{
+    color:white;
+    text-decoration: none;
+}
+a:hover{
+    color:#47C87A;
+}
 .searchFlexBox{
     position:absolute;
     left:70vw;
@@ -167,7 +173,7 @@ color: rgba(255, 255, 255, 0.2);
     background: #1A1C1E;
     /* background-color: #161718; */
     border-radius: 8px;    
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
 }
 .displaySearchPic{
     position: absolute;
@@ -203,6 +209,11 @@ color: rgba(255, 255, 255, 0.2);
     position:absolute;
     margin-top:6vh;
     margin-left: 5vw;
+    text-decoration: underline;
+    cursor:pointer;
+}
+.searchUsername:hover{
+    color:#47C87A;
 }
 .searchAlter{
     font-family: 'Montserrat';

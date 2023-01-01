@@ -25,13 +25,13 @@ function CreateTweet() {
         console.log(e.target.files);
         setSendImage(e.target.files[0])
         console.log(e.target.files[0])
-        fd.append("file",e.target.files[0])
+        // fd.append("file",e.target.files[0])
     }
     const [sendVideo, setSendVideo] = useState([]);
     function handleSendVideo(e) {
         console.log(e.target.files);
         setSendVideo(e.target.files[0])
-        fd.append("file",e.target.files[0])
+        // fd.append("file",e.target.files[0])
     }
 
     function handleEmojis() {
@@ -47,7 +47,7 @@ function CreateTweet() {
     console.log(fd)
 
     function backToHome() {
-        navigate("/home");
+        // navigate("/home");
         setText("")
         document.getElementById("CREATETWEET").style.display = "none"
         document.getElementsByClassName("poopupbg1")[0].style.opacity = 1;
@@ -58,15 +58,27 @@ function CreateTweet() {
     const {response,error,tweetCreate} = useSelector((t)=>t.TweetCreateReducer)
 
     console.log(tweetCreate)
-    function handleCreateTweet (){
+    function handleCreateTweet (e){
+        e.preventDefault();
         console.log("ghjkl")
         fd.append("text", text)
+        if(sendImage!=""){
+            fd.append("file",sendImage)
+        }
+        else if(sendVideo!=""){
+            fd.append("file",sendVideo)
+        }
+        else{
+            fd.append("file",null)
+        }
+        // {sendImage!=""?fd.append("file",sendImage):(sendVideo!=""?fd.append("file",sendVideo):null)}
+       
         dispatch(CreateTweetAct(fd))
-        if(tweetCreate==="true"){
+        if(tweetCreate===true){
             console.log("tweeet");
             <ToasterSuccess response={response} />
-            backToHome()
         }
+        backToHome()
     }
 
     return <>
@@ -74,6 +86,9 @@ function CreateTweet() {
             <span className="ctCircle" />
             <p className="ctName">Peter Beans</p>
             <p className="ctUserName">@peter beans</p>
+            <form
+             onSubmit={handleCreateTweet}
+            enctype="multipart/form-data" >
             <p className="ctTagline">Share tweet with your followers</p>
             <div className="ctWriteTweet">
                 <input type="text" className="ctWriteTweetInput" value={text} onChange={(e) => { setText(e.target.value) }} />
@@ -91,7 +106,9 @@ function CreateTweet() {
             {showEmoji ? (<div className="emojipicker"><Picker theme="dark" onEmojiClick={onemojiclick} /></div>) : null}
             <p className="ctSmileText">Emojis</p>
             <button className="ctCancelTweet" onClick={() => {backToHome()}}>Cancel</button>
-            <button className="ctCreateTweet" onClick={() => {handleCreateTweet()}}>Tweet</button>
+            <button className="ctCreateTweet" >Tweet</button>
+            </form>
+           
         </div>
 
     </>

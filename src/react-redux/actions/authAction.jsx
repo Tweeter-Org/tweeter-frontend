@@ -1,4 +1,6 @@
 import axios from "axios"
+import { useEffect } from "react"
+import { useSelector } from "react-redux"
 import BaseUrl from "./BaseUrl"
 
 const LogInUser = (data, condition) => {
@@ -127,7 +129,6 @@ const SignUpResend=(email)=>{
           .then((res)=>dispatch({
              type:"SIGNUP_SUCCEDED",
              payload:res.data }))
- 
           .catch((err)=>{
              dispatch({
                 type:"SIGNUP_FAILED",
@@ -138,17 +139,21 @@ const SignUpResend=(email)=>{
  }
 export {SignUpResend} 
 
+// setTimeout(()=>{
+    
+// })
+
 const accessToken = localStorage.getItem("access token")
+console.log(accessToken)
 const config={
     headers:{
         "Authorization" : `Bearer ${accessToken}`
     }
 }
+console.log(config)
 const SignUpTwoUser = (data) => {
     return async function (dispatch) {
         // if(condition){
-        console.log(accessToken)
-        console.log(config)
         dispatch({ type: "SIGNUP_TWO_STARTED" })
         await axios.post("https://twitterbackend-production-93ac.up.railway.app/signup", data, config)
             .then((res) => dispatch({

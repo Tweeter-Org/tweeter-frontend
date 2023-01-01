@@ -32,6 +32,10 @@ useEffect(()=>{
         document.body.style.opacity = 1;
     }
 },[load])
+// const auth = useSelector((s)=>s.AuthReducer)
+// const {user, toFgtPwd} = auth;
+// const nameInApi = user.user_name
+// localStorage.setItem("usernameInApi",nameInApi)
 
     return <>
     <Sidebar />

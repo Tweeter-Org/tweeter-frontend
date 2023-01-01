@@ -23,47 +23,55 @@ function Tweet(props) {
     const video = props.video
     const image = props.image
     const id = props.number;
-    console.log(props.LIKES)
     const bookmarkShow = props.bookmarkb
     const dispatch = useDispatch();
     const [show, setShow] = useState(false)
+    const [tweetCount, setTweetCount] = useState(props.likeCount)
     const { response, isLiked, isDelete } = useSelector((l) => l.TweetLikeReducer)
 
-    useEffect(()=>{
-        if(props.LIKES){
+    useEffect(() => {
+        setTweetCount(props.likeCount)
+        if (props.LIKES) {
             document.getElementsByClassName("tweetLike")[id].style.color = "green"
             document.getElementsByClassName("likeIcon")[id].src = greenLike
-        }
-        else{
-            document.getElementsByClassName("likeIcon")[id].src = like
-            document.getElementsByClassName("tweetLike")[id].style.color = "white"
-        }
-    },[props.LIKES])
-    function handleTweetLike(tweetid) {
-        dispatch(TweetLikeAction(tweetid))
-        dispatch(TweetFeedAction())
-        setShow(!show)
-        if (show) {
-            document.getElementsByClassName("tweetLike")[id].style.color = "green"
-            document.getElementsByClassName("likeIcon")[id].src = greenLike
-
         }
         else {
             document.getElementsByClassName("likeIcon")[id].src = like
             document.getElementsByClassName("tweetLike")[id].style.color = "white"
         }
-        if (isLiked) {
-            if (response === "Liked") {
-                document.getElementsByClassName("likeIcon")[id].src = like
-                document.getElementsByClassName("tweetLike")[id].style.color = "white"
-            }
-            if (response === "Unliked") {
+    }, [props.LIKES])
+    function handleTweetLike(tweetid) {
+        dispatch(TweetLikeAction(tweetid))
+        var imagepath =   document.getElementsByClassName("tweetLike")[id].style.color;
+            if(imagepath==="white"){
                 document.getElementsByClassName("tweetLike")[id].style.color = "green"
                 document.getElementsByClassName("likeIcon")[id].src = greenLike
+                // setTweetCount(tweetCount+1)
+                setTweetCount(tweetCount=>tweetCount+1)
+                console.log(tweetCount)
             }
-        }
+            else{
+                document.getElementsByClassName("likeIcon")[id].src = like
+                document.getElementsByClassName("tweetLike")[id].style.color = "white"
+                setTweetCount(tweetCount=>tweetCount-1)
+                console.log(tweetCount)
+               
+            }
+        
+        // if (isLiked) {
+        //     if (response === "Liked") {
+        //         document.getElementsByClassName("likeIcon")[id].src = like
+        //         document.getElementsByClassName("tweetLike")[id].style.color = "white"
+        //         setTweetCount(tweetCount-1)
+        //     }
+        //     if (response === "Unliked") {
+        //         document.getElementsByClassName("tweetLike")[id].style.color = "green"
+        //         document.getElementsByClassName("likeIcon")[id].src = greenLike
+        //         setTweetCount(tweetCount+1)
+        //     }
+        // }
     }
-    
+
     const { responseBM, markBM } = useSelector((b) => b.BookmarkReducer)
     function handleTweetBookmark(tweetid) {
         document.getElementsByClassName("bookmarkIcon")[id].src = greenBookmarks
@@ -111,7 +119,7 @@ function Tweet(props) {
             <div className="secondTweetBlock">
                 <div className="iconBlock">
                     <img src={like} className="likeIcon" onClick={() => { handleTweetLike(props.tweetId) }} />
-                    <p className="tweetLike">{props.likeCount}</p>
+                    <p className="tweetLike">{tweetCount}</p>
                 </div>
                 <div className="iconBlock">
                     <img src={comment} id="commentIcon" />

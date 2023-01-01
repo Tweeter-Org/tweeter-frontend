@@ -32,3 +32,28 @@ function ProfileAction (username){
 }
 
 export default ProfileAction
+
+function EditProfileAction (fd){
+    return async function (dispatch){
+        dispatch({
+            type:"EDIT_PROFILE",
+        })
+        await BaseUrl.put("/p/editprofile",fd,config)
+        .then((res)=>{
+            console.log(res)
+            dispatch({
+                type:"EDIT_PROFILE_SUCCED",
+                payload:res
+            })
+        })
+        .catch((err)=>{
+            console.log(err)
+            dispatch({
+                type:"EDIT_PROFILE_FAIL",
+                payload:err
+            })
+        })
+    }
+}
+
+export {EditProfileAction}

@@ -38,9 +38,14 @@ padding-bottom:5vh;
 
 .pImage {
     margin-left: -5vw;
-    width: 27vw;
-    height: 27vh;
+    width: 26vw;
+    height: 26vh;
 }
+/* .pImage1{
+    margin-left: -5vw;
+    width: 10vw;
+    height: 20vh;
+} */
 
 .pTweet1 {
     width: 5vw;
@@ -293,4 +298,110 @@ padding-bottom:5vh;
     border:1px solid #47c87a;
     border-radius: 4px;
     cursor: pointer;
+}
+
+/*EDIT PROFILE*/
+
+.editPrDiv{
+    box-sizing: border-box;
+display:flex;
+flex-direction: column;
+position: absolute;
+top:19vh;
+left:25.5vw;
+width: 40vw;
+height: 75vh;
+background-color: #121212;
+border: 1px solid rgba(255, 255, 255, 0.3);
+/* box-shadow: 0px 100px 80px #1A1C1E; */
+border-radius: 16px;
+display: none;
+}
+.pEditImage{
+    margin-left: -6vw;
+    margin-top:4vh;
+    margin-bottom: 2vh;
+    width: 27vw;
+    height: 27vh;
+}
+.editImagetext{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    margin-left: 2vw;
+    line-height: 27px;
+    /* identical to box height */
+    
+    text-decoration: underline;
+    color: rgba(255, 255, 255, 0.7);
+
+}
+.editName{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    margin-left: 2vw;
+    line-height: 27px;
+    /* identical to box height */
+    
+    
+    color: rgba(255, 255, 255, 0.8);
+}
+.editNameInput{
+    background:none;
+    border:none;
+    outline:none;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.3rem;
+    line-height: 22px;
+    color: rgba(255, 255, 255, 0.65);
+}
+.div1{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    width:36vw;
+    margin-left: 2vw;
+    margin-top:-3vh;
+margin-bottom: 3vh;
+}
+.editBio{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    margin-left: 2vw;
+    line-height: 27px;
+    /* identical to box height */
+    
+    
+    color: rgba(255, 255, 255, 0.8);
+}
+.editBioInput{
+    background:none;
+    border:none;
+    outline:none;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.3rem;
+    line-height: 22px;
+    color: rgba(255, 255, 255, 0.65);
+}
+.div2{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    width:36vw;
+    margin-left: 2vw;
+    margin-top:-3vh;
+margin-bottom: 3vh;
+}
+#editPCancel{
+    top:68vh;
+    left:21vw;
+}
+#editPDone{
+    top:68vh;
+    left:30vw;
 }

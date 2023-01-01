@@ -15,12 +15,16 @@ import CreateTweet from './component/Home Page/createTweet';
 import EmojiPicker from 'emoji-picker-react';
 import Bookmarks from './component/Bookmarks/bookmarks';
 import ProfilePage from './component/Profile/profilePage';
+import EditProfile from './component/Profile/EditProfile';
+import OthersProfile from './component/Sidebar/OthersProfile';
 
 function App() {
   return <>
   <BrowserRouter>
   {/* <CreateTweet /> */}
     <Routes>
+    <Route path="/otherprofile" exact element={<OthersProfile />} />
+    <Route path="/editprofile" exact element={<EditProfile />} />
     <Route path="/profile" exact element={<ProfilePage />} />
     <Route path="/bookmark" exact element={<Bookmarks />} />
     <Route path="/createtweet" exact element={<CreateTweet />} />

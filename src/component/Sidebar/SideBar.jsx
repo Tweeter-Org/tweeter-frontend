@@ -14,16 +14,19 @@ import { useNavigate } from "react-router";
 import { HashLink } from "react-router-hash-link";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import CreateTweet from "../Home Page/createTweet";
+import { Link } from "react-router-dom";
 
 function Sidebar (){
     // var title="Home";
     const [title, setTitle] = useState("Home")
     function showTitle (n){
         document.getElementsByClassName("sbListItem")[n].style.color="#63DF76";
+        document.getElementsByClassName("sbListItem")[n].style.textDecoration="underline";
         document.getElementsByClassName("sbListIcon")[n].style.color="#63DF76";
         for(var i=0;i<5;i++){
             if(i!=n)
             document.getElementsByClassName("sbListItem")[i].style.color="rgba(255, 255, 255, 0.9)";
+            document.getElementsByClassName("sbListItem")[i].style.textDecoration="none";
             document.getElementsByClassName("sbListIcon")[i].style.color="rgba(255, 255, 255, 0.9)";
         }  
     }
@@ -87,12 +90,12 @@ function xyz(){
     <div className="sidebar poopupbg2">
         <p className="logoHead">Tweeter</p>
         <ul className="sbList">
-            <li className="sbListItem" onClick={()=>{showTitle(0);handleTitle(0)}}><span className="sbListIcon"><img src={home} /></span>Home</li>
-            <li className="sbListItem" onClick={()=>{showTitle(1);handleTitle(1)}}><span className="sbListIcon"><img src={notify} /></span>Notifications</li>
-            <li className="sbListItem" onClick={()=>{showTitle(2);handleTitle(2)}}><span className="sbListIcon"><img src={bookmark} /></span>Bookmarks</li>
+        <Link to="/home"><li className="sbListItem" onClick={()=>{showTitle(0);handleTitle(0)}}><span className="sbListIcon"><img src={home} /></span>Home</li></Link>
+        <li className="sbListItem" onClick={()=>{showTitle(1);handleTitle(1)}}><span className="sbListIcon"><img src={notify} /></span>Notifications</li>
+        <Link to="/bookmark"> <li className="sbListItem" onClick={()=>{showTitle(2);handleTitle(2)}}><span className="sbListIcon"><img src={bookmark} /></span>Bookmarks</li></Link> 
             <li className="sbListItem" onClick={()=>{showTitle(3);handleTitle(3)}}><span className="sbListIcon"><img src={message} /></span>Messages</li>
-            <li className="sbListItem" onClick={()=>{showTitle(4);handleTitle(4)}}><span className="sbListIcon"><img src={profile} /></span>Profile</li>
-        </ul>
+           <Link to="/profile"><li className="sbListItem" onClick={()=>{showTitle(4);handleTitle(4)}}><span className="sbListIcon"><img src={profile} /></span>Profile</li></Link>
+           </ul>
         {/* <AnchorLink href="#CREATETWEET"><button className="sideBarTweetBtn" >Create Tweet</button></AnchorLink> */}
         {/* <HashLink to="#CREATETWEET"><button className="sideBarTweetBtn" onClick={()=>{document.getElementById("CREATETWEET").style.display="block"}}>Create Tweet</button></HashLink> */}
         <button className="sideBarTweetBtn" onClick={()=>{xyz()}}>Create Tweet</button>
