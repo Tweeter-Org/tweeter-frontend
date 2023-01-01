@@ -1,12 +1,14 @@
 const initialState ={
     loading:false,
     response:"",
+    user:{},
     error:"",
     toFgtPwd:false,
     toOtp:false,
     toRstPwd:false,
     toSignOtp:false,
-    toSignUpTwo:false
+    toSignUpTwo:false,
+    toHome:false
 }
  const AuthReducer =(state=initialState, action)=>{
     switch(action.type){
@@ -22,6 +24,7 @@ const initialState ={
             return {...state,
                 loading:false,
                 response:action.payload.msg,
+                user:action.payload.user,
                 error:"",
                 toFgtPwd:true
             }
@@ -89,7 +92,7 @@ const initialState ={
         case "RESEND_STARTED":{
             console.log(action.payload)
             return {
-                ...state, loading:true
+                ...state, loading:true,toHome:false
             }
         }
         case "RESEND_SUCCEDED":{
@@ -97,7 +100,8 @@ const initialState ={
             return {...state,
                 loading:false,
                 response:action.payload.msg,
-                error:""
+                error:"",
+                toHome:true
             }
         }
         case "RESEND_FAILED":{
@@ -106,7 +110,8 @@ const initialState ={
             return {
                 loading:false,
                 response:"",
-                error:action.payload.response.data.msg
+                error:action.payload.response.data.msg,
+                toHome:false
             }
         }
         case "RESET_STARTED":{
@@ -187,7 +192,8 @@ const initialState ={
         case "SIGNUP_TWO_STARTED":{
             console.log(action.payload)
             return {
-                ...state, loading:true
+                ...state, loading:true,
+                toHome:false
             }
         }
         case "SIGNUP_TWO_SUCCEDED":{
@@ -196,7 +202,8 @@ const initialState ={
             return {...state,
                 loading:false,
                 response:action.payload.msg,
-                error:""
+                error:"",
+                toHome:true
             }
         }
         case "SIGNUP_TWO_FAILED":{
@@ -205,7 +212,8 @@ const initialState ={
             return {
                 loading:false,
                 response:"",
-                error:action.payload.response.data.msg
+                error:action.payload.response.data.msg,
+                toHome:false
             }
         }
         default: return state;

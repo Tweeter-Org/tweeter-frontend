@@ -139,13 +139,11 @@ const SignUpResend=(email)=>{
 export {SignUpResend} 
 
 const accessToken = localStorage.getItem("access token")
-// console.log(accessToken)
 const config={
     headers:{
         "Authorization" : `Bearer ${accessToken}`
     }
 }
-// console.log(config)
 const SignUpTwoUser = (data) => {
     return async function (dispatch) {
         // if(condition){
@@ -168,10 +166,10 @@ const SignUpTwoUser = (data) => {
 }
 export { SignUpTwoUser }
 
-const ResetAction=(data)=>{
+const ResetAction=(password)=>{
     return async function (dispatch){
           dispatch({type:"RESET_STARTED"})
-          await axios.post("https://twitterbackend-production-93ac.up.railway.app/resetpassword",data,config)
+          await axios.post("https://twitterbackend-production-93ac.up.railway.app/resetpassword",{password},config)
           .then((res)=>dispatch({
              type:"RESET_SUCCEDED",
              payload:res.data }))

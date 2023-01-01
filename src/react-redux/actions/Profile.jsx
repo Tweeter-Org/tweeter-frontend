@@ -1,33 +1,34 @@
+import axios from "axios";
 import React from "react";
+import { useSelector } from "react-redux";
 import BaseUrl from "./BaseUrl";
 
 const accessToken = localStorage.getItem("access token")
-console.log(accessToken)
-const config={
+const config = {
     headers:{
-        "Authorization" : `Bearer ${accessToken}`
+        "Authorization" :`Bearer ${accessToken}`
     }
 }
 
-function TweetLikeAction (tweetId){
+function ProfileAction (username){
     return async function (dispatch){
         dispatch({
-            type:"TWEETLIKE_START",
+            type:"VIEW_PROFILE",
         })
-        await BaseUrl.post("/t/like",{tweetId},config)
+        await BaseUrl.get(`/p/${username}`,config)
         .then((res)=>{
             dispatch({
-                type:"TWEETLIKE_SUCCESS",
+                type:"VIEW_PROFILE_SUCCED",
                 payload:res
             })
         })
         .catch((err)=>{
             dispatch({
-                type:"TWEETLIKE_FAILED",
+                type:"VIEW_PROFILE_FAIL",
                 payload:err
             })
         })
-
     }
 }
-export default TweetLikeAction
+
+export default ProfileAction

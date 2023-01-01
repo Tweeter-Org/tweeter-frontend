@@ -53,6 +53,21 @@ function AuthOtp(){
         }
     },[loading])
 
+    function EMAILVERIFY (){
+        dispatch(EmailAction(data))
+        // if(response!==""){
+        //     toast.success(`${response}`, {
+        //         position: "top-center",
+        //         theme: "light",
+        //         });
+        // }
+        // if(error!==""){
+        //     toast.error(`${error}`, {
+        //         position: "top-center",
+        //         theme: "light",
+        //         });
+        // }
+    }
     useEffect(()=>{
         if(response!==""){
             toast.success(`${response}`, {
@@ -88,7 +103,7 @@ return <>
     {/* <p className='invalidFgtEmail'>Incorrect Otp</p> */}
     <p className='resendFgtOtp' id="emailOtp" disabled={seconds!==0?true:false} onClick={()=>{dispatch(SignUpResend(email),setSeconds(59))}}>Resend Otp in</p>
     <span id="timer">00:{seconds}</span>
-    <button className='authFgtPwdBtn' onClick={()=>{dispatch(EmailAction(data))}} >Continue</button>
+    <button className='authFgtPwdBtn' onClick={()=>{EMAILVERIFY()}} >Continue</button>
     </div>             
     {/* {loadEm===true?<Spinner animation="border" variant="light" id="loadSpinner" />:null}    */}
     <ToastContainer />                                                                                                  

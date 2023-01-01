@@ -1,6 +1,7 @@
 const initialState={
     loading:false,
-    tweetData:{}
+    tweetData:{},
+    liked:[]
 }
 
 export const TweetFeedReducer = (state=initialState, action)=>{
@@ -11,7 +12,7 @@ export const TweetFeedReducer = (state=initialState, action)=>{
         case "Tweet_Feed_Succeed":{
             console.log(action.payload)
             console.log(action.payload.data.tweets)
-            return {...state, loading:false, tweetData:action.payload.data.tweets}
+            return {...state, loading:false, tweetData:action.payload.data.tweets, liked:action.payload.data.liked}
         }
         case "Tweet_Feed_Failed":{
             console.log(action.payload)

@@ -45,35 +45,39 @@ function AuthOtp(){
 
     const navigate = useNavigate();
 
-const [displayToaster, setDisplayToaster] = useState(false)
-// useEffect(() => {
-//     let mounted = true;
-//                 if (mounted) {
-//             setDisplayToaster(true)
-//         }
-   
-//     return function cleanup() {
-//         mounted = false;
+// useEffect(()=>{
+//     if(error!==""){
+//         toast.error(`${error}`, {
+//             position: "top-center",
+//             theme: "light",
+//             });
 //     }
-// }, [])
+// },[error])
 
-useEffect(()=>{
-    if(error!==""){
-        toast.error(`${error}`, {
-            position: "top-center",
-            theme: "light",
-            });
-    }
-},[error])
+// useEffect(()=>{
+//     if(response!==""){
+//         toast.success(`${response}`, {
+//             position: "top-center",
+//             theme: "light",
+//             });
+//     }
+// },[response])
 
-useEffect(()=>{
-    if(response!==""){
-        toast.success(`${response}`, {
-            position: "top-center",
-            theme: "light",
-            });
-    }
-},[response])
+function OTP (){
+    dispatch(OtpAction(data,navigate))
+    // if(response!==""){
+    //     toast.success(`${response}`, {
+    //         position: "top-center",
+    //         theme: "light",
+    //         });
+    // }
+    // if(error!==""){
+    //     toast.error(`${error}`, {
+    //         position: "top-center",
+    //         theme: "light",
+    //         });
+    // }
+}
 
     useEffect(()=>{
         if(loading===true){
@@ -83,6 +87,23 @@ useEffect(()=>{
             document.body.style.opacity = 1;
         }
     },[loading])
+    useEffect(()=>{
+        if(response!==""){
+            toast.success(`${response}`, {
+                position: "top-center",
+                theme: "light",
+                });
+        }
+    },[response])
+
+    useEffect(()=>{
+        if(error!==""){
+            toast.error(`${error}`, {
+                position: "top-center",
+                theme: "light",
+                });
+        }
+    },[error])
 
     useEffect(()=>{
         if( toRstPwd){
@@ -99,7 +120,7 @@ return <>
     <p className='invalidFgtEmail'>Incorrect Otp</p>
     <p className='resendFgtOtp' disabled={seconds!==0?true:false} onClick={()=>{dispatch(ResendOtpAction(email),setSeconds(59))}}>Resend Otp</p>
     <span id="timer">00:{seconds}</span>
-    <button className='authFgtPwdBtn' onClick={()=>{dispatch(OtpAction(data,navigate))}}>Continue</button>
+    <button className='authFgtPwdBtn' onClick={()=>{OTP()}}>Continue</button>
     </div>
     <ToastContainer />
     {(loading===true)?<Spinner animation="border" variant="light" id="loadSpinner" />:null}

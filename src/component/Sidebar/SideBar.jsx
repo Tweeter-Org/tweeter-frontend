@@ -16,7 +16,8 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 import CreateTweet from "../Home Page/createTweet";
 
 function Sidebar (){
-    var title="Home";
+    // var title="Home";
+    const [title, setTitle] = useState("Home")
     function showTitle (n){
         document.getElementsByClassName("sbListItem")[n].style.color="#63DF76";
         document.getElementsByClassName("sbListIcon")[n].style.color="#63DF76";
@@ -28,12 +29,12 @@ function Sidebar (){
     }
     function handleTitle(n){
         switch(n){
-            case 0: return title="Home";
-            case 1: return title="Notifications";
-            case 2: return title="Bookmarks";
-            case 3: return title="Messages";
-            case 4: return title="Profile";
-            default: return title=="Home";
+            case 0: return setTitle("Home");
+            case 1: return setTitle("Notifications");
+            case 2: return setTitle("Bookmarks");
+            case 3: return setTitle("Messages");
+            case 4: return setTitle("Profile");
+            default: return setTitle("Home");
         }
     }
 
@@ -86,11 +87,11 @@ function xyz(){
     <div className="sidebar poopupbg2">
         <p className="logoHead">Tweeter</p>
         <ul className="sbList">
-            <li className="sbListItem" onClick={()=>{showTitle(0)}}><span className="sbListIcon"><img src={home} /></span>Home</li>
-            <li className="sbListItem" onClick={()=>{showTitle(1)}}><span className="sbListIcon"><img src={notify} /></span>Notifications</li>
-            <li className="sbListItem" onClick={()=>{showTitle(2)}}><span className="sbListIcon"><img src={bookmark} /></span>Bookmarks</li>
-            <li className="sbListItem" onClick={()=>{showTitle(3)}}><span className="sbListIcon"><img src={message} /></span>Messages</li>
-            <li className="sbListItem" onClick={()=>{showTitle(4)}}><span className="sbListIcon"><img src={profile} /></span>Profile</li>
+            <li className="sbListItem" onClick={()=>{showTitle(0);handleTitle(0)}}><span className="sbListIcon"><img src={home} /></span>Home</li>
+            <li className="sbListItem" onClick={()=>{showTitle(1);handleTitle(1)}}><span className="sbListIcon"><img src={notify} /></span>Notifications</li>
+            <li className="sbListItem" onClick={()=>{showTitle(2);handleTitle(2)}}><span className="sbListIcon"><img src={bookmark} /></span>Bookmarks</li>
+            <li className="sbListItem" onClick={()=>{showTitle(3);handleTitle(3)}}><span className="sbListIcon"><img src={message} /></span>Messages</li>
+            <li className="sbListItem" onClick={()=>{showTitle(4);handleTitle(4)}}><span className="sbListIcon"><img src={profile} /></span>Profile</li>
         </ul>
         {/* <AnchorLink href="#CREATETWEET"><button className="sideBarTweetBtn" >Create Tweet</button></AnchorLink> */}
         {/* <HashLink to="#CREATETWEET"><button className="sideBarTweetBtn" onClick={()=>{document.getElementById("CREATETWEET").style.display="block"}}>Create Tweet</button></HashLink> */}

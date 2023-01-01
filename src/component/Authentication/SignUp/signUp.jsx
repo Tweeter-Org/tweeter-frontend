@@ -51,6 +51,22 @@ function SignUp(){
 
     const responseApi = useSelector((state)=>state.AuthReducer)
             const {loading, response, error, toSignOtp} = responseApi
+
+            function SIGNUP(){
+                dispatch(SignUpUser(email, callApi),localStorage.setItem("signupemail",email), sessionStorage.setItem("NameToBeUsed",name))
+                if(error!==""){
+                    toast.error(`${error}`, {
+                        position: "top-center",
+                        theme: "light",
+                        });
+                }
+                if(response!==""){
+                    toast.success(`${response}`, {
+                        position: "top-center",
+                        theme: "light",
+                        });
+                }
+            }
     useEffect(()=>{
         if(loading===true){
             document.body.style.opacity = 0.5;
@@ -62,23 +78,23 @@ function SignUp(){
 
     const navigate = useNavigate();
    
-    useEffect(()=>{
-        if(error!==""){
-            toast.error(`${error}`, {
-                position: "top-center",
-                theme: "light",
-                });
-        }
-    },[error])
+    // useEffect(()=>{
+    //     if(error!==""){
+    //         toast.error(`${error}`, {
+    //             position: "top-center",
+    //             theme: "light",
+    //             });
+    //     }
+    // },[error])
     
-    useEffect(()=>{
-        if(response!==""){
-            toast.success(`${response}`, {
-                position: "top-center",
-                theme: "light",
-                });
-        }
-    },[response])
+    // useEffect(()=>{
+    //     if(response!==""){
+    //         toast.success(`${response}`, {
+    //             position: "top-center",
+    //             theme: "light",
+    //             });
+    //     }
+    // },[response])
 
     useEffect(()=>{
         if( toSignOtp){
@@ -99,7 +115,7 @@ return <>
     <p className='authPwd' id="signEmail">Email Address</p>
     <input type="text" className="authPwdInput" id="signEmailInput" placeholder="Enter your email"  value={email} onChange={(e)=>setEmail(e.target.value)}/>
     <p className='signInvalidEmail'>Invalid Email Address</p>
-    <button type="button" className='authSignIn' id="signUpBtn" onClick={()=>{dispatch(SignUpUser(email, callApi),localStorage.setItem("signupemail",email), sessionStorage.setItem("NameToBeUsed",name))}}>Sign Up</button>
+    <button type="button" className='authSignIn' id="signUpBtn" onClick={()=>{SIGNUP()}}>Sign Up</button>
     </div>
     {loading===true?<Spinner animation="border" variant="light" id="loadSpinner" />:null}
     <ToastContainer />

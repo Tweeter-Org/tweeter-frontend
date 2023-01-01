@@ -49,6 +49,22 @@ function Login() {
 
 //google authentication
     const {loadingGoogle, responseGoogle} = useSelector((g)=>g.GoogleReducer)
+
+    function LOGIN(){
+        dispatch(LogInUser(data, isAuthEmail)) 
+        // if (response != "") {
+        //     toast.success(`${response}`, {
+        //         position: "top-center",
+        //         theme: "light",
+        //     });
+        // }
+        // if (error != "") {
+        //     toast.error(`${error}`, {
+        //         position: "top-center",
+        //         theme: "light",
+        //     });
+        // }
+    }
    
     useEffect(() => {
         if (loading === true || loadingGoogle===true) {
@@ -59,34 +75,34 @@ function Login() {
         }
     }, [loading, loadingGoogle])
 
-    const [displayToaster, setDisplayToaster] = useState(false)
-    useEffect(() => {
-        let mounted = true;
-                    if (mounted) {
-                setDisplayToaster(true)
-            }
+    // const [displayToaster, setDisplayToaster] = useState(false)
+    // useEffect(() => {
+    //     let mounted = true;
+    //                 if (mounted) {
+    //             setDisplayToaster(true)
+    //         }
        
-        return function cleanup() {
-            mounted = false;
-        }
-    }, [])
+    //     return function cleanup() {
+    //         mounted = false;
+    //     }
+    // }, [])
 
-    useEffect(() => {
-        if(displayToaster){
-            if (response != "") {
-                toast.success(`${response}`, {
-                    position: "top-center",
-                    theme: "light",
-                });
-            }
-            if (error != "") {
-                toast.error(`${error}`, {
-                    position: "top-center",
-                    theme: "light",
-                });
-            }
-        }  
-    },[displayToaster])
+    // useEffect(() => {
+    //     if(displayToaster){
+    //         if (response != "") {
+    //             toast.success(`${response}`, {
+    //                 position: "top-center",
+    //                 theme: "light",
+    //             });
+    //         }
+    //         if (error != "") {
+    //             toast.error(`${error}`, {
+    //                 position: "top-center",
+    //                 theme: "light",
+    //             });
+    //         }
+    //     }  
+    // },[displayToaster])
 
     useEffect(()=>{
         if(toFgtPwd){
@@ -117,12 +133,12 @@ function Login() {
             <input type={show ? "text" : "password"} className="authPwdInput" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
             <p className='fgtPwd' onClick={() => navigate("/fgtpwd")}>Forgot Password?</p>
             {/* <button className='authSignIn' onClick={()=>{dispatch(SignInUser(data))}}>Sign In</button>  */}
-            <button className='authSignIn' id="loginButton" onClick={() => { dispatch(LogInUser(data, isAuthEmail)) }}>Sign In</button>
+            <button className='authSignIn' id="loginButton" onClick={() => {LOGIN()}}>Sign In</button>
             <hr id="hrOr" />
             <button className='contGoogle' onClick={()=>{dispatch(GoogleAction())}} >Continue with Google</button>
             <p className='createAcc'>New to Tweeter? <span className="authSignUp" onClick={() => navigate("/signup")}>Create Account</span></p>
         </div>
-        {(loading == true || loadingGoogle===true) ? <Spinner animation="border" variant="light" id="loadSpinner" /> : null}
+        {(loading === true || loadingGoogle===true) ? <Spinner animation="border" variant="light" id="loadSpinner" /> : null}
         <ToastContainer />
     </>
 }

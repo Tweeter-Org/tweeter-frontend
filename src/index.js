@@ -12,13 +12,11 @@ import { persiststore } from './react-redux/Store';
 store.subscribe(()=>console.log(store.getState()))
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <React.StrictMode>
     <Provider store={store}>
     <PersistGate persistor={persiststore} >
     <App />
     </PersistGate>
     </Provider>
-    </React.StrictMode>
 );
 
 reportWebVitals();

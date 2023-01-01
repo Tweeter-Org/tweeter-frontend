@@ -11,7 +11,7 @@ import { Spinner } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
-import {ResetAction} from '../../../react-redux/actions/authAction';
+import { ResetAction } from '../../../react-redux/actions/authAction';
 
 function ResetPwd() {
   const [pass, setPass] = useState("")
@@ -41,11 +41,11 @@ function ResetPwd() {
   }, [pass]);
 
   useEffect(() => {
-    if (pass == cPass){
+    if (pass == cPass) {
       setIsCPass(true)
       document.getElementsByClassName("fgtRstPwd")[0].style.display = "none";
     }
-    else{
+    else {
       setIsCPass(false)
       document.getElementsByClassName("fgtRstPwd")[0].style.display = "block";
     }
@@ -59,42 +59,63 @@ function ResetPwd() {
   }, [isPass, isCPass])
 
   const dispatch = useDispatch();
-  
+
   const reset = useSelector((R) => R.AuthReducer)
-  const  {loading, response, error} = reset;
-  
-  useEffect(()=>{
-    if(loading===true){
-        document.body.style.opacity = 0.5;
-    }
-    else{
-        document.body.style.opacity = 1;
-    }
-},[loading])
+  const { loading, response, error, toHome } = reset;
 
-useEffect(()=>{
-  if(error!==""){
+  function RESETPWD() {
+    dispatch(ResetAction(pass), console.log(pass))
+    if (error !== "") {
       toast.error(`${error}`, {
-          position: "top-center",
-          theme: "light",
-          });
-  }
-},[error])
-
-useEffect(()=>{
-  if(response!==""){
+        position: "top-center",
+        theme: "light",
+      });
+    }
+    if (response !== "") {
       toast.success(`${response}`, {
-          position: "top-center",
-          theme: "light",
-          });
+        position: "top-center",
+        theme: "light",
+      });
+    }
   }
-},[response])
-const navigate = useNavigate();
+
+    useEffect(()=>{
+      if(loading===true){
+          document.body.style.opacity = 0.5;
+      }
+      else{
+          document.body.style.opacity = 1;
+      }
+  },[loading])
+
+  useEffect(()=>{
+    if(error!==""){
+        toast.error(`${error}`, {
+            position: "top-center",
+            theme: "light",
+            });
+    }
+  },[error])
+
+  useEffect(()=>{
+    if(response!==""){
+        toast.success(`${response}`, {
+            position: "top-center",
+            theme: "light",
+            });
+    }
+  },[response])
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (toHome) {
+      navigate("/")
+    }
+  }, [toHome])
 
   return <>
     <Background />
     <div className='loginBg' id="resetBack">
-      <img src={arrow} id="arrow" onClick={()=>{navigate("/otp")}}/>
+      <img src={arrow} id="arrow" onClick={() => { navigate("/otp") }} />
       <p className='authHead' id="authreset">Reset Password</p>
       <p className='authEmail' id="resetPwdHead">New Password</p>
       <img src={lockIcon} id="rstLock1" />
@@ -114,9 +135,9 @@ const navigate = useNavigate();
       )}
       <input type={show2 ? "text" : "password"} id="authRstCfmPwd" className="authPwdInput" placeholder="Password" value={cPass} onChange={(e) => setCPass(e.target.value)} />
       <p className='fgtRstPwd'>Password and confirm password should match</p>
-      <button className='authRstFgtPwdBtn authSignIn' onClick={()=>{dispatch(ResetAction(pass),console.log(pass))}} >Continue</button>
+      <button className='authRstFgtPwdBtn authSignIn' onClick={() => { RESETPWD() }} >Continue</button>
     </div>
-    {loading===true?<Spinner animation="border" variant="light" id="loadSpinner" />:null}
+    {loading === true ? <Spinner animation="border" variant="light" id="loadSpinner" /> : null}
     <ToastContainer />
   </>
 }

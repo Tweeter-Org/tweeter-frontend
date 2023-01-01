@@ -1,7 +1,6 @@
 import React from "react";
 import BaseUrl from "./BaseUrl";
 
-
 const accessToken = localStorage.getItem("access token")
 console.log(accessToken)
 const config={
@@ -10,21 +9,25 @@ const config={
     }
 }
 
-export const CreateTweetAct =(formData)=>{
+function TweetDeleteAction (tweetId){
     return async function (dispatch){
-        await BaseUrl.post("/t/create",formData,config)
-        .then((Res)=>{
-            console.log(Res)
+        dispatch({
+            type:"TWEETDLT_START",
+        })
+        await BaseUrl.delete(`/t/delete/${tweetId}`,config)
+        .then((res)=>{
             dispatch({
-                type:"TWEETCREATED",
-                payload:Res
+                type:"TWEETDLT_SUCCESS",
+                payload:res
             })
         })
         .catch((err)=>{
             dispatch({
-                type:"TWEETNOTCREATED",
+                type:"TWEETDLT_FAILED",
                 payload:err
             })
         })
+
     }
 }
+export default TweetDeleteAction

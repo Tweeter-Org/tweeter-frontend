@@ -33,6 +33,24 @@ function ForgotPwd(){
     const {loading, response, error, toOtp} = state;
     const navigate = useNavigate();
 
+    function FORGOTPWD (){
+        dispatch(FgtPwdAction(email, checkEmail),localStorage.setItem("email",email))
+        // if (response != "") {
+        //     toast.success(`${response}`, {
+        //         position: "top-center",
+        //         theme: "light",
+        //     });
+        // }
+        // if (error != "") {
+        //     toast.error(`${error}`, {
+        //         position: "top-center",
+        //         theme: "light",
+        //     });
+        // }
+
+    }
+
+
     useEffect(()=>{
         if(loading===true){
             document.body.style.opacity = 0.5;
@@ -41,34 +59,51 @@ function ForgotPwd(){
             document.body.style.opacity = 1;
         }
     },[loading])
-
-    const [displayToaster, setDisplayToaster] = useState(false)
-    useEffect(() => {
-        let mounted = true;
-                    if (mounted) {
-                setDisplayToaster(true)
-            }
-       
-        return function cleanup() {
-            mounted = false;
+    useEffect(()=>{
+        if(response!==""){
+            toast.success(`${response}`, {
+                position: "top-center",
+                theme: "light",
+                });
         }
-    }, [])
-    useEffect(() => {
-        if(displayToaster){
-            if (response != "") {
-                toast.success(`${response}`, {
-                    position: "top-center",
-                    theme: "light",
+    },[response])
+
+    useEffect(()=>{
+        if(error!==""){
+            toast.error(`${error}`, {
+                position: "top-center",
+                theme: "light",
                 });
-            }
-            if (error != "") {
-                toast.error(`${error}`, {
-                    position: "top-center",
-                    theme: "light",
-                });
-            }
-        }  
-    },[displayToaster])
+        }
+    },[error])
+
+    // const [displayToaster, setDisplayToaster] = useState(false)
+    // useEffect(() => {
+    //     let mounted = true;
+    //                 if (mounted) {
+    //             setDisplayToaster(true)
+    //         }
+       
+    //     return function cleanup() {
+    //         mounted = false;
+    //     }
+    // }, [])
+    // useEffect(() => {
+    //     if(displayToaster){
+    //         if (response != "") {
+    //             toast.success(`${response}`, {
+    //                 position: "top-center",
+    //                 theme: "light",
+    //             });
+    //         }
+    //         if (error != "") {
+    //             toast.error(`${error}`, {
+    //                 position: "top-center",
+    //                 theme: "light",
+    //             });
+    //         }
+    //     }  
+    // },[displayToaster])
 
     useEffect(()=>{
         if(toOtp){
@@ -85,7 +120,7 @@ return <>
     <img src={emailIcon} id="emailIconFgt" />
     <input type="text" className="authFgtEmailInput" placeholder="Enter your email" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
     <p className='invalidFgtEmail'>Invalid Email Address</p>
-    <button className='authFgtPwdBtn' onClick={()=>{dispatch(FgtPwdAction(email, checkEmail),localStorage.setItem("email",email))}}>Continue</button>
+    <button className='authFgtPwdBtn' onClick={()=>{FORGOTPWD()}}>Continue</button>
     </div>
     {loading===true?<Spinner animation="border" variant="light" id="loadSpinner" />:null}
     <ToastContainer />

@@ -32,7 +32,7 @@
     font-size: 24px;
     line-height: 29px;
 
-    color: rgba(255, 255, 255, 0.9);
+    color:#47C87A;
 }
 
 #navbarLine {
@@ -118,7 +118,9 @@ color: rgba(255, 255, 255, 0.9);
 
 .searchFlexBox{
     position:absolute;
-    left:65px;
+    left:70vw;
+    width:50vw;
+/* width:110vw; */
     /* margin-top:5px; */
     display: flex;
     flex-direction: column;
@@ -127,9 +129,9 @@ color: rgba(255, 255, 255, 0.9);
     border:none;
     outline:none;
     position: fixed;
-width: 360px;
+width: 26vw;
 height: 36px;
-left: 960px;
+left: 966px;
 top: 2.2vh;
 background: #484D4A;
 border-radius: 8px;
@@ -159,7 +161,7 @@ color: rgba(255, 255, 255, 0.2);
     display:block;
     /* margin-top:100px; */
     margin-bottom:10px;
-    margin-left: 900px;
+    /* margin-left: 900px; */
     width:340px;
     height:10vh;
     background: #1A1C1E;
@@ -168,20 +170,20 @@ color: rgba(255, 255, 255, 0.2);
     text-transform: capitalize;
 }
 .displaySearchPic{
+    position: absolute;
     width: 43px;
     height: 39.09px;
     margin-right: 1vw;
     border-radius: 50%;
     background: #D9D9D9;
     z-index: 6;
-    position:absolute;
-    left:67vw;
+    margin-left:1vw;
     margin-top:2vh;
     width:45px;
 }
 .searchName{
-    position:absolute;
-    left:71.2vw;
+    position: absolute;
+    margin-left: 5vw;
     margin-top:1.7vh;
     font-family: 'Montserrat';
     font-style: normal;
@@ -199,9 +201,8 @@ color: rgba(255, 255, 255, 0.2);
     line-height: 20px;
     color: rgba(255, 255, 255, 0.5);
     position:absolute;
-    left:71.2vw;
     margin-top:6vh;
-    
+    margin-left: 5vw;
 }
 .searchAlter{
     font-family: 'Montserrat';

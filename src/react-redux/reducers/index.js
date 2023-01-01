@@ -6,13 +6,17 @@ import GoogleReducer from "./GoogleReducer";
 import AuthReducer from "./authReducer";
 import TweetLikeReducer from "./TweetLikeReducer";
 import { BookmarkReducer } from "./BookmarkRed";
+import TweetCreateReducer from "./TweetCreateReducer";
+import { ProfileReducer } from "./ProfileRed";
 const rootReducer = combineReducers({
    AuthReducer,
    TweetFeedReducer,
    SearchReducer,
    GoogleReducer,
    BookmarkReducer,
-   TweetLikeReducer
+   TweetLikeReducer,
+   TweetCreateReducer,
+   ProfileReducer
 })
 
 export default rootReducer

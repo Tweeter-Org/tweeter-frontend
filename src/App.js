@@ -14,12 +14,14 @@ import HomePage from './component/Home Page/homePage';
 import CreateTweet from './component/Home Page/createTweet';
 import EmojiPicker from 'emoji-picker-react';
 import Bookmarks from './component/Bookmarks/bookmarks';
+import ProfilePage from './component/Profile/profilePage';
 
 function App() {
   return <>
   <BrowserRouter>
   {/* <CreateTweet /> */}
     <Routes>
+    <Route path="/profile" exact element={<ProfilePage />} />
     <Route path="/bookmark" exact element={<Bookmarks />} />
     <Route path="/createtweet" exact element={<CreateTweet />} />
     <Route path="/sidebar" exact element={<Sidebar />} />
