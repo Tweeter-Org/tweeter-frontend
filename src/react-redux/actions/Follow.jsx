@@ -13,7 +13,7 @@ function FollowAction (username){
         dispatch({
             type:"FOLLOW_START",
         })
-        await BaseUrl.put(`/p/${username}`,config)
+        await BaseUrl.put(`/p/follow/${username}`,{username},config)
         .then((res)=>{
             dispatch({
                 type:"FOLLOW_SUCCESS",

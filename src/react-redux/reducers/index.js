@@ -8,6 +8,7 @@ import TweetLikeReducer from "./TweetLikeReducer";
 import { BookmarkReducer } from "./BookmarkRed";
 import TweetCreateReducer from "./TweetCreateReducer";
 import { ProfileReducer } from "./ProfileRed";
+import FollowReducer from "./FollowRed";
 const rootReducer = combineReducers({
    AuthReducer,
    TweetFeedReducer,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
    BookmarkReducer,
    TweetLikeReducer,
    TweetCreateReducer,
-   ProfileReducer
+   ProfileReducer,
+   FollowReducer
 })
 
 export default rootReducer

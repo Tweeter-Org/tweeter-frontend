@@ -45,10 +45,10 @@ const {profile,  accessProfile, loading} = profilee;
             setEmail(profile.user.email)
             setCreatedAt(profile.user.createdAt)
             setUpdatedAt(profile.user.updatedAt)
-            setIsFollow(profile.user.isfollowing)
+            setIsFollow(profile.isfollowing)
         }
     },[])
-
+console.log(profile.isfollowing)
 console.log(profilee)
 
     function displayFollowers(){
@@ -63,7 +63,8 @@ console.log(profilee)
     function handleEdit(){
         document.getElementsByClassName("editPrDiv")[0].style.display="flex";
     }
-// const followed = useSelector((f)=>f.)
+const followed = useSelector((f)=>f.FollowReducer)
+console.log(followed)
     function handleFollowers(){
         dispatch(FollowAction(username))
         var imagepath = document.getElementsByClassName("pProfileFollow")[0].innerHTML;
@@ -74,11 +75,16 @@ console.log(profilee)
                 document.getElementsByClassName("pProfileFollow")[0].innerHTML= "Follow";
             }
     }
+
     return <>
         <Sidebar />
         <div className="PROFILE">
             <div className="profileDiv1">
-            <img src={avatar} className="pImage" />
+            <img src={avatar}  className="pImage"  />
+            {/* {(displaypic === null) ? (<img src={avatar}  className="pImage"  />) :
+                    ((displaypic.startsWith("https:")) ? (<img src={displaypic}  className="pImage"  />) :
+                        (<img src={`https://twitterbackend-production-93ac.up.railway.app/${displaypic}`}  className="pImage"  />))
+                } */}
             <div className="PBLOCK1">
             <div className="pBlock1">
             <p className="pTweet1">Tweets</p>
@@ -93,7 +99,7 @@ console.log(profilee)
             </span>
             </div>
             {myProfile?(<button className="pEdiitProfile" onClick={()=>{handleEdit()}}>Edit Profile</button>)
-            :(isFollow?(<button className="pProfileFollow">Following </button>):(<button className="pProfileFollow" onClick={()=>{handleFollowers()}}>Follow</button>))}
+            :(profile.isfollowing?(<button className="pProfileFollow" onClick={()=>{handleFollowers()}} >Following </button>):(<button className="pProfileFollow" onClick={()=>{handleFollowers()}}>Follow</button>))}
             </div>
             </div>
             <div className="profileDiv2">

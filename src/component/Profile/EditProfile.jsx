@@ -33,7 +33,7 @@ function EditProfile() {
         fd.append("image",sendImage)
 
         dispatch(EditProfileAction(fd))
-        // navigate("/profile")
+        navigate("/profile")
     }
     return <>
         <div className="editPrDiv">
