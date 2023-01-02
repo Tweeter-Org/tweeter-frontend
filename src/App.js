@@ -17,12 +17,14 @@ import Bookmarks from './component/Bookmarks/bookmarks';
 import ProfilePage from './component/Profile/profilePage';
 import EditProfile from './component/Profile/EditProfile';
 import OthersProfile from './component/Sidebar/OthersProfile';
+import LogOut from './component/logOut/logOut';
 
 function App() {
   return <>
   <BrowserRouter>
   {/* <CreateTweet /> */}
     <Routes>
+    <Route path="/logout" exact element={<LogOut />} />
     <Route path="/otherprofile" exact element={<OthersProfile />} />
     <Route path="/editprofile" exact element={<EditProfile />} />
     <Route path="/profile" exact element={<ProfilePage />} />

@@ -52,20 +52,22 @@ function Login() {
 
     function LOGIN(){
         dispatch(LogInUser(data, isAuthEmail)) 
-        // if (response != "") {
-        //     toast.success(`${response}`, {
-        //         position: "top-center",
-        //         theme: "light",
-        //     });
-        // }
-        // if (error != "") {
-        //     toast.error(`${error}`, {
-        //         position: "top-center",
-        //         theme: "light",
-        //     });
-        // }
+        if (error != "") {
+            toast.error(`${error}`, {
+                position: "top-center",
+                theme: "light",
+            });
+        }
     }
-   
+
+    useEffect(()=>{
+        if(error!==""){
+            toast.error(`${error}`, {
+                position: "top-center",
+                theme: "light",
+                });
+        }
+    },[error])
     useEffect(() => {
         if (loading === true || loadingGoogle===true) {
             document.body.style.opacity = 0.5;

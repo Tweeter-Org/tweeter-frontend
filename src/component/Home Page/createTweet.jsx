@@ -25,13 +25,11 @@ function CreateTweet() {
         console.log(e.target.files);
         setSendImage(e.target.files[0])
         console.log(e.target.files[0])
-        // fd.append("file",e.target.files[0])
     }
     const [sendVideo, setSendVideo] = useState([]);
     function handleSendVideo(e) {
         console.log(e.target.files);
         setSendVideo(e.target.files[0])
-        // fd.append("file",e.target.files[0])
     }
 
     function handleEmojis() {

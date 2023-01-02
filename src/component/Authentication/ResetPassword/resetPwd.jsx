@@ -71,12 +71,12 @@ function ResetPwd() {
         theme: "light",
       });
     }
-    if (response !== "") {
-      toast.success(`${response}`, {
-        position: "top-center",
-        theme: "light",
-      });
-    }
+    // if (response !== "") {
+    //   toast.success(`${response}`, {
+    //     position: "top-center",
+    //     theme: "light",
+    //   });
+    // }
   }
 
     useEffect(()=>{

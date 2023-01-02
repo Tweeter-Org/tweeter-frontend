@@ -35,12 +35,12 @@ const OthersProfile = () => {
 
     const [likedTweetsArray, setLikedTweetsArray] = useState([])
 
-    // const usernameApi = localStorage.getItem("usernameInApi")
+    // const usernameApi = sessionStorage.getItem("usernameInApi")
     // console.log(auth)
     const profilee = useSelector((p) => p.ProfileReducer)
     const { profile, accessProfile, loading } = profilee;
     useEffect(() => {
-        const usernameApi = localStorage.getItem("usernameInApi")
+        const usernameApi = sessionStorage.getItem("usernameInApi")
         // console.log(usernameApi)
         dispatch(ProfileAction(usernameApi));
         if (accessProfile) {

@@ -16,7 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function AuthOtp(){
     
-    const email = localStorage.getItem("email")
+    const email = sessionStorage.getItem("email")
 
     const [seconds, setSeconds] = useState(59)
     const [otp, setOtp] = useState("")
@@ -45,23 +45,23 @@ function AuthOtp(){
 
     const navigate = useNavigate();
 
-// useEffect(()=>{
-//     if(error!==""){
-//         toast.error(`${error}`, {
-//             position: "top-center",
-//             theme: "light",
-//             });
-//     }
-// },[error])
+useEffect(()=>{
+    if(error!==""){
+        toast.error(`${error}`, {
+            position: "top-center",
+            theme: "light",
+            });
+    }
+},[error])
 
-// useEffect(()=>{
-//     if(response!==""){
-//         toast.success(`${response}`, {
-//             position: "top-center",
-//             theme: "light",
-//             });
-//     }
-// },[response])
+useEffect(()=>{
+    if(response!==""){
+        toast.success(`${response}`, {
+            position: "top-center",
+            theme: "light",
+            });
+    }
+},[response])
 
 function OTP (){
     dispatch(OtpAction(data,navigate))
@@ -71,12 +71,12 @@ function OTP (){
     //         theme: "light",
     //         });
     // }
-    // if(error!==""){
-    //     toast.error(`${error}`, {
-    //         position: "top-center",
-    //         theme: "light",
-    //         });
-    // }
+    if(error!==""){
+        toast.error(`${error}`, {
+            position: "top-center",
+            theme: "light",
+            });
+    }
 }
 
     useEffect(()=>{

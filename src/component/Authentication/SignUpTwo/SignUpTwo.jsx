@@ -93,14 +93,6 @@ function SignUpTwo() {
     // }
   }
 
-  // useEffect(()=>{
-  //   if(error!==""){
-  //       toast.error(`${error}`, {
-  //           position: "top-center",
-  //           theme: "light",
-  //           });
-  //   }
-  // },[error])
 
   useEffect(()=>{
     if(response!==""){

@@ -8,19 +8,21 @@ const initialState ={
     toRstPwd:false,
     toSignOtp:false,
     toSignUpTwo:false,
-    toHome:false
+    toHome:false,
+    token:false
 }
  const AuthReducer =(state=initialState, action)=>{
     switch(action.type){
         case "REQUEST_STARTED":{
-            console.log(action.payload)
+            sessionStorage.setItem("isToken", "false")
             return {
                 ...state, loading:true, toFgtPwd:false
             }
         }
         case "REQUEST_SUCCEDED":{
             console.log(action.payload)
-            localStorage.setItem("access token", action.payload.token)
+            sessionStorage.setItem("access token", action.payload.token)
+            sessionStorage.setItem("isToken","true")
             return {...state,
                 loading:false,
                 response:action.payload.msg,
@@ -28,11 +30,12 @@ const initialState ={
                 error:"",
                 toFgtPwd:true,
                 toHome:true,
+                token:true,
             }
         }
         case "REQUEST_FAILED":{
             console.log(action.payload)
-            console.log(action.payload.response.data.msg)
+            // sessionStorage.setItem("isToken", "false")
             return {
                 loading:false,
                 response:"",
@@ -42,12 +45,14 @@ const initialState ={
         }
         case "FGT_EMAIL_STARTED":{
             console.log(action.payload)
+            // sessionStorage.setItem("isToken", "false")
             return {
                 ...state, loading:true,toOtp:false
             }
         }
         case "FGT_EMAIL_SUCCEDED":{
             console.log(action.payload)
+            // sessionStorage.setItem("isToken", "false")
             return {...state,
                 loading:false,
                 response:action.payload.msg,
@@ -57,6 +62,7 @@ const initialState ={
         }
         case "FGT_EMAIL_FAILED":{
             console.log(action.payload)
+            // sessionStorage.setItem("isToken", "false")
             return {
                 loading:false,
                 response:"",
@@ -72,12 +78,14 @@ const initialState ={
         }
         case "OTP_SUCCEDED":{
             console.log(action.payload)
-            localStorage.setItem("access token", action.payload.token)
+            sessionStorage.setItem("access token", action.payload.token)
+            sessionStorage.setItem("isToken", "true")
             return {...state,
                 loading:false,
                 response:action.payload.msg,
                 error:"",
-                toRstPwd:true
+                toRstPwd:true,
+                token:true,
             }
         }
         case "OTP_FAILED":{
@@ -139,6 +147,7 @@ const initialState ={
             }
         }
         case "SIGNUP_STARTED":{
+        sessionStorage.setItem("isToken", "false")
             console.log(action.payload)
             return {
                 ...state, loading:true, toSignOtp:false
@@ -171,13 +180,15 @@ const initialState ={
         }
         case "EMAIL_VERIFY_SUCCEDED":{
             console.log(action.payload)
-            localStorage.setItem("access token", action.payload.token)
+            sessionStorage.setItem("access token", action.payload.token)
+            sessionStorage.setItem("isToken", "true")
             console.log(action.payload.token)
             return {...state,
                 loading:false,
                 response:action.payload.msg,
                 error:"",
-                toSignUpTwo:true
+                toSignUpTwo:true,
+                token:true,
             }
         }
         case "EMAIL_VERIFY_FAILED":{
@@ -199,7 +210,7 @@ const initialState ={
         }
         case "SIGNUP_TWO_SUCCEDED":{
             console.log(action.payload)
-            // localStorage.setItem("access token", action.payload.token)
+            // sessionStorage.setItem("access token", action.payload.token)
             return {...state,
                 loading:false,
                 response:action.payload.msg,

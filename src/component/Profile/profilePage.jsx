@@ -33,8 +33,8 @@ function ProfilePage() {
     const [likedTweetsArray, setLikedTweetsArray] = useState([])
 
 
-    // localStorage.setItem("usernameInApi",nameInApi)
-    // const usernameApi = localStorage.getItem("usernameInApi")
+    // sessionStorage.setItem("usernameInApi",nameInApi)
+    // const usernameApi = sessionStorage.getItem("usernameInApi")
     // console.log(auth)
     const profilee = useSelector((p) => p.ProfileReducer)
     const { profile, accessProfile, loading , editprofile,ifedit} = profilee;
@@ -78,8 +78,6 @@ var nameInApi
         document.getElementsByClassName("profileDiv4")[0].style.display = "flex";
         document.getElementsByClassName("followersFlex")[0].style.display = "flex";
         document.getElementsByClassName("followingFlex")[0].style.display = "flex";
-        // document.getElementsByClassName("profileDiv4")[0].style.display = "flex";
-        // document.getElementsByClassName("profileDiv4")[0].style.display = "flex";
     }
     function displayTweets() {
         document.getElementsByClassName("profileDiv3")[0].style.display = "flex";
@@ -89,6 +87,10 @@ var nameInApi
     }
     function handleEdit() {
         document.getElementsByClassName("editPrDiv")[0].style.display = "flex";
+        document.getElementsByClassName("poopupbg1")[0].style.opacity=0.1;
+        document.getElementsByClassName("poopupbg2")[0].style.opacity=0.1;
+        document.getElementsByClassName("poopupbg3")[0].style.opacity=0.1;
+        document.getElementsByClassName("poopupbg4")[0].style.opacity = 0.1;
     }
     function showFollowers(){
         document.getElementsByClassName("followersFlex")[0].style.display = "flex";
@@ -116,17 +118,17 @@ var nameInApi
         document.getElementById("likeTweetFlex").style.display="flex"
         document.getElementById("profileTweetFlex").style.display="none"
     }
+    
     const {likedTweets} = useSelector((l)=>l.LikedTweetsPReducer)
     console.log(likedTweets)
     return <>
         <Sidebar />
-        <div className="PROFILE">
+        <div className="PROFILE poopupbg1">
             <div className="profileDiv1">
             {(displaypic === null) ? (<img src={avatar}  className="pImage"  />) :
                     ((displaypic.startsWith("https:")) ? (<img src={displaypic}  className="pImage"  />) :
                         (<img src={`https://twitterbackend-production-93ac.up.railway.app/${displaypic}`}  className="pImage"  />))
                 }
-                {/* <img src={avatar} className="pImage" /> */}
                 <div className="PBLOCK1">
                     <div className="pBlock1">
                         <p className="pTweet1">Tweets</p>
@@ -186,7 +188,6 @@ var nameInApi
         </div>
         </div>
         <EditProfile />
-      
     </>
 }
 export default ProfilePage

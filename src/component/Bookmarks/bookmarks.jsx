@@ -41,7 +41,7 @@ console.log(tweets)
     
     return <>
     <Sidebar />
-    <div className="tweetFlexBox poopupbg3">
+    <div className="tweetFlexBox poopupbg">
     {BMLength>0? (bookmarkedTweet.map((bm, index)=>{
         return <Tweet text={bm.text} image={bm.image} video={bm.video} username={bm.user.user_name} displaypic={bm.user.displaypic} tweetId={bm._id} number={index} bookmarkb="true" />;
 

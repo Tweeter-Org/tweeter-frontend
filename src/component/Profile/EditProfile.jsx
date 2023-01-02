@@ -35,8 +35,16 @@ function EditProfile() {
         dispatch(EditProfileAction(fd))
         navigate("/profile")
     }
+    function handlecancel(){
+        navigate("/profile");
+         document.getElementsByClassName("editPrDiv")[0].style.display = "none"; 
+         document.getElementsByClassName("poopupbg1")[0].style.opacity = 1;
+         document.getElementsByClassName("poopupbg2")[0].style.opacity = 1;
+         document.getElementsByClassName("poopupbg3")[0].style.opacity = 1;
+         document.getElementsByClassName("poopupbg4")[0].style.opacity = 1;
+    }
     return <>
-        <div className="editPrDiv">
+        <div className="editPrDiv poopupbg">
             <img src={avatar} className="pEditImage" />
             <form onSubmit={handleEditProfile}  enctype="multipart/form-data">
             <label for="ctuploadImg"><p className="editImagetext">Edit Picture or Avatar</p></label>
@@ -45,7 +53,7 @@ function EditProfile() {
             <div className="div1"><input type="text" className="editNameInput" onChange={handleName}></input></div>
             <p className="editBio">Bio</p>
             <div className="div2"><input type="text" className="editBioInput" onChange={handleBio} ></input></div>
-            <button className="ctCancelTweet" id="editPCancel" onClick={() => {navigate("/profile"); document.getElementsByClassName("editPrDiv")[0].style.display = "none"; }}>Cancel</button>
+            <button className="ctCancelTweet" id="editPCancel" onClick={handlecancel}>Cancel</button>
             <button className="ctCreateTweet" id="editPDone" >Edit</button>
             </form>
         </div>

@@ -35,7 +35,7 @@ useEffect(()=>{
 // const auth = useSelector((s)=>s.AuthReducer)
 // const {user, toFgtPwd} = auth;
 // const nameInApi = user.user_name
-// localStorage.setItem("usernameInApi",nameInApi)
+// sessionStorage.setItem("usernameInApi",nameInApi)
 
     return <>
     <Sidebar />

@@ -53,19 +53,19 @@ function SignUp(){
             const {loading, response, error, toSignOtp} = responseApi
 
             function SIGNUP(){
-                dispatch(SignUpUser(email, callApi),localStorage.setItem("signupemail",email), sessionStorage.setItem("NameToBeUsed",name))
+                dispatch(SignUpUser(email, callApi),sessionStorage.setItem("signupemail",email), sessionStorage.setItem("NameToBeUsed",name))
                 if(error!==""){
                     toast.error(`${error}`, {
                         position: "top-center",
                         theme: "light",
                         });
                 }
-                if(response!==""){
-                    toast.success(`${response}`, {
-                        position: "top-center",
-                        theme: "light",
-                        });
-                }
+                // if(response!==""){
+                //     toast.success(`${response}`, {
+                //         position: "top-center",
+                //         theme: "light",
+                //         });
+                // }
             }
     useEffect(()=>{
         if(loading===true){
@@ -78,23 +78,15 @@ function SignUp(){
 
     const navigate = useNavigate();
    
-    // useEffect(()=>{
-    //     if(error!==""){
-    //         toast.error(`${error}`, {
-    //             position: "top-center",
-    //             theme: "light",
-    //             });
-    //     }
-    // },[error])
-    
-    // useEffect(()=>{
-    //     if(response!==""){
-    //         toast.success(`${response}`, {
-    //             position: "top-center",
-    //             theme: "light",
-    //             });
-    //     }
-    // },[response])
+   
+    useEffect(()=>{
+        if(response!==""){
+            toast.success(`${response}`, {
+                position: "top-center",
+                theme: "light",
+                });
+        }
+    },[response])
 
     useEffect(()=>{
         if( toSignOtp){

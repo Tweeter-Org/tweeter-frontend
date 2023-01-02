@@ -15,7 +15,7 @@ import "../ForgotPassword/fgtPwd.css"
 
 function AuthOtp(){
 
-    const email = localStorage.getItem("signupemail")
+    const email = sessionStorage.getItem("signupemail")
 
     const [seconds, setSeconds] = useState(59)
     const [otp, setOtp] = useState("")
@@ -55,18 +55,18 @@ function AuthOtp(){
 
     function EMAILVERIFY (){
         dispatch(EmailAction(data))
-        // if(response!==""){
-        //     toast.success(`${response}`, {
-        //         position: "top-center",
-        //         theme: "light",
-        //         });
-        // }
-        // if(error!==""){
-        //     toast.error(`${error}`, {
-        //         position: "top-center",
-        //         theme: "light",
-        //         });
-        // }
+        if(response!==""){
+            toast.success(`${response}`, {
+                position: "top-center",
+                theme: "light",
+                });
+        }
+        if(error!==""){
+            toast.error(`${error}`, {
+                position: "top-center",
+                theme: "light",
+                });
+        }
     }
     useEffect(()=>{
         if(response!==""){
@@ -77,14 +77,6 @@ function AuthOtp(){
         }
     },[response])
 
-    useEffect(()=>{
-        if(error!==""){
-            toast.error(`${error}`, {
-                position: "top-center",
-                theme: "light",
-                });
-        }
-    },[error])
    
     const navigate=useNavigate();
     useEffect(()=>{

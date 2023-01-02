@@ -48,9 +48,7 @@ function Tweet(props) {
         if (imagepath === "white") {
             document.getElementsByClassName("tweetLike")[id].style.color = "green"
             document.getElementsByClassName("likeIcon")[id].src = greenLike
-            // setTweetCount(tweetCount+1)
             setTweetCount(tweetCount => tweetCount + 1)
-            console.log(tweetCount)
         }
         else {
             document.getElementsByClassName("likeIcon")[id].src = like

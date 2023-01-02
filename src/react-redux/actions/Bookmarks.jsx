@@ -1,6 +1,6 @@
 import BaseUrl from "./BaseUrl";
 
-const accessToken = localStorage.getItem("access token")
+const accessToken = sessionStorage.getItem("access token")
 console.log(accessToken)
 const config={
     headers:{

@@ -139,11 +139,33 @@ const SignUpResend=(email)=>{
  }
 export {SignUpResend} 
 
-// setTimeout(()=>{
-    
-// })
 
-const accessToken = localStorage.getItem("access token")
+// // const {token} = useSelector((t)=>t.AuthReducer)
+// var accesstoken,config
+// function AccesstToken (){
+//     // const {token} = useSelector((t)=>t.AuthReducer)
+//     const token = sessionStorage.getItem("isToken")
+//     // const token="a";
+//     console.log(token)
+//     if(token){
+//         accesstoken = sessionStorage.getItem("access token")
+//         console.log(accesstoken)
+//          config={
+//             headers:{
+//                 "Authorization" : `Bearer ${accesstoken}`
+//             }
+//         }
+//         console.log(config)
+//     }
+//     else{
+//         setTimeout(AccesstToken,500)
+//         // sessionStorage.removeItem("access token")
+//     }
+// }
+
+// AccesstToken()
+
+const accessToken = sessionStorage.getItem("access token")
 console.log(accessToken)
 const config={
     headers:{

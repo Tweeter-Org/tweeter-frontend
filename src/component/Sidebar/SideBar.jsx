@@ -6,6 +6,11 @@ import notify from "../Assets/notifications.svg"
 import bookmark from "../Assets/bookmarks.svg"
 import message from "../Assets/comment.svg"
 import profile from "../Assets/account_box.svg"
+import greenhome from "../Assets/greenhome.svg"
+import greennotify from "../Assets/greennotifications.svg"
+import greenbm from "../Assets/greenbm.svg"
+import greenmessage from "../Assets/greenmsg.svg"
+import greenprofile from "../Assets/greenprofile.svg"
 import SearchComp from "./SearchComp";
 import { useDispatch, useSelector } from "react-redux";
 import SearchUser from "../../react-redux/actions/SearchApi";
@@ -15,10 +20,12 @@ import { HashLink } from "react-router-hash-link";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import CreateTweet from "../Home Page/createTweet";
 import { Link } from "react-router-dom";
+import LogOut from "../logOut/logOut";
 
 function Sidebar (){
     // var title="Home";
     const [title, setTitle] = useState("Home")
+    const [image, setImage] = useState(greenhome)
     function showTitle (n){
         document.getElementsByClassName("sbListItem")[n].style.color="#63DF76";
         document.getElementsByClassName("sbListItem")[n].style.textDecoration="underline";
@@ -32,12 +39,14 @@ function Sidebar (){
     }
     function handleTitle(n){
         switch(n){
-            case 0: return setTitle("Home");
-            case 1: return setTitle("Notifications");
-            case 2: return setTitle("Bookmarks");
-            case 3: return setTitle("Messages");
-            case 4: return setTitle("Profile");
-            default: return setTitle("Home");
+            case 0: {
+                return setTitle("Home"),
+            setImage(greenhome)};
+            case 1: {return setTitle("Notifications"), setImage(greennotify)};
+            case 2: {return setTitle("Bookmarks"), setImage(greenbm)};
+            case 3: {return setTitle("Messages"),  setImage(greenmessage)};
+            case 4: {return setTitle("Profile"),  setImage(greenprofile)};
+            default:{ return setTitle("Home"), setImage(greenhome)};
         }
     }
 
@@ -81,9 +90,12 @@ function xyz(){
     document.getElementsByClassName("poopupbg4")[0].style.opacity = 0.1;
     document.getElementById("CREATETWEET").style.opacity=1;
 }
+function handleLogout(){
+    document.getElementsByClassName("logoutDiv")[0].style.display="flex";
+}
     return <>
     <div className="navbar poopupbg1">
-        <img src={home} className="navbarIcon"/>
+        <img src={image} className="navbarIcon"/>
         <p className="navbarHead">{title}</p>
         <span id="navbarLine" />
     </div>
@@ -100,13 +112,15 @@ function xyz(){
         {/* <HashLink to="#CREATETWEET"><button className="sideBarTweetBtn" onClick={()=>{document.getElementById("CREATETWEET").style.display="block"}}>Create Tweet</button></HashLink> */}
         <button className="sideBarTweetBtn" onClick={()=>{xyz()}}>Create Tweet</button>
     </div>
-    <div><input className="searchbar" type="text" value={search} onChange={handleSearch} placeholder="Search" /></div>
+    <div><input className="searchbar" type="text" value={search} onChange={handleSearch} placeholder="Search" />
+    <p className="logout" onClick={handleLogout}>Log Out</p> </div>
     <div className="searchFlexBox poopupbg4">
          {(searchListArray.length>0)?(searchListArray.map((searchh)=>{
             return <SearchComp name={searchh.name} username={searchh.user_name} />
         })):<p className="searchAlter">No search found</p>}
     </div>
     <CreateTweet />
+    <LogOut />
     {(loading===true)?<Spinner animation="border" variant="light" id="loadSpinner" />:null}
     </>
 }

@@ -34,19 +34,19 @@ function ForgotPwd(){
     const navigate = useNavigate();
 
     function FORGOTPWD (){
-        dispatch(FgtPwdAction(email, checkEmail),localStorage.setItem("email",email))
-        // if (response != "") {
-        //     toast.success(`${response}`, {
-        //         position: "top-center",
-        //         theme: "light",
-        //     });
-        // }
-        // if (error != "") {
-        //     toast.error(`${error}`, {
-        //         position: "top-center",
-        //         theme: "light",
-        //     });
-        // }
+        dispatch(FgtPwdAction(email, checkEmail),sessionStorage.setItem("email",email))
+        if (response != "") {
+            toast.success(`${response}`, {
+                position: "top-center",
+                theme: "light",
+            });
+        }
+        if (error != "") {
+            toast.error(`${error}`, {
+                position: "top-center",
+                theme: "light",
+            });
+        }
 
     }
 

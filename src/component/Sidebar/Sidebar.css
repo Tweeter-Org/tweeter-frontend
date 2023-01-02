@@ -135,9 +135,9 @@ a:hover{
     border:none;
     outline:none;
     position: fixed;
-width: 26vw;
+width: 24vw;
 height: 36px;
-left: 966px;
+left: 70vw;
 top: 2.2vh;
 background: #484D4A;
 border-radius: 8px;
@@ -163,12 +163,26 @@ font-size: 16px;
 line-height: 22px;
 color: rgba(255, 255, 255, 0.2);
 }
+.logout{
+    color:red;
+    font-size: 1rem;
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+position:fixed;
+right:1.5vw;
+top:1.5vh;
+z-index:102;
+text-decoration: underline;
+cursor: pointer;
+width:2vw;
+}
 .searchcomp{
     display:block;
     /* margin-top:100px; */
     margin-bottom:10px;
     /* margin-left: 900px; */
-    width:340px;
+    width: 24vw;
     height:10vh;
     background: #1A1C1E;
     /* background-color: #161718; */
