@@ -18,6 +18,7 @@ import DoBookmarkAction from "../../react-redux/actions/Bookmarks.jsx";
 import deleteIcon from "../Assets/delete.svg"
 import TweetDeleteAction from "../../react-redux/actions/deleteTweetAct";
 import { TweetFeedAction } from "../../react-redux/actions/Tweets.jsx";
+import { type } from "@testing-library/user-event/dist/type";
 
 function Tweet(props) {
     const video = props.video
@@ -26,6 +27,7 @@ function Tweet(props) {
     const bookmarkShow = props.bookmarkb
     const dispatch = useDispatch();
     const [show, setShow] = useState(false)
+    // const number = parseInt(props.likeCount)
     const [tweetCount, setTweetCount] = useState(props.likeCount)
     const { response, isLiked, isDelete } = useSelector((l) => l.TweetLikeReducer)
 
@@ -42,34 +44,21 @@ function Tweet(props) {
     }, [props.LIKES])
     function handleTweetLike(tweetid) {
         dispatch(TweetLikeAction(tweetid))
-        var imagepath =   document.getElementsByClassName("tweetLike")[id].style.color;
-            if(imagepath==="white"){
-                document.getElementsByClassName("tweetLike")[id].style.color = "green"
-                document.getElementsByClassName("likeIcon")[id].src = greenLike
-                // setTweetCount(tweetCount+1)
-                setTweetCount(tweetCount=>tweetCount+1)
-                console.log(tweetCount)
-            }
-            else{
-                document.getElementsByClassName("likeIcon")[id].src = like
-                document.getElementsByClassName("tweetLike")[id].style.color = "white"
-                setTweetCount(tweetCount=>tweetCount-1)
-                console.log(tweetCount)
-               
-            }
-        
-        // if (isLiked) {
-        //     if (response === "Liked") {
-        //         document.getElementsByClassName("likeIcon")[id].src = like
-        //         document.getElementsByClassName("tweetLike")[id].style.color = "white"
-        //         setTweetCount(tweetCount-1)
-        //     }
-        //     if (response === "Unliked") {
-        //         document.getElementsByClassName("tweetLike")[id].style.color = "green"
-        //         document.getElementsByClassName("likeIcon")[id].src = greenLike
-        //         setTweetCount(tweetCount+1)
-        //     }
-        // }
+        var imagepath = document.getElementsByClassName("tweetLike")[id].style.color;
+        if (imagepath === "white") {
+            document.getElementsByClassName("tweetLike")[id].style.color = "green"
+            document.getElementsByClassName("likeIcon")[id].src = greenLike
+            // setTweetCount(tweetCount+1)
+            setTweetCount(tweetCount => tweetCount + 1)
+            console.log(tweetCount)
+        }
+        else {
+            document.getElementsByClassName("likeIcon")[id].src = like
+            document.getElementsByClassName("tweetLike")[id].style.color = "white"
+            setTweetCount(tweetCount => tweetCount - 1)
+            console.log(tweetCount)
+
+        }
     }
 
     const { responseBM, markBM } = useSelector((b) => b.BookmarkReducer)

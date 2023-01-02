@@ -406,3 +406,82 @@ margin-bottom: 3vh;
     top:68vh;
     left:30vw;
 }
+
+/* FOLLOWERS */
+
+.followersFlex{
+    display:flex;
+    margin-left:1.5vw;
+    flex-direction: column;
+    display:none;
+    /* margin-top:40vh; */
+    /* width */
+}
+.followingFlex{
+    display:flex;
+    flex-direction: column;
+    margin-left:1.5vw;
+    display: none;
+}
+.followCompDiv{
+    box-sizing: border-box;
+    width: 42vw;
+    height: 72px;
+    margin-bottom: 4vh;
+    border: 0.8px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    display:flex;
+}
+.followName{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-left:5.5vw;
+    margin-top:2vh;
+    text-transform: capitalize;
+
+}
+.followPic{
+    margin-top:2.6vh;
+    /* top:60vh; */
+}
+.followUsername{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 0.5);
+    /* margin-left:-3.5vw; */
+    position:absolute;
+    left:30vw;
+    margin-top:6vh;
+    text-transform: capitalize;
+    text-decoration: underline;
+}
+.alterFollower{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 20px;
+    position:fixed;
+    top:80vh;
+    /* top:20vh; */
+    width:15vw;
+    left:40vw;
+    margin-bottom:5vh;
+    color: rgba(255, 255, 255, 0.6);
+}
+.tweetPrFlexbox{
+    display:flex;
+    flex-direction: column;
+    margin-left:-23vw;
+    display: none;
+}
+#profileTweetBox{
+    background-color: aquamarine;
+}

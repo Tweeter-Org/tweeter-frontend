@@ -44,7 +44,7 @@ useEffect(()=>{
     {tweetLength>0?(tweetData.map((tweet, index)=>{
         const likes= liked[index]
         console.log(likes)
-        return <Tweet text={tweet.text} image={tweet.image} video={tweet.video} likeCount={tweet.likes} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarkb ="false" LIKES= {likes} />;
+        return <Tweet text={tweet.text} image={tweet.image} video={tweet.video} likeCount={parseInt(tweet.likes)} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarkb ="false" LIKES= {likes} />;
     })):null}
     </div>
     {(load===true)?<Spinner animation="border" variant="light" id="loadSpinner" />:null}

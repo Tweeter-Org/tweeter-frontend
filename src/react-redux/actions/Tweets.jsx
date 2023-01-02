@@ -71,3 +71,23 @@ export const CreateTweetAct =(formData)=>{
         })
     }
 }
+
+export const LikedTweetAction =(username)=>{
+    return async function (dispatch){
+        await BaseUrl.get(`/p/liked/${username}`,config)
+        .then((Res)=>{
+            console.log(Res)
+            dispatch({
+                type:"LIKEDTWEETLISTYES",
+                payload:Res
+            })
+        })
+        .catch((err)=>{
+            dispatch({
+                type:"LIKEDTWEETLISTNO",
+                payload:err
+            })
+        })
+    }
+
+}
