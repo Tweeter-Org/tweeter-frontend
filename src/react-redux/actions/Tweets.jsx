@@ -91,3 +91,12 @@ export const LikedTweetAction =(username)=>{
     }
 
 }
+
+export const FakeTweetFeedAction =(tweeet, )=>{
+   return {
+    type:"TWEET_FEED_ADD_ACTION",
+    payload:{
+        tweeet,
+    }
+   }
+}

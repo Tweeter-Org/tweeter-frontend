@@ -225,3 +225,23 @@ const GoogleAction =()=>{
     }
 }
 export {GoogleAction}
+
+const GoogleTwoAction =(url)=>{
+    return async function (dispatch){
+        dispatch({ type: "GOOGLE_TWO_STARTED" })
+        await BaseUrl.get(`/auth/google?code=${url}`)
+            .then((res) => dispatch({
+                type: "GOOGLE_TWO_SUCCEDED",
+                payload: res
+            }))
+            .catch((err) => {
+               console.log(err)
+               dispatch({
+                type:"GOOGLE_TWO_FAILED",
+                payload:err
+               })
+            })
+       
+    }
+}
+export {GoogleTwoAction}

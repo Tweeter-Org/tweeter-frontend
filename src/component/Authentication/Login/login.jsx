@@ -112,12 +112,11 @@ function Login() {
         }
     },[toFgtPwd])
     
-    useEffect(()=>{
+    function navigateGoogle (){
+        dispatch(GoogleAction())
         if(responseGoogle!="")
         window.location.href = `${responseGoogle}`
-        console.log(window.location.href)
-        console.log("abcd")
-    },[responseGoogle])
+    }
 
     return <>
         <Background />
@@ -137,9 +136,9 @@ function Login() {
             <input type={show ? "text" : "password"} className="authPwdInput" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
             <p className='fgtPwd' onClick={() => navigate("/fgtpwd")}>Forgot Password?</p>
             {/* <button className='authSignIn' onClick={()=>{dispatch(SignInUser(data))}}>Sign In</button>  */}
-            <button className='authSignIn' id="loginButton" onClick={() => {LOGIN()}}>Sign In</button>
+    1W        <button className='authSignIn' id="loginButton" onClick={() => {LOGIN()}}>Sign In</button>
             <hr id="hrOr" />
-            <button className='contGoogle' onClick={()=>{dispatch(GoogleAction())}} >Continue with Google</button>
+            <button className='contGoogle' onClick={navigateGoogle} >Continue with Google</button>
             <p className='createAcc'>New to Tweeter? <span className="authSignUp" onClick={() => navigate("/signup")}>Create Account</span></p>
         </div>
         {(loading === true || loadingGoogle===true) ? <Spinner animation="border" variant="light" id="loadSpinner" /> : null}

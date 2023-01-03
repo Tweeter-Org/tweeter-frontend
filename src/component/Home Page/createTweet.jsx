@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 import EmojiPicker from 'emoji-picker-react';
 import "./homepage.css"
 import Picker from "emoji-picker-react"
-import { CreateTweetAct } from "../../react-redux/actions/Tweets.jsx";
+import { CreateTweetAct, FakeTweetFeedAction } from "../../react-redux/actions/Tweets.jsx";
 import { useDispatch } from "react-redux";
 import FormData from "form-data";
 import { useSelector } from "react-redux";
@@ -14,19 +14,19 @@ import ToasterSuccess from "../Assets/ToasterSuccess";
 import Loader from "../Assets/Loader";
 import { ToastContainer , toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import avatar from "../Assets/avatar.svg";
 
 function CreateTweet() {
     const [text, setText] = useState("");
     const [showEmoji, setShowEmoji] = useState(false)
-    const [sendImage, setSendImage] = useState([]);
+    const [sendImage, setSendImage] = useState([null]);
     const dispatch = useDispatch();
     const fd = new FormData();
     function handleSendImage(e) {
         console.log(e.target.files);
         setSendImage(e.target.files[0])
-        console.log(e.target.files[0])
     }
-    const [sendVideo, setSendVideo] = useState([]);
+    const [sendVideo, setSendVideo] = useState([null]);
     function handleSendVideo(e) {
         console.log(e.target.files);
         setSendVideo(e.target.files[0])
@@ -57,11 +57,27 @@ function CreateTweet() {
         setOPacity()
     }
     const {response,error,tweetCreate, loading} = useSelector((t)=>t.TweetCreateReducer)
-
     console.log(tweetCreate)
+
+    const auth = useSelector((s)=>s.AuthReducer)
+const {user, toFgtPwd} = auth;
+const {name, user_name, displaypic} = user;
+const {tweetData, liked} = useSelector((s)=>s.TweetFeedReducer)
+console.log(tweetData)
+const newTweetCreated = {
+    "image":sendImage,
+    "likes":"0",
+    "text":text,
+    "video":sendVideo,
+    user:{
+        "name":name,
+        "user_name":user_name,
+        displaypic:displaypic
+    }
+}
+console.log(newTweetCreated)
     function handleCreateTweet (e){
         e.preventDefault();
-        console.log("ghjkl")
         fd.append("text", text)
         if(sendImage!=""){
             fd.append("file",sendImage)
@@ -73,6 +89,9 @@ function CreateTweet() {
             fd.append("file",null)
         }
         dispatch(CreateTweetAct(fd))
+        console.log(newTweetCreated)
+        dispatch(FakeTweetFeedAction(newTweetCreated))
+        backToHome(e)
             if(response!==""){
                 toast.success(`${response}`, {
                     position: "top-center",
@@ -85,7 +104,7 @@ function CreateTweet() {
                     theme: "light",
                     });
             }
-        backToHome()
+       
     }
     useEffect(()=>{
         if(loading===true){
@@ -95,12 +114,15 @@ function CreateTweet() {
             document.body.style.opacity = 1;
         }
     },[loading])
-
+ 
     return <>
         <div className="createTweetDiv" id="CREATETWEET">
-            <span className="ctCircle" />
-            <p className="ctName">Peter Beans</p>
-            <p className="ctUserName">@peter beans</p>
+            {(displaypic === null) ? (<span className="ctCircle"><img src={avatar} id="picincircle" /></span>) :
+                    ((displaypic.startsWith("https:")) ? (<span className="ctCircle"><img src={displaypic} id="picincircle" /></span>) :
+                        (<span className="ctCircle"><img src={`https://twitterbackend-production-93ac.up.railway.app/${displaypic}`} id="picincircle" /></span>))
+                }
+            <p className="ctName">{name}</p>
+            <p className="ctUserName">{user_name}</p>
             <form onSubmit={(e)=>e.preventDefault()}
             enctype="multipart/form-data" >
             <p className="ctTagline">Share tweet with your followers</p>
