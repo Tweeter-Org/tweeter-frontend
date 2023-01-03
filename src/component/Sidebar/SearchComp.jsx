@@ -8,10 +8,10 @@ function SearchComp (props){
     const navigate = useNavigate();
     const dispatch = useDispatch();
     return <>
-        <div className="searchcomp poopupbg">
+        <div className="searchcomp POPUPBG">
         <span className="displaySearchPic"><img src={avatar} id="picincircle"/></span>
             <p className="searchName">{props.name}</p>
-            <p className="searchUsername" onClick={()=>{sessionStorage.setItem("usernameInApi",props.username);navigate("/otherprofile")}}>{props.username}</p>
+            <p className="searchUsername" onClick={()=>{sessionStorage.setItem("usernameInApi",props.username);navigate("/profile")}}>{props.username}</p>
         </div>
     </>
 }

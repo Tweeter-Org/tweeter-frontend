@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import imageIcon from "../Assets/imageIcon.svg";
 import videoIcon from "../Assets/videoIcon.svg";
 import smileIcon from "../Assets/smileIcon.svg";
@@ -11,6 +11,9 @@ import { useDispatch } from "react-redux";
 import FormData from "form-data";
 import { useSelector } from "react-redux";
 import ToasterSuccess from "../Assets/ToasterSuccess";
+import Loader from "../Assets/Loader";
+import { ToastContainer , toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function CreateTweet() {
     const [text, setText] = useState("");
@@ -18,9 +21,6 @@ function CreateTweet() {
     const [sendImage, setSendImage] = useState([]);
     const dispatch = useDispatch();
     const fd = new FormData();
-    const {loadingTweet, tweetData} = useSelector((s)=>s.TweetFeedReducer)
-
-    console.log(tweetData)
     function handleSendImage(e) {
         console.log(e.target.files);
         setSendImage(e.target.files[0])
@@ -44,16 +44,19 @@ function CreateTweet() {
     const navigate = useNavigate();  
     console.log(fd)
 
-    function backToHome() {
-        // navigate("/home");
+    function setOPacity (){ /*SET BACKGROUND OPACITY*/
+        var items= document.getElementsByClassName("POPUPBG")
+        for(var i=0;i<items.length;i++){
+            document.getElementsByClassName("POPUPBG")[i].style.opacity=1;
+        }
+    }
+    function backToHome(e) {
+        e.preventDefault();
         setText("")
         document.getElementById("CREATETWEET").style.display = "none"
-        document.getElementsByClassName("poopupbg1")[0].style.opacity = 1;
-        document.getElementsByClassName("poopupbg2")[0].style.opacity = 1;
-        document.getElementsByClassName("poopupbg3")[0].style.opacity = 1;
-        document.getElementsByClassName("poopupbg4")[0].style.opacity = 1;
+        setOPacity()
     }
-    const {response,error,tweetCreate} = useSelector((t)=>t.TweetCreateReducer)
+    const {response,error,tweetCreate, loading} = useSelector((t)=>t.TweetCreateReducer)
 
     console.log(tweetCreate)
     function handleCreateTweet (e){
@@ -69,23 +72,36 @@ function CreateTweet() {
         else{
             fd.append("file",null)
         }
-        // {sendImage!=""?fd.append("file",sendImage):(sendVideo!=""?fd.append("file",sendVideo):null)}
-       
         dispatch(CreateTweetAct(fd))
-        if(tweetCreate===true){
-            console.log("tweeet");
-            <ToasterSuccess response={response} />
-        }
+            if(response!==""){
+                toast.success(`${response}`, {
+                    position: "top-center",
+                    theme: "light",
+                    });
+            }
+            else if(error!==""){
+                toast.error(`${error}`, {
+                    position: "top-center",
+                    theme: "light",
+                    });
+            }
         backToHome()
     }
+    useEffect(()=>{
+        if(loading===true){
+            document.body.style.opacity = 0.5;
+        }
+        else{
+            document.body.style.opacity = 1;
+        }
+    },[loading])
 
     return <>
         <div className="createTweetDiv" id="CREATETWEET">
             <span className="ctCircle" />
             <p className="ctName">Peter Beans</p>
             <p className="ctUserName">@peter beans</p>
-            <form
-             onSubmit={handleCreateTweet}
+            <form onSubmit={(e)=>e.preventDefault()}
             enctype="multipart/form-data" >
             <p className="ctTagline">Share tweet with your followers</p>
             <div className="ctWriteTweet">
@@ -103,12 +119,12 @@ function CreateTweet() {
             <img src={smileIcon} className="ctSmile" onClick={() => { handleEmojis() }} />
             {showEmoji ? (<div className="emojipicker"><Picker theme="dark" onEmojiClick={onemojiclick} /></div>) : null}
             <p className="ctSmileText">Emojis</p>
-            <button className="ctCancelTweet" onClick={() => {backToHome()}}>Cancel</button>
-            <button className="ctCreateTweet" >Tweet</button>
+            <button className="ctCancelTweet" onClick={backToHome}>Cancel</button>
+            <button className="ctCreateTweet"  onClick={handleCreateTweet} >Tweet</button>
             </form>
-           
         </div>
-
+{loading===true?<Loader loading={loading} />:null}
+<ToastContainer />
     </>
 }
 export default CreateTweet

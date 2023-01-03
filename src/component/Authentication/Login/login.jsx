@@ -115,6 +115,8 @@ function Login() {
     useEffect(()=>{
         if(responseGoogle!="")
         window.location.href = `${responseGoogle}`
+        console.log(window.location.href)
+        console.log("abcd")
     },[responseGoogle])
 
     return <>

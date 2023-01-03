@@ -20,7 +20,7 @@ import TweetDeleteAction from "../../react-redux/actions/deleteTweetAct";
 import { TweetFeedAction } from "../../react-redux/actions/Tweets.jsx";
 import { type } from "@testing-library/user-event/dist/type";
 
-function Tweet(props) {
+function ProfileTweet(props) {
     const video = props.video
     const image = props.image
     const id = props.number;
@@ -87,7 +87,7 @@ function Tweet(props) {
         }
     }, [bookmarkShow])
     return <>
-        <div className="tweetComp POPUPBG">
+        <div className="tweetComp POPUPBG" id="profileTweetComp">
             <div className="firstTweetBlock">
                 {(props.displaypic === null) ? (<span className="displaypie"><img src={avatar} id="picincircle" /></span>) :
                     ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
@@ -98,7 +98,7 @@ function Tweet(props) {
                 {/* <img src={deleteIcon} className="deleteIcon" id="delIcon" onClick={() => {handleTweetDelete(props.tweetId)}} /> */}
             </div>
 
-            {image != null ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" />) : null}
+            {image != null ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" id="ProfileImage"/>) : null}
             {video != null ? <video className="tweetvideo" controls>
                 <source src={`https://twitterbackend-production-93ac.up.railway.app/${video}`} type="video/mp4" />
             </video> : null}
@@ -126,4 +126,4 @@ function Tweet(props) {
     </>
 }
 
-export default Tweet;
+export default ProfileTweet;

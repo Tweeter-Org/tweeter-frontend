@@ -165,6 +165,7 @@ color: rgba(255, 255, 255, 0.2);
 }
 .logout{
     color:red;
+    opacity:0.85;
     font-size: 1rem;
     font-family: 'Montserrat';
 font-style: normal;

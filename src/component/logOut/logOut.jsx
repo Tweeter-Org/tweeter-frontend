@@ -8,19 +8,19 @@ function LogOut() {
     function handleLogOut() {
         sessionStorage.clear();
         naavigate("/");
-        document.getElementsByClassName("poopupbg1")[0].style.opacity = 1;
-        document.getElementsByClassName("poopupbg2")[0].style.opacity = 1;
-        document.getElementsByClassName("poopupbg3")[0].style.opacity = 1;
-        document.getElementsByClassName("poopupbg4")[0].style.opacity = 1;
         document.getElementsByClassName("logoutDiv")[0].style.display="none";
 
     }
+    function setOPacity (){
+        var items= document.getElementsByClassName("POPUPBG")
+        for(var i=0;i<items.length;i++){
+            document.getElementsByClassName("POPUPBG")[i].style.opacity=1;
+        }
+    }
+
     function handleCancelLog() {
-        document.getElementsByClassName("poopupbg1")[0].style.opacity = 1;
-        document.getElementsByClassName("poopupbg2")[0].style.opacity = 1;
-        document.getElementsByClassName("poopupbg3")[0].style.opacity = 1;
-        document.getElementsByClassName("poopupbg4")[0].style.opacity = 1;
         document.getElementsByClassName("logoutDiv")[0].style.display="none";
+        setOPacity()
     }
 
     return <>

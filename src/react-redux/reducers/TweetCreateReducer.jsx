@@ -1,18 +1,19 @@
 const initialState={
     response:"",
     error:"",
-    tweetCreate:false
+    tweetCreate:false,
+    loading:false
 }
 
 const TweetCreateReducer =(state=initialState, action)=>{
     switch(action.type){
         case "TWEETCREATED":{
             console.log(action.payload)
-            return {...state , response:action.payload.data.msg, error:"", tweetCreate:true}
+            return {...state , response:action.payload.data.msg, error:"", tweetCreate:true, loading:false}
         }
         case "TWEETNOTCREATED":{
             console.log(action.payload)
-            return {...state , error:action.payload, tweetCreate:false}
+            return {...state , error:action.payload, tweetCreate:false, loading:false}
         }
         default : return state
     }

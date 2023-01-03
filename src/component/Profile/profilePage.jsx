@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../Sidebar/SideBar";
 import "./profilePage.css"
 import avatar from "../Assets/avatar.svg";
+import profileIcon from "../Assets/profile.svg";
+import newprofile from "../Assets/newProfile.png";
 import post from "../Assets/posts.svg"
 import { useDispatch, useSelector } from "react-redux";
 import ProfileAction from "../../react-redux/actions/Profile";
@@ -10,6 +12,8 @@ import EditProfile from "./EditProfile";
 import FollowComp from "./FollowComp";
 import Tweet from "../Home Page/TweetComp";
 import { LikedTweetAction } from "../../react-redux/actions/Tweets";
+import Loader from "../Assets/Loader";
+import ProfileTweet from "./profileTweets";
 
 function ProfilePage() {
     const dispatch = useDispatch();
@@ -31,19 +35,11 @@ function ProfilePage() {
     const [tweetsArray, setTweetsArray] = useState([])
 
     const [likedTweetsArray, setLikedTweetsArray] = useState([])
-
-
-    // sessionStorage.setItem("usernameInApi",nameInApi)
-    // const usernameApi = sessionStorage.getItem("usernameInApi")
-    // console.log(auth)
     const profilee = useSelector((p) => p.ProfileReducer)
     const { profile, accessProfile, loading , editprofile,ifedit} = profilee;
-    const { user, toFgtPwd, toHome } = auth;
-var nameInApi
+    // const { user, toFgtPwd, toHome } = auth;
+var nameInApi = sessionStorage.getItem("usernameInApi")
     useEffect(() => {
-        if(toHome || toFgtPwd){
-             nameInApi = user.user_name
-        }
         console.log(nameInApi)
         dispatch(ProfileAction(nameInApi));
         if (accessProfile) {
@@ -73,6 +69,13 @@ var nameInApi
 
     console.log(profilee)
 
+    function setOPacity (){
+        var items= document.getElementsByClassName("POPUPBG")
+        for(var i=0;i<items.length;i++){
+            document.getElementsByClassName("POPUPBG")[i].style.opacity=0.2;
+        }
+    }
+
     function displayFollowers() {
         document.getElementsByClassName("profileDiv3")[0].style.display = "none";
         document.getElementsByClassName("profileDiv4")[0].style.display = "flex";
@@ -87,10 +90,7 @@ var nameInApi
     }
     function handleEdit() {
         document.getElementsByClassName("editPrDiv")[0].style.display = "flex";
-        document.getElementsByClassName("poopupbg1")[0].style.opacity=0.1;
-        document.getElementsByClassName("poopupbg2")[0].style.opacity=0.1;
-        document.getElementsByClassName("poopupbg3")[0].style.opacity=0.1;
-        document.getElementsByClassName("poopupbg4")[0].style.opacity = 0.1;
+        setOPacity()
     }
     function showFollowers(){
         document.getElementsByClassName("followersFlex")[0].style.display = "flex";
@@ -121,10 +121,28 @@ var nameInApi
     
     const {likedTweets} = useSelector((l)=>l.LikedTweetsPReducer)
     console.log(likedTweets)
+    useEffect(()=>{
+        if(loading===true){
+            document.body.style.opacity = 0.5;
+        }
+        else{
+            document.body.style.opacity = 1;
+        }
+    },[loading])
+    // useEffect(()=>{
+    //     if(response!==""){
+    //         toast.success(`${response}`, {
+    //             position: "top-center",
+    //             theme: "light",
+    //             });
+    //     }
+    // },[response])
+ 
     return <>
         <Sidebar />
-        <div className="PROFILE poopupbg1">
+        <div className="PROFILE POPUPBG">
             <div className="profileDiv1">
+            {/* <img src={newprofile} /> */}
             {(displaypic === null) ? (<img src={avatar}  className="pImage"  />) :
                     ((displaypic.startsWith("https:")) ? (<img src={displaypic}  className="pImage"  />) :
                         (<img src={`https://twitterbackend-production-93ac.up.railway.app/${displaypic}`}  className="pImage"  />))
@@ -178,16 +196,18 @@ var nameInApi
         </div> 
         <div className="tweetPrFlexbox" id="profileTweetFlex">
         {tweetsArray.length>0?(tweetsArray.map((tweet, index)=>{
-        return <Tweet text={tweet.text} likeCount={tweet.likes} image={tweet.image} video={tweet.video} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarkb ="false" />;
+        return <ProfileTweet text={tweet.text} likeCount={tweet.likes} image={tweet.image} video={tweet.video} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarkb ="false" />;
     })):null}
         </div>
         <div className="tweetPrFlexbox" id="likeTweetFlex">
         {likedTweets.length>0?(likedTweets.map((tweet, index)=>{
-        return <Tweet text={tweet.text} likeCount={tweet.likes} image={tweet.image} video={tweet.video} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarkb ="false" />;
+        return <ProfileTweet text={tweet.text} likeCount={tweet.likes} image={tweet.image} video={tweet.video} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarkb ="false" />;
     })):null}
         </div>
         </div>
         <EditProfile />
+        {loading===true?<Loader loading={loading}/>:null}
     </>
+    
 }
 export default ProfilePage

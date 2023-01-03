@@ -2,7 +2,7 @@
 display: flex;
 position:absolute;
 top:20vh;
-left:26vw;
+left:29vw;
 width:40vw;
 height:40vh;
 background-color: #121212;
@@ -19,9 +19,7 @@ display: none;
 display: flex;
 flex-direction: column;
 }
-.lOut2{
 
-}
 .logoutText1{
     font-family: 'Montserrat';
     font-style: normal;
