@@ -482,7 +482,7 @@ margin-bottom: 3vh;
 .tweetPrFlexbox{
     display:flex;
     flex-direction: column;
-    margin-left:-21.7vw;
+    margin-left:-20.8vw;
     display: none;
 }
 #profileTweetBox{
@@ -496,4 +496,7 @@ margin-bottom: 3vh;
 }
 #ProfileImage{
 width:39vw;
+}
+#ProfileVideo{
+    width:39vw;
 }

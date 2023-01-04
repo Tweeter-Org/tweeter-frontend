@@ -4,11 +4,12 @@
     height:fit-content;
     width:45vw;
     margin-left: 22.5vw;
-    margin-bottom: 3vh;
+    margin-bottom: 2vh;
     background-color: #161718;
     border-radius: 16px;
     z-index: 5;
     padding:2vh 1vw;
+    padding-bottom:0vh;
     justify-content: space-evenly;
     text-transform: capitalize;
 
@@ -47,6 +48,10 @@
     font-size: 22px;
     line-height: 27px;
     color: rgba(255, 255, 255, 0.9);
+    cursor:pointer;
+}
+.username:hover{
+    color:#47C87A;
 }
 
 .tweetImage {
@@ -118,6 +123,12 @@
     /* margin-left:27vw; */
     opacity:0.8;  
     cursor: pointer;
+}
+.deleteIcon:hover{
+    color:#47C87A
+}
+.bookmarkIcon:hover{
+    color:#47C87A
 }
 .tweetLike {
     margin-top: 0.4vh;
@@ -383,4 +394,47 @@
     font-family: 'Montserrat';
     font-style: normal;
     color: rgba(255, 255, 255, 0.6);
+}
+
+/*TWEET POPUP*/
+.tweetPopcomp {
+    margin-left:-44vw;
+    margin-top:5vh;
+    width:15vw;
+    height:9vh;
+    background-color: #121212;
+    box-shadow: 0px 264px 106px rgba(23, 25, 28, 0.01), 0px 149px 89px rgba(23, 25, 28, 0.05), 0px 66px 66px rgba(23, 25, 28, 0.09), 0px 17px 36px rgba(23, 25, 28, 0.1), 0px 0px 0px rgba(23, 25, 28, 0.1);
+    border-radius: 16px;
+    box-shadow: 0px 100px 80px #1A1C1E;
+    border: 0.7px solid rgba(255, 255, 255, 0.2);
+    display: none;
+    z-index:10;
+}
+.displayTweetPic{
+    position: absolute;
+    width: 43px;
+    height: 39.09px;
+    margin-right: 1vw;
+    border-radius: 50%;
+    background: #D9D9D9;
+    z-index: 4;
+    margin-left:0.8vw;
+    margin-top:0.8vh;
+    width:45px;
+}
+.tweetUsername{
+    position: absolute;
+    margin-left: 5vw;
+    margin-top:2vh;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: underline;
+    cursor: pointer;
+}
+.tweetUsername:hover{
+    color:#47C87A;
 }

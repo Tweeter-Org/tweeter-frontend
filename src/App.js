@@ -28,7 +28,7 @@ function App() {
         <Route path="/logout" exact element={<LogOut />} />
         <Route path="/otherprofile" exact element={<OthersProfile />} />
         <Route path="/editprofile" exact element={<EditProfile />} />
-        <Route path="/profile" exact element={<ProfilePage />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/bookmark" exact element={<Bookmarks />} />
         <Route path="/createtweet" exact element={<CreateTweet />} />
         <Route path="/sidebar" exact element={<Sidebar />} />

@@ -7,17 +7,19 @@ import newprofile from "../Assets/newProfile.png";
 import post from "../Assets/posts.svg"
 import { useDispatch, useSelector } from "react-redux";
 import ProfileAction from "../../react-redux/actions/Profile";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import EditProfile from "./EditProfile";
 import FollowComp from "./FollowComp";
 import Tweet from "../Home Page/TweetComp";
 import { LikedTweetAction } from "../../react-redux/actions/Tweets";
 import Loader from "../Assets/Loader";
 import ProfileTweet from "./profileTweets";
+import FollowAction from "../../react-redux/actions/Follow";
 
 function ProfilePage() {
     const dispatch = useDispatch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const location = useLocation();
     const [name, setName] = useState("");
     const [username, setUserName] = useState("");
     const [bio, setBio] = useState("");
@@ -33,15 +35,24 @@ function ProfilePage() {
     const [followingArray, setFollowingArray] = useState([])
 
     const [tweetsArray, setTweetsArray] = useState([])
-
-    const [likedTweetsArray, setLikedTweetsArray] = useState([])
     const profilee = useSelector((p) => p.ProfileReducer)
-    const { profile, accessProfile, loading , editprofile,ifedit} = profilee;
+    const { profile, accessProfile, loading , editprofile,ifedit , profileTweet} = profilee;
+    console.log(profileTweet)
     // const { user, toFgtPwd, toHome } = auth;
 var nameInApi = sessionStorage.getItem("usernameInApi")
+const [nameUrl , setNameUrl]= useState("")
+console.log(location.pathname)
+console.log(location.pathname, location.search)
+console.log(location.search.substring(6))
+// dispatch(ProfileAction(location.search.substring(6)));
+
     useEffect(() => {
+        console.log(location.pathname, location.search)
+        console.log(location.search.substring(6))
         console.log(nameInApi)
-        dispatch(ProfileAction(nameInApi));
+        dispatch(ProfileAction(location.search.substring(6)));
+
+        // dispatch(ProfileAction(nameInApi));
         if (accessProfile) {
             setFollower(profile.followers.length)
             setFollowing(profile.following.length)
@@ -55,12 +66,9 @@ var nameInApi = sessionStorage.getItem("usernameInApi")
             setDisplaypic(profile.user.displaypic)
             setFollowerArray(profile.followers)
             setFollowingArray(profile.following)
-            setTweetsArray(profile.tweets)
+            setTweetsArray(profileTweet)
         }
-       
     }, [])
-    console.log(followerArray, followingArray)
-    console.log(ifedit, editprofile)
     useEffect(()=>{
         if(ifedit){
             console.log(editprofile)
@@ -75,7 +83,18 @@ var nameInApi = sessionStorage.getItem("usernameInApi")
             document.getElementsByClassName("POPUPBG")[i].style.opacity=0.2;
         }
     }
-
+    const followed = useSelector((f) => f.FollowReducer)
+    console.log(followed)
+    function handleFollowers() {
+        dispatch(FollowAction(username))
+        var imagepath = document.getElementsByClassName("pProfileFollow")[0].innerHTML;
+        if (imagepath === "Follow") {
+            document.getElementsByClassName("pProfileFollow")[0].innerHTML = "Following";
+        }
+        else {
+            document.getElementsByClassName("pProfileFollow")[0].innerHTML = "Follow";
+        }
+    }
     function displayFollowers() {
         document.getElementsByClassName("profileDiv3")[0].style.display = "none";
         document.getElementsByClassName("profileDiv4")[0].style.display = "flex";
@@ -142,7 +161,6 @@ var nameInApi = sessionStorage.getItem("usernameInApi")
         <Sidebar />
         <div className="PROFILE POPUPBG">
             <div className="profileDiv1">
-            {/* <img src={newprofile} /> */}
             {(displaypic === null) ? (<img src={avatar}  className="pImage"  />) :
                     ((displaypic.startsWith("https:")) ? (<img src={displaypic}  className="pImage"  />) :
                         (<img src={`https://twitterbackend-production-93ac.up.railway.app/${displaypic}`}  className="pImage"  />))
@@ -160,7 +178,9 @@ var nameInApi = sessionStorage.getItem("usernameInApi")
                             <p className="pTweetCount" id="followCount">{following}</p>
                         </span>
                     </div>
-                    {myProfile ? (<button className="pEdiitProfile" onClick={() => { handleEdit() }}>Edit Profile</button>) : (<button className="pProfileFollow">Follow</button>)}
+                    {myProfile ? (<button className="pEdiitProfile" onClick={() => { handleEdit() }}>Edit Profile</button>)
+                        : (profile.isfollowing ? (<button className="pProfileFollow" onClick={() => { handleFollowers() }} >Following </button>)
+                         : (<button className="pProfileFollow" onClick={() => { handleFollowers() }}>Follow</button>))}
                 </div>
             </div>
             <div className="profileDiv2">

@@ -141,7 +141,8 @@ console.log(likedTweets)
                         </span>
                     </div>
                     {myProfile ? (<button className="pEdiitProfile" onClick={() => { handleEdit() }}>Edit Profile</button>)
-                        : (profile.isfollowing ? (<button className="pProfileFollow" onClick={() => { handleFollowers() }} >Following </button>) : (<button className="pProfileFollow" onClick={() => { handleFollowers() }}>Follow</button>))}
+                        : (profile.isfollowing ? (<button className="pProfileFollow" onClick={() => { handleFollowers() }} >Following </button>)
+                         : (<button className="pProfileFollow" onClick={() => { handleFollowers() }}>Follow</button>))}
                 </div>
             </div>
             <div className="profileDiv2">

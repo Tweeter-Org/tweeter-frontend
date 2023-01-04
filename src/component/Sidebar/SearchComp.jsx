@@ -11,7 +11,7 @@ function SearchComp (props){
         <div className="searchcomp POPUPBG">
         <span className="displaySearchPic"><img src={avatar} id="picincircle"/></span>
             <p className="searchName">{props.name}</p>
-            <p className="searchUsername" onClick={()=>{sessionStorage.setItem("usernameInApi",props.username);navigate("/profile")}}>{props.username}</p>
+            <p className="searchUsername" onClick={()=>{navigate(`/profile?name=${props.username}`)}}>{props.username}</p>
         </div>
     </>
 }

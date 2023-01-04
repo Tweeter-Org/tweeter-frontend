@@ -30,8 +30,8 @@ function Sidebar() {
     const { title, image ,x} = useSelector((n) => n.TitleNavBar)
     console.log(title, image,x)
     function showTitle(x) {
-        document.getElementsByClassName("sbListItem")[x].style.color = "#63DF76";
-        document.getElementsByClassName("sbListItem")[x].style.textDecoration = "underline";
+        // document.getElementsByClassName("sbListItem")[x].style.color = "#63DF76";
+        // document.getElementsByClassName("sbListItem")[x].style.textDecoration = "underline";
         for (var i = 0; i < 5; i++) {
             if (i != x)
                 document.getElementsByClassName("sbListItem")[i].style.color = "rgba(255, 255, 255, 0.9)";
@@ -92,7 +92,11 @@ function Sidebar() {
         document.getElementsByClassName("logoutDiv")[0].style.display = "flex";
         setOPacity()
     }
-
+    console.log(nameInApi)
+function handleProfile(){
+    dispatch(Profile(greenprofile, "PROFILE",4));
+    navigate(`/profile/${nameInApi}`)
+}
     return <>
         <div>
             <div className="navbar POPUPBG">
@@ -107,7 +111,7 @@ function Sidebar() {
                     <li className="sbListItem" onClick={() => {dispatch(Notifications(greennotify, "NOTIFICATIONS",1))}}><span className="sbListIcon"><img src={notify} /></span>Notifications</li>
                     <Link to="/bookmark"> <li className="sbListItem" onClick={() => { dispatch(BookmarksNav(greenbm, "BOOKMARK",2))}}><span className="sbListIcon"><img src={bookmark} /></span>Bookmarks</li></Link>
                     <li className="sbListItem" onClick={() => {dispatch(Messages(greenmessage, "MESSAGES",3))}}><span className="sbListIcon"><img src={message} /></span>Messages</li>
-                    <Link to="/profile"><li className="sbListItem" onClick={() => {dispatch(Profile(greenprofile, "PROFILE",4),sessionStorage.setItem("usernameInApi",nameInApi))}}><span className="sbListIcon"><img src={profile} /></span>Profile</li></Link>
+                    <Link to="/profile"><li className="sbListItem" onClick={handleProfile}><span className="sbListIcon"><img src={profile} /></span>Profile</li></Link>
                 </ul>
                 {/* <AnchorLink href="#CREATETWEET"><button className="sideBarTweetBtn" >Create Tweet</button></AnchorLink> */}
                 {/* <HashLink to="#CREATETWEET"><button className="sideBarTweetBtn" onClick={()=>{document.getElementById("CREATETWEET").style.display="block"}}>Create Tweet</button></HashLink> */}

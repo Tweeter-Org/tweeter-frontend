@@ -14,11 +14,14 @@ import greenComment from "../Assets/greenComment.svg"
 import greenRetweet from "../Assets/greenRetweet.svg"
 import greenShare from "../Assets/greenSend.svg"
 import greenBookmarks from "../Assets/greenBookmarks.svg"
+import greencross from "../Assets/greencross.svg"
 import DoBookmarkAction from "../../react-redux/actions/Bookmarks.jsx";
 import deleteIcon from "../Assets/delete.svg"
-import TweetDeleteAction from "../../react-redux/actions/deleteTweetAct";
+import TweetDeleteAction, { FakeTweetDeleteAction } from "../../react-redux/actions/deleteTweetAct";
 import { TweetFeedAction } from "../../react-redux/actions/Tweets.jsx";
 import { type } from "@testing-library/user-event/dist/type";
+import { ToastContainer , toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ProfileTweet(props) {
     const video = props.video
@@ -72,11 +75,35 @@ function ProfileTweet(props) {
             }
         }
     }
-    // function handleTweetDelete(tweetid) {
-    //     document.getElementsByClassName("deleteIcon")[id].src = greenBookmarks
-    //     dispatch(TweetDeleteAction(tweetid))
-    //     // dispatch(TweetFeedAction())
-    // }
+    const {deleteTweet, errorTweet, deleteSym} = useSelector((d)=>d.DeleteTweetsPReducer)
+    const { profile, accessProfile, loading , editprofile,ifedit , profileTweet} = useSelector((p) => p.ProfileReducer)
+    const {myprofile} = profile;
+    
+    function handleTweetDelete(tweetid) {
+        document.getElementsByClassName("deleteIcon")[id].src = greencross
+        dispatch(TweetDeleteAction(tweetid))
+        dispatch(FakeTweetDeleteAction(tweetid))
+        if(deleteTweet!==""){
+            toast.success(`${deleteTweet}`, {
+                position: "top-center",
+                theme: "light",
+                });
+        }
+        else if(errorTweet!==""){
+            toast.error(`${errorTweet}`, {
+                position: "top-center",
+                theme: "light",
+                });
+        }
+        if (deleteSym) {
+            if (deleteTweet === "Deleted tweet") {
+                document.getElementsByClassName("deleteIcon")[id].src = deleteIcon
+            }
+           else {
+                document.getElementsByClassName("deleteIcon")[id].src = greencross
+            }
+        }
+    }
 
     useEffect(() => {
         if (bookmarkShow === "true") {
@@ -95,11 +122,11 @@ function ProfileTweet(props) {
                 }
                 <p className="username">{props.username}</p>
                 <img src={bookmark} className="bookmarkIcon" id="bmIcon" onClick={() => { handleTweetBookmark(props.tweetId) }} />
-                {/* <img src={deleteIcon} className="deleteIcon" id="delIcon" onClick={() => {handleTweetDelete(props.tweetId)}} /> */}
+               {myprofile?<img src={deleteIcon} className="deleteIcon" id="delIcon" onClick={() => {handleTweetDelete(props.tweetId)}} />:null}
             </div>
 
             {image != null ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" id="ProfileImage"/>) : null}
-            {video != null ? <video className="tweetvideo" controls>
+            {video != null ? <video className="tweetvideo" id="ProfileVideo" controls>
                 <source src={`https://twitterbackend-production-93ac.up.railway.app/${video}`} type="video/mp4" />
             </video> : null}
             <p className="tweetText">{props.text}</p>
@@ -121,8 +148,8 @@ function ProfileTweet(props) {
                     <p className="tweetShare">Share</p>
                 </div>
             </div>
-
         </div>
+        <ToastContainer />
     </>
 }
 

@@ -15,7 +15,7 @@ export default SearchReducer
 const initial = {
     title: "HOME",
     image:"greenhome",
-    x:""
+    x:"0"
 }
 
 const TitleNavBar = (state = initial, action) => {

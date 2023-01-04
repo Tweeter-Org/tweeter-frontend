@@ -19,6 +19,7 @@ import deleteIcon from "../Assets/delete.svg"
 import TweetDeleteAction from "../../react-redux/actions/deleteTweetAct";
 import { TweetFeedAction } from "../../react-redux/actions/Tweets.jsx";
 import { type } from "@testing-library/user-event/dist/type";
+import TweetPopup from "./tweetPopup";
 
 function Tweet(props) {
     const video = props.video
@@ -26,11 +27,7 @@ function Tweet(props) {
     const id = props.number;
     const bookmarkShow = props.bookmarkb
     const dispatch = useDispatch();
-    const [show, setShow] = useState(false)
-    // const number = parseInt(props.likeCount)
     const [tweetCount, setTweetCount] = useState(props.likeCount)
-    const { response, isLiked, isDelete } = useSelector((l) => l.TweetLikeReducer)
-
     useEffect(() => {
         setTweetCount(props.likeCount)
         if (props.LIKES) {
@@ -54,8 +51,6 @@ function Tweet(props) {
             document.getElementsByClassName("likeIcon")[id].src = like
             document.getElementsByClassName("tweetLike")[id].style.color = "white"
             setTweetCount(tweetCount => tweetCount - 1)
-            console.log(tweetCount)
-
         }
     }
 
@@ -72,11 +67,6 @@ function Tweet(props) {
             }
         }
     }
-    // function handleTweetDelete(tweetid) {
-    //     document.getElementsByClassName("deleteIcon")[id].src = greenBookmarks
-    //     dispatch(TweetDeleteAction(tweetid))
-    //     // dispatch(TweetFeedAction())
-    // }
 
     useEffect(() => {
         if (bookmarkShow === "true") {
@@ -86,6 +76,13 @@ function Tweet(props) {
             document.getElementsByClassName("bookmarkIcon")[id].src = bookmark
         }
     }, [bookmarkShow])
+
+    function showProfilePopup(){
+        document.getElementsByClassName("tweetPopcomp")[id].style.display="block"
+    }
+    function hideProfilePopup(){
+        document.getElementsByClassName("tweetPopcomp")[id].style.display="none"
+    }
     return <>
         <div className="tweetComp POPUPBG">
             <div className="firstTweetBlock">
@@ -93,9 +90,10 @@ function Tweet(props) {
                     ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
                         (<span className="displaypie"><img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`} id="picincircle" /></span>))
                 }
-                <p className="username">{props.username}</p>
+                <p className="username" onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >{props.username}</p>
                 <img src={bookmark} className="bookmarkIcon" id="bmIcon" onClick={() => { handleTweetBookmark(props.tweetId) }} />
                 {/* <img src={deleteIcon} className="deleteIcon" id="delIcon" onClick={() => {handleTweetDelete(props.tweetId)}} /> */}
+                <TweetPopup name={props.username} num={id}/>
             </div>
 
             {image != null ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" />) : null}
@@ -121,7 +119,6 @@ function Tweet(props) {
                     <p className="tweetShare">Share</p>
                 </div>
             </div>
-
         </div>
     </>
 }

@@ -31,3 +31,11 @@ function TweetDeleteAction (tweetId){
     }
 }
 export default TweetDeleteAction
+
+export const FakeTweetDeleteAction =(tweeetId)=>{
+    return {
+     type:"FAKE_TWEET_DELETE_ACTION",
+     payload: tweeetId,
+    }
+ }
+ 
