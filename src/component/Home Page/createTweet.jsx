@@ -23,12 +23,10 @@ function CreateTweet() {
     const dispatch = useDispatch();
     const fd = new FormData();
     function handleSendImage(e) {
-        console.log(e.target.files);
         setSendImage(e.target.files[0])
     }
     const [sendVideo, setSendVideo] = useState([null]);
     function handleSendVideo(e) {
-        console.log(e.target.files);
         setSendVideo(e.target.files[0])
     }
 
@@ -42,8 +40,6 @@ function CreateTweet() {
     }
 
     const navigate = useNavigate();  
-    console.log(fd)
-
     function setOPacity (){ /*SET BACKGROUND OPACITY*/
         var items= document.getElementsByClassName("POPUPBG")
         for(var i=0;i<items.length;i++){
@@ -57,13 +53,10 @@ function CreateTweet() {
         setOPacity()
     }
     const {response,error,tweetCreate, loading} = useSelector((t)=>t.TweetCreateReducer)
-    console.log(tweetCreate)
-
     const auth = useSelector((s)=>s.AuthReducer)
 const {user, toFgtPwd} = auth;
 const {name, user_name, displaypic} = user;
 const {tweetData, liked} = useSelector((s)=>s.TweetFeedReducer)
-console.log(tweetData)
 const newTweetCreated = {
     "image":sendImage,
     "likes":"0",

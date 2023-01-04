@@ -18,12 +18,14 @@ import EditProfile from './component/Profile/EditProfile';
 import OthersProfile from './component/Sidebar/OthersProfile';
 import LogOut from './component/logOut/logOut';
 import Google from "./component/Google"
+import TagTweets from './component/Sidebar/TagTweets';
 
 function App() {
   return <>
     <BrowserRouter>
       {/* <CreateTweet /> */}
       <Routes>
+      <Route path="/tagtweet" exact element={<TagTweets />} />
         <Route path="/google" element={<Google />} />
         <Route path="/logout" exact element={<LogOut />} />
         <Route path="/otherprofile" exact element={<OthersProfile />} />

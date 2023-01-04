@@ -100,3 +100,23 @@ export const FakeTweetFeedAction =(tweeet, )=>{
     }
    }
 }
+
+const TweetListWithTag=(tag)=>{
+    return async function (dispatch){
+        dispatch({type:"TAG_TWEET_LIST_START"})
+      console.log("hash")
+          await BaseUrl.get(`/t/tagged/${tag}`, config)
+          .then((res)=>dispatch({
+             type:"TAG_TWEET_LIST_SUCCEDED",
+             payload:res }))
+          .catch((err)=>{
+             dispatch({
+                type:"TAG_TWEET_LIST_FAILED",
+                payload:err
+             })
+          })   
+    }
+ }
+  
+  export { TweetListWithTag}
+ 

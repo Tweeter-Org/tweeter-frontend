@@ -35,24 +35,20 @@ function ProfilePage() {
     const [followingArray, setFollowingArray] = useState([])
 
     const [tweetsArray, setTweetsArray] = useState([])
-    const profilee = useSelector((p) => p.ProfileReducer)
-    const { profile, accessProfile, loading , editprofile,ifedit , profileTweet} = profilee;
-    console.log(profileTweet)
-    // const { user, toFgtPwd, toHome } = auth;
+   
 var nameInApi = sessionStorage.getItem("usernameInApi")
-const [nameUrl , setNameUrl]= useState("")
-console.log(location.pathname)
-console.log(location.pathname, location.search)
-console.log(location.search.substring(6))
-// dispatch(ProfileAction(location.search.substring(6)));
 
+const pro = useSelector((p)=>p.ProfileNameReducer)
+console.log(pro)
+const [dynamic, setDynamic] = useState("")
+useEffect(()=>{
+    setDynamic(pro.name)
+},[pro])
+const profilee = useSelector((p) => p.ProfileReducer)
+const { profile , accessProfile , loading , editprofile , ifedit , profileTweet} = profilee;
+console.log(profileTweet)
     useEffect(() => {
-        console.log(location.pathname, location.search)
-        console.log(location.search.substring(6))
-        console.log(nameInApi)
-        dispatch(ProfileAction(location.search.substring(6)));
-
-        // dispatch(ProfileAction(nameInApi));
+        dispatch(ProfileAction(pro.name));
         if (accessProfile) {
             setFollower(profile.followers.length)
             setFollowing(profile.following.length)
@@ -68,7 +64,7 @@ console.log(location.search.substring(6))
             setFollowingArray(profile.following)
             setTweetsArray(profileTweet)
         }
-    }, [])
+    }, [pro.name])
     useEffect(()=>{
         if(ifedit){
             console.log(editprofile)
@@ -84,7 +80,7 @@ console.log(location.search.substring(6))
         }
     }
     const followed = useSelector((f) => f.FollowReducer)
-    console.log(followed)
+
     function handleFollowers() {
         dispatch(FollowAction(username))
         var imagepath = document.getElementsByClassName("pProfileFollow")[0].innerHTML;
@@ -139,24 +135,15 @@ console.log(location.search.substring(6))
     }
     
     const {likedTweets} = useSelector((l)=>l.LikedTweetsPReducer)
-    console.log(likedTweets)
-    useEffect(()=>{
-        if(loading===true){
-            document.body.style.opacity = 0.5;
-        }
-        else{
-            document.body.style.opacity = 1;
-        }
-    },[loading])
     // useEffect(()=>{
-    //     if(response!==""){
-    //         toast.success(`${response}`, {
-    //             position: "top-center",
-    //             theme: "light",
-    //             });
+    //     if(loading===true){
+    //         document.body.style.opacity = 0.5;
     //     }
-    // },[response])
- 
+    //     else{
+    //         document.body.style.opacity = 1;
+    //     }
+    // },[loading])
+
     return <>
         <Sidebar />
         <div className="PROFILE POPUPBG">
@@ -226,7 +213,7 @@ console.log(location.search.substring(6))
         </div>
         </div>
         <EditProfile />
-        {loading===true?<Loader loading={loading}/>:null}
+        {/* {loading===true?<Loader loading={loading}/>:null} */}
     </>
     
 }

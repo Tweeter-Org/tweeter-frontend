@@ -26,8 +26,10 @@ function Tweet(props) {
     const image = props.image
     const id = props.number;
     const bookmarkShow = props.bookmarkb
+    const retweets= props.retweet;
     const dispatch = useDispatch();
     const [tweetCount, setTweetCount] = useState(props.likeCount)
+    console.log(props.retweet)
     useEffect(() => {
         setTweetCount(props.likeCount)
         if (props.LIKES) {

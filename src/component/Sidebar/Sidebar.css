@@ -242,3 +242,35 @@ width:2vw;
     left:78vw;
     color: rgba(255, 255, 255, 0.6);
 }
+#searchtweetBg{
+    /* width:14vw; */
+    height:8vh;
+
+}
+#searchtweettag{
+    text-decoration: underline;
+    cursor:pointer;
+    margin-left:2vw;
+}
+#searchtweettag:hover{
+    color:#47C87A;
+}
+.tagTweetBg{
+    background-color: #121212 ;
+    width:47vw;
+    height:100vh;
+    position:absolute;
+    /* top:20vh; */
+    left:-48vw;
+    /* z-index:900; */
+}
+#TagTweetFlex{
+    z-index:999;
+    margin-left:5vw;
+}
+#alterTagTweet{
+    top:-3vh;
+}
+#alterTagP{
+    font-size: 1.5rem;
+}

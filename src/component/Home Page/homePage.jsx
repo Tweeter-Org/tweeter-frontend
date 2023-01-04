@@ -33,14 +33,6 @@ useEffect(()=>{
         document.body.style.opacity = 1;
     }
 },[loading])
-// useEffect(()=>{
-//     if(response!==""){
-//         toast.success(`${response}`, {
-//             position: "top-center",
-//             theme: "light",
-//             });
-//     }
-// },[response])
     return <>
     <Sidebar />
     
@@ -48,7 +40,7 @@ useEffect(()=>{
     {tweetLength>0?(tweetData.map((tweet, index)=>{
         const likes= liked[index]
         console.log(likes)
-        return <Tweet text={tweet.text} image={tweet.image} video={tweet.video} likeCount={parseInt(tweet.likes)} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarkb ="false" LIKES= {likes} />;
+        return <Tweet text={tweet.text} image={tweet.image} video={tweet.video} likeCount={parseInt(tweet.likes)} retweet={tweet.retweet} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarkb ="false" LIKES= {likes} />;
     })):null}
     </div>
     {(loading===true)?<Loader loading={loading} />:null}

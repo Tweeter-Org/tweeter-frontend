@@ -57,3 +57,11 @@ function EditProfileAction (fd){
 }
 
 export {EditProfileAction}
+
+
+export const ProfileApi=(name)=>{
+    return {
+       type:"PROFILE_API_NAME",
+       payload: name
+    }
+  }
