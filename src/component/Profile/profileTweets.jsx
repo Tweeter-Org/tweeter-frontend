@@ -28,6 +28,7 @@ function ProfileTweet(props) {
     const image = props.image
     const id = props.number;
     const bookmarkShow = props.bookmarkb
+    const retweets = props.retweet;
     const dispatch = useDispatch();
     const [show, setShow] = useState(false)
     // const number = parseInt(props.likeCount)
@@ -114,7 +115,7 @@ console.log(profileTweet)
         }
     }, [bookmarkShow])
     return <>
-        <div className="tweetComp POPUPBG" id="profileTweetComp">
+    {retweet==null?(<div className="tweetComp POPUPBG" id="profileTweetComp">
             <div className="firstTweetBlock">
                 {(props.displaypic === null) ? (<span className="displaypie"><img src={avatar} id="picincircle" /></span>) :
                     ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
@@ -148,7 +149,49 @@ console.log(profileTweet)
                     <p className="tweetShare">Share</p>
                 </div>
             </div>
-        </div>
+        </div>):(   <div className="tweetComp POPUPBG" id="profileTweetComp">
+            <div className="firstTweetBlock">
+                {(props.displaypic === null) ? (<span className="displaypie"><img src={avatar} id="picincircle" /></span>) :
+                    ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
+                        (<span className="displaypie"><img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`} id="picincircle" /></span>))
+                }
+                <p className="username">{props.username}</p>
+                <img src={bookmark} className="bookmarkIcon" id="bmIcon" onClick={() => { handleTweetBookmark(props.tweetId) }} />
+               {myprofile?<img src={deleteIcon} className="deleteIcon" id="delIcon" onClick={() => {handleTweetDelete(props.tweetId)}} />:null}
+            </div>
+
+            {image != null ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" id="ProfileImage"/>) : null}
+            {video != null ? <video className="tweetvideo" id="ProfileVideo" controls>
+                <source src={`https://twitterbackend-production-93ac.up.railway.app/${video}`} type="video/mp4" />
+            </video> : null}
+            <p className="tweetText">{props.text}</p>
+            {/* <div className="tweetWithRetwwet">
+        {(retweets.image != null) ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${retweets.image}`} className="TWRVideo" alt="image" />) : null}
+            {(retweets.video != null) ? <video controls className="TWRVideo">
+                <source src={`https://twitterbackend-production-93ac.up.railway.app/${retweets.video}`} type="video/mp4" />
+            </video> : null}
+            <p className="TWRText" >{retweets.text}</p>
+        </div> */}
+            <div className="secondTweetBlock">
+                <div className="iconBlock">
+                    <img src={like} className="likeIcon" onClick={() => { handleTweetLike(props.tweetId) }} />
+                    <p className="tweetLike">{tweetCount}</p>
+                </div>
+                <div className="iconBlock">
+                    <img src={comment} id="commentIcon" />
+                    <p className="tweetComm">Comment</p>
+                </div>
+                <div className="iconBlock">
+                    <img src={retweet} id="retweetIcon" />
+                    <p className="tweetRetweet">Retweet</p>
+                </div>
+                <div className="iconBlock">
+                    <img src={share} id="shareIcon" />
+                    <p className="tweetShare">Share</p>
+                </div>
+            </div>
+        </div>)}
+     
         <ToastContainer />
     </>
 }

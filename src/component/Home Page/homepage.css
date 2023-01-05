@@ -57,7 +57,7 @@
 .tweetImage {
     height: auto;
     /* width:fit-content; */
-    width: 570px;
+    width: 580px;
     margin-top:2vh;
 }
 
@@ -77,7 +77,7 @@
 
 .tweetvideo {
     height:auto;
-    width: 570px;
+    width: 580px;
     margin-top:2vh;
 }
 
@@ -437,4 +437,30 @@
 }
 .tweetUsername:hover{
     color:#47C87A;
+}
+#tweetRet{
+    /* background-color: #47C87A; */
+}
+.tweetWithRetwwet{
+    width:38vw;
+    background-color: #161718;
+    border: 0.8px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    margin-left:4vw;
+    margin-bottom: 2vh;
+    padding:1vw ;
+    padding-bottom: 0;
+}
+.TWRVideo{
+    width:36vw;
+    /* margin-bottom:1vh; */
+}
+.TWRText{
+    color: white;
+    opacity: 0.9;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
 }

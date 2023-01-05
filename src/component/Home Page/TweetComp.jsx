@@ -85,15 +85,29 @@ function Tweet(props) {
     function hideProfilePopup(){
         document.getElementsByClassName("tweetPopcomp")[id].style.display="none"
     }
-    console.log(props.text)
-    console.log(props.text.indexOf('#'))
     const x = props.text.indexOf('#');
     const y = props.text.indexOf(' ')
-    console.log(y+x)
-    // for(var i=0;i)
-    // if(props.text)
+    var index1=-1,index2=-1,str
+    for(var i=0;i<props.text.length;i++){
+        console.log("loop")
+        if(props.text[i]=='#'){
+            index1=i;
+            console.log(index1)
+            for(var j=index1+1;j<props.text.length+1;j++){
+                if(props.text[j]==' '){
+                    index2=j;
+                    console.log("loop2")
+                    console.log(index2)
+                    break;
+                }
+            }
+            str = props.text.substring(index1, index2)
+            console.log(str)
+        }
+    }
+   
     return <>
-        <div className="tweetComp POPUPBG">
+    {retweets==null?(  <div className="tweetComp POPUPBG">
             <div className="firstTweetBlock">
                 {(props.displaypic === null) ? (<span className="displaypie"><img src={avatar} id="picincircle" /></span>) :
                     ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
@@ -130,7 +144,52 @@ function Tweet(props) {
                     <p className="tweetShare">Share</p>
                 </div>
             </div>
+        </div>):(  <div className="tweetComp POPUPBG" id="tweetRet">
+        <div className="firstTweetBlock">
+                {(props.displaypic === null) ? (<span className="displaypie"><img src={avatar} id="picincircle" /></span>) :
+                    ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
+                        (<span className="displaypie"><img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`} id="picincircle" /></span>))
+                }
+                <p className="username" onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >{props.username}</p>
+                <img src={bookmark} className="bookmarkIcon" onClick={() => { handleTweetBookmark(props.tweetId) }} />
+                {/* <img src={deleteIcon} className="deleteIcon" id="delIcon" onClick={() => {handleTweetDelete(props.tweetId)}} /> */}
+                <TweetPopup name={props.username} num={id}/>
+            </div>
+            {/* {image!=null ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" />) :
+            (image != [null] ? (<img src={image} alt="image" className="tweetImage" />)
+             : null)} */}
+            {(image != null && image!=[null]) ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" />) : null}
+            {(video != null && video!=[null]) ? <video className="tweetvideo" controls>
+                <source src={`https://twitterbackend-production-93ac.up.railway.app/${video}`} type="video/mp4" />
+            </video> : null}
+            <p className="tweetText">{props.text}</p>
+            <div className="tweetWithRetwwet">
+        {(retweets.image != null) ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${retweets.image}`} className="TWRVideo" alt="image" />) : null}
+            {(retweets.video != null) ? <video controls className="TWRVideo">
+                <source src={`https://twitterbackend-production-93ac.up.railway.app/${retweets.video}`} type="video/mp4" />
+            </video> : null}
+            <p className="TWRText" >{retweets.text}</p>
         </div>
+            <div className="secondTweetBlock">
+                <div className="iconBlock">
+                    <img src={like} className="likeIcon" onClick={() => { handleTweetLike(props.tweetId) }} />
+                    <p className="tweetLike">{tweetCount}</p>
+                </div>
+                <div className="iconBlock">
+                    <img src={comment} id="commentIcon" />
+                    <p className="tweetComm">Comment</p>
+                </div>
+                <div className="iconBlock">
+                    <img src={retweet} id="retweetIcon" />
+                    <p className="tweetRetweet">Retweet</p>
+                </div>
+                <div className="iconBlock">
+                    <img src={share} id="shareIcon" />
+                    <p className="tweetShare">Share</p>
+                </div>
+            </div>    
+        </div>)}
+      
     </>
 }
 
