@@ -20,14 +20,18 @@ function CreateTweet() {
     const [text, setText] = useState("");
     const [showEmoji, setShowEmoji] = useState(false)
     const [sendImage, setSendImage] = useState([null]);
+    const [imgg, setImgg] = useState(null);
+    const [vdoo, setVdoo] = useState(null);
     const dispatch = useDispatch();
     const fd = new FormData();
     function handleSendImage(e) {
         setSendImage(e.target.files[0])
+        setImgg(e.target.files[0])
     }
     const [sendVideo, setSendVideo] = useState([null]);
     function handleSendVideo(e) {
         setSendVideo(e.target.files[0])
+        setVdoo(e.target.files[0])
     }
 
     function handleEmojis() {
@@ -58,17 +62,16 @@ const {user, toFgtPwd} = auth;
 const {name, user_name, displaypic} = user;
 const {tweetData, liked} = useSelector((s)=>s.TweetFeedReducer)
 const newTweetCreated = {
-    "image":sendImage,
+    "image":imgg,
     "likes":"0",
     "text":text,
-    "video":sendVideo,
+    "video":vdoo,
     user:{
         "name":name,
         "user_name":user_name,
         displaypic:displaypic
     }
 }
-console.log(newTweetCreated)
     function handleCreateTweet (e){
         e.preventDefault();
         fd.append("text", text)

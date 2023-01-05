@@ -24,7 +24,7 @@ export function ProfileReducer(state = initialState, action) {
         case "VIEW_PROFILE_FAIL": return {
             ...state, loading: false, error: action.payload, accessProfile: false, profileTweet:[], profile:{}
         }
-        case "EDIT_PROFILE": return { ...state, loading: true, ifedit: false }
+        case "EDIT_PROFILE": return { ...state, loading: true, ifedit: false ,accessProfile:true}
         case "EDIT_PROFILE_SUCCED": {
             console.log(action.payload)
             return {

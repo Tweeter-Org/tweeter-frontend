@@ -85,6 +85,13 @@ function Tweet(props) {
     function hideProfilePopup(){
         document.getElementsByClassName("tweetPopcomp")[id].style.display="none"
     }
+    console.log(props.text)
+    console.log(props.text.indexOf('#'))
+    const x = props.text.indexOf('#');
+    const y = props.text.indexOf(' ')
+    console.log(y+x)
+    // for(var i=0;i)
+    // if(props.text)
     return <>
         <div className="tweetComp POPUPBG">
             <div className="firstTweetBlock">
@@ -93,13 +100,15 @@ function Tweet(props) {
                         (<span className="displaypie"><img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`} id="picincircle" /></span>))
                 }
                 <p className="username" onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >{props.username}</p>
-                <img src={bookmark} className="bookmarkIcon" id="bmIcon" onClick={() => { handleTweetBookmark(props.tweetId) }} />
+                <img src={bookmark} className="bookmarkIcon" onClick={() => { handleTweetBookmark(props.tweetId) }} />
                 {/* <img src={deleteIcon} className="deleteIcon" id="delIcon" onClick={() => {handleTweetDelete(props.tweetId)}} /> */}
                 <TweetPopup name={props.username} num={id}/>
             </div>
-
-            {image != null ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" />) : null}
-            {video != null ? <video className="tweetvideo" controls>
+            {/* {image!=null ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" />) :
+            (image != [null] ? (<img src={image} alt="image" className="tweetImage" />)
+             : null)} */}
+            {(image != null && image!=[null]) ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" />) : null}
+            {(video != null && video!=[null]) ? <video className="tweetvideo" controls>
                 <source src={`https://twitterbackend-production-93ac.up.railway.app/${video}`} type="video/mp4" />
             </video> : null}
             <p className="tweetText">{props.text}</p>

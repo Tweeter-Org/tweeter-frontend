@@ -50,6 +50,7 @@ console.log(profileTweet)
     useEffect(() => {
         dispatch(ProfileAction(pro.name));
         if (accessProfile) {
+            console.log(profile)
             setFollower(profile.followers.length)
             setFollowing(profile.following.length)
             setMyProfile(profile.myprofile)
@@ -64,7 +65,7 @@ console.log(profileTweet)
             setFollowingArray(profile.following)
             setTweetsArray(profileTweet)
         }
-    }, [pro.name])
+    }, [profile])
     useEffect(()=>{
         if(ifedit){
             console.log(editprofile)
@@ -159,7 +160,7 @@ console.log(profileTweet)
                         <p className="pTweet1" onClick={() => { displayFollowers();showFollowing() }} >Following</p>
                     </div>
                     <div className="pBlock2">
-                        <p className="pTweetCount" id="tweetCount">{tweetsArray.length}</p>
+                        <p className="pTweetCount" id="tweetCount">{profileTweet.length}</p>
                         <p className="pTweetCount">{followers}</p>
                         <span>
                             <p className="pTweetCount" id="followCount">{following}</p>
@@ -202,7 +203,7 @@ console.log(profileTweet)
         })):<p className="alterFollower">No Followings</p>}
         </div> 
         <div className="tweetPrFlexbox" id="profileTweetFlex">
-        {tweetsArray.length>0?(tweetsArray.map((tweet, index)=>{
+        {profileTweet.length>0?(profileTweet.map((tweet, index)=>{
         return <ProfileTweet text={tweet.text} likeCount={tweet.likes} image={tweet.image} video={tweet.video} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarkb ="false" />;
     })):null}
         </div>

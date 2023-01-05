@@ -246,8 +246,10 @@ padding-bottom:5vh;
 
 .pTweetReply {
     margin-right: 4vw;
-    margin-left: 4vw;
+    margin-left: 5.5vw;
     cursor: pointer;
+    /* height:5vh; */
+    /* width:20vw; */
 }
 
 .pLikehead {
@@ -336,10 +338,9 @@ z-index: 10;
     margin-left: 2vw;
     line-height: 27px;
     /* identical to box height */
-    
+    cursor: pointer;
     text-decoration: underline;
     color: rgba(255, 255, 255, 0.7);
-
 }
 .editName{
     font-family: 'Montserrat';
@@ -348,6 +349,7 @@ z-index: 10;
     font-size: 18px;
     margin-left: 2vw;
     line-height: 27px;
+    margin-bottom:4vh;
     /* identical to box height */
     
     
@@ -360,7 +362,7 @@ z-index: 10;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     line-height: 22px;
     color: rgba(255, 255, 255, 0.65);
 }
@@ -380,7 +382,7 @@ margin-bottom: 3vh;
     line-height: 27px;
     /* identical to box height */
     
-    
+    margin-bottom:4vh;
     color: rgba(255, 255, 255, 0.8);
 }
 .editBioInput{
@@ -390,7 +392,7 @@ margin-bottom: 3vh;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     line-height: 22px;
     color: rgba(255, 255, 255, 0.65);
 }
@@ -499,4 +501,8 @@ width:39vw;
 }
 #ProfileVideo{
     width:39vw;
+}
+#bmIcon{
+    margin-left: 25vw;
+    margin-right:0.4vw;
 }

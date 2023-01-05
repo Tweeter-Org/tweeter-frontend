@@ -1,5 +1,5 @@
 import FormData from "form-data";
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch , useSelector} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { EditProfileAction } from "../../react-redux/actions/Profile";
@@ -12,9 +12,24 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function EditProfile() {
     const navigate = useNavigate()
-    const [name, setName] = useState("");
-    const [bio, setBio] = useState("");
+    const profilee = useSelector((p) => p.ProfileReducer)
+    const { profile , accessProfile , loading , editprofile , ifedit , profileTweet} = profilee;
+   
+    const [NAME, SETNAME] = useState("");
+    const [BIO, SETBIO] = useState("");
+    console.log(profile)
+    useEffect(()=>{
+        if(profile.success){
+            console.log("vcm")
+            SETNAME(profile.user.name)
+            SETBIO(profile.user.bio)
+        }
+    },[profile.success])
+    console.log(NAME, BIO)
+    const [name, setName] = useState(NAME);
+    const [bio, setBio] = useState(BIO);
     const [sendImage, setSendImage] = useState([]);
+  
     function handleSendImage(e) {
         console.log(e.target.files);
         setSendImage(e.target.files[0])
@@ -29,7 +44,6 @@ function EditProfile() {
     }
     const fd = new FormData();
     const dispatch = useDispatch()
-    const { profile, accessProfile, loading, editprofile, ifedit } = useSelector((p) => p.ProfileReducer)
     function handleEditProfile(e) {
         e.preventDefault()
         fd.append("name", name)
@@ -64,9 +78,9 @@ function EditProfile() {
                 <label for="ctuploadImg"><p className="editImagetext">Edit Picture or Avatar</p></label>
                 <input type="file" id="ctuploadImg" accept="image/png, image/jpg, image/jpeg" onChange={handleSendImage} hidden />
                 <p className="editName">Name</p>
-                <div className="div1"><input type="text" className="editNameInput" onChange={handleName}></input></div>
+                <div className="div1"><input type="text" className="editNameInput" onChange={handleName} value={name} ></input></div>
                 <p className="editBio">Bio</p>
-                <div className="div2"><input type="text" className="editBioInput" onChange={handleBio} ></input></div>
+                <div className="div2"><input type="text" className="editBioInput" onChange={handleBio} value= {bio}></input></div>
                 <button className="ctCancelTweet" id="editPCancel" onClick={handlecancel}>Cancel</button>
                 <button className="ctCreateTweet" id="editPDone" onClick={handleEditProfile}>Edit</button>
             </form>
