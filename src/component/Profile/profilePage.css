@@ -5,7 +5,7 @@
     height: fit-content;
     margin-left: 23vw;
     margin-top: 15vh;
-padding-bottom:5vh;
+    padding-bottom: 5vh;
     background: #161718;
     border-radius: 8px;
     z-index: 105;
@@ -43,6 +43,7 @@ padding-bottom:5vh;
     height: 26vh;
     border-radius: 50%;
 }
+
 /* .pImage1{
     margin-left: -5vw;
     width: 10vw;
@@ -86,7 +87,7 @@ padding-bottom:5vh;
 
 /* #tweetCount {
     /* margin-right: 25px; */
-    /* margin-left: 0; 
+/* margin-left: 0; 
 } */
 
 .pEdiitProfile {
@@ -106,7 +107,8 @@ padding-bottom:5vh;
     color: rgba(255, 255, 255, 0.4);
     cursor: pointer;
 }
-.pProfileFollow{
+
+.pProfileFollow {
     border: none;
     width: 24vw;
     height: 32px;
@@ -170,7 +172,7 @@ padding-bottom:5vh;
     color: rgba(255, 255, 255, 0.85);
 }
 
-.pText4{
+.pText4 {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
@@ -182,7 +184,7 @@ padding-bottom:5vh;
     color: rgba(255, 255, 255, 0.85);
 }
 
-.pText5{
+.pText5 {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
@@ -191,15 +193,18 @@ padding-bottom:5vh;
     font-size: 14px;
     line-height: 20px;
     color: rgba(255, 255, 255, 0.85);
-    margin-bottom:0.5vh;
+    margin-bottom: 0.5vh;
 }
-#create{
+
+#create {
     text-decoration: underline;
 }
-#update{
+
+#update {
     text-decoration: underline;
 }
-.pText6{
+
+.pText6 {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
@@ -209,6 +214,7 @@ padding-bottom:5vh;
     line-height: 20px;
     color: rgba(255, 255, 255, 0.85);
 }
+
 .profileDiv3 {
     display: flex;
     font-family: 'Montserrat';
@@ -283,54 +289,60 @@ padding-bottom:5vh;
     cursor: pointer;
     width: 8vw;
 }
-.pFollowerHead:hover{
-    color:#47c87a;
+
+.pFollowerHead:hover {
+    color: #47c87a;
 }
+
 .pFollowingHead {
     margin-right: 8vw;
     width: 8vw;
     margin-left: 4vw;
     cursor: pointer;
 }
-.pFollowingHead:hover{
-    color:#47c87a;
+
+.pFollowingHead:hover {
+    color: #47c87a;
 }
-.pPost{
-    width:24px;
-    height:24px;
-    margin-right:2vw;
-    opacity:0.7;
-    border:1px solid #47c87a;
+
+.pPost {
+    width: 24px;
+    height: 24px;
+    margin-right: 2vw;
+    opacity: 0.7;
+    border: 1px solid #47c87a;
     border-radius: 4px;
     cursor: pointer;
 }
 
 /*EDIT PROFILE*/
 
-.editPrDiv{
+.editPrDiv {
     box-sizing: border-box;
-display:flex;
-flex-direction: column;
-position: absolute;
-top:15vh;
-left:25.5vw;
-width: 40vw;
-height: 75vh;
-background-color: #121212;
-border: 1px solid rgba(255, 255, 255, 0.3);
-/* box-shadow: 0px 100px 80px #1A1C1E; */
-border-radius: 16px;
-display: none;
-z-index: 10;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 15vh;
+    left: 25.5vw;
+    width: 40vw;
+    height: 75vh;
+    background-color: #121212;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* box-shadow: 0px 100px 80px #1A1C1E; */
+    border-radius: 16px;
+    display: none;
+    z-index: 10;
 }
-.pEditImage{
+
+.pEditImage {
     margin-left: -6vw;
-    margin-top:4vh;
+    margin-top: 4vh;
     margin-bottom: 2vh;
     width: 27vw;
     height: 27vh;
 }
-.editImagetext{
+
+.editImagetext {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 300;
@@ -342,23 +354,25 @@ z-index: 10;
     text-decoration: underline;
     color: rgba(255, 255, 255, 0.7);
 }
-.editName{
+
+.editName {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 300;
     font-size: 18px;
     margin-left: 2vw;
     line-height: 27px;
-    margin-bottom:4vh;
+    margin-bottom: 4vh;
     /* identical to box height */
-    
-    
+
+
     color: rgba(255, 255, 255, 0.8);
 }
-.editNameInput{
-    background:none;
-    border:none;
-    outline:none;
+
+.editNameInput {
+    background: none;
+    border: none;
+    outline: none;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
@@ -366,14 +380,16 @@ z-index: 10;
     line-height: 22px;
     color: rgba(255, 255, 255, 0.65);
 }
-.div1{
+
+.div1 {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    width:36vw;
+    width: 36vw;
     margin-left: 2vw;
-    margin-top:-3vh;
-margin-bottom: 3vh;
+    margin-top: -3vh;
+    margin-bottom: 3vh;
 }
-.editBio{
+
+.editBio {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 300;
@@ -381,14 +397,15 @@ margin-bottom: 3vh;
     margin-left: 2vw;
     line-height: 27px;
     /* identical to box height */
-    
-    margin-bottom:4vh;
+
+    margin-bottom: 4vh;
     color: rgba(255, 255, 255, 0.8);
 }
-.editBioInput{
-    background:none;
-    border:none;
-    outline:none;
+
+.editBioInput {
+    background: none;
+    border: none;
+    outline: none;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
@@ -396,64 +413,72 @@ margin-bottom: 3vh;
     line-height: 22px;
     color: rgba(255, 255, 255, 0.65);
 }
-.div2{
+
+.div2 {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    width:36vw;
+    width: 36vw;
     margin-left: 2vw;
-    margin-top:-3vh;
-margin-bottom: 3vh;
+    margin-top: -3vh;
+    margin-bottom: 3vh;
 }
-#editPCancel{
-    top:68vh;
-    left:21vw;
+
+#editPCancel {
+    top: 68vh;
+    left: 21vw;
 }
-#editPDone{
-    top:68vh;
-    left:30vw;
+
+#editPDone {
+    top: 68vh;
+    left: 30vw;
 }
 
 /* FOLLOWERS */
 
-.followersFlex{
-    display:flex;
-    margin-left:1.5vw;
+.followersFlex {
+    display: flex;
+    margin-left: 1.5vw;
     flex-direction: column;
-    display:none;
+    display: none;
     /* margin-top:40vh; */
     /* width */
 }
-.followingFlex{
-    display:flex;
+
+.followingFlex {
+    display: flex;
     flex-direction: column;
-    margin-left:1.5vw;
+    margin-left: 1.5vw;
     display: none;
 }
-.followCompDiv{
+
+.followCompDiv {
     box-sizing: border-box;
     width: 42vw;
     height: 72px;
     margin-bottom: 4vh;
     border: 0.8px solid rgba(255, 255, 255, 0.15);
     border-radius: 8px;
-    display:flex;
+    display: flex;
 }
-.followName{
+
+.followName {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
     line-height: 24px;
     color: rgba(255, 255, 255, 0.9);
-    margin-left:5.5vw;
-    margin-top:2vh;
+    margin-left: 5.5vw;
+    margin-top: 2vh;
     text-transform: capitalize;
 
 }
-.followPic{
-    margin-top:2.6vh;
+
+.followPic {
+    margin-top: 2.6vh;
     /* top:60vh; */
 }
-.followUsername{
+
+.followUsername {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
@@ -461,54 +486,94 @@ margin-bottom: 3vh;
     line-height: 20px;
     color: rgba(255, 255, 255, 0.5);
     /* margin-left:-3.5vw; */
-    position:absolute;
-    left:30vw;
-    margin-top:6vh;
+    position: absolute;
+    left: 30vw;
+    margin-top: 6vh;
     text-transform: capitalize;
     text-decoration: underline;
 }
-.alterFollower{
+
+.alterFollower {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
     font-size: 1.2rem;
     line-height: 20px;
-    position:fixed;
-    top:80vh;
+    position: fixed;
+    top: 80vh;
     /* top:20vh; */
-    width:15vw;
-    left:40vw;
-    margin-bottom:5vh;
+    width: 15vw;
+    left: 40vw;
+    margin-bottom: 5vh;
     color: rgba(255, 255, 255, 0.6);
 }
-.tweetPrFlexbox{
-    display:flex;
+
+.tweetPrFlexbox {
+    display: flex;
     flex-direction: column;
-    margin-left:-20.8vw;
+    margin-left: -20.8vw;
     display: none;
 }
-#profileTweetBox{
+
+#profileTweetBox {
     background-color: aquamarine;
 }
-#profileTweetComp{
-    width:41vw;
+
+#profileTweetComp {
+    width: 41vw;
     border: 0.8px solid rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     /* background-color:#47c87a; */
 }
-#TWRProfile{
-    margin-left:1vw;
+
+#TWRProfile {
+    margin-left: 1vw;
 }
-#ProfileImage{
-width:39vw;
+
+#ProfileImage {
+    width: 39vw;
 }
-#ProfileVideo{
-    width:39vw;
+
+#ProfileVideo {
+    width: 39vw;
 }
-#bmIcon{
+
+#bmIcon {
     margin-left: 25vw;
-    margin-right:0.4vw;
+    margin-right: 0.4vw;
 }
-#profileRetweetIcon{
-    margin-top:5vh;
+
+#profileRetweetIcon {
+    margin-top: 5vh;
+}
+
+/* DELETE TWEET POPUP */
+#DltPopUp {
+    display: none;
+    align-items: center;
+    width: 30vw;
+    height: fit-content;
+    padding-bottom: 4vh;
+}
+
+#DltPopText1 {
+    margin-left: 1vw;
+}
+
+#DltPopText2 {
+    margin-left: 0.5vw;
+    width: 25vw;
+}
+
+#DltPopBtn1 {
+    margin-left: 4vw;
+    background-color: #f4212e;
+}
+
+#DltPopBtn2 {
+    margin-left: 4vw;
+    background: none;
+    border-color: rgba(255, 255, 255, 0.8);
+    color:rgba(255, 255, 255, 0.8)
+    /* margin-bottom:3vh; */
 }

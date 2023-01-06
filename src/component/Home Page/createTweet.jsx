@@ -70,7 +70,7 @@ function CreateTweet(props) {
             }
             return t._id == props.TWRId
         })
-        console.log(RId)
+        // console.log(RId)
     }, [props.TWRId])
     const newTweetCreated = {
         "image": sendImage,

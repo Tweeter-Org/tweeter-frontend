@@ -17,6 +17,7 @@ import ProfileTweet from "./profileTweets";
 import FollowAction from "../../react-redux/actions/Follow";
 import session from "redux-persist/lib/storage/session";
 import { propTypes } from "react-bootstrap/esm/Image";
+import DltTweetPopup from "./DeleteTweetPopup";
 
 function ProfilePage() {
     const dispatch = useDispatch();
@@ -203,7 +204,7 @@ console.log(profileTweet)
         </div>
         <div className="followingFlex">
         {following>0?(followingArray.map((f)=>{
-            return <FollowComp name={f} />
+            return <FollowComp name={f.name} username={f.user_name}/>
         })):<p className="alterFollower">No Followings</p>}
         </div> 
         <div className="tweetPrFlexbox" id="profileTweetFlex">
@@ -218,6 +219,7 @@ console.log(profileTweet)
         </div>
         </div>
         <EditProfile />
+        <DltTweetPopup />
         {/* {loading===true?<Loader loading={loading}/>:null} */}
     </>
     

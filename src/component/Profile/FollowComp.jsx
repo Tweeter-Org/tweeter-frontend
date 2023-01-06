@@ -7,7 +7,7 @@ function FollowComp (props){
         <div className="followCompDiv POPUPBG">
         <span className="displaySearchPic followPic"><img src={avatar} id="picincircle"/></span>
         <p className="followName">{props.name}</p>
-        <p className="followUsername">Alan Walker</p>
+        <p className="followUsername">{props.username}</p>
         {/* <p className="followUsername">{props.username}</p> */}
         </div>
     </>

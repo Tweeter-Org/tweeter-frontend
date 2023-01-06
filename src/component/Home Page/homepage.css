@@ -214,6 +214,9 @@
     display: flex;
     flex-direction: column;
     padding-left:1.5vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* padding-bottom: 5vh; */
     /* z-index:99999; */
 }
 #CREATETWEET{
@@ -514,4 +517,13 @@
 }
 #creteTweetPTag{
     display: none;
+}
+
+/* hide scroll bar */
+
+::-webkit-scrollbar{
+    display: none;
+}
+.example{
+    scrollbar-width: none;
 }

@@ -22,6 +22,7 @@ import { TweetFeedAction } from "../../react-redux/actions/Tweets.jsx";
 import { type } from "@testing-library/user-event/dist/type";
 import { ToastContainer , toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import DltTweetPopup from "./DeleteTweetPopup";
 
 function ProfileTweet(props) {
     const video = props.video
@@ -80,30 +81,42 @@ function ProfileTweet(props) {
     const { profile, accessProfile, loading , editprofile,ifedit , profileTweet} = useSelector((p) => p.ProfileReducer)
     const {myprofile} = profile;
     
+    function setOPacity (){
+        var items= document.getElementsByClassName("POPUPBG")
+        for(var i=0;i<items.length;i++){
+            document.getElementsByClassName("POPUPBG")[i].style.opacity=0.1;
+        }
+    }
+
     function handleTweetDelete(tweetid) {
+        sessionStorage.setItem("dlttweetId", tweetid)
         document.getElementsByClassName("deleteIcon")[id].src = greencross
-        dispatch(TweetDeleteAction(tweetid))
-        dispatch(FakeTweetDeleteAction(tweetid))
-        if(deleteTweet!==""){
-            toast.success(`${deleteTweet}`, {
-                position: "top-center",
-                theme: "light",
-                });
-        }
-        else if(errorTweet!==""){
-            toast.error(`${errorTweet}`, {
-                position: "top-center",
-                theme: "light",
-                });
-        }
-        if (deleteSym) {
-            if (deleteTweet === "Deleted tweet") {
-                document.getElementsByClassName("deleteIcon")[id].src = deleteIcon
-            }
-           else {
-                document.getElementsByClassName("deleteIcon")[id].src = greencross
-            }
-        }
+        document.getElementById("DltPopUp").style.display="flex"
+        document.getElementById("DltPopUp").style.opacity=1;
+        setOPacity()
+      
+        // dispatch(TweetDeleteAction(tweetid))
+        // dispatch(FakeTweetDeleteAction(tweetid))
+        // if(deleteTweet!==""){
+        //     toast.success(`${deleteTweet}`, {
+        //         position: "top-center",
+        //         theme: "light",
+        //         });
+        // }
+        // else if(errorTweet!==""){
+        //     toast.error(`${errorTweet}`, {
+        //         position: "top-center",
+        //         theme: "light",
+        //         });
+        // }
+        // if (deleteSym) {
+        //     if (deleteTweet === "Deleted tweet") {
+        //         document.getElementsByClassName("deleteIcon")[id].src = deleteIcon
+        //     }
+        //    else {
+        //         document.getElementsByClassName("deleteIcon")[id].src = greencross
+        //     }
+        // }
     }
 console.log(profileTweet)
     useEffect(() => {
@@ -198,7 +211,7 @@ console.log(profileTweet)
                 </div>
             </div>
         </div>)}
-     
+     {/* <DltTweetPopup /> */}
         <ToastContainer />
     </>
 }

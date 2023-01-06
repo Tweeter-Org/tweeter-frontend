@@ -15,7 +15,6 @@ import EmojiPicker from 'emoji-picker-react';
 import Bookmarks from './component/Bookmarks/bookmarks';
 import ProfilePage from './component/Profile/profilePage';
 import EditProfile from './component/Profile/EditProfile';
-import OthersProfile from './component/Sidebar/OthersProfile';
 import LogOut from './component/logOut/logOut';
 import Google from "./component/Google"
 import TagTweets from './component/Sidebar/TagTweets';
@@ -28,7 +27,6 @@ function App() {
       <Route path="/tagtweet" exact element={<TagTweets />} />
         <Route path="/google" element={<Google />} />
         <Route path="/logout" exact element={<LogOut />} />
-        <Route path="/otherprofile" exact element={<OthersProfile />} />
         <Route path="/editprofile" exact element={<EditProfile />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/bookmark" exact element={<Bookmarks />} />
