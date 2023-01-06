@@ -115,7 +115,7 @@ console.log(profileTweet)
         }
     }, [bookmarkShow])
     return <>
-    {retweet==null?(<div className="tweetComp POPUPBG" id="profileTweetComp">
+    {retweets===null?(<div className="tweetComp POPUPBG" id="profileTweetComp">
             <div className="firstTweetBlock">
                 {(props.displaypic === null) ? (<span className="displaypie"><img src={avatar} id="picincircle" /></span>) :
                     ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
@@ -149,7 +149,7 @@ console.log(profileTweet)
                     <p className="tweetShare">Share</p>
                 </div>
             </div>
-        </div>):(   <div className="tweetComp POPUPBG" id="profileTweetComp">
+        </div>):(<div className="tweetComp POPUPBG" id="profileTweetComp">
             <div className="firstTweetBlock">
                 {(props.displaypic === null) ? (<span className="displaypie"><img src={avatar} id="picincircle" /></span>) :
                     ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
@@ -165,13 +165,20 @@ console.log(profileTweet)
                 <source src={`https://twitterbackend-production-93ac.up.railway.app/${video}`} type="video/mp4" />
             </video> : null}
             <p className="tweetText">{props.text}</p>
-            {/* <div className="tweetWithRetwwet">
+            <div className="tweetWithRetwwet" id="TWRProfile">
+            <div className="TWRBlock1">
+            {(retweets.user.displaypic === null) ? (<img src={avatar} className="TWRpic" />) :
+                    ((retweets.user.displaypic.startsWith("https:")) ? (<img src={retweets.user.displaypic}  className="TWRpic"/>) :
+                        (<img src={`https://twitterbackend-production-93ac.up.railway.app/${retweets.user.displaypic}`} id="picincircle" />))
+                }
+                <p className="username">{retweets.user.user_name}</p>
+            </div>
         {(retweets.image != null) ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${retweets.image}`} className="TWRVideo" alt="image" />) : null}
             {(retweets.video != null) ? <video controls className="TWRVideo">
                 <source src={`https://twitterbackend-production-93ac.up.railway.app/${retweets.video}`} type="video/mp4" />
             </video> : null}
             <p className="TWRText" >{retweets.text}</p>
-        </div> */}
+        </div>
             <div className="secondTweetBlock">
                 <div className="iconBlock">
                     <img src={like} className="likeIcon" onClick={() => { handleTweetLike(props.tweetId) }} />
@@ -182,7 +189,7 @@ console.log(profileTweet)
                     <p className="tweetComm">Comment</p>
                 </div>
                 <div className="iconBlock">
-                    <img src={retweet} id="retweetIcon" />
+                    <img src={retweet} id="retweetIcon" className="profileRetweetIcon" />
                     <p className="tweetRetweet">Retweet</p>
                 </div>
                 <div className="iconBlock">

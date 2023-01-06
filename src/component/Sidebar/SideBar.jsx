@@ -102,8 +102,10 @@ function Sidebar() {
         }
     }
     function xyz() {
-        document.getElementById("CREATETWEET").style.opacity = 1;
         document.getElementById("CREATETWEET").style.display = "block"
+        document.getElementById("CTRETWEETDIV").style.display="none";
+        document.getElementById("buttonTweet").style.display="block";
+        document.getElementById("buttonRetweet").style.display="none";
         setOPacity()
     }
     function handleLogout() {
@@ -153,7 +155,7 @@ function Sidebar() {
                     })) : <p className="searchAlter">No search found</p>) : null
                 }
             </div>
-            <CreateTweet />
+            <CreateTweet/>
             <LogOut />
         </div>
         {(loading === true) ? <Spinner animation="border" variant="light" id="loadSpinner" /> : null}

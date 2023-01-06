@@ -3,7 +3,13 @@ import { useSelector } from "react-redux"
 const initialState={
     loading:false,
     tweetData:{},
-    liked:[]
+    liked:[],
+    bookmarked:[],
+    Rname:"",
+    username:"",
+    Rimage:null,
+    Rvideo:null,
+    Rtext:""
 }
 
 export const TweetFeedReducer = (state=initialState, action)=>{
@@ -13,7 +19,7 @@ export const TweetFeedReducer = (state=initialState, action)=>{
         }
         case "Tweet_Feed_Succeed":{
             console.log(action.payload)
-            return {...state, loading:false, tweetData:action.payload.data.tweets, liked:action.payload.data.liked}
+            return {...state, loading:false, tweetData:action.payload.data.tweets, liked:action.payload.data.liked, bookmarked:action.payload.data.bookmarked}
         }
         case "Tweet_Feed_Failed":{
             console.log(action.payload)
@@ -22,6 +28,16 @@ export const TweetFeedReducer = (state=initialState, action)=>{
         case "TWEET_FEED_ADD_ACTION":{
             return {
                 ...state, tweetData:[action.payload.tweeet, ...state.tweetData]
+            }
+        }
+        case "RETWEET_FEED_ADD_ACTION":{
+            return {
+                ...state, tweetData:[action.payload.retweeet, ...state.tweetData]
+            }
+        }
+        case "RETWEET_DETAILS":{
+            return {
+                ...state, Rname:action.payload.name , Rtext:action.payload.text , Rimage:action.payload.image , Rvideo:action.payload.video
             }
         }
         default: return state;

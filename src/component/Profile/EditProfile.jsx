@@ -12,29 +12,17 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function EditProfile() {
     const navigate = useNavigate()
-    const profilee = useSelector((p) => p.ProfileReducer)
-    const { profile , accessProfile , loading , editprofile , ifedit , profileTweet} = profilee;
-   
-    const [NAME, SETNAME] = useState("");
-    const [BIO, SETBIO] = useState("");
-    console.log(profile)
-    useEffect(()=>{
-        if(profile.success){
-            console.log("vcm")
-            SETNAME(profile.user.name)
-            SETBIO(profile.user.bio)
-        }
-    },[profile.success])
-    console.log(NAME, BIO)
+    const NAME =  sessionStorage.getItem("profile name")
+    const BIO = sessionStorage.getItem("profile bio")
     const [name, setName] = useState(NAME);
     const [bio, setBio] = useState(BIO);
     const [sendImage, setSendImage] = useState([]);
-  
+    const profilee = useSelector((p) => p.ProfileReducer)
+    const { profile , accessProfile , loading , editprofile , ifedit , profileTweet} = profilee;
     function handleSendImage(e) {
         console.log(e.target.files);
         setSendImage(e.target.files[0])
         console.log(e.target.files[0])
-        // fd.append("file",e.target.files[0])
     }
     function handleName(e) {
         setName(e.target.value)

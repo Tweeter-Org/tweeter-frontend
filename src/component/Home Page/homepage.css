@@ -104,7 +104,7 @@
     cursor: pointer;
 }
 
-#retweetIcon {
+.retweetIcon {
     width: 25.2px;
     height: 21px;
     margin-right: 0.5vw;
@@ -189,11 +189,19 @@
 } 
 
 /*CREATE TWEET*/
-
+#imageOutput{
+    position:absolute;
+    left:0vw;
+    top:52vh;
+    width:20vw;
+    border:1px solid  rgba(255, 255, 255, 0.2);
+    
+}
 .createTweetDiv {
     position: fixed;
     width: 40vw;
-    height: 50vh;
+    height: fit-content;
+    /* position:absolute; */
     left: 29vw;
     top:15vh;
     background: #070808;
@@ -203,30 +211,40 @@
     box-shadow: 0px 50px 80px #1A1C1E;
     border: 0.7px solid rgba(255, 255, 255, 0.2);
     z-index:15;
+    display: flex;
+    flex-direction: column;
+    padding-left:1.5vw;
     /* z-index:99999; */
 }
 #CREATETWEET{
-    /* margin-top: 500px; */
     display:none;
-    /* z-index:99999; */
+}
+.CTRETWEET{
+    background-color: #47C87A;
+    width:50vw;
+    height:20vh;
+    z-index:20;
+}
+.CTBlock1{
+    display:flex;
+    padding-top:2vh;
+}
+.CTDiv1{
+    display: flex;
+    flex-direction: column;
 }
 .ctCircle {
-    position: absolute;
     width: 4vw;
     height: 7.5vh;
-    left: 1.5vw;
-    top: 3vh;
     border-radius: 50%;
     background: #D9D9D9;
 }
 
 .ctName {
-    position: absolute;
     width: 20vw;
     height: 3vh;
-    left: 6.5vw;
-    top: 3vh;
-
+    margin-bottom:1vh;
+    margin-left:1vw;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
@@ -237,12 +255,9 @@
 }
 
 .ctUserName {
-    position: absolute;
     width: 117px;
     height: 20px;
-    left: 6.5vw;
-    top: 7vh;
-
+    margin-left:1vw;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
@@ -252,26 +267,19 @@
 }
 
 .ctTagline {
-    position: absolute;
     width: 40vw;
     height: 3vh;
-    left: 1.5vw;
-    top: 15vh;
-
+    margin-top:2vh;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 300;
-    font-size: 1.45rem;
+    font-size: 1.3rem;
     line-height: 29px;
-
     color: rgba(255, 255, 255, 0.6);
-
 }
 
 .ctWriteTweet {
-    position: absolute;
-    top: 30vh;
-    left: 1.5vw;
+    margin-top:10vh;
     width: 36.5vw;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -287,25 +295,24 @@
     font-size: 1rem;
     line-height: 20px;
     color: rgba(255, 255, 255, 0.9);
-
+}
+.CTBlock2{
+    display: flex;  
+    justify-content:last baseline;
+    margin-top:10vh;
 }
 #ctuploadImg{
     background:none;
     border:none;
     outline:none;
-    position:absolute;
-    top:20vh;
-    /* display: none; */
 }
 .ctCancelTweet {
     outline: none;
     background: none;
     box-sizing: border-box;
-    position: absolute;
     width: 8vw;
     height: 36px;
-    left: 22.5vw;
-    top: 42vh;
+  margin-left:10vw;
     border: 1px solid #47C87A;
     border-radius: 12px;
     font-family: 'Montserrat';
@@ -318,11 +325,9 @@
 
 .ctCreateTweet {
     border: none;
-    position: absolute;
-    width: 8vw;
+ width: 8vw;
     height: 36px;
-    left: 31vw;
-    top: 42vh;
+    margin-left:1vw;
     background: #47C87A;
     border-radius: 12px;
     font-family: 'Montserrat';
@@ -332,70 +337,113 @@
     line-height: 20px;
     color: rgba(255, 255, 255, 0.9);
 }
-
+#buttonTweet{
+    display:none;
+}
+#buttonRetweet{
+    display:none;
+}
 .ctImage {
-    position: absolute;
-    top: 42vh;
-    left: 1.5vw;
     opacity: 0.8;
     cursor: pointer;
+    margin-right:1vw;
+    margin-top:0.2vh;
 }
 
 .ctVideo {
-    position: absolute;
-    top: 41.5vh;
     height: 33px;
-    left: 4.5vw;
     opacity: 0.8;
     cursor: pointer;
+    margin-right:0.7vw;
+    margin-top:-0.3vh;
 }
 
 .ctSmile {
-    position: absolute;
-    top: 42.4vh;
-    left: 7.7vw;
     opacity: 0.8;
     cursor: pointer;
+    /* margin-right:vw; */
 }
-.ctEmoji{
-    position: absolute;
-    top:50vh;
-}
+
 .emojipicker{
     position:absolute;
     /* top:2vh; */
     left:-25.5vw;
 }
 .ctImageText {
-    position: absolute;
-    top: 46.5vh;
-    left: 1.2vw;
     font-size: 0.7rem;
+    margin-top:0.4vh;
     font-family: 'Montserrat';
     font-style: normal;
     color: rgba(255, 255, 255, 0.6);
 }
 
 .ctVideoText {
-    position: absolute;
-    top: 46.5vh;
-    left: 4.5vw;
     font-size: 0.7rem;
+    margin-top:0.1vh;
     font-family: 'Montserrat';
     font-style: normal;
     color: rgba(255, 255, 255, 0.6);
 }
 
 .ctSmileText {
-    position: absolute;
-    top: 46.5vh;
-    left: 7.4vw;
+    margin-top:0.8vh;
     font-size: 0.7rem;
     font-family: 'Montserrat';
     font-style: normal;
     color: rgba(255, 255, 255, 0.6);
 }
+.CTRetweetDiv{
+    width:35vw;
+    background-color: #161718;
+    border: 0.8px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    margin-left:1.5vw;
+    margin-top:2.5vh;
+    margin-bottom: 2vh;
+    padding:1vw ;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+#CTRETWEETDIV{
+    display: none;
+}
+.CTRVideo{
+    width:32.8vw;
+    margin-top:1vh;
+    margin-bottom:1vh;
+    /* margin-bottom:1vh; */
+}
+.CTRet1{
+    display: flex;
+}
+.CTRet2{
+    display: flex;
+    flex-direction: column;
+}
+#CTRetweetImage{
+    width:35px;
+    height:30px;
+    border-radius: 50%;
+    background-color: rgb(228, 219, 219);
+    margin-top:0.5vh;
+}
+#CTRetweetName{
 
+}
+#CTRetweetUsername{
+
+}
+.TWRBlock1{
+    display: flex;
+}
+.TWRpic{
+    background-color: rgb(228, 219, 219);
+    margin-right:0.5vw;
+    width:35px;
+    height:30px;
+    border-radius: 50%;
+}
 /*TWEET POPUP*/
 .tweetPopcomp {
     margin-left:-44vw;
@@ -463,4 +511,7 @@
     font-weight: 500;
     font-size: 15px;
     line-height: 18px;
+}
+#creteTweetPTag{
+    display: none;
 }

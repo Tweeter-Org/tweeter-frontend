@@ -15,6 +15,8 @@ import { LikedTweetAction } from "../../react-redux/actions/Tweets";
 import Loader from "../Assets/Loader";
 import ProfileTweet from "./profileTweets";
 import FollowAction from "../../react-redux/actions/Follow";
+import session from "redux-persist/lib/storage/session";
+import { propTypes } from "react-bootstrap/esm/Image";
 
 function ProfilePage() {
     const dispatch = useDispatch();
@@ -65,7 +67,7 @@ console.log(profileTweet)
             setFollowingArray(profile.following)
             setTweetsArray(profileTweet)
         }
-    }, [profile])
+    }, [pro.name])
     useEffect(()=>{
         if(ifedit){
             console.log(editprofile)
@@ -106,6 +108,8 @@ console.log(profileTweet)
     }
     function handleEdit() {
         document.getElementsByClassName("editPrDiv")[0].style.display = "flex";
+        sessionStorage.setItem("profile name",profile.user.name)
+        sessionStorage.setItem("profile bio", profile.user.bio)
         setOPacity()
     }
     function showFollowers(){
@@ -204,7 +208,7 @@ console.log(profileTweet)
         </div> 
         <div className="tweetPrFlexbox" id="profileTweetFlex">
         {profileTweet.length>0?(profileTweet.map((tweet, index)=>{
-        return <ProfileTweet text={tweet.text} likeCount={tweet.likes} image={tweet.image} video={tweet.video} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarkb ="false" />;
+        return <ProfileTweet text={tweet.text} likeCount={tweet.likes} retweet={tweet.retweet} image={tweet.image} video={tweet.video} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarkb ="false" />;
     })):null}
         </div>
         <div className="tweetPrFlexbox" id="likeTweetFlex">

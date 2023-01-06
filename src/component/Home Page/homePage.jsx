@@ -12,13 +12,14 @@ import 'react-toastify/dist/ReactToastify.css';
 function HomePage (){
     const dispatch = useDispatch();
 
-    const {loading, tweetData, liked} = useSelector((s)=>s.TweetFeedReducer)
+    const {loading, tweetData, liked, bookmarked} = useSelector((s)=>s.TweetFeedReducer)
     const {response} = useSelector((t)=>t.TweetCreateReducer)
     useEffect(()=>{
         dispatch(TweetFeedAction())
     },[])
    console.log(tweetData)
    console.log(liked)
+   console.log(bookmarked)
    const tweetLength = tweetData.length
 
 const auth = useSelector((s)=>s.AuthReducer)
@@ -39,8 +40,9 @@ useEffect(()=>{
     <div className="tweetFlexBox POPUPBG">
     {tweetLength>0?(tweetData.map((tweet, index)=>{
         const likes= liked[index]
+        const bookmarks = bookmarked[index]
         console.log(likes)
-        return <Tweet text={tweet.text} image={tweet.image} video={tweet.video} likeCount={parseInt(tweet.likes)} retweet={tweet.retweet} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarkb ="false" LIKES= {likes} />;
+        return <Tweet text={tweet.text} image={tweet.image} video={tweet.video} likeCount={parseInt(tweet.likes)} retweet={tweet.retweet} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarked ={bookmarks} LIKES= {likes} />;
     })):null}
     </div>
     {(loading===true)?<Loader loading={loading} />:null}

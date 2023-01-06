@@ -5,10 +5,9 @@ import comment from "../Assets/tweetComm.svg";
 import retweet from "../Assets/retweet.svg";
 import avatar from "../Assets/avatar.svg";
 import bookmark from "../Assets/bookmarks.svg";
-// import delete from "../Assets/delete.svg";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import TweetLikeAction from "../../react-redux/actions/Tweets.jsx";
+import TweetLikeAction, { RetweetDetails } from "../../react-redux/actions/Tweets.jsx";
 import greenLike from "../Assets/greenLike.svg"
 import greenComment from "../Assets/greenComment.svg"
 import greenRetweet from "../Assets/greenRetweet.svg"
@@ -20,12 +19,14 @@ import TweetDeleteAction from "../../react-redux/actions/deleteTweetAct";
 import { TweetFeedAction } from "../../react-redux/actions/Tweets.jsx";
 import { type } from "@testing-library/user-event/dist/type";
 import TweetPopup from "./tweetPopup";
+import CreateTweet from "./createTweet";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Tweet(props) {
     const video = props.video
     const image = props.image
     const id = props.number;
-    const bookmarkShow = props.bookmarkb
+    const bookmarkShow = props.bookmarked
     const retweets= props.retweet;
     const dispatch = useDispatch();
     const [tweetCount, setTweetCount] = useState(props.likeCount)
@@ -41,6 +42,14 @@ function Tweet(props) {
             document.getElementsByClassName("tweetLike")[id].style.color = "white"
         }
     }, [props.LIKES])
+    useEffect(() => {
+        if (bookmarkShow) {
+            document.getElementsByClassName("bookmarkIcon")[id].src = greenBookmarks
+        }
+        else {
+            document.getElementsByClassName("bookmarkIcon")[id].src = bookmark
+        }
+    }, [bookmarkShow])
     function handleTweetLike(tweetid) {
         dispatch(TweetLikeAction(tweetid))
         var imagepath = document.getElementsByClassName("tweetLike")[id].style.color;
@@ -69,15 +78,32 @@ function Tweet(props) {
             }
         }
     }
-
-    useEffect(() => {
-        if (bookmarkShow === "true") {
-            document.getElementsByClassName("bookmarkIcon")[id].src = greenBookmarks
+    function setOPacity() {
+        var items = document.getElementsByClassName("POPUPBG")
+        for (var i = 0; i < items.length; i++) {
+            document.getElementsByClassName("POPUPBG")[i].style.opacity = 0.2;
+        }
+    }
+    const navigate = useNavigate()
+    function handleRetweet (tweetid, name, image, video, text){
+        dispatch(RetweetDetails(tweetid,name, video, text, image))
+        sessionStorage.setItem("retweetId", tweetid)
+        var retweetPath = document.getElementsByClassName("tweetRetweet")[id].style.color;
+        document.getElementById("CREATETWEET").style.display = "block"
+        document.getElementById("CREATETWEET").style.scrollBehavior = "scroll"
+        document.getElementById("CTRETWEETDIV").style.display="flex";
+        document.getElementById("buttonTweet").style.display="none";
+        document.getElementById("buttonRetweet").style.display="block";
+        if (retweetPath === "white") {
+            document.getElementsByClassName("tweetRetweet")[id].style.color = "green"
+            document.getElementsByClassName("retweetIcon")[id].src = greenRetweet
         }
         else {
-            document.getElementsByClassName("bookmarkIcon")[id].src = bookmark
+            document.getElementsByClassName("retweetIcon")[id].src = retweet
+            document.getElementsByClassName("tweetRetweet")[id].style.color = "white"
         }
-    }, [bookmarkShow])
+    }
+  
 
     function showProfilePopup(){
         document.getElementsByClassName("tweetPopcomp")[id].style.display="block"
@@ -121,8 +147,8 @@ function Tweet(props) {
             {/* {image!=null ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" />) :
             (image != [null] ? (<img src={image} alt="image" className="tweetImage" />)
              : null)} */}
-            {(image != null && image!=[null]) ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" />) : null}
-            {(video != null && video!=[null]) ? <video className="tweetvideo" controls>
+            {image != null? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" />) : null}
+            {video != null ? <video className="tweetvideo" controls>
                 <source src={`https://twitterbackend-production-93ac.up.railway.app/${video}`} type="video/mp4" />
             </video> : null}
             <p className="tweetText">{props.text}</p>
@@ -135,8 +161,8 @@ function Tweet(props) {
                     <img src={comment} id="commentIcon" />
                     <p className="tweetComm">Comment</p>
                 </div>
-                <div className="iconBlock">
-                    <img src={retweet} id="retweetIcon" />
+                <div className="iconBlock"> 
+                    <img src={retweet} className="retweetIcon" onClick={()=>handleRetweet(props.tweetId, props.username, image, video, props.text)} />
                     <p className="tweetRetweet">Retweet</p>
                 </div>
                 <div className="iconBlock">
@@ -152,7 +178,6 @@ function Tweet(props) {
                 }
                 <p className="username" onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >{props.username}</p>
                 <img src={bookmark} className="bookmarkIcon" onClick={() => { handleTweetBookmark(props.tweetId) }} />
-                {/* <img src={deleteIcon} className="deleteIcon" id="delIcon" onClick={() => {handleTweetDelete(props.tweetId)}} /> */}
                 <TweetPopup name={props.username} num={id}/>
             </div>
             {/* {image!=null ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" />) :
@@ -164,6 +189,14 @@ function Tweet(props) {
             </video> : null}
             <p className="tweetText">{props.text}</p>
             <div className="tweetWithRetwwet">
+            <div className="TWRBlock1">
+            {(retweets.user.displaypic === null) ? (<img src={avatar} className="TWRpic" />) :
+                    ((retweets.user.displaypic.startsWith("https:")) ? (<img src={retweets.user.displaypic}  className="TWRpic"/>) :
+                        (<img src={`https://twitterbackend-production-93ac.up.railway.app/${retweets.user.displaypic}`} id="picincircle" />))
+                }
+                <p className="username">{retweets.user.user_name}</p>
+            </div>
+           
         {(retweets.image != null) ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${retweets.image}`} className="TWRVideo" alt="image" />) : null}
             {(retweets.video != null) ? <video controls className="TWRVideo">
                 <source src={`https://twitterbackend-production-93ac.up.railway.app/${retweets.video}`} type="video/mp4" />
@@ -189,7 +222,7 @@ function Tweet(props) {
                 </div>
             </div>    
         </div>)}
-      
+        <CreateTweet/>
     </>
 }
 
