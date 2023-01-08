@@ -1,31 +1,35 @@
-.tweetComp{
+.tweetComp {
     display: flex;
     flex-direction: column;
-    height:fit-content;
-    width:45vw;
+    height: fit-content;
+    width: 45vw;
     margin-left: 22.5vw;
     margin-bottom: 2vh;
     background-color: #161718;
     border-radius: 16px;
     z-index: 5;
-    padding:2vh 1vw;
-    padding-bottom:0vh;
+    padding: 2vh 1vw;
+    padding-bottom: 0vh;
     justify-content: space-evenly;
     text-transform: capitalize;
 
 }
-.firstTweetBlock{
+
+.firstTweetBlock {
     display: flex;
+    cursor: pointer;
 }
-.secondTweetBlock{
-    display:flex;
-   justify-content: space-around;
+
+.secondTweetBlock {
+    display: flex;
+    justify-content: space-around;
 }
-.iconBlock{
+
+.iconBlock {
     display: flex;
 }
 
- .displaypie {
+.displaypie {
     width: 43px;
     height: 39.09px;
     margin-right: 1vw;
@@ -34,11 +38,12 @@
     z-index: 6;
 }
 
-#picincircle{
+#picincircle {
     width: 43px;
     height: 39.09px;
     border-radius: 50%;
 }
+
 .username {
     width: 136px;
     /* height: 27px; */
@@ -48,24 +53,24 @@
     font-size: 22px;
     line-height: 27px;
     color: rgba(255, 255, 255, 0.9);
-    cursor:pointer;
+    cursor: pointer;
 }
-.username:hover{
-    color:#47C87A;
+
+.username:hover {
+    color: #47C87A;
 }
 
 .tweetImage {
     height: auto;
     /* width:fit-content; */
     width: 580px;
-    margin-top:2vh;
+    margin-top: 2vh;
 }
 
 .tweetText {
     width: 42.7vw;
-    
-    margin-top:2vh;
-    margin-bottom:2vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
     color: white;
     opacity: 0.9;
     font-family: 'Montserrat';
@@ -76,9 +81,9 @@
 }
 
 .tweetvideo {
-    height:auto;
+    height: auto;
     width: 580px;
-    margin-top:2vh;
+    margin-top: 2vh;
 }
 
 .likeIcon {
@@ -99,7 +104,7 @@
 #commentIcon {
     width: 23px;
     height: 21px;
-    margin-top:0.5vh;
+    margin-top: 0.5vh;
     margin-right: 0.5vw;
     cursor: pointer;
 }
@@ -110,26 +115,31 @@
     margin-right: 0.5vw;
     cursor: pointer;
 }
-.bookmarkIcon{
+
+.bookmarkIcon {
     width: 20px;
     height: 20px;
-    margin-left:27vw;
-    opacity:0.8;  
+    margin-left: 27vw;
+    opacity: 0.8;
     cursor: pointer;
 }
-.deleteIcon{
+
+.deleteIcon {
     width: 20px;
     height: 20px;
     /* margin-left:27vw; */
-    opacity:0.8;  
+    opacity: 0.8;
     cursor: pointer;
 }
-.deleteIcon:hover{
-    color:#47C87A
+
+.deleteIcon:hover {
+    color: #47C87A
 }
-.bookmarkIcon:hover{
-    color:#47C87A
+
+.bookmarkIcon:hover {
+    color: #47C87A
 }
+
 .tweetLike {
     margin-top: 0.4vh;
     width: 32px;
@@ -186,28 +196,31 @@
     margin-top: 15vh;
     display: flex;
     flex-direction: column;
-} 
+}
 
 /*CREATE TWEET*/
-#imageOutput{
-    position:absolute;
-    right:0vw;
-    top:0vh;
-    width:200px;
-    height:150px;
-    border:1px solid  rgba(255, 255, 255, 0.2);
+#imageOutput {
+    position: absolute;
+    right: 0vw;
+    top: 0vh;
+    width: 200px;
+    height: 150px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     display: none;
 }
+
 #VIDEO {
-    position:absolute;
-    right:0vw;
-    top:0vh;
-    width:20vw;
-    border:1px solid  rgba(255, 255, 255, 0.2);
+    position: absolute;
+    right: 0vw;
+    top: 0vh;
+    width: 20vw;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
-#videoOutput{
+
+#videoOutput {
     /* display: none; */
 }
+
 .createTweetDiv {
     position: fixed;
     width: 40vw;
@@ -215,37 +228,42 @@
     /* height:20vh; */
     /* position:absolute; */
     left: 29vw;
-    top:15vh;
+    top: 15vh;
     background: #070808;
     background-color: #121212;
     box-shadow: 0px 264px 106px rgba(23, 25, 28, 0.01), 0px 149px 89px rgba(23, 25, 28, 0.05), 0px 66px 66px rgba(23, 25, 28, 0.09), 0px 17px 36px rgba(23, 25, 28, 0.1), 0px 0px 0px rgba(23, 25, 28, 0.1);
     border-radius: 16px;
     box-shadow: 0px 50px 80px #1A1C1E;
     border: 0.7px solid rgba(255, 255, 255, 0.2);
-    z-index:15;
+    z-index: 15;
     display: flex;
     flex-direction: column;
-    padding-left:1.5vw;
+    padding-left: 1.5vw;
     overflow-x: hidden;
     overflow-y: scroll;
 }
-#CREATETWEET{
-    display:none;
+
+#CREATETWEET {
+    display: none;
 }
-.CTRETWEET{
+
+.CTRETWEET {
     background-color: #47C87A;
-    width:50vw;
-    height:20vh;
-    z-index:20;
+    width: 50vw;
+    height: 20vh;
+    z-index: 20;
 }
-.CTBlock1{
-    display:flex;
-    padding-top:2vh;
+
+.CTBlock1 {
+    display: flex;
+    padding-top: 2vh;
 }
-.CTDiv1{
+
+.CTDiv1 {
     display: flex;
     flex-direction: column;
 }
+
 .ctCircle {
     width: 4vw;
     height: 7.5vh;
@@ -256,8 +274,8 @@
 .ctName {
     width: 20vw;
     height: 3vh;
-    margin-bottom:1vh;
-    margin-left:1vw;
+    margin-bottom: 1vh;
+    margin-left: 1vw;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
@@ -270,7 +288,7 @@
 .ctUserName {
     width: 117px;
     height: 20px;
-    margin-left:1vw;
+    margin-left: 1vw;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
@@ -282,7 +300,7 @@
 .ctTagline {
     width: 40vw;
     height: 3vh;
-    margin-top:2vh;
+    margin-top: 2vh;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 300;
@@ -292,13 +310,13 @@
 }
 
 .ctWriteTweet {
-    margin-top:10vh;
+    margin-top: 10vh;
     width: 36.5vw;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .ctWriteTweetInput {
-    width:36.5vw;
+    width: 36.5vw;
     border: none;
     outline: none;
     background: none;
@@ -309,23 +327,26 @@
     line-height: 20px;
     color: rgba(255, 255, 255, 0.9);
 }
-.CTBlock2{
-    display: flex;  
-    justify-content:last baseline;
-    margin-top:10vh;
+
+.CTBlock2 {
+    display: flex;
+    justify-content: last baseline;
+    margin-top: 10vh;
 }
-#ctuploadImg{
-    background:none;
-    border:none;
-    outline:none;
+
+#ctuploadImg {
+    background: none;
+    border: none;
+    outline: none;
 }
+
 .ctCancelTweet {
     outline: none;
     background: none;
     box-sizing: border-box;
     width: 8vw;
     height: 36px;
-  margin-left:10vw;
+    margin-left: 10vw;
     border: 1px solid #47C87A;
     border-radius: 12px;
     font-family: 'Montserrat';
@@ -338,9 +359,9 @@
 
 .ctCreateTweet {
     border: none;
- width: 8vw;
+    width: 8vw;
     height: 36px;
-    margin-left:1vw;
+    margin-left: 1vw;
     background: #47C87A;
     border-radius: 12px;
     font-family: 'Montserrat';
@@ -350,43 +371,49 @@
     line-height: 20px;
     color: rgba(255, 255, 255, 0.9);
 }
-#buttonTweet{
-    display:none;
+
+#buttonTweet {
+    display: none;
 }
-#buttonRetweet{
-    display:none;
+
+#buttonRetweet {
+    display: none;
 }
+
 .ctImage {
     opacity: 0.8;
     cursor: pointer;
-    margin-right:1vw;
-    margin-top:0.2vh;
+    margin-right: 1vw;
+    margin-top: 0.2vh;
 }
 
 .ctVideo {
     height: 33px;
     opacity: 0.8;
     cursor: pointer;
-    margin-right:0.7vw;
-    margin-top:-0.3vh;
+    margin-right: 0.7vw;
+    margin-top: -0.3vh;
 }
+
 #VIDEO {
     display: none;
 }
+
 .ctSmile {
     opacity: 0.8;
     cursor: pointer;
     /* margin-right:vw; */
 }
 
-.emojipicker{
-    position:absolute;
+.emojipicker {
+    position: absolute;
     /* top:2vh; */
-    left:-25.5vw;
+    left: -25.5vw;
 }
+
 .ctImageText {
     font-size: 0.7rem;
-    margin-top:0.4vh;
+    margin-top: 0.4vh;
     font-family: 'Montserrat';
     font-style: normal;
     color: rgba(255, 255, 255, 0.6);
@@ -394,102 +421,114 @@
 
 .ctVideoText {
     font-size: 0.7rem;
-    margin-top:0.1vh;
+    margin-top: 0.1vh;
     font-family: 'Montserrat';
     font-style: normal;
     color: rgba(255, 255, 255, 0.6);
 }
 
 .ctSmileText {
-    margin-top:0.8vh;
+    margin-top: 0.8vh;
     font-size: 0.7rem;
     font-family: 'Montserrat';
     font-style: normal;
     color: rgba(255, 255, 255, 0.6);
 }
-.CTRetweetDiv{
-    width:35vw;
+
+.CTRetweetDiv {
+    width: 35vw;
     background-color: #161718;
     border: 0.8px solid rgba(255, 255, 255, 0.15);
     border-radius: 8px;
-    margin-left:1.5vw;
-    margin-top:2.5vh;
+    margin-left: 1.5vw;
+    margin-top: 2.5vh;
     margin-bottom: 2vh;
-    padding:1vw ;
+    padding: 1vw;
     padding-bottom: 0;
     display: flex;
     flex-direction: column;
 }
-#CTRETWEETDIV{
+
+#CTRETWEETDIV {
     display: none;
 }
-.CTRVideo{
-    width:32.8vw;
-    margin-top:1vh;
-    margin-bottom:1vh;
+
+.CTRVideo {
+    width: 32.8vw;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
     /* margin-bottom:1vh; */
 }
-.CTRet1{
+
+.CTRet1 {
     display: flex;
 }
-.CTRet2{
+
+.CTRet2 {
     display: flex;
     flex-direction: column;
 }
-#CTRetweetImage{
-    width:35px;
-    height:30px;
+
+#CTRetweetImage {
+    width: 35px;
+    height: 30px;
     border-radius: 50%;
     background-color: rgb(228, 219, 219);
-    margin-top:0.5vh;
+    margin-top: 0.5vh;
 }
-#CTRetweetName{
 
-}
-#CTRetweetUsername{
+#CTRetweetName {}
 
-}
-.TWRBlock1{
+#CTRetweetUsername {}
+
+.TWRBlock1 {
     display: flex;
 }
-.TWRpic{
+
+.TWRpic {
     background-color: rgb(228, 219, 219);
-    margin-right:0.5vw;
-    width:35px;
-    height:30px;
+    margin-right: 0.5vw;
+    width: 35px;
+    height: 30px;
     border-radius: 50%;
 }
-#CTReplyDiv{
+
+#CTReplyDiv {
     display: none;
 }
-.CTReplyTweet{
-    margin-top:4vh;
-    margin-left:0.8vw;
+
+.CTReplyTweet {
+    margin-top: 4vh;
+    margin-left: 0.8vw;
     width: 36.5vw;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
-#CTReplyInput{
-   color:rgba(255, 255, 255, 0.8)
+
+#CTReplyInput {
+    color: rgba(255, 255, 255, 0.8)
 }
-#CTReplyAtName{
-    color:#47C87A;
+
+#CTReplyAtName {
+    color: #47C87A;
     text-decoration: underline;
 }
+
 /*TWEET POPUP*/
 .tweetPopcomp {
-    margin-left:-44vw;
-    margin-top:5vh;
-    width:15vw;
-    height:9vh;
+    margin-left: -44vw;
+    margin-top: 5vh;
+    width: 15vw;
+    height: 9vh;
     background-color: #121212;
     box-shadow: 0px 264px 106px rgba(23, 25, 28, 0.01), 0px 149px 89px rgba(23, 25, 28, 0.05), 0px 66px 66px rgba(23, 25, 28, 0.09), 0px 17px 36px rgba(23, 25, 28, 0.1), 0px 0px 0px rgba(23, 25, 28, 0.1);
     border-radius: 16px;
     box-shadow: 0px 100px 80px #1A1C1E;
     border: 0.7px solid rgba(255, 255, 255, 0.2);
     display: none;
-    z-index:10;
+    z-index: 10;
 }
-.displayTweetPic{
+
+.displayTweetPic {
     position: absolute;
     width: 43px;
     height: 39.09px;
@@ -497,14 +536,15 @@
     border-radius: 50%;
     background: #D9D9D9;
     z-index: 4;
-    margin-left:0.8vw;
-    margin-top:0.8vh;
-    width:45px;
+    margin-left: 0.8vw;
+    margin-top: 0.8vh;
+    width: 45px;
 }
-.tweetUsername{
+
+.tweetUsername {
     position: absolute;
     margin-left: 5vw;
-    margin-top:2vh;
+    margin-top: 2vh;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
@@ -514,27 +554,32 @@
     text-decoration: underline;
     cursor: pointer;
 }
-.tweetUsername:hover{
-    color:#47C87A;
+
+.tweetUsername:hover {
+    color: #47C87A;
 }
-#tweetRet{
+
+#tweetRet {
     /* background-color: #47C87A; */
 }
-.tweetWithRetwwet{
-    width:38vw;
+
+.tweetWithRetwwet {
+    width: 38vw;
     background-color: #161718;
     border: 0.8px solid rgba(255, 255, 255, 0.15);
     border-radius: 8px;
-    margin-left:4vw;
+    margin-left: 4vw;
     margin-bottom: 2vh;
-    padding:1vw ;
+    padding: 1vw;
     padding-bottom: 0;
 }
-.TWRVideo{
-    width:36vw;
+
+.TWRVideo {
+    width: 36vw;
     /* margin-bottom:1vh; */
 }
-.TWRImageText{
+
+.TWRImageText {
     color: white;
     opacity: 0.9;
     font-family: 'Montserrat';
@@ -542,13 +587,15 @@
     font-weight: 500;
     font-size: 15px;
     line-height: 18px;
-   
+
 }
-#TWRImageLink{
-    color:#47C87A;
+
+#TWRImageLink {
+    color: #47C87A;
     text-decoration: underline;
 }
-.TWRText{
+
+.TWRText {
     color: white;
     opacity: 0.9;
     font-family: 'Montserrat';
@@ -557,15 +604,17 @@
     font-size: 15px;
     line-height: 18px;
 }
-#creteTweetPTag{
+
+#creteTweetPTag {
     display: none;
 }
 
 /* hide scroll bar */
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     display: none;
 }
-.example{
+
+.example {
     scrollbar-width: none;
 }

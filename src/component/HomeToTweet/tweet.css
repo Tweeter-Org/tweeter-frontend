@@ -1,0 +1,106 @@
+.toTweetDiv{
+    margin-top:15vh;
+}
+#RepTweet{
+    padding-bottom:2vh;
+}
+.ReplyDiv{
+    margin-top:0;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 0.8px solid rgba(255, 255, 255, 0.15);
+    /* border-radius: 8px; */
+    /* border-left: 0;
+    border-right: 0; */
+    margin-left:-1vw;
+    margin-right:-1vw;
+    padding:1vh 1vw;
+}
+.Reply1{
+display: flex;
+}
+#RepAvatar{
+    width: 45px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.7);
+     margin-top:0.6vh;
+}
+#RepName{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    color: rgba(255, 255, 255, 0.9);
+    cursor:pointer;
+    margin-left:0.8vw;
+   
+}
+#RepReply{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 27px;
+    color: rgba(255, 255, 255, 0.4);
+    margin-left:4vw;
+    margin-top:-3.2vh;
+}
+#RepImage{
+    height: auto;
+    width: 30vw;
+    margin-top:2vh;
+}
+.RepText{
+    width: 42.7vw;
+    margin-top:-1vh;
+    margin-bottom:1vh;
+    color: white;
+    opacity: 0.85;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+}
+.RepShowMore{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    color:#47c87a;
+    margin-top: -0.5vh;
+    /* opacity:0.95; */
+    cursor: pointer;
+    margin-bottom:1vh;
+}
+#RepAlter{
+    color:#47c87a;
+    opacity: 0.85;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    border-top:  0.8px solid rgba(255, 255, 255, 0.15);
+    margin-left:-1vw;
+    margin-right:-1vw;
+    padding:1vh 1vw;
+    text-decoration: underline;
+    cursor: pointer;
+    padding-top:2.5vh;
+    padding-bottom: 0;
+}
+#RepComIcon{
+    margin-right:0.5vw;
+    margin-top:0.2vh;
+}
+#RepAtName{
+    color:#47c87a;
+    text-decoration: underline;
+    text-transform: none;
+    margin-left:0.4vw;
+    cursor: pointer;
+}

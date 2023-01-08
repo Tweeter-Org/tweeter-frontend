@@ -9,11 +9,7 @@ function TweetPopup(props) {
     const dispatch = useDispatch();
     const pro = useSelector((p) => p.ProfileNameReducer)
     function toProfile(name) {
-        document.getElementsByClassName("tweetUsername")[props.num].style.color = "#47c87a"
-        console.log(name)
-        dispatch(ProfileApi(name))
-        navigate(`/profile?name=${name}`)
-        console.log(`/profile?name=${name}`)
+        navigate(`/profile/${name}`)
     }
     return <>
         <div className="tweetPopcomp" onMouseOver={() => document.getElementsByClassName("tweetPopcomp")[props.num].style.display = "block"} onMouseOut={() => document.getElementsByClassName("tweetPopcomp")[props.num].style.display = "none"}>

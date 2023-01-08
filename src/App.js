@@ -18,6 +18,7 @@ import EditProfile from './component/Profile/EditProfile';
 import LogOut from './component/logOut/logOut';
 import Google from "./component/Google"
 import TagTweets from './component/Sidebar/TagTweets';
+import OneTweet from './component/HomeToTweet/OneTweet';
 
 function App() {
   return <>
@@ -25,7 +26,7 @@ function App() {
       {/* <CreateTweet /> */}
       <Routes>
         <Route path="/profile/:apiname" element={<ProfilePage />} />
-         {/* <Route path="/toTweet/:TweetId" element={} /> */}
+         <Route path="/toTweet/:TweetId" element={<OneTweet />} />
         <Route path="/tagtweet" exact element={<TagTweets />} />
         <Route path="/google" element={<Google />} />
         <Route path="/logout" exact element={<LogOut />} />
