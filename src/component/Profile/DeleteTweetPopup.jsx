@@ -21,16 +21,13 @@ function DltTweetPopup() {
         document.getElementById("DltPopUp").style.display="none";
         setOPacity()
     }
-    console.log(DltTwId)
-    useEffect(()=>{
-        console.log(DltTwId)
-    },[DltTwId])
+   
     function handleLogOut() {
         document.getElementById("DltPopUp").style.display="none";
-       console.log(DltTwId)
+        console.log(sessionStorage.getItem("dlttweetId"))
        setOPacity()
-        // dispatch(TweetDeleteAction(tweetid))
-        // dispatch(FakeTweetDeleteAction(tweetid))
+        dispatch(TweetDeleteAction(sessionStorage.getItem("dlttweetId")))
+        dispatch(FakeTweetDeleteAction(sessionStorage.getItem("dlttweetId")))
         if(deleteTweet!==""){
             toast.success(`${deleteTweet}`, {
                 position: "top-center",
@@ -46,7 +43,7 @@ function DltTweetPopup() {
     }
 
     return <>
-        <div className="logoutDiv" id="DltPopUp">
+        <div id="DltPopUp">
             <div className="lOut1">
                 <p className="logoutText1" id="DltPopText1">Delete tweet</p>
                 <p className="logoutText2" id="DltPopText2">This can’t be undone and it will be permanently deleted from your profile</p>

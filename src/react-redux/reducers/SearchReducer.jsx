@@ -1,3 +1,5 @@
+import greenhome from "../../component/Assets/greenhome.svg"
+
 const initialState = {
     loading: false,
     tomap: false,
@@ -7,18 +9,22 @@ const initialState = {
 }
 const SearchReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "SEARCH_SUCCEDED": return { ...state, list: action.payload, tomap: true, loading: false, tohash:false }
+        case "SEARCH_SUCCEDED": return { ...state, list: action.payload,tweetList:'', tomap: true, loading: false, tohash:false }
         case "SEARCH_TWEET_SUCCEDED": {
             console.log(action.payload)
             return {
-                ...state, tomap:true, loading:false, tweetList:action.payload.data.result, tohash:true, tomap:false
+                ...state, tomap:true, loading:false, tweetList:action.payload.data.result, tohash:true, tomap:false,
             }
         }
         case "SEARCH_TWEET_FAILED": {
             console.log(action.payload)
             return {
-                ...state
+                ...state,
             }
+        }
+        case "SEARCH_FAILED":{
+            console.log(action.payload)
+
         }
       
         default: return state;
@@ -29,7 +35,7 @@ export default SearchReducer
 
 const initial = {
     title: "HOME",
-    image:"greenhome",
+    image:greenhome,
     x:"0"
 }
 

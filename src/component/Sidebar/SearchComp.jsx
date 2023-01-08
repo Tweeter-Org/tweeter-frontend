@@ -10,9 +10,9 @@ function SearchComp (props){
     const pro = useSelector((p)=>p.ProfileNameReducer)
     function toProfile (name){
         console.log(name)
-        dispatch(ProfileApi(name))
+        // dispatch(ProfileApi(name))
         
-            navigate(`/profile?name=${name}`)
+            navigate(`/profile/${name}`)
             console.log(`/profile?name=${name}`)
     }
     return <>

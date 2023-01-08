@@ -122,22 +122,23 @@ const EmailAction = (data) => {
 }
 export { EmailAction }
 
-const SignUpResend=(email)=>{
-    return async function (dispatch){
-          dispatch({type:"SIGNUP_STARTED"})
-          await axios.post("https://twitterbackend-production-93ac.up.railway.app/email",{email})
-          .then((res)=>dispatch({
-             type:"SIGNUP_SUCCEDED",
-             payload:res.data }))
-          .catch((err)=>{
-             dispatch({
-                type:"SIGNUP_FAILED",
-                payload:err
-             })
-          })   
+const SignUpResend = (email) => {
+    return async function (dispatch) {
+        dispatch({ type: "SIGNUP_STARTED" })
+        await axios.post("https://twitterbackend-production-93ac.up.railway.app/email", { email })
+            .then((res) => dispatch({
+                type: "SIGNUP_SUCCEDED",
+                payload: res.data
+            }))
+            .catch((err) => {
+                dispatch({
+                    type: "SIGNUP_FAILED",
+                    payload: err
+                })
+            })
     }
- }
-export {SignUpResend} 
+}
+export { SignUpResend }
 
 
 // // const {token} = useSelector((t)=>t.AuthReducer)
@@ -165,15 +166,14 @@ export {SignUpResend}
 
 // AccesstToken()
 
-const accessToken = sessionStorage.getItem("access token")
-console.log(accessToken)
-const config={
-    headers:{
-        "Authorization" : `Bearer ${accessToken}`
-    }
-}
-console.log(config)
 const SignUpTwoUser = (data) => {
+    const accessToken = sessionStorage.getItem("access token")
+    console.log(accessToken)
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
+    }
     return async function (dispatch) {
         // if(condition){
         dispatch({ type: "SIGNUP_TWO_STARTED" })
@@ -193,25 +193,33 @@ const SignUpTwoUser = (data) => {
 }
 export { SignUpTwoUser }
 
-const ResetAction=(password)=>{
-    return async function (dispatch){
-          dispatch({type:"RESET_STARTED"})
-          await axios.post("https://twitterbackend-production-93ac.up.railway.app/resetpassword",{password},config)
-          .then((res)=>dispatch({
-             type:"RESET_SUCCEDED",
-             payload:res.data }))
-          .catch((err)=>{
-             dispatch({
-                type:"RESET_FAILED",
-                payload:err
-             })
-          })   
+const ResetAction = (password) => {
+    const accessToken = sessionStorage.getItem("access token")
+    console.log(accessToken)
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
     }
- }
-export {ResetAction}
+    return async function (dispatch) {
+        dispatch({ type: "RESET_STARTED" })
+        await axios.post("https://twitterbackend-production-93ac.up.railway.app/resetpassword", { password }, config)
+            .then((res) => dispatch({
+                type: "RESET_SUCCEDED",
+                payload: res.data
+            }))
+            .catch((err) => {
+                dispatch({
+                    type: "RESET_FAILED",
+                    payload: err
+                })
+            })
+    }
+}
+export { ResetAction }
 
-const GoogleAction =()=>{
-    return async function (dispatch){
+const GoogleAction = () => {
+    return async function (dispatch) {
         dispatch({ type: "GOOGLE_STARTED" })
         await axios.get("https://twitterbackend-production-93ac.up.railway.app/auth/google/url/")
             .then((res) => dispatch({
@@ -219,15 +227,15 @@ const GoogleAction =()=>{
                 payload: res.data
             }))
             .catch((err) => {
-               console.log(err)
+                console.log(err)
             })
-       
+
     }
 }
-export {GoogleAction}
+export { GoogleAction }
 
-const GoogleTwoAction =(url)=>{
-    return async function (dispatch){
+const GoogleTwoAction = (url) => {
+    return async function (dispatch) {
         dispatch({ type: "GOOGLE_TWO_STARTED" })
         await BaseUrl.get(`/auth/google?code=${url}`)
             .then((res) => dispatch({
@@ -235,13 +243,13 @@ const GoogleTwoAction =(url)=>{
                 payload: res
             }))
             .catch((err) => {
-               console.log(err)
-               dispatch({
-                type:"GOOGLE_TWO_FAILED",
-                payload:err
-               })
+                console.log(err)
+                dispatch({
+                    type: "GOOGLE_TWO_FAILED",
+                    payload: err
+                })
             })
-       
+
     }
 }
-export {GoogleTwoAction}
+export { GoogleTwoAction }

@@ -24,11 +24,12 @@ function App() {
     <BrowserRouter>
       {/* <CreateTweet /> */}
       <Routes>
-      <Route path="/tagtweet" exact element={<TagTweets />} />
+        <Route path="/profile/:apiname" element={<ProfilePage />} />
+         {/* <Route path="/toTweet/:TweetId" element={} /> */}
+        <Route path="/tagtweet" exact element={<TagTweets />} />
         <Route path="/google" element={<Google />} />
         <Route path="/logout" exact element={<LogOut />} />
         <Route path="/editprofile" exact element={<EditProfile />} />
-        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/bookmark" exact element={<Bookmarks />} />
         <Route path="/createtweet" exact element={<CreateTweet />} />
         <Route path="/sidebar" exact element={<Sidebar />} />

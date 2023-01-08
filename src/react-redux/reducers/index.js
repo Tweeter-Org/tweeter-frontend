@@ -14,6 +14,7 @@ import { TitleNavBar } from "./SearchReducer";
 import { DeleteTweetsPReducer } from "./TweetDltReducer";
 import { ProfileNameReducer } from "./ProfileRed";
 import { TagTweetFeedReducer } from "./TagTweetReducer";
+import { ReplyReducer } from "./ReplyReducer";
 const rootReducer = combineReducers({
    AuthReducer,
    TweetFeedReducer,
@@ -23,11 +24,13 @@ const rootReducer = combineReducers({
    TweetLikeReducer,
    TweetCreateReducer,
    ProfileReducer,
-   FollowReducer, 
-LikedTweetsPReducer,
-TitleNavBar,
-DeleteTweetsPReducer,
-ProfileNameReducer, TagTweetFeedReducer
+   FollowReducer,
+   LikedTweetsPReducer,
+   TitleNavBar,
+   DeleteTweetsPReducer,
+   ProfileNameReducer,
+   TagTweetFeedReducer,
+   ReplyReducer
 })
 
 export default rootReducer

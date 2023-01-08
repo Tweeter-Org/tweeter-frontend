@@ -191,16 +191,28 @@
 /*CREATE TWEET*/
 #imageOutput{
     position:absolute;
-    left:0vw;
-    top:52vh;
+    right:0vw;
+    top:0vh;
+    width:200px;
+    height:150px;
+    border:1px solid  rgba(255, 255, 255, 0.2);
+    display: none;
+}
+#VIDEO {
+    position:absolute;
+    right:0vw;
+    top:0vh;
     width:20vw;
     border:1px solid  rgba(255, 255, 255, 0.2);
-    
+}
+#videoOutput{
+    /* display: none; */
 }
 .createTweetDiv {
     position: fixed;
     width: 40vw;
     height: fit-content;
+    /* height:20vh; */
     /* position:absolute; */
     left: 29vw;
     top:15vh;
@@ -215,9 +227,7 @@
     flex-direction: column;
     padding-left:1.5vw;
     overflow-x: hidden;
-    overflow-y: auto;
-    /* padding-bottom: 5vh; */
-    /* z-index:99999; */
+    overflow-y: scroll;
 }
 #CREATETWEET{
     display:none;
@@ -360,7 +370,9 @@
     margin-right:0.7vw;
     margin-top:-0.3vh;
 }
-
+#VIDEO {
+    display: none;
+}
 .ctSmile {
     opacity: 0.8;
     cursor: pointer;
@@ -447,6 +459,22 @@
     height:30px;
     border-radius: 50%;
 }
+#CTReplyDiv{
+    display: none;
+}
+.CTReplyTweet{
+    margin-top:4vh;
+    margin-left:0.8vw;
+    width: 36.5vw;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+#CTReplyInput{
+   color:rgba(255, 255, 255, 0.8)
+}
+#CTReplyAtName{
+    color:#47C87A;
+    text-decoration: underline;
+}
 /*TWEET POPUP*/
 .tweetPopcomp {
     margin-left:-44vw;
@@ -505,6 +533,20 @@
 .TWRVideo{
     width:36vw;
     /* margin-bottom:1vh; */
+}
+.TWRImageText{
+    color: white;
+    opacity: 0.9;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+   
+}
+#TWRImageLink{
+    color:#47C87A;
+    text-decoration: underline;
 }
 .TWRText{
     color: white;

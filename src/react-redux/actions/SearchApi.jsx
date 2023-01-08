@@ -1,21 +1,15 @@
 import BaseUrl from "./BaseUrl";
 
-const accessToken = sessionStorage.getItem("access token")
-const config = {
-   headers: {
-      "Authorization": `Bearer ${accessToken}`
-   }
-}
-
 const SearchUser = (char) => {
    return async function (dispatch) {
-      console.log("dvh")
+      console.log(char)
       await BaseUrl.get(`/search?find=${char}`)
          .then((res) => dispatch({
             type: "SEARCH_SUCCEDED",
             payload: res.data
          }))
          .catch((err) => {
+            console.log(err)
             dispatch({
                type: "SEARCH_FAILED",
                payload: err
@@ -26,6 +20,12 @@ const SearchUser = (char) => {
 export default SearchUser
 
 const SearchTweetWithTag = (char) => {
+   const accessToken = sessionStorage.getItem("access token")
+   const config = {
+      headers: {
+         "Authorization": `Bearer ${accessToken}`
+      }
+   }
    return async function (dispatch) {
       console.log("hash")
       await BaseUrl.get(`/t/tags?find=${char}`, config)
@@ -101,7 +101,7 @@ export const TagtweetNav = (image, title) => {
       payload: {
          title,
          image,
-         
+
       }
    }
 

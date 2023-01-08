@@ -31,8 +31,6 @@ function ProfileTweet(props) {
     const bookmarkShow = props.bookmarkb
     const retweets = props.retweet;
     const dispatch = useDispatch();
-    const [show, setShow] = useState(false)
-    // const number = parseInt(props.likeCount)
     const [tweetCount, setTweetCount] = useState(props.likeCount)
     const { response, isLiked, isDelete } = useSelector((l) => l.TweetLikeReducer)
 
@@ -90,10 +88,11 @@ function ProfileTweet(props) {
 
     function handleTweetDelete(tweetid) {
         sessionStorage.setItem("dlttweetId", tweetid)
-        document.getElementsByClassName("deleteIcon")[id].src = greencross
-        document.getElementById("DltPopUp").style.display="flex"
-        document.getElementById("DltPopUp").style.opacity=1;
         setOPacity()
+        document.getElementsByClassName("deleteIcon")[id].src = greencross
+        document.getElementById("DltPopUp").style.display="block"
+        document.getElementById("DltPopUp").style.opacity=1;
+       
       
         // dispatch(TweetDeleteAction(tweetid))
         // dispatch(FakeTweetDeleteAction(tweetid))
@@ -211,7 +210,6 @@ console.log(profileTweet)
                 </div>
             </div>
         </div>)}
-     {/* <DltTweetPopup /> */}
         <ToastContainer />
     </>
 }

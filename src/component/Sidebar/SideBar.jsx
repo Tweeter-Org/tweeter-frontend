@@ -53,6 +53,7 @@ function Sidebar() {
     function handleSearch(e) {
         setSearch(e.target.value)
         if (e.target.value.startsWith('#')) {
+            // dispatch(SearchUser(e.target.value));
             dispatch(SearchTweetWithTag(e.target.value))
             console.log("hash tweet")
             console.log(e.target.value)
@@ -98,14 +99,17 @@ function Sidebar() {
     function setOPacity() {
         var items = document.getElementsByClassName("POPUPBG")
         for (var i = 0; i < items.length; i++) {
-            document.getElementsByClassName("POPUPBG")[i].style.opacity = 0.2;
+            document.getElementsByClassName("POPUPBG")[i].style.opacity = 0.4;
         }
     }
     function xyz() {
         document.getElementById("CREATETWEET").style.display = "block"
         document.getElementById("CTRETWEETDIV").style.display="none";
+        document.getElementById("CTweetText").style.display="block";
         document.getElementById("buttonTweet").style.display="block";
         document.getElementById("buttonRetweet").style.display="none";
+        document.getElementById("buttonReply").style.display="none";
+        document.getElementById("CTReplyDiv").style.display="none"
         setOPacity()
     }
     function handleLogout() {
@@ -116,9 +120,7 @@ function Sidebar() {
     const pro = useSelector((p) => p.ProfileNameReducer)
     function handleProfile() {
         dispatch(Profile(greenprofile, "Profile", 4));
-        dispatch(ProfileApi(nameInApi))
-        navigate(`/profile?name=${pro.name}`)
-        console.log(`/profile?name=${pro.name}`)
+        // dispatch(ProfileApi(nameInApi))
     }
     return <>
         <div>
@@ -134,7 +136,7 @@ function Sidebar() {
                     <li className="sbListItem" onClick={() => { dispatch(Notifications(greennotify, "Notifications", 1)) }}><span className="sbListIcon"><img src={notify} /></span>Notifications</li>
                     <Link to="/bookmark"> <li className="sbListItem" onClick={() => { dispatch(BookmarksNav(greenbm, "Bookmark", 2)) }}><span className="sbListIcon"><img src={bookmark} /></span>Bookmarks</li></Link>
                     <li className="sbListItem" onClick={() => { dispatch(Messages(greenmessage, "Messages", 3)) }}><span className="sbListIcon"><img src={message} /></span>Messages</li>
-                    <Link to="/profile"><li className="sbListItem" onClick={handleProfile}><span className="sbListIcon"><img src={profile} /></span>Profile</li></Link>
+                    <Link to={`/profile/${nameInApi}`}><li className="sbListItem" onClick={handleProfile}><span className="sbListIcon"><img src={profile} /></span>Profile</li></Link>
                 </ul>
                 {/* <AnchorLink href="#CREATETWEET"><button className="sideBarTweetBtn" >Create Tweet</button></AnchorLink> */}
                 {/* <HashLink to="#CREATETWEET"><button className="sideBarTweetBtn" onClick={()=>{document.getElementById("CREATETWEET").style.display="block"}}>Create Tweet</button></HashLink> */}

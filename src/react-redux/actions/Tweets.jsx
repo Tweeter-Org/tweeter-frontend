@@ -2,14 +2,15 @@ import axios from "axios";
 import React from "react";
 import BaseUrl from "./BaseUrl";
 
-const accessToken = sessionStorage.getItem("access token")
-const config = {
-    headers: {
-        "Authorization": `Bearer ${accessToken}`
-    }
-}
+
 
 export const TweetFeedAction = () => {
+    const accessToken = sessionStorage.getItem("access token")
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
+    }
     return async function (dispatch) {
         dispatch({
             type: "Tweet_Feed_Started",
@@ -32,6 +33,12 @@ export const TweetFeedAction = () => {
 }
 
 function TweetLikeAction(tweetId) {
+    const accessToken = sessionStorage.getItem("access token")
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
+    }
     return async function (dispatch) {
         dispatch({
             type: "TWEETLIKE_START",
@@ -54,6 +61,12 @@ function TweetLikeAction(tweetId) {
 export default TweetLikeAction
 
 export const CreateTweetAct = (formData) => {
+    const accessToken = sessionStorage.getItem("access token")
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
+    }
     return async function (dispatch) {
         await BaseUrl.post("/t/create", formData, config)
             .then((Res) => {
@@ -73,6 +86,12 @@ export const CreateTweetAct = (formData) => {
 }
 
 export const CreateReTweetAct = (formData) => {
+    const accessToken = sessionStorage.getItem("access token")
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
+    }
     return async function (dispatch) {
         await BaseUrl.post("/t/retweet", formData, config)
             .then((Res) => {
@@ -92,6 +111,12 @@ export const CreateReTweetAct = (formData) => {
 }
 
 export const LikedTweetAction = (username) => {
+    const accessToken = sessionStorage.getItem("access token")
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
+    }
     return async function (dispatch) {
         await BaseUrl.get(`/p/liked/${username}`, config)
             .then((Res) => {
@@ -129,6 +154,12 @@ export const FakeReTweetFeedAction = (retweeet) => {
 }
 
 const TweetListWithTag = (tag) => {
+    const accessToken = sessionStorage.getItem("access token")
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
+    }
     return async function (dispatch) {
         dispatch({ type: "TAG_TWEET_LIST_START" })
         console.log("hash")
@@ -148,10 +179,10 @@ const TweetListWithTag = (tag) => {
 
 export { TweetListWithTag }
 
-export const RetweetDetails = (tweetid,name, video, text, image) => {
+export const RetweetDetails = (tweetid, name, video, text, image) => {
     return {
         type: "RETWEET_DETAILS",
-        payload:{
+        payload: {
             image,
             text,
             video,

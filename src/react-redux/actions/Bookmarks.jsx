@@ -1,31 +1,30 @@
 import BaseUrl from "./BaseUrl";
 
-const accessToken = sessionStorage.getItem("access token")
-console.log(accessToken)
-const config={
-    headers:{
-        "Authorization" : `Bearer ${accessToken}`
+function DoBookmarkAction(tweetId) {
+    const accessToken = sessionStorage.getItem("access token")
+    console.log(accessToken)
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
     }
-}
-
-function DoBookmarkAction (tweetId){
-    return async function (dispatch){
+    return async function (dispatch) {
         dispatch({
-            type:"DO_BOOKMARK"
+            type: "DO_BOOKMARK"
         })
-        await BaseUrl.post("/t/bookmark",{tweetId},config)
-        .then((res)=>{
-            dispatch({
-                type:"DO_BOOKMARK_SUCCESS",
-                payload:res
+        await BaseUrl.post("/t/bookmark", { tweetId }, config)
+            .then((res) => {
+                dispatch({
+                    type: "DO_BOOKMARK_SUCCESS",
+                    payload: res
+                })
             })
-        })
-        .catch((err)=>{
-            dispatch({
-                type:"DO_BOOKMARK_FAILED",
-                payload:err
+            .catch((err) => {
+                dispatch({
+                    type: "DO_BOOKMARK_FAILED",
+                    payload: err
+                })
             })
-        })
     }
 
 }
@@ -33,25 +32,32 @@ function DoBookmarkAction (tweetId){
 export default DoBookmarkAction
 
 
-function SeeBookmarkAction (){
-    return async function (dispatch){
+function SeeBookmarkAction() {
+    const accessToken = sessionStorage.getItem("access token")
+    console.log(accessToken)
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
+    }
+    return async function (dispatch) {
         dispatch({
-            type:"SEE_BOOKMARK"
+            type: "SEE_BOOKMARK"
         })
-        await BaseUrl.get("/t/bookmark",config)
-        .then((res)=>{
-            dispatch({
-                type:"SEE_BOOKMARK_SUCCESS",
-                payload:res
+        await BaseUrl.get("/t/bookmark", config)
+            .then((res) => {
+                dispatch({
+                    type: "SEE_BOOKMARK_SUCCESS",
+                    payload: res
+                })
             })
-        })
-        .catch((err)=>{
-            dispatch({
-                type:"SEE_BOOKMARK_FAILED",
-                payload:err
+            .catch((err) => {
+                dispatch({
+                    type: "SEE_BOOKMARK_FAILED",
+                    payload: err
+                })
             })
-        })
     }
 
 }
-export {SeeBookmarkAction}
+export { SeeBookmarkAction }

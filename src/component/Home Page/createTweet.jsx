@@ -14,23 +14,27 @@ import Loader from "../Assets/Loader";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import avatar from "../Assets/avatar.svg";
+import { ReplyToTweet } from "../../react-redux/actions/Replies";
 
 function CreateTweet(props) {
     const [text, setText] = useState("");
     const [showEmoji, setShowEmoji] = useState(false)
     const [sendImage, setSendImage] = useState(null);
-    const [tagline, setTagLine] = useState("")
-
     const dispatch = useDispatch();
     const fd = new FormData();
     function handleSendImage(e) {
-        var imageoutput= document.getElementById("imageOutput");
+        var imageoutput = document.getElementById("imageOutput");
         imageoutput.src = URL.createObjectURL(e.target.files[0])
         setSendImage(e.target.files[0])
+        document.getElementById("imageOutput").style.display = "block"
     }
     const [sendVideo, setSendVideo] = useState(null);
     function handleSendVideo(e) {
+        var videooutput = document.getElementById("videoOutput");
+        videooutput.src = URL.createObjectURL(e.target.files[0])
         setSendVideo(e.target.files[0])
+        document.getElementById("VIDEO").style.display = "block"
+        document.getElementById("videoOutput").style.display = "block"
     }
 
     function handleEmojis() {
@@ -42,35 +46,40 @@ function CreateTweet(props) {
         setShowEmoji(false)
     }
 
-    const navigate = useNavigate();
     function setOPacity() { /*SET BACKGROUND OPACITY*/
         var items = document.getElementsByClassName("POPUPBG")
         for (var i = 0; i < items.length; i++) {
             document.getElementsByClassName("POPUPBG")[i].style.opacity = 1;
         }
     }
+
     function backToHome(e) {
         e.preventDefault();
         setText("")
         document.getElementById("CREATETWEET").style.display = "none"
+        document.getElementById("imageOutput").style.display = "none"
+        document.getElementById("videoOutput").style.display = "none"
+        document.getElementById("VIDEO").style.display = "none"
         setOPacity()
     }
     const { response, error, tweetCreate, loading } = useSelector((t) => t.TweetCreateReducer)
     const auth = useSelector((s) => s.AuthReducer)
     const { user, toFgtPwd } = auth;
     const { name, user_name, displaypic } = user;
+    const [DupTweetData, setDupTweetData] = useState([])
     const { tweetData, liked, Rname, Rimage, Rvideo, Rtext } = useSelector((s) => s.TweetFeedReducer)
+    // const tweetData =[];
     console.log(tweetData)
     console.log(Rimage, Rvideo)
     const RId = sessionStorage.getItem("retweetId")
     useEffect(() => {
-        tweetData.filter((t) => {
+        setDupTweetData(tweetData)
+        DupTweetData.filter((t) => {
             if (t._id == props.TWRId) {
                 console.log(t)
             }
             return t._id == props.TWRId
         })
-        // console.log(RId)
     }, [props.TWRId])
     const newTweetCreated = {
         "image": sendImage,
@@ -161,6 +170,35 @@ function CreateTweet(props) {
             });
         }
     }
+    const {responseT, errorT} = useSelector((r) => r.ReplyReducer)
+   console.log(responseT, errorT)
+    function handleTweetReply() {
+        fd.append("text", text)
+        fd.append("tweetId", RId)
+        if (sendImage != "") {
+            fd.append("file", sendImage)
+        }
+        else if (sendVideo != "") {
+            fd.append("file", sendVideo)
+        }
+        else {
+            fd.append("file", null)
+        }
+        dispatch(ReplyToTweet(fd))
+        if (responseT !== "") {
+            backToHome()
+            toast.success(`${responseT}`, {
+                position: "top-center",
+                theme: "light",
+            });
+        }
+        else if (errorT !== "") {
+            toast.error(`${errorT}`, {
+                position: "top-center",
+                theme: "light",
+            });
+        }
+    }
     useEffect(() => {
         if (loading === true) {
             document.body.style.opacity = 0.5;
@@ -184,9 +222,11 @@ function CreateTweet(props) {
 
             <form onSubmit={(e) => e.preventDefault()}
                 enctype="multipart/form-data" >
-                <p className="ctTagline">Share tweets with your followers</p>
-                <div className="ctWriteTweet">
-                    <input type="text" className="ctWriteTweetInput" value={text} onChange={(e) => { setText(e.target.value) }} />
+                <div id="CTweetText">
+                    <p className="ctTagline">Share tweets with your followers</p>
+                    <div className="ctWriteTweet">
+                        <input type="text" className="ctWriteTweetInput" value={text} onChange={(e) => { setText(e.target.value) }} />
+                    </div>
                 </div>
                 <div className="CTRetweetDiv" id="CTRETWEETDIV">
                     <div className="CTRet1">
@@ -196,12 +236,21 @@ function CreateTweet(props) {
                             {/* <p id="CTRetweetUsernname" className="ctUserName">{user_name}</p> */}
                         </div>
                     </div>
-                    {Rimage != null ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${Rimage}`} className="CTRVideo" alt="image" />) : null}
+                    {Rimage != null ? (<p className="TWRImageText" >Tweets's Image -: &ensp;<a id="TWRImageLink" href={`https://twitterbackend-production-93ac.up.railway.app/${Rimage}`} target="_blank">{`https://twitterbackend-production-93ac.up.railway.app/${Rimage}`}</a></p>) : null}
+                    {Rvideo != null ? (<p className="TWRImageText" >Tweets's Video -: &ensp;<a id="TWRImageLink" href={`https://twitterbackend-production-93ac.up.railway.app/${Rvideo}`} target="_blank">{`https://twitterbackend-production-93ac.up.railway.app/${Rvideo}`}</a></p>) : null}
+                    {/* {Rimage != null ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${Rimage}`} className="CTRVideo" alt="image" />) : null}
                     {Rvideo != null ? <video controls className="CTRVideo">
                         <source src={`https://twitterbackend-production-93ac.up.railway.app/${Rvideo}`} type="video/mp4" />
-                    </video> : null}
+                    </video> : null} */}
                     <p className="TWRText" >{Rtext}</p>
                 </div>
+                <div id="CTReplyDiv">
+                    <p className="ctName">Replying to <span id="CTReplyAtName">@{Rname}</span></p>
+                    <div className="CTReplyTweet">
+                        <input type="text" id="CTReplyInput" className="ctWriteTweetInput" value={text} onChange={(e) => { setText(e.target.value) }} />
+                    </div>
+                </div>
+
                 <div className="CTBlock2">
                     <div className="CTUPLIMG">
                         <label for="ctuploadImg"><img src={imageIcon} className="ctImage" /></label>
@@ -213,6 +262,10 @@ function CreateTweet(props) {
                         <label for="ctuploadVideo"><img src={videoIcon} className="ctVideo" /></label>
                         <input type="file" id="ctuploadVideo" accept="video/mp4, audio/mp4" onChange={handleSendVideo} hidden />
                         <p className="ctVideoText">Video</p>
+                        <p><video id="VIDEO" width="200" controls>
+                            <source id="videoOutput" width="200" type="video/mp4, audio/mp4" />
+                        </video>
+                        </p>
                     </div>
                     <div>
                         <img src={smileIcon} className="ctSmile" onClick={() => { handleEmojis() }} />
@@ -222,6 +275,7 @@ function CreateTweet(props) {
                     <button className="ctCancelTweet" onClick={backToHome}>Cancel</button>
                     <button className="ctCreateTweet" onClick={handleCreateTweet} id="buttonTweet" >Tweet</button>
                     <button className="ctCreateTweet" id="buttonRetweet" onClick={handleCreateReTweet}>ReTweet</button>
+                    <button className="ctCreateTweet" id="buttonReply" onClick={handleTweetReply}>Reply</button>
                 </div>
             </form>
         </div>
