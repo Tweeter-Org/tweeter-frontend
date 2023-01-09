@@ -55,3 +55,31 @@ export const ViewTweetsReply = (id) => {
             })
     }
 }
+
+export const ViewRepliesToReply = (id) => {
+    const accessToken = sessionStorage.getItem("access token")
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
+    }
+    return async function (dispatch) {
+        dispatch({
+            type:"REPLY_TO_REPLY"
+        })
+        await BaseUrl.get(`/r/replyreplies/${id}`,config)
+            .then((Res) => {
+                console.log(Res)
+                dispatch({
+                    type: "VIEW_REPLY_TO_REPLY_YES",
+                    payload: Res
+                })
+            })
+            .catch((err) => {
+                dispatch({
+                    type: "VIEW_REPLY_TO_REPLY_NO",
+                    payload: err
+                })
+            })
+    }
+}

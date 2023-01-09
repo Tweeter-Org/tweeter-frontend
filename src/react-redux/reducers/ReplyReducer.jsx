@@ -3,6 +3,7 @@ const initialState={
     responseT:"",
     errorT:"",
     replyT:"",
+    replyR:""
 }
 
 export const ReplyReducer=(state=initialState, action)=>{
@@ -30,6 +31,20 @@ export const ReplyReducer=(state=initialState, action)=>{
             console.log(action.payload)
             return{
                 ...state, loading:false, errorT:action.payload, responseT:""
+            }
+        }
+        case "REPLY_TO_REPLY":{
+            return {...state}
+        }
+        case "VIEW_REPLY_TO_REPLY_YES":{
+            console.log(action.payload)
+            return{
+                ...state, replyR:action.payload.data.replies, errorT:""
+            }
+        }
+        case "VIEW_REPLY_TO_REPLY_NO":{
+            return{
+                ...state, errorT:action.payload, responseT:""
             }
         }
         default : return state;

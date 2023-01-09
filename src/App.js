@@ -18,7 +18,7 @@ import EditProfile from './component/Profile/EditProfile';
 import LogOut from './component/logOut/logOut';
 import Google from "./component/Google"
 import TagTweets from './component/Sidebar/TagTweets';
-import OneTweet from './component/HomeToTweet/OneTweet';
+import OneTweet from './component/Reply/OneTweet';
 
 function App() {
   return <>
