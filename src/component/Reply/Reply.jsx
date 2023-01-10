@@ -6,9 +6,9 @@ import share from "../Assets/send.svg";
 import comment from "../Assets/tweetComm.svg";
 import retweet from "../Assets/retweet.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { ViewRepliesToReply } from "../../react-redux/actions/Replies";
+import { ReplyToTweet, ViewRepliesToReply } from "../../react-redux/actions/Replies";
 import Reply2 from "./Reply2";
-import TweetLikeAction from "../../react-redux/actions/Tweets";
+import TweetLikeAction, { RetweetDetails } from "../../react-redux/actions/Tweets";
 import greenLike from "../Assets/greenLike.svg"
 import bookmark from "../Assets/bookmarks.svg";
 import greenBookmarks from "../Assets/greenBookmarks.svg"
@@ -66,6 +66,25 @@ function Reply(props) {
             }
         }
     }
+    function setOPacity() {
+        var items = document.getElementsByClassName("POPUPBG")
+        for (var i = 0; i < items.length; i++) {
+            document.getElementsByClassName("POPUPBG")[i].style.opacity = 0.4;
+        }
+    }
+    function handleTweetReply(tweetid, name, image, video, text){
+        dispatch(RetweetDetails(tweetid,name, video, text, image))
+        sessionStorage.setItem("retweetId", tweetid)
+        setOPacity()
+        document.getElementById("CREATETWEET").style.display = "block"
+        document.getElementById("CTReplyDiv").style.display="block"
+        document.getElementById("CTRETWEETDIV").style.display="none";
+        document.getElementById("CTweetText").style.display="none";
+        document.getElementById("buttonTweet").style.display="none";
+        document.getElementById("buttonRetweet").style.display="none";
+        document.getElementById("buttonReply").style.display="block";
+    }
+
     return <>
         <div className="ReplyDiv">
             <div className="Reply1">
@@ -91,8 +110,8 @@ function Reply(props) {
                     <p className="replyLike" id="RTLike">Like</p>
                 </div>
                 <div className="iconBlock">
-                <img src={comment} id="ReplyComm" />
-                    {/* <img src={comment} id="commentIcon" onClick={()=>{handleTweetReply(props.tweetId, props.username, image, video, props.text)}} /> */}
+                {/* <img src={comment} id="ReplyComm" /> */}
+                    <img src={comment} id="ReplyComm" onClick={()=>{handleTweetReply(props.num, props.username, props.image, props.video, props.text)}} />
                     <p className="tweetComm" id="RTLike">Comment</p>
                 </div>
                 <div className="iconBlock"> 

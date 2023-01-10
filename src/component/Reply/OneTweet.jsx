@@ -15,6 +15,7 @@ function OneTweet() {
     const { loading, tweetData, liked, bookmarked } = useSelector((s) => s.TweetFeedReducer)
     const {responseT, errorT, replyT} = useSelector((r) => r.ReplyReducer)
     console.log(responseT, errorT, replyT)
+    console.log(replyT)
     const dispatch = useDispatch();
     useEffect(() => {
         tweetData.filter((t) => {

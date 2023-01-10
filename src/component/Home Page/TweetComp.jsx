@@ -5,7 +5,6 @@ import comment from "../Assets/tweetComm.svg";
 import retweet from "../Assets/retweet.svg";
 import avatar from "../Assets/avatar.svg";
 import bookmark from "../Assets/bookmarks.svg";
-import greenBookmarks from "../Assets/greenBookmarks.svg"
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TweetLikeAction, { RetweetDetails } from "../../react-redux/actions/Tweets.jsx";
@@ -13,7 +12,7 @@ import greenLike from "../Assets/greenLike.svg"
 import greenComment from "../Assets/greenComment.svg"
 import greenRetweet from "../Assets/greenRetweet.svg"
 import greenShare from "../Assets/greenSend.svg"
-
+import greenBookmarks from "../Assets/greenBookmarks.svg"
 import DoBookmarkAction from "../../react-redux/actions/Bookmarks.jsx";
 import deleteIcon from "../Assets/delete.svg"
 import TweetDeleteAction from "../../react-redux/actions/deleteTweetAct";

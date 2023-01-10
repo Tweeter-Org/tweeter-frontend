@@ -171,11 +171,11 @@ function ToTweet(props) {
     console.log(HashArray)
 
     //view reply to tweet 
-    const { responseT, errorT, replyT, loading } = useSelector((r) => r.ReplyReducer)
+    const { responseT, errorT, replyT, loading, replies } = useSelector((r) => r.ReplyReducer)
     console.log(responseT, errorT, replyT)
     const [replyArr, setReplyArr] = useState([])
     useEffect(() => {
-        setReplyArr(replyT.replies)
+        setReplyArr(replies)
     }, [replyT])
     console.log(replyArr)
 

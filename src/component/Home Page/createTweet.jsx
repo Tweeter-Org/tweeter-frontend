@@ -14,7 +14,7 @@ import Loader from "../Assets/Loader";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import avatar from "../Assets/avatar.svg";
-import { ReplyToTweet } from "../../react-redux/actions/Replies";
+import { FakeReplyTweetAction, ReplyToTweet } from "../../react-redux/actions/Replies";
 
 function CreateTweet(props) {
     const [text, setText] = useState("");
@@ -124,9 +124,10 @@ function CreateTweet(props) {
         }
         dispatch(CreateTweetAct(fd))
         console.log(newTweetCreated)
-        dispatch(FakeTweetFeedAction(newTweetCreated))
+       
         backToHome(e)
         if (response !== "") {
+            dispatch(FakeTweetFeedAction(newTweetCreated))
             toast.success(`${response}`, {
                 position: "top-center",
                 theme: "light",
@@ -154,11 +155,12 @@ function CreateTweet(props) {
             fd.append("file", null)
         }
         dispatch(CreateReTweetAct(fd))
-        dispatch(FakeReTweetFeedAction(newReTweetCreated))
+       
         console.log("rewteet")
         console.log(newReTweetCreated)
         backToHome(e)
         if (response !== "") {
+            dispatch(FakeReTweetFeedAction(newReTweetCreated))
             toast.success(`${response}`, {
                 position: "top-center",
                 theme: "light",
@@ -172,8 +174,18 @@ function CreateTweet(props) {
         }
     }
     const {responseT, errorT} = useSelector((r) => r.ReplyReducer)
+    const replYtweet={
+        "image": sendImage,
+        "likes": "0",
+        "text": text,
+        "video": sendVideo,
+        user: {
+            "user_name": user_name,
+            "displaypic": displaypic
+        }
+    }
    console.log(responseT, errorT)
-    function handleTweetReply() {
+    function handleTweetReply(e) {
         fd.append("text", text)
         fd.append("tweetId", RId)
         if (sendImage != "") {
@@ -186,8 +198,11 @@ function CreateTweet(props) {
             fd.append("file", null)
         }
         dispatch(ReplyToTweet(fd))
+        dispatch(FakeReplyTweetAction(replYtweet))
+        console.log("home")
+        backToHome(e)
+        console.log(replYtweet)
         if (responseT !== "") {
-            backToHome()
             toast.success(`${responseT}`, {
                 position: "top-center",
                 theme: "light",
@@ -199,6 +214,7 @@ function CreateTweet(props) {
                 theme: "light",
             });
         }
+      
     }
     useEffect(() => {
         if (loading === true) {
@@ -226,7 +242,7 @@ function CreateTweet(props) {
                 <div id="CTweetText">
                     <p className="ctTagline">Share tweets with your followers</p>
                     <div className="ctWriteTweet">
-                        <input type="text" className="ctWriteTweetInput" value={text} onChange={(e) => { setText(e.target.value) }} required/>
+                        <input type="text" className="ctWriteTweetInput" value={text} onChange={(e) => { setText(e.target.value) }}/>
                     </div>
                 </div>
                 <div className="CTRetweetDiv" id="CTRETWEETDIV">

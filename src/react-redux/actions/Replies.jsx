@@ -83,3 +83,13 @@ export const ViewRepliesToReply = (id) => {
             })
     }
 }
+
+
+export const FakeReplyTweetAction = (tweeet) => {
+    return {
+        type: "TWEET_REPLY_ADD_ACTION",
+        payload: {
+            tweeet,
+        }
+    }
+}
