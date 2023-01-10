@@ -135,15 +135,60 @@ display: flex;
     margin-right: 0.5vw;
     cursor: pointer;
 }
+.replyLike2 {
+    margin-top: 0.4vh;
+    width: 32px;
+    height: 18px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+.RlikeIcon2{
+    width:17px;
+    height: 22px;
+    margin-top: 0.2vh;
+    margin-right: 0.5vw;
+    cursor: pointer;
+}
 
 .RbookmarkIcon {
     width: 17px;
     height: 20px;
-    margin-left: 31vw;
+    margin-left: 29vw;
     opacity: 0.8;
     cursor: pointer;
 }
 
+.RbookmarkIcon2 {
+    width: 17px;
+    height: 20px;
+    margin-left: 23.5vw;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.RretweetIcon {
+    width: 25.2px;
+    height: 21px;
+    margin-right: 0.5vw;
+    cursor: pointer;
+}
+.RtweetRetweet {
+    width: 64px;
+    height: 18px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    margin-top: 0.5vh;
+}
 #ReplyRet{
     width:1.4vw;
     margin-top:0.2vh;

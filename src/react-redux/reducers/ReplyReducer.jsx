@@ -4,7 +4,9 @@ const initialState={
     errorT:"",
     replyT:"",
     replies:{},
-    replyR:""
+    replyR:"",
+    nameInReply:[],
+    showName:false
 }
 
 export const ReplyReducer=(state=initialState, action)=>{
@@ -53,6 +55,22 @@ export const ReplyReducer=(state=initialState, action)=>{
                 ...state, replies:[action.payload.tweeet, ...state.replies]
             }
         }
+        case "NAME_IN_REPLY_ACTION":{
+            return {
+                ...state, nameInReply:action.payload, showName:true
+            }
+        }
+        case "SHOW_NAME_IN_REPLY_ACTION":{
+            return {
+                ...state, showName:false
+            }
+        }
+        
+        // case "NAME_IN_REPLY_ACTION":{
+        //     return {
+        //         ...state, nameInReply:[action.payload, ...state.nameInReply]
+        //     }
+        // }
         default : return state;
     }
 }

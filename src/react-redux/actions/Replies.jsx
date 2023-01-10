@@ -93,3 +93,16 @@ export const FakeReplyTweetAction = (tweeet) => {
         }
     }
 }
+
+export const NameInReplyAction = (name) => {
+    return {
+        type: "NAME_IN_REPLY_ACTION",
+        payload: name
+    }
+}
+export const ShowNameInReplyAction = () => {
+    return {
+        type: "SHOW_NAME_IN_REPLY_ACTION",
+       
+    }
+}

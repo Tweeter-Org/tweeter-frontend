@@ -6,7 +6,7 @@ import share from "../Assets/send.svg";
 import comment from "../Assets/tweetComm.svg";
 import retweet from "../Assets/retweet.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { ReplyToTweet, ViewRepliesToReply } from "../../react-redux/actions/Replies";
+import { NameInReplyAction, ReplyToTweet, ViewRepliesToReply } from "../../react-redux/actions/Replies";
 import Reply2 from "./Reply2";
 import TweetLikeAction, { RetweetDetails } from "../../react-redux/actions/Tweets";
 import greenLike from "../Assets/greenLike.svg"
@@ -18,6 +18,7 @@ function Reply(props) {
     const navigate = useNavigate();
     const dispatch = useDispatch()
     const id= props.indexx;
+    const lengthR = props.replyingto.length;
     const { responseT, errorT, replyR, loading } = useSelector((r) => r.ReplyReducer)
     console.log(replyR)
     const [replyArr, setReplyArr] = useState([])
@@ -28,16 +29,11 @@ function Reply(props) {
         setReplyArr2(replyR)
     },[props.num])
     function handleReplytoReply(id){
-        console.log("replyyyy")
-        console.log(id)
-        console.log(props.replyingto)
         dispatch(ViewRepliesToReply(id))
         setReplyArr(replyR)
         if(replyR.length>0)
         document.getElementsByClassName("RepShowMore")[props.indexx].style.display="none";
     }
-    console.log(props.replyingto)
-    console.log(replyArr2)
 
     function handleReplyLike(replyid) {
         dispatch(TweetLikeAction(replyid))
@@ -73,6 +69,9 @@ function Reply(props) {
         }
     }
     function handleTweetReply(tweetid, name, image, video, text){
+        dispatch(NameInReplyAction(props.replyingto))
+        sessionStorage.setItem("replyName",name)
+        // dispatch()
         dispatch(RetweetDetails(tweetid,name, video, text, image))
         sessionStorage.setItem("retweetId", tweetid)
         setOPacity()
@@ -83,6 +82,29 @@ function Reply(props) {
         document.getElementById("buttonTweet").style.display="none";
         document.getElementById("buttonRetweet").style.display="none";
         document.getElementById("buttonReply").style.display="block";
+    }
+       
+    function handleRetweet (tweetid, name, image, video, text){
+        console.log("replyyy")
+        dispatch(RetweetDetails(tweetid,name, video, text, image))
+        sessionStorage.setItem("retweetId", tweetid)
+        setOPacity()
+        var retweetPath = document.getElementsByClassName("RtweetRetweet")[id].style.color;
+        document.getElementById("CREATETWEET").style.display = "block"
+        document.getElementById("CTweetText").style.display="block";
+        document.getElementById("CTRETWEETDIV").style.display="flex";
+        document.getElementById("buttonTweet").style.display="none";
+        document.getElementById("buttonReply").style.display="none";
+        document.getElementById("buttonRetweet").style.display="block";
+        document.getElementById("CTReplyDiv").style.display="none"
+        if (retweetPath === "white") {
+            document.getElementsByClassName("RtweetRetweet")[id].style.color = "green"
+            // document.getElementsByClassName("RretweetIcon")[id].src = greenRetweet
+        }
+        else {
+            document.getElementsByClassName("RretweetIcon")[id].src = retweet
+            document.getElementsByClassName("RtweetRetweet")[id].style.color = "white"
+        }
     }
 
     return <>
@@ -95,7 +117,7 @@ function Reply(props) {
                 <p id="RepName">{props.username}</p>
                 <img src={bookmark} className="RbookmarkIcon" onClick={() => { handleTweetBookmark(props.num) }} />
             </div>
-            <p id="RepReply">Replying to {props.replyingto.length>0?(props.replyingto.map((name)=>{
+            <p id="RepReply">Replying to {lengthR>0?(props.replyingto.map((name)=>{
                 return <span id="RepAtName" onClick={()=>{console.log(`/profile/${name}`)
                 navigate(`/profile/${name}`)}}>@{name}</span>
             })):null}</p>
@@ -110,14 +132,12 @@ function Reply(props) {
                     <p className="replyLike" id="RTLike">Like</p>
                 </div>
                 <div className="iconBlock">
-                {/* <img src={comment} id="ReplyComm" /> */}
                     <img src={comment} id="ReplyComm" onClick={()=>{handleTweetReply(props.num, props.username, props.image, props.video, props.text)}} />
                     <p className="tweetComm" id="RTLike">Comment</p>
                 </div>
                 <div className="iconBlock"> 
-                <img src={retweet} className="retweetIcon"  id="ReplyRet" />
-                    {/* <img src={retweet} className="retweetIcon" onClick={()=>handleRetweet(props.tweetId, props.username, image, video, props.text)} /> */}
-                    <p className="tweetRetweet" id="RTLike">Retweet</p>
+                    <img src={retweet} className="RretweetIcon" onClick={()=>handleRetweet(props.num, props.username, props.image, props.video, props.text)} />
+                    <p className="RtweetRetweet" id="RTLike">Retweet</p>
                 </div>
                 {/* <div className="iconBlock">
                     <img src={share} id="ReplyShare" />
@@ -125,9 +145,9 @@ function Reply(props) {
                 </div> */}
             </div>
             <p className="RepShowMore" onClick={()=>{handleReplytoReply(props.num)}}>...Show more</p>
-            {replyArr.length>0? (replyArr.map((rep)=>{
+            {replyArr.length>0? (replyArr.map((rep,index)=>{
                 return <Reply2 text={rep.text} image={rep.image} video={rep.video} username={rep.user.user_name}
-                 displaypic={rep.user.displaypic} num={rep.id} replyingto={rep.replyingto} />
+                 displaypic={rep.user.displaypic} num={rep._id} indexx={index} replyingto={rep.replyingto} />
             })):null}
             {/* {replyArr2.length>0? <p className="RepShowMore" onClick={()=>{handleReplytoReply(props.num)}}>...Show more</p>:null} */}
            

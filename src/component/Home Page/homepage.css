@@ -279,7 +279,7 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 27px;
     color: rgba(255, 255, 255, 0.9);
 
@@ -511,6 +511,14 @@
 #CTReplyAtName {
     color: #47C87A;
     text-decoration: underline;
+    margin-right:0.6vw;
+    margin-top:-2vh;
+}
+#CTReplyAtName1 {
+    color: #47C87A;
+    text-decoration: underline;
+    margin-right:0.6vw;
+    margin-top:-2vh;
 }
 
 /*TWEET POPUP*/

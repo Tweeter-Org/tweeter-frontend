@@ -17,7 +17,7 @@ import DoBookmarkAction from "../../react-redux/actions/Bookmarks.jsx";
 import { Navigate, useNavigate } from "react-router-dom";
 import TweetPopup from "../Home Page/tweetPopup";
 import CreateTweet from "../Home Page/createTweet";
-import { ViewTweetsReply } from "../../react-redux/actions/Replies";
+import { NameInReplyAction, ShowNameInReplyAction, ViewTweetsReply } from "../../react-redux/actions/Replies";
 import Reply from "./Reply";
 import Loader from "../Assets/Loader";
 
@@ -53,15 +53,15 @@ function ToTweet(props) {
     //to like a tweet
     function handleTweetLike(tweetid) {
         dispatch(TweetLikeAction(tweetid))
-        var imagepath = document.getElementsByClassName("tweetLike")[id].style.color;
+        var imagepath = document.getElementById("LIKET").style.color;
         if (imagepath === "white") {
-            document.getElementsByClassName("tweetLike")[id].style.color = "green"
-            document.getElementsByClassName("likeIcon")[id].src = greenLike
+            document.getElementById("LIKET").style.color = "green"
+            document.getElementById("LIKE").src = greenLike
             setTweetCount(tweetCount => tweetCount + 1)
         }
         else {
-            document.getElementsByClassName("likeIcon")[id].src = like
-            document.getElementsByClassName("tweetLike")[id].style.color = "white"
+            document.getElementById("LIKE").src  = like
+            document.getElementById("LIKET").style.color = "white"
             setTweetCount(tweetCount => tweetCount - 1)
         }
     }
@@ -113,7 +113,10 @@ function ToTweet(props) {
 
     //reply to a tweet
     function handleTweetReply(tweetid, name, image, video, text) {
+        console.log("replyy")
         dispatch(RetweetDetails(tweetid, name, video, text, image))
+        sessionStorage.setItem("replyName",name)
+        dispatch(ShowNameInReplyAction())
         sessionStorage.setItem("retweetId", tweetid)
         setOPacity()
         document.getElementById("CREATETWEET").style.display = "block"
@@ -135,48 +138,16 @@ function ToTweet(props) {
         // document.getElementsByClassName("tweetPopcomp")[id].style.display = "none"
     }
     const navigate = useNavigate();
-    function handleToTweet(tweetId) {
-        navigate(`/totweet/${tweetId}`)
-        console.log(`/totweet/${tweetId}`)
-    }
-    const x = props.text.indexOf('#');
-    const y = props.text.indexOf(' ')
-    const HashArray = [];
-    var index1 = -1, index2 = -1, str
-    for (var i = 0; i < props.text.length; i++) {
-        console.log("loop")
-        if (props.text[i] == '#') {
-            index1 = i;
-            console.log(index1)
-            for (var j = index1 + 1; j < props.text.length + 1; j++) {
-                if (props.text[j] == ' ') {
-                    index2 = j;
-                    console.log("loop2")
-                    console.log(index2)
-                    break;
-                }
-                console.log("loop3")
-                if (j === props.text.length - 1) {
-                    console.log(j)
-                }
-
-            }
-            str = props.text.substring(index1, index2)
-            HashArray.push(str)
-            // HashArray[hash=>...hash, str]
-            // HashArray[((hash)=>{...hash, str})]
-            console.log(str)
-        }
-    }
-    console.log(HashArray)
 
     //view reply to tweet 
     const { responseT, errorT, replyT, loading, replies } = useSelector((r) => r.ReplyReducer)
     console.log(responseT, errorT, replyT)
+    console.log(replies)
+    const replyLength = replies.length;
     const [replyArr, setReplyArr] = useState([])
     useEffect(() => {
         setReplyArr(replies)
-    }, [replyT])
+    }, [replies])
     console.log(replyArr)
 
     //for loader
@@ -207,8 +178,8 @@ function ToTweet(props) {
             <p className="tweetText">{props.text}</p>
             <div className="secondTweetBlock">
                 <div className="iconBlock">
-                    <img src={like} className="likeIcon" onClick={() => { handleTweetLike(props.tweetId) }} />
-                    <p className="tweetLike">{tweetCount}</p>
+                    <img src={like} className="likeIcon" id="LIKE" onClick={() => { handleTweetLike(props.tweetId) }} />
+                    <p className="tweetLike" id="LIKET">{tweetCount}</p>
                 </div>
                 <div className="iconBlock">
                     <img src={comment} id="commentIcon" onClick={() => { handleTweetReply(props.tweetId, props.username, image, video, props.text) }} />
@@ -226,7 +197,7 @@ function ToTweet(props) {
             <p id="RepAlter" onClick={() => { handleTweetReply(props.tweetId, props.username, image, video, props.text) }}><span>
                 <img src={greenComment} id="RepComIcon" />
             </span>Add a comment</p>
-            {replyArr.length > 0 ? (replyArr.map((reply, index) => {
+            {replyLength > 0 ? (replies.map((reply, index) => {
                 return <Reply text={reply.text} image={reply.image} video={reply.video} username={reply.user.user_name} 
                 displaypic={reply.user.displaypic} reply={props.username} num={reply._id} indexx={index} replyingto={reply.replyingto} />
             })) : null}
@@ -261,8 +232,8 @@ function ToTweet(props) {
             </div>
             <div className="secondTweetBlock">
                 <div className="iconBlock">
-                    <img src={like} className="likeIcon" onClick={() => { handleTweetLike(props.tweetId) }} />
-                    <p className="tweetLike">{tweetCount}</p>
+                    <img src={like} className="likeIcon" id="LIKE" onClick={() => { handleTweetLike(props.tweetId) }} />
+                    <p className="tweetLike" id="LIKET" >{tweetCount}</p>
                 </div>
                 <div className="iconBlock">
                     <img src={comment} id="commentIcon" onClick={() => { handleTweetReply(props.tweetId, props.username, image, video, props.text) }} />

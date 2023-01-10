@@ -124,7 +124,7 @@ function CreateTweet(props) {
         }
         dispatch(CreateTweetAct(fd))
         console.log(newTweetCreated)
-       
+
         backToHome(e)
         if (response !== "") {
             dispatch(FakeTweetFeedAction(newTweetCreated))
@@ -155,7 +155,7 @@ function CreateTweet(props) {
             fd.append("file", null)
         }
         dispatch(CreateReTweetAct(fd))
-       
+
         console.log("rewteet")
         console.log(newReTweetCreated)
         backToHome(e)
@@ -173,8 +173,27 @@ function CreateTweet(props) {
             });
         }
     }
-    const {responseT, errorT} = useSelector((r) => r.ReplyReducer)
-    const replYtweet={
+    const { responseT, errorT, nameInReply, showName } = useSelector((r) => r.ReplyReducer)
+   
+    console.log(responseT, errorT, nameInReply)
+    console.log(nameInReply)
+    console.log(showName)
+    const atNames = sessionStorage.getItem("replyName");
+    // useEffect(()=>{
+    //     if(showName){
+    //         nameInReply.filter((n)=>{
+    //             if(n==atNames){
+    //                 console.log(n)
+    //             document.getElementById("CTReplyAtName1").style.display="none";}
+    //             else
+    //             document.getElementById("CTReplyAtName1").style.display="inline";
+    //         })
+    //     }
+    //         else{
+    //             document.getElementById("CTReplyAtName1").style.display="inline";
+    //         }
+    // },[nameInReply, showName])
+    const replYtweet = {
         "image": sendImage,
         "likes": "0",
         "text": text,
@@ -182,9 +201,9 @@ function CreateTweet(props) {
         user: {
             "user_name": user_name,
             "displaypic": displaypic
-        }
+        },
+        "replyingto": nameInReply
     }
-   console.log(responseT, errorT)
     function handleTweetReply(e) {
         fd.append("text", text)
         fd.append("tweetId", RId)
@@ -198,6 +217,7 @@ function CreateTweet(props) {
             fd.append("file", null)
         }
         dispatch(ReplyToTweet(fd))
+        console.log("home")
         dispatch(FakeReplyTweetAction(replYtweet))
         console.log("home")
         backToHome(e)
@@ -214,7 +234,7 @@ function CreateTweet(props) {
                 theme: "light",
             });
         }
-      
+
     }
     useEffect(() => {
         if (loading === true) {
@@ -224,6 +244,8 @@ function CreateTweet(props) {
             document.body.style.opacity = 1;
         }
     }, [loading])
+    const navigate = useNavigate();
+    
     return <>
         <div className="createTweetDiv" id="CREATETWEET">
             <div className="CTBlock1">
@@ -242,7 +264,7 @@ function CreateTweet(props) {
                 <div id="CTweetText">
                     <p className="ctTagline">Share tweets with your followers</p>
                     <div className="ctWriteTweet">
-                        <input type="text" className="ctWriteTweetInput" value={text} onChange={(e) => { setText(e.target.value) }}/>
+                        <input type="text" className="ctWriteTweetInput" value={text} onChange={(e) => { setText(e.target.value) }} />
                     </div>
                 </div>
                 <div className="CTRetweetDiv" id="CTRETWEETDIV">
@@ -262,12 +284,22 @@ function CreateTweet(props) {
                     <p className="TWRText" >{Rtext}</p>
                 </div>
                 <div id="CTReplyDiv">
-                    <p className="ctName">Replying to <span id="CTReplyAtName">@{Rname}</span></p>
+                    <p className="ctName">Replying to<span id="CTReplyAtName1"> @{atNames}</span>{
+                        showName ? (
+                            nameInReply.length > 0 ? (nameInReply.map((name) => {
+                                return <span id="CTReplyAtName" onClick={() => {
+                                    console.log(`/profile/${name}`)
+                                    navigate(`/profile/${name}`)
+                                }}>@{name}</span>
+                            })) : null
+                        ) : null
+                    }
+                    </p>
+                    {/* <p className="ctName">Replying to <span id="CTReplyAtName">@{Rname}</span></p> */}
                     <div className="CTReplyTweet">
                         <input type="text" id="CTReplyInput" className="ctWriteTweetInput" value={text} onChange={(e) => { setText(e.target.value) }} />
                     </div>
                 </div>
-
                 <div className="CTBlock2">
                     <div className="CTUPLIMG">
                         <label for="ctuploadImg"><img src={imageIcon} className="ctImage" /></label>
