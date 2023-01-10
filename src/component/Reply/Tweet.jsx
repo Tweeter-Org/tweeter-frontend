@@ -228,7 +228,7 @@ function ToTweet(props) {
             </span>Add a comment</p>
             {replyArr.length > 0 ? (replyArr.map((reply, index) => {
                 return <Reply text={reply.text} image={reply.image} video={reply.video} username={reply.user.user_name} 
-                displaypic={reply.user.displaypic} reply={props.username} num={reply.id} indexx={index} replyingto={reply.replyingto} />
+                displaypic={reply.user.displaypic} reply={props.username} num={reply._id} indexx={index} replyingto={reply.replyingto} />
             })) : null}
         </div>) : (<div className="tweetComp POPUPBG" id="tweetRet RepTweet"  >
             <div className="firstTweetBlock" >
@@ -282,7 +282,7 @@ function ToTweet(props) {
             </span>Add a comment</p>
             {replyArr.length > 0 ? (replyArr.map((reply, index) => {
                 return <Reply text={reply.text} image={reply.image} video={reply.video} username={reply.user.user_name}
-                 displaypic={reply.user.displaypic} reply={props.username} indexx={index} num={reply.id} replyingto={reply.replyingto} />
+                 displaypic={reply.user.displaypic} reply={props.username} indexx={index} num={reply._id} replyingto={reply.replyingto} />
             })) :null}
         </div>)}
         <CreateTweet />

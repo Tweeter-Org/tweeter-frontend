@@ -67,7 +67,7 @@ export const ViewRepliesToReply = (id) => {
         dispatch({
             type:"REPLY_TO_REPLY"
         })
-        await BaseUrl.get(`/r/replyreplies/${id}`,config)
+        await BaseUrl.get(`/r/tweetreplies/${id}`,config)
             .then((Res) => {
                 console.log(Res)
                 dispatch({

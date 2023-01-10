@@ -13,7 +13,7 @@ const TweetCreateReducer =(state=initialState, action)=>{
         }
         case "TWEETNOTCREATED":{
             console.log(action.payload)
-            return {...state , error:action.payload, tweetCreate:false, loading:false}
+            return {...state , error:action.payload.data.msg, tweetCreate:false, loading:false}
         }
         case "RETWEETCREATED":{
             console.log(action.payload)

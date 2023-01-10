@@ -59,15 +59,6 @@ function Login() {
             });
         }
     }
-
-    useEffect(()=>{
-        if(error!==""){
-            toast.error(`${error}`, {
-                position: "top-center",
-                theme: "light",
-                });
-        }
-    },[error])
     useEffect(() => {
         if (loading === true || loadingGoogle===true) {
             document.body.style.opacity = 0.5;

@@ -8,10 +8,16 @@ import retweet from "../Assets/retweet.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { ViewRepliesToReply } from "../../react-redux/actions/Replies";
 import Reply2 from "./Reply2";
+import TweetLikeAction from "../../react-redux/actions/Tweets";
+import greenLike from "../Assets/greenLike.svg"
+import bookmark from "../Assets/bookmarks.svg";
+import greenBookmarks from "../Assets/greenBookmarks.svg"
+import DoBookmarkAction from "../../react-redux/actions/Bookmarks";
 
 function Reply(props) {
     const navigate = useNavigate();
     const dispatch = useDispatch()
+    const id= props.indexx;
     const { responseT, errorT, replyR, loading } = useSelector((r) => r.ReplyReducer)
     console.log(replyR)
     const [replyArr, setReplyArr] = useState([])
@@ -22,6 +28,7 @@ function Reply(props) {
         setReplyArr2(replyR)
     },[props.num])
     function handleReplytoReply(id){
+        console.log("replyyyy")
         console.log(id)
         console.log(props.replyingto)
         dispatch(ViewRepliesToReply(id))
@@ -31,6 +38,34 @@ function Reply(props) {
     }
     console.log(props.replyingto)
     console.log(replyArr2)
+
+    function handleReplyLike(replyid) {
+        dispatch(TweetLikeAction(replyid))
+        var imagepath = document.getElementsByClassName("replyLike")[id].style.color;
+        if (imagepath === "white") {
+            document.getElementsByClassName("replyLike")[id].style.color = "green"
+            document.getElementsByClassName("RlikeIcon")[id].src = greenLike
+            // setTweetCount(tweetCount => tweetCount + 1)
+        }
+        else {
+            document.getElementsByClassName("RlikeIcon")[id].src = like
+            document.getElementsByClassName("replyLike")[id].style.color = "white"
+            // setTweetCount(tweetCount => tweetCount - 1)
+        }
+    }
+    const { responseBM, markBM } = useSelector((b) => b.BookmarkReducer)
+    function handleTweetBookmark(tweetid) {
+        document.getElementsByClassName("RbookmarkIcon")[id].src = greenBookmarks
+        dispatch(DoBookmarkAction(tweetid))
+        if (markBM) {
+            if (responseBM === "Saved") {
+                document.getElementsByClassName("RbookmarkIcon")[id].src = bookmark
+            }
+            if (responseBM === "Unsaved") {
+                document.getElementsByClassName("RbookmarkIcon")[id].src = greenBookmarks
+            }
+        }
+    }
     return <>
         <div className="ReplyDiv">
             <div className="Reply1">
@@ -39,6 +74,7 @@ function Reply(props) {
                         (<img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`} />))
                 }
                 <p id="RepName">{props.username}</p>
+                <img src={bookmark} className="RbookmarkIcon" onClick={() => { handleTweetBookmark(props.num) }} />
             </div>
             <p id="RepReply">Replying to {props.replyingto.length>0?(props.replyingto.map((name)=>{
                 return <span id="RepAtName" onClick={()=>{console.log(`/profile/${name}`)
@@ -51,8 +87,8 @@ function Reply(props) {
             <p className="RepText">{props.text}</p>
             <div className="secondTweetBlock" id="ReplyIconBlock">
                 <div className="iconBlock">
-                    <img src={like} className="likeIcon" id="ReplyLike" />
-                    <p className="tweetLike" id="RTLike">Like</p>
+                    <img src={like} className="RlikeIcon"  onClick={()=>{handleReplyLike(props.num)}}/>
+                    <p className="replyLike" id="RTLike">Like</p>
                 </div>
                 <div className="iconBlock">
                 <img src={comment} id="ReplyComm" />
@@ -64,10 +100,10 @@ function Reply(props) {
                     {/* <img src={retweet} className="retweetIcon" onClick={()=>handleRetweet(props.tweetId, props.username, image, video, props.text)} /> */}
                     <p className="tweetRetweet" id="RTLike">Retweet</p>
                 </div>
-                <div className="iconBlock">
+                {/* <div className="iconBlock">
                     <img src={share} id="ReplyShare" />
                     <p className="tweetShare" id="RTLike">Share</p>
-                </div>
+                </div> */}
             </div>
             <p className="RepShowMore" onClick={()=>{handleReplytoReply(props.num)}}>...Show more</p>
             {replyArr.length>0? (replyArr.map((rep)=>{

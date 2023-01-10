@@ -63,6 +63,7 @@ function CreateTweet(props) {
         setOPacity()
     }
     const { response, error, tweetCreate, loading } = useSelector((t) => t.TweetCreateReducer)
+    console.log(response)
     const auth = useSelector((s) => s.AuthReducer)
     const { user, toFgtPwd } = auth;
     const { name, user_name, displaypic } = user;
@@ -225,7 +226,7 @@ function CreateTweet(props) {
                 <div id="CTweetText">
                     <p className="ctTagline">Share tweets with your followers</p>
                     <div className="ctWriteTweet">
-                        <input type="text" className="ctWriteTweetInput" value={text} onChange={(e) => { setText(e.target.value) }} />
+                        <input type="text" className="ctWriteTweetInput" value={text} onChange={(e) => { setText(e.target.value) }} required/>
                     </div>
                 </div>
                 <div className="CTRetweetDiv" id="CTRETWEETDIV">

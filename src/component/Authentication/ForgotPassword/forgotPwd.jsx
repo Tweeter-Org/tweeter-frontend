@@ -35,19 +35,12 @@ function ForgotPwd(){
 
     function FORGOTPWD (){
         dispatch(FgtPwdAction(email, checkEmail),sessionStorage.setItem("email",email))
-        if (response != "") {
-            toast.success(`${response}`, {
-                position: "top-center",
-                theme: "light",
-            });
-        }
         if (error != "") {
             toast.error(`${error}`, {
                 position: "top-center",
                 theme: "light",
             });
         }
-
     }
 
 
@@ -67,15 +60,6 @@ function ForgotPwd(){
                 });
         }
     },[response])
-
-    useEffect(()=>{
-        if(error!==""){
-            toast.error(`${error}`, {
-                position: "top-center",
-                theme: "light",
-                });
-        }
-    },[error])
 
     // const [displayToaster, setDisplayToaster] = useState(false)
     // useEffect(() => {

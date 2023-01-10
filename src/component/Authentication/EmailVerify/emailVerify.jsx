@@ -55,12 +55,6 @@ function AuthOtp(){
 
     function EMAILVERIFY (){
         dispatch(EmailAction(data))
-        if(response!==""){
-            toast.success(`${response}`, {
-                position: "top-center",
-                theme: "light",
-                });
-        }
         if(error!==""){
             toast.error(`${error}`, {
                 position: "top-center",

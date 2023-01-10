@@ -221,7 +221,7 @@ export { ResetAction }
 const GoogleAction = () => {
     return async function (dispatch) {
         dispatch({ type: "GOOGLE_STARTED" })
-        await axios.get("https://twitterbackend-production-93ac.up.railway.app/auth/google/url/")
+        await axios.get("https://twitterbackend-production-93ac.up.railway.app/auth/google/url")
             .then((res) => dispatch({
                 type: "GOOGLE_SUCCEDED",
                 payload: res.data

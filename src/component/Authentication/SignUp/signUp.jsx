@@ -60,12 +60,6 @@ function SignUp(){
                         theme: "light",
                         });
                 }
-                // if(response!==""){
-                //     toast.success(`${response}`, {
-                //         position: "top-center",
-                //         theme: "light",
-                //         });
-                // }
             }
     useEffect(()=>{
         if(loading===true){

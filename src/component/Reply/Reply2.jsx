@@ -24,6 +24,7 @@ function Reply2(props) {
                         (<img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`} />))
                 }
                 <p id="RepName">{props.username}</p>
+                
             </div>
             <p id="RepReply">Replying to {props.replyingto.length>0?(props.replyingto.map((name)=>{
                 return <span id="RepAtName" onClick={()=>{console.log(`/profile/${name}`)
