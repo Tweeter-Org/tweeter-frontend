@@ -36,23 +36,61 @@ function ProfilePage() {
     const [followingArray, setFollowingArray] = useState([])
 
     const [tweetsArray, setTweetsArray] = useState([])
-   
-// var nameInApi = sessionStorage.getItem("usernameInApi")
 
-// const pro = useSelector((p)=>p.ProfileNameReducer)
-// console.log(pro)
-// const [dynamic, setDynamic] = useState("")
-// useEffect(()=>{
-//     setDynamic(pro.name)
-// },[pro])
-const profilee = useSelector((p) => p.ProfileReducer)
-const { profile , accessProfile , loading , editprofile , ifedit , profileTweet} = profilee;
-console.log(profileTweet)
+    // var nameInApi = sessionStorage.getItem("usernameInApi")
 
-const {apiname} = useParams();
-console.log(apiname)
+    // const pro = useSelector((p)=>p.ProfileNameReducer)
+    // console.log(pro)
+    // const [dynamic, setDynamic] = useState("")
+    // useEffect(()=>{
+    //     setDynamic(pro.name)
+    // },[pro])
+    const profilee = useSelector((p) => p.ProfileReducer)
+
+    let y = useSelector((p) => p.ProfileReducer).profile.user
+
+    const { profile, accessProfile, loading, editprofile, ifedit, profileTweet } = profilee;
+    console.log(profileTweet)
+
+
+    const { apiname } = useParams();
+    console.log(apiname)
     useEffect(() => {
+        console.log(profilee)
         dispatch(ProfileAction(apiname));
+        // if (accessProfile) {
+        //     console.log(profile)
+        //     let x = Object.fromEntries(
+        //         Object.entries(profile.user).slice()
+        //     )
+        //     console.log(x)
+        //     console.log(y)
+        //     console.log(profilee)
+        //     setUser(x)
+
+        //     setFollower(profile.followers.length)
+        //     setFollowing(profile.following.length)
+        //     setMyProfile(profile.myprofile)
+        //     setName(profile.user.name)
+        //     setUserName(profile.user.user_name)
+        //     setBio(profile.user.bio)
+        //     setEmail(profile.user.email)
+        //     setCreatedAt(profile.user.createdAt)
+        //     setUpdatedAt(profile.user.updatedAt)
+        //     setDisplaypic(profile.user.displaypic)
+        //     setFollowerArray(profile.followers)
+        //     setFollowingArray(profile.following)
+        //     setTweetsArray(profileTweet)
+        // }
+    }, [apiname])
+    useEffect(() => {
+        if (ifedit) {
+            console.log(editprofile)
+        }
+    }, [ifedit])
+
+    useEffect(() => {
+        console.warn(profilee)
         if (accessProfile) {
             console.log(profile)
             setFollower(profile.followers.length)
@@ -69,19 +107,14 @@ console.log(apiname)
             setFollowingArray(profile.following)
             setTweetsArray(profileTweet)
         }
-    }, [apiname])
-    useEffect(()=>{
-        if(ifedit){
-            console.log(editprofile)
-        }
-    },[ifedit])
+    }, [profilee])
 
     console.log(profilee)
 
-    function setOPacity (){
-        var items= document.getElementsByClassName("POPUPBG")
-        for(var i=0;i<items.length;i++){
-            document.getElementsByClassName("POPUPBG")[i].style.opacity=0.2;
+    function setOPacity() {
+        var items = document.getElementsByClassName("POPUPBG")
+        for (var i = 0; i < items.length; i++) {
+            document.getElementsByClassName("POPUPBG")[i].style.opacity = 0.2;
         }
     }
     const followed = useSelector((f) => f.FollowReducer)
@@ -110,61 +143,61 @@ console.log(apiname)
     }
     function handleEdit() {
         document.getElementsByClassName("editPrDiv")[0].style.display = "flex";
-        sessionStorage.setItem("profile name",profile.user.name)
+        sessionStorage.setItem("profile name", profile.user.name)
         sessionStorage.setItem("profile bio", profile.user.bio)
         setOPacity()
     }
-    function showFollowers(){
+    function showFollowers() {
         document.getElementsByClassName("followersFlex")[0].style.display = "flex";
         document.getElementsByClassName("followingFlex")[0].style.display = "none";
         document.getElementsByClassName("pFollowerHead")[0].style.color = "green";
         document.getElementsByClassName("pFollowingHead")[0].style.color = "white";
-        document.getElementById("likeTweetFlex").style.display="none"
-        document.getElementById("profileTweetFlex").style.display="none"
+        document.getElementById("likeTweetFlex").style.display = "none"
+        document.getElementById("profileTweetFlex").style.display = "none"
     }
-    function showFollowing(){
+    function showFollowing() {
         document.getElementsByClassName("followingFlex")[0].style.display = "flex";
         document.getElementsByClassName("followersFlex")[0].style.display = "none";
         document.getElementsByClassName("pFollowingHead")[0].style.color = "#47c87a";
         document.getElementsByClassName("pFollowerHead")[0].style.color = "white";
-        document.getElementById("likeTweetFlex").style.display="none"
-        document.getElementById("profileTweetFlex").style.display="none"
+        document.getElementById("likeTweetFlex").style.display = "none"
+        document.getElementById("profileTweetFlex").style.display = "none"
     }
-    function showTweets(){
+    function showTweets() {
         document.getElementsByClassName("tweetPrFlexbox")[0].style.display = "flex";
-        document.getElementById("likeTweetFlex").style.display="none"
-        document.getElementById("profileTweetFlex").style.display="flex"
+        document.getElementById("likeTweetFlex").style.display = "none"
+        document.getElementById("profileTweetFlex").style.display = "flex"
     }
-    function showLikedTweets (){
+    function showLikedTweets() {
         dispatch(LikedTweetAction(username))
-        document.getElementById("likeTweetFlex").style.display="flex"
-        document.getElementById("profileTweetFlex").style.display="none"
+        document.getElementById("likeTweetFlex").style.display = "flex"
+        document.getElementById("profileTweetFlex").style.display = "none"
     }
-    
-    const {likedTweets} = useSelector((l)=>l.LikedTweetsPReducer)
-    useEffect(()=>{
-        if(loading===true){
+
+    const { likedTweets } = useSelector((l) => l.LikedTweetsPReducer)
+    useEffect(() => {
+        if (loading === true) {
             document.body.style.opacity = 0.5;
         }
-        else{
+        else {
             document.body.style.opacity = 1;
         }
-    },[loading])
+    }, [loading])
 
     return <>
         <Sidebar />
         <div className="PROFILE POPUPBG">
             <div className="profileDiv1">
-            
-            {(displaypic === null) ? (<img src={avatar}  className="pImage"  />) :
-                    ((displaypic.startsWith("https:")) ? (<img src={displaypic}  className="pImage"  />) :
-                        (<img src={`https://twitterbackend-production-93ac.up.railway.app/${displaypic}`}  className="pImage"  />))
+
+                {(displaypic === null) ? (<img src={avatar} className="pImage" />) :
+                    ((displaypic.startsWith("https:")) ? (<img src={displaypic} className="pImage" />) :
+                        (<img src={`https://twitterbackend-production-93ac.up.railway.app/${displaypic}`} className="pImage" />))
                 }
                 <div className="PBLOCK1">
                     <div className="pBlock1">
                         <p className="pTweet1">Tweets</p>
-                        <p className="pTweet1" id="pFollowers" onClick={() => { displayFollowers();showFollowers() }}>Followers</p>
-                        <p className="pTweet1" onClick={() => { displayFollowers();showFollowing() }} >Following</p>
+                        <p className="pTweet1" id="pFollowers" onClick={() => { displayFollowers(); showFollowers() }}>Followers</p>
+                        <p className="pTweet1" onClick={() => { displayFollowers(); showFollowing() }} >Following</p>
                     </div>
                     <div className="pBlock2">
                         <p className="pTweetCount" id="tweetCount">{profileTweet.length}</p>
@@ -175,7 +208,7 @@ console.log(apiname)
                     </div>
                     {myProfile ? (<button className="pEdiitProfile" onClick={() => { handleEdit() }}>Edit Profile</button>)
                         : (profile.isfollowing ? (<button className="pProfileFollow" onClick={() => { handleFollowers() }} >Following </button>)
-                         : (<button className="pProfileFollow" onClick={() => { handleFollowers() }}>Follow</button>))}
+                            : (<button className="pProfileFollow" onClick={() => { handleFollowers() }}>Follow</button>))}
                 </div>
             </div>
             <div className="profileDiv2">
@@ -189,41 +222,41 @@ console.log(apiname)
                 {myProfile ? <p className="pText6"><span id="update">Updated At: </span>{updatedAt}</p> : null}
             </div>
             <div className="profileDiv3">
-                <p className="pTweetHead" onClick={()=>{showTweets()}}>Tweets</p>
+                <p className="pTweetHead" onClick={() => { showTweets() }}>Tweets</p>
                 <p className="pTweetReply">Tweets & Replies</p>
                 <p className="pLikehead" onClick={showLikedTweets}>Likes</p>
             </div>
             <div className="profileDiv4">
-                <p className="pFollowerHead" onClick={()=>{showFollowers()}}>Followers</p>
-                <p className="pFollowingHead"  onClick={()=>{showFollowing()}}>Following</p>
+                <p className="pFollowerHead" onClick={() => { showFollowers() }}>Followers</p>
+                <p className="pFollowingHead" onClick={() => { showFollowing() }}>Following</p>
                 <img src={post} className="pPost" onClick={() => { displayTweets() }} />
             </div>
             <hr className="pLine" />
             <div className="followersFlex">
-        {followers>0?(followerArray.map((f)=>{
-            return <FollowComp name={f} />
-        })):<p className="alterFollower">No Followers</p>}
-        </div>
-        <div className="followingFlex">
-        {following>0?(followingArray.map((f)=>{
-            return <FollowComp name={f.name} username={f.user_name}/>
-        })):<p className="alterFollower">No Followings</p>}
-        </div> 
-        <div className="tweetPrFlexbox POPUPBG" id="profileTweetFlex">
-        {profileTweet.length>0?(profileTweet.map((tweet, index)=>{
-        return <ProfileTweet text={tweet.text} likeCount={tweet.likes} retweet={tweet.retweet} image={tweet.image} video={tweet.video} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarkb ="false" />;
-    })):null}
-        </div>
-        <div className="tweetPrFlexbox" id="likeTweetFlex">
-        {likedTweets.length>0?(likedTweets.map((tweet, index)=>{
-        return <ProfileTweet text={tweet.text} likeCount={tweet.likes} image={tweet.image} video={tweet.video} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarkb ="false" />;
-    })):null}
-        </div>
+                {followers > 0 ? (followerArray.map((f) => {
+                    return <FollowComp name={f} />
+                })) : <p className="alterFollower">No Followers</p>}
+            </div>
+            <div className="followingFlex">
+                {following > 0 ? (followingArray.map((f) => {
+                    return <FollowComp name={f.name} username={f.user_name} />
+                })) : <p className="alterFollower">No Followings</p>}
+            </div>
+            <div className="tweetPrFlexbox POPUPBG" id="profileTweetFlex">
+                {profileTweet.length > 0 ? (profileTweet.map((tweet, index) => {
+                    return <ProfileTweet text={tweet.text} likeCount={tweet.likes} retweet={tweet.retweet} image={tweet.image} video={tweet.video} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarkb="false" />;
+                })) : null}
+            </div>
+            <div className="tweetPrFlexbox" id="likeTweetFlex">
+                {likedTweets.length > 0 ? (likedTweets.map((tweet, index) => {
+                    return <ProfileTweet text={tweet.text} likeCount={tweet.likes} image={tweet.image} video={tweet.video} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarkb="false" />;
+                })) : null}
+            </div>
         </div>
         <EditProfile />
         <DltTweetPopup />
-        {loading===true?<Loader loading={loading}/>:null}
+        {loading === true ? <Loader loading={loading} /> : null}
     </>
-    
+
 }
 export default ProfilePage

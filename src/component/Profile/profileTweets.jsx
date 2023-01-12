@@ -117,7 +117,7 @@ function ProfileTweet(props) {
         //     }
         // }
     }
-console.log(profileTweet)
+// console.log(profileTweet)
     useEffect(() => {
         if (bookmarkShow === "true") {
             document.getElementsByClassName("bookmarkIcon")[id].src = greenBookmarks

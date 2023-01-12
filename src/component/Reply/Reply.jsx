@@ -20,26 +20,30 @@ function Reply(props) {
     const id = props.indexx;
     const lengthR = props.replyingto.length;
     const { responseT, errorT, replyR, replyShow, loading } = useSelector((r) => r.ReplyReducer)
-    console.log(replyR, replyShow)
-    console.log(document.getElementsByClassName("RepShowMore"))
+    console.log(replyR, replyShow, loading)
+    // console.log(document.getElementsByClassName("RepShowMore"))
     const [replyArr, setReplyArr] = useState([])
     const [replyArr2, setReplyArr2] = useState([])
+    const [update, setupdate] = useState(false)
 
 const [bool, setBool] = useState(false)
     function handleReplytoReply(idd) {
-        console.log(idd)
         setBool(true)
-        console.log("jhjg")
+        setupdate(true)
         dispatch(ViewRepliesToReply(idd))
         console.log(replyR)
-        setReplyArr(replyR)
         console.log(replyArr)
-        // if (replyR.length > 0)
-            // document.getElementsByClassName("RepShowMore")[id].style.display = "none";
+        if ((replyShow==true && loading==false) > 0)
+            document.getElementsByClassName("RepShowMore")[id].style.display = "none";
     }
-    // useEffect(() => {
-        // setReplyArr(replyR)
-    // }, [replyR])
+    useEffect(() => {
+        if(update)
+        {
+            setReplyArr(replyR)
+            setupdate(false)
+        }
+        
+    }, [replyR])
     function handleReplyLike(replyid) {
         dispatch(TweetLikeAction(replyid))
         var imagepath = document.getElementsByClassName("replyLike")[id].style.color;
@@ -90,7 +94,7 @@ const [bool, setBool] = useState(false)
     }
 
     function handleRetweet(tweetid, name, image, video, text) {
-        console.log("replyyy")
+        // console.log("replyyy")
         dispatch(RetweetDetails(tweetid, name, video, text, image))
         sessionStorage.setItem("retweetId", tweetid)
         setOPacity()

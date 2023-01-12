@@ -72,7 +72,7 @@ function Tweet(props) {
   
     function handleTweetBookmark(e,tweetid) {
         console.log("from inner div")
-        e.stopPropogation();
+        e.stopPropagation();
         // e.nativeEvent.stopImmediatePropagation();
         // e.preventDefault();
         // if(!e) var e= window.event;
@@ -193,7 +193,7 @@ const navigate = useNavigate();
                         (<span className="displaypie"><img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`} id="picincircle" /></span>))
                 }
                 <p className="username" onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >{props.username}</p>
-                <img src={bookmark} className="bookmarkIcon" onClick={()=>{handleTweetBookmark(props.tweetId)}} />
+                <img src={bookmark} className="bookmarkIcon" onClick={(e)=>{handleTweetBookmark(e,props.tweetId)}} />
                 <TweetPopup name={props.username} num={id}/>
             </div>
              { (image != null && image.startsWith("blob:"))?(

@@ -38,17 +38,17 @@ export const ReplyReducer=(state=initialState, action)=>{
             }
         }
         case "REPLY_TO_REPLY":{
-            return {...state}
+            return {...state, loading:true}
         }
         case "VIEW_REPLY_TO_REPLY_YES":{
             console.log(action.payload)
             return{
-                ...state, replyR:action.payload.data.replies, errorT:"", replyShow:true
+                ...state, replyR:action.payload.data.replies, errorT:"", replyShow:true, loading:false
             }
         }
         case "VIEW_REPLY_TO_REPLY_NO":{
             return{
-                ...state, errorT:action.payload, responseT:"", replyShow:false
+                ...state, errorT:action.payload, responseT:"", replyShow:false, loading:false
             }
         }
         case "TWEET_REPLY_ADD_ACTION":{
