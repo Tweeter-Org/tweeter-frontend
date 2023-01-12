@@ -25,6 +25,9 @@ import { Navigate, useNavigate } from "react-router-dom";
 function Tweet(props) {
     const video = props.video
     const image = props.image
+    console.log(image);
+    if(image=={})
+    console.log(image.name)
     const id = props.number;
     const bookmarkShow = props.bookmarked
     const retweets= props.retweet;
@@ -66,7 +69,15 @@ function Tweet(props) {
     }
 
     const { responseBM, markBM } = useSelector((b) => b.BookmarkReducer)
-    function handleTweetBookmark(tweetid) {
+  
+    function handleTweetBookmark(e,tweetid) {
+        console.log("from inner div")
+        e.stopPropogation();
+        // e.nativeEvent.stopImmediatePropagation();
+        // e.preventDefault();
+        // if(!e) var e= window.event;
+        // e.cancelBubbble = true;
+        // if(e.stopPropogation) e.stopPropogation();
         document.getElementsByClassName("bookmarkIcon")[id].src = greenBookmarks
         dispatch(DoBookmarkAction(tweetid))
         if (markBM) {
@@ -78,6 +89,14 @@ function Tweet(props) {
             }
         }
     }
+
+    // function BOOKMARK (e){
+    //     console.log("BOOKMARK")
+      
+    //     handleTweetBookmark(props.tweetId);
+    //     e.stopPropogation();
+    // }
+
     function setOPacity() {
         var items = document.getElementsByClassName("POPUPBG")
         for (var i = 0; i < items.length; i++) {
@@ -130,8 +149,12 @@ function Tweet(props) {
 const navigate = useNavigate();
     function handleToTweet (tweetId){
         navigate(`/totweet/${tweetId}`)
-        console.log(`/totweet/${tweetId}`)
+        console.log("From outer div")
     }
+    // function TWEET(e){
+    //     console.log("TWEET")
+    //     handleToTweet(props.tweetId)
+    // }
     const x = props.text.indexOf('#');
     const y = props.text.indexOf(' ')
     const HashArray =[];
@@ -170,16 +193,23 @@ const navigate = useNavigate();
                         (<span className="displaypie"><img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`} id="picincircle" /></span>))
                 }
                 <p className="username" onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >{props.username}</p>
-                <img src={bookmark} className="bookmarkIcon" onClick={() => { handleTweetBookmark(props.tweetId) }} />
+                <img src={bookmark} className="bookmarkIcon" onClick={()=>{handleTweetBookmark(props.tweetId)}} />
                 <TweetPopup name={props.username} num={id}/>
             </div>
-            {/* {image!=null ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" />) :
-            (image != [null] ? (<img src={image} alt="image" className="tweetImage" />)
-             : null)} */}
-            {image != null? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" />) : null}
-            {video != null ? <video className="tweetvideo" controls>
+             { (image != null && image.startsWith("blob:"))?(
+             <img src={image} alt="image" className="tweetImage" />):(
+                image != null? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" />) : null)}
+              
+                { (video != null && video.startsWith("blob:"))?(
+                    <video className="tweetvideo" controls>
+                <source src={video} type="video/mp4" />
+            </video>):(
+                video != null? (<video className="tweetvideo" controls>
                 <source src={`https://twitterbackend-production-93ac.up.railway.app/${video}`} type="video/mp4" />
-            </video> : null}
+            </video>) : null)}
+            {/* {video != null ? <video className="tweetvideo" controls>
+                <source src={`https://twitterbackend-production-93ac.up.railway.app/${video}`} type="video/mp4" />
+            </video> : null} */}
             <p className="tweetText">{props.text}</p>
             <div className="secondTweetBlock">
                 <div className="iconBlock">
@@ -206,7 +236,7 @@ const navigate = useNavigate();
                         (<span className="displaypie"><img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`} id="picincircle" /></span>))
                 }
                 <p className="username" onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >{props.username}</p>
-                <img src={bookmark} className="bookmarkIcon" onClick={() => { handleTweetBookmark(props.tweetId) }} />
+                <img src={bookmark} className="bookmarkIcon" onClick={(e) => { handleTweetBookmark(e,props.tweetId) }} />
                 <TweetPopup name={props.username} num={id}/>
             </div>
             {(image != null) ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" />) : null}

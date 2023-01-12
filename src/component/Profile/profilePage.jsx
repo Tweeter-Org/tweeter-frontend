@@ -155,6 +155,7 @@ console.log(apiname)
         <Sidebar />
         <div className="PROFILE POPUPBG">
             <div className="profileDiv1">
+            
             {(displaypic === null) ? (<img src={avatar}  className="pImage"  />) :
                     ((displaypic.startsWith("https:")) ? (<img src={displaypic}  className="pImage"  />) :
                         (<img src={`https://twitterbackend-production-93ac.up.railway.app/${displaypic}`}  className="pImage"  />))

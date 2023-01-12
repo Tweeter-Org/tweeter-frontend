@@ -253,3 +253,17 @@ const GoogleTwoAction = (url) => {
     }
 }
 export { GoogleTwoAction }
+
+export const nameViaGoogle=(name)=>{
+    return {
+        type:"NAME_VIA_GOOGLE",
+        payload:name
+    }
+}
+
+export const infoViaGoogle =(user)=>{
+    return {
+        type:"INFO_VIA_GOOGLE",
+        payload:user
+    }
+}

@@ -6,6 +6,7 @@ const initialState={
     replies:{},
     replyR:"",
     nameInReply:[],
+    replyShow:false,
     showName:false
 }
 
@@ -42,12 +43,12 @@ export const ReplyReducer=(state=initialState, action)=>{
         case "VIEW_REPLY_TO_REPLY_YES":{
             console.log(action.payload)
             return{
-                ...state, replyR:action.payload.data.replies, errorT:""
+                ...state, replyR:action.payload.data.replies, errorT:"", replyShow:true
             }
         }
         case "VIEW_REPLY_TO_REPLY_NO":{
             return{
-                ...state, errorT:action.payload, responseT:""
+                ...state, errorT:action.payload, responseT:"", replyShow:false
             }
         }
         case "TWEET_REPLY_ADD_ACTION":{

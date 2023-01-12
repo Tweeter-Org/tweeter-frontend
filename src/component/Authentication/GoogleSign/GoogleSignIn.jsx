@@ -7,14 +7,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import lockIcon from "../../Assets/lock.svg";
 import { useState, useEffect } from "react";
-import "./SignUpTwo.css";
+import "./googleSign.css";
 import { useDispatch, useSelector } from "react-redux";
 import { SignUpTwoUser } from "../../../react-redux/actions/authAction";
 import { Spinner } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 
-function SignUpTwo() {
+function GoogleSignin() {
   const [nameN, setNameN] = useState("")
+  const [name, setName] = useState("")
   const [pass, setPass] = useState("")
   const [checkName, setCheckName] = useState(false);
   const [checkPass, setCheckPass] = useState(false)
@@ -24,16 +25,14 @@ function SignUpTwo() {
     setShow1(!show1)
   }
 
-  const name = sessionStorage.getItem("NameToBeUsed")
-
   const rightname = /^[a-z ,.'-]+$/i;
   useEffect(() => {
     if (rightname.test(nameN)) {
-      document.getElementById('signName').style.display = "none";
+      document.getElementById('googleInvalidName2').style.display = "none";
       setCheckName(true)
     }
     else if (nameN) {
-      document.getElementById('signName').style.display = "block";
+      document.getElementById('googleInvalidName2').style.display = "block";
       setCheckName(false)
     }
   }, [nameN])
@@ -42,11 +41,11 @@ function SignUpTwo() {
     /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&#])[A-Za-z\d@$!%?&#]{8,}$/;
   useEffect(() => {
     if (rightpass.test(pass)) {
-      document.getElementById("signInvalidPwd").style.display = "none";
+      document.getElementById("googleInvalidPwd").style.display = "none";
       setCheckPass(true)
       console.log("true");
     } else if (pass) {
-      document.getElementById("signInvalidPwd").style.display = "block";
+      document.getElementById("googleInvalidPwd").style.display = "block";
       setCheckPass(false)
     }
   }, [pass]);
@@ -59,11 +58,11 @@ function SignUpTwo() {
   }, [checkName, checkPass])
 
   const data = {
-    name,
+    name:name,
     user_name: nameN,
     password: pass
   }
- 
+ console.log(data)
   const signUp = useSelector((s) => s.AuthReducer)
   const { loading, error, response, toHome } = signUp;
 
@@ -116,22 +115,25 @@ function SignUpTwo() {
     <div className='loginBg'>
       <img src={arrow} id="arrow" onClick={() => { navigate("/verifyemail") }} />
       <p className='authHead' id="authreset">Sign Up</p>
-      <p className='authEmail' id="resetPwdHead">Username</p>
-      <input type="text" className="authEmailInput" id="resetPwdHeadInput" placeholder="Enter your name" value={nameN} onChange={(e) => setNameN(e.target.value)} />
-      <p id="signName" className="sign2InvalidName">Name should consists of alphabet</p>
-      <img src={lockIcon} id="lockIconS" />
-      <p className='signPwd'>Password</p>
+      <p className='authEmail' id="resetPwdHead">Full Name</p>
+      <input type="text" className="authEmailInput" id="resetPwdHeadInput" placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} />
+      <p id="googleInvalidName">Name should consists of alphabets</p>
+      <p className='googlename'>Username</p>
+      <input type="text" className="googleEmailInput" placeholder="Enter your name" value={nameN} onChange={(e) => setNameN(e.target.value)} />
+      <p id="googleInvalidName2">Name should not contain any whitespaces</p>
+      <img src={lockIcon} id="googleLock" />
+      <p className='signPwd' id="googlePass">Password</p>
       {show1 ? (
-        <FontAwesomeIcon icon={faEye} id="SEye" onClick={handleShow1} />
+        <FontAwesomeIcon icon={faEye} id="googleEye" onClick={handleShow1} />
       ) : (
-        <FontAwesomeIcon icon={faEyeSlash} id="SEye" onClick={handleShow1} />
+        <FontAwesomeIcon icon={faEyeSlash} id="googleEye" onClick={handleShow1} />
       )}
-      <input type={show1 ? "text" : "password"} className="signPwdInput authPwdInput" placeholder="Password" value={pass} onChange={(e) => setPass(e.target.value)} />
-      <p className='invalidPwd' id="signInvalidPwd">Password must be 1 uppercase 1 lowercase 1 number 1 special digit character and 8 or more characters</p>
-      <button type="button" className='authSignIn' id="signTwoBtn" onClick={() => { SIGNUPTWO() }}>Sign Up</button>
+      <input type={show1 ? "text" : "password"} className="signPwdInput authPwdInput" id="googlePassInput" placeholder="Password" value={pass} onChange={(e) => setPass(e.target.value)} />
+      <p className='invalidPwd' id="googleInvalidPwd">Password must be 1 uppercase 1 lowercase 1 number 1 special digit character and 8 or more characters</p>
+      <button type="button" className='authSignIn' id="googleBtn" onClick={() => { SIGNUPTWO() }}>Sign Up</button>
     </div>
     {loading === true ? <Spinner animation="border" variant="light" id="loadSpinner" /> : null}
     <ToastContainer />
   </>
 }
-export default SignUpTwo;
+export default GoogleSignin;

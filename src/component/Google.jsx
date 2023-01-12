@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { GoogleTwoAction } from '../react-redux/actions/authAction'
+import { GoogleTwoAction, infoViaGoogle, nameViaGoogle } from '../react-redux/actions/authAction'
 import { useNavigate } from 'react-router-dom'
 import { Spinner } from 'react-bootstrap';
 
@@ -18,7 +18,7 @@ const Google = () => {
   const google = useSelector((g) => g.GoogleReducer)
   const { response2, error2, mark } = google;
   const { token, msg, success } = response2;
-
+console.log(window.location.href.substring(34))
   useEffect(() => {
     dispatch(GoogleTwoAction(window.location.href.substring(34)))
   }, [])
@@ -26,17 +26,17 @@ const Google = () => {
  
   useEffect(() => {
     console.log(success)
-    if (success === "true") {
-      console.log(success)
+    if (response2.success == true) {
       if (msg === "loggedin"){
-        console.log("gdhj")
+        dispatch(infoViaGoogle(response2.user))
         alert("Logged In Successfully")
         navigate("/home")
       }
-      if (msg === "signedin"){
+      if (msg === "signedup"){
         console.log(msg)
-        navigate("/signuptwo")
-        alert("Signed In Successfully")
+        dispatch(nameViaGoogle(response2.user_name))
+        navigate("/googlesign")
+        // alert("Signed In Successfully")
       }
     }
   }, [response2])

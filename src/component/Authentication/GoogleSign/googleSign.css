@@ -1,0 +1,88 @@
+.googlename{
+    position: absolute;
+    left: 2.5vw;
+    top: 36vh;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 0.9);
+}
+.googleEmailInput{
+    outline: none;
+    border: none;
+    position: absolute;
+    width: 30vw;
+    padding-left: 3vw;
+    height: 7vh;
+    left: 2.4vw;
+    top: 39.5vh;
+    background: rgba(17, 19, 21, 0.6);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+#googlePass{
+    top:50.5vh;
+}
+#googlePassInput{
+    top:54vh;
+}
+#googleLock{
+    position:absolute;
+    left:0.6vw;
+    top:55.6vh;
+    height:3.4vh;
+    width:6.5vw;
+    z-index:4;
+}
+#googleEye{
+    color:white;
+    opacity: 0.8;
+position:absolute;
+top:56vh;
+left:30vw;
+z-index:4;
+cursor:pointer;
+}
+
+#googleInvalidName{
+    position: absolute;
+    left: 2.5vw;
+    top: 31.5vh;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #f37777;
+}
+#googleInvalidName2{
+    position: absolute;
+    left: 2.5vw;
+    top: 46.5vh;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #f37777;
+}
+#googleInvalidPwd{
+    top:61vh;
+    font-size: 12px;
+    line-height: 15px;
+    color: #f37777;
+}
+#googleBtn{
+    top:70vh;
+    width:30vw;
+    height:6vh;
+}

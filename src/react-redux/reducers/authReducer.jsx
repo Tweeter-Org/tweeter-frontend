@@ -229,6 +229,19 @@ const initialState ={
                 toHome:false
             }
         }
+        case "NAME_VIA_GOOGLE":{
+            return {
+                user:{
+                    user_name:action.payload.name
+                }, ...state
+            }
+        }
+        case "INFO_VIA_GOOGLE":{
+            console.log(action.payload)
+            return {
+               user:action.payload.user
+            }
+        }
         default: return state;
     }
  }

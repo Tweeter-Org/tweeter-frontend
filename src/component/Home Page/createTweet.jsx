@@ -20,11 +20,14 @@ function CreateTweet(props) {
     const [text, setText] = useState("");
     const [showEmoji, setShowEmoji] = useState(false)
     const [sendImage, setSendImage] = useState(null);
+    const [imageInArr, setImageInArr] = useState(null)
+    const [vdoInArr, setVdoInArr] = useState(null)
     const dispatch = useDispatch();
     const fd = new FormData();
     function handleSendImage(e) {
         var imageoutput = document.getElementById("imageOutput");
         imageoutput.src = URL.createObjectURL(e.target.files[0])
+        setImageInArr(URL.createObjectURL(e.target.files[0]))
         setSendImage(e.target.files[0])
         document.getElementById("imageOutput").style.display = "block"
     }
@@ -32,6 +35,10 @@ function CreateTweet(props) {
     function handleSendVideo(e) {
         var videooutput = document.getElementById("videoOutput");
         videooutput.src = URL.createObjectURL(e.target.files[0])
+        setVdoInArr(URL.createObjectURL(e.target.files[0]))
+        console.log(URL.createObjectURL(e.target.files[0]))
+        console.log(videooutput.src)
+        console.log(e.target.files[0])
         setSendVideo(e.target.files[0])
         document.getElementById("VIDEO").style.display = "block"
         document.getElementById("videoOutput").style.display = "block"
@@ -63,30 +70,30 @@ function CreateTweet(props) {
         setOPacity()
     }
     const { response, error, tweetCreate, loading } = useSelector((t) => t.TweetCreateReducer)
-    console.log(response)
+    // console.log(response)
     const auth = useSelector((s) => s.AuthReducer)
     const { user, toFgtPwd } = auth;
     const { name, user_name, displaypic } = user;
     const [DupTweetData, setDupTweetData] = useState([])
     const { tweetData, liked, Rname, Rimage, Rvideo, Rtext } = useSelector((s) => s.TweetFeedReducer)
     // const tweetData =[];
-    console.log(tweetData)
-    console.log(Rimage, Rvideo)
+    // console.log(tweetData)
+    // console.log(Rimage, Rvideo)
     const RId = sessionStorage.getItem("retweetId")
     useEffect(() => {
         setDupTweetData(tweetData)
         DupTweetData.filter((t) => {
             if (t._id == props.TWRId) {
-                console.log(t)
+                // console.log(t)
             }
             return t._id == props.TWRId
         })
     }, [props.TWRId])
     const newTweetCreated = {
-        "image": sendImage,
+        "image": imageInArr,
         "likes": "0",
         "text": text,
-        "video": sendVideo,
+        "video": vdoInArr,
         user: {
             "name": name,
             "user_name": user_name,
@@ -94,10 +101,10 @@ function CreateTweet(props) {
         }
     }
     const newReTweetCreated = {
-        "image": sendImage,
+        "image": imageInArr,
         "likes": "0",
         "text": text,
-        "video": sendVideo,
+        "video": vdoInArr,
         user: {
             "name": name,
             "user_name": user_name,
@@ -126,8 +133,8 @@ function CreateTweet(props) {
         console.log(newTweetCreated)
 
         backToHome(e)
+        dispatch(FakeTweetFeedAction(newTweetCreated))
         if (response !== "") {
-            dispatch(FakeTweetFeedAction(newTweetCreated))
             toast.success(`${response}`, {
                 position: "top-center",
                 theme: "light",
@@ -139,8 +146,10 @@ function CreateTweet(props) {
                 theme: "light",
             });
         }
+        // setSendImage(null);
+        // setSendVideo(null)
     }
-    console.log(RId)
+    // console.log(RId)
     function handleCreateReTweet(e) {
         e.preventDefault();
         fd.append("text", text)
@@ -156,7 +165,7 @@ function CreateTweet(props) {
         }
         dispatch(CreateReTweetAct(fd))
 
-        console.log("rewteet")
+        // console.log("rewteet")
         console.log(newReTweetCreated)
         backToHome(e)
         if (response !== "") {
@@ -175,9 +184,9 @@ function CreateTweet(props) {
     }
     const { responseT, errorT, nameInReply, showName } = useSelector((r) => r.ReplyReducer)
    
-    console.log(responseT, errorT, nameInReply)
-    console.log(nameInReply)
-    console.log(showName)
+    // console.log(responseT, errorT, nameInReply)
+    // console.log(nameInReply)
+    // console.log(showName)
     const atNames = sessionStorage.getItem("replyName");
     // useEffect(()=>{
     //     if(showName){
@@ -194,10 +203,10 @@ function CreateTweet(props) {
     //         }
     // },[nameInReply, showName])
     const replYtweet = {
-        "image": sendImage,
+        "image": imageInArr,
         "likes": "0",
         "text": text,
-        "video": sendVideo,
+        "video": vdoInArr,
         user: {
             "user_name": user_name,
             "displaypic": displaypic
@@ -217,9 +226,9 @@ function CreateTweet(props) {
             fd.append("file", null)
         }
         dispatch(ReplyToTweet(fd))
-        console.log("home")
+        // console.log("home")
         dispatch(FakeReplyTweetAction(replYtweet))
-        console.log("home")
+        // console.log("home")
         backToHome(e)
         console.log(replYtweet)
         if (responseT !== "") {
@@ -249,10 +258,10 @@ function CreateTweet(props) {
     return <>
         <div className="createTweetDiv" id="CREATETWEET">
             <div className="CTBlock1">
-                {(displaypic === null) ? (<span className="ctCircle"><img src={avatar} id="picincircle" /></span>) :
+                {/* {(displaypic === null) ? (<span className="ctCircle"><img src={avatar} id="picincircle" /></span>) :
                     ((displaypic.startsWith("https:")) ? (<span className="ctCircle"><img src={displaypic} id="picincircle" /></span>) :
                         (<span className="ctCircle"><img src={`https://twitterbackend-production-93ac.up.railway.app/${displaypic}`} id="picincircle" /></span>))
-                }
+                } */}
                 <div className="CTDiv1">
                     <p className="ctName">{name}</p>
                     <p className="ctUserName">{user_name}</p>

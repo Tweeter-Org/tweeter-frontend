@@ -17,24 +17,29 @@ import DoBookmarkAction from "../../react-redux/actions/Bookmarks";
 function Reply(props) {
     const navigate = useNavigate();
     const dispatch = useDispatch()
-    const id= props.indexx;
+    const id = props.indexx;
     const lengthR = props.replyingto.length;
-    const { responseT, errorT, replyR, loading } = useSelector((r) => r.ReplyReducer)
-    console.log(replyR)
+    const { responseT, errorT, replyR, replyShow, loading } = useSelector((r) => r.ReplyReducer)
+    console.log(replyR, replyShow)
+    console.log(document.getElementsByClassName("RepShowMore"))
     const [replyArr, setReplyArr] = useState([])
     const [replyArr2, setReplyArr2] = useState([])
 
-    useEffect(()=>{
-        dispatch(ViewRepliesToReply(props.num))
-        setReplyArr2(replyR)
-    },[props.num])
-    function handleReplytoReply(id){
-        dispatch(ViewRepliesToReply(id))
+const [bool, setBool] = useState(false)
+    function handleReplytoReply(idd) {
+        console.log(idd)
+        setBool(true)
+        console.log("jhjg")
+        dispatch(ViewRepliesToReply(idd))
+        console.log(replyR)
         setReplyArr(replyR)
-        if(replyR.length>0)
-        document.getElementsByClassName("RepShowMore")[props.indexx].style.display="none";
+        console.log(replyArr)
+        // if (replyR.length > 0)
+            // document.getElementsByClassName("RepShowMore")[id].style.display = "none";
     }
-
+    // useEffect(() => {
+        // setReplyArr(replyR)
+    // }, [replyR])
     function handleReplyLike(replyid) {
         dispatch(TweetLikeAction(replyid))
         var imagepath = document.getElementsByClassName("replyLike")[id].style.color;
@@ -68,35 +73,35 @@ function Reply(props) {
             document.getElementsByClassName("POPUPBG")[i].style.opacity = 0.4;
         }
     }
-    function handleTweetReply(tweetid, name, image, video, text){
+    function handleTweetReply(tweetid, name, image, video, text) {
         dispatch(NameInReplyAction(props.replyingto))
-        sessionStorage.setItem("replyName",name)
+        sessionStorage.setItem("replyName", name)
         // dispatch()
-        dispatch(RetweetDetails(tweetid,name, video, text, image))
+        dispatch(RetweetDetails(tweetid, name, video, text, image))
         sessionStorage.setItem("retweetId", tweetid)
         setOPacity()
         document.getElementById("CREATETWEET").style.display = "block"
-        document.getElementById("CTReplyDiv").style.display="block"
-        document.getElementById("CTRETWEETDIV").style.display="none";
-        document.getElementById("CTweetText").style.display="none";
-        document.getElementById("buttonTweet").style.display="none";
-        document.getElementById("buttonRetweet").style.display="none";
-        document.getElementById("buttonReply").style.display="block";
+        document.getElementById("CTReplyDiv").style.display = "block"
+        document.getElementById("CTRETWEETDIV").style.display = "none";
+        document.getElementById("CTweetText").style.display = "none";
+        document.getElementById("buttonTweet").style.display = "none";
+        document.getElementById("buttonRetweet").style.display = "none";
+        document.getElementById("buttonReply").style.display = "block";
     }
-       
-    function handleRetweet (tweetid, name, image, video, text){
+
+    function handleRetweet(tweetid, name, image, video, text) {
         console.log("replyyy")
-        dispatch(RetweetDetails(tweetid,name, video, text, image))
+        dispatch(RetweetDetails(tweetid, name, video, text, image))
         sessionStorage.setItem("retweetId", tweetid)
         setOPacity()
         var retweetPath = document.getElementsByClassName("RtweetRetweet")[id].style.color;
         document.getElementById("CREATETWEET").style.display = "block"
-        document.getElementById("CTweetText").style.display="block";
-        document.getElementById("CTRETWEETDIV").style.display="flex";
-        document.getElementById("buttonTweet").style.display="none";
-        document.getElementById("buttonReply").style.display="none";
-        document.getElementById("buttonRetweet").style.display="block";
-        document.getElementById("CTReplyDiv").style.display="none"
+        document.getElementById("CTweetText").style.display = "block";
+        document.getElementById("CTRETWEETDIV").style.display = "flex";
+        document.getElementById("buttonTweet").style.display = "none";
+        document.getElementById("buttonReply").style.display = "none";
+        document.getElementById("buttonRetweet").style.display = "block";
+        document.getElementById("CTReplyDiv").style.display = "none"
         if (retweetPath === "white") {
             document.getElementsByClassName("RtweetRetweet")[id].style.color = "green"
             // document.getElementsByClassName("RretweetIcon")[id].src = greenRetweet
@@ -117,10 +122,12 @@ function Reply(props) {
                 <p id="RepName">{props.username}</p>
                 <img src={bookmark} className="RbookmarkIcon" onClick={() => { handleTweetBookmark(props.num) }} />
             </div>
-            <p id="RepReply">Replying to {lengthR>0?(props.replyingto.map((name)=>{
-                return <span id="RepAtName" onClick={()=>{console.log(`/profile/${name}`)
-                navigate(`/profile/${name}`)}}>@{name}</span>
-            })):null}</p>
+            <p id="RepReply">Replying to {lengthR > 0 ? (props.replyingto.map((name) => {
+                return <span id="RepAtName" onClick={() => {
+                    console.log(`/profile/${name}`)
+                    navigate(`/profile/${name}`)
+                }}>@{name}</span>
+            })) : null}</p>
             {props.image != null ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${props.image}`} id="RepImage" alt="image" />) : null}
             {props.video != null ? <video controls>
                 <source src={`https://twitterbackend-production-93ac.up.railway.app/${props.video}`} id="RepImage" type="video/mp4" />
@@ -128,15 +135,15 @@ function Reply(props) {
             <p className="RepText">{props.text}</p>
             <div className="secondTweetBlock" id="ReplyIconBlock">
                 <div className="iconBlock">
-                    <img src={like} className="RlikeIcon"  onClick={()=>{handleReplyLike(props.num)}}/>
+                    <img src={like} className="RlikeIcon" onClick={() => { handleReplyLike(props.num) }} />
                     <p className="replyLike" id="RTLike">Like</p>
                 </div>
                 <div className="iconBlock">
-                    <img src={comment} id="ReplyComm" onClick={()=>{handleTweetReply(props.num, props.username, props.image, props.video, props.text)}} />
+                    <img src={comment} id="ReplyComm" onClick={() => { handleTweetReply(props.num, props.username, props.image, props.video, props.text) }} />
                     <p className="tweetComm" id="RTLike">Comment</p>
                 </div>
-                <div className="iconBlock"> 
-                    <img src={retweet} className="RretweetIcon" onClick={()=>handleRetweet(props.num, props.username, props.image, props.video, props.text)} />
+                <div className="iconBlock">
+                    <img src={retweet} className="RretweetIcon" onClick={() => handleRetweet(props.num, props.username, props.image, props.video, props.text)} />
                     <p className="RtweetRetweet" id="RTLike">Retweet</p>
                 </div>
                 {/* <div className="iconBlock">
@@ -144,13 +151,13 @@ function Reply(props) {
                     <p className="tweetShare" id="RTLike">Share</p>
                 </div> */}
             </div>
-            <p className="RepShowMore" onClick={()=>{handleReplytoReply(props.num)}}>...Show more</p>
-            {replyArr.length>0? (replyArr.map((rep,index)=>{
+            <p className="RepShowMore" onClick={() => { handleReplytoReply(props.num) }}>...Show more</p>
+            {replyArr.length > 0? (replyArr.map((rep, index) => {
                 return <Reply2 text={rep.text} image={rep.image} video={rep.video} username={rep.user.user_name}
-                 displaypic={rep.user.displaypic} num={rep._id} indexx={index} replyingto={rep.replyingto} />
-            })):null}
+                    displaypic={rep.user.displaypic} num={rep._id} indexx={index} replyingto={rep.replyingto} />
+            })) : null}
             {/* {replyArr2.length>0? <p className="RepShowMore" onClick={()=>{handleReplytoReply(props.num)}}>...Show more</p>:null} */}
-           
+
         </div>
     </>
 }

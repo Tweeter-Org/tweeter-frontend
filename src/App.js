@@ -19,6 +19,7 @@ import LogOut from './component/logOut/logOut';
 import Google from "./component/Google"
 import TagTweets from './component/Sidebar/TagTweets';
 import OneTweet from './component/Reply/OneTweet';
+import GoogleSignin from './component/Authentication/GoogleSign/GoogleSignIn';
 
 function App() {
   return <>
@@ -42,6 +43,7 @@ function App() {
         <Route exact path="/verifyemail" element={<EmailVerify />} />
         <Route exact path="/reset" element={<ResetPwd />} />
         <Route exact path="/signuptwo" element={<SignUpTwo />} />
+        <Route exact path="/googlesign" element={<GoogleSignin />} />
         <Route exact path="/emojipicker" element={<EmojiPicker />} />
       </Routes>
     </BrowserRouter>
