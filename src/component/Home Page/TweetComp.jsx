@@ -73,11 +73,6 @@ function Tweet(props) {
     function handleTweetBookmark(e,tweetid) {
         console.log("from inner div")
         e.stopPropagation();
-        // e.nativeEvent.stopImmediatePropagation();
-        // e.preventDefault();
-        // if(!e) var e= window.event;
-        // e.cancelBubbble = true;
-        // if(e.stopPropogation) e.stopPropogation();
         document.getElementsByClassName("bookmarkIcon")[id].src = greenBookmarks
         dispatch(DoBookmarkAction(tweetid))
         if (markBM) {
@@ -89,14 +84,6 @@ function Tweet(props) {
             }
         }
     }
-
-    // function BOOKMARK (e){
-    //     console.log("BOOKMARK")
-      
-    //     handleTweetBookmark(props.tweetId);
-    //     e.stopPropogation();
-    // }
-
     function setOPacity() {
         var items = document.getElementsByClassName("POPUPBG")
         for (var i = 0; i < items.length; i++) {
@@ -192,9 +179,13 @@ const navigate = useNavigate();
                     ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
                         (<span className="displaypie"><img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`} id="picincircle" /></span>))
                 }
-                <p className="username" onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >{props.username}</p>
+                <div className="USERNAME">
+                <p className="username">{props.name}</p>
+                <p className="tweetUsername2"  onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >@{props.username}</p>
+                </div>
+                {/* <p className="username">{props.username}</p> */}
                 <img src={bookmark} className="bookmarkIcon" onClick={(e)=>{handleTweetBookmark(e,props.tweetId)}} />
-                <TweetPopup name={props.username} num={id}/>
+                <TweetPopup name={props.username} num={id} displaypic={props.displaypic}/>
             </div>
              { (image != null && image.startsWith("blob:"))?(
              <img src={image} alt="image" className="tweetImage" />):(
@@ -235,9 +226,12 @@ const navigate = useNavigate();
                     ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
                         (<span className="displaypie"><img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`} id="picincircle" /></span>))
                 }
-                <p className="username" onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >{props.username}</p>
+                <div className="USERNAME">
+                <p className="username">{props.name}</p>
+                <p className="tweetUsername2"  onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >@{props.username}</p>
+                </div>
                 <img src={bookmark} className="bookmarkIcon" onClick={(e) => { handleTweetBookmark(e,props.tweetId) }} />
-                <TweetPopup name={props.username} num={id}/>
+                <TweetPopup name={props.username} num={id} displaypic={props.displaypic}/>
             </div>
             {(image != null) ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" />) : null}
             {(video != null) ? <video className="tweetvideo" controls>

@@ -36,6 +36,7 @@
     border-radius: 50%;
     background: #D9D9D9;
     z-index: 6;
+    margin-top:1vh;
 }
 
 #picincircle {
@@ -43,7 +44,11 @@
     height: 39.09px;
     border-radius: 50%;
 }
-
+.USERNAME{
+    display: flex;
+    flex-direction: column;
+    margin-bottom:0;
+}
 .username {
     width: 136px;
     /* height: 27px; */
@@ -53,12 +58,26 @@
     font-size: 22px;
     line-height: 27px;
     color: rgba(255, 255, 255, 0.9);
-    cursor: pointer;
+    margin-bottom:0;
+    /* cursor: pointer; */
 }
-
-.username:hover {
+.tweetUsername2{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
     color: #47C87A;
+    margin-bottom:0;
+    /* position:absolute; */
+    /* margin-top:6vh; */
+    /* margin-left: 5vw; */
+    text-decoration: underline;
+    cursor:pointer;
 }
+/* .username:hover {
+    color: #47C87A;
+} */
 
 .tweetImage {
     height: auto;
@@ -111,7 +130,8 @@
 
 .retweetIcon {
     width: 25.2px;
-    height: 21px;
+    /* height: 21px; */
+    margin-top:-2vh;
     margin-right: 0.5vw;
     cursor: pointer;
 }
@@ -407,9 +427,10 @@
 }
 
 .emojipicker {
-    position: absolute;
+    /* position: absolute; */
     /* top:2vh; */
-    left: -25.5vw;
+    /* left: -10vw; */
+    /* z-index:9999; */
 }
 
 .ctImageText {

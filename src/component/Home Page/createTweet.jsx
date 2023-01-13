@@ -46,6 +46,7 @@ function CreateTweet(props) {
 
     function handleEmojis() {
         setShowEmoji(!showEmoji)
+        console.warn(showEmoji)
     }
 
     function onemojiclick(emojiObject, event) {
@@ -184,7 +185,7 @@ function CreateTweet(props) {
     }
     const { responseT, errorT, nameInReply, showName } = useSelector((r) => r.ReplyReducer)
    
-    // console.log(responseT, errorT, nameInReply)
+    console.log(responseT, errorT, nameInReply)
     // console.log(nameInReply)
     // console.log(showName)
     const atNames = sessionStorage.getItem("replyName");
@@ -258,10 +259,10 @@ function CreateTweet(props) {
     return <>
         <div className="createTweetDiv" id="CREATETWEET">
             <div className="CTBlock1">
-                {/* {(displaypic === null) ? (<span className="ctCircle"><img src={avatar} id="picincircle" /></span>) :
+                {(displaypic === null) ? (<span className="ctCircle"><img src={avatar} id="picincircle" /></span>) :
                     ((displaypic.startsWith("https:")) ? (<span className="ctCircle"><img src={displaypic} id="picincircle" /></span>) :
                         (<span className="ctCircle"><img src={`https://twitterbackend-production-93ac.up.railway.app/${displaypic}`} id="picincircle" /></span>))
-                } */}
+                }
                 <div className="CTDiv1">
                     <p className="ctName">{name}</p>
                     <p className="ctUserName">{user_name}</p>

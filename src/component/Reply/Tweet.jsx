@@ -54,12 +54,15 @@ function ToTweet(props) {
     function handleTweetLike(tweetid) {
         dispatch(TweetLikeAction(tweetid))
         var imagepath = document.getElementById("LIKET").style.color;
-        if (imagepath === "white") {
+        console.log(imagepath)
+        if (imagepath == "white") {
+            console.warn("white")
             document.getElementById("LIKET").style.color = "green"
             document.getElementById("LIKE").src = greenLike
             setTweetCount(tweetCount => tweetCount + 1)
         }
         else {
+            console.warn("green")
             document.getElementById("LIKE").src  = like
             document.getElementById("LIKET").style.color = "white"
             setTweetCount(tweetCount => tweetCount - 1)
@@ -167,7 +170,11 @@ function ToTweet(props) {
                     ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
                         (<span className="displaypie"><img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`} id="picincircle" /></span>))
                 }
-                <p className="username" onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >{props.username}</p>
+                <div className="USERNAME">
+                <p className="username">{props.name}</p>
+                <p className="tweetUsername2"  onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >@{props.username}</p>
+                </div>
+
                 <img src={bookmark} className="bookmarkIcon" onClick={() => { handleTweetBookmark(props.tweetId) }} />
                 <TweetPopup name={props.username} num={id} />
             </div>
@@ -207,7 +214,11 @@ function ToTweet(props) {
                     ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
                         (<span className="displaypie"><img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`} id="picincircle" /></span>))
                 }
-                <p className="username" onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >{props.username}</p>
+                <div className="USERNAME">
+                <p className="username">{props.name}</p>
+                <p className="tweetUsername2"  onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >@{props.username}</p>
+                </div>
+
                 <img src={bookmark} className="bookmarkIcon" onClick={() => { handleTweetBookmark(props.tweetId) }} />
                 <TweetPopup name={props.username} num={id} />
             </div>

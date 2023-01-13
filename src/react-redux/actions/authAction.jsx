@@ -261,9 +261,11 @@ export const nameViaGoogle=(name)=>{
     }
 }
 
-export const infoViaGoogle =(user)=>{
+export const infoViaGoogle =(username, name)=>{
     return {
         type:"INFO_VIA_GOOGLE",
-        payload:user
+        payload:{
+            username, name
+        }
     }
 }

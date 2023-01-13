@@ -58,9 +58,9 @@ function Sidebar() {
             console.log("hash tweet")
             console.log(e.target.value)
         }
-            dispatch(SearchUser(e.target.value));
+        dispatch(SearchUser(e.target.value));
         // dispatch(SearchTweetWithTag(e.target.value))
-        
+
     }
     console.log(tweetList, tohash)
     useEffect(() => {
@@ -104,12 +104,12 @@ function Sidebar() {
     }
     function xyz() {
         document.getElementById("CREATETWEET").style.display = "block"
-        document.getElementById("CTRETWEETDIV").style.display="none";
-        document.getElementById("CTweetText").style.display="block";
-        document.getElementById("buttonTweet").style.display="block";
-        document.getElementById("buttonRetweet").style.display="none";
-        document.getElementById("buttonReply").style.display="none";
-        document.getElementById("CTReplyDiv").style.display="none"
+        document.getElementById("CTRETWEETDIV").style.display = "none";
+        document.getElementById("CTweetText").style.display = "block";
+        document.getElementById("buttonTweet").style.display = "block";
+        document.getElementById("buttonRetweet").style.display = "none";
+        document.getElementById("buttonReply").style.display = "none";
+        document.getElementById("CTReplyDiv").style.display = "none"
         setOPacity()
     }
     function handleLogout() {
@@ -126,7 +126,8 @@ function Sidebar() {
         <div>
             <div className="navbar POPUPBG">
                 <img src={image} className="navbarIcon" />
-                <p className="navbarHead">{title}</p>
+                <span><p className="navbarHead">{title}</p></span>
+
                 <span id="navbarLine" />
             </div>
             <div className="sidebar POPUPBG">
@@ -136,10 +137,9 @@ function Sidebar() {
                     <li className="sbListItem" onClick={() => { dispatch(Notifications(greennotify, "Notifications", 1)) }}><span className="sbListIcon"><img src={notify} /></span>Notifications</li>
                     <Link to="/bookmark"> <li className="sbListItem" onClick={() => { dispatch(BookmarksNav(greenbm, "Bookmark", 2)) }}><span className="sbListIcon"><img src={bookmark} /></span>Bookmarks</li></Link>
                     <li className="sbListItem" onClick={() => { dispatch(Messages(greenmessage, "Messages", 3)) }}><span className="sbListIcon"><img src={message} /></span>Messages</li>
+                    {/* <li className="sbListItem" onClick={() => { dispatch(Messages(greenmessage, "Messages", 3)) }}><span className="sbListIcon"><img src={message} /></span>Messages</li> */}
                     <Link to={`/profile/${nameInApi}`}><li className="sbListItem" onClick={handleProfile}><span className="sbListIcon"><img src={profile} /></span>Profile</li></Link>
                 </ul>
-                {/* <AnchorLink href="#CREATETWEET"><button className="sideBarTweetBtn" >Create Tweet</button></AnchorLink> */}
-                {/* <HashLink to="#CREATETWEET"><button className="sideBarTweetBtn" onClick={()=>{document.getElementById("CREATETWEET").style.display="block"}}>Create Tweet</button></HashLink> */}
                 <button className="sideBarTweetBtn" onClick={() => { xyz() }}>Create Tweet</button>
             </div>
             <div><input className="searchbar POPUPBG" type="text" value={search} onChange={handleSearch} placeholder="Search" />
@@ -153,11 +153,11 @@ function Sidebar() {
                 ) : null}
                 {
                     tomap ? ((searchListArray.length > 0) ? (searchListArray.map((searchh) => {
-                        return <SearchComp name={searchh.name} username={searchh.user_name} />
+                        return <SearchComp name={searchh.name} username={searchh.user_name} displaypic={searchh.displaypic} />
                     })) : <p className="searchAlter">No search found</p>) : null
                 }
             </div>
-            <CreateTweet/>
+            <CreateTweet />
             <LogOut />
         </div>
         {(loading === true) ? <Spinner animation="border" variant="light" id="loadSpinner" /> : null}

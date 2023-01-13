@@ -25,6 +25,7 @@ function Reply(props) {
     const [replyArr, setReplyArr] = useState([])
     const [replyArr2, setReplyArr2] = useState([])
     const [update, setupdate] = useState(false)
+    console.log(update)
 
 const [bool, setBool] = useState(false)
     function handleReplytoReply(idd) {
@@ -36,6 +37,11 @@ const [bool, setBool] = useState(false)
         if ((replyShow==true && loading==false) > 0)
             document.getElementsByClassName("RepShowMore")[id].style.display = "none";
     }
+    // after setting bool, it only renders for one component because initially useEffect is rendering for all Reply components but after setting bool
+    // which is initially false and onclick function since the function renders for a specific component on which we click it sets the bool true
+    // so useEffect will update the state only for it not for others since all other updates arer false then we will again set it to false to not take the effect
+    // of others onclick event
+    
     useEffect(() => {
         if(update)
         {

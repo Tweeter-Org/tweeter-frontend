@@ -465,13 +465,12 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 19px;
     line-height: 24px;
     color: rgba(255, 255, 255, 0.9);
     margin-left: 5.5vw;
     margin-top: 2vh;
     text-transform: capitalize;
-
 }
 
 .followPic {
@@ -485,7 +484,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
-    color: rgba(255, 255, 255, 0.5);
+    color: #47c87a;
     /* margin-left:-3.5vw; */
     position: absolute;
     left: 30vw;
@@ -521,7 +520,7 @@
 }
 
 #profileTweetComp {
-    width: 41vw;
+    width: 42vw;
     border: 0.8px solid rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     /* background-color:#47c87a; */
@@ -532,26 +531,50 @@
 }
 
 #ProfileImage {
-    width: 39vw;
+    width: 39.8vw;
 }
 
 #ProfileVideo {
-    width: 39vw;
+    width: 39.8vw;
 }
 
 #bmIcon {
-    margin-left: 25vw;
+    margin-left: 23vw;
     margin-right: 0.4vw;
+    width:18px;
 }
-
-#profileRetweetIcon {
-    margin-top: 5vh;
+#delIcon{
+    width:18px;
+}
+#prTwReplying1{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 27px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-left:4vw;
+    margin-bottom:0;
+    /* margin-top:-3.2vh; */
+}
+#prTwReplying2{
+    color:#47c87a;
+    text-decoration: underline;
+    text-transform: none;
+    margin-left:0.4vw;
+    cursor: pointer;
+}
+.profileRetweetIcon {
+    margin-top: -2vh;
+    width: 25.2px;
+    margin-right: 0.5vw;
+    cursor: pointer;
 }
 
 /* DELETE TWEET POPUP */
 #DltPopUp {
     display: flex;
-position:absolute;
+position:fixed;
 top:20vh;
 left:32vw;
 width:40vw;

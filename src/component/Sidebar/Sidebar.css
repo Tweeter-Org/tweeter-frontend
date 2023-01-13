@@ -2,34 +2,37 @@
     box-sizing: border-box;
     position: fixed;
     width: 85vw;
-    height: 10vh;
+    height: 64px;
     left: 20vw;
     top: 0vh;
     /* background: #1A1C1E; */
     background-color: #161718;
     border: 1px solid rgba(255, 255, 255, 0.08);
     z-index:100;
+    /* display: flex; */
+    /* padding-left: 3vw; */
+    /* justify-content: space-around; */
 }
 
 .navbarIcon {
     position: absolute;
     width: 2.4vw;
-    height: 5vh;
-    left: 3vw;
-    top: 2.5vh;
+    margin-left: 3vw;
+    /* margin-top: -20px; */
 }
 
 .navbarHead {
     position: absolute;
     width: 6.3vw;
-    height: 4.3vh;
-    left: 6.4vw;
-    top: 3.1vh;
-
+    /* height: 4.3vh; */
+    left: 6.2vw;
+    /* background-color: #47C87A; */
+    margin-top:-12px;
+/* margin-left:-68vw; */
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 29px;
 
     color:#47C87A;
@@ -37,10 +40,10 @@
 
 #navbarLine {
     position: absolute;
-    width: 8.7vw;
-    height: 0vh;
-    left: 44vw;
-    top: 0vh;
+    width: 64px;
+    /* height: 0vh; */
+    margin-left: 45vw;
+    top: 30px;
 
     border: 1px solid rgba(255, 255, 255, 0.2);
     transform: rotate(90deg);
@@ -51,38 +54,42 @@
     z-index:105;
     position: fixed;
     width: 20.5vw;
-    height: 164vh;
+    height: 100%;
     left: 0vw;
     top: 0vh;
     /* background: #1A1C1E; */
     background-color: #161718;
     border: 1px solid rgba(255, 255, 255, 0.08);
+    display:flex;
+    flex-direction: column;
+    padding-left: 1.5vw;
 }
 
 .logoHead {
-    position: absolute;
+    /* position: absolute; */
     width: 8vw;
-    height: 6.5vh;
-    left: 4.5vw;
-    top: 5vh;
+    /* height: 6.5vh; */
+    margin-left: 2vw;
+    margin-top: 10px;
 
     font-family: 'Kaushan Script';
     font-style: normal;
     font-weight: 400;
-    font-size: 35px;
+    font-size: 32px;
     line-height: 51px;
     color: #47C87A;
 }
 
 .sbList {
     list-style: none;
-    position: absolute;
-    left: 2.5vw;
-    top: 20.5vh;
+    /* position: absolute; */
+    /* left: 2.5vw; */
+    /* top: 20.5vh; */
+    margin-top:25px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
-    font-size: 21px;
+    font-size: 20.5px;
     line-height: 26px;
     color: rgba(255, 255, 255, 0.9);
 
@@ -98,11 +105,11 @@
     /* width:10px; */
 }
 .sideBarTweetBtn{
-    position: absolute;
+    /* position: absolute; */
     width: 160px;
     height: 40px;
-    left: 4.7vw;
-    top: 75vh;
+    margin-left: 2.5vw;
+    margin-top: 5px;
     border:none;
     background: rgb(71, 200, 122,0.9);
     border-radius: 12px;
@@ -138,7 +145,7 @@ a:hover{
 width: 24vw;
 height: 36px;
 left: 70vw;
-top: 2.2vh;
+top: 16px;
 background: #484D4A;
 border-radius: 8px;
 z-index:102;
@@ -150,7 +157,7 @@ line-height: 22px;
 /* identical to box height */
 display:inline-block;
 padding-left:5vw;
-padding-top:0.5vh;
+/* padding-top:0.5vh; */
 color: rgba(255, 255, 255, 0.8);
 
 }
@@ -200,7 +207,6 @@ width:2vw;
     z-index: 6;
     margin-left:1vw;
     margin-top:2vh;
-    width:45px;
 }
 .searchName{
     position: absolute;
@@ -220,7 +226,7 @@ width:2vw;
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
-    color: rgba(255, 255, 255, 0.5);
+   color:#47C87A;
     position:absolute;
     margin-top:6vh;
     margin-left: 5vw;

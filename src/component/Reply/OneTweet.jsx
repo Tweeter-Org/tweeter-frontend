@@ -36,7 +36,7 @@ function OneTweet() {
         <Sidebar />
         <div className="toTweetDiv">
             {showTweet ? (<ToTweet text={tweet.text} image={tweet.image} video={tweet.video} likeCount={parseInt(tweet.likes)} retweet={tweet.retweet}
-                username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} />) : null}
+              name={tweet.user.name}  username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} />) : null}
         </div>
     </>
 }

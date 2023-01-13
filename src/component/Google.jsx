@@ -28,8 +28,8 @@ console.log(window.location.href.substring(34))
     console.log(success)
     if (response2.success == true) {
       if (msg === "loggedin"){
-        dispatch(infoViaGoogle(response2.user))
-        alert("Logged In Successfully")
+        dispatch(infoViaGoogle(response2.user_name, response2.name))
+        alert(response2.msg)
         navigate("/home")
       }
       if (msg === "signedup"){

@@ -16,6 +16,7 @@ import Loader from "../Assets/Loader";
 import ProfileTweet from "./profileTweets";
 import FollowAction from "../../react-redux/actions/Follow";
 import DltTweetPopup from "./DeleteTweetPopup";
+import { propTypes } from "react-bootstrap/esm/Image";
 
 function ProfilePage() {
     const dispatch = useDispatch();
@@ -121,12 +122,15 @@ function ProfilePage() {
 
     function handleFollowers() {
         dispatch(FollowAction(username))
+
         var imagepath = document.getElementsByClassName("pProfileFollow")[0].innerHTML;
         if (imagepath === "Follow") {
             document.getElementsByClassName("pProfileFollow")[0].innerHTML = "Following";
+            setFollower(followers => followers + 1)
         }
         else {
             document.getElementsByClassName("pProfileFollow")[0].innerHTML = "Follow";
+            setFollower(followers => followers - 1)
         }
     }
     function displayFollowers() {
@@ -188,7 +192,6 @@ function ProfilePage() {
         <Sidebar />
         <div className="PROFILE POPUPBG">
             <div className="profileDiv1">
-
                 {(displaypic === null) ? (<img src={avatar} className="pImage" />) :
                     ((displaypic.startsWith("https:")) ? (<img src={displaypic} className="pImage" />) :
                         (<img src={`https://twitterbackend-production-93ac.up.railway.app/${displaypic}`} className="pImage" />))
@@ -239,17 +242,23 @@ function ProfilePage() {
             </div>
             <div className="followingFlex">
                 {following > 0 ? (followingArray.map((f) => {
-                    return <FollowComp name={f.name} username={f.user_name} />
+                    return <FollowComp name={f.name} username={f.user_name} displaypic={f.displaypic} />
                 })) : <p className="alterFollower">No Followings</p>}
             </div>
             <div className="tweetPrFlexbox POPUPBG" id="profileTweetFlex">
                 {profileTweet.length > 0 ? (profileTweet.map((tweet, index) => {
-                    return <ProfileTweet text={tweet.text} likeCount={tweet.likes} retweet={tweet.retweet} image={tweet.image} video={tweet.video} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarkb="false" />;
+                    const likes = profile.liked[index]
+                    const bookmarks = profile.bookmarked[index]
+
+                    return <ProfileTweet text={tweet.text} replies={tweet.replyingto} likeCount={parseInt(tweet.likes)}
+                        retweet={tweet.retweet} image={tweet.image} video={tweet.video} username={tweet.user.user_name} name={tweet.user.name}
+                        displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarked={bookmarks} LIKES={likes} />;
                 })) : null}
             </div>
             <div className="tweetPrFlexbox" id="likeTweetFlex">
                 {likedTweets.length > 0 ? (likedTweets.map((tweet, index) => {
-                    return <ProfileTweet text={tweet.text} likeCount={tweet.likes} image={tweet.image} video={tweet.video} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarkb="false" />;
+                    return <ProfileTweet text={tweet.text} likeCount={parseInt(tweet.likes)} image={tweet.image}
+                        video={tweet.video} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarkb="false" />;
                 })) : null}
             </div>
         </div>

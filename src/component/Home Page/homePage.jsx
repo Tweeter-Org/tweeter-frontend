@@ -42,7 +42,9 @@ useEffect(()=>{
         const likes= liked[index]
         const bookmarks = bookmarked[index]
         console.log(likes)
-        return <Tweet text={tweet.text} image={tweet.image} video={tweet.video} likeCount={parseInt(tweet.likes)} retweet={tweet.retweet} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarked ={bookmarks} LIKES= {likes} />;
+        return <Tweet text={tweet.text} image={tweet.image} video={tweet.video} likeCount={parseInt(tweet.likes)} retweet={tweet.retweet} 
+        username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} name={tweet.user.name}
+         bookmarked ={bookmarks} LIKES= {likes} />;
     })):null}
     </div>
     {(loading===true)?<Loader loading={loading} />:null}
