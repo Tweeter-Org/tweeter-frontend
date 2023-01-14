@@ -238,10 +238,8 @@ const initialState ={
         }
         case "INFO_VIA_GOOGLE":{
             console.log(action.payload)
-            return {
-             user:{
-                user_name: action.payload.username
-              }, ...state
+            return {...state, 
+            user:action.payload.user
             }
         }
         default: return state;

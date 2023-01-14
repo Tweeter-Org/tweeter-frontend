@@ -28,12 +28,19 @@ console.log(window.location.href.substring(34))
     console.log(success)
     if (response2.success == true) {
       if (msg === "loggedin"){
-        dispatch(infoViaGoogle(response2.user_name, response2.name))
+        const user={
+          user_name:response2.user_name,
+          name:response2.name,
+          displaypic:null
+        }
+        console.log(user)
+        dispatch(infoViaGoogle(user))
         alert(response2.msg)
         navigate("/home")
       }
       if (msg === "signedup"){
         console.log(msg)
+        sessionStorage.setItem("Google_name", response2.user_name)
         dispatch(nameViaGoogle(response2.user_name))
         navigate("/googlesign")
         // alert("Signed In Successfully")

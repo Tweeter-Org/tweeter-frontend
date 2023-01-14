@@ -2,7 +2,6 @@ import BaseUrl from "./BaseUrl";
 
 const SearchUser = (char) => {
    return async function (dispatch) {
-      console.log(char)
       await BaseUrl.get(`/search?find=${char}`)
          .then((res) => dispatch({
             type: "SEARCH_SUCCEDED",
@@ -27,7 +26,6 @@ const SearchTweetWithTag = (char) => {
       }
    }
    return async function (dispatch) {
-      console.log("hash")
       await BaseUrl.get(`/t/tags?find=${char}`, config)
          .then((res) => dispatch({
             type: "SEARCH_TWEET_SUCCEDED",

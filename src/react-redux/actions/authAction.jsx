@@ -261,11 +261,11 @@ export const nameViaGoogle=(name)=>{
     }
 }
 
-export const infoViaGoogle =(username, name)=>{
+export const infoViaGoogle =(user)=>{
     return {
         type:"INFO_VIA_GOOGLE",
         payload:{
-            username, name
+            user
         }
     }
 }

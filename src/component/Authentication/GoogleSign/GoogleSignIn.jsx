@@ -14,7 +14,8 @@ import { Spinner } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 
 function GoogleSignin() {
-  const [nameN, setNameN] = useState("")
+  const userName =  sessionStorage.getItem("Google_name")
+  const [nameN, setNameN] = useState(userName)
   const [name, setName] = useState("")
   const [pass, setPass] = useState("")
   const [checkName, setCheckName] = useState(false);

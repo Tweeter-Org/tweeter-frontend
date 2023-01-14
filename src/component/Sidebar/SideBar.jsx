@@ -54,12 +54,10 @@ function Sidebar() {
         setSearch(e.target.value)
         if (e.target.value.startsWith('#')) {
             // dispatch(SearchUser(e.target.value));
-            dispatch(SearchTweetWithTag(e.target.value))
-            console.log("hash tweet")
-            console.log(e.target.value)
+            dispatch(SearchTweetWithTag(e.target.value.slice(1)))
+            console.log(e.target.value.slice(1))
         }
         dispatch(SearchUser(e.target.value));
-        // dispatch(SearchTweetWithTag(e.target.value))
 
     }
     console.log(tweetList, tohash)

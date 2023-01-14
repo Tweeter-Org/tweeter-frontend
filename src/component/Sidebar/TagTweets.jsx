@@ -26,7 +26,9 @@ const dispatch = useDispatch()
     <Sidebar />
         <div className="tweetFlexBox POPUPBG" >
             {tweetarr.length > 0 ? (tweetarr.map((tweet, index) => {
-                return <Tweet text={tweet.text} image={tweet.image} video={tweet.video} retweet={tweet.retweet} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarkb="false" />;
+                return <Tweet text={tweet.text} likeCount={parseInt(tweet.likes)} image={tweet.image} video={tweet.video} name={tweet.user.name}
+                retweet={tweet.retweet} username={tweet.user.user_name} displaypic={tweet.user.displaypic}
+                 tweetId={tweet._id} number={index} bookmarkb="false" />;
             })) :<div className="alterBM" id="alterTagTweet">
     <p className="alterBMText1" id="alterTagP" >No Tweet contains #{title}</p></div> }
         </div>
