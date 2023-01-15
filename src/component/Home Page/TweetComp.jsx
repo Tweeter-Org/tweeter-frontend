@@ -25,15 +25,19 @@ import { Navigate, useNavigate } from "react-router-dom";
 function Tweet(props) {
     const video = props.video
     const image = props.image
-    console.log(image);
-    if(image=={})
-    console.log(image.name)
     const id = props.number;
     const bookmarkShow = props.bookmarked
     const retweets= props.retweet;
     const dispatch = useDispatch();
     const [tweetCount, setTweetCount] = useState(props.likeCount)
-    console.log(props.retweet)
+    const [replyingto, setReplyingto] = useState([])
+    useEffect(()=>{
+        if(props.replies!=null)
+        setReplyingto(props.replies)
+        else
+        setReplyingto([])
+    },[props.replies])
+    // console.log(props.replies)
     useEffect(() => {
         setTweetCount(props.likeCount)
         if (props.LIKES) {
@@ -71,7 +75,6 @@ function Tweet(props) {
     const { responseBM, markBM } = useSelector((b) => b.BookmarkReducer)
   
     function handleTweetBookmark(e,tweetid) {
-        console.log("from inner div")
         e.stopPropagation();
         document.getElementsByClassName("bookmarkIcon")[id].src = greenBookmarks
         dispatch(DoBookmarkAction(tweetid))
@@ -136,31 +139,26 @@ function Tweet(props) {
 const navigate = useNavigate();
     function handleToTweet (tweetId){
         navigate(`/totweet/${tweetId}`)
-        console.log("From outer div")
     }
-    // function TWEET(e){
-    //     console.log("TWEET")
-    //     handleToTweet(props.tweetId)
-    // }
     const x = props.text.indexOf('#');
     const y = props.text.indexOf(' ')
     const HashArray =[];
     var index1=-1,index2=-1,str
     for(var i=0;i<props.text.length;i++){
-        console.log("loop")
+        // console.log("loop")
         if(props.text[i]=='#'){
             index1=i;
-            console.log(index1)
+            // console.log(index1)
             for(var j=index1+1;j<props.text.length+1;j++){
                 if(props.text[j]==' '){
                     index2=j;
-                    console.log("loop2")
-                    console.log(index2)
+                    // console.log("loop2")
+                    // console.log(index2)
                     break;
                 }
                 console.log("loop3")
                 if(j===props.text.length-1){
-                    console.log(j)
+                    // console.log(j)
                 }
                
             }
@@ -171,7 +169,7 @@ const navigate = useNavigate();
             console.log(str)
         }
     }
-   console.log(HashArray)
+//    console.log(HashArray)
     return <>
     {retweets==null?(  <div className="tweetComp POPUPBG" >
             <div className="firstTweetBlock" onClick={()=>{handleToTweet(props.tweetId)}} >
@@ -187,6 +185,12 @@ const navigate = useNavigate();
                 <img src={bookmark} className="bookmarkIcon" onClick={(e)=>{handleTweetBookmark(e,props.tweetId)}} />
                 <TweetPopup name={props.username} num={id} displaypic={props.displaypic}/>
             </div>
+            {replyingto.length>0?(<p id="prTwReplying1">Replying to {replyingto.length > 0 ? (replyingto.map((name) => {
+                    return <span id="prTwReplying2" onClick={() => {
+                        console.log(`/profile/${name}`)
+                        navigate(`/profile/${name}`)
+                    }}>@{name}</span>
+                })) : null}</p>):null}
              { (image != null && image.startsWith("blob:"))?(
              <img src={image} alt="image" className="tweetImage" />):(
                 image != null? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" />) : null)}
@@ -233,6 +237,12 @@ const navigate = useNavigate();
                 <img src={bookmark} className="bookmarkIcon" onClick={(e) => { handleTweetBookmark(e,props.tweetId) }} />
                 <TweetPopup name={props.username} num={id} displaypic={props.displaypic}/>
             </div>
+            {replyingto.length>0?(<p id="prTwReplying1">Replying to {replyingto.length > 0 ? (replyingto.map((name) => {
+                    return <span id="prTwReplying2" onClick={() => {
+                        console.log(`/profile/${name}`)
+                        navigate(`/profile/${name}`)
+                    }}>@{name}</span>
+                })) : null}</p>):null}
             {(image != null) ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" />) : null}
             {(video != null) ? <video className="tweetvideo" controls>
                 <source src={`https://twitterbackend-production-93ac.up.railway.app/${video}`} type="video/mp4" />

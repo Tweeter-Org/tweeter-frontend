@@ -5,11 +5,11 @@ const initialState = {
     tomap: false,
     tohash:false,
     list: [],
-    tweetList : []
+    tweetList : [],
 }
 const SearchReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "SEARCH_SUCCEDED": return { ...state, list: action.payload,tweetList:'', tomap: true, loading: false, tohash:false }
+        case "SEARCH_SUCCEDED": return { ...state, list: action.payload, tweetList:'', tomap: true, loading: false, tohash:false }
         case "SEARCH_TWEET_SUCCEDED": {
             console.log(action.payload)
             return {

@@ -16,7 +16,7 @@ export const TweetFeedAction = () => {
             type: "Tweet_Feed_Started",
             payload: ""
         })
-        await BaseUrl.get("/t/feed?page=0", config)
+        await BaseUrl.get('/t/feed?page=0', config)
             .then((res) => {
                 dispatch({
                     type: "Tweet_Feed_Succeed",
@@ -26,6 +26,39 @@ export const TweetFeedAction = () => {
             .catch((err) => {
                 dispatch({
                     type: "Tweet_Feed_Failed",
+                    payload: err
+                })
+            })
+    }
+}
+
+export const TweetFeedCount = ()=>{
+    return {
+        type:"Tweet_Feed_Count",
+    }
+}
+export const TweetFeedAction2 = (count) => {
+    const accessToken = sessionStorage.getItem("access token")
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
+    }
+    return async function (dispatch) {
+        dispatch({
+            type: "Tweet_Feed_Two_Started",
+            payload: ""
+        })
+        await BaseUrl.get(`/t/feed?page=${count}`, config)
+            .then((res) => {
+                dispatch({
+                    type: "Tweet_Feed_Two_Succeed",
+                    payload: res
+                })
+            })
+            .catch((err) => {
+                dispatch({
+                    type: "Tweet_Feed_Two_Failed",
                     payload: err
                 })
             })

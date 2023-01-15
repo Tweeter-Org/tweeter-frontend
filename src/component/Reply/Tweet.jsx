@@ -130,16 +130,6 @@ function ToTweet(props) {
         document.getElementById("buttonRetweet").style.display = "none";
         document.getElementById("buttonReply").style.display = "block";
     }
-
-    //show profile popup
-    function showProfilePopup() {
-        document.getElementsByClassName("tweetPopcomp")[id].style.display = "block"
-    }
-
-    //hide profile popup
-    function hideProfilePopup() {
-        // document.getElementsByClassName("tweetPopcomp")[id].style.display = "none"
-    }
     const navigate = useNavigate();
 
     //view reply to tweet 
@@ -172,11 +162,10 @@ function ToTweet(props) {
                 }
                 <div className="USERNAME">
                 <p className="username">{props.name}</p>
-                <p className="tweetUsername2"  onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >@{props.username}</p>
+                <p className="tweetUsername2" onClick={()=>{ navigate(`/profile/${props.username}`)}} >@{props.username}</p>
                 </div>
 
                 <img src={bookmark} className="bookmarkIcon" onClick={() => { handleTweetBookmark(props.tweetId) }} />
-                <TweetPopup name={props.username} num={id} />
             </div>
             {image != null ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" />) : null}
             {video != null ? <video className="tweetvideo" controls>
@@ -216,11 +205,10 @@ function ToTweet(props) {
                 }
                 <div className="USERNAME">
                 <p className="username">{props.name}</p>
-                <p className="tweetUsername2"  onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >@{props.username}</p>
+                <p className="tweetUsername2"  onClick={()=>{ navigate(`/profile/${props.username}`)}} >@{props.username}</p>
                 </div>
 
                 <img src={bookmark} className="bookmarkIcon" onClick={() => { handleTweetBookmark(props.tweetId) }} />
-                <TweetPopup name={props.username} num={id} />
             </div>
             {(image != null) ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" />) : null}
             {(video != null) ? <video className="tweetvideo" controls>

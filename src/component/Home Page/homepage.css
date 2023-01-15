@@ -1,3 +1,7 @@
+.HOMEPAGE{
+    display: flex;
+    flex-direction: column;
+}
 .tweetComp {
     display: flex;
     flex-direction: column;
@@ -8,13 +12,30 @@
     background-color: #161718;
     border-radius: 16px;
     z-index: 5;
-    padding: 2vh 1vw;
+    padding: 14px 1vw;
     padding-bottom: 0vh;
     justify-content: space-evenly;
     text-transform: capitalize;
-
 }
-
+.TweetShowMore{
+    width: 45vw;
+    height:fit-content;
+    margin-left: 22.5vw;
+    margin-bottom: 14px;
+    padding-top:10px;
+    padding-bottom: 10px;
+    background-color: #161718;
+    border-radius: 16px;
+    text-align: center;
+    z-index: 5;
+    color:#47C87A;
+    font-size: 1rem;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 550;
+    cursor: pointer;
+    /* font-size: 5rem; */
+}
 .firstTweetBlock {
     display: flex;
     cursor: pointer;
@@ -36,7 +57,7 @@
     border-radius: 50%;
     background: #D9D9D9;
     z-index: 6;
-    margin-top:1vh;
+    margin-top:6px;
 }
 
 #picincircle {
@@ -83,7 +104,7 @@
     height: auto;
     /* width:fit-content; */
     width: 580px;
-    margin-top: 2vh;
+    margin-top: 10px;
 }
 
 .tweetText {
@@ -647,4 +668,14 @@
 
 .example {
     scrollbar-width: none;
+}
+
+
+@media (max-width:900px){
+    /* .tweetFlexBox{
+
+    }
+    .tweetComp{
+        margin-left:10vw;
+    } */
 }

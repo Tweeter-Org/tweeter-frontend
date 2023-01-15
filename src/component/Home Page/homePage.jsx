@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { TweetFeedAction } from "../../react-redux/actions/Tweets.jsx";
+import { TweetFeedAction, TweetFeedAction2, TweetFeedCount } from "../../react-redux/actions/Tweets.jsx";
 import Sidebar from "../Sidebar/SideBar";
 import "./homepage.css";
 import Tweet from "./TweetComp";
@@ -13,10 +13,14 @@ function HomePage (){
     const dispatch = useDispatch();
 
     const {loading, tweetData, liked, bookmarked} = useSelector((s)=>s.TweetFeedReducer)
+    const [tweeets, settweets] = useState([])
+    console.log(tweetData)
+   
     const {response} = useSelector((t)=>t.TweetCreateReducer)
     useEffect(()=>{
         dispatch(TweetFeedAction())
     },[])
+    
    console.log(tweetData)
    console.log(liked)
    console.log(bookmarked)
@@ -26,6 +30,13 @@ const auth = useSelector((s)=>s.AuthReducer)
 const {user, toFgtPwd} = auth;
 const nameInApi = user.user_name
 sessionStorage.setItem("usernameInApi",nameInApi)
+const {count}= useSelector((t)=>t.TweetFeedCountRed)
+
+function handleShowMoreTweet(){
+    dispatch(TweetFeedCount())
+    console.log(count)
+// dispatch(TweetFeedAction2(count))
+}
 useEffect(()=>{
     if(loading===true){
         document.body.style.opacity = 0.5;
@@ -36,7 +47,7 @@ useEffect(()=>{
 },[loading])
     return <>
     <Sidebar />
-    
+    <div className="HOMEPAGE">
     <div className="tweetFlexBox POPUPBG">
     {tweetLength>0?(tweetData.map((tweet, index)=>{
         const likes= liked[index]
@@ -46,6 +57,8 @@ useEffect(()=>{
         username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} name={tweet.user.name}
          bookmarked ={bookmarks} LIKES= {likes} />;
     })):null}
+    </div>
+    <div className="TweetShowMore" onClick={()=>{handleShowMoreTweet()}}>...Show More</div>
     </div>
     {(loading===true)?<Loader loading={loading} />:null}
     <ToastContainer />

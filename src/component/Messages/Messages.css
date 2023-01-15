@@ -1,0 +1,115 @@
+.MSGS{
+    background-color: #161718;
+    width: 46vw;
+    height: 1500px;
+    /* height: fit-content; */
+    margin-left: 22vw;
+    margin-top: 15vh;
+    padding-bottom: 5vh;
+    background: #161718;
+    border-radius: 8px;
+    z-index: 105;
+}
+.Messages1{
+    display: flex;
+    flex-direction: column;
+    padding-left:0.5vw;
+}
+.MsgText1{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 34px;
+    width:15vw;
+    line-height: 44px;
+    color: #FFFFFF;
+}
+.MsgText2{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    width:17vw;
+    color: rgba(255, 255, 255, 0.75);  
+}
+.MsgBtn1{
+    outline:none;
+    border:none;
+    width: 196px;
+    height: 40px;
+    background: #47C87A;
+    border-radius: 12px;
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 17px;
+cursor: pointer;
+color: rgba(255, 255, 255, 0.9);
+
+}
+.Messages2{
+    display:flex;
+    flex-direction: column;
+}
+.MsgSearch1{
+    border: none;
+    outline: none;
+    margin-top:20px;
+    width: 15vw;
+    height: 32px;
+    background: none;
+    border:0.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    display: inline-block;
+    padding-left: 2vw;
+    color: rgba(255, 255, 255, 0.7);
+}
+.MsgLine1{
+    /* position: absolute; */
+    /* width: 100vw; */
+    width:100px;
+    /* height: 0vh; */
+/* left: -10vw; */
+    /* top: 50vh; */
+    /* margin-top:400px; */
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border:0.5px solid rgba(255, 255, 255, 0.3);
+    /* transform: rotate(90deg); */
+}
+.msgUser {
+    width:15vw;
+    border-radius: 8px;
+    height:40px;
+    /* border:0.5px solid rgba(255, 255, 255, 0.3); */
+    margin-top:10px;
+    display: flex;
+}
+#msgPicincircle {
+    width: 38px;
+    height: 34.09px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    margin-top:8px;
+    margin-left:0.5vw;
+}
+.msgUsername{
+    margin-left: 0.5vw;
+    margin-top: 1.7vh;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: capitalize;
+    text-decoration: underline;
+    cursor: pointer;
+}

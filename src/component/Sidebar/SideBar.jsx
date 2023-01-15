@@ -58,7 +58,6 @@ function Sidebar() {
             console.log(e.target.value.slice(1))
         }
         dispatch(SearchUser(e.target.value));
-
     }
     console.log(tweetList, tohash)
     useEffect(() => {

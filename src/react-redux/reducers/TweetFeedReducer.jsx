@@ -25,6 +25,18 @@ export const TweetFeedReducer = (state=initialState, action)=>{
             console.log(action.payload)
             return {...state, loading:false, tweetData:action.payload}
         }
+        case "Tweet_Feed_Two_Started":{
+            return {...state, loading:true}
+        }
+        case "Tweet_Feed_Two_Succeed":{
+            console.log(action.payload)
+            // return {...state}
+            return {...state, loading:false, tweetData:action.payload.data.tweets, liked:action.payload.data.liked, bookmarked:action.payload.data.bookmarked}
+        }
+        case "Tweet_Feed_Two_Failed":{
+            console.log(action.payload)
+            return {...state}
+        }
         case "TWEET_FEED_ADD_ACTION":{
             return {
                 ...state, tweetData:[action.payload.tweeet, ...state.tweetData]
@@ -62,3 +74,19 @@ export const TweetFeedReducer = (state=initialState, action)=>{
 //     }
 
 // }
+
+const initialCount={
+    count:0
+}
+
+export const TweetFeedCountRed =(state=initialCount, action)=>{
+    switch(action.type){
+        case "Tweet_Feed_Count": {
+            return {
+                ...state , count:state.count+1
+            }  
+        }
+        default: return state
+    }
+
+}

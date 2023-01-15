@@ -20,12 +20,15 @@ import Google from "./component/Google"
 import TagTweets from './component/Sidebar/TagTweets';
 import OneTweet from './component/Reply/OneTweet';
 import GoogleSignin from './component/Authentication/GoogleSign/GoogleSignIn';
+import Counter from './component/counter';
+import Messages1 from './component/Messages/Messages1';
 
 function App() {
   return <>
+  {/* <Counter /> */}
     <BrowserRouter>
-      {/* <CreateTweet /> */}
       <Routes>
+      <Route path="/messages" element={<Messages1 />} />
         <Route path="/profile/:apiname" element={<ProfilePage />} />
          <Route path="/toTweet/:TweetId" element={<OneTweet />} />
         <Route path="/tagtweet" exact element={<TagTweets />} />

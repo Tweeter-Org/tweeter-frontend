@@ -37,8 +37,6 @@ function CreateTweet(props) {
         videooutput.src = URL.createObjectURL(e.target.files[0])
         setVdoInArr(URL.createObjectURL(e.target.files[0]))
         console.log(URL.createObjectURL(e.target.files[0]))
-        console.log(videooutput.src)
-        console.log(e.target.files[0])
         setSendVideo(e.target.files[0])
         document.getElementById("VIDEO").style.display = "block"
         document.getElementById("videoOutput").style.display = "block"
@@ -46,7 +44,6 @@ function CreateTweet(props) {
 
     function handleEmojis() {
         setShowEmoji(!showEmoji)
-        console.warn(showEmoji)
     }
 
     function onemojiclick(emojiObject, event) {
@@ -135,13 +132,13 @@ function CreateTweet(props) {
 
         backToHome(e)
         dispatch(FakeTweetFeedAction(newTweetCreated))
-        if (response !== "") {
+        if (response != "") {
             toast.success(`${response}`, {
                 position: "top-center",
                 theme: "light",
             });
         }
-        else if (error !== "") {
+        else if (error != "") {
             toast.error(`${error}`, {
                 position: "top-center",
                 theme: "light",
@@ -169,14 +166,14 @@ function CreateTweet(props) {
         // console.log("rewteet")
         console.log(newReTweetCreated)
         backToHome(e)
-        if (response !== "") {
+        if (response != "") {
             dispatch(FakeReTweetFeedAction(newReTweetCreated))
             toast.success(`${response}`, {
                 position: "top-center",
                 theme: "light",
             });
         }
-        else if (error !== "") {
+        else if (error != "") {
             toast.error(`${error}`, {
                 position: "top-center",
                 theme: "light",
@@ -227,18 +224,16 @@ function CreateTweet(props) {
             fd.append("file", null)
         }
         dispatch(ReplyToTweet(fd))
-        // console.log("home")
         dispatch(FakeReplyTweetAction(replYtweet))
-        // console.log("home")
         backToHome(e)
         console.log(replYtweet)
-        if (responseT !== "") {
+        if (responseT != "") {
             toast.success(`${responseT}`, {
                 position: "top-center",
                 theme: "light",
             });
         }
-        else if (errorT !== "") {
+        else if (errorT != "") {
             toast.error(`${errorT}`, {
                 position: "top-center",
                 theme: "light",
