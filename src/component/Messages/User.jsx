@@ -1,7 +1,7 @@
 import React from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom"
-import { CreateChat } from "../../react-redux/actions/Message";
+import { ActiveUserList, CreateChat } from "../../react-redux/actions/Message";
 import ProfileAction, { ProfileApi } from "../../react-redux/actions/Profile";
 import avatar from "../Assets/avatar.svg"
 
@@ -10,7 +10,7 @@ function MsgUser (props){
     const dispatch = useDispatch();
 
     function handleUserChat (usernum){
-       
+        dispatch(ActiveUserList());
         navigate(`/chats/${usernum}`)
         dispatch(CreateChat(usernum))
     }

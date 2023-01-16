@@ -3,7 +3,8 @@ const initialState = {
     msgUser:{},
     toMsgUser:false,
     chatLists:{},
-    viewChatList:false
+    viewChatList:false,
+    isActive:false
 }
 const MsgSearchReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -33,6 +34,17 @@ const MsgSearchReducer = (state = initialState, action) => {
         case "VIEW_CHAT_LIST_FAILED":{
             console.log(action.payload)
         }
+        case "Is_Active_User":{
+            return {
+                ...state, isActive:true
+            }
+        }
+        case "InActive_User":{
+            return {
+                ...state, isActive:false
+            }
+        }
+      
         default: return state;
     }
 }

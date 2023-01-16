@@ -17,7 +17,7 @@ import ProfileTweet from "./profileTweets";
 import FollowAction from "../../react-redux/actions/Follow";
 import DltTweetPopup from "./DeleteTweetPopup";
 import emailIcon from "../Assets/email.svg";
-import { CreateChat } from "../../react-redux/actions/Message";
+import { ActiveUserList, CreateChat } from "../../react-redux/actions/Message";
 
 function ProfilePage() {
     const dispatch = useDispatch();
@@ -180,6 +180,7 @@ function ProfilePage() {
     }
     function handleUserChat(chatsUserID){
         console.warn(chatsUserID)
+        dispatch(ActiveUserList());
         dispatch(CreateChat(chatsUserID))
         navigate(`/chats/${chatsUserID}`)
 

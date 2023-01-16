@@ -76,3 +76,19 @@ function ViewChatList () {
 }
 
 export {ViewChatList}
+
+function ActiveUserList (){
+    return {
+        type:"Is_Active_User",
+    }
+}
+
+export {ActiveUserList}
+
+function InactiveUserList (){
+    return {
+        type:"InActive_User",
+    }
+}
+
+export {InactiveUserList}

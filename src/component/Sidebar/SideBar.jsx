@@ -23,6 +23,7 @@ import { Link } from "react-router-dom";
 import LogOut from "../logOut/logOut";
 import { ProfileApi } from "../../react-redux/actions/Profile";
 import Tweetsearch from "./Tweetsearch";
+import { InactiveUserList } from "../../react-redux/actions/Message";
 
 function Sidebar() {
 
@@ -119,6 +120,17 @@ function Sidebar() {
         dispatch(Profile(greenprofile, "Profile", 4));
         // dispatch(ProfileApi(nameInApi))
     }
+
+    const { chatLists, viewChatList, isActive } = useSelector((c) => c.MsgSearchReducer)
+    function MsgSidebar (){
+        dispatch(Messages(greenmessage, "Messages", 3)) 
+        dispatch(InactiveUserList())
+        if(chatLists.length>0)
+        navigate("/chats/:userid")
+        else
+        navigate("/messages")
+        // navigate("/chats/:userid")
+    }
     return <>
         <div>
             <div className="navbar POPUPBG">
@@ -132,7 +144,7 @@ function Sidebar() {
                     <Link to="/home"><li className="sbListItem" onClick={() => { dispatch(Home(greenhome, "Home", 0)) }}><span className="sbListIcon"><img src={home} /></span>Home</li></Link>
                     <li className="sbListItem" onClick={() => { dispatch(Notifications(greennotify, "Notifications", 1)) }}><span className="sbListIcon"><img src={notify} /></span>Notifications</li>
                     <Link to="/bookmark"> <li className="sbListItem" onClick={() => { dispatch(BookmarksNav(greenbm, "Bookmark", 2)) }}><span className="sbListIcon"><img src={bookmark} /></span>Bookmarks</li></Link>
-                    <li className="sbListItem" onClick={() => { dispatch(Messages(greenmessage, "Messages", 3)) }}><span className="sbListIcon"><img src={message} /></span>Messages</li>
+                    <li className="sbListItem" onClick={() => {MsgSidebar()}}><span className="sbListIcon"><img src={message} /></span>Messages</li>
                     {/* <li className="sbListItem" onClick={() => { dispatch(Messages(greenmessage, "Messages", 3)) }}><span className="sbListIcon"><img src={message} /></span>Messages</li> */}
                     <Link to={`/profile/${nameInApi}`}><li className="sbListItem" onClick={handleProfile}><span className="sbListIcon"><img src={profile} /></span>Profile</li></Link>
                 </ul>
