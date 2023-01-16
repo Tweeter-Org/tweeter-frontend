@@ -161,24 +161,24 @@ function Chats() {
             <div className='Chat1'>
                 <input className=" ChatSearch1 POPUPBG" type="text" value={userN} onChange={handleSearch} placeholder="Search" />
                 <div className="ChatUserFlex">
-                    {(!isActive && viewChatList) ? (chatLists.length > 0 ? (chatLists.map((chat) => {
+                    {(viewChatList) ? (chatLists.length > 0 ? (chatLists.map((chat,index) => {
                         console.log(chat)
-                        return <ChatUser user={chat.users} msg={chat.latestmsg} />
+                        return <ChatUser user={chat.users} msg={chat.latestmsg} indexx={index} />
                     })) : null) : null}
-                    {isActive ? (
+                    {/* {isActive ? (
                         <div className="msgUser" id="ChatUser1" >
                             {/* {(list.displaypic === null) ? ( <img src={avatar}  id="msgPicincircle" />) :
                     ((list.displaypic.startsWith("https:")) ? (<img src={list.displaypic} id="msgPicincircle"/>) :
                         ( 
                         <img src={`https://twitterbackend-production-93ac.up.railway.app/${list.displaypic}`}  id="msgPicincircle" />))
-                } */}
+                } 
                             <div className="ChatUser2">
                                 <p className="msgName">{list.name}</p>
                                 <p className="msgUsername">{list.user_name}</p>
-                                {/* <p className="msgUsername">{props.msg}</p> */}
+                                {/* <p className="msgUsername">{props.msg}</p> 
                             </div>
                         </div>
-                    ) : null}
+                    ) : null} */}
 
                 </div>
                 {/* <div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ActiveUserList, CreateChat } from "../../react-redux/actions/Message";
 import avatar from "../Assets/avatar.svg"
 
@@ -8,6 +8,7 @@ function ChatUser(props) {
     const {user} = useSelector((a)=>a.AuthReducer)
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const { userid } = useParams();
     // console.log(user)
     // console.log(props.user)
     const [info, setInfo] = useState({})
@@ -22,6 +23,26 @@ function ChatUser(props) {
           
         })
     },[props.user])
+
+    useEffect(()=>{
+        props.user.map((u)=>{
+            if(u._id == userid)
+            {
+                console.warn(u);
+                console.log(props.indexx)
+                document.getElementsByClassName("chatUser")[props.indexx].style.backgroundColor="rgba(255,255,255,0.1)"
+                var ChatToColor =document.getElementsByClassName("chatUser")
+                for(var i=0;i<ChatToColor.length; i++ ){
+                    if(i!=props.indexx){
+                        document.getElementsByClassName("chatUser")[i].style.background="none"
+                    }   
+                }
+                setInfo(u)
+                return u
+            }
+          
+        })
+    },[userid])
     function handleUserChat (usernum){
         dispatch(ActiveUserList());
         navigate(`/chats/${usernum}`)
@@ -29,7 +50,7 @@ function ChatUser(props) {
     }
     // console.log(props.msg)
     return <>
-       <div className="msgUser" id="ChatUser1" >
+       <div className="chatUser" id="ChatUser1" >
        {/* {(info.displaypic === null) ? ( <img src={avatar}  id="msgPicincircle" />) :
                     ((info.displaypic.startsWith("https:")) ? (<img src={info.displaypic} id="msgPicincircle"/>) :
                         ( 

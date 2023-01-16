@@ -214,6 +214,7 @@ color: rgba(255, 255, 255, 0.9);
 }
 
 /* CHATS */
+
 .CHATS{
     height: 530px;
     margin-left: 23vw;
@@ -261,7 +262,16 @@ color: rgba(255, 255, 255, 0.9);
     padding-left: 2vw;
     color: rgba(255, 255, 255, 0.7);
 }
-
+.chatUser {
+    width:32vw;
+    height:53px;
+    border-bottom:0.5px solid rgba(255, 255, 255, 0.2);
+    margin-top:5px;
+    padding-left:1vw;
+    display: flex;
+    margin-left:1vw;
+    z-index:16;
+}
 .ChatLine1{
     position: absolute;
     top:361px;
