@@ -92,3 +92,52 @@ function InactiveUserList (){
 }
 
 export {InactiveUserList}
+
+export const SendChatsAction = (formData) => {
+    const accessToken = sessionStorage.getItem("access token")
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
+    }
+    return async function (dispatch) {
+        await BaseUrl.post("/c/message", formData, config)
+            .then((Res) => {
+                dispatch({
+                    type: "Chat_sent",
+                    payload: Res
+                })
+            })
+            .catch((err) => {
+                dispatch({
+                    type: "Chat_not_sent",
+                    payload: err
+                })
+            })
+    }
+}
+
+export const ViewChatsAction = (chatid) => {
+    const accessToken = sessionStorage.getItem("access token")
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
+    }
+    return async function (dispatch) {
+        await BaseUrl.get(`/c/messages/${chatid}`, config)
+            .then((Res) => {
+                console.log(Res)
+                dispatch({
+                    type: "VIEW_CHATS_YES",
+                    payload: Res
+                })
+            })
+            .catch((err) => {
+                dispatch({
+                    type: "VIEW_CHATS_NO",
+                    payload: err
+                })
+            })
+    }
+}

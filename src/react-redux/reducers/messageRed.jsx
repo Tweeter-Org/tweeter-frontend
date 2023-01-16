@@ -4,7 +4,8 @@ const initialState = {
     toMsgUser:false,
     chatLists:{},
     viewChatList:false,
-    isActive:false
+    isActive:false,
+    viewChatMsgs:{}
 }
 const MsgSearchReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -17,22 +18,24 @@ const MsgSearchReducer = (state = initialState, action) => {
         }
         case "CREATE_CHAT_SUCCESS":{
             console.log(action.payload)
+            return state;
         }
         case "CREATE_CHAT_FAILED":{
             console.log(action.payload)
+            return state;
         }
         case "VIEW_CHAT_LIST_START":{
             return {...state , loading:true};
         }
         case "VIEW_CHAT_LIST_SUCCESS":{
             console.log(action.payload)
-            console.log(action.payload.data.mychats[0])
             return {
                 ...state, loading:false, chatLists:action.payload.data.mychats, viewChatList:true
             }
         }
         case "VIEW_CHAT_LIST_FAILED":{
             console.log(action.payload)
+            return state;
         }
         case "Is_Active_User":{
             return {
@@ -44,7 +47,24 @@ const MsgSearchReducer = (state = initialState, action) => {
                 ...state, isActive:false
             }
         }
-      
+        case "Chat_sent":{
+            console.log(action.payload)
+            return state;
+        }
+        case "Chat_not_sent":{
+            console.log(action.payload)
+            return state;
+        }
+        case "VIEW_CHAT_YES":{
+            console.log(action.payload)
+            return {
+                ...state, viewChatMsgs:action.payload.data
+            }
+        }
+        case "VIEW_CHAT_NO":{
+            console.log(action.payload)
+            return state;
+        }
         default: return state;
     }
 }

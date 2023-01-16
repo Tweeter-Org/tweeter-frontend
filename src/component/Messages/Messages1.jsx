@@ -24,9 +24,9 @@ const Messages1 = () => {
 
     useEffect(()=>{
        const closeDropdown =(e)=>{
-        console.log(e.path[0].tagName)
-        console.log(e.path[0].className)
-        console.log(e.path[0].id)
+        // console.log(e.path[0].tagName)
+        // console.log(e.path[0].className)
+        // console.log(e.path[0].id)
         if(e.path[0].tagName=="BUTTON"){
             // setShowMsg(true)
         }
