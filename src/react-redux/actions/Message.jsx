@@ -18,7 +18,7 @@ const MsgSearchUser = (char) => {
 }
 export default MsgSearchUser
 
-function CreateChat() {
+function CreateChat(id) {
     const accessToken = sessionStorage.getItem("access token")
     const config = {
         headers: {
@@ -29,7 +29,7 @@ function CreateChat() {
         dispatch({
             type: "CREATE_CHAT_START",
         })
-        await BaseUrl.get("/c/chat/1", config)
+        await BaseUrl.get(`/c/chat/${id}`, config)
             .then((res) => {
                 dispatch({
                     type: "CREATE_CHAT_SUCCESS",

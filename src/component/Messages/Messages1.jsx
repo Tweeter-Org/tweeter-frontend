@@ -9,9 +9,32 @@ import MsgDropdown from './MsgDropDown';
 import MsgUser from './User';
 const Messages1 = () => {
 
-    function handleMsgDD(){
-        document.getElementById("MSGDROPDOWN").style.display="flex";
+    const [showMsg, setShowMsg] = useState(false)
+    function handleMsgDD() {
+        setShowMsg(true)
+        // document.getElementById("MSGDROPDOWN").style.display = "flex";
     }
+   
+    useEffect(() => {
+        if (showMsg)
+            document.getElementById("MSGDROPDOWN").style.display = "flex";
+        else
+            document.getElementById("MSGDROPDOWN").style.display = "none";
+    }, [showMsg])
+
+    useEffect(()=>{
+       const closeDropdown =(e)=>{
+        if(e.path[0].tagName=="BUTTON"){
+            setShowMsg(true)
+        }
+        else{
+            setShowMsg(false)
+        }
+       }
+       document.addEventListener("click",closeDropdown
+    )
+    },[])
+
 
     return <>
         <Sidebar />

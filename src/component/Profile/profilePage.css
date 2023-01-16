@@ -108,10 +108,28 @@
     color: rgba(255, 255, 255, 0.4);
     cursor: pointer;
 }
+.pMsgBtn {
+    border: none;
+    width: 11vw;
+    height: 32px;
+    margin-left: 1vw;
+    background: none;
+    border:1px solid #47c87a;
+    /* background: #2D2E30; */
+    border-radius: 8px;
 
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
 .pProfileFollow {
     border: none;
-    width: 24vw;
+    width: 11vw;
     height: 32px;
     margin-left: -4.35vw;
     background: #47c87a;

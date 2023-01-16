@@ -4,7 +4,7 @@ import MsgSearchUser from "../../react-redux/actions/Message";
 import MsgUser from "./User";
 
 function MsgDropdown (){
-    const [user, setUser] = useState("Search");
+    const [user, setUser] = useState("");
     const dispatch = useDispatch();
     const { toMsgUser, loading,msgUser } = useSelector((S) => S.MsgSearchReducer)
     console.log(msgUser)
@@ -28,10 +28,10 @@ function MsgDropdown (){
     return <>
     <div className="msgDDBlock1" id="MSGDROPDOWN">
         <p className="msgDDText1">New Message</p>
-        <input className="msgDDSearchIpt" type="text" value={user} onChange={handleSearch} />
+        <input className="msgDDSearchIpt" type="text" value={user} onChange={handleSearch} placeholder="Search" />
         <div>
                 {searchListArray.length > 0?( searchListArray.map((searchh) => {
-                            return <MsgUser name={searchh.name} username={searchh.user_name} displaypic={searchh.displaypic} />
+                            return <MsgUser name={searchh.name} username={searchh.user_name} displaypic={searchh.displaypic} userNum= {searchh._id} />
                         })):null} 
                 </div>
     </div>

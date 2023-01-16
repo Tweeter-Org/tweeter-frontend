@@ -9,10 +9,10 @@ function MsgUser (props){
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    function handleUserChat (){
+    function handleUserChat (usernum){
        
-        navigate("/chats")
-        dispatch(CreateChat())
+        navigate(`/chats/${usernum}`)
+        dispatch(CreateChat(usernum))
     }
     return <>
         <div className="msgUser POPUPBG">
@@ -24,7 +24,7 @@ function MsgUser (props){
                 <div className="msgUser2">
                 <p className="msgName">{props.name}</p>
             <p className="msgUsername" onClick={()=>{
-               handleUserChat()
+               handleUserChat(props.userNum)
             }}>{props.username}</p>
                 </div>
            

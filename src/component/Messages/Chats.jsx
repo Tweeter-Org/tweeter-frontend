@@ -5,34 +5,37 @@ import Sidebar from "../Sidebar/SideBar";
 import ChatUser from "./ChatUser";
 import MsgUser from "./User";
 
-function Chats (){
+function Chats() {
     const [user, setUser] = useState("")
-    const [userlist , setUesrlist] = useState([])
+    const [userlist, setUesrlist] = useState([])
     const dispatch = useDispatch();
-    function handleSearch(e){
-setUser(e.target.value)
+    function handleSearch(e) {
+        setUser(e.target.value)
     }
-const {chatLists, viewChatList} = useSelector((c)=>c.MsgSearchReducer)
-console.log(chatLists)
+    const { chatLists, viewChatList } = useSelector((c) => c.MsgSearchReducer)
+    console.log(chatLists)
     useEffect(() => {
-     dispatch(ViewChatList())
-     setUesrlist(chatLists[0].users)
-     console.log(viewChatList)
+        dispatch(ViewChatList())
+        setUesrlist(chatLists[0].users)
+        console.log(viewChatList)
     }, [])
-console.log(chatLists[0].users)
-    useEffect(()=>{
-        document.getElementById("SEARCHBOX").style.display="none";
-    },[])
-    
+    // console.log(chatLists[0].users)
+    useEffect(() => {
+        document.getElementById("SEARCHBOX").style.display = "none";
+    }, [])
+
     return <>
-    <Sidebar />
- <div className='MSGS'>
-      <div className='Chat1'>
+        <Sidebar />
+        <div className='CHATS'>
+        <div className="Chat2">
+                
+            </div>
+            <div className='Chat1'>
                 <input className=" ChatSearch1 POPUPBG" type="text" value={user} onChange={handleSearch} placeholder="Search" />
                 <div className="ChatUserFlex">
-                    {userlist.length>0?(userlist.map((chat)=>{
+                    {userlist.length > 0 ? (userlist.map((chat) => {
                         return <ChatUser name={chat.name} username={chat.user_name} displaypic={chat.displaypic} />
-                    })):null}
+                    })) : null}
                 </div>
                 {/* <div>
                 {searchListArray.length > 0?( searchListArray.map((searchh) => {
@@ -40,8 +43,8 @@ console.log(chatLists[0].users)
                         })):null} 
                 </div> */}
             </div>
- </div>
-   <span className='ChatLine1' />
+        </div>
+        {/* <span className='ChatLine1' /> */}
     </>
 }
- export default Chats;
+export default Chats;

@@ -16,7 +16,8 @@ import Loader from "../Assets/Loader";
 import ProfileTweet from "./profileTweets";
 import FollowAction from "../../react-redux/actions/Follow";
 import DltTweetPopup from "./DeleteTweetPopup";
-import { propTypes } from "react-bootstrap/esm/Image";
+import emailIcon from "../Assets/email.svg";
+import { CreateChat } from "../../react-redux/actions/Message";
 
 function ProfilePage() {
     const dispatch = useDispatch();
@@ -177,6 +178,12 @@ function ProfilePage() {
         document.getElementById("likeTweetFlex").style.display = "flex"
         document.getElementById("profileTweetFlex").style.display = "none"
     }
+    function handleUserChat(chatsUserID){
+        console.warn(chatsUserID)
+        dispatch(CreateChat(chatsUserID))
+        navigate(`/chats/${chatsUserID}`)
+
+    }
 
     const { likedTweets } = useSelector((l) => l.LikedTweetsPReducer)
     useEffect(() => {
@@ -201,6 +208,7 @@ function ProfilePage() {
                         <p className="pTweet1">Tweets</p>
                         <p className="pTweet1" id="pFollowers" onClick={() => { displayFollowers(); showFollowers() }}>Followers</p>
                         <p className="pTweet1" onClick={() => { displayFollowers(); showFollowing() }} >Following</p>
+                        
                     </div>
                     <div className="pBlock2">
                         <p className="pTweetCount" id="tweetCount">{profileTweet.length}</p>
@@ -210,8 +218,12 @@ function ProfilePage() {
                         </span>
                     </div>
                     {myProfile ? (<button className="pEdiitProfile" onClick={() => { handleEdit() }}>Edit Profile</button>)
-                        : (profile.isfollowing ? (<button className="pProfileFollow" onClick={() => { handleFollowers() }} >Following </button>)
-                            : (<button className="pProfileFollow" onClick={() => { handleFollowers() }}>Follow</button>))}
+                        : (profile.isfollowing ? 
+                        (<div><button className="pProfileFollow" onClick={() => { handleFollowers() }} >Following </button>
+                        <button className="pMsgBtn" onClick={()=>{handleUserChat(profile.user._id)}}>Message</button></div>)
+                            : (<div>
+                            <button className="pProfileFollow" onClick={() => { handleFollowers() }}>Follow</button>
+                            <button className="pMsgBtn" onClick={()=>{handleUserChat(profile.user._id)}}>Message</button></div>))}
                 </div>
             </div>
             <div className="profileDiv2">

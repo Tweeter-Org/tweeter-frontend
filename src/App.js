@@ -29,7 +29,7 @@ function App() {
   {/* <Counter /> */}
     <BrowserRouter>
       <Routes>
-      <Route path="/chats" element={<Chats />} />
+      <Route path="/chats/:userid" element={<Chats />} />
       <Route path="/messages" element={<Messages1 />} />
         <Route path="/profile/:apiname" element={<ProfilePage />} />
          <Route path="/toTweet/:TweetId" element={<OneTweet />} />

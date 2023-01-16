@@ -155,13 +155,13 @@ color: rgba(255, 255, 255, 0.9);
 /* User searched css */
 
 .msgUser {
-    width:35vw;
-    height:58px;
+    width:32vw;
+    height:53px;
     border-bottom:0.5px solid rgba(255, 255, 255, 0.2);
-    margin-top:7px;
+    margin-top:5px;
     padding-left:1vw;
     display: flex;
-    margin-left:-0.5vw;
+    margin-left:1vw;
 }
 .msgUser2{
     display: flex;
@@ -201,18 +201,35 @@ color: rgba(255, 255, 255, 0.9);
 }
 
 /* CHATS */
-
+.CHATS{
+    height: 530px;
+    margin-left: 23vw;
+    margin-top: 15vh;
+    display: flex;
+}
+.Chat2{
+    /* background-color: #161718; */
+    width: 48vw;
+    padding-bottom: 5vh;
+    background: #161718;
+    border-radius: 8px;
+    border-top-right-radius: 0;
+    z-index: 105;
+}
 .Chat1{
     display: flex;
     flex-direction: column;
     padding-left:1vw;
+    background-color: rgb(22, 23, 24,0.4);
+    width:25vw;
+    border-left:1px solid rgba(255, 255, 255, 0.3);
   
 }
 .ChatSearch1{
     border: none;
     outline: none;
     margin-top:20px;
-    width: 15.5vw;
+    width: 23vw;
     height: 32px;
     background: none;
     border:0.5px solid rgba(255, 255, 255, 0.2);
@@ -247,9 +264,9 @@ left: 20vw;
 #ChatUser1{
     border:none;
     margin-top:4px;
-    width:15vw;
+    width:25vw;
     height:55px;
     border-bottom:0.5px solid rgba(255, 255, 255, 0.2);
-    padding-left:0vw;
-    margin-left:0.2vw;
+    padding-left:1vw;
+    margin-left:-1vw;
 }
