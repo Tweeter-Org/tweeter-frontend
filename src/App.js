@@ -22,12 +22,14 @@ import OneTweet from './component/Reply/OneTweet';
 import GoogleSignin from './component/Authentication/GoogleSign/GoogleSignIn';
 import Counter from './component/counter';
 import Messages1 from './component/Messages/Messages1';
+import Chats from './component/Messages/Chats';
 
 function App() {
   return <>
   {/* <Counter /> */}
     <BrowserRouter>
       <Routes>
+      <Route path="/chats" element={<Chats />} />
       <Route path="/messages" element={<Messages1 />} />
         <Route path="/profile/:apiname" element={<ProfilePage />} />
          <Route path="/toTweet/:TweetId" element={<OneTweet />} />

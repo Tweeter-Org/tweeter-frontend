@@ -1,12 +1,19 @@
 import React from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom"
+import { CreateChat } from "../../react-redux/actions/Message";
 import ProfileAction, { ProfileApi } from "../../react-redux/actions/Profile";
 import avatar from "../Assets/avatar.svg"
 
 function MsgUser (props){
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    function handleUserChat (){
+       
+        navigate("/chats")
+        dispatch(CreateChat())
+    }
     return <>
         <div className="msgUser POPUPBG">
         {(props.displaypic === null) ? ( <img src={avatar}  id="msgPicincircle" />) :
@@ -14,8 +21,13 @@ function MsgUser (props){
                         ( 
                         <img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`}  id="msgPicincircle" />))
                 }
-            {/* <p className="searchName">{props.name}</p> */}
-            <p className="msgUsername">{props.name}</p>
+                <div className="msgUser2">
+                <p className="msgName">{props.name}</p>
+            <p className="msgUsername" onClick={()=>{
+               handleUserChat()
+            }}>{props.username}</p>
+                </div>
+           
         </div>
     </>
 }

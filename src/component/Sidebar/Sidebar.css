@@ -132,7 +132,14 @@ a {
 a:hover {
     color: #47C87A;
 }
-
+#SEARCHBLOCK{
+    background-color: aliceblue;
+    z-index:105;
+    display: block;
+}
+#SEARCHBOX{
+    /* display: none; */
+}
 .searchFlexBox {
     position: absolute;
     left: 70vw;

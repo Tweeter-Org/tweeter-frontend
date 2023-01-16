@@ -124,7 +124,6 @@ function Sidebar() {
             <div className="navbar POPUPBG">
                 <img src={image} className="navbarIcon" />
                 <span><p className="navbarHead">{title}</p></span>
-
                 <span id="navbarLine" />
             </div>
             <div className="sidebar POPUPBG">
@@ -139,6 +138,7 @@ function Sidebar() {
                 </ul>
                 <button className="sideBarTweetBtn" onClick={() => { xyz() }}>Create Tweet</button>
             </div>
+            <div id="SEARCHBOX">
             <div><input className="searchbar POPUPBG" type="text" value={search} onChange={handleSearch} placeholder="Search" />
                 <p className="logout POPUPBG" onClick={handleLogout}>Log Out</p> </div>
             <div className="searchFlexBox POPUPBG">
@@ -154,6 +154,8 @@ function Sidebar() {
                     })) : <p className="searchAlter">No search found</p>) : null
                 }
             </div>
+            </div>
+           
             <CreateTweet />
             <LogOut />
         </div>

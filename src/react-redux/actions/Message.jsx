@@ -17,3 +17,62 @@ const MsgSearchUser = (char) => {
    }
 }
 export default MsgSearchUser
+
+function CreateChat() {
+    const accessToken = sessionStorage.getItem("access token")
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
+    }
+    return async function (dispatch) {
+        dispatch({
+            type: "CREATE_CHAT_START",
+        })
+        await BaseUrl.get("/c/chat/1", config)
+            .then((res) => {
+                dispatch({
+                    type: "CREATE_CHAT_SUCCESS",
+                    payload: res
+                })
+            })
+            .catch((err) => {
+                dispatch({
+                    type: "CREATE_CHAT_FAILED",
+                    payload: err
+                })
+            })
+    }
+}
+
+export {CreateChat}
+
+
+function ViewChatList () {
+    const accessToken = sessionStorage.getItem("access token")
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
+    }
+    return async function (dispatch) {
+        dispatch({
+            type: "VIEW_CHAT_LIST_START",
+        })
+        await BaseUrl.get("/c/mychats", config)
+            .then((res) => {
+                dispatch({
+                    type: "VIEW_CHAT_LIST_SUCCESS",
+                    payload: res
+                })
+            })
+            .catch((err) => {
+                dispatch({
+                    type: "VIEW_CHAT_LIST_FAILED",
+                    payload: err
+                })
+            })
+    }
+}
+
+export {ViewChatList}
