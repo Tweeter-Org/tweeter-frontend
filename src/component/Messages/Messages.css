@@ -231,6 +231,8 @@ color: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
     border-top-right-radius: 0;
     z-index: 105;
+    display: flex;
+    flex-direction: column;
 }
 .Chat1{
     display: flex;
@@ -241,6 +243,8 @@ color: rgba(255, 255, 255, 0.9);
     width:25vw;
     border-left:1px solid rgba(255, 255, 255, 0.3);
     border-top-right-radius: 8px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
   
 }
 .ChatSearch1{
@@ -305,8 +309,13 @@ left: 0px;
 top: 0px;
 background: rgba(71, 200, 122, 0.8);
 display:flex;
-
 border-top-left-radius: 8px;
+}
+.ChatTypeDiv{
+height:45px;
+margin-top:1px;
+margin-bottom:-31px;
+width: 656px;
 }
 #ChatName{
     margin-left:0.5vw;
@@ -317,12 +326,12 @@ border-top-left-radius: 8px;
     width: 656px;
 height: 45px;
 left: 0px;
-top: 826px;
 padding-left:6.5vw;
+outline: none;
 background: rgba(72, 77, 74, 0.4);
 border:0.5px solid rgba(255, 255, 255, 0.3);
 border-bottom-left-radius: 4px;
-margin-top:435px;
+
 }
 .Chat2-1{
     display:flex;
@@ -362,4 +371,24 @@ margin-top:435px;
     margin-left:39.3vw;
     margin-top:-15px;
     cursor: pointer;
+}
+
+/*chat screen */
+
+.Chat2Msgs{
+    display: flex;
+    flex-direction: column;
+    margin-top:1px;
+    width:48vw;
+    height:432px;
+    margin-bottom:1px;
+    overflow-y: scroll;
+    padding:5px 0.5vw;
+}
+
+.scrollChatBlock{
+    width:15vw;
+    height:20px;
+    background-color: rgb(72, 77, 74,0.8);
+    margin-bottom:5px;
 }

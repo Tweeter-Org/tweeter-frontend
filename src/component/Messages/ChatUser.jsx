@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { ActiveUserList, CreateChat } from "../../react-redux/actions/Message";
+import { ActiveUserList, CreateChat, ViewChatsAction } from "../../react-redux/actions/Message";
 import avatar from "../Assets/avatar.svg"
 
 function ChatUser(props) {
     const {user} = useSelector((a)=>a.AuthReducer)
+    const viewChatIdd = props.viewChatid;
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { userid } = useParams();
@@ -40,13 +41,13 @@ function ChatUser(props) {
                 setInfo(u)
                 return u
             }
-          
         })
     },[userid])
     function handleUserChat (usernum){
         dispatch(ActiveUserList());
         navigate(`/chats/${usernum}`)
         dispatch(CreateChat(usernum))
+        dispatch(ViewChatsAction(viewChatIdd))
     }
     // console.log(props.msg)
     return <>

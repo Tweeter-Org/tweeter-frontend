@@ -134,6 +134,7 @@ export const ViewChatsAction = (chatid) => {
                 })
             })
             .catch((err) => {
+                console.log(err)
                 dispatch({
                     type: "VIEW_CHATS_NO",
                     payload: err

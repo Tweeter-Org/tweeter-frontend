@@ -55,13 +55,13 @@ const MsgSearchReducer = (state = initialState, action) => {
             console.log(action.payload)
             return state;
         }
-        case "VIEW_CHAT_YES":{
+        case "VIEW_CHATS_YES":{
             console.log(action.payload)
             return {
-                ...state, viewChatMsgs:action.payload.data
+                ...state, viewChatMsgs:action.payload.data.messages
             }
         }
-        case "VIEW_CHAT_NO":{
+        case "VIEW_CHATS_NO":{
             console.log(action.payload)
             return state;
         }
