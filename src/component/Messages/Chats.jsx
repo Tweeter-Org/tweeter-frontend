@@ -82,7 +82,9 @@ function Chats() {
     }
 
     function onemojiclick(emojiObject, event) {
+        console.log(emojiObject)
         setTextMsg(prevText => prevText + emojiObject.emoji)
+        console.log(textMsg)
         setShowEmoji(false)
     }
 

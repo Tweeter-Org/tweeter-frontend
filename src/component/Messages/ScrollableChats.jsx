@@ -3,21 +3,36 @@ import { useSelector } from "react-redux";
 
 function ScrollableChat() {
     const { chatLists, viewChatList, isActive, viewChatMsgs } = useSelector((c) => c.MsgSearchReducer)
+    const {user} = useSelector((a)=>a.AuthReducer)
     console.warn(viewChatMsgs)
     const [chatmsg, setChatmsg] = useState([])
-    useEffect(()=>{
+    useEffect(() => {
         setChatmsg(viewChatMsgs)
-    },[viewChatMsgs])
+    }, [viewChatMsgs])
     return <>
         <div className="Chat2Msgs">
-        <div>
-            {chatmsg.length>0? (chatmsg.map((chat)=>{
-                return <div className="scrollChatBlock">
-                {/* <p>{chat.user.user_name}</p> */}
-                <p>{chat.text}</p>
-                </div>
-            })):null}
-        </div>
+            <div>
+                {chatmsg.length > 0 ? (chatmsg.map((chat) => {
+                    if(chat.user.user_name != user.user_name){
+                        return (
+                        <div className="scrollChatBlockYou">
+                        <p className="scrollChatText">{chat.text}</p>
+                    </div>)
+                    }
+                   
+                })) : null}
+            </div>
+            <div>
+                {chatmsg.length > 0 ? (chatmsg.map((chat) => {
+                    if(chat.user.user_name == user.user_name){
+                        return (
+                            <div className="scrollChatBlockMine" >
+                        <p className="scrollChatText">{chat.text}</p>
+                    </div>)
+                    }
+                  
+                })) : null}
+            </div>
             {/* <p>LoremLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
                 Why do we use it?
