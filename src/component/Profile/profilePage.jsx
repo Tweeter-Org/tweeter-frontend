@@ -4,6 +4,7 @@ import "./profilePage.css"
 import avatar from "../Assets/avatar.svg";
 import profileIcon from "../Assets/profile.svg";
 import newprofile from "../Assets/newProfile.png";
+import greenmessage from "../Assets/greenmsg.svg"
 import post from "../Assets/posts.svg"
 import { useDispatch, useSelector } from "react-redux";
 import ProfileAction from "../../react-redux/actions/Profile";
@@ -18,6 +19,7 @@ import FollowAction from "../../react-redux/actions/Follow";
 import DltTweetPopup from "./DeleteTweetPopup";
 import emailIcon from "../Assets/email.svg";
 import { ActiveUserList, CreateChat } from "../../react-redux/actions/Message";
+import { Messages } from "../../react-redux/actions/SearchApi";
 
 function ProfilePage() {
     const dispatch = useDispatch();
@@ -181,6 +183,7 @@ function ProfilePage() {
     function handleUserChat(chatsUserID){
         console.warn(chatsUserID)
         dispatch(ActiveUserList());
+        dispatch(Messages(greenmessage, "Messages", 3)) 
         dispatch(CreateChat(chatsUserID))
         navigate(`/chats/${chatsUserID}`)
 
@@ -250,7 +253,7 @@ function ProfilePage() {
             <hr className="pLine" />
             <div className="followersFlex">
                 {followers > 0 ? (followerArray.map((f) => {
-                    return <FollowComp name={f} />
+                    return <FollowComp name={f.name} username={f.user_name} displaypic={f.displaypic} />
                 })) : <p className="alterFollower">No Followers</p>}
             </div>
             <div className="followingFlex">

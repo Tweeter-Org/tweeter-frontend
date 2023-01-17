@@ -125,6 +125,9 @@ export const ViewChatsAction = (chatid) => {
         }
     }
     return async function (dispatch) {
+        dispatch({
+            type:"TO_VIEW_CHATS"
+        })
         await BaseUrl.get(`/c/messages/${chatid}`, config)
             .then((Res) => {
                 console.log(Res)
@@ -140,5 +143,14 @@ export const ViewChatsAction = (chatid) => {
                     payload: err
                 })
             })
+    }
+}
+
+export const FakeViewChatsAction = (newChat) => {
+    return {
+        type: "FAKE_CHAT_ADD_ACTION",
+        payload: {
+            newChat
+        }
     }
 }

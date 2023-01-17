@@ -41,7 +41,7 @@ const Messages1 = () => {
 
     return <>
         <Sidebar />
-        <div className='MSGS'>
+        <div className='MSGS  POPUPBG'>
             <div className='Messages1'>
                 <p className='MsgText1'>Welcome to your Inbox</p>
                 <p className='MsgText2'>Wants to chat with someone or to share your thoughts, any tweets. Just message</p>

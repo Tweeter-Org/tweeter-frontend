@@ -55,15 +55,25 @@ const MsgSearchReducer = (state = initialState, action) => {
             console.log(action.payload)
             return state;
         }
+        case "TO_VIEW_CHATS":{
+            return {
+                ...state, loading:true
+            }
+        }
         case "VIEW_CHATS_YES":{
             console.log(action.payload)
             return {
-                ...state, viewChatMsgs:action.payload.data.messages
+                ...state, viewChatMsgs:action.payload.data.messages, loading:false
             }
         }
         case "VIEW_CHATS_NO":{
             console.log(action.payload)
-            return state;
+            return {...state, loading:false};
+        }
+        case "FAKE_CHAT_ADD_ACTION":{
+            return {
+                ...state, viewChatMsgs :[...state.viewChatMsgs, action.payload.newChat]
+            }
         }
         default: return state;
     }

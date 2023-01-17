@@ -6,6 +6,7 @@ import notify from "../Assets/notifications.svg"
 import bookmark from "../Assets/bookmarks.svg"
 import message from "../Assets/comment.svg"
 import profile from "../Assets/account_box.svg"
+import logoutIcon from "../Assets/logoutIcon.svg"
 import greenhome from "../Assets/greenhome.svg"
 import greennotify from "../Assets/greennotifications.svg"
 import greenbm from "../Assets/greenbm.svg"
@@ -131,6 +132,13 @@ function Sidebar() {
         navigate("/messages")
         // navigate("/chats/:userid")
     }
+
+    function LogoutMouseover(){
+document.getElementById("logout").style.display="block"
+    }
+    function LogoutMouseout(){
+        document.getElementById("logout").style.display="none"
+    }
     return <>
         <div>
             <div className="navbar POPUPBG">
@@ -152,7 +160,7 @@ function Sidebar() {
             </div>
             <div id="SEARCHBOX">
             <div><input className="searchbar POPUPBG" type="text" value={search} onChange={handleSearch} placeholder="Search" />
-                <p className="logout POPUPBG" onClick={handleLogout}>Log Out</p> </div>
+               </div>
             <div className="searchFlexBox POPUPBG">
                 {tohash ? (
                     searchTweetList.length > 0 ? (searchTweetList.map((se) => {
@@ -167,7 +175,8 @@ function Sidebar() {
                 }
             </div>
             </div>
-           
+            <img src={logoutIcon} className="logoutIconCSS" onMouseOver={LogoutMouseover} onMouseOut={LogoutMouseout} onClick={handleLogout} />
+            <p id="logout">Log Out</p>
             <CreateTweet />
             <LogOut />
         </div>
@@ -175,3 +184,5 @@ function Sidebar() {
     </>
 }
 export default Sidebar
+
+//className="logout POPUPBG"

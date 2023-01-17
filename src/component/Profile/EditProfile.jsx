@@ -14,11 +14,12 @@ function EditProfile() {
     const navigate = useNavigate()
     const NAME =  sessionStorage.getItem("profile name")
     const BIO = sessionStorage.getItem("profile bio")
-    const [name, setName] = useState(NAME);
-    const [bio, setBio] = useState(BIO);
+  
     const [sendImage, setSendImage] = useState([]);
     const profilee = useSelector((p) => p.ProfileReducer)
     const { profile , accessProfile , loading , editprofile , ifedit , profileTweet} = profilee;
+    const [name, setName] = useState(profile.user.name);
+    const [bio, setBio] = useState(profile.user.bio);
     function handleSendImage(e) {
         console.log(e.target.files);
         setSendImage(e.target.files[0])

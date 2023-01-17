@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SendChatsAction, ViewChatList, ViewChatsAction } from "../../react-redux/actions/Message";
+import { FakeViewChatsAction, SendChatsAction, ViewChatList, ViewChatsAction } from "../../react-redux/actions/Message";
 import Sidebar from "../Sidebar/SideBar";
 import ChatUser from "./ChatUser";
 import MsgUser from "./User";
@@ -13,6 +13,7 @@ import sendChatIcon from "../Assets/sendChats.svg";
 import Picker from "emoji-picker-react"
 import FormData from "form-data";
 import ScrollableChat from "./ScrollableChats";
+import Loader from "../Assets/Loader";
 
 function Chats() {
     const [userN, setUserN] = useState("")
@@ -21,7 +22,7 @@ function Chats() {
     function handleSearch(e) {
         setUserN(e.target.value)
     }
-    const { chatLists, viewChatList, isActive, viewChatMsgs } = useSelector((c) => c.MsgSearchReducer)
+    const { chatLists, viewChatList, isActive, viewChatMsgs, loading } = useSelector((c) => c.MsgSearchReducer)
     console.log(chatLists)
     useEffect(() => {
         dispatch(ViewChatList())
@@ -37,6 +38,7 @@ function Chats() {
     const [sendChatId, setSendChatId] = useState()
     const [list, setlist] = useState([])
     const { user } = useSelector((a) => a.AuthReducer)
+    console.warn(user)
     // console.log(userChatList)
     // console.log(useParams())
     const { userid } = useParams();
@@ -68,13 +70,17 @@ function Chats() {
     const [textMsg, setTextMsg] = useState("")
     const [showEmoji, setShowEmoji] = useState(false)
     const [sendImage, setSendImage] = useState(null);
+    const [imageInArr, setImageInArr] = useState(null)
+    const [vdoInArr, setVdoInArr] = useState(null)
     const fd = new FormData();
     function handleSendImage(e) {
         setSendImage(e.target.files[0])
+        setImageInArr(URL.createObjectURL(e.target.files[0]))
     }
     const [sendVideo, setSendVideo] = useState(null);
     function handleSendVideo(e) {
         setSendVideo(e.target.files[0])
+        setVdoInArr(URL.createObjectURL(e.target.files[0]))
     }
 
     function handleEmojis() {
@@ -87,7 +93,20 @@ function Chats() {
         console.log(textMsg)
         setShowEmoji(false)
     }
-
+console.log(sendChatId)
+    const sendChat = {
+        "image": imageInArr,
+        "chatId":sendChatId,
+        "text": textMsg,
+        "video": vdoInArr,
+        user: {
+            "user_name": user.user_name,
+            "displaypic": user.displaypic,
+            name:user.name,
+            "_id":3
+        },
+      
+    }
     function sendChatMsg(id) {
         console.log(id)
         fd.append("text", textMsg)
@@ -102,17 +121,31 @@ function Chats() {
             fd.append("file", null)
         }
         dispatch(SendChatsAction(fd))
-        dispatch(ViewChatsAction(id))
+        console.log(sendChat)
+        dispatch(FakeViewChatsAction(sendChat))
+        
+        // dispatch(ViewChatsAction(id))
         setTextMsg("")
+        setSendImage(null)
+        setSendVideo(null)
     }
     useEffect(() => {
         // dispatch(ViewChatsAction(sendChatId))
     }, [userid, sendChatId])
     console.log(viewChatMsgs)
 
+useEffect(()=>{
+    if(loading===true){
+        document.body.style.opacity = 0.5;
+    }
+    else{
+        document.body.style.opacity = 1;
+    }
+},[loading])
+
     return <>
         <Sidebar />
-        <div className='CHATS'>
+        <div className='CHATS POPUPBG'>
             <div className="Chat2">
                 <div className="ChatInfo2">
                     <img src={avatar} id="msgPicincircle" />
@@ -180,6 +213,7 @@ function Chats() {
                 </div>
             </div>
         </div>
+        {(loading==true)?<Loader loading={loading} />:null}
         {/* <span className='ChatLine1' /> */}
     </>
 }

@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom"
 import { ActiveUserList, CreateChat } from "../../react-redux/actions/Message";
 import ProfileAction, { ProfileApi } from "../../react-redux/actions/Profile";
+import { Messages } from "../../react-redux/actions/SearchApi";
 import avatar from "../Assets/avatar.svg"
+import greenmessage from "../Assets/greenmsg.svg"
 
 function MsgUser (props){
     const navigate = useNavigate();
@@ -11,6 +13,7 @@ function MsgUser (props){
 
     function handleUserChat (usernum){
         dispatch(ActiveUserList());
+        dispatch(Messages(greenmessage, "Messages", 3)) 
         navigate(`/chats/${usernum}`)
         dispatch(CreateChat(usernum))
     }

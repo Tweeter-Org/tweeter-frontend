@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { ActiveUserList, CreateChat, ViewChatsAction } from "../../react-redux/actions/Message";
+import { Messages } from "../../react-redux/actions/SearchApi";
+import greenmessage from "../Assets/greenmsg.svg"
 import avatar from "../Assets/avatar.svg"
 
 function ChatUser(props) {
@@ -45,6 +47,7 @@ function ChatUser(props) {
     },[userid])
     function handleUserChat (usernum){
         dispatch(ActiveUserList());
+        dispatch(Messages(greenmessage, "Messages", 3)) 
         navigate(`/chats/${usernum}`)
         dispatch(CreateChat(usernum))
         dispatch(ViewChatsAction(viewChatIdd))

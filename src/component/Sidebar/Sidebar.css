@@ -176,20 +176,33 @@ a:hover {
     color: rgba(255, 255, 255, 0.2);
 }
 
-.logout {
-    color: red;
+#logout {
+    /* color: red; */
+    color:rgba(255, 255, 255, 0.8);
     opacity: 0.85;
     font-size: 1rem;
     font-family: 'Montserrat';
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
     position: fixed;
-    right: 1.5vw;
-    top: 15px;
-    z-index: 102;
+    right: 1vw;
+    top: 48px;
+    z-index: 100;
     text-decoration: underline;
     cursor: pointer;
-    width: 2vw;
+    width: 7vw;
+    border:1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 4px;
+    display:none;
+    padding-left: 10px;
+}
+.logoutIconCSS{
+    width:36px;
+    position:absolute;
+    right:20px;
+    top:15px;
+    cursor: pointer;
+    z-index: 102;
 }
 
 .searchcomp {

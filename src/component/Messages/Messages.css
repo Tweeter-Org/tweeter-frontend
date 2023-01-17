@@ -8,7 +8,7 @@
     padding-bottom: 5vh;
     background: #161718;
     border-radius: 8px;
-    z-index: 105;
+    z-index: 15;
 }
 .Messages1{
     display: flex;
@@ -217,11 +217,14 @@ color: rgba(255, 255, 255, 0.9);
 
 .CHATS{
     height: 530px;
+    width:74vw;
     margin-left: 23vw;
     margin-top: 15vh;
     display: flex;
     border-radius: 8px;
     overflow-y: hidden;
+    /* background-color: #FFFFFF;
+    padding-top:5px; */
 }
 .Chat2{
     /* background-color: #161718; */
@@ -230,9 +233,10 @@ color: rgba(255, 255, 255, 0.9);
     background: #161718;
     border-radius: 8px;
     border-top-right-radius: 0;
-    z-index: 105;
+    z-index: 15;
     display: flex;
     flex-direction: column;
+    /* margin-top:8px; */
 }
 .Chat1{
     display: flex;
@@ -241,11 +245,11 @@ color: rgba(255, 255, 255, 0.9);
     background-color: rgb(22, 23, 24,0.4);
     background: #161718;
     width:25vw;
-    border-left:1px solid rgba(255, 255, 255, 0.3);
+    border:1px solid rgba(255, 255, 255, 0.3);
     border-top-right-radius: 8px;
     overflow-y: scroll;
     scroll-behavior: smooth;
-  
+    margin-top:8px;
 }
 .ChatSearch1{
     border: none;
@@ -303,10 +307,10 @@ left: 20vw;
     margin-left:-1vw;
 }
 .ChatInfo2{
-    width: 656px;
+    width: 48vw;
 height: 50px;
 left: 0px;
-top: 0px;
+margin-top: 8px;
 background: rgba(71, 200, 122, 0.8);
 display:flex;
 border-top-left-radius: 8px;
@@ -369,7 +373,8 @@ padding-right:3vw;
     /* margin-top:100px; */
     position:absolute;
     top:160px;
-    left:6vw;
+    left:21vw;
+    z-index:150;
     /* width:50px; */
 }
 .sendchaticon{
@@ -391,15 +396,17 @@ padding-right:3vw;
     overflow-y: scroll;
     overflow-x: hidden;
     padding:5px 0.5vw;
+    padding-top: 10px;
 }
 
 .scrollChatBlockYou{
-    width:max-content;
+    width:fit-content;
     height:fit-content;
     background-color: rgb(72, 77, 74,0.8);
     margin-bottom:5px;
     padding:5px 10px;
-    border-radius: 14px;
+    border-radius: 16px;
+    border-bottom-left-radius:0;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
@@ -414,13 +421,15 @@ padding-right:3vw;
 }
 
 .scrollChatBlockMine{
-    width:10vw;
+    width:fit-content;
     height:fit-content;
     background-color: rgb(71, 200, 122,0.8);
     margin-bottom:5px;
-    margin-left:37vw;
+    /* margin-left:37vw; */
+    margin-left: auto;
     padding:5px 10px;
-    border-radius: 14px;
+    border-radius: 16px;
+    border-bottom-right-radius:0;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
@@ -432,6 +441,7 @@ padding-right:3vw;
         white-space: -pre-wrap;
         white-space: -o-pre-wrap;
         word-wrap: break-word;
+        word-break: break-word;
 }
 
 .scrollChatText{

@@ -5,7 +5,7 @@ const Loader = (props) => {
    
   return <>
 <Spinner animation="border" variant="light" id="loadSpinner" style={{
-   "zIndex": "25",
+   "zIndex": "200",
     "position": "fixed",
     "top": "45vh",
     "left": "50vw"
