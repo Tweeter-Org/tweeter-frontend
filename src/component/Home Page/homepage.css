@@ -1,3 +1,6 @@
+body{
+    overflow-x: hidden;
+}
 .HOMEPAGE{
     display: flex;
     flex-direction: column;
@@ -739,14 +742,23 @@
 }
 @media(max-width:730px){
     .tweetComp{
-        width:52vw;
+        width:60vw;
         padding-left:8px;
     }
     .tweetFlexBox{
-        margin-left:5vw;
+        margin-left:9vw;
+        
     }
     #picincircle{
         width:35px;
         height:35px;
+    }
+}
+@media(max-width:500px){
+    .tweetComp{
+        width:85vw;
+    }
+    .tweetFlexBox{
+        margin-left: -16vw;
     }
 }

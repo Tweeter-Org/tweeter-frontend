@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import "./Sidebar.css";
+import menubar from "../Assets/menubar.svg"
 import home from "../Assets/home.svg"
 import notify from "../Assets/notifications.svg"
 import bookmark from "../Assets/bookmarks.svg"
@@ -25,6 +26,7 @@ import LogOut from "../logOut/logOut";
 import { ProfileApi } from "../../react-redux/actions/Profile";
 import Tweetsearch from "./Tweetsearch";
 import { InactiveUserList } from "../../react-redux/actions/Message";
+import deleteIcon from "../Assets/delete.svg"
 
 function Sidebar() {
 
@@ -139,22 +141,41 @@ document.getElementById("logout").style.display="block"
     function LogoutMouseout(){
         document.getElementById("logout").style.display="none"
     }
+    function openSidebar(){
+        document.getElementById("SIDEBAR").style.display="block"
+        // document.getElementById("SIDEBAR").style.transitionDelay="1s"
+    }
+    function closeSidebar(){
+        document.getElementById("SIDEBAR").style.display="none";
+        // document.getElementById("SIDEBAR").style.transitionDelay="1s"
+    }
     return <>
         <div>
             <div className="navbar POPUPBG">
+           <div className="menuIcon">
+           <img src={menubar} className="hamburgur" onClick={openSidebar} />
+           </div>
+         
+            {/* </label> */}
+            <p className="logoHeadNav">Tweeter</p>
                 <img src={image} className="navbarIcon" />
                 <span><p className="navbarHead">{title}</p></span>
                 <span id="navbarLine" />
             </div>
-            <div className="sidebar POPUPBG">
+            <div className="sidebar POPUPBG" id="SIDEBAR">
                 <p className="logoHead">Tweeter</p>
+                <img src={deleteIcon} className="sbDeleteIcon" onClick={closeSidebar} />
                 <ul className="sbList">
-                    <Link to="/home"><li className="sbListItem" onClick={() => { dispatch(Home(greenhome, "Home", 0)) }}><span className="sbListIcon"><img src={home} /></span>Home</li></Link>
-                    <li className="sbListItem" onClick={() => { dispatch(Notifications(greennotify, "Notifications", 1)) }}><span className="sbListIcon"><img src={notify} /></span>Notifications</li>
-                    <Link to="/bookmark"> <li className="sbListItem" onClick={() => { dispatch(BookmarksNav(greenbm, "Bookmark", 2)) }}><span className="sbListIcon"><img src={bookmark} /></span>Bookmarks</li></Link>
-                    <li className="sbListItem" onClick={() => {MsgSidebar()}}><span className="sbListIcon"><img src={message} /></span>Messages</li>
+                    <Link to="/home"><li className="sbListItem" onClick={() => { dispatch(Home(greenhome, "Home", 0)) }}><img className="sbListIcon" src={home} />
+                    <span className="sbListName">
+                    Home
+                    </span>
+                   </li></Link>
+                    <li className="sbListItem" onClick={() => { dispatch(Notifications(greennotify, "Notifications", 1)) }}><img src={notify} id="notify" className="sbListIcon" />Notifications</li>
+                    <Link to="/bookmark"> <li className="sbListItem" onClick={() => { dispatch(BookmarksNav(greenbm, "Bookmark", 2)) }}><img className="sbListIcon" id="bm"  src={bookmark} />Bookmarks</li></Link>
+                    <li className="sbListItem" onClick={() => {MsgSidebar()}}><img src={message} className="sbListIcon" id="msg" />Messages</li>
                     {/* <li className="sbListItem" onClick={() => { dispatch(Messages(greenmessage, "Messages", 3)) }}><span className="sbListIcon"><img src={message} /></span>Messages</li> */}
-                    <Link to={`/profile/${nameInApi}`}><li className="sbListItem" onClick={handleProfile}><span className="sbListIcon"><img src={profile} /></span>Profile</li></Link>
+                    <Link to={`/profile/${nameInApi}`}><li className="sbListItem" onClick={handleProfile}><img className="sbListIcon" src={profile} />Profile</li></Link>
                 </ul>
                 <button className="sideBarTweetBtn" onClick={() => { xyz() }}>Create Tweet</button>
             </div>

@@ -49,7 +49,9 @@ left: 65vw;
     border: 1px solid rgba(255, 255, 255, 0.2);
     transform: rotate(90deg);
 }
-
+#SIDEBAR{
+    display: block;
+}
 .sidebar {
     box-sizing: border-box;
     z-index: 105;
@@ -65,6 +67,13 @@ left: 65vw;
     flex-direction: column;
     padding-left: 1.5vw;
 }
+.hamburgur{
+    margin-left:4vw;
+    margin-top:-20px;
+    margin-right:0;
+    width:26px;
+    display: none;
+}
 
 .logoHead {
     /* position: absolute; */
@@ -79,8 +88,26 @@ left: 65vw;
     font-size: 32px;
     line-height: 51px;
     color: #47C87A;
-}
 
+}
+.logoHeadNav {
+    /* position: absolute; */
+    /* width: 8vw; */
+    /* height: ; */
+    margin-left: -70vw;
+   
+
+    font-family: 'Kaushan Script';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.7rem;
+    line-height: 51px;
+    color: #47C87A;
+    display:none;
+}
+.sbDeleteIcon{
+    display: none;
+}
 .sbList {
     list-style: none;
     /* position: absolute; */
@@ -103,9 +130,14 @@ left: 65vw;
 
 .sbListIcon {
     padding-right: 2vw;
+    opacity:0.9;
     /* width: 50px */
 }
+.sbListName{
+  padding-top:20px;
+    opacity:0.9;
 
+}
 .sideBarTweetBtn {
     /* position: absolute; */
     width: 160px;
@@ -169,7 +201,7 @@ a:hover {
     position: absolute;
     top:100px;
     left: 70vw;
-    width: 50vw;
+    /* width: 50vw; */
     display: flex;
     flex-direction: column;
 }
@@ -306,15 +338,18 @@ margin-bottom:-4px;
 
  @media (max-width:730px){
     .sidebar{
-        width:25vw;
+        width:28vw;
     }
-    /*
     .navbarIcon{
-        left:10vw;
+        margin-left:9vw;
     }
     .navbarHead{
-    left:14vw;
-    }
+        margin-left:10vw;
+        }
+      
+    /*
+   
+  
     #navbarLine{
         left:25vw;
     } */
@@ -334,5 +369,143 @@ margin-bottom:-4px;
         width:25px;
         height:10px;
     }
+ 
 
+}
+@media(max-width:1024px){
+    .navbarIcon{
+        width:26px;
+            }
+}
+@media(max-width:620px){
+    .navbarHead{
+        margin-left:11vw;
+    }
+}
+@media(max-width:500px){
+    .sidebar{
+        display: none;
+    }
+    .menu-checkIcon{
+        display: block;
+        margin-top:2px;
+    }
+    .logoHeadNav{
+        display: block;
+        font-size: 1.6rem;
+        padding-top:0px;
+        margin-top:-2px;
+        /* background-color: #47C87A; */
+    }
+    .menuIcon{
+        margin-top:2px;
+    }
+    .hamburgur{
+        display: block;
+        cursor: pointer;
+      
+    }
+    #navbarLine{
+        display: none;
+    }
+    .navbarIcon{
+margin-left:12vw;
+    }
+    .navbarHead{
+margin-left:15vw;
+margin-top:-23px;
+    }
+    #SIDEBAR{
+        /* transition: 0.5s; */
+        /* padding-top:50px; */
+        width:55vw;
+    }
+    .sidebar{
+        top:64px;
+        
+    }
+    .logoHead{
+       
+        margin-left:5vw;
+    }
+    .sbDeleteIcon{
+        display:block;
+        width:24px;
+       opacity: 0.8;
+        float:right;
+        margin-top:-52px;
+        margin-right:2vw;
+        cursor: pointer;
+    }
+   .sideBarTweetBtn{
+    margin-left:6vw;
+   }
+}
+
+@media(max-width:1110px) and (min-width:500px){
+    .sbList{
+        margin-left:-1vw;
+    }
+    .sideBarTweetBtn{
+        margin-left:2vw;
+        width:14vw;
+    }
+}
+@media(max-width:1010px) and (min-width:500px){
+    .sbListItem{
+        font-size: 1.2rem;
+    }
+    .sbListIcon{
+        width:44px;
+        margin-right:-1vw;
+    }
+    #notify{
+        width:38px;
+    }
+    #msg{
+        width:42px;
+    }
+    #bm{
+        width:40px;
+    }
+    
+}
+@media(max-width:940px) and (min-width:500px){
+    .sbListItem{
+        font-size: 1rem;
+    }
+    .sbListIcon{
+        width:40px;
+        margin-right:-1vw;
+    }
+    #notify{
+        width:34px;
+    }
+    #msg{
+        width:38px;
+    }
+    #bm{
+        width:36px;
+    }
+}
+@media(max-width:750px ) and (min-width:500px){
+    .sbList{
+        margin-left:-2vw;
+    }
+    #notify{
+        width:32px;
+    }
+    .sbListItem{
+        font-size: 1rem;
+    }
+}
+@media(max-width:500px){
+    #SIDEBAR{
+        display: none;
+    }
+}
+@media(min-width:500px){
+    #SIDEBAR{
+        display: block;
+    }
 }
