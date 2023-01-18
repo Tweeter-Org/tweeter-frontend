@@ -173,15 +173,14 @@ const navigate = useNavigate();
     return <>
     {retweets==null?(  <div className="tweetComp POPUPBG" >
             <div className="firstTweetBlock" onClick={()=>{handleToTweet(props.tweetId)}} >
-                {(props.displaypic === null) ? (<span className="displaypie"><img src={avatar} id="picincircle" /></span>) :
-                    ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
-                        (<span className="displaypie"><img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`} id="picincircle" /></span>))
+                {(props.displaypic === null) ? (<img src={avatar} id="picincircle" />) :
+                    ((props.displaypic.startsWith("https:")) ? (<img src={props.displaypic} id="picincircle" />) :
+                        (<img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`} id="picincircle" />))
                 }
                 <div className="USERNAME">
                 <p className="username">{props.name}</p>
                 <p className="tweetUsername2"  onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >@{props.username}</p>
                 </div>
-                {/* <p className="username">{props.username}</p> */}
                 <img src={bookmark} className="bookmarkIcon" onClick={(e)=>{handleTweetBookmark(e,props.tweetId)}} />
                 <TweetPopup name={props.username} num={id} displaypic={props.displaypic}/>
             </div>

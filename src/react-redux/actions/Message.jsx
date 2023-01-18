@@ -8,7 +8,7 @@ const MsgSearchUser = (char) => {
             payload: res.data
          }))
          .catch((err) => {
-            console.log(err)
+           
             dispatch({
                type: "MSG_SEARCH_FAILED",
                payload: err
@@ -130,14 +130,14 @@ export const ViewChatsAction = (chatid) => {
         })
         await BaseUrl.get(`/c/messages/${chatid}`, config)
             .then((Res) => {
-                console.log(Res)
+               
                 dispatch({
                     type: "VIEW_CHATS_YES",
                     payload: Res
                 })
             })
             .catch((err) => {
-                console.log(err)
+              
                 dispatch({
                     type: "VIEW_CHATS_NO",
                     payload: err

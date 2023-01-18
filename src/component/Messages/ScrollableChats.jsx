@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 function ScrollableChat() {
     const { chatLists, viewChatList, isActive, viewChatMsgs } = useSelector((c) => c.MsgSearchReducer)
     const {user} = useSelector((a)=>a.AuthReducer)
-    console.warn(viewChatMsgs)
+    // console.warn(viewChatMsgs)
     const [chatmsg, setChatmsg] = useState([])
     const setScrollbar = useRef(null)
     useEffect(()=>{
@@ -29,9 +29,9 @@ setScrollbar.current?.scrollIntoView();
                     </div>) 
                     }
                 })) : null}
-
-                <div ref={setScrollbar} />
+                <div id="scrollBarDiv" ref={setScrollbar} />
             </div>
+         
     </>
 }
 

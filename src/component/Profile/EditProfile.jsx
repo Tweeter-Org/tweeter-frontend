@@ -18,12 +18,28 @@ function EditProfile() {
     const [sendImage, setSendImage] = useState([]);
     const profilee = useSelector((p) => p.ProfileReducer)
     const { profile , accessProfile , loading , editprofile , ifedit , profileTweet} = profilee;
-    const [name, setName] = useState(profile.user.name);
-    const [bio, setBio] = useState(profile.user.bio);
+    const [name, setName] = useState();
+    const [username, setUsername] = useState();
+    const [bio, setBio] = useState();
+    const [editProfileImage, setEditprofileImage] = useState(null);
+    useEffect(()=>{
+        if(accessProfile){
+            if(profile.myprofile){
+                setUsername(profile.user.user_name)
+                // setName(profile.user.name)
+                // setBio(profile.user.bio)
+                setEditprofileImage(profile.user.displaypic)
+            }
+        }
+    })
     function handleSendImage(e) {
-        console.log(e.target.files);
+        var imageProfile = document.getElementById("editprofileimage");
+        imageProfile.src = URL.createObjectURL(e.target.files[0])
+        setEditprofileImage(URL.createObjectURL(e.target.files[0]))
         setSendImage(e.target.files[0])
         console.log(e.target.files[0])
+        document.getElementById("editprofileimage").style.display="block";
+        document.getElementById("editImage").style.display="none"
     }
     function handleName(e) {
         setName(e.target.value)
@@ -40,13 +56,15 @@ function EditProfile() {
         fd.append("image", sendImage)
 
         dispatch(EditProfileAction(fd))
-        navigate("/profile")
+        navigate(`/profile/${username}`)
         if (editprofile !== "") {
-            toast.success(`${editprofile}`, {
+            toast.success(`${editprofile.msg}`, {
                 position: "top-center",
                 theme: "light",
             });
         }
+        document.getElementsByClassName("editPrDiv")[0].style.display = "none";
+        setOPacity();
     }
     function setOPacity (){
         var items= document.getElementsByClassName("POPUPBG")
@@ -62,10 +80,15 @@ function EditProfile() {
 
     return <>
         <div className="editPrDiv">
-            <img src={avatar} className="pEditImage" />
+        {accessProfile?((editProfileImage === null) ? ( <img src={avatar} id="editImage" className="pEditImage" />) :
+                    ((editProfileImage.startsWith("https:")) ? ( <img src={editProfileImage} id="editImage" className="pEditImage"/>) :
+                        ( 
+                        <img src={`https://tweeter-backend-7ngr.onrender.com/${editProfileImage}`} id="editImage" className="pEditImage" />))):null}
+                        
+                        <p><img  id="editprofileimage" /></p>    
             <form enctype="multipart/form-data" onSubmit={(e)=>e.preventDefault()}>
-                <label for="ctuploadImg"><p className="editImagetext">Edit Picture or Avatar</p></label>
-                <input type="file" id="ctuploadImg" accept="image/png, image/jpg, image/jpeg" onChange={handleSendImage} hidden />
+                <label for="editProfileUploadImg"><p className="editImagetext">Edit Picture or Avatar</p></label>
+                <input type="file" id="editProfileUploadImg" accept="image/png, image/jpg, image/jpeg" onChange={handleSendImage} hidden />
                 <p className="editName">Name</p>
                 <div className="div1"><input type="text" className="editNameInput" onChange={handleName} value={name} ></input></div>
                 <p className="editBio">Bio</p>

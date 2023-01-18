@@ -41,14 +41,6 @@ function ProfilePage() {
 
     const [tweetsArray, setTweetsArray] = useState([])
 
-    // var nameInApi = sessionStorage.getItem("usernameInApi")
-
-    // const pro = useSelector((p)=>p.ProfileNameReducer)
-    // console.log(pro)
-    // const [dynamic, setDynamic] = useState("")
-    // useEffect(()=>{
-    //     setDynamic(pro.name)
-    // },[pro])
     const profilee = useSelector((p) => p.ProfileReducer)
 
     let y = useSelector((p) => p.ProfileReducer).profile.user
@@ -205,7 +197,7 @@ function ProfilePage() {
             <div className="profileDiv1">
                 {(displaypic === null) ? (<img src={avatar} className="pImage" />) :
                     ((displaypic.startsWith("https:")) ? (<img src={displaypic} className="pImage" />) :
-                        (<img src={`https://twitterbackend-production-93ac.up.railway.app/${displaypic}`} className="pImage" />))
+                        (<img src={`https://tweeter-backend-7ngr.onrender.com/${displaypic}`} className="pImage" />))
                 }
                 <div className="PBLOCK1">
                     <div className="pBlock1">

@@ -14,16 +14,45 @@ import Picker from "emoji-picker-react"
 import FormData from "form-data";
 import ScrollableChat from "./ScrollableChats";
 import Loader from "../Assets/Loader";
+import { io } from "socket.io-client";
+// import { Socket } from "socket.io-client";
 
+
+const ENDPOINT = "http://localhost:3000";
+var socket;
 function Chats() {
+
+    const [socketConnected, setSocketConnected] = useState(false)
+    const { user } = useSelector((a) => a.AuthReducer)
+    console.warn(user)
+    useEffect(() => {
+        socket = io(ENDPOINT)
+        socket.on("connection", ()=>{
+            console.log("now connected to socket")
+        })
+        console.log(socket.connected)
+        // socket.emit("setup", user);
+        // console.log(socket.connected)
+        // socket.on("connect", () => {
+        //     console.log("socketttt")
+        //     setSocketConnected(true)
+        // })
+        if(socket)
+        console.log(socket)
+        else
+        console.log("not connected")
+    }, [])
+
+    console.log(socket)
+
     const [userN, setUserN] = useState("")
     const [userlist, setUesrlist] = useState([])
     const dispatch = useDispatch();
     function handleSearch(e) {
         setUserN(e.target.value)
     }
-    const { chatLists, viewChatList, isActive, viewChatMsgs, loading } = useSelector((c) => c.MsgSearchReducer)
-    console.log(chatLists)
+    const { chatLists, viewChatList, isActive,sendChatMessage ,viewChatMsgs, loading } = useSelector((c) => c.MsgSearchReducer)
+    // console.log(chatLists)
     useEffect(() => {
         dispatch(ViewChatList())
         setUesrlist(chatLists)
@@ -37,33 +66,28 @@ function Chats() {
     const [userChatList, setUserChatList] = useState([])
     const [sendChatId, setSendChatId] = useState()
     const [list, setlist] = useState([])
-    const { user } = useSelector((a) => a.AuthReducer)
-    console.warn(user)
-    // console.log(userChatList)
-    // console.log(useParams())
+
     const { userid } = useParams();
 
     useEffect(() => {
         if (isActive) {
-            chatLists.map((ch) => {
-                console.log(ch);
-                // console.warn(ch.users)
-                ch.users.map((c) => {
-                    if (c.user_name != user.user_name)
-                        // console.warn(c)
-                        if (c._id == userid) {
-                            console.warn(ch._id)
-                            setSendChatId(ch._id)
-                            dispatch(ViewChatsAction(ch._id))
-                            console.log(c)
-                            setlist(c)
-                            // console.log(list)
-                            console.log(viewChatMsgs)
-                            // console.log(list.name)
-                        }
-
-                })
-            })
+            if(chatLists.length>0){
+                chatLists.map((ch) => {
+                    // console.log(ch);
+                    ch.users.map((c) => {
+                        if (c.user_name != user.user_name)
+                            // console.warn(c)
+                            if (c._id == userid) {
+                                // console.warn(ch._id)
+                                setSendChatId(ch._id)
+                                dispatch(ViewChatsAction(ch._id))
+                                // console.log(c)
+                                setlist(c)
+                                // console.log(list.name)
+                            }
+                    })
+                })   
+            }
         }
     }, [isActive, userid])
 
@@ -88,25 +112,23 @@ function Chats() {
     }
 
     function onemojiclick(emojiObject, event) {
-        console.log(emojiObject)
         setTextMsg(prevText => prevText + emojiObject.emoji)
-        console.log(textMsg)
         setShowEmoji(false)
     }
-console.log(sendChatId)
+   
     const sendChat = {
         "image": imageInArr,
-        "chatId":sendChatId,
+        "chatId": sendChatId,
         "text": textMsg,
         "video": vdoInArr,
         user: {
             "user_name": user.user_name,
             "displaypic": user.displaypic,
-            name:user.name,
-            "_id":3
+            name: user.name,
+            "_id": user._id
         },
-      
     }
+    const[sendChatbool, setSendChatbool] = useState(false)
     function sendChatMsg(id) {
         console.log(id)
         fd.append("text", textMsg)
@@ -120,28 +142,50 @@ console.log(sendChatId)
         else {
             fd.append("file", null)
         }
+        setSendChatbool(true)
         dispatch(SendChatsAction(fd))
-        console.log(sendChat)
+        // console.log(sendChat)
         dispatch(FakeViewChatsAction(sendChat))
-        
-        // dispatch(ViewChatsAction(id))
+        console.log(sendChatMessage)
+        // socket.emit("new message",sendChatMessage)
         setTextMsg("")
         setSendImage(null)
         setSendVideo(null)
     }
-    useEffect(() => {
-        // dispatch(ViewChatsAction(sendChatId))
-    }, [userid, sendChatId])
-    console.log(viewChatMsgs)
+    useEffect(()=>{
+        if(sendChatbool){
+            console.log(sendChatMessage)
+            // socket.emit("new message",sendChatMessage)
+            setSendChatbool(false)
+        }
+    },[sendChatbool, sendChatMessage])
+    console.log(sendChatMessage)
+  
+     // sockets
 
-useEffect(()=>{
-    if(loading===true){
-        document.body.style.opacity = 0.5;
-    }
-    else{
-        document.body.style.opacity = 1;
-    }
-},[loading])
+    //  useEffect(()=>{
+    //     console.warn("socket 2")
+    //     socket.on("message recieved",(newChatMsgRecieved)=>{
+    //         console.log("soclet on")
+    //         if(newChatMsgRecieved.chat._id != sendChatId)
+    //         console.log("wrong chat for user")
+    //         else{
+    //             console.warn(newChatMsgRecieved)
+    //             dispatch(FakeViewChatsAction(newChatMsgRecieved))
+    //         }
+    //     })
+    // })
+
+    // console.log(viewChatMsgs)
+
+    useEffect(() => {
+        if (loading === true) {
+            document.body.style.opacity = 0.5;
+        }
+        else {
+            document.body.style.opacity = 1;
+        }
+    }, [loading])
 
     return <>
         <Sidebar />
@@ -157,7 +201,7 @@ useEffect(()=>{
                     <p className="msgName" id="ChatName">{list.name}</p>
                 </div>
                 <div>
-                <ScrollableChat />
+                    <ScrollableChat />
                 </div>
                 <div className="ChatTypeDiv">
                     <form onSubmit={(e) => e.preventDefault()}
@@ -192,7 +236,7 @@ useEffect(()=>{
                 <input className=" ChatSearch1 POPUPBG" type="text" value={userN} onChange={handleSearch} placeholder="Search" />
                 <div className="ChatUserFlex">
                     {(viewChatList) ? (chatLists.length > 0 ? (chatLists.map((chat, index) => {
-                        console.log(chat)
+                        {/* console.log(chat) */}
                         return <ChatUser user={chat.users} msg={chat.latestmsg} indexx={index} viewChatid={chat._id} />
                     })) : null) : null}
                     {/* {isActive ? (
@@ -213,7 +257,7 @@ useEffect(()=>{
                 </div>
             </div>
         </div>
-        {(loading==true)?<Loader loading={loading} />:null}
+        {(loading == true) ? <Loader loading={loading} /> : null}
         {/* <span className='ChatLine1' /> */}
     </>
 }

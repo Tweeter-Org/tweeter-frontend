@@ -19,7 +19,7 @@ function ChatUser(props) {
         props.user.map((u)=>{
             if(u.user_name!= user.user_name)
             {
-                console.log(u);
+                // console.log(u);
                 setInfo(u)
                 return u
             }
@@ -31,8 +31,8 @@ function ChatUser(props) {
         props.user.map((u)=>{
             if(u._id == userid)
             {
-                console.warn(u);
-                console.log(props.indexx)
+                // console.warn(u);
+                // console.log(props.indexx)
                 document.getElementsByClassName("chatUser")[props.indexx].style.backgroundColor="rgba(255,255,255,0.1)"
                 var ChatToColor =document.getElementsByClassName("chatUser")
                 for(var i=0;i<ChatToColor.length; i++ ){

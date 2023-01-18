@@ -17,13 +17,17 @@ function SearchComp (props){
     }
     return <>
         <div className="searchcomp POPUPBG">
-        {(props.displaypic === null) ? ( <span className="displaySearchPic"><img src={avatar}  id="picincircle" /></span>) :
-                    ((props.displaypic.startsWith("https:")) ? ( <span className="displaySearchPic"><img src={props.displaypic} id="picincircle"/></span>) :
-                        ( <span className="displaySearchPic">
-                        <img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`}  id="picincircle" /></span>))
+
+        {(props.displaypic === null) ? ( <img src={avatar}  id="picincircle" />) :
+                    ((props.displaypic.startsWith("https:")) ? ( <img src={props.displaypic} id="picincircle"/>) :
+                        ( 
+                        <img src={`https://tweeter-backend-7ngr.onrender.com/${props.displaypic}`}  id="picincircle" />))
                 }
-            <p className="searchName">{props.name}</p>
+                <div className="searchNames">
+                <p className="searchName">{props.name}</p>
             <p className="searchUsername" onClick={()=>{toProfile(props.username)}}>@{props.username}</p>
+                </div>
+           
         </div>
     </>
 }

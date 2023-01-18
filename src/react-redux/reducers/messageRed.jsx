@@ -5,36 +5,37 @@ const initialState = {
     chatLists:{},
     viewChatList:false,
     isActive:false,
-    viewChatMsgs:{}
+    viewChatMsgs:{},
+    sendChatMessage:{}
 }
 const MsgSearchReducer = (state = initialState, action) => {
     switch (action.type) {
         case "MSG_SEARCH_SUCCEDED": return { ...state,msgUser: action.payload.result ,loading: false, toMsgUser:true }
         case "MSG_SEARCH_FAILED":{
-            console.log(action.payload)
+          
         }
         case "CREATE_CHAT_START":{
             return state;
         }
         case "CREATE_CHAT_SUCCESS":{
-            console.log(action.payload)
+         
             return state;
         }
         case "CREATE_CHAT_FAILED":{
-            console.log(action.payload)
+           
             return state;
         }
         case "VIEW_CHAT_LIST_START":{
             return {...state , loading:true};
         }
         case "VIEW_CHAT_LIST_SUCCESS":{
-            console.log(action.payload)
+         
             return {
                 ...state, loading:false, chatLists:action.payload.data.mychats, viewChatList:true
             }
         }
         case "VIEW_CHAT_LIST_FAILED":{
-            console.log(action.payload)
+           
             return state;
         }
         case "Is_Active_User":{
@@ -48,11 +49,11 @@ const MsgSearchReducer = (state = initialState, action) => {
             }
         }
         case "Chat_sent":{
-            console.log(action.payload)
-            return state;
+          
+            return {...state, sendChatMessage:action.payload.data.msg};
         }
         case "Chat_not_sent":{
-            console.log(action.payload)
+           
             return state;
         }
         case "TO_VIEW_CHATS":{
@@ -61,13 +62,13 @@ const MsgSearchReducer = (state = initialState, action) => {
             }
         }
         case "VIEW_CHATS_YES":{
-            console.log(action.payload)
+           
             return {
                 ...state, viewChatMsgs:action.payload.data.messages, loading:false
             }
         }
         case "VIEW_CHATS_NO":{
-            console.log(action.payload)
+           
             return {...state, loading:false};
         }
         case "FAKE_CHAT_ADD_ACTION":{

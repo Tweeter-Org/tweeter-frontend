@@ -216,19 +216,22 @@ color: rgba(255, 255, 255, 0.9);
 /* CHATS */
 
 .CHATS{
-    height: 530px;
+    height: 550px;
     width:74vw;
     margin-left: 23vw;
     margin-top: 15vh;
     display: flex;
     border-radius: 8px;
     overflow-y: hidden;
+    /* padding-top:15px; */
     /* background-color: #FFFFFF;
     padding-top:5px; */
+    /* background-color: rosybrown; */
 }
 .Chat2{
     /* background-color: #161718; */
     width: 48vw;
+    height: 543px;
     padding-bottom: 5vh;
     background: #161718;
     border-radius: 8px;
@@ -236,6 +239,7 @@ color: rgba(255, 255, 255, 0.9);
     z-index: 15;
     display: flex;
     flex-direction: column;
+    /* background-color: antiquewhite; */
     /* margin-top:8px; */
 }
 .Chat1{
@@ -245,11 +249,13 @@ color: rgba(255, 255, 255, 0.9);
     background-color: rgb(22, 23, 24,0.4);
     background: #161718;
     width:25vw;
+    height:540px;
     border:1px solid rgba(255, 255, 255, 0.3);
     border-top-right-radius: 8px;
     overflow-y: scroll;
+    /* background-color: aquamarine; */
     scroll-behavior: smooth;
-    margin-top:8px;
+    /* margin-top:20px; */
 }
 .ChatSearch1{
     border: none;
@@ -310,15 +316,13 @@ left: 20vw;
     width: 48vw;
 height: 50px;
 left: 0px;
-margin-top: 8px;
 background: rgba(71, 200, 122, 0.8);
 display:flex;
 border-top-left-radius: 8px;
 }
 .ChatTypeDiv{
 height:45px;
-margin-top:1px;
-margin-bottom:-31px;
+margin-top:11px;
 width: 656px;
 }
 #ChatName{

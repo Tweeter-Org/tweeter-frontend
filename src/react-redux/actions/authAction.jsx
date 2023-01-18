@@ -7,7 +7,7 @@ const LogInUser = (data, condition) => {
     return async function (dispatch) {
         if (condition) {
             dispatch({ type: "REQUEST_STARTED" })
-            await axios.post("https://twitterbackend-production-93ac.up.railway.app/login", data)
+            await BaseUrl.post(`/login`, data)
                 .then((res) => dispatch({
                     type: "REQUEST_SUCCEDED",
                     payload: res.data
@@ -28,7 +28,7 @@ const FgtPwdAction = (email, condition) => {
         if (condition) {
             console.log(email)
             dispatch({ type: "FGT_EMAIL_STARTED" })
-            await axios.post("https://twitterbackend-production-93ac.up.railway.app/forgotpwd", { email })
+            await BaseUrl.post(`/forgotpwd`, { email })
                 .then((res) => dispatch({
                     type: "FGT_EMAIL_SUCCEDED",
                     payload: res.data
@@ -47,7 +47,7 @@ export { FgtPwdAction }
 const OtpAction = (data) => {
     return async function (dispatch) {
         dispatch({ type: "OTP_STARTED" })
-        await axios.post("https://twitterbackend-production-93ac.up.railway.app/forgotpwd/verify", data)
+        await BaseUrl.post(`/forgotpwd/verify`, data)
             .then((res) => dispatch({
                 type: "OTP_SUCCEDED",
                 payload: res.data
@@ -65,7 +65,7 @@ export { OtpAction }
 const ResendOtpAction = (email) => {
     return async function (dispatch) {
         dispatch({ type: "RESEND_STARTED" })
-        await axios.post("https://twitterbackend-production-93ac.up.railway.app/resendotp", { email })
+        await BaseUrl.post(`/resendotp`, { email })
             .then((res) => dispatch({
                 type: "RESEND_SUCCEDED",
                 payload: res.data
@@ -85,7 +85,7 @@ const SignUpUser = (email, condition) => {
     return async function (dispatch) {
         if (condition) {
             dispatch({ type: "SIGNUP_STARTED" })
-            await axios.post("https://twitterbackend-production-93ac.up.railway.app/email", { email })
+            await BaseUrl.post(`/email`, { email })
                 .then((res) => dispatch({
                     type: "SIGNUP_SUCCEDED",
                     payload: res.data
@@ -106,7 +106,7 @@ export { SignUpUser }
 const EmailAction = (data) => {
     return async function (dispatch) {
         dispatch({ type: "EMAIL_VERIFY_STARTED" })
-        await axios.post("https://twitterbackend-production-93ac.up.railway.app/email/verify", data)
+        await BaseUrl.post(`/email/verify`, data)
             .then((res) => dispatch({
                 type: "EMAIL_VERIFY_SUCCEDED",
                 payload: res.data
@@ -125,7 +125,7 @@ export { EmailAction }
 const SignUpResend = (email) => {
     return async function (dispatch) {
         dispatch({ type: "SIGNUP_STARTED" })
-        await axios.post("https://twitterbackend-production-93ac.up.railway.app/email", { email })
+        await BaseUrl.post(`/email`, { email })
             .then((res) => dispatch({
                 type: "SIGNUP_SUCCEDED",
                 payload: res.data
@@ -177,7 +177,7 @@ const SignUpTwoUser = (data) => {
     return async function (dispatch) {
         // if(condition){
         dispatch({ type: "SIGNUP_TWO_STARTED" })
-        await axios.post("https://twitterbackend-production-93ac.up.railway.app/signup", data, config)
+        await BaseUrl.post(`/signup`, data, config)
             .then((res) => dispatch({
                 type: "SIGNUP_TWO_SUCCEDED",
                 payload: res.data
@@ -203,7 +203,7 @@ const ResetAction = (password) => {
     }
     return async function (dispatch) {
         dispatch({ type: "RESET_STARTED" })
-        await axios.post("https://twitterbackend-production-93ac.up.railway.app/resetpassword", { password }, config)
+        await BaseUrl.post(`/resetpassword`, { password }, config)
             .then((res) => dispatch({
                 type: "RESET_SUCCEDED",
                 payload: res.data
@@ -221,7 +221,7 @@ export { ResetAction }
 const GoogleAction = () => {
     return async function (dispatch) {
         dispatch({ type: "GOOGLE_STARTED" })
-        await axios.get("https://twitterbackend-production-93ac.up.railway.app/auth/google/url")
+        await BaseUrl.get(`/auth/google/url`)
             .then((res) => dispatch({
                 type: "GOOGLE_SUCCEDED",
                 payload: res.data

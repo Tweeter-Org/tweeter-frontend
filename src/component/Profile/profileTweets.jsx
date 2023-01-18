@@ -185,7 +185,7 @@ function handleToTweet (tweetId){
             <div className="firstTweetBlock" onClick={()=>{handleToTweet(props.tweetId)}}>
                 {(props.displaypic === null) ? (<span className="displaypie"><img src={avatar} id="picincircle" /></span>) :
                     ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
-                        (<span className="displaypie"><img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`} id="picincircle" /></span>))
+                        (<span className="displaypie"><img src={`https://tweeter-backend-7ngr.onrender.com/${props.displaypic}`} id="picincircle" /></span>))
                 }
                 <div className="USERNAME">
                 <p className="username">{props.name}</p>
@@ -202,9 +202,9 @@ function handleToTweet (tweetId){
                     }}>@{name}</span>
                 })) : null}</p>):null}
             
-            {image != null ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" id="ProfileImage"/>) : null}
+            {image != null ? (<img src={`https://tweeter-backend-7ngr.onrender.com/${image}`} alt="image" className="tweetImage" id="ProfileImage"/>) : null}
             {video != null ? <video className="tweetvideo" id="ProfileVideo" controls>
-                <source src={`https://twitterbackend-production-93ac.up.railway.app/${video}`} type="video/mp4" />
+                <source src={`https://tweeter-backend-7ngr.onrender.com/${video}`} type="video/mp4" />
             </video> : null}
             <p className="tweetText">{props.text}</p>
             <div className="secondTweetBlock">
@@ -229,7 +229,7 @@ function handleToTweet (tweetId){
             <div className="firstTweetBlock" onClick={()=>{handleToTweet(props.tweetId)}}>
                 {(props.displaypic === null) ? (<span className="displaypie"><img src={avatar} id="picincircle" /></span>) :
                     ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
-                        (<span className="displaypie"><img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`} id="picincircle" /></span>))
+                        (<span className="displaypie"><img src={`https://tweeter-backend-7ngr.onrender.com/${props.displaypic}`} id="picincircle" /></span>))
                 }
                 <div className="USERNAME">
                 <p className="username">{props.name}</p>
@@ -244,22 +244,22 @@ function handleToTweet (tweetId){
                         navigate(`/profile/${name}`)
                     }}>@{name}</span>
                 })) : null}</p>):null}
-            {image != null ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${image}`} alt="image" className="tweetImage" id="ProfileImage"/>) : null}
+            {image != null ? (<img src={`https://tweeter-backend-7ngr.onrender.com/${image}`} alt="image" className="tweetImage" id="ProfileImage"/>) : null}
             {video != null ? <video className="tweetvideo" id="ProfileVideo" controls>
-                <source src={`https://twitterbackend-production-93ac.up.railway.app/${video}`} type="video/mp4" />
+                <source src={`https://tweeter-backend-7ngr.onrender.com/${video}`} type="video/mp4" />
             </video> : null}
             <p className="tweetText">{props.text}</p>
             <div className="tweetWithRetwwet" id="TWRProfile">
             <div className="TWRBlock1">
             {(retweets.user.displaypic === null) ? (<img src={avatar} className="TWRpic" />) :
                     ((retweets.user.displaypic.startsWith("https:")) ? (<img src={retweets.user.displaypic}  className="TWRpic"/>) :
-                        (<img src={`https://twitterbackend-production-93ac.up.railway.app/${retweets.user.displaypic}`} id="picincircle" />))
+                        (<img src={`https://tweeter-backend-7ngr.onrender.com/${retweets.user.displaypic}`} id="picincircle" />))
                 }
                 <p className="username">{retweets.user.user_name}</p>
             </div>
-        {(retweets.image != null) ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${retweets.image}`} className="TWRVideo" alt="image" />) : null}
+        {(retweets.image != null) ? (<img src={`https://tweeter-backend-7ngr.onrender.com/${retweets.image}`} className="TWRVideo" alt="image" />) : null}
             {(retweets.video != null) ? <video controls className="TWRVideo">
-                <source src={`https://twitterbackend-production-93ac.up.railway.app/${retweets.video}`} type="video/mp4" />
+                <source src={`https://tweeter-backend-7ngr.onrender.com/${retweets.video}`} type="video/mp4" />
             </video> : null}
             <p className="TWRText" >{retweets.text}</p>
         </div>

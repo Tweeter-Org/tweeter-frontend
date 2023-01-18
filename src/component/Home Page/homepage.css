@@ -17,6 +17,7 @@
     justify-content: space-evenly;
     text-transform: capitalize;
 }
+
 .TweetShowMore{
     width: 45vw;
     height:fit-content;
@@ -64,6 +65,11 @@
     width: 43px;
     height: 39.09px;
     border-radius: 50%;
+    margin-right: 1vw;
+    border-radius: 50%;
+    background: #D9D9D9;
+    z-index: 6;
+    /* margin-top:6px; */
 }
 .USERNAME{
     display: flex;
@@ -110,7 +116,7 @@
 .tweetText {
     width: 42.7vw;
     margin-top: 2vh;
-    margin-bottom: 2vh;
+    margin-bottom: 1vh;
     color: white;
     opacity: 0.9;
     font-family: 'Montserrat';
@@ -152,7 +158,7 @@
 .retweetIcon {
     width: 25.2px;
     /* height: 21px; */
-    margin-top:-2vh;
+    margin-top:-10px;
     margin-right: 0.5vw;
     cursor: pointer;
 }
@@ -235,7 +241,9 @@
 }
 
 .tweetFlexBox {
-    margin-top: 15vh;
+    /* margin-top: 15vh; */
+    position:absolute;
+    top:100px;
     display: flex;
     flex-direction: column;
 }
@@ -671,11 +679,74 @@
 }
 
 
-@media (max-width:900px){
-    /* .tweetFlexBox{
-
+@media (max-width:950px){
+    .likeIcon {
+        width: 18px;
+        height: 18px;
+        margin-top:6px;
+      
     }
+    
+    #shareIcon {
+        width: 20px;
+        height: 20px;
+        margin-top:4px;
+    }
+    .tweetShare{
+        font-size: 0.9rem;
+    }
+    
+    #commentIcon {
+        width: 19px;
+        height: 16px;
+        margin-left:-3vw;
+        margin-top:8px;
+    }
+    .tweetComm{
+        font-size: 0.9rem;
+    }
+    
+    .retweetIcon {
+        width: 19px;
+        margin-top:-12px;
+    }
+    .tweetRetweet{
+        font-size: 0.9rem;
+    }
+    
+    .bookmarkIcon {
+        width: 20px;
+        height: 20px;
+        /* margin-left: 6vw; */
+    }
+}
+
+@media(max-width:800px){
+    .username{
+        font-size: 1.3rem;
+       
+    }
+}
+@media(max-width:1300px){
+    .bookmarkIcon{
+        margin-left:25vw;
+    }
+}
+@media(max-width:1090px){
+    .bookmarkIcon{
+        margin-left:23vw;
+    }
+}
+@media(max-width:730px){
     .tweetComp{
-        margin-left:10vw;
-    } */
+        width:52vw;
+        padding-left:8px;
+    }
+    .tweetFlexBox{
+        margin-left:5vw;
+    }
+    #picincircle{
+        width:35px;
+        height:35px;
+    }
 }

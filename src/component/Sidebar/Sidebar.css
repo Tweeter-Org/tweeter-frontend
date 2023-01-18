@@ -123,7 +123,6 @@ left: 65vw;
     color: rgba(255, 255, 255, 0.9);
 }
 
-/* SEARCH BAR */
 a {
     color: white;
     text-decoration: none;
@@ -132,49 +131,8 @@ a {
 a:hover {
     color: #47C87A;
 }
-.searchFlexBox {
-    position: absolute;
-    left: 70vw;
-    width: 50vw;
-    /* width:110vw; */
-    /* margin-top:5px; */
-    display: flex;
-    flex-direction: column;
-}
 
-.searchbar {
-    border: none;
-    outline: none;
-    position: fixed;
-    width: 24vw;
-    height: 36px;
-    left: 70vw;
-    top: 16px;
-    background: #484D4A;
-    border-radius: 8px;
-    z-index: 102;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 22px;
-    /* identical to box height */
-    display: inline-block;
-    padding-left: 5vw;
-    /* padding-top:0.5vh; */
-    color: rgba(255, 255, 255, 0.8);
-
-}
-
-::placeholder {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    /* font-size: 18px; */
-    font-size: 16px;
-    line-height: 22px;
-    color: rgba(255, 255, 255, 0.2);
-}
+/* LOG OUT */
 
 #logout {
     /* color: red; */
@@ -205,56 +163,89 @@ a:hover {
     z-index: 102;
 }
 
+/* SEARCH BAR */
+
+.searchFlexBox {
+    position: absolute;
+    top:100px;
+    left: 70vw;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.searchbar {
+    border: none;
+    outline: none;
+    position: fixed;
+    width: 24vw;
+    height: 36px;
+    left: 70vw;
+    top: 16px;
+    background: #484D4A;
+    border-radius: 8px;
+    z-index: 102;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    display: inline-block;
+    padding-left: 5vw;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+::placeholder {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(255, 255, 255, 0.2);
+}
+
 .searchcomp {
     display: block;
-    /* margin-top:100px; */
-    margin-bottom: 10px;
-    /* margin-left: 900px; */
-    width: 24vw;
-    height: 10vh;
-    background: #1A1C1E;
-    /* background-color: #161718; */
-    border-radius: 8px;
-    /* text-transform: capitalize; */
-}
+margin-bottom: 10px;
 
-.displaySearchPic {
-    position: absolute;
+  padding:10px;
+    width: 24vw;
+    height: 60px;
+    background: #1A1C1E;
+  display: flex;
+    border-radius: 8px;
+ 
+}
+#picincircle {
     width: 43px;
     height: 39.09px;
-    margin-right: 1vw;
     border-radius: 50%;
     background: #D9D9D9;
-    z-index: 6;
-    margin-left: 1vw;
-    margin-top: 2vh;
 }
 
+
 .searchName {
-    position: absolute;
-    margin-left: 5vw;
-    margin-top: 1.7vh;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 17px;
     line-height: 27px;
     color: rgba(255, 255, 255, 0.9);
-
+margin-left:0.6vw;
+margin-bottom:-4px;
 }
 
 .searchUsername {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 20px;
     color: #47C87A;
-    position: absolute;
-    margin-top: 6vh;
-    margin-left: 5vw;
+  margin-left:0.6vw;
     text-decoration: underline;
     cursor: pointer;
+    margin-top:0;
 }
 
 .searchUsername:hover {
@@ -313,10 +304,11 @@ a:hover {
     font-size: 1.5rem;
 }
 
-/* @media (max-width:900px){
+ @media (max-width:730px){
     .sidebar{
-        display:none;
+        width:25vw;
     }
+    /*
     .navbarIcon{
         left:10vw;
     }
@@ -325,5 +317,22 @@ a:hover {
     }
     #navbarLine{
         left:25vw;
+    } */
+    .searchbar{
+        display: none;
     }
-} */
+    .searchFlexBox{
+        display: none;
+    }
+    .sidebar{
+        /* width:25vw; */
+    }
+} 
+
+@media(max-width:940px){
+    #picincircle{
+        width:25px;
+        height:10px;
+    }
+
+}

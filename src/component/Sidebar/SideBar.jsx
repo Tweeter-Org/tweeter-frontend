@@ -57,11 +57,11 @@ function Sidebar() {
         if (e.target.value.startsWith('#')) {
             // dispatch(SearchUser(e.target.value));
             dispatch(SearchTweetWithTag(e.target.value.slice(1)))
-            console.log(e.target.value.slice(1))
+            // console.log(e.target.value.slice(1))
         }
         dispatch(SearchUser(e.target.value));
     }
-    console.log(tweetList, tohash)
+    // console.log(tweetList, tohash)
     useEffect(() => {
         if (tomap) {
             if (list.result.length > 0) {
@@ -93,7 +93,7 @@ function Sidebar() {
         }
     }, [loading])
     const navigate = useNavigate();
-    console.log(searchListArray)
+    // console.log(searchListArray)
 
     function setOPacity() {
         var items = document.getElementsByClassName("POPUPBG")
