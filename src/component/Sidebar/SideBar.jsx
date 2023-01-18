@@ -132,7 +132,6 @@ function Sidebar() {
         navigate("/chats/:userid")
         else
         navigate("/messages")
-        // navigate("/chats/:userid")
     }
 
     function LogoutMouseover(){

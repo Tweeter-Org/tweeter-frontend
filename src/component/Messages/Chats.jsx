@@ -18,32 +18,23 @@ import { io } from "socket.io-client";
 // import { Socket } from "socket.io-client";
 
 
-const ENDPOINT = "http://localhost:3000";
+const ENDPOINT = "https://tweeter-backend-7ngr.onrender.com";
 var socket;
 function Chats() {
 
     const [socketConnected, setSocketConnected] = useState(false)
     const { user } = useSelector((a) => a.AuthReducer)
-    console.warn(user)
+   
+    // set socket connection
     useEffect(() => {
         socket = io(ENDPOINT)
-        socket.on("connection", ()=>{
-            console.log("now connected to socket")
+        socket.emit("setup", user);
+        
+        socket.on("connection", () => {
+            console.log("socketttt")
+            setSocketConnected(true)
         })
-        console.log(socket.connected)
-        // socket.emit("setup", user);
-        // console.log(socket.connected)
-        // socket.on("connect", () => {
-        //     console.log("socketttt")
-        //     setSocketConnected(true)
-        // })
-        if(socket)
-        console.log(socket)
-        else
-        console.log("not connected")
     }, [])
-
-    console.log(socket)
 
     const [userN, setUserN] = useState("")
     const [userlist, setUesrlist] = useState([])
@@ -129,6 +120,7 @@ function Chats() {
         },
     }
     const[sendChatbool, setSendChatbool] = useState(false)
+    const [chatss, setChatss] = useState("")
     function sendChatMsg(id) {
         console.log(id)
         fd.append("text", textMsg)
@@ -144,37 +136,39 @@ function Chats() {
         }
         setSendChatbool(true)
         dispatch(SendChatsAction(fd))
-        // console.log(sendChat)
         dispatch(FakeViewChatsAction(sendChat))
-        console.log(sendChatMessage)
+        console.warn(sendChatMessage)
         // socket.emit("new message",sendChatMessage)
         setTextMsg("")
         setSendImage(null)
         setSendVideo(null)
     }
+
+    // SEND MSG VIA SOCKET
+
     useEffect(()=>{
         if(sendChatbool){
             console.log(sendChatMessage)
-            // socket.emit("new message",sendChatMessage)
+              socket.emit("new message",sendChatMessage)
+            setChatss(sendChatMsg)
+            console.log(chatss)
             setSendChatbool(false)
         }
-    },[sendChatbool, sendChatMessage])
+    },[sendChatMessage])
     console.log(sendChatMessage)
   
-     // sockets
+     // sockets : recieving new messages
 
-    //  useEffect(()=>{
-    //     console.warn("socket 2")
-    //     socket.on("message recieved",(newChatMsgRecieved)=>{
-    //         console.log("soclet on")
-    //         if(newChatMsgRecieved.chat._id != sendChatId)
-    //         console.log("wrong chat for user")
-    //         else{
-    //             console.warn(newChatMsgRecieved)
-    //             dispatch(FakeViewChatsAction(newChatMsgRecieved))
-    //         }
-    //     })
-    // })
+     useEffect(()=>{
+        socket.on("message recieved",(newChatMsgRecieved)=>{
+            if(newChatMsgRecieved.chat._id != sendChatId)
+            console.log("wrong chat for user")
+            else{
+                console.warn(newChatMsgRecieved)
+                dispatch(FakeViewChatsAction(newChatMsgRecieved))
+            }
+        })
+    })
 
     // console.log(viewChatMsgs)
 

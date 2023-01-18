@@ -80,12 +80,12 @@ body{
     margin-bottom:0;
 }
 .username {
-    width: 136px;
+    width: 15vw;
     /* height: 27px; */
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 27px;
     color: rgba(255, 255, 255, 0.9);
     margin-bottom:0;
@@ -169,7 +169,7 @@ body{
 .bookmarkIcon {
     width: 20px;
     height: 20px;
-    margin-left: 27vw;
+    margin-left: 22vw;
     opacity: 0.8;
     cursor: pointer;
     z-index:500;

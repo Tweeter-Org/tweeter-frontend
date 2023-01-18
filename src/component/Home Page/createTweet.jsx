@@ -36,7 +36,7 @@ function CreateTweet(props) {
         var videooutput = document.getElementById("videoOutput");
         videooutput.src = URL.createObjectURL(e.target.files[0])
         setVdoInArr(URL.createObjectURL(e.target.files[0]))
-        console.log(URL.createObjectURL(e.target.files[0]))
+        // console.log(URL.createObjectURL(e.target.files[0]))
         setSendVideo(e.target.files[0])
         document.getElementById("VIDEO").style.display = "block"
         document.getElementById("videoOutput").style.display = "block"
@@ -128,7 +128,7 @@ function CreateTweet(props) {
             fd.append("file", null)
         }
         dispatch(CreateTweetAct(fd))
-        console.log(newTweetCreated)
+        // console.log(newTweetCreated)
 
         backToHome(e)
         dispatch(FakeTweetFeedAction(newTweetCreated))
@@ -144,8 +144,8 @@ function CreateTweet(props) {
                 theme: "light",
             });
         }
-        // setSendImage(null);
-        // setSendVideo(null)
+        setSendImage(null);
+        setSendVideo(null)
     }
     // console.log(RId)
     function handleCreateReTweet(e) {
@@ -164,7 +164,7 @@ function CreateTweet(props) {
         dispatch(CreateReTweetAct(fd))
 
         // console.log("rewteet")
-        console.log(newReTweetCreated)
+        // console.log(newReTweetCreated)
         backToHome(e)
         if (response != "") {
             dispatch(FakeReTweetFeedAction(newReTweetCreated))
@@ -182,9 +182,7 @@ function CreateTweet(props) {
     }
     const { responseT, errorT, nameInReply, showName } = useSelector((r) => r.ReplyReducer)
    
-    console.log(responseT, errorT, nameInReply)
-    // console.log(nameInReply)
-    // console.log(showName)
+    // console.log(responseT, errorT, nameInReply)
     const atNames = sessionStorage.getItem("replyName");
     // useEffect(()=>{
     //     if(showName){
@@ -226,7 +224,7 @@ function CreateTweet(props) {
         dispatch(ReplyToTweet(fd))
         dispatch(FakeReplyTweetAction(replYtweet))
         backToHome(e)
-        console.log(replYtweet)
+        // console.log(replYtweet)
         if (responseT != "") {
             toast.success(`${responseT}`, {
                 position: "top-center",
