@@ -16,6 +16,7 @@ function MsgUser (props){
         dispatch(Messages(greenmessage, "Messages", 3)) 
         navigate(`/chats/${usernum}`)
         dispatch(CreateChat(usernum))
+        
     }
     return <>
         <div className="msgUser POPUPBG">

@@ -113,6 +113,11 @@ function CreateTweet(props) {
             "video": Rvideo,
             "text": Rtext,
             "_id": RId,
+            user: {
+                "name": Rname,
+                "user_name": user_name,
+                displaypic: displaypic
+            },
         }
     }
     function handleCreateTweet(e) {
@@ -162,9 +167,7 @@ function CreateTweet(props) {
             fd.append("file", null)
         }
         dispatch(CreateReTweetAct(fd))
-
-        // console.log("rewteet")
-        // console.log(newReTweetCreated)
+        console.log(newReTweetCreated)
         backToHome(e)
         if (response != "") {
             dispatch(FakeReTweetFeedAction(newReTweetCreated))
@@ -181,7 +184,7 @@ function CreateTweet(props) {
         }
     }
     const { responseT, errorT, nameInReply, showName } = useSelector((r) => r.ReplyReducer)
-   
+
     // console.log(responseT, errorT, nameInReply)
     const atNames = sessionStorage.getItem("replyName");
     // useEffect(()=>{
@@ -248,17 +251,17 @@ function CreateTweet(props) {
         }
     }, [loading])
     const navigate = useNavigate();
-    
+
     return <>
         <div className="createTweetDiv" id="CREATETWEET">
             <div className="CTBlock1">
-                {(displaypic === null) ? (<span className="ctCircle"><img src={avatar} id="picincircle" /></span>) :
-                    ((displaypic.startsWith("https:")) ? (<span className="ctCircle"><img src={displaypic} id="picincircle" /></span>) :
-                        (<span className="ctCircle"><img src={`https://twitterbackend-production-93ac.up.railway.app/${displaypic}`} id="picincircle" /></span>))
+                {(displaypic === null) ? (<img src={avatar} id="ctCircle" />) :
+                    ((displaypic.startsWith("https:")) ? (<img src={displaypic} id="ctCircle"  />) :
+                        (<img src={`https://twitterbackend-production-93ac.up.railway.app/${displaypic}`} id="ctCircle"  />))
                 }
                 <div className="CTDiv1">
                     <p className="ctName">{name}</p>
-                    <p className="ctUserName">{user_name}</p>
+                    <p className="ctUserName">@{user_name}</p>
                 </div>
             </div>
 
@@ -287,7 +290,7 @@ function CreateTweet(props) {
                     <p className="TWRText" >{Rtext}</p>
                 </div>
                 <div id="CTReplyDiv">
-                    <p className="ctName">Replying to<span id="CTReplyAtName1"> @{atNames}</span>{
+                    <p className="ctName" id="replying-to-head">Replying to<span id="CTReplyAtName1"> @{atNames}</span>{
                         showName ? (
                             nameInReply.length > 0 ? (nameInReply.map((name) => {
                                 return <span id="CTReplyAtName" onClick={() => {
@@ -321,7 +324,7 @@ function CreateTweet(props) {
                     </div>
                     <div>
                         <img src={smileIcon} className="ctSmile" onClick={() => { handleEmojis() }} />
-                        {showEmoji ? (<div className="emojipicker"><Picker theme="dark" onEmojiClick={onemojiclick} /></div>) : null}
+                        {showEmoji ? (<div className="emojipicker1" ><Picker className="emojipicker2" theme="dark" width="20vw" height="300px" onEmojiClick={onemojiclick} /></div>) : null}
                         <p className="ctSmileText">Emojis</p>
                     </div>
                     <button className="ctCancelTweet" onClick={backToHome}>Cancel</button>
@@ -331,6 +334,7 @@ function CreateTweet(props) {
                 </div>
             </form>
         </div>
+
         {loading === true ? <Loader loading={loading} /> : null}
         <ToastContainer />
     </>

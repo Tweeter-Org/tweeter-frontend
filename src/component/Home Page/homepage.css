@@ -112,7 +112,7 @@ body{
 .tweetImage {
     height: auto;
     /* width:fit-content; */
-    width: 580px;
+    width: 43vw;
     margin-top: 10px;
 }
 
@@ -131,7 +131,7 @@ body{
 
 .tweetvideo {
     height: auto;
-    width: 580px;
+    width: 43vw;
     margin-top: 2vh;
 }
 
@@ -278,10 +278,8 @@ body{
     position: fixed;
     width: 40vw;
     height: fit-content;
-    /* height:20vh; */
-    /* position:absolute; */
     left: 29vw;
-    top: 15vh;
+    top: 140px;
     background: #070808;
     background-color: #121212;
     box-shadow: 0px 264px 106px rgba(23, 25, 28, 0.01), 0px 149px 89px rgba(23, 25, 28, 0.05), 0px 66px 66px rgba(23, 25, 28, 0.09), 0px 17px 36px rgba(23, 25, 28, 0.1), 0px 0px 0px rgba(23, 25, 28, 0.1);
@@ -317,22 +315,22 @@ body{
     flex-direction: column;
 }
 
-.ctCircle {
-    width: 4vw;
-    height: 7.5vh;
+#ctCircle {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background: #D9D9D9;
 }
 
 .ctName {
     width: 20vw;
-    height: 3vh;
-    margin-bottom: 1vh;
+    /* height: 3vh; */
+    margin-bottom: 0px;
     margin-left: 1vw;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 1.1rem;
     line-height: 27px;
     color: rgba(255, 255, 255, 0.9);
 
@@ -353,7 +351,7 @@ body{
 .ctTagline {
     width: 40vw;
     height: 3vh;
-    margin-top: 2vh;
+    margin-top: 15px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 300;
@@ -363,7 +361,7 @@ body{
 }
 
 .ctWriteTweet {
-    margin-top: 10vh;
+    margin-top: 80px;
     width: 36.5vw;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -384,7 +382,7 @@ body{
 .CTBlock2 {
     display: flex;
     justify-content: last baseline;
-    margin-top: 10vh;
+    margin-top: 60px;
 }
 
 #ctuploadImg {
@@ -458,16 +456,16 @@ body{
     /* margin-right:vw; */
 }
 
-.emojipicker {
-    /* position: absolute; */
-    /* top:2vh; */
-    /* left: -10vw; */
+.emojipicker1 {
+    position: absolute;
+    top:10px;
+    left: 18vw;
     /* z-index:9999; */
 }
 
 .ctImageText {
     font-size: 0.7rem;
-    margin-top: 0.4vh;
+    margin-top: 2px;
     font-family: 'Montserrat';
     font-style: normal;
     color: rgba(255, 255, 255, 0.6);
@@ -475,14 +473,14 @@ body{
 
 .ctVideoText {
     font-size: 0.7rem;
-    margin-top: 0.1vh;
+    margin-top: 1px;
     font-family: 'Montserrat';
     font-style: normal;
     color: rgba(255, 255, 255, 0.6);
 }
 
 .ctSmileText {
-    margin-top: 0.8vh;
+    margin-top: 6px;
     font-size: 0.7rem;
     font-family: 'Montserrat';
     font-style: normal;
@@ -495,8 +493,8 @@ body{
     border: 0.8px solid rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     margin-left: 1.5vw;
-    margin-top: 2.5vh;
-    margin-bottom: 2vh;
+    margin-top: 15px;
+    margin-bottom: 10px;
     padding: 1vw;
     padding-bottom: 0;
     display: flex;
@@ -509,8 +507,8 @@ body{
 
 .CTRVideo {
     width: 32.8vw;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
+    margin-top: 5px;
+    margin-bottom: 5px;
     /* margin-bottom:1vh; */
 }
 
@@ -659,6 +657,7 @@ body{
 
 .TWRText {
     color: white;
+    width:fit-content;
     opacity: 0.9;
     font-family: 'Montserrat';
     font-style: normal;
@@ -681,15 +680,20 @@ body{
     scrollbar-width: none;
 }
 
+/* CREATE TWEET/ RETWEET */
+
+@media (max-width:1150px){
+    .ctCreateTweet{
+        margin-right:2vw;
+    }
+}
 
 @media (max-width:950px){
     .likeIcon {
         width: 18px;
         height: 18px;
-        margin-top:6px;
-      
-    }
-    
+        margin-top:6px; 
+    }    
     #shareIcon {
         width: 20px;
         height: 20px;
@@ -722,12 +726,102 @@ body{
         height: 20px;
         /* margin-left: 6vw; */
     }
+    .username{
+        font-size: 1.1rem;
+    }
+
+    /*CREATE TWEET */
+
+    .createTweetDiv{
+        width:45vw;
+    }
+    .CTRetweetDiv{
+        width:39vw;
+    }
+    /* #CTRetweetName{
+        
+    }
+    .TWRText{
+        font-size: 0.8rem;
+    } */
+    #buttonRetweet{
+        font-size: 0.9rem;
+    }
+    .ctWriteTweet, .CTReplyTweet, .ctWriteTweetInput, #CTReplyInput{
+        width:41.5vw;
+    }
+    .ctTagline{
+        font-size: 1.12rem;
+        margin-top:10px;
+    }
+    .ctWriteTweet{
+        margin-top:50px;
+    }
+    .CTBlock2{
+        margin-top:40px
+    }
+    .ctCancelTweet{
+margin-left:11.5vw;
+    }
+    .ctCreateTweet{
+        /* margin-right:10vw;/ */
+    }
+    .emojipicker1{
+        /* height:150px; */
+        width:100vw;
+    }
+    .emojipicker2{
+        width:100vw;
+    }
+
 }
 
 @media(max-width:800px){
     .username{
-        font-size: 1.3rem;
-       
+        font-size: 1.1rem;
+       width: max-content;
+    }
+    .createTweetDiv{
+        width:45vw;
+    }
+    .CTRetweetDiv{
+        width:39vw;
+    }
+    #buttonRetweet{
+        font-size: 0.8rem;
+    }
+    .ctWriteTweet, .CTReplyTweet{
+        width:41vw;
+    }
+    .ctWriteTweetInput #CTReplyInput{
+        width:41vw;
+    }
+    .ctCancelTweet{
+        margin-left:15vw;
+        height:30px;
+        font-size: 0.9rem;
+    }
+    .ctCreateTweet{
+        height:30px;
+        font-size: 0.9rem;
+    }
+    .ctVideo{
+width:26px;
+height:27px;
+margin-top:1.5px;
+    }
+    .ctImage{
+        width:24px;
+        height:23px;
+        margin-right: 0.5vw;
+    }
+    .ctSmile{
+        width:20px;
+        height:20px;
+        margin-top:2px;
+    }
+    .ctImageText , .ctVideoText, .ctSmileText{
+        display: none;
     }
 }
 @media(max-width:1300px){
@@ -741,24 +835,452 @@ body{
     }
 }
 @media(max-width:730px){
+    body{
+        overflow-y: scroll;
+    }
     .tweetComp{
         width:60vw;
         padding-left:8px;
     }
+    .tweetImage{
+        width:58vw;
+    }
+    .tweetVideo{
+        width:58vw;
+    }
+    .TWRVideo{
+        width:51vw;
+    }
+    .tweetWithRetwwet{
+        width:53vw;
+    }
     .tweetFlexBox{
-        margin-left:9vw;
-        
+        margin-left:10vw; 
     }
     #picincircle{
         width:35px;
         height:35px;
     }
+    .username{
+        width:fit-content;
+        font-size: 1.25rem;
+    }
+    .createTweetDiv{
+        width:55vw;
+        margin-left:-5vw;
+        z-index:999;
+    }
+    .ctTagline #replying-to-head{
+        width:51vw;
+        margin-top:7px;
+    }
+    .ctWriteTweet{
+        margin-top:40px;
+    }
+    .ctWriteTweetInput, .ctWriteTweet, #CTReplyInput, .CTReplyTweet{
+        width:51vw;
+    }
+    .ctCancelTweet{
+        width:11vw;
+    }
+    .ctCreateTweet{
+        width:11vw;
+    }
+    .CTRetweetDiv{
+        width:49vw;
+    }
+    #CTRetweetName{
+        font-size: 0.95rem;
+    }
+    .TWRText{
+        font-size: 0.8rem;
+    }
+    #buttonRetweet, #buttonReply{
+        font-size: 0.9rem;
+        margin-right:-2vw;
+    }
 }
+@media(max-width:600px){
+   #picincircle{
+    /* margin-right:3vw; */
+    /* width:50px; */
+    /* height:50px; */
+   }
+    #SIDEBAR{
+        position:fixed;
+    }
+    .username{
+        width:35vw;
+        font-size: 1.15rem;
+    }
+    .tweetUsername2{
+        margin-top:-7px;
+        font-size: 0.7rem;
+    }
+    .tweetComp{
+        width:65vw;
+    }
+    .tweetImage{
+        width:63vw;
+    }
+    .tweetVideo{
+        width:63vw;
+    }
+    .tweetWithRetwwet{
+        width:57vw;
+    }
+    .TWRVideo{
+        width:55vw;
+    }
+    .tweetFlexBox{
+        margin-left:15vw;
+        margin-right:2vw;
+    }
+    .likeIcon {
+        width: 16px;
+        height: 16px;
+        margin-top:7px;
+    }
+    
+    #shareIcon {
+        width: 17px;
+        height: 17px;
+        margin-top:6px;
+    }
+    .tweetShare{
+        font-size: 0.75rem;
+    }
+    
+    #commentIcon {
+        width: 17px;
+        height: 15px;
+        margin-left:-1vw;
+        margin-top:8px;
+    }
+    .tweetComm{
+        font-size: 0.75rem;
+        margin-top:5px;
+    }
+    
+    .retweetIcon {
+        width: 17px;
+        margin-top:-12px;
+    }
+    .tweetRetweet{
+        font-size: 0.75rem;
+    }
+    .createTweetDiv{
+        margin-top:50px;
+        margin-left: -1vw;
+        width:60vw;
+    }
+    .ctTagline, .ctWriteTweet, .ctWriteTweetInput, #replying-to-head , #CTReplyInput, .CTReplyTweet{
+        width:56vw;
+    }
+    .ctCancelTweet{
+        margin-left:20vw;
+    }
+    .ctName{
+        width:fit-content
+    }
+    .CTRetweetDiv{
+        width:53vw;
+    }
+    #CTRetweetName{
+        font-size: 0.95rem;
+    }
+    .TWRText{
+        font-size: 0.8rem;
+    }
+    #buttonRetweet, #buttonReply{
+        font-size: 0.8rem;
+        margin-right:-2vw;
+    }
+    
+}
+
 @media(max-width:500px){
+    body{
+        overflow-y: scroll;
+    }
+    .tweetComp{
+        width:82vw;
+    }
+    .tweetImage{
+        width:78vw;
+    }
+    .tweetVideo{
+        width:78vw;
+    }
+    .tweetWithRetwwet{
+        width:73vw;
+    }
+    .TWRVideo{
+        width:71vw;
+    }
+    .tweetFlexBox{
+        /* width:85vw; */
+        margin-left: -14vw;
+    }
+    .username{
+        width:fit-content;
+        font-size: 1rem;
+    }
+    .createTweetDiv{
+        margin-top:50px;
+        margin-left: -14vw;
+        width:68vw;
+    }
+    #ctCircle{
+        width:45px;
+        height:45px;
+    }
+    .ctTagline, #replying-to-head{
+        font-size: 1rem;
+        margin-top:2px;
+        width:64vw;
+    }
+     .ctWriteTweet, .ctWriteTweetInput ,#CTReplyInput, .CTReplyTweet{
+        width:64vw;
+    }
+    .ctWriteTweet{
+        margin-top:30px;
+    }
+    .ctCancelTweet{
+        margin-left:20vw;
+        width:15vw;
+        height: 30px;
+    }
+    .ctCreateTweet{
+        width:15vw;
+        height:30px;
+    }
+    .ctName{
+        width:fit-content
+    }
+    .CTRetweetDiv{
+        width:61.5vw;
+    }
+    #CTRetweetName{
+        font-size: 0.95rem;
+    }
+    .TWRText{
+        font-size: 0.8rem;
+    }
+    #buttonRetweet, #buttonReply{
+        font-size: 0.85rem;
+        margin-right:3.5vw;
+        width:13vw;
+    }
+}
+@media(max-width:450px){
     .tweetComp{
         width:85vw;
     }
+    .tweetImage{
+width:83vw;
+    }
+    .tweetVideo{
+        width:83vw;
+    }
+    .tweetWithRetwwet{
+        width:76vw;
+    }
+    .TWRVideo{
+        width:74vw;
+    }
     .tweetFlexBox{
+        /* width:85vw; */
+        margin-left: -15vw;
+    }
+    .likeIcon {
+        width: 13px;
+        height: 13px;
+        margin-top:7px;
+    }
+    .tweetLike{
+        font-size: 0.75em;
+        margin-top:4px;
+    }
+    #shareIcon {
+        width: 14px;
+        height: 14px;
+        margin-top:6px;
+    }
+    .tweetShare{
+        font-size: 0.7em;
+        margin-top:4px;
+    }
+    
+    #commentIcon {
+        width: 13px;
+        height: 11px;
+        margin-left:-2vw;
+        margin-top:8px;
+    }
+    .tweetComm{
+        font-size: 0.7em;
+        margin-top:4px;
+    }
+    
+    .retweetIcon {
+        width: 14px;
+        margin-top:-12px;
+    }
+    .tweetRetweet{
+        font-size: 0.7em;
+        margin-top:4px;
+    }
+    .createTweetDiv{
+        margin-top:50px;
         margin-left: -16vw;
+        width:75vw;
+    }
+    .CTRetweetDiv{
+        width:68vw;
+    }
+    #CTRetweetName{
+        font-size: 0.9rem;
+    }
+    .TWRText{
+        font-size: 0.8rem;
+    }
+    .ctWriteTweet, .ctWriteTweetInput, #CTReplyInput,.CTReplyTweet{
+        width:70.5vw;
+    }
+    .ctCancelTweet{
+        margin-left:21vw;
+        font-size: 0.8rem;
+    }
+    .ctCreateTweet{
+        font-size: 0.8rem;
+    }
+    .ctTagline, #replying-to-head{
+        font-size: 0.94rem;
+        margin-top:-2px;
+    }
+    #ctCircle{
+        width:40px;
+        height:40px;
+        margin-top:3px;
+    }
+    #buttonRetweet{
+        font-size: 0.65rem;
+        font-weight: 600;
+        height:28px;
+    }
+    #replying-to-head{
+        font-size: 0.94rem;
+        margin-top:-2px;
+    }
+    #buttonReply{
+        font-size: 0.65rem;
+        font-weight: 600;
+        height:28px;
     }
 }
+@media (max-width:320px){
+    .tweetComm{
+        display: none;
+    }
+    .tweetLike{
+        display: none;
+    }
+    .tweetRetweet{
+        display: none;
+    }
+    .tweetShare{
+        display: none;
+    }
+    .likeIcon{
+        width:16px;
+        height: 16px;
+        margin-left:-4vw;
+        margin-top:0;
+    }
+    #commentIcon{
+        width:16px;
+        height: 16px;
+        margin-left:-4vw;
+        margin-top:0;
+    }
+    .retweetIcon{
+        width:18px;
+        height: 18px;
+        margin-left:-2vw;
+        margin-top:-2px;
+    }
+    #shareIcon{
+        width:16px;
+        height: 16px;
+        margin-left:-2vw;
+        margin-top:-2px;
+    }
+    .secondTweetBlock{
+        margin-bottom:5px;
+    }
+    .username{
+        font-size: 0.9rem;
+        width: fit-content;
+    }
+    .createTweetDiv{
+        margin-top:50px;
+        margin-left: -19vw;
+        width:80vw;
+    }
+    .ctWriteTweet, .ctWriteTweetInput, #CTReplyInput, .CTReplyTweet{
+        width:74vw;
+    }
+    .ctCancelTweet{
+        margin-left:12vw;
+        width:17vw;
+        height:28px;
+        font-size: 0.7rem;
+    }
+    .ctUserName{
+        font-size: 0.8rem;
+        margin-top:-1px;
+    }
+    .ctCreateTweet{
+        width:17vw;
+        height:28px;
+        font-size: 0.7rem;
+    }
+    .ctTagline{
+        font-size: 0.85rem;
+        margin-top:-2px;
+        line-height: 20px;
+    }
+    #ctCircle{
+        width:40px;
+        height:40px;
+        margin-top:3px;
+    }
+    .CTRetweetDiv{
+        width:73vw;
+    }
+    #CTRetweetName{
+        font-size: 0.95rem;
+    }
+    .TWRText{
+        font-size: 0.8rem;
+    }
+    #buttonRetweet{
+        font-size: 0.7rem;
+        font-weight: 500;
+        width:20vw;
+        margin-right:-2vw;
+    }
+    #replying-to-head{
+        font-size: 0.85rem;
+        margin-top:-2px;
+        line-height: 20px;
+    }
+    #buttonReply{
+        font-size: 0.7rem;
+        font-weight: 500;
+        width:20vw;
+        margin-right:-2vw;
+    }
+}
+

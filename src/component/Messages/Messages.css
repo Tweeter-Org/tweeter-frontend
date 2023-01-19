@@ -451,3 +451,13 @@ padding-right:3vw;
 .scrollChatText{
     margin-bottom:0;
 }
+#ChatImage{
+    display:none;
+  position: absolute;
+  top:470px;
+  left:24vw;
+  
+}
+.chatImageShow{
+    width:20vw;
+}

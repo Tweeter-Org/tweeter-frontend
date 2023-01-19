@@ -224,3 +224,27 @@ display: flex;
     background-color: rgba(255,255,255,0.7);
      margin-top:0.6vh;
 }
+
+@media (max-width:730px){
+    .toTweetDiv{
+margin-left:11vw;
+    }
+}
+
+@media (max-width:600px){
+    .toTweetDiv{
+margin-left:15vw;
+    }
+}
+
+@media (max-width:500px){
+    .toTweetDiv{
+margin-left:-16vw;
+    }
+}
+
+@media (max-width:450px){
+    .toTweetDiv{
+margin-left:-16.5vw;
+    }
+}
