@@ -146,35 +146,74 @@ const navigate = useNavigate();
     function handleToTweet (tweetId){
         navigate(`/totweet/${tweetId}`)
     }
-    const x = props.text.indexOf('#');
-    const y = props.text.indexOf(' ')
-    const HashArray =[];
-    var index1=-1,index2=-1,str
-    for(var i=0;i<props.text.length;i++){
-        // console.log("loop")
-        if(props.text[i]=='#'){
-            index1=i;
-            // console.log(index1)
-            for(var j=index1+1;j<props.text.length+1;j++){
-                if(props.text[j]==' '){
-                    index2=j;
-                    // console.log("loop2")
-                    // console.log(index2)
-                    break;
-                }
-                console.log("loop3")
-                if(j===props.text.length-1){
-                    // console.log(j)
-                }
+    // console.log(props.text)
+    const x = document.getElementsByClassName("tweetText")
+    // for(var i=0;i<x.length;i++){
+
+    //     // console.log(x[i])
+      
+    //     x[i].innerHTML = x[i].innerHTML.replace(/#(\S+)/g,<a></a>)
+    //     console.warn(x[i].innerHTML)
+    // }
+    const regex= /#(\S+)/g;
+
+    const [HashArray, setHashArray] =useState([]);
+
+    // var words = props.text.match(regex)
+    // console.log(words)
+    // useEffect(()=>{
+    //     if(words.length>0){
+    //         words.map((w)=>{
+    //             if(props.text.includes(w))
+    //             {
+    //                 return w;
+    //                 console.log(w)
+    //             }
+    //         })
+    //     }
+    // },[])
+    // setHashArray(words)
+    // props.text = props.text.replace(/#(\S+)/g,<>{HashArray.map((w)=>{
+    //     return <a>w</a>
+    // })}</>)
+    // console.log(props.text)
+    // useEffect(()=>{
+    //     // if()
+    //     var words = props.text.match(regex)
+    //   setHashArray([...HashArray, words])
+    //     console.log(HashArray)
+    //     console.warn(words)
+        
+    // },[])
+    // const x = props.text.indexOf('#');
+    // const y = props.text.indexOf(' ')
+    //
+    // var index1=-1,index2=-1,str
+    // for(var i=0;i<props.text.length;i++){
+    //     // console.log("loop")
+    //     if(props.text[i]=='#'){
+    //         index1=i;
+    //         // console.log(index1)
+    //         for(var j=index1+1;j<props.text.length+1;j++){
+    //             if(props.text[j]==' '){
+    //                 index2=j;
+    //                 // console.log("loop2")
+    //                 // console.log(index2)
+    //                 break;
+    //             }
+    //             console.log("loop3")
+    //             if(j===props.text.length-1){
+    //                 // console.log(j)
+    //             }
                
-            }
-            str = props.text.substring(index1, index2)
-            HashArray.push(str)
-            // HashArray[hash=>...hash, str]
-            // HashArray[((hash)=>{...hash, str})]
-            console.log(str)
-        }
-    }
+    //         }
+    //         str = props.text.substring(index1, index2)
+    //         HashArray.push(str)
+    //         // HashArray[hash=>...hash, str]
+    //         // HashArray[((hash)=>{...hash, str})]
+    //         console.log(str)
+    //     }
+    // }
 //    console.log(HashArray)
     return <>
     {retweets==null?(  <div className="tweetComp POPUPBG" >

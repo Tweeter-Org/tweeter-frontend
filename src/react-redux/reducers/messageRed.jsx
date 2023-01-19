@@ -49,11 +49,11 @@ const MsgSearchReducer = (state = initialState, action) => {
             }
         }
         case "Chat_sent":{
-          
+          console.log(action.payload)
             return {...state, sendChatMessage:action.payload.data.msg};
         }
         case "Chat_not_sent":{
-           
+            console.log(action.payload)
             return state;
         }
         case "TO_VIEW_CHATS":{

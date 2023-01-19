@@ -2,6 +2,8 @@ import axios from "axios";
 import React from "react";
 import { useSelector } from "react-redux";
 import BaseUrl from "./BaseUrl";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ProfileAction(username) {
     const accessToken = sessionStorage.getItem("access token")
@@ -46,6 +48,10 @@ function EditProfileAction(fd) {
         await BaseUrl.put("/p/editprofile", fd, config)
             .then((res) => {
                 console.log(res)
+                toast.success(`${res.data.msg}`, {
+                    position: "top-center",
+                    theme: "light",
+                });
                 dispatch({
                     type: "EDIT_PROFILE_SUCCED",
                     payload: res
@@ -53,6 +59,10 @@ function EditProfileAction(fd) {
             })
             .catch((err) => {
                 console.log(err)
+                toast.error(`${err.response.data.msg}`, {
+                    position: "top-center",
+                    theme: "light",
+                });
                 dispatch({
                     type: "EDIT_PROFILE_FAIL",
                     payload: err

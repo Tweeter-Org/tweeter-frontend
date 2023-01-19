@@ -1,7 +1,8 @@
 import axios from "axios";
 import React from "react";
 import BaseUrl from "./BaseUrl";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export const TweetFeedAction = () => {
@@ -32,12 +33,14 @@ export const TweetFeedAction = () => {
     }
 }
 
-export const TweetFeedCount = ()=>{
+export const TweetFeedCount = () => {
     return {
-        type:"Tweet_Feed_Count",
+        type: "Tweet_Feed_Count",
     }
 }
 export const TweetFeedAction2 = (count) => {
+    var c= count++;
+    console.warn(c)
     const accessToken = sessionStorage.getItem("access token")
     const config = {
         headers: {
@@ -49,7 +52,7 @@ export const TweetFeedAction2 = (count) => {
             type: "Tweet_Feed_Two_Started",
             payload: ""
         })
-        await BaseUrl.get(`/t/feed?page=${count}`, config)
+        await BaseUrl.get(`/t/feed?page=${c}`, config)
             .then((res) => {
                 dispatch({
                     type: "Tweet_Feed_Two_Succeed",
@@ -101,6 +104,9 @@ export const CreateTweetAct = (formData) => {
         }
     }
     return async function (dispatch) {
+        dispatch({
+            type: "CREATETWEETSTART"
+        })
         await BaseUrl.post("/t/create", formData, config)
             .then((Res) => {
                 console.log(Res)
@@ -108,12 +114,21 @@ export const CreateTweetAct = (formData) => {
                     type: "TWEETCREATED",
                     payload: Res
                 })
+                toast.success(`${Res.data.msg}`, {
+                    position: "top-center",
+                    theme: "light",
+                });
             })
             .catch((err) => {
+                toast.error(`${err.response.data.msg}`, {
+                    position: "top-center",
+                    theme: "light",
+                });
                 dispatch({
                     type: "TWEETNOTCREATED",
                     payload: err
                 })
+              
             })
     }
 }
@@ -126,15 +141,26 @@ export const CreateReTweetAct = (formData) => {
         }
     }
     return async function (dispatch) {
+        dispatch({
+            type: "CREATERETWEETSTART"
+        })
         await BaseUrl.post("/t/retweet", formData, config)
             .then((Res) => {
                 console.log(Res)
+                toast.success(`${Res.data.msg}`, {
+                    position: "top-center",
+                    theme: "light",
+                });
                 dispatch({
                     type: "RETWEETCREATED",
                     payload: Res
                 })
             })
             .catch((err) => {
+                toast.error(`${err.response.data.msg}`, {
+                    position: "top-center",
+                    theme: "light",
+                });
                 dispatch({
                     type: "RETWEETNOTCREATED",
                     payload: err

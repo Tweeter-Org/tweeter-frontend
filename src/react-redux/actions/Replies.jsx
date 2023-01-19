@@ -1,4 +1,6 @@
 import BaseUrl from "./BaseUrl"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const ReplyToTweet = (formData) => {
     const accessToken = sessionStorage.getItem("access token")
@@ -14,12 +16,20 @@ export const ReplyToTweet = (formData) => {
         await BaseUrl.post("/r/create", formData, config)
             .then((Res) => {
                 console.log(Res)
+                toast.success(`${Res.data.msg}`, {
+                    position: "top-center",
+                    theme: "light",
+                });
                 dispatch({
                     type: "REPLY_TWEET_YES",
                     payload: Res
                 })
             })
             .catch((err) => {
+                toast.error(`${err.response.data.msg}`, {
+                    position: "top-center",
+                    theme: "light",
+                });
                 dispatch({
                     type: "REPLY_TWEET_NO",
                     payload: err

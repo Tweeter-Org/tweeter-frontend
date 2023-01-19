@@ -75,25 +75,6 @@ function EditProfile() {
         document.getElementsByClassName("editPrDiv")[0].style.display = "none";
         setOPacity()
     }
-
-    // useEffect(() => {
-    //     console.log(toastBool, loading)
-    //     if (editprofile !== {} && !loading) {
-    //         setToastBool(true)
-    //     }
-    // }, [profilee.editprofile])
-
-    useEffect(() => {
-        console.log(toastBool)
-        if (toastBool) {
-            toast.success(`${editprofile.msg}`, {
-                position: "top-center",
-                theme: "light",
-            });
-            setToastBool(false)
-        }
-    }, [toastBool])
-
     return <>
         <div className="editPrDiv">
             {accessProfile ? ((editProfileImage === null) ? (<img src={avatar} id="editImage" className="pEditImage" />) :

@@ -30,7 +30,7 @@ function CreateTweet(props) {
         imageoutput.src = URL.createObjectURL(e.target.files[0])
         setImageInArr(URL.createObjectURL(e.target.files[0]))
         setSendImage(e.target.files[0])
-      
+
     }
     const [sendVideo, setSendVideo] = useState(null);
     function handleSendVideo(e) {
@@ -67,9 +67,13 @@ function CreateTweet(props) {
         // document.getElementById("imageOutput").style.display = "none"
         // document.getElementById("videoOutput").style.display = "none"
         // document.getElementById("VIDEO").style.display = "none"
-        
+
     }
-    const { response, error, tweetCreate, loading } = useSelector((t) => t.TweetCreateReducer)
+    const TWEETREDUCER = useSelector((t) => t.TweetCreateReducer)
+    const { response, error, tweetCreate, toastBoolR, toastBoolE, loading } = TWEETREDUCER;
+    const [toastErr, setToastErr] = useState(false)
+    const [toastRes, setToastRes] = useState(false)
+    const [toastBool, setToastBool] = useState(false)
     // console.log(response)
     const auth = useSelector((s) => s.AuthReducer)
     const { user, toFgtPwd } = auth;
@@ -116,7 +120,7 @@ function CreateTweet(props) {
             "text": Rtext,
             "_id": RId,
             user: {
-                
+
                 "user_name": Rname,
                 displaypic: displaypic
             },
@@ -135,26 +139,14 @@ function CreateTweet(props) {
             fd.append("file", null)
         }
         dispatch(CreateTweetAct(fd))
-        // console.log(newTweetCreated)
 
         backToHome(e)
         dispatch(FakeTweetFeedAction(newTweetCreated))
-        // setToastBoolE(true)
-        if (response != "") {
-            toast.success(`${response}`, {
-                position: "top-center",
-                theme: "light",
-            });
-        }
-        else if (error != "") {
-            toast.error(`${error}`, {
-                position: "top-center",
-                theme: "light",
-            });
-        }
+      
         setSendImage(null);
         setSendVideo(null)
     }
+   
     // console.log(RId)
     function handleCreateReTweet(e) {
         e.preventDefault();
@@ -170,27 +162,15 @@ function CreateTweet(props) {
             fd.append("file", null)
         }
         dispatch(CreateReTweetAct(fd))
+        // setToastBool(true)
         console.log(newReTweetCreated)
         backToHome(e)
-        if (response != "") {
-            dispatch(FakeReTweetFeedAction(newReTweetCreated))
-            toast.success(`${response}`, {
-                position: "top-center",
-                theme: "light",
-            });
-        }
-        else if (error != "") {
-            toast.error(`${error}`, {
-                position: "top-center",
-                theme: "light",
-            });
-        }
     }
     const { responseT, errorT, nameInReply, showName } = useSelector((r) => r.ReplyReducer)
 
     // console.log(responseT, errorT, nameInReply)
     const atNames = sessionStorage.getItem("replyName");
-   
+
     const replYtweet = {
         "image": imageInArr,
         "likes": "0",
@@ -220,45 +200,7 @@ function CreateTweet(props) {
         dispatch(FakeReplyTweetAction(replYtweet))
         backToHome(e)
         // console.log(replYtweet)
-        if (responseT != "") {
-            toast.success(`${responseT}`, {
-                position: "top-center",
-                theme: "light",
-            });
-        }
-        else if (errorT != "") {
-            toast.error(`${errorT}`, {
-                position: "top-center",
-                theme: "light",
-            });
-        }
-
     }
-
-    /* TOASTER */
-// const [toastBoolE, setToastBoolE] = useState(false)
-// const [toastBoolR, setToastBoolR] = useState(false)
-    
-//     useEffect(()=>{
-//         console.log(toastBoolE, loading)
-//         if(error!="" && !loading){
-//             console.log(error)
-//             setToastBoolE(true)
-//         }
-//     },[])
-    
-//     useEffect(()=>{
-//         console.log(toastBoolE)
-//         if(toastBoolE){
-//                 toast.error(`${error}`, {
-//                     position: "top-center",
-//                     theme: "light",
-//                 });
-//                 setToastBoolE(false)
-//             }
-//     },[toastBoolE])
-
-    /* */
 
     useEffect(() => {
         if (loading === true) {
@@ -274,8 +216,8 @@ function CreateTweet(props) {
         <div className="createTweetDiv" id="CREATETWEET">
             <div className="CTBlock1">
                 {(displaypic === null) ? (<img src={avatar} id="ctCircle" />) :
-                    ((displaypic.startsWith("https:")) ? (<img src={displaypic} id="ctCircle"  />) :
-                        (<img src={`https://twitterbackend-production-93ac.up.railway.app/${displaypic}`} id="ctCircle"  />))
+                    ((displaypic.startsWith("https:")) ? (<img src={displaypic} id="ctCircle" />) :
+                        (<img src={displaypic} id="ctCircle" />))
                 }
                 <div className="CTDiv1">
                     <p className="ctName">{name}</p>
@@ -299,8 +241,8 @@ function CreateTweet(props) {
                             {/* <p id="CTRetweetUsernname" className="ctUserName">{user_name}</p> */}
                         </div>
                     </div>
-                    {Rimage != null ? (<p className="TWRImageText" >Tweets's Image -: &ensp;<a id="TWRImageLink" href={`https://twitterbackend-production-93ac.up.railway.app/${Rimage}`} target="_blank">{`https://twitterbackend-production-93ac.up.railway.app/${Rimage}`}</a></p>) : null}
-                    {Rvideo != null ? (<p className="TWRImageText" >Tweets's Video -: &ensp;<a id="TWRImageLink" href={`https://twitterbackend-production-93ac.up.railway.app/${Rvideo}`} target="_blank">{`https://twitterbackend-production-93ac.up.railway.app/${Rvideo}`}</a></p>) : null}
+                    {Rimage != null ? (<p className="TWRImageText" >Tweets's Image -: &ensp;<a id="TWRImageLink" href={Rimage} target="_blank">{Rimage}</a></p>) : null}
+                    {Rvideo != null ? (<p className="TWRImageText" >Tweets's Video -: &ensp;<a id="TWRImageLink" href={Rvideo} target="_blank">{Rvideo}</a></p>) : null}
                     {/* {Rimage != null ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${Rimage}`} className="CTRVideo" alt="image" />) : null}
                     {Rvideo != null ? <video controls className="CTRVideo">
                         <source src={`https://twitterbackend-production-93ac.up.railway.app/${Rvideo}`} type="video/mp4" />

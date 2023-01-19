@@ -35,7 +35,7 @@ const {count}= useSelector((t)=>t.TweetFeedCountRed)
 function handleShowMoreTweet(){
     dispatch(TweetFeedCount())
     console.log(count)
-dispatch(TweetFeedAction2(1))
+dispatch(TweetFeedAction2(count))
 }
 console.log(tweetData)
 useEffect(()=>{
