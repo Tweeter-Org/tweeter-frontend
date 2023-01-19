@@ -108,7 +108,7 @@ display: flex;
     width:17px;
 }
 #ReplyComm{
-    width:1.3vw;
+    width:19px;
     margin-top:-1.5vh;
     margin-right:0.5vw;
 }
@@ -129,7 +129,7 @@ display: flex;
     cursor: pointer;
 }
 .RlikeIcon{
-    width:17px;
+    width:18px;
     height: 22px;
     margin-top: 0.2vh;
     margin-right: 0.5vw;
@@ -172,8 +172,9 @@ display: flex;
 }
 
 .RretweetIcon {
-    width: 25.2px;
+    width: 22px;
     height: 21px;
+    margin-top:2px;
     margin-right: 0.5vw;
     cursor: pointer;
 }
@@ -224,7 +225,36 @@ display: flex;
     background-color: rgba(255,255,255,0.7);
      margin-top:0.6vh;
 }
-
+@media(max-width:950px){
+    .RlikeIcon {
+        width: 17.5px;
+        height: 17.5px;
+        margin-top:3px; 
+    }    
+    #ReplyComm {
+        width: 19px;
+        height: 16px;
+      
+        margin-top:5px;
+    }
+    .tweetComm{
+        font-size: 0.9rem;
+    }
+    
+    .RretweetIcon {
+        width: 19px;
+        /* margin-top:-2px; */
+    }
+    .RtweetRetweet{
+        font-size: 0.9rem;
+    }
+    
+    .bookmarkIcon {
+        width: 20px;
+        height: 20px;
+        /* margin-left: 6vw; */
+    }
+}
 @media (max-width:730px){
     .toTweetDiv{
 margin-left:11vw;
@@ -235,16 +265,99 @@ margin-left:11vw;
     .toTweetDiv{
 margin-left:15vw;
     }
+    .RlikeIcon {
+        width: 16px;
+        height: 16px;
+        margin-top:7px;
+    }
+    .replyLike{
+        margin-top:4px;
+    }
+    #ReplyComm {
+        width: 17px;
+        height: 15px;
+        margin-left:-1vw;
+        margin-top:8px;
+    }
+    .tweetComm{
+        font-size: 0.75rem;
+        margin-top:5px;
+    }
+    
+    .RretweetIcon {
+        width: 17px;
+        margin-top:2px;
+    }
+    .RtweetRetweet{
+        font-size: 0.75rem;
+    }
 }
 
 @media (max-width:500px){
     .toTweetDiv{
-margin-left:-16vw;
+margin-left:-14vw;
     }
 }
 
 @media (max-width:450px){
     .toTweetDiv{
 margin-left:-16.5vw;
+    }
+    .RlikeIcon {
+        width: 13px;
+        height: 13px;
+        margin-top:7px;
+    }
+    .replyLike{
+        font-size: 0.75em;
+        margin-top:4px;
+    }
+    #ReplyComm {
+        width: 14px;
+        height: 12px;
+        margin-left:-2vw;
+        margin-top:8px;
+    }
+    .tweetComm{
+        font-size: 0.7em;
+        margin-top:4px;
+    }
+    
+    .RretweetIcon {
+        width: 16px;
+        margin-top:2px;
+    }
+    .RtweetRetweet{
+        font-size: 0.7em;
+        margin-top:4px;
+    }
+}
+@media(max-width:320px){
+    .tweetComm{
+        display: none;
+    }
+    .replyLike{
+        display: none;
+    }
+    .RtweetRetweet{
+        display: none;
+    }
+    .RlikeIcon{
+        width:16px;
+        height: 16px;
+        margin-left:-4vw;
+        margin-top:0;
+    }
+    #ReplyComm{
+        width:16px;
+        height: 16px;
+        margin-left:-4vw;
+        margin-top:0;
+    }
+    .RretweetIcon{
+        width:18px;
+        height: 18px;
+        margin-left:-2vw;
+        margin-top:-2px;
     }
 }

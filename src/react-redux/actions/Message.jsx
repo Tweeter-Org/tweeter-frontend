@@ -93,7 +93,7 @@ function InactiveUserList (){
 
 export {InactiveUserList}
 
-export const SendChatsAction = (formData) => {
+export const SendChatsAction = (formData, socket) => {
     const accessToken = sessionStorage.getItem("access token")
     const config = {
         headers: {
@@ -103,6 +103,8 @@ export const SendChatsAction = (formData) => {
     return async function (dispatch) {
         await BaseUrl.post("/c/message", formData, config)
             .then((Res) => {
+                socket.emit("new message", Res.data.msg)
+                dispatch(FakeViewChatsAction, Res.data.msg)
                 dispatch({
                     type: "Chat_sent",
                     payload: Res

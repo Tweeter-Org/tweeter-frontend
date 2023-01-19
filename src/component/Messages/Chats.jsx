@@ -33,11 +33,9 @@ function Chats() {
         socket.emit("setup", user);
 
         socket.on("connection", () => {
-            console.log("socketttt")
             setSocketConnected(true)
         })
-        console.log(socket)
-    }, [userid])
+    }, [])
 
     const [userN, setUserN] = useState("")
     const [userlist, setUesrlist] = useState([])
@@ -61,7 +59,6 @@ function Chats() {
         document.getElementById("SEARCHBOX").style.display = "none";
     }, [])
 
-    const [userChatList, setUserChatList] = useState([])
     const [sendChatId, setSendChatId] = useState()
     const [list, setlist] = useState([])
 
@@ -97,11 +94,8 @@ function Chats() {
 
     const fd = new FormData();
     function handleSendImage(e) {
-        // var imageoutput = document.getElementById("ChatImage");
-        // imageoutput.src = URL.createObjectURL(e.target.files[0])
         setSendImage(e.target.files[0])
         setImageInArr(URL.createObjectURL(e.target.files[0]))
-        // document.getElementById("ChatImage").style.display="block"
     }
     const [sendVideo, setSendVideo] = useState(null);
     function handleSendVideo(e) {
@@ -130,8 +124,7 @@ function Chats() {
             "_id": user._id
         },
     }
-    const [sendChatbool, setSendChatbool] = useState(false)
-    const [chatss, setChatss] = useState(false)
+  
     console.log(sendChatId)
     function sendChatMsg(chattid) {
         console.log(chattid)
@@ -146,48 +139,33 @@ function Chats() {
         else {
             fd.append("file", null)
         }
-        setSendChatbool(true)
-        dispatch(SendChatsAction(fd))
-        setAllChats([...allChats, sendChat])
+      
+        dispatch(SendChatsAction(fd, socket))
         dispatch(FakeViewChatsAction(sendChat))
-        console.warn(sendChatMessage)
-        socket.emit("new message", sendChat)
         setTextMsg("")
         setSendImage(null)
         setSendVideo(null)
     }
+    console.warn(sendChatMessage)
 
-    // SEND MSG VIA SOCKET
-
-    useEffect(() => {
-        console.log(sendChatbool)
-        if (sendChatbool) {
-            console.log(sendChatMessage)
-            // socket.emit("new message", sendChatMessage)
-            setChatss(true)
-            console.log(chatss)
-            setSendChatbool(false)
-        }
-    }, [sendChatMessage, sendChatbool])
     console.log(socket)
 
     // sockets : recieving new messages
     useEffect(() => {
         socket.on("message recieved", (newChatMsgRecieved) => {
-            if (newChatMsgRecieved.chat._id != currentChattingWith || !currentChattingWith) {
-                console.log("wrong chat for user")
-                setChatss(false)
+            if (newChatMsgRecieved.chat._id !== currentChattingWith || !currentChattingWith) {
                 handleNotify(newChatMsgRecieved)
             }
             else {
-                console.warn(newChatMsgRecieved)
-                // setAllChats([...allChats, newChatMsgRecieved])
-                // dispatch(SendChatsAction(newChatMsgRecieved))
+                // console.warn(newChatMsgRecieved)
                 dispatch(FakeViewChatsAction(newChatMsgRecieved))
+                // setAllChats([...allChats, newChatMsgRecieved])
+
                 setSendChatbool(false)
             }
         })
-    })
+    },[])
+   
     //Notifications handler : if not current user
     const handleNotify = (new_unseen_chat) => {
         dispatch(AddChatNotify(new_unseen_chat))

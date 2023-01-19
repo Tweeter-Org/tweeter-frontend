@@ -21,6 +21,7 @@ import { type } from "@testing-library/user-event/dist/type";
 import TweetPopup from "./tweetPopup";
 import CreateTweet from "./createTweet";
 import { Navigate, useNavigate } from "react-router-dom";
+import ShareTweet from "./ShareTweet";
 
 function Tweet(props) {
     const video = props.video
@@ -129,6 +130,11 @@ function Tweet(props) {
         document.getElementById("buttonReply").style.display="block";
     }
 
+    function handleTweetShare (tweetid){
+        sessionStorage.setItem("shareTweetId", tweetid)
+        document.getElementById("SHAREBLOCK").style.display="flex"
+        // setOPacity();
+    }
     function showProfilePopup(){
         document.getElementsByClassName("tweetPopcomp")[id].style.display="block"
     }
@@ -219,7 +225,7 @@ const navigate = useNavigate();
                     <p className="tweetRetweet">Retweet</p>
                 </div>
                 <div className="iconBlock">
-                    <img src={share} id="shareIcon" />
+                    <img src={share} id="shareIcon" onClick={()=>{handleTweetShare(props.tweetId)}} />
                     <p className="tweetShare">Share</p>
                 </div>
             </div>
@@ -275,12 +281,13 @@ const navigate = useNavigate();
                     <p className="tweetRetweet">Retweet</p>
                 </div>
                 <div className="iconBlock">
-                    <img src={share} id="shareIcon" />
+                    <img src={share} id="shareIcon"  onClick={()=>{handleTweetShare(props.tweetId)}} />
                     <p className="tweetShare">Share</p>
                 </div>
             </div>    
         </div>)}
         <CreateTweet/>
+        <ShareTweet />
     </>
 }
 

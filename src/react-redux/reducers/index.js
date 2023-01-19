@@ -17,6 +17,7 @@ import { TagTweetFeedReducer } from "./TagTweetReducer";
 import { ReplyReducer } from "./ReplyReducer";
 import { TweetFeedCountRed } from "./TweetFeedReducer";
 import MsgSearchReducer from "./messageRed";
+import { ShareTweetRed } from "./ShareTweetRed";
 const rootReducer = combineReducers({
    AuthReducer,
    TweetFeedReducer,
@@ -34,7 +35,8 @@ const rootReducer = combineReducers({
    TagTweetFeedReducer,
    ReplyReducer,
    TweetFeedCountRed, 
-   MsgSearchReducer
+   MsgSearchReducer,
+   ShareTweetRed
 })
 
 export default rootReducer

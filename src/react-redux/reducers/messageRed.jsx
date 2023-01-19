@@ -6,20 +6,20 @@ const initialState = {
     viewChatList:false,
     isActive:false,
     viewChatMsgs:{},
-    sendChatMessage:{}
+    sendChatMessage:{},
+    createChatList:{}
 }
 const MsgSearchReducer = (state = initialState, action) => {
     switch (action.type) {
         case "MSG_SEARCH_SUCCEDED": return { ...state,msgUser: action.payload.result ,loading: false, toMsgUser:true }
         case "MSG_SEARCH_FAILED":{
-          
         }
         case "CREATE_CHAT_START":{
             return state;
         }
         case "CREATE_CHAT_SUCCESS":{
-         
-            return state;
+         console.log(action.payload)
+            return {...state, createChatList:action.payload.data};
         }
         case "CREATE_CHAT_FAILED":{
            

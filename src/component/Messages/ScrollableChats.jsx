@@ -22,7 +22,7 @@ function ScrollableChat(props) {
       });
     console.log(props.allchats)
     return <>
-        <div className="Chat2Msgs" ref={scrolldiv}>
+        <div className="Chat2Msgs" id="SCROLLCHATS" ref={scrolldiv}>
             {chatmsg.length > 0 ? (chatmsg.map((chat) => {
                     if(chat.user.user_name != user.user_name){
                         return (

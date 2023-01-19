@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import MsgSearchUser from "../../react-redux/actions/Message";
 import MsgUser from "./User";
 
-function MsgDropdown (){
+function MsgDropdown() {
     const [user, setUser] = useState("");
     const dispatch = useDispatch();
-    const { toMsgUser, loading,msgUser } = useSelector((S) => S.MsgSearchReducer)
+    const { toMsgUser, loading, msgUser } = useSelector((S) => S.MsgSearchReducer)
     console.log(msgUser)
     const [searchListArray, setSearchListArray] = useState([]);
     const [searchTweetList, setSearchTweetList] = useState([]);
@@ -26,15 +26,15 @@ function MsgDropdown (){
         }
     }, [toMsgUser, msgUser])
     return <>
-    <div className="msgDDBlock1" id="MSGDROPDOWN">
-        <p className="msgDDText1">New Message</p>
-        <input className="msgDDSearchIpt" type="text" value={user} onChange={handleSearch} placeholder="Search" />
-        <div className="msgSearchFlexbox">
-                {searchListArray.length > 0?( searchListArray.map((searchh) => {
-                            return <MsgUser name={searchh.name} username={searchh.user_name} displaypic={searchh.displaypic} userNum= {searchh._id} />
-                        })):null} 
-                </div>
-    </div>
+        <div className="msgDDBlock1" id="MSGDROPDOWN">
+            <p className="msgDDText1">New Message</p>
+            <input className="msgDDSearchIpt" type="text" value={user} onChange={handleSearch} placeholder="Search" />
+            <div className="msgSearchFlexbox">
+                {searchListArray.length > 0 ? (searchListArray.map((searchh) => {
+                    return <MsgUser name={searchh.name} username={searchh.user_name} displaypic={searchh.displaypic} userNum={searchh._id} />
+                })) : null}
+            </div>
+        </div>
 
     </>
 }

@@ -323,7 +323,7 @@ border-top-left-radius: 8px;
 .ChatTypeDiv{
 height:45px;
 margin-top:11px;
-width: 656px;
+width: 48vw;
 }
 #ChatName{
     margin-left:0.5vw;
@@ -331,7 +331,7 @@ width: 656px;
     font-size: 18px;
 }
 .ChatType2{
-    width: 656px;
+    width: 48vw;
 height: 45px;
 left: 0px;
 padding-left:6.5vw;

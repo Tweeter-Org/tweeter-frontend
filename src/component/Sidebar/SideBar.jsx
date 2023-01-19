@@ -132,6 +132,8 @@ function Sidebar() {
         navigate("/chats/:userid")
         else
         navigate("/messages")
+        document.getElementById("NOCHATBLOCK").style.display="flex";
+        document.getElementById("SCROLLCHATS").style.display="none";
     }
 
     function LogoutMouseover(){

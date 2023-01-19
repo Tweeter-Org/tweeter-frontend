@@ -51,6 +51,8 @@ function ChatUser(props) {
         navigate(`/chats/${usernum}`)
         dispatch(CreateChat(usernum))
         dispatch(ViewChatsAction(viewChatIdd))
+        document.getElementById("NOCHATBLOCK").style.display="none";
+        document.getElementById("SCROLLCHATS").style.display="flex";
     }
     // console.log(props.msg)
     return <>
