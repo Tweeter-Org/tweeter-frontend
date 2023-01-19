@@ -6,6 +6,7 @@ import arrow from "../../Assets/arrow-back.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import lockIcon from "../../Assets/lock.svg";
+import nameIcon from "../../Assets/authName.svg"
 import { useState, useEffect } from "react";
 import "./googleSign.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,8 +16,12 @@ import { useNavigate } from "react-router-dom";
 
 function GoogleSignin() {
   const userName =  sessionStorage.getItem("Google_name")
-  const [nameN, setNameN] = useState(userName)
-  const [name, setName] = useState("")
+  const signUp = useSelector((s) => s.AuthReducer)
+  const { loading, error, name2, username2 , response, toHome } = signUp;
+  const [toastBool, setToastBool] = useState(false)
+
+  const [nameN, setNameN] = useState(username2)
+  const [name, setName] = useState(name2)
   const [pass, setPass] = useState("")
   const [checkName, setCheckName] = useState(false);
   const [checkPass, setCheckPass] = useState(false)
@@ -64,8 +69,6 @@ function GoogleSignin() {
     password: pass
   }
  console.log(data)
-  const signUp = useSelector((s) => s.AuthReducer)
-  const { loading, error, response, toHome } = signUp;
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -79,20 +82,26 @@ function GoogleSignin() {
 
   function SIGNUPTWO() {
     dispatch(SignUpTwoUser(data))
-    if (error !== "") {
-      toast.error(`${error}`, {
-        position: "top-center",
-        theme: "light",
-      });
-    }
-    // if (response !== "") {
-    //   toast.success(`${response}`, {
-    //     position: "top-center",
-    //     theme: "light",
-    //   });
-    // }
   }
 
+  useEffect(()=>{
+    console.log(toastBool, loading)
+    if(error!="" && !loading){
+        console.log(error)
+        setToastBool(true)
+    }
+},[signUp])
+
+useEffect(()=>{
+    console.log(toastBool)
+    if(toastBool){
+            toast.error(`{error}`, {
+                position: "top-center",
+                theme: "light",
+            });
+            setToastBool(false)
+        }
+},[toastBool])
 
   useEffect(()=>{
     if(response!==""){
@@ -116,9 +125,11 @@ function GoogleSignin() {
     <div className='loginBg'>
       <img src={arrow} id="arrow" onClick={() => { navigate("/verifyemail") }} />
       <p className='authHead' id="authreset">Sign Up</p>
+      <img src={nameIcon} className="googleNameIcon1" />
       <p className='authEmail' id="resetPwdHead">Full Name</p>
       <input type="text" className="authEmailInput" id="resetPwdHeadInput" placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} />
       <p id="googleInvalidName">Name should consists of alphabets</p>
+      <img src={nameIcon} className="googleNameIcon2" />
       <p className='googlename'>Username</p>
       <input type="text" className="googleEmailInput" placeholder="Enter your name" value={nameN} onChange={(e) => setNameN(e.target.value)} />
       <p id="googleInvalidName2">Name should not contain any whitespaces</p>

@@ -254,10 +254,12 @@ const GoogleTwoAction = (url) => {
 }
 export { GoogleTwoAction }
 
-export const nameViaGoogle=(name)=>{
+export const nameViaGoogle=(name, username)=>{
     return {
         type:"NAME_VIA_GOOGLE",
-        payload:name
+        payload:{
+            name, username
+        }
     }
 }
 

@@ -31,17 +31,32 @@ function ForgotPwd(){
 
     const state= useSelector((s)=>s.AuthReducer)
     const {loading, response, error, toOtp} = state;
+    const [toastBool, setToastBool] = useState(false)
     const navigate = useNavigate();
 
     function FORGOTPWD (){
         dispatch(FgtPwdAction(email, checkEmail),sessionStorage.setItem("email",email))
-        if (error != "") {
-            toast.error(`${error}`, {
-                position: "top-center",
-                theme: "light",
-            });
-        }
+       
     }
+
+    useEffect(()=>{
+        console.log(toastBool, loading)
+        if(error!="" && !loading){
+            console.log(error)
+            setToastBool(true)
+        }
+    },[state])
+
+    useEffect(()=>{
+        console.log(toastBool)
+        if(toastBool){
+                toast.error(`${error}`, {
+                    position: "top-center",
+                    theme: "light",
+                });
+                setToastBool(false)
+            }
+    },[toastBool])
 
 
     useEffect(()=>{

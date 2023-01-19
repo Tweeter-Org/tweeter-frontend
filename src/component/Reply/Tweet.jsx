@@ -20,6 +20,7 @@ import CreateTweet from "../Home Page/createTweet";
 import { NameInReplyAction, ShowNameInReplyAction, ViewTweetsReply } from "../../react-redux/actions/Replies";
 import Reply from "./Reply";
 import Loader from "../Assets/Loader";
+import ShareTweet from "../Home Page/ShareTweet";
 
 function ToTweet(props) {
     const video = props.video
@@ -143,6 +144,12 @@ function ToTweet(props) {
     }, [replies])
     console.log(replyArr)
 
+    function handleTweetShare (tweetid){
+        sessionStorage.setItem("shareTweetId", tweetid)
+        document.getElementById("SHAREBLOCK").style.display="flex"
+        // setOPacity();
+    }
+
     //for loader
     useEffect(() => {
         if (loading === true) {
@@ -186,7 +193,7 @@ function ToTweet(props) {
                     <p className="tweetRetweet">Retweet</p>
                 </div>
                 <div className="iconBlock">
-                    <img src={share} id="shareIcon" />
+                    <img src={share} id="shareIcon" onClick={()=>{handleTweetShare(props.tweetId)}} />
                     <p className="tweetShare">Share</p>
                 </div>
             </div>
@@ -243,7 +250,7 @@ function ToTweet(props) {
                     <p className="tweetRetweet">Retweet</p>
                 </div>
                 <div className="iconBlock">
-                    <img src={share} id="shareIcon" />
+                    <img src={share} id="shareIcon" onClick={()=>{handleTweetShare(props.tweetId)}} />
                     <p className="tweetShare">Share</p>
                 </div>
             </div>
@@ -256,6 +263,7 @@ function ToTweet(props) {
             })) :null}
         </div>)}
         <CreateTweet />
+        <ShareTweet />
         {(loading === true) ? <Loader loading={loading} /> : null}
     </>
 }

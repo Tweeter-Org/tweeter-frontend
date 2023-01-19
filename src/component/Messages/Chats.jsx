@@ -158,7 +158,7 @@ function Chats() {
                 handleNotify(newChatMsgRecieved)
             }
             else {
-                // console.warn(newChatMsgRecieved)
+                console.warn(newChatMsgRecieved)
                 dispatch(FakeViewChatsAction(newChatMsgRecieved))
                 // setAllChats([...allChats, newChatMsgRecieved])
 

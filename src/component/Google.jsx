@@ -17,7 +17,7 @@ const Google = () => {
 
   const google = useSelector((g) => g.GoogleReducer)
   const { response2, error2, mark } = google;
-  const { token, msg, success } = response2;
+  const {  msg, success } = response2;
 console.log(window.location.href.substring(34))
   useEffect(() => {
     dispatch(GoogleTwoAction(window.location.href.substring(34)))
@@ -29,9 +29,11 @@ console.log(window.location.href.substring(34))
     if (response2.success == true) {
       if (msg === "loggedin"){
         const user={
-          user_name:response2.user_name,
-          name:response2.name,
-          displaypic:null
+          user_name:response2.user.user_name,
+          name:response2.user.name,
+          displaypic:response2.user.displaypic,
+          _id:response2.user._id
+
         }
         console.log(user)
         dispatch(infoViaGoogle(user))
@@ -41,7 +43,7 @@ console.log(window.location.href.substring(34))
       if (msg === "signedup"){
         console.log(msg)
         sessionStorage.setItem("Google_name", response2.user_name)
-        dispatch(nameViaGoogle(response2.user_name))
+        dispatch(nameViaGoogle(response2.user.name, response2.user.user_name))
         navigate("/googlesign")
         // alert("Signed In Successfully")
       }

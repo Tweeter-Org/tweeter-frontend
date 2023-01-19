@@ -242,6 +242,31 @@ function CreateTweet(props) {
         }
 
     }
+
+    /* TOASTER */
+
+    
+    // useEffect(()=>{
+    //     console.log(toastBool, loading)
+    //     if(error!="" && !loading){
+    //         console.log(error)
+    //         setToastBool(true)
+    //     }
+    // },[responseApi])
+    
+    // useEffect(()=>{
+    //     console.log(toastBool)
+    //     if(toastBool){
+    //             toast.error(`${error}`, {
+    //                 position: "top-center",
+    //                 theme: "light",
+    //             });
+    //             setToastBool(false)
+    //         }
+    // },[toastBool])
+
+    /* */
+
     useEffect(() => {
         if (loading === true) {
             document.body.style.opacity = 0.5;

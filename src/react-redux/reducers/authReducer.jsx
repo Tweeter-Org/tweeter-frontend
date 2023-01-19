@@ -2,6 +2,8 @@ const initialState ={
     loading:false,
     response:"",
     user:{},
+    name2:'',
+    username2:'',
     error:"",
     toFgtPwd:false,
     toOtp:false,
@@ -231,9 +233,7 @@ const initialState ={
         }
         case "NAME_VIA_GOOGLE":{
             return {
-                user:{
-                    user_name:action.payload.name
-                }, ...state
+             ...state , name2:action.payload.name, username2:action.payload.username
             }
         }
         case "INFO_VIA_GOOGLE":{

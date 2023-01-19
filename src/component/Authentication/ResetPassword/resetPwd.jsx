@@ -62,22 +62,31 @@ function ResetPwd() {
 
   const reset = useSelector((R) => R.AuthReducer)
   const { loading, response, error, toHome } = reset;
+  const [toastBool, setToastBool] = useState(false)
 
   function RESETPWD() {
-    dispatch(ResetAction(pass), console.log(pass))
-    if (error !== "") {
-      toast.error(`${error}`, {
-        position: "top-center",
-        theme: "light",
-      });
-    }
-    // if (response !== "") {
-    //   toast.success(`${response}`, {
-    //     position: "top-center",
-    //     theme: "light",
-    //   });
-    // }
+    dispatch(ResetAction(pass))
   }
+
+  useEffect(()=>{
+    console.log(toastBool, loading)
+    if(error!="" && !loading){
+        console.log(error)
+        setToastBool(true)
+    }
+},[reset])
+
+useEffect(()=>{
+    console.log(toastBool)
+    if(toastBool){
+            toast.error(`${error}`, {
+                position: "top-center",
+                theme: "light",
+            });
+            setToastBool(false)
+        }
+},[toastBool])
+
 
     useEffect(()=>{
       if(loading===true){
@@ -87,15 +96,6 @@ function ResetPwd() {
           document.body.style.opacity = 1;
       }
   },[loading])
-
-  useEffect(()=>{
-    if(error!==""){
-        toast.error(`${error}`, {
-            position: "top-center",
-            theme: "light",
-            });
-    }
-  },[error])
 
   useEffect(()=>{
     if(response!==""){

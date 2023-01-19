@@ -105,7 +105,12 @@ body {
     line-height: 20px;
     /* color: rgba(255, 255, 255, 0.2); 
 } */
-
+.googleIcon{
+    width:20px;
+    height:20px;
+    margin-right:0.4vw;
+    margin-top:-3px;
+}
 .invalidEmail {
     position: absolute;
     left: 2.5vw;

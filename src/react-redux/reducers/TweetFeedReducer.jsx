@@ -31,7 +31,7 @@ export const TweetFeedReducer = (state=initialState, action)=>{
         case "Tweet_Feed_Two_Succeed":{
             console.log(action.payload)
             // return {...state}
-            return {...state, loading:false, tweetData:action.payload.data.tweets, liked:action.payload.data.liked, bookmarked:action.payload.data.bookmarked}
+            return {...state, loading:false,  tweetData:[...state.tweetData, ...action.payload.data.tweets], liked:action.payload.data.liked, bookmarked:action.payload.data.bookmarked}
         }
         case "Tweet_Feed_Two_Failed":{
             console.log(action.payload)
@@ -56,24 +56,6 @@ export const TweetFeedReducer = (state=initialState, action)=>{
     }
 }
 
-// const tw = useSelector((t)=>t.TweetFeedReducer)
-// const {tweetData} = tw;
-// console.log(tw)
-// const tweetState ={
-// tweetData:[]
-// }
-
-// export const FakeTweetFeedReducer = (state=tweetState, action) =>{
-//     switch(action.type){
-//         case "TWEET_FEED_ADD_ACTION":{
-//             return {
-//                 ...state, tweetData : action.payload, 
-//             }
-//         }
-//         default:return state;
-//     }
-
-// }
 
 const initialCount={
     count:0

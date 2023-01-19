@@ -51,16 +51,31 @@ function SignUp(){
 
     const responseApi = useSelector((state)=>state.AuthReducer)
             const {loading, response, error, toSignOtp} = responseApi
+            const [toastBool, setToastBool] = useState(false)
 
             function SIGNUP(){
                 dispatch(SignUpUser(email, callApi),sessionStorage.setItem("signupemail",email), sessionStorage.setItem("NameToBeUsed",name))
-                if(error!==""){
-                    toast.error(`${error}`, {
-                        position: "top-center",
-                        theme: "light",
-                        });
-                }
             }
+
+            useEffect(()=>{
+                console.log(toastBool, loading)
+                if(error!="" && !loading){
+                    console.log(error)
+                    setToastBool(true)
+                }
+            },[responseApi])
+            
+            useEffect(()=>{
+                console.log(toastBool)
+                if(toastBool){
+                        toast.error(`${error}`, {
+                            position: "top-center",
+                            theme: "light",
+                        });
+                        setToastBool(false)
+                    }
+            },[toastBool])
+
     useEffect(()=>{
         if(loading===true){
             document.body.style.opacity = 0.5;

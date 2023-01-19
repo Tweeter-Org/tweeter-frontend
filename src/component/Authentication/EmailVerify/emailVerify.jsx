@@ -43,6 +43,7 @@ function AuthOtp(){
     console.log(otpR)
     const {loading, response, error,toSignUpTwo} = otpR;
     console.log(loading,response,error)
+    const [toastBool, setToastBool] = useState(false)
 
     useEffect(()=>{
         if(loading===true){
@@ -55,13 +56,27 @@ function AuthOtp(){
 
     function EMAILVERIFY (){
         dispatch(EmailAction(data))
-        if(error!==""){
-            toast.error(`${error}`, {
-                position: "top-center",
-                theme: "light",
-                });
-        }
     }
+
+    useEffect(()=>{
+        console.log(toastBool, loading)
+        if(error!="" && !loading){
+            console.log(error)
+            setToastBool(true)
+        }
+    },[otpR])
+    
+    useEffect(()=>{
+        console.log(toastBool)
+        if(toastBool){
+                toast.error(`${error}`, {
+                    position: "top-center",
+                    theme: "light",
+                });
+                setToastBool(false)
+            }
+    },[toastBool])
+
     useEffect(()=>{
         if(response!==""){
             toast.success(`${response}`, {

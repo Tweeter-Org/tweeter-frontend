@@ -35,8 +35,9 @@ const {count}= useSelector((t)=>t.TweetFeedCountRed)
 function handleShowMoreTweet(){
     dispatch(TweetFeedCount())
     console.log(count)
-// dispatch(TweetFeedAction2(count))
+dispatch(TweetFeedAction2(1))
 }
+console.log(tweetData)
 useEffect(()=>{
     if(loading===true){
         document.body.style.opacity = 0.5;

@@ -66,6 +66,7 @@ function SignUpTwo() {
  
   const signUp = useSelector((s) => s.AuthReducer)
   const { loading, error, response, toHome } = signUp;
+  const [toastBool, setToastBool] = useState(false)
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -79,20 +80,25 @@ function SignUpTwo() {
 
   function SIGNUPTWO() {
     dispatch(SignUpTwoUser(data))
-    if (error !== "") {
-      toast.error(`${error}`, {
-        position: "top-center",
-        theme: "light",
-      });
-    }
-    // if (response !== "") {
-    //   toast.success(`${response}`, {
-    //     position: "top-center",
-    //     theme: "light",
-    //   });
-    // }
   }
+  useEffect(()=>{
+    console.log(toastBool, loading)
+    if(error!="" && !loading){
+        console.log(error)
+        setToastBool(true)
+    }
+},[signUp])
 
+useEffect(()=>{
+    console.log(toastBool)
+    if(toastBool){
+            toast.error(`${error}`, {
+                position: "top-center",
+                theme: "light",
+            });
+            setToastBool(false)
+        }
+},[toastBool])
 
   useEffect(()=>{
     if(response!==""){
