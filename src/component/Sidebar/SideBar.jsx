@@ -27,6 +27,7 @@ import { ProfileApi } from "../../react-redux/actions/Profile";
 import Tweetsearch from "./Tweetsearch";
 import { InactiveUserList } from "../../react-redux/actions/Message";
 import deleteIcon from "../Assets/delete.svg"
+import ScrollableChat from "../Messages/ScrollableChats";
 
 function Sidebar() {
 
@@ -201,6 +202,7 @@ document.getElementById("logout").style.display="block"
             <p id="logout">Log Out</p>
             <CreateTweet />
             <LogOut />
+            
         </div>
         {(loading === true) ? <Spinner animation="border" variant="light" id="loadSpinner" /> : null}
     </>

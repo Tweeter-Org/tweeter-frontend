@@ -149,6 +149,7 @@ function Chats() {
     console.warn(sendChatMessage)
 
     console.log(socket)
+    console.log(currentChattingWith)
 
     // sockets : recieving new messages
     useEffect(() => {
@@ -161,7 +162,6 @@ function Chats() {
                 dispatch(FakeViewChatsAction(newChatMsgRecieved))
                 // setAllChats([...allChats, newChatMsgRecieved])
 
-                setSendChatbool(false)
             }
         })
     },[])

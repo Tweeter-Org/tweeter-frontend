@@ -446,6 +446,7 @@ padding-right:3vw;
         white-space: -o-pre-wrap;
         word-wrap: break-word;
         word-break: break-word;
+        z-index:10;
 }
 
 .scrollChatText{
@@ -460,4 +461,53 @@ padding-right:3vw;
 }
 .chatImageShow{
     width:20vw;
+}
+.chatTweet{
+    display: flex;
+    width:20vw;
+    height:fit-content;
+    flex-direction: column;
+    border:0.5px solid rgb(22, 23, 24,0.4);
+    padding: 4px 1vw 4px 1vw ;
+}
+.chTw1{
+    display: flex;
+    margin-bottom:-6px;
+}
+.chTwProfile{
+width:25px;
+height:25px;
+border-radius: 50%;
+margin-right:0.5vw;
+}
+.chTwName1{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    color:rgba(255, 255, 255, 1);
+    margin-right:0.5vw;
+    
+}
+.chTwName2{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    color: #000;
+}
+.chTwImage{
+width:18vw;
+margin-bottom:4px;
+}
+.chTwVideo{
+    width:18vw;
+    margin-bottom:4px;
+}
+.chTwText{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight:600;
+    font-size: 16px;
+    color: #000;
 }

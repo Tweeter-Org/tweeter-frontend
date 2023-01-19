@@ -1,6 +1,6 @@
 import BaseUrl from "./BaseUrl"
 
-export const ShareTweet = (data) => {
+export const ShareTweet = (data, socket) => {
     const accessToken = sessionStorage.getItem("access token")
     const config = {
         headers: {
@@ -14,6 +14,7 @@ export const ShareTweet = (data) => {
         await BaseUrl.post("/c/share",data, config)
             .then((Res) => {
                 console.log(Res)
+                socket.emit("new message", Res.data.msg)
                 dispatch({
                     type: "SHARE_TWEET_YES",
                     payload: Res

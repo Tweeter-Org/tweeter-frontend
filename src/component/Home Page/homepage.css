@@ -717,6 +717,7 @@ display: none;
     color: #FFFFFF;
     margin-bottom: 0px;
     position: fixed;
+    margin-left:1vw;
     z-index:20;
 }
 .shareTweetSearchIpt{
@@ -742,7 +743,7 @@ display: none;
 .shareTweetFlexbox{
     display: flex;
     flex-direction: column;
-    margin-top:60px;
+    margin-top:px;
     z-index:16;
 }
 .shareUser {
@@ -791,7 +792,12 @@ display: none;
     text-decoration: underline;
     cursor: pointer;
 }
-
+.shareTweetLine{
+    border-bottom:0.5px solid rgba(255, 255, 255, 0.4);
+    width:34vw;
+    margin-top:35px;
+    margin-bottom:0;
+}
 /* CREATE TWEET/ RETWEET */
 
 @media (max-width:1150px){
