@@ -495,13 +495,14 @@
     font-size: 19px;
     line-height: 24px;
     color: rgba(255, 255, 255, 0.9);
-    margin-left: 5.5vw;
+    /* margin-left: 5.5vw; */
     margin-top: 2vh;
     text-transform: capitalize;
 }
 
 .followPic {
-    margin-top: 2.6vh;
+    margin-top: 2vh;
+    margin-left:1vw;
     /* top:60vh; */
 }
 
@@ -509,15 +510,16 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 20px;
     color: #47c87a;
     /* margin-left:-3.5vw; */
     position: absolute;
     left: 30vw;
-    margin-top: 6vh;
+    margin-top: 5vh;
     text-transform: capitalize;
     text-decoration: underline;
+    /* cursor: pointer; */
 }
 
 .alterFollower {

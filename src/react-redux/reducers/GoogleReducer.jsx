@@ -23,7 +23,7 @@ const GoogleReducer =(state=initialState, action)=>{
         }}
         case "GOOGLE_TWO_FAILED":{console.log(action.payload)
             return {
-            ...state, error2:action.payload, response2:""
+            ...state, error2:action.payload, response2:"", mark:false
         }}
         default:return state
     }

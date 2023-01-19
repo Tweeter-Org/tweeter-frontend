@@ -198,14 +198,14 @@ const navigate = useNavigate();
                 })) : null}</p>):null}
              { (image != null && image.startsWith("blob:"))?(
              <img src={image} alt="image" className="tweetImage" />):(
-                image != null? (<img src={`https://tweeter-backend-7ngr.onrender.com/${image}`} alt="image" className="tweetImage" />) : null)}
+                image != null? (<img src={image} alt="image" className="tweetImage" />) : null)}
               
                 { (video != null && video.startsWith("blob:"))?(
                     <video className="tweetvideo" controls>
                 <source src={video} type="video/mp4" />
             </video>):(
                 video != null? (<video className="tweetvideo" controls>
-                <source src={`https://tweeter-backend-7ngr.onrender.com/${video}`} type="video/mp4" />
+                <source src={video} type="video/mp4" />
             </video>) : null)}
             {/* {video != null ? <video className="tweetvideo" controls>
                 <source src={`https://twitterbackend-production-93ac.up.railway.app/${video}`} type="video/mp4" />
@@ -248,22 +248,22 @@ const navigate = useNavigate();
                         navigate(`/profile/${name}`)
                     }}>@{name}</span>
                 })) : null}</p>):null}
-            {(image != null) ? (<img src={`https://tweeter-backend-7ngr.onrender.com/${image}`} alt="image" className="tweetImage" />) : null}
+            {(image != null) ? (<img src={image} alt="image" className="tweetImage" />) : null}
             {(video != null) ? <video className="tweetvideo" controls>
-                <source src={`https://tweeter-backend-7ngr.onrender.com/${video}`} type="video/mp4" />
+                <source src={video} type="video/mp4" />
             </video> : null}
             <p className="tweetText">{props.text}</p>
             <div className="tweetWithRetwwet">
             <div className="TWRBlock1">
-            {/* {(retweets.user.displaypic === null) ? (<img src={avatar} className="TWRpic" />) :
+            {(retweets.user.displaypic === null) ? (<img src={avatar} className="TWRpic" />) :
                     ((retweets.user.displaypic.startsWith("https:")) ? (<img src={retweets.user.displaypic}  className="TWRpic"/>) :
                         (<img src={`https://tweeter-backend-7ngr.onrender.com/${retweets.user.displaypic}`} id="picincircle" />))
-                } */}
-                {/* <p className="username">{retweets.user.user_name}</p> */}
+                }
+                <p className="username">{retweets.user.user_name}</p>
             </div>
-        {(retweets.image != null) ? (<img src={`https://tweeter-backend-7ngr.onrender.com/${retweets.image}`} className="TWRVideo" alt="image" />) : null}
+        {(retweets.image != null) ? (<img src={retweets.image} className="TWRVideo" alt="image" />) : null}
             {(retweets.video != null) ? <video controls className="TWRVideo">
-                <source src={`https://tweeter-backend-7ngr.onrender.com/${retweets.video}`} type="video/mp4" />
+                <source src={retweets.video} type="video/mp4" />
             </video> : null}
             <p className="TWRText" >{retweets.text}</p>
         </div>

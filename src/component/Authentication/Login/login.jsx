@@ -51,7 +51,8 @@ function Login() {
     const navigate = useNavigate();
 
 //google authentication
-    const {loadingGoogle, responseGoogle} = useSelector((g)=>g.GoogleReducer)
+const googleRed = useSelector((g)=>g.GoogleReducer)
+    const {loadingGoogle, responseGoogle} = googleRed
 
     function LOGIN(){
         dispatch(LogInUser(data, isAuthEmail)) 
@@ -95,11 +96,27 @@ function Login() {
         }
     },[toFgtPwd])
     
+    const [googleBool, setGoogleBool] = useState(false)
     function navigateGoogle (){
         dispatch(GoogleAction())
-        if(responseGoogle!="")
-        window.location.href = `${responseGoogle}`
+        // if(responseGoogle!="")
+        // window.location.href = `${responseGoogle}`
     }
+
+    useEffect(()=>{
+        console.log(googleBool, loadingGoogle)
+        if(responseGoogle!="" && !loadingGoogle){
+            setGoogleBool(true)
+        }
+    },[googleRed])
+
+    useEffect(()=>{
+        console.log(googleBool)
+        if(googleBool){
+            window.location.href = `${responseGoogle}`
+                setGoogleBool(false)
+            }
+    },[googleBool])
 
     return <>
         <Background />

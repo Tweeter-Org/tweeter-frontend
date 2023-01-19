@@ -44,6 +44,13 @@ export function ProfileReducer(state = initialState, action) {
                 ...state, profileTweet: (state.profileTweet.filter((tw) => { return tw._id != action.payload }))
             };
         }
+        case "FAKE_EDIT_PROFILE":{
+            return {
+                ...state, profile:{...state.profile, user:{...profile.user, 
+                    name:action.payload.name, bio:action.payload.bio, displaypic:action.payload.displaypic }
+            }
+        }
+    }
         default: return state
     }
 }

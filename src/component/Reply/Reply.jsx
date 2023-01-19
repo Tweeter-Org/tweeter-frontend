@@ -19,6 +19,8 @@ function Reply(props) {
     const dispatch = useDispatch()
     const id = props.indexx;
     const lengthR = props.replyingto.length;
+    console.warn( props.replyingto)
+    console.log(lengthR)
     const { responseT, errorT, replyR, replyShow, loading } = useSelector((r) => r.ReplyReducer)
     console.log(replyR, replyShow, loading)
     // console.log(document.getElementsByClassName("RepShowMore"))
@@ -126,8 +128,8 @@ const [bool, setBool] = useState(false)
         <div className="ReplyDiv">
             <div className="Reply1">
                 {(props.displaypic === null) ? (<img src={avatar} id="RepAvatar" />) :
-                    ((props.displaypic.startsWith("https:")) ? (<img src={props.displaypic} />) :
-                        (<img src={`https://tweeter-backend-7ngr.onrender.com/${props.displaypic}`} />))
+                    ((props.displaypic.startsWith("https:")) ? (<img src={props.displaypic} id="RepAvatar"  />) :
+                        (<img src={`https://tweeter-backend-7ngr.onrender.com/${props.displaypic}`} id="RepAvatar"  />))
                 }
                 <p id="RepName">{props.username}</p>
                 <img src={bookmark} className="RbookmarkIcon" onClick={() => { handleTweetBookmark(props.num) }} />
@@ -138,9 +140,9 @@ const [bool, setBool] = useState(false)
                     navigate(`/profile/${name}`)
                 }}>@{name}</span>
             })) : null}</p>
-            {props.image != null ? (<img src={`https://tweeter-backend-7ngr.onrender.com/${props.image}`} id="RepImage" alt="image" />) : null}
+            {props.image != null ? (<img src={props.image} id="RepImage" alt="image" />) : null}
             {props.video != null ? <video controls>
-                <source src={`https://tweeter-backend-7ngr.onrender.com/${props.video}`} id="RepImage" type="video/mp4" />
+                <source src={props.video} id="RepImage" type="video/mp4" />
             </video> : null}
             <p className="RepText">{props.text}</p>
             <div className="secondTweetBlock" id="ReplyIconBlock">

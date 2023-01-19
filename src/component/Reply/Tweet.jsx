@@ -150,15 +150,15 @@ function ToTweet(props) {
         // setOPacity();
     }
 
-    //for loader
-    useEffect(() => {
-        if (loading === true) {
-            document.body.style.opacity = 0.5;
-        }
-        else {
-            document.body.style.opacity = 1;
-        }
-    }, [loading])
+    // //for loader
+    // useEffect(() => {
+    //     if (loading === true) {
+    //         document.body.style.opacity = 0.5;
+    //     }
+    //     else {
+    //         document.body.style.opacity = 1;
+    //     }
+    // }, [loading])
 
     return <>
         {retweets == null ? (<div className="tweetComp POPUPBG" id="RepTweet">
@@ -174,9 +174,9 @@ function ToTweet(props) {
 
                 <img src={bookmark} className="bookmarkIcon" onClick={() => { handleTweetBookmark(props.tweetId) }} />
             </div>
-            {image != null ? (<img src={`https://tweeter-backend-7ngr.onrender.com/${image}`} alt="image" className="tweetImage" />) : null}
+            {image != null ? (<img src={image} alt="image" className="tweetImage" />) : null}
             {video != null ? <video className="tweetvideo" controls>
-                <source src={`https://tweeter-backend-7ngr.onrender.com/${video}`} type="video/mp4" />
+                <source src={video} type="video/mp4" />
             </video> : null}
             <p className="tweetText">{props.text}</p>
             <div className="secondTweetBlock">
@@ -217,9 +217,9 @@ function ToTweet(props) {
 
                 <img src={bookmark} className="bookmarkIcon" onClick={() => { handleTweetBookmark(props.tweetId) }} />
             </div>
-            {(image != null) ? (<img src={`https://tweeter-backend-7ngr.onrender.com/${image}`} alt="image" className="tweetImage" />) : null}
+            {(image != null) ? (<img src={image} alt="image" className="tweetImage" />) : null}
             {(video != null) ? <video className="tweetvideo" controls>
-                <source src={`https://tweeter-backend-7ngr.onrender.com/${video}`} type="video/mp4" />
+                <source src={video} type="video/mp4" />
             </video> : null}
             <p className="tweetText">{props.text}</p>
             <div className="tweetWithRetwwet">
@@ -264,7 +264,7 @@ function ToTweet(props) {
         </div>)}
         <CreateTweet />
         <ShareTweet />
-        {(loading === true) ? <Loader loading={loading} /> : null}
+        {/* {(loading === true) ? <Loader loading={loading} /> : null} */}
     </>
 }
 

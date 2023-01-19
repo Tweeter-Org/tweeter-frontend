@@ -25,11 +25,12 @@ function CreateTweet(props) {
     const dispatch = useDispatch();
     const fd = new FormData();
     function handleSendImage(e) {
+        document.getElementById("imageOutput").style.display = "block"
         var imageoutput = document.getElementById("imageOutput");
         imageoutput.src = URL.createObjectURL(e.target.files[0])
         setImageInArr(URL.createObjectURL(e.target.files[0]))
         setSendImage(e.target.files[0])
-        document.getElementById("imageOutput").style.display = "block"
+      
     }
     const [sendVideo, setSendVideo] = useState(null);
     function handleSendVideo(e) {
@@ -59,13 +60,14 @@ function CreateTweet(props) {
     }
 
     function backToHome(e) {
+        setOPacity()
         e.preventDefault();
         setText("")
         document.getElementById("CREATETWEET").style.display = "none"
-        document.getElementById("imageOutput").style.display = "none"
-        document.getElementById("videoOutput").style.display = "none"
-        document.getElementById("VIDEO").style.display = "none"
-        setOPacity()
+        // document.getElementById("imageOutput").style.display = "none"
+        // document.getElementById("videoOutput").style.display = "none"
+        // document.getElementById("VIDEO").style.display = "none"
+        
     }
     const { response, error, tweetCreate, loading } = useSelector((t) => t.TweetCreateReducer)
     // console.log(response)
@@ -114,8 +116,8 @@ function CreateTweet(props) {
             "text": Rtext,
             "_id": RId,
             user: {
-                "name": Rname,
-                "user_name": user_name,
+                
+                "user_name": Rname,
                 displaypic: displaypic
             },
         }
@@ -137,6 +139,7 @@ function CreateTweet(props) {
 
         backToHome(e)
         dispatch(FakeTweetFeedAction(newTweetCreated))
+        // setToastBoolE(true)
         if (response != "") {
             toast.success(`${response}`, {
                 position: "top-center",
@@ -187,20 +190,7 @@ function CreateTweet(props) {
 
     // console.log(responseT, errorT, nameInReply)
     const atNames = sessionStorage.getItem("replyName");
-    // useEffect(()=>{
-    //     if(showName){
-    //         nameInReply.filter((n)=>{
-    //             if(n==atNames){
-    //                 console.log(n)
-    //             document.getElementById("CTReplyAtName1").style.display="none";}
-    //             else
-    //             document.getElementById("CTReplyAtName1").style.display="inline";
-    //         })
-    //     }
-    //         else{
-    //             document.getElementById("CTReplyAtName1").style.display="inline";
-    //         }
-    // },[nameInReply, showName])
+   
     const replYtweet = {
         "image": imageInArr,
         "likes": "0",
@@ -215,6 +205,7 @@ function CreateTweet(props) {
     function handleTweetReply(e) {
         fd.append("text", text)
         fd.append("tweetId", RId)
+        console.log(RId)
         if (sendImage != "") {
             fd.append("file", sendImage)
         }
@@ -225,6 +216,7 @@ function CreateTweet(props) {
             fd.append("file", null)
         }
         dispatch(ReplyToTweet(fd))
+        // console.
         dispatch(FakeReplyTweetAction(replYtweet))
         backToHome(e)
         // console.log(replYtweet)
@@ -244,26 +236,27 @@ function CreateTweet(props) {
     }
 
     /* TOASTER */
-
+// const [toastBoolE, setToastBoolE] = useState(false)
+// const [toastBoolR, setToastBoolR] = useState(false)
     
-    // useEffect(()=>{
-    //     console.log(toastBool, loading)
-    //     if(error!="" && !loading){
-    //         console.log(error)
-    //         setToastBool(true)
-    //     }
-    // },[responseApi])
+//     useEffect(()=>{
+//         console.log(toastBoolE, loading)
+//         if(error!="" && !loading){
+//             console.log(error)
+//             setToastBoolE(true)
+//         }
+//     },[])
     
-    // useEffect(()=>{
-    //     console.log(toastBool)
-    //     if(toastBool){
-    //             toast.error(`${error}`, {
-    //                 position: "top-center",
-    //                 theme: "light",
-    //             });
-    //             setToastBool(false)
-    //         }
-    // },[toastBool])
+//     useEffect(()=>{
+//         console.log(toastBoolE)
+//         if(toastBoolE){
+//                 toast.error(`${error}`, {
+//                     position: "top-center",
+//                     theme: "light",
+//                 });
+//                 setToastBoolE(false)
+//             }
+//     },[toastBoolE])
 
     /* */
 

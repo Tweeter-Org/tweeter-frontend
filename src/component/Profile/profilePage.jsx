@@ -195,9 +195,16 @@ function ProfilePage() {
         <Sidebar />
         <div className="PROFILE POPUPBG">
             <div className="profileDiv1">
+            {/* { (displaypic != null && displaypipc.startsWith("blob:"))?(
+             <img src={displaypic} alt="image" className="pImage"  />):(
+                (displaypic != null && displaypic.startsWith("https:")) ?(<img src={displaypic} className="pImage" />): 
+                (<img src={`https://tweeter-backend-7ngr.onrender.com/${displaypic}`} alt="image" className="pImage" />))} */}
+              
                 {(displaypic === null) ? (<img src={avatar} className="pImage" />) :
+                (displaypic != null && displaypic.startsWith("blob:"))?(
+             <img src={displaypic} alt="image" className="pImage"  />):
                     ((displaypic.startsWith("https:")) ? (<img src={displaypic} className="pImage" />) :
-                        (<img src={`https://tweeter-backend-7ngr.onrender.com/${displaypic}`} className="pImage" />))
+                        (<img src={displaypic} className="pImage" />))
                 }
                 <div className="PBLOCK1">
                     <div className="pBlock1">
@@ -229,8 +236,8 @@ function ProfilePage() {
                 <p className="pText3">
                     {bio}
                 </p>
-                <p className="pText5"><span id="create">Created At: </span>{createdAt}</p>
-                {myProfile ? <p className="pText6"><span id="update">Updated At: </span>{updatedAt}</p> : null}
+                <p className="pText5"><span id="create">Join In: </span>{createdAt}</p>
+              
             </div>
             <div className="profileDiv3">
                 <p className="pTweetHead" onClick={() => { showTweets() }}>Tweets</p>

@@ -63,6 +63,14 @@ function EditProfileAction(fd) {
 
 export { EditProfileAction }
 
+export const FakeEditProfile = (name, username, displaypic) => {
+    return {
+        type: "FAKE_EDIT_PROFILE",
+        payload: {
+            name, username, displaypic
+        }
+    }
+}
 
 export const ProfileApi = (name) => {
     return {
