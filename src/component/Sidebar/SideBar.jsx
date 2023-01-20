@@ -28,6 +28,7 @@ import Tweetsearch from "./Tweetsearch";
 import { InactiveUserList } from "../../react-redux/actions/Message";
 import deleteIcon from "../Assets/delete.svg"
 import ScrollableChat from "../Messages/ScrollableChats";
+import NoChats from "../Messages/NoChats";
 
 function Sidebar() {
 
@@ -133,8 +134,10 @@ function Sidebar() {
         navigate("/chats/:userid")
         else
         navigate("/messages")
-        document.getElementById("NOCHATBLOCK").style.display="flex";
-        document.getElementById("SCROLLCHATS").style.display="none";
+        // document.getElementById("NOCHATBLOCK").style.display="flex";
+        // document.getElementById("SCROLLCHATS").style.display="none";
+        // document.getElementById("SCROLL1").style.display="none";
+        // document.getElementById("SCROLL2").style.display="none";
     }
 
     function LogoutMouseover(){
@@ -205,6 +208,7 @@ document.getElementById("logout").style.display="block"
             
         </div>
         {(loading === true) ? <Spinner animation="border" variant="light" id="loadSpinner" /> : null}
+        <NoChats />
     </>
 }
 export default Sidebar

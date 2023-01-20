@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import avatar from "../Assets/avatar.svg"
 
 function NoChats(){
 

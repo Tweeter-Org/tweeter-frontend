@@ -26,7 +26,7 @@ function ScrollableChat(props) {
             {chatmsg.length > 0 ? (chatmsg.map((chat) => {
                 if (chat.user.user_name != user.user_name) {
                     return (
-                        <div className="scrollChatBlockYou">
+                        <div className="scrollChatBlockYou" id="SCROLL1">
                             <p className="scrollChatText">{chat.text}</p>
                             {(chat.image != null && chat.image.startsWith("blob:")) ? (
                                 <img src={chat.image} alt="image" className="chatImageShow" />) : (
@@ -58,7 +58,7 @@ function ScrollableChat(props) {
                 }
                 else {
                     return (
-                        <div className="scrollChatBlockMine" >
+                        <div className="scrollChatBlockMine" id="SCROLL1" >
                             <p className="scrollChatText">{chat.text}</p>
                             {(chat.image != null && chat.image.startsWith("blob:")) ? (
                                 <img src={chat.image} alt="image" className="chatImageShow" />) : (

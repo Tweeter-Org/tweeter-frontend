@@ -136,74 +136,74 @@ function CreateTweet(props) {
 
     function handleCreateTweetSearch(e){
        setText(e.target.value)
-       if (e.target.value.startsWith('#')) {
-        console.log("hash")
-        dispatch(SearchTweetWithTag(e.target.value.slice(1)))
-    }
-    if (e.target.value.startsWith('@')) {
-        dispatch(SearchUser(e.target.value.slice(1))); 
-    }
-    setSearchListArray([])
-    setSearchTweetList([])
-    if (tomap) {
-        if (list.result.length > 0) {
-            setSearchListArray(list.result)
-        }
-        else {
-            setSearchListArray([])
-        }
-    }
-    if (tohash) {
+    //    if (e.target.value.startsWith('#')) {
+    //     console.log("hash")
+    //     dispatch(SearchTweetWithTag(e.target.value.slice(1)))
+    // }
+    // if (e.target.value.startsWith('@')) {
+    //     dispatch(SearchUser(e.target.value.slice(1))); 
+    // }
+    // setSearchListArray([])
+    // setSearchTweetList([])
+    // if (tomap) {
+    //     if (list.result.length > 0) {
+    //         setSearchListArray(list.result)
+    //     }
+    //     else {
+    //         setSearchListArray([])
+    //     }
+    // }
+    // if (tohash) {
        
         // document.getElementById("ctSearchHash").style.display="block";
         // document.getElementById("ctSearchATR").style.display="none";
-        if (tweetList.length > 0) {
-            setSearchTweetList(tweetList)
-        }
-        else {
-            setSearchTweetList([])
-        }
-    }
-    if(!e.target.value){
-        setSearchListArray([])
-        setSearchTweetList([])
-    }
+    //     if (tweetList.length > 0) {
+    //         setSearchTweetList(tweetList)
+    //     }
+    //     else {
+    //         setSearchTweetList([])
+    //     }
+    // }
+    // if(!e.target.value){
+    //     setSearchListArray([])
+    //     setSearchTweetList([])
+    // }
     }
 // const [tag, setTag] = useState(false)
-    useEffect(() => {
-        if (tomap) {
-            if (list.result.length > 0) {
-                setSearchListArray(list.result)
-            }
-            else {
-                setSearchListArray([])
-            }
-        }
+    // useEffect(() => {
+    //     if (tomap) {
+    //         if (list.result.length > 0) {
+    //             setSearchListArray(list.result)
+    //         }
+    //         else {
+    //             setSearchListArray([])
+    //         }
+    //     }
         // if(!text){
         //     setSearchListArray([])
         //     setSearchTweetList([])
         // }
-    }, [tomap, list, text])
-    useEffect(() => {
-        if (tohash) {
-            if (tweetList.length > 0) {
-                setSearchTweetList(tweetList)
-            }
-            else {
-                setSearchTweetList([])
-            }
-        }
-        if(!text){
-            setSearchListArray([])
-           setSearchTweetList([])
-        }
-    }, [tohash, tweetList, text])
-    useEffect(()=>{
-        if(searchListArray.length==0 && searchTweetList.length==0)
-        document.getElementById("CTSEARCH").style.display="none";
-        else
-        document.getElementById("CTSEARCH").style.display="flex";
-    },[searchListArray, searchTweetList])
+    // }, [tomap, list, text])
+    // useEffect(() => {
+    //     if (tohash) {
+    //         if (tweetList.length > 0) {
+    //             setSearchTweetList(tweetList)
+    //         }
+    //         else {
+    //             setSearchTweetList([])
+    //         }
+    //     }
+    //     if(!text){
+    //         setSearchListArray([])
+    //        setSearchTweetList([])
+    //     }
+    // }, [tohash, tweetList, text])
+    // useEffect(()=>{
+    //     if(searchListArray.length==0 && searchTweetList.length==0)
+    //     document.getElementById("CTSEARCH").style.display="none";
+    //     else
+    //     document.getElementById("CTSEARCH").style.display="flex";
+    // },[searchListArray, searchTweetList])
 
     function handleCreateTweet(e) {
         e.preventDefault();
@@ -311,7 +311,7 @@ function CreateTweet(props) {
                     <div className="ctWriteTweet">
                         <input type="text" className="ctWriteTweetInput" value={text} onChange={handleCreateTweetSearch} />
                     </div>
-                    <div className="ctSearchFlexBox POPUPBG" id="CTSEARCH">
+                    {/* <div className="ctSearchFlexBox POPUPBG" id="CTSEARCH">
                 {tohash ? (
                     searchTweetList.length > 0 ? (searchTweetList.map((se) => {
                         return <CTSearchTag hashtag={se.hashtag} />
@@ -323,7 +323,7 @@ function CreateTweet(props) {
                         return <CreateSearch username={searchh.user_name}  />
                     })) :null) : null
                 }
-            </div>
+            </div> */}
                 </div>
                 <div className="CTRetweetDiv" id="CTRETWEETDIV">
                     <div className="CTRet1">

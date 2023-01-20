@@ -16,6 +16,7 @@ import ScrollableChat from "./ScrollableChats";
 import Loader from "../Assets/Loader";
 import { io } from "socket.io-client";
 import { AddChatNotify } from "../../react-redux/actions/Notifications";
+import NoChats from "./NoChats";
 // import { Socket } from "socket.io-client";
 
 
@@ -28,6 +29,7 @@ function Chats() {
     const { userid } = useParams();
 
     // set socket connection
+    // console.log(userid)
     useEffect(() => {
         socket = io(ENDPOINT)
         socket.emit("setup", user);
@@ -36,6 +38,23 @@ function Chats() {
             setSocketConnected(true)
         })
     }, [])
+    useEffect(()=>{
+        console.log(userid)
+        console.log(parseInt(userid))
+        console.log(parseInt(userid)!= NaN)
+        if(Number.isInteger(userid)){
+            document.getElementById("NOCHATBLOCK").style.display="none";
+            document.getElementById("SCROLLCHATS").style.display="flex";
+            document.getElementById("CHATTYPE").style.display="flex";  
+       
+        }
+        else{
+            document.getElementById("NOCHATBLOCK").style.display="flex";
+            document.getElementById("SCROLLCHATS").style.display="none";
+            document.getElementById("CHATTYPE").style.display="none";
+        }
+
+    },[userid])
 
     const [userN, setUserN] = useState("")
     const [userlist, setUesrlist] = useState([])
@@ -139,9 +158,10 @@ function Chats() {
         else {
             fd.append("file", null)
         }
-      
+      if(textMsg!=""){
         dispatch(SendChatsAction(fd, socket))
         dispatch(FakeViewChatsAction(sendChat))
+      }
         setTextMsg("")
         setSendImage(null)
         setSendVideo(null)
@@ -196,7 +216,7 @@ function Chats() {
                 <div>
                     <ScrollableChat allchats={allChats} />
                 </div>
-                <div className="ChatTypeDiv">
+                <div className="ChatTypeDiv" id="CHATTYPE">
                     <form onSubmit={(e) => e.preventDefault()}
                         enctype="multipart/form-data" >
                         <input className="ChatType2" type="text" value={textMsg} placeholder="Type a message" onChange={(e) => { setTextMsg(e.target.value) }} />
@@ -251,6 +271,7 @@ function Chats() {
             </div>
         </div>
         {(loading == true) ? <Loader loading={loading} /> : null}
+        <NoChats />
         {/* <span className='ChatLine1' /> */}
     </>
 }

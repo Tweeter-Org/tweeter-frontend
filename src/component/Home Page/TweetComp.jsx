@@ -156,7 +156,7 @@ const navigate = useNavigate();
 
         console.warn(x[i].innerHTML)
 
-        x[i].innerHTML = x[i].innerHTML.replace(/(?<=@).*?(?=( |$))/g, "attherate")
+        x[i].innerHTML = x[i].innerHTML.replace(/(?<=@).*?(?=( |$))/g, "atTheRate")
     }
     const regex= /#(\S+)/g;
     const [HashArray, setHashArray] =useState([]);
@@ -186,36 +186,7 @@ const navigate = useNavigate();
     //     console.warn(words)
         
     // },[])
-    // const x = props.text.indexOf('#');
-    // const y = props.text.indexOf(' ')
-    //
-    // var index1=-1,index2=-1,str
-    // for(var i=0;i<props.text.length;i++){
-    //     // console.log("loop")
-    //     if(props.text[i]=='#'){
-    //         index1=i;
-    //         // console.log(index1)
-    //         for(var j=index1+1;j<props.text.length+1;j++){
-    //             if(props.text[j]==' '){
-    //                 index2=j;
-    //                 // console.log("loop2")
-    //                 // console.log(index2)
-    //                 break;
-    //             }
-    //             console.log("loop3")
-    //             if(j===props.text.length-1){
-    //                 // console.log(j)
-    //             }
-               
-    //         }
-    //         str = props.text.substring(index1, index2)
-    //         HashArray.push(str)
-    //         // HashArray[hash=>...hash, str]
-    //         // HashArray[((hash)=>{...hash, str})]
-    //         console.log(str)
-    //     }
-    // }
-//    console.log(HashArray)
+ 
     return <>
     {retweets==null?(  <div className="tweetComp POPUPBG" >
             <div className="firstTweetBlock" onClick={()=>{handleToTweet(props.tweetId)}} >
