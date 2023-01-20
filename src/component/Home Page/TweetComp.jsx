@@ -105,6 +105,7 @@ function Tweet(props) {
         document.getElementById("CTRETWEETDIV").style.display="flex";
         document.getElementById("buttonTweet").style.display="none";
         document.getElementById("buttonReply").style.display="none";
+        document.getElementById("buttonReply2").style.display = "none";
         document.getElementById("buttonRetweet").style.display="block";
         document.getElementById("CTReplyDiv").style.display="none"
         if (retweetPath === "white") {
@@ -128,6 +129,7 @@ function Tweet(props) {
         document.getElementById("buttonTweet").style.display="none";
         document.getElementById("buttonRetweet").style.display="none";
         document.getElementById("buttonReply").style.display="block";
+        document.getElementById("buttonReply2").style.display = "none";
     }
 
     function handleTweetShare (tweetid){
@@ -198,7 +200,7 @@ const navigate = useNavigate();
                 <p className="username">{props.name}</p>
                 <p className="tweetUsername2"  onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >@{props.username}</p>
                 </div>
-                <img src={bookmark} className="bookmarkIcon" onClick={(e)=>{handleTweetBookmark(e,props.tweetId)}} />
+                <img src={bookmark} className="bookmarkIcon" id="BMICON" onClick={(e)=>{handleTweetBookmark(e,props.tweetId)}} />
                 <TweetPopup name={props.username} num={id} displaypic={props.displaypic}/>
             </div>
             {replyingto.length>0?(<p id="prTwReplying1">Replying to {replyingto.length > 0 ? (replyingto.map((name) => {
@@ -242,9 +244,9 @@ const navigate = useNavigate();
             </div>
         </div>):(  <div className="tweetComp POPUPBG" id="tweetRet" >
         <div className="firstTweetBlock" onClick={()=>{handleToTweet(props.tweetId)}} >
-                {(props.displaypic === null) ? (<span className="displaypie"><img src={avatar} id="picincircle" /></span>) :
-                    ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
-                        (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>))
+                {(props.displaypic === null) ? (<img src={avatar} id="picincircle" />) :
+                   (<img src={props.displaypic} id="picincircle" />) 
+                        
                 }
                 <div className="USERNAME">
                 <p className="username">{props.name}</p>

@@ -9,18 +9,18 @@ import avatar from "../Assets/avatar.svg"
 function ChatUser(props) {
     const {user} = useSelector((a)=>a.AuthReducer)
     const viewChatIdd = props.viewChatid;
-    console.log(viewChatIdd)
+    // console.log(viewChatIdd)
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { userid } = useParams();
-    console.log(user)
-    console.log(props.user)
+    // console.log(user)
+    // console.log(props.user)
     const [info, setInfo] = useState({})
     useEffect(()=>{
         props.user.map((u)=>{
             if(u.user_name!= user.user_name)
             {
-                console.log(u);
+                // console.log(u);
                 setInfo(u)
                 return u
             }
@@ -32,7 +32,7 @@ function ChatUser(props) {
         props.user.map((u)=>{
             if(u._id == userid)
             {
-                console.warn(u);
+                // console.warn(u);
                 // console.log(props.indexx)
                 document.getElementsByClassName("chatUser")[props.indexx].style.backgroundColor="rgba(255,255,255,0.1)"
                 var ChatToColor =document.getElementsByClassName("chatUser")

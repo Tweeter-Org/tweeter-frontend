@@ -130,6 +130,7 @@ function ToTweet(props) {
         document.getElementById("buttonTweet").style.display = "none";
         document.getElementById("buttonRetweet").style.display = "none";
         document.getElementById("buttonReply").style.display = "block";
+        document.getElementById("buttonReply2").style.display = "none";
     }
     const navigate = useNavigate();
 

@@ -175,10 +175,16 @@ color:#47C87A;
 .bookmarkIcon {
     width: 20px;
     height: 20px;
+    /* display: flex;/ */
+    /* flex-direction: column; */
+    /* justify-content: flex-start; */
     margin-left: 22vw;
     opacity: 0.8;
     cursor: pointer;
     z-index:500;
+}
+#BMICON{
+     /* justify-content: first baseline; */
 }
 
 .deleteIcon {
@@ -860,6 +866,9 @@ display: none;
     .ctCreateTweet{
         margin-right:2vw;
     }
+    .bookmarkIcon{
+        margin-left:21vw;
+    }
 }
 
 @media (max-width:950px){
@@ -876,7 +885,9 @@ display: none;
     .tweetShare{
         font-size: 0.9rem;
     }
-    
+    .bookmarkIcon{
+        margin-left: 19.5vw;
+    }
     #commentIcon {
         width: 19px;
         height: 16px;
@@ -953,7 +964,7 @@ margin-left:11.5vw;
 @media(max-width:800px){
     .username{
         font-size: 1.1rem;
-       width: max-content;
+       /* width: 5; */
     }
     .createTweetDiv{
         width:45vw;
@@ -997,15 +1008,20 @@ margin-top:1.5px;
     .ctImageText , .ctVideoText, .ctSmileText{
         display: none;
     }
+    .bookmarkIcon{
+        margin-left:24vw;
+        width:18px;
+        height:18px;
+    }
 }
 @media(max-width:1300px){
     .bookmarkIcon{
-        margin-left:25vw;
+        /* margin-left:25vw; */
     }
 }
 @media(max-width:1090px){
     .bookmarkIcon{
-        margin-left:23vw;
+        /* margin-left:23vw; */
     }
 }
 @media(max-width:730px){
@@ -1016,10 +1032,15 @@ margin-top:1.5px;
         width:60vw;
         padding-left:8px;
     }
+   
+    .TweetShowMore{
+        margin-left:32.5vw; 
+        width:60vw;
+    }
     .tweetImage{
         width:58vw;
     }
-    .tweetVideo{
+    .tweetvideo{
         width:58vw;
     }
     .TWRVideo{
@@ -1036,8 +1057,10 @@ margin-top:1.5px;
         height:35px;
     }
     .username{
-        width:fit-content;
-        font-size: 1.25rem;
+        width:40vw;
+        font-size: 1rem;
+        margin-top:-5px;
+        margin-bottom:-4px;
     }
     .createTweetDiv{
         width:55vw;
@@ -1073,6 +1096,9 @@ margin-top:1.5px;
         font-size: 0.9rem;
         margin-right:-2vw;
     }
+    .bookmarkIcon{
+        margin-left:8vw;
+    }
 }
 @media(max-width:600px){
    #picincircle{
@@ -1085,29 +1111,34 @@ margin-top:1.5px;
     }
     .username{
         width:35vw;
-        font-size: 1.15rem;
+        font-size: 1rem;
+        margin-bottom:2px;
     }
     .tweetUsername2{
         margin-top:-7px;
         font-size: 0.7rem;
     }
     .tweetComp{
-        width:65vw;
+        width:60vw;
+    }
+    .TweetShowMore{
+        margin-left:36.5vw;
+        width:60vw;
     }
     .tweetImage{
-        width:63vw;
-    }
-    .tweetVideo{
-        width:63vw;
-    }
-    .tweetWithRetwwet{
         width:57vw;
     }
+    .tweetvideo{
+        width:57vw;
+    }
+    .tweetWithRetwwet{
+        width:52vw;
+    }
     .TWRVideo{
-        width:55vw;
+        width:50vw;
     }
     .tweetFlexBox{
-        margin-left:15vw;
+        margin-left:13.5vw;
         margin-right:2vw;
     }
     .likeIcon {
@@ -1115,7 +1146,9 @@ margin-top:1.5px;
         height: 16px;
         margin-top:7px;
     }
-    
+    .bookmarkIcon{
+        margin-left:11vw;
+    }
     #shareIcon {
         width: 17px;
         height: 17px;
@@ -1180,11 +1213,15 @@ margin-top:1.5px;
     .tweetComp{
         width:82vw;
     }
+    .TweetShowMore{
+        width:82vw;
+        margin-left:9vw;
+    }
     .tweetImage{
         width:78vw;
     }
-    .tweetVideo{
-        width:78vw;
+    .tweetvideo{
+        width:78.5vw;
     }
     .tweetWithRetwwet{
         width:73vw;
@@ -1197,8 +1234,11 @@ margin-top:1.5px;
         margin-left: -14vw;
     }
     .username{
-        width:fit-content;
+        width:62vw;
         font-size: 1rem;
+    }
+    .tweetText{
+        width:75vw;
     }
     .createTweetDiv{
         margin-top:50px;
@@ -1246,22 +1286,35 @@ margin-top:1.5px;
         margin-right:3.5vw;
         width:13vw;
     }
+    .bookmarkIcon{
+        margin-left:4vw;
+    }
 }
 @media(max-width:450px){
     .tweetComp{
         width:85vw;
     }
     .tweetImage{
-width:83vw;
+width:80vw;
     }
-    .tweetVideo{
-        width:83vw;
+    .TweetShowMore{
+        width:85vw;
+        margin-left:7vw;
+    }
+    .tweetText{
+        width:82vw;
+    }
+    .tweetvideo{
+        width:80vw;
+    }
+    .username{
+        width:30vw;
     }
     .tweetWithRetwwet{
         width:76vw;
     }
     .TWRVideo{
-        width:74vw;
+        width:73vw;
     }
     .tweetFlexBox{
         /* width:85vw; */
@@ -1271,6 +1324,10 @@ width:83vw;
         width: 13px;
         height: 13px;
         margin-top:7px;
+    }
+    .tweetText{
+        font-size:0.8rem;
+        margin-top:4px;
     }
     .tweetLike{
         font-size: 0.75em;
@@ -1352,6 +1409,11 @@ width:83vw;
         font-weight: 600;
         height:28px;
     }
+    .bookmarkIcon{
+        margin-left:35vw;
+        width:16px;
+        height:16px
+    }
 }
 @media (max-width:320px){
     .tweetComm{
@@ -1378,6 +1440,19 @@ width:83vw;
         margin-left:-4vw;
         margin-top:0;
     }
+    .tweetText{
+font-size:0.75rem;
+width:70vw;
+    }
+    .bookmarkIcon{
+        width:14px;
+        height:14px;
+        margin-left:20vw;
+    }
+    .username{
+        font-size: 0.9rem;
+        width:40vw;
+    }
     .retweetIcon{
         width:18px;
         height: 18px;
@@ -1393,10 +1468,7 @@ width:83vw;
     .secondTweetBlock{
         margin-bottom:5px;
     }
-    .username{
-        font-size: 0.9rem;
-        width: fit-content;
-    }
+   
     .createTweetDiv{
         margin-top:50px;
         margin-left: -19vw;

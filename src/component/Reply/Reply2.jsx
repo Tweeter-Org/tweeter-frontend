@@ -61,6 +61,7 @@ function Reply2(props) {
         sessionStorage.setItem("replyName", name)
         // dispatch()
         dispatch(RetweetDetails(tweetid, name, video, text, image))
+        console.warn(tweetid)
         sessionStorage.setItem("retweetId", tweetid)
         setOPacity()
         document.getElementById("CREATETWEET").style.display = "block"
@@ -69,7 +70,8 @@ function Reply2(props) {
         document.getElementById("CTweetText").style.display = "none";
         document.getElementById("buttonTweet").style.display = "none";
         document.getElementById("buttonRetweet").style.display = "none";
-        document.getElementById("buttonReply").style.display = "block";
+        document.getElementById("buttonReply").style.display = "none";
+        document.getElementById("buttonReply2").style.display = "block";
     }
     function handleRetweet(tweetid, name, image, video, text) {
         dispatch(RetweetDetails(tweetid, name, video, text, image))
@@ -92,14 +94,21 @@ function Reply2(props) {
             document.getElementsByClassName("RtweetRetweet")[id].style.color = "white"
         }
     }
+    function handleTweetShare (tweetid){
+        sessionStorage.setItem("shareTweetId", tweetid)
+        console.log(tweetid)
+        document.getElementById("SHAREBLOCK").style.display="flex"
+        // setOPacity();
+    }
+
     return <>
         <div className="Reply2Block">
             <hr id="Reply2Line" />
             <div id="Reply2Div">
                 <div className="Reply1">
                     {(props.displaypic === null) ? (<img src={avatar} id="RepAvatar2" />) :
-                        ((props.displaypic.startsWith("https:")) ? (<img src={props.displaypic} />) :
-                            (<img src={props.displaypic} />))
+                       
+                            (<img src={props.displaypic} id="RepAvatar2" />)
                     }
                     <p id="RepName">{props.username}</p>
                     <img src={bookmark} className="RbookmarkIcon2" onClick={() => { handleTweetBookmark(props.num) }} />
@@ -129,10 +138,10 @@ function Reply2(props) {
                         <img src={retweet} className="RretweetIcon" onClick={() => handleRetweet(props.num, props.username, props.image, props.video, props.text)} />
                         <p className="RtweetRetweet" id="RTLike">Retweet</p>
                     </div>
-                    {/* <div className="iconBlock">
-                    <img src={share} id="ReplyShare" />
+                    <div className="iconBlock">
+                    <img src={share} id="ReplyShare" onClick={()=>{handleTweetShare(props.num)}} />
                     <p className="tweetShare" id="RTLike">Share</p>
-                </div> */}
+                </div>
                 </div>
             </div>
         </div>

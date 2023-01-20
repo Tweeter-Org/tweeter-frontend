@@ -264,7 +264,7 @@ function CreateTweet(props) {
     function handleTweetReply(e) {
         fd.append("text", text)
         fd.append("tweetId", RId)
-        console.log(RId)
+        console.warn(RId)
         if (sendImage != "") {
             fd.append("file", sendImage)
         }
@@ -277,6 +277,25 @@ function CreateTweet(props) {
         dispatch(ReplyToTweet(fd))
         // console.
         dispatch(FakeReplyTweetAction(replYtweet))
+        backToHome(e)
+        // console.log(replYtweet)
+    }
+    function handleReplyReply(e) {
+        fd.append("text", text)
+        fd.append("tweetId", RId)
+        console.warn(RId)
+        if (sendImage != "") {
+            fd.append("file", sendImage)
+        }
+        else if (sendVideo != "") {
+            fd.append("file", sendVideo)
+        }
+        else {
+            fd.append("file", null)
+        }
+        dispatch(ReplyToTweet(fd))
+        // console.
+        // dispatch(FakeReplyTweetAction(replYtweet))
         backToHome(e)
         // console.log(replYtweet)
     }
@@ -383,6 +402,7 @@ function CreateTweet(props) {
                     <button className="ctCreateTweet" onClick={handleCreateTweet} id="buttonTweet" >Tweet</button>
                     <button className="ctCreateTweet" id="buttonRetweet" onClick={handleCreateReTweet}>ReTweet</button>
                     <button className="ctCreateTweet" id="buttonReply" onClick={handleTweetReply}>Reply</button>
+                    <button className="ctCreateTweet" id="buttonReply2" onClick={handleReplyReply}>Reply</button>
                 </div>
             </form>
         </div>

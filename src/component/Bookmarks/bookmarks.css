@@ -1,25 +1,23 @@
 .alterBM{
-    position: absolute;
-    top:15vh;
-    left:25vw;
+    /* position: absolute; */
+    margin-top:40px;
+    margin-left:37vw;
+    display: flex;
+    flex-direction: column;
 }
 .alterBMImage{
-    position:absolute;
-    left:12vw;
-    top:4vh;
-    width:22vw;
+    width:300px;
+    height:250px;
 }
 .alterBMText1{
     color:rgba(255,255,255,0.7);
     font-family: 'Montserrat';
 font-style: normal;
-width:30vw;
+width:50vw;
 font-weight: 600;
-font-size: 1.8rem;
+font-size: 1.6rem;
 line-height: 18px;
-position:absolute;
-left:10vw;
-top:40vh;
+margin-top:-5px;
 }
 .alterBMText2{
     text-decoration: underline;
@@ -31,11 +29,151 @@ width:25vw;
 font-weight: 500;
 font-size: 1.2rem;
 line-height: 18px;
-position:absolute;
-left:15.8vw;
-top:47vh;
+margin-top:-3px;
+margin-left:5vw;
+
 cursor: pointer;
 }
 #BOOKMARK{
     margin-top:-60px;
+}
+
+
+@media(max-width:1100px){
+    .alterBMImage{
+        margin-left:-4vw;
+    }
+    .alterBMText1{
+        margin-left: -4vw;
+        font-size: 1.3rem;
+    }
+    .alterBMText2{
+        width:35vw;
+        margin-left: 2vw;
+        font-size: 1rem;
+    }
+}
+@media(max-width:900px){
+    .alterBMImage{
+        margin-left:-4vw;
+        width:220px;
+        height:150px;
+    }
+    .alterBMText1{
+        margin-left: -4vw;
+        font-size: 1.1rem;
+        margin-top:5px;
+        margin-bottom: 6px;
+    }
+    .alterBMText2{
+        width:35vw;
+        font-size: 0.9rem;
+        margin-left: 0.85vw;
+    }
+}
+@media (max-width:800px){
+    .alterBMImage{
+width:230px;
+height:180px;
+margin-left:-5vw;
+    }
+    .alterBMText1{
+font-size:1.3rem;
+margin-left: -9vw;
+    }
+    .alterBMText2{
+font-size: 0.9rem;
+margin-top: 3px;;
+margin-left: -0.5vw;
+    }
+}
+
+@media (max-width:730px){
+    .alterBM{
+        margin-left:35vw;
+    }
+    .alterBMImage{
+width:250px;
+height:200px;
+    }
+    .alterBMText1{
+font-size:1.3rem;
+    }
+    .alterBMText2{
+font-size: 1rem;
+margin-left: 8vw;
+    }
+}
+
+@media (max-width:620px){
+    .alterBMText1{
+font-size:1.4rem;
+margin-left:-6vw;
+width:60vw;
+    }
+    .alterBMText2{
+font-size: 1rem;
+margin-left: 5vw;
+width:30vw;
+    }
+}
+@media(max-width:570px){
+    .alterBMImage{
+        margin-left:-4vw;
+    }
+    .alterBMText1{
+        margin-left: -8vw;
+        font-size: 1.3rem;
+    }
+    .alterBMText2{
+        width:35vw;
+        margin-left: 1vw;
+    }
+}
+
+@media(max-width:500px){
+    .alterBMImage{
+        margin-left:4vw;
+    }
+    .alterBMText1{
+        margin-left: 0vw;
+        font-size: 1.4rem;
+        width:70vw;
+    }
+    .alterBMText2{
+        width:35vw;
+        margin-left: 12vw;
+    }
+}
+@media(max-width:450px){
+   .alterBMImage{
+    margin-left:-1vw;
+   }
+    .alterBMText1{
+        margin-left: -7vw;
+        font-size: 1.3rem;
+        width:85vw;
+    }
+    .alterBMText2{
+        width:60vw;
+        margin-left: 9vw;
+    }
+}
+
+@media(max-width:320px){
+    .alterBMImage{
+        margin-left:-1vw;
+        width:180px;
+        height:120px;
+    }
+    .alterBMText1{
+        margin-left: -8vw;
+        font-size: 1rem;
+    }
+    .alterBMText2{
+        width:60vw;
+        margin-left: 2vw;
+        font-size: 0.9rem;
+        margin-top:-10px;
+    }
 }

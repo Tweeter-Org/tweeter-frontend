@@ -112,6 +112,7 @@ function Sidebar() {
         document.getElementById("buttonTweet").style.display = "block";
         document.getElementById("buttonRetweet").style.display = "none";
         document.getElementById("buttonReply").style.display = "none";
+        document.getElementById("buttonReply2").style.display = "none";
         document.getElementById("CTReplyDiv").style.display = "none"
         setOPacity()
     }

@@ -63,7 +63,7 @@ function Chats() {
 
     const [allChats, setAllChats] = useState([])
     const [cBool, setCBool] = useState(false)
-    console.log(chatLists)
+    // console.log(chatLists)
     useEffect(() => {
         dispatch(ViewChatList())
         setUesrlist(chatLists)
@@ -75,7 +75,7 @@ function Chats() {
         document.getElementById("SEARCHBOX").style.display = "none";
     }, [])
 
-    console.log(userlist)
+    // console.log(userlist)
 
     const [sendChatId, setSendChatId] = useState()
     const [list, setlist] = useState([])
@@ -87,10 +87,10 @@ function Chats() {
                     // console.log(ch);
                     ch.users.map((c) => {
                         if (c.user_name != user.user_name)
-                            console.warn(c)
+                            // console.warn(c)
                             if (c._id == userid) {
                                 setlist(c)
-                                console.warn(ch._id)
+                                // console.warn(ch._id)
                                 sessionStorage.setItem("chatId", ch._id)
                                 setSendChatId(ch._id)
                                 currentChattingWith = ch._id;
@@ -145,9 +145,9 @@ function Chats() {
         },
     }
   
-    console.log(sendChatId)
+    // console.log(sendChatId)
     function sendChatMsg(chattid) {
-        console.log(chattid)
+        // console.log(chattid)
         fd.append("text", textMsg)
         fd.append("chatId", sessionStorage.getItem("chatId"))
         if (sendImage != "") {
@@ -167,10 +167,10 @@ function Chats() {
         setSendImage(null)
         setSendVideo(null)
     }
-    console.warn(sendChatMessage)
+    // console.warn(sendChatMessage)
 
     console.log(socket)
-    console.log(currentChattingWith)
+    // console.log(currentChattingWith)
 
     // sockets : recieving new messages
     useEffect(() => {
@@ -179,7 +179,7 @@ function Chats() {
                 handleNotify(newChatMsgRecieved)
             }
             else {
-                console.warn(newChatMsgRecieved)
+                // console.warn(newChatMsgRecieved)
                 dispatch(FakeViewChatsAction(newChatMsgRecieved))
                 // setAllChats([...allChats, newChatMsgRecieved])
 
