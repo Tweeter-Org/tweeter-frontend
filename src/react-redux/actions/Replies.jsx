@@ -3,7 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const ReplyToTweet = (formData) => {
-    const accessToken = localStorage.getItem("access token")
+    const accessToken = sessionStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -40,7 +40,7 @@ export const ReplyToTweet = (formData) => {
 
 
 export const ViewTweetsReply = (id) => {
-    const accessToken = localStorage.getItem("access token")
+    const accessToken = sessionStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -68,7 +68,7 @@ export const ViewTweetsReply = (id) => {
 }
 
 export const ViewRepliesToReply = (id) => {
-    const accessToken = localStorage.getItem("access token")
+    const accessToken = sessionStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`

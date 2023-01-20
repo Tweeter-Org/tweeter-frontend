@@ -19,7 +19,7 @@ const MsgSearchUser = (char) => {
 export default MsgSearchUser
 
 function CreateChat(id) {
-    const accessToken = localStorage.getItem("access token")
+    const accessToken = sessionStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -49,7 +49,7 @@ export {CreateChat}
 
 
 function ViewChatList () {
-    const accessToken = localStorage.getItem("access token")
+    const accessToken = sessionStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -94,7 +94,7 @@ function InactiveUserList (){
 export {InactiveUserList}
 
 export const SendChatsAction = (formData, socket) => {
-    const accessToken = localStorage.getItem("access token")
+    const accessToken = sessionStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -120,7 +120,7 @@ export const SendChatsAction = (formData, socket) => {
 }
 
 export const ViewChatsAction = (chatid) => {
-    const accessToken = localStorage.getItem("access token")
+    const accessToken = sessionStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -132,14 +132,14 @@ export const ViewChatsAction = (chatid) => {
         })
         await BaseUrl.get(`/c/messages/${chatid}`, config)
             .then((Res) => {
-               
+               console.log(Res)
                 dispatch({
                     type: "VIEW_CHATS_YES",
                     payload: Res
                 })
             })
             .catch((err) => {
-              
+              console.log(err)
                 dispatch({
                     type: "VIEW_CHATS_NO",
                     payload: err

@@ -34,7 +34,7 @@ function App() {
     <BrowserRouter>
       <Routes>
       {/* {isUser?(<Route path="/"):()} */}
-      <Route path="/" exact element={<HomePage />} />
+     
         <Route path="/login" exact element={<Login />} />
         <Route exact path="/fgtpwd" element={<ForgotPwd />} />
         <Route exact path="/otp" element={<AuthOtp />} />
@@ -45,7 +45,7 @@ function App() {
         <Route exact path="/googlesign" element={<GoogleSignin />} />
 
         {/* {isUser?(  ):(<Route path="*" element={<Error />} />)} */}
-       {isUser?( <Route path="/chats/:userid" element={<Chats />} />):(<Route path="*" element={<Error />} />)}
+       {/* {isUser?( <Route path="/chats/:userid" element={<Chats />} />):(<Route path="*" element={<Error />} />)}
        {isUser?(  <Route path="/messages" element={<Messages1 />} />):(<Route path="*" element={<Error />} />)}
        {isUser?(  <Route path="/profile/:apiname" element={<ProfilePage />} />):(<Route path="*" element={<Error />} />)}
        {isUser?(  <Route path="/toTweet/:TweetId" element={<OneTweet />} />):(<Route path="*" element={<Error />} />)}
@@ -53,8 +53,21 @@ function App() {
        {isUser?( <Route path="/bookmark" exact element={<Bookmarks />} />):(<Route path="*" element={<Error />} />)}
        {isUser?(   <Route path="/sidebar" exact element={<Sidebar />} />):(<Route path="*" element={<Error />} />)}
        {isUser?( <Route path="/editprofile" exact element={<EditProfile />} />):(<Route path="*" element={<Error />} />)}
+       {isUser?(  <Route path="/" exact element={<HomePage />} />):(<Route path="*" element={<Error />} />)} */}
 
        
+       <Route path="/chats/:userid" element={<Chats />} />
+       <Route path="/messages" element={<Messages1 />} />
+       <Route path="/profile/:apiname" element={<ProfilePage />} />
+       <Route path="/toTweet/:TweetId" element={<OneTweet />} />
+       <Route path="/tagtweet" exact element={<TagTweets />} />
+       {/* (<Route path="/tagtweet" exact element={<TagTweets />} />) */}
+       <Route path="/bookmark" exact element={<Bookmarks />} />
+       <Route path="/editprofile" exact element={<EditProfile />} />
+       <Route path="/sidebar" exact element={<Sidebar />} />
+       <Route path="/" exact element={<HomePage />} />
+
+
         <Route path="/google" element={<Google />} />
         <Route path="/logout" exact element={<LogOut />} /> 
         <Route path="*" element={<Error />} />

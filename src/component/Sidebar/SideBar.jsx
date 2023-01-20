@@ -131,13 +131,11 @@ function Sidebar() {
         dispatch(Messages(greenmessage, "Messages", 3)) 
         dispatch(InactiveUserList())
         if(chatLists.length>0)
-        navigate("/chats/:userid")
+        {
+            navigate("/chats/:userid")  
+        }
         else
         navigate("/messages")
-        // document.getElementById("NOCHATBLOCK").style.display="flex";
-        // document.getElementById("SCROLLCHATS").style.display="none";
-        // document.getElementById("SCROLL1").style.display="none";
-        // document.getElementById("SCROLL2").style.display="none";
     }
 
     function LogoutMouseover(){

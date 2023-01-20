@@ -38,20 +38,17 @@ function Chats() {
             setSocketConnected(true)
         })
     }, [])
+
     useEffect(()=>{
-        console.log(userid)
-        console.log(parseInt(userid))
-        console.log(parseInt(userid)!= NaN)
-        if(Number.isInteger(userid)){
-            document.getElementById("NOCHATBLOCK").style.display="none";
-            document.getElementById("SCROLLCHATS").style.display="flex";
-            document.getElementById("CHATTYPE").style.display="flex";  
-       
-        }
-        else{
+        if(isNaN(parseInt(userid))){
             document.getElementById("NOCHATBLOCK").style.display="flex";
             document.getElementById("SCROLLCHATS").style.display="none";
-            document.getElementById("CHATTYPE").style.display="none";
+            document.getElementById("CHATTYPE").style.visibility="hidden";
+        }
+        else{
+            document.getElementById("NOCHATBLOCK").style.display="none";
+            document.getElementById("SCROLLCHATS").style.display="flex";
+            document.getElementById("CHATTYPE").style.visibility="visible"; 
         }
 
     },[userid])
@@ -78,6 +75,8 @@ function Chats() {
         document.getElementById("SEARCHBOX").style.display = "none";
     }, [])
 
+    console.log(userlist)
+
     const [sendChatId, setSendChatId] = useState()
     const [list, setlist] = useState([])
 
@@ -88,15 +87,17 @@ function Chats() {
                     // console.log(ch);
                     ch.users.map((c) => {
                         if (c.user_name != user.user_name)
-                            // console.warn(c)
+                            console.warn(c)
                             if (c._id == userid) {
+                                setlist(c)
                                 console.warn(ch._id)
+                                sessionStorage.setItem("chatId", ch._id)
                                 setSendChatId(ch._id)
                                 currentChattingWith = ch._id;
                                 dispatch(ViewChatsAction(ch._id))
                                 setAllChats(viewChatMsgs)
                                 // console.log(c)
-                                setlist(c)
+                               
                                 // console.log(list.name)
                             }
                     })
@@ -148,7 +149,7 @@ function Chats() {
     function sendChatMsg(chattid) {
         console.log(chattid)
         fd.append("text", textMsg)
-        fd.append("chatId", chattid)
+        fd.append("chatId", sessionStorage.getItem("chatId"))
         if (sendImage != "") {
             fd.append("file", sendImage)
         }
@@ -205,12 +206,11 @@ function Chats() {
         <div className='CHATS POPUPBG'>
             <div className="Chat2">
                 <div className="ChatInfo2">
-                    <img src={avatar} id="msgPicincircle" />
-                    {/* {(list.displaypic === null) ? ( <img src={avatar}  id="msgPicincircle" />) :
-                    ((list.displaypic.startsWith("https:")) ? (<img src={props.displaypic} id="msgPicincircle"/>) :
-                        ( 
-                        <img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`}  id="msgPicincircle" />))
-                } */}
+                    {/* <img src={avatar} id="msgPicincircle" /> */}
+                    {(list.displaypic === null) ? ( <img src={avatar}  id="msgPicincircle" />) :
+                    (<img src={list.displaypic} id="msgPicincircle"/>) 
+                       
+                }
                     <p className="msgName" id="ChatName">{list.name}</p>
                 </div>
                 <div>
@@ -249,7 +249,7 @@ function Chats() {
                 <input className=" ChatSearch1 POPUPBG" type="text" value={userN} onChange={handleSearch} placeholder="Search" />
                 <div className="ChatUserFlex">
                     {(viewChatList) ? (chatLists.length > 0 ? (chatLists.map((chat, index) => {
-                        {/* console.log(chat) */ }
+                        {console.log(chat)}
                         return <ChatUser user={chat.users} msg={chat.latestmsg} indexx={index} viewChatid={chat._id} />
                     })) : null) : null}
                     {/* {isActive ? (

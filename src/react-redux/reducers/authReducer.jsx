@@ -23,8 +23,8 @@ const initialState ={
         }
         case "REQUEST_SUCCEDED":{
             console.log(action.payload)
-            localStorage.setItem("access token", action.payload.token)
-            localStorage.setItem("isToken","true")
+            sessionStorage.setItem("access token", action.payload.token)
+            sessionStorage.setItem("isToken","true")
             return {...state,
                 loading:false,
                 response:action.payload.msg,
@@ -80,7 +80,7 @@ const initialState ={
         }
         case "OTP_SUCCEDED":{
             console.log(action.payload)
-            localStorage.setItem("access token", action.payload.token)
+            sessionStorage.setItem("access token", action.payload.token)
             localStorage.setItem("isToken", "true")
             return {...state,
                 loading:false,
@@ -182,7 +182,7 @@ const initialState ={
         }
         case "EMAIL_VERIFY_SUCCEDED":{
             console.log(action.payload)
-            localStorage.setItem("access token", action.payload.token)
+            sessionStorage.setItem("access token", action.payload.token)
             localStorage.setItem("isToken", "true")
             console.log(action.payload.token)
             return {...state,

@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function ProfileAction(username) {
-    const accessToken = localStorage.getItem("access token")
+    const accessToken = sessionStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -35,7 +35,7 @@ function ProfileAction(username) {
 export default ProfileAction
 
 function EditProfileAction(fd) {
-    const accessToken = localStorage.getItem("access token")
+    const accessToken = sessionStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`

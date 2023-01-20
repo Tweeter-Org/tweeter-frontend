@@ -147,21 +147,21 @@ const navigate = useNavigate();
         navigate(`/totweet/${tweetId}`)
     }
     // console.log(props.text)
-    const x = document.getElementsByClassName("tweetText")
-    for(var i=0;i<x.length;i++){
+    // const x = document.getElementsByClassName("tweetText")
+    // for(var i=0;i<x.length;i++){
 
-        // console.log(x[i])
+    //     // console.log(x[i])
       
-        x[i].innerHTML = x[i].innerHTML.replace(/#(\S+)/g,1234)
+    //     x[i].innerHTML = x[i].innerHTML.replace(/#(\S+)/g,1234)
 
-        console.warn(x[i].innerHTML)
+    //     console.warn(x[i].innerHTML)
 
-        x[i].innerHTML = x[i].innerHTML.replace(/(?<=@).*?(?=( |$))/g, "atTheRate")
-    }
-    const regex= /#(\S+)/g;
-    const [HashArray, setHashArray] =useState([]);
+    //     x[i].innerHTML = x[i].innerHTML.replace(/(?<=@).*?(?=( |$))/g, "atTheRate")
+    // }
+    // const regex= /#(\S+)/g;
+    // const [HashArray, setHashArray] =useState([]);
 
-    var words = props.text.match(regex)
+    // var words = props.text.match(regex)
     // console.log(words)
     // useEffect(()=>{
     //     if(words.length>0){
