@@ -36,19 +36,58 @@ function Sidebar() {
     const { user, toFgtPwd } = auth;
     const nameInApi = user.user_name
     const { title, image, x } = useSelector((n) => n.TitleNavBar)
-    function showTitle(x) {
-        // document.getElementsByClassName("sbListItem")[x].style.color = "#63DF76";
-        // document.getElementsByClassName("sbListItem")[x].style.textDecoration = "underline";
-        for (var i = 0; i < 5; i++) {
-            if (i != x)
-                document.getElementsByClassName("sbListItem")[i].style.color = "rgba(255, 255, 255, 0.9)";
-            document.getElementsByClassName("sbListItem")[i].style.textDecoration = "none";
 
+    function showTitle(x) {
+        console.warn(x)
+        if (x == 0) {
+            document.getElementById("homeIcon").src = greenhome
+            document.getElementById("notify").src = notify;
+            document.getElementById("bm").src = bookmark;
+            document.getElementById("msg").src = message;
+            document.getElementById("profileIcon").src = profile;
+        }
+        else if (x == 1) {
+            document.getElementById("homeIcon").src = home;
+            document.getElementById("notify").src = greennotify;
+            document.getElementById("bm").src = bookmark;
+            document.getElementById("msg").src = message;
+            document.getElementById("profileIcon").src = profile;
+        }
+        else if (x == 2) {
+            document.getElementById("homeIcon").src = home;
+            document.getElementById("notify").src = notify;
+            document.getElementById("bm").src = greenbm;
+            document.getElementById("msg").src = message;
+            document.getElementById("profileIcon").src = profile;
+        }
+        else if (x == 3) {
+            document.getElementById("homeIcon").src = home;
+            document.getElementById("notify").src = notify;
+            document.getElementById("bm").src = bookmark;
+            document.getElementById("msg").src = greenmessage;
+            document.getElementById("profileIcon").src = profile;
+        }
+        else {
+            document.getElementById("homeIcon").src = home;
+            document.getElementById("notify").src = notify;
+            document.getElementById("bm").src = bookmark;
+            document.getElementById("msg").src = message;
+            document.getElementById("profileIcon").src = greenprofile;
+        }
+        for (var i = 0; i < 5; i++) {
+            if (i != x) {
+                document.getElementsByClassName("sbListName")[i].style.color = "rgba(255, 255, 255, 0.9)";
+            }
+            else {
+                document.getElementsByClassName("sbListName")[i].style.color = "#47c87a";
+            }
         }
     }
+
     useEffect(() => {
-        showTitle(x)
+      showTitle(x)
     }, [x])
+
 
     const [search, setSearch] = useState("");
     const dispatch = useDispatch();
@@ -124,44 +163,45 @@ function Sidebar() {
     const pro = useSelector((p) => p.ProfileNameReducer)
     function handleProfile() {
         dispatch(Profile(greenprofile, "Profile", 4));
+
         // dispatch(ProfileApi(nameInApi))
     }
 
     const { chatLists, viewChatList, isActive } = useSelector((c) => c.MsgSearchReducer)
-    function MsgSidebar (){
-        dispatch(Messages(greenmessage, "Messages", 3)) 
+    function MsgSidebar() {
+        dispatch(Messages(greenmessage, "Messages", 3))
+
         dispatch(InactiveUserList())
-        if(chatLists.length>0)
-        {
-            navigate("/chats/:userid")  
+        if (chatLists.length > 0) {
+            navigate("/chats/:userid")
         }
         else
-        navigate("/messages")
+            navigate("/messages")
     }
 
-    function LogoutMouseover(){
-document.getElementById("logout").style.display="block"
+    function LogoutMouseover() {
+        document.getElementById("logout").style.display = "block"
     }
-    function LogoutMouseout(){
-        document.getElementById("logout").style.display="none"
+    function LogoutMouseout() {
+        document.getElementById("logout").style.display = "none"
     }
-    function openSidebar(){
-        document.getElementById("SIDEBAR").style.display="block"
+    function openSidebar() {
+        document.getElementById("SIDEBAR").style.display = "block"
         // document.getElementById("SIDEBAR").style.transitionDelay="1s"
     }
-    function closeSidebar(){
-        document.getElementById("SIDEBAR").style.display="none";
+    function closeSidebar() {
+        document.getElementById("SIDEBAR").style.display = "none";
         // document.getElementById("SIDEBAR").style.transitionDelay="1s"
     }
     return <>
         <div>
             <div className="navbar POPUPBG">
-           <div className="menuIcon">
+                {/* <div className="menuIcon">
            <img src={menubar} className="hamburgur" onClick={openSidebar} />
-           </div>
-         
-            {/* </label> */}
-            <p className="logoHeadNav">Tweeter</p>
+           </div> */}
+
+                {/* </label> */}
+                <p className="logoHeadNav">Tweeter</p>
                 <img src={image} className="navbarIcon" />
                 <span><p className="navbarHead">{title}</p></span>
                 <span id="navbarLine" />
@@ -170,41 +210,42 @@ document.getElementById("logout").style.display="block"
                 <p className="logoHead">Tweeter</p>
                 <img src={deleteIcon} className="sbDeleteIcon" onClick={closeSidebar} />
                 <ul className="sbList">
-                    <Link to="/"><li className="sbListItem" onClick={() => { dispatch(Home(greenhome, "Home", 0)) }}><img className="sbListIcon" src={home} />
-                    <span className="sbListName">
-                    Home
-                    </span>
-                   </li></Link>
-                    <li className="sbListItem" onClick={() => { dispatch(Notifications(greennotify, "Notifications", 1)) }}><img src={notify} id="notify" className="sbListIcon" />Notifications</li>
-                    <Link to="/bookmark"> <li className="sbListItem" onClick={() => { dispatch(BookmarksNav(greenbm, "Bookmark", 2)) }}><img className="sbListIcon" id="bm"  src={bookmark} />Bookmarks</li></Link>
-                    <li className="sbListItem" onClick={() => {MsgSidebar()}}><img src={message} className="sbListIcon" id="msg" />Messages</li>
+                    <Link to="/"><li className="sbListItem" onClick={() => { dispatch(Home(greenhome, "Home", 0)) }}><img src={home} className="sbListIcon" id="homeIcon" />
+                        <span className="sbListName">
+                            Home
+                        </span>
+                    </li></Link>
+                    <li className="sbListItem" onClick={() => { dispatch(Notifications(greennotify, "Notifications", 1)) }}><img src={notify} id="notify" className="sbListIcon" />   <span className="sbListName">
+                        Notifications  </span></li>
+                    <Link to="/bookmark"> <li className="sbListItem" onClick={() => { dispatch(BookmarksNav(greenbm, "Bookmark", 2)) }}><img className="sbListIcon" id="bm" src={bookmark} />   <span className="sbListName">Bookmarks  </span></li></Link>
+                    <li className="sbListItem" onClick={() => { MsgSidebar() }}><img src={message} className="sbListIcon" id="msg" />   <span className="sbListName">Messages  </span></li>
                     {/* <li className="sbListItem" onClick={() => { dispatch(Messages(greenmessage, "Messages", 3)) }}><span className="sbListIcon"><img src={message} /></span>Messages</li> */}
-                    <Link to={`/profile/${nameInApi}`}><li className="sbListItem" onClick={handleProfile}><img className="sbListIcon" src={profile} />Profile</li></Link>
+                    <Link to={`/profile/${nameInApi}`}><li className="sbListItem" onClick={() => { handleProfile() }}><img className="sbListIcon" src={profile} id="profileIcon" />   <span className="sbListName">Profile  </span></li></Link>
                 </ul>
                 <button className="sideBarTweetBtn" onClick={() => { xyz() }}>Create Tweet</button>
+                <button className="logOutBtn" onClick={handleLogout}><img src={logoutIcon} className="logoutIcon" />Log Out</button>
             </div>
             <div id="SEARCHBOX">
-            <div><input className="searchbar POPUPBG" type="text" value={search} onChange={handleSearch} placeholder="Search" />
-               </div>
-            <div className="searchFlexBox POPUPBG">
-                {tohash ? (
-                    searchTweetList.length > 0 ? (searchTweetList.map((se) => {
-                        return <Tweetsearch hashtag={se.hashtag} />
+                <div><input className="searchbar POPUPBG" type="text" value={search} onChange={handleSearch} placeholder="Search" />
+                </div>
+                <div className="searchFlexBox POPUPBG">
+                    {tohash ? (
+                        searchTweetList.length > 0 ? (searchTweetList.map((se) => {
+                            return <Tweetsearch hashtag={se.hashtag} />
 
-                    })) : (<p className="searchAlter">No search found</p>)
-                ) : null}
-                {
-                    tomap ? ((searchListArray.length > 0) ? (searchListArray.map((searchh) => {
-                        return <SearchComp name={searchh.name} username={searchh.user_name} displaypic={searchh.displaypic} />
-                    })) : <p className="searchAlter">No search found</p>) : null
-                }
+                        })) : (<p className="searchAlter">No search found</p>)
+                    ) : null}
+                    {
+                        tomap ? ((searchListArray.length > 0) ? (searchListArray.map((searchh) => {
+                            return <SearchComp name={searchh.name} username={searchh.user_name} displaypic={searchh.displaypic} />
+                        })) : <p className="searchAlter">No search found</p>) : null
+                    }
+                </div>
             </div>
-            </div>
-            <img src={logoutIcon} className="logoutIconCSS" onMouseOver={LogoutMouseover} onMouseOut={LogoutMouseout} onClick={handleLogout} />
-            <p id="logout">Log Out</p>
+
             <CreateTweet />
             <LogOut />
-            
+
         </div>
         {(loading === true) ? <Spinner animation="border" variant="light" id="loadSpinner" /> : null}
         <NoChats />

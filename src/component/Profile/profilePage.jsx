@@ -240,8 +240,8 @@ function ProfilePage() {
               
             </div>
             <div className="profileDiv3">
-                <p className="pTweetHead" onClick={() => { showTweets() }}>Tweets</p>
-                <p className="pTweetReply">Tweets & Replies</p>
+                <p className="pTweetHead" onClick={() => { showTweets() }}>Tweets & Replies</p>
+                {/* <p className="pTweetReply">Tweets & Replies</p> */}
                 <p className="pLikehead" onClick={showLikedTweets}>Likes</p>
             </div>
             <div className="profileDiv4">

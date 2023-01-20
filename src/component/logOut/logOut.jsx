@@ -28,8 +28,8 @@ function LogOut() {
             <div className="lOut1">
                 <p className="logoutText1">Log Out?</p>
                 <p className="logoutText2">Are you sure you want to log out?</p>
-                <button className="logoutbtn1" onClick={handleLogOut}>Done</button>
-                <button className="logoutbtn2" onClick={handleCancelLog}>Cancel</button>
+                <button className="logoutbtn1" onClick={handleLogOut}>Yes</button>
+                <button className="logoutbtn2" onClick={handleCancelLog}>No</button>
             </div>
             <div className="lOut2">
                 <img src={logout} className="logoutImage" />

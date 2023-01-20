@@ -352,12 +352,12 @@ function CreateTweet(props) {
                             {/* <p id="CTRetweetUsernname" className="ctUserName">{user_name}</p> */}
                         </div>
                     </div>
-                    {Rimage != null ? (<p className="TWRImageText" >Tweets's Image -: &ensp;<a id="TWRImageLink" href={Rimage} target="_blank">{Rimage}</a></p>) : null}
-                    {Rvideo != null ? (<p className="TWRImageText" >Tweets's Video -: &ensp;<a id="TWRImageLink" href={Rvideo} target="_blank">{Rvideo}</a></p>) : null}
-                    {/* {Rimage != null ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${Rimage}`} className="CTRVideo" alt="image" />) : null}
+                    {/* {Rimage != null ? (<p className="TWRImageText" >Tweets's Image -: &ensp;<a id="TWRImageLink" href={Rimage} target="_blank">{Rimage}</a></p>) : null} */}
+                    {/* {Rvideo != null ? (<p className="TWRImageText" >Tweets's Video -: &ensp;<a id="TWRImageLink" href={Rvideo} target="_blank">{Rvideo}</a></p>) : null} */}
+                    {Rimage != null ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${Rimage}`} className="CTRVideo" alt="image" />) : null}
                     {Rvideo != null ? <video controls className="CTRVideo">
                         <source src={`https://twitterbackend-production-93ac.up.railway.app/${Rvideo}`} type="video/mp4" />
-                    </video> : null} */}
+                    </video> : null}
                     <p className="TWRText" >{Rtext}</p>
                 </div>
                 <div id="CTReplyDiv">

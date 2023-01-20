@@ -17,7 +17,8 @@
 .navbarIcon {
     position: absolute;
     left:23vw;
-    width: 2.4vw;
+    width: 26px;
+    height:26px;
     /* margin-left: 3vw; */
     /* margin-top: -20px; */
 }
@@ -26,7 +27,7 @@
     position: absolute;
     width: 6.3vw;
     /* height: 4.3vh; */
-    left: 26.2vw;
+    left: 25.2vw;
     /* background-color: #47C87A; */
     margin-top: -12px;
     /* margin-left:-68vw; */
@@ -153,8 +154,27 @@ left: 65vw;
     font-size: 1rem;
     line-height: 21px;
     color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
 }
-
+.logOutBtn{
+    width: 160px;
+    height: 40px;
+    /* margin-left: 2.5vw; */
+    /* margin-top: 5px; */
+    border: none;
+    outline:none;
+    background:none;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.15rem;
+    line-height: 21px;
+    color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    position:absolute;
+    bottom:10px;
+    left:4vw;
+}
 a {
     color: white;
     text-decoration: none;
@@ -163,7 +183,9 @@ a {
 a:hover {
     color: #47C87A;
 }
-
+#HashTweetBox{
+    margin-top: -60px;
+}
 /* LOG OUT */
 
 #logout {
