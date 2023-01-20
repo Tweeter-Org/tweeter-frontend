@@ -1,0 +1,94 @@
+.logoutDiv{
+display: flex;
+position:absolute;
+top:20vh;
+left:29vw;
+width:40vw;
+height:40vh;
+background-color: #121212;
+padding-left: 2vw;
+padding-top: 4vh;
+box-shadow: 0px 264px 106px rgba(23, 25, 28, 0.01), 0px 149px 89px rgba(23, 25, 28, 0.05), 0px 66px 66px rgba(23, 25, 28, 0.09), 0px 17px 36px rgba(23, 25, 28, 0.1), 0px 0px 0px rgba(23, 25, 28, 0.1);
+border-radius: 16px;
+box-shadow: 0px 50px 80px #1A1C1E;
+border: 0.7px solid rgba(255, 255, 255, 0.2);
+z-index:20;
+display: none;
+}
+.lOut1{
+display: flex;
+flex-direction: column;
+}
+
+.logoutText1{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    
+    color: rgba(255, 255, 255, 0.9);
+    margin-left:-11vw;
+}
+.logoutText2{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height */
+    
+    text-align: center;
+    
+    color: rgba(255, 255, 255, 0.6);
+}
+.logoutbtn1{
+    width: 240px;
+    height: 6vh;
+    background: #47C87A;
+    border-radius: 8px;
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 20px;
+border: none;
+margin-bottom:2vh;
+margin-top:3vh;
+/* identical to box height */
+
+text-align: center;
+
+color: #FFFFFF;
+}
+.logoutbtn2{
+    box-sizing: border-box;
+
+    /* position: absolute; */
+    width: 240px;
+    height: 6vh;
+    background: #252525;
+    
+    border: 0.5px solid #47C87A;
+    border-radius: 8px;
+    
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+text-align: center;
+
+/* primary */
+
+color: #47C87A;
+}
+.logoutImage{
+    width: 200px;
+    height: 119.57px;
+    margin-top: 11.5vh;
+    margin-left:2vw;
+}

@@ -51,6 +51,31 @@ function SignUp(){
 
     const responseApi = useSelector((state)=>state.AuthReducer)
             const {loading, response, error, toSignOtp} = responseApi
+            const [toastBool, setToastBool] = useState(false)
+
+            function SIGNUP(){
+                dispatch(SignUpUser(email, callApi),sessionStorage.setItem("signupemail",email), sessionStorage.setItem("NameToBeUsed",name))
+            }
+
+            useEffect(()=>{
+                console.log(toastBool, loading)
+                if(error!="" && !loading){
+                    console.log(error)
+                    setToastBool(true)
+                }
+            },[responseApi])
+            
+            useEffect(()=>{
+                console.log(toastBool)
+                if(toastBool){
+                        toast.error(`${error}`, {
+                            position: "top-center",
+                            theme: "light",
+                        });
+                        setToastBool(false)
+                    }
+            },[toastBool])
+
     useEffect(()=>{
         if(loading===true){
             document.body.style.opacity = 0.5;
@@ -62,15 +87,7 @@ function SignUp(){
 
     const navigate = useNavigate();
    
-    useEffect(()=>{
-        if(error!==""){
-            toast.error(`${error}`, {
-                position: "top-center",
-                theme: "light",
-                });
-        }
-    },[error])
-    
+   
     useEffect(()=>{
         if(response!==""){
             toast.success(`${response}`, {
@@ -99,7 +116,7 @@ return <>
     <p className='authPwd' id="signEmail">Email Address</p>
     <input type="text" className="authPwdInput" id="signEmailInput" placeholder="Enter your email"  value={email} onChange={(e)=>setEmail(e.target.value)}/>
     <p className='signInvalidEmail'>Invalid Email Address</p>
-    <button type="button" className='authSignIn' id="signUpBtn" onClick={()=>{dispatch(SignUpUser(email, callApi),localStorage.setItem("signupemail",email), sessionStorage.setItem("NameToBeUsed",name))}}>Sign Up</button>
+    <button type="button" className='authSignIn' id="signUpBtn" onClick={()=>{SIGNUP()}}>Sign Up</button>
     </div>
     {loading===true?<Spinner animation="border" variant="light" id="loadSpinner" />:null}
     <ToastContainer />

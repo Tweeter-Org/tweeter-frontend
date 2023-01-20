@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import ToasterSuccess from '../../Assets/ToasterSuccess';
-import ToasterError from '../../Assets/ToasterError';
+// import ToasterSuccess from '../../Assets/ToasterSuccess'gt;
+// import ToasterError from '../../Assets/ToasterError';
 import {EmailAction} from '../../../react-redux/actions/authAction';
 import { Spinner } from 'react-bootstrap';
 import { ToastContainer , toast} from 'react-toastify';
@@ -11,10 +11,11 @@ import Background from '../Background';
 import arrow from "../../Assets/arrow-back.svg";
 import {SignUpResend} from '../../../react-redux/actions/authAction';
 // import SpinnerLoad from '../../Assets/Spinner';
+import "../ForgotPassword/fgtPwd.css"
 
 function AuthOtp(){
 
-    const email = localStorage.getItem("signupemail")
+    const email = sessionStorage.getItem("signupemail")
 
     const [seconds, setSeconds] = useState(59)
     const [otp, setOtp] = useState("")
@@ -42,6 +43,7 @@ function AuthOtp(){
     console.log(otpR)
     const {loading, response, error,toSignUpTwo} = otpR;
     console.log(loading,response,error)
+    const [toastBool, setToastBool] = useState(false)
 
     useEffect(()=>{
         if(loading===true){
@@ -52,6 +54,29 @@ function AuthOtp(){
         }
     },[loading])
 
+    function EMAILVERIFY (){
+        dispatch(EmailAction(data))
+    }
+
+    useEffect(()=>{
+        console.log(toastBool, loading)
+        if(error!="" && !loading){
+            console.log(error)
+            setToastBool(true)
+        }
+    },[otpR])
+    
+    useEffect(()=>{
+        console.log(toastBool)
+        if(toastBool){
+                toast.error(`${error}`, {
+                    position: "top-center",
+                    theme: "light",
+                });
+                setToastBool(false)
+            }
+    },[toastBool])
+
     useEffect(()=>{
         if(response!==""){
             toast.success(`${response}`, {
@@ -61,14 +86,6 @@ function AuthOtp(){
         }
     },[response])
 
-    useEffect(()=>{
-        if(error!==""){
-            toast.error(`${error}`, {
-                position: "top-center",
-                theme: "light",
-                });
-        }
-    },[error])
    
     const navigate=useNavigate();
     useEffect(()=>{
@@ -84,14 +101,14 @@ return <>
     <p className='authHead' id="authHeadTwo">Email Verification</p>
     <p className='authFgtHead'>Enter Otp sent to {email}</p>
     <input type="text" className="authFgtEmailInput" placeholder="0  0  0  0  0  0" value={otp} onChange={(e)=>setOtp(e.target.value)}/>
-    <p className='invalidFgtEmail'>Incorrect Otp</p>
-    <p className='resendFgtOtp' disabled={seconds!==0?true:false} onClick={()=>{dispatch(SignUpResend(email),setSeconds(59))}}>Resend Otp in</p>
+    {/* <p className='invalidFgtEmail'>Incorrect Otp</p> */}
+    <p className='resendFgtOtp' id="emailOtp" disabled={seconds!==0?true:false} onClick={()=>{dispatch(SignUpResend(email),setSeconds(59))}}>Resend Otp in</p>
     <span id="timer">00:{seconds}</span>
-    <button className='authFgtPwdBtn' onClick={()=>{dispatch(EmailAction(data))}} >Continue</button>
+    <button className='authFgtPwdBtn' onClick={()=>{EMAILVERIFY()}} >Continue</button>
     </div>             
     {/* {loadEm===true?<Spinner animation="border" variant="light" id="loadSpinner" />:null}    */}
     <ToastContainer />                                                                                                  
-    {/* {loading===true?<SpinnerLoad loading={loading} />:null} */}
+    {loading===true?<Spinner animation="border" variant="light" id="loadSpinner" />:null}
 </>
 }
 

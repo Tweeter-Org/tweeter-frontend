@@ -1,17 +1,22 @@
 const initialState ={
     loading:false,
     response:"",
+    user:{},
+    name2:'',
+    username2:'',
     error:"",
     toFgtPwd:false,
     toOtp:false,
     toRstPwd:false,
     toSignOtp:false,
-    toSignUpTwo:false
+    toSignUpTwo:false,
+    toHome:false,
+    token:false
 }
  const AuthReducer =(state=initialState, action)=>{
     switch(action.type){
         case "REQUEST_STARTED":{
-            console.log(action.payload)
+            localStorage.setItem("isToken", "false")
             return {
                 ...state, loading:true, toFgtPwd:false
             }
@@ -19,16 +24,20 @@ const initialState ={
         case "REQUEST_SUCCEDED":{
             console.log(action.payload)
             localStorage.setItem("access token", action.payload.token)
+            localStorage.setItem("isToken","true")
             return {...state,
                 loading:false,
                 response:action.payload.msg,
+                user:action.payload.user,
                 error:"",
-                toFgtPwd:true
+                toFgtPwd:true,
+                toHome:true,
+                token:true,
             }
         }
         case "REQUEST_FAILED":{
             console.log(action.payload)
-            console.log(action.payload.response.data.msg)
+            // sessionStorage.setItem("isToken", "false")
             return {
                 loading:false,
                 response:"",
@@ -38,12 +47,14 @@ const initialState ={
         }
         case "FGT_EMAIL_STARTED":{
             console.log(action.payload)
+            // sessionStorage.setItem("isToken", "false")
             return {
                 ...state, loading:true,toOtp:false
             }
         }
         case "FGT_EMAIL_SUCCEDED":{
             console.log(action.payload)
+            // sessionStorage.setItem("isToken", "false")
             return {...state,
                 loading:false,
                 response:action.payload.msg,
@@ -53,6 +64,7 @@ const initialState ={
         }
         case "FGT_EMAIL_FAILED":{
             console.log(action.payload)
+            // sessionStorage.setItem("isToken", "false")
             return {
                 loading:false,
                 response:"",
@@ -69,11 +81,13 @@ const initialState ={
         case "OTP_SUCCEDED":{
             console.log(action.payload)
             localStorage.setItem("access token", action.payload.token)
+            localStorage.setItem("isToken", "true")
             return {...state,
                 loading:false,
                 response:action.payload.msg,
                 error:"",
-                toRstPwd:true
+                toRstPwd:true,
+                token:true,
             }
         }
         case "OTP_FAILED":{
@@ -89,7 +103,7 @@ const initialState ={
         case "RESEND_STARTED":{
             console.log(action.payload)
             return {
-                ...state, loading:true
+                ...state, loading:true,toHome:false
             }
         }
         case "RESEND_SUCCEDED":{
@@ -97,7 +111,8 @@ const initialState ={
             return {...state,
                 loading:false,
                 response:action.payload.msg,
-                error:""
+                error:"",
+                toHome:true
             }
         }
         case "RESEND_FAILED":{
@@ -106,7 +121,8 @@ const initialState ={
             return {
                 loading:false,
                 response:"",
-                error:action.payload.response.data.msg
+                error:action.payload.response.data.msg,
+                toHome:false
             }
         }
         case "RESET_STARTED":{
@@ -133,6 +149,7 @@ const initialState ={
             }
         }
         case "SIGNUP_STARTED":{
+        localStorage.setItem("isToken", "false")
             console.log(action.payload)
             return {
                 ...state, loading:true, toSignOtp:false
@@ -166,12 +183,14 @@ const initialState ={
         case "EMAIL_VERIFY_SUCCEDED":{
             console.log(action.payload)
             localStorage.setItem("access token", action.payload.token)
+            localStorage.setItem("isToken", "true")
             console.log(action.payload.token)
             return {...state,
                 loading:false,
                 response:action.payload.msg,
                 error:"",
-                toSignUpTwo:true
+                toSignUpTwo:true,
+                token:true,
             }
         }
         case "EMAIL_VERIFY_FAILED":{
@@ -187,25 +206,40 @@ const initialState ={
         case "SIGNUP_TWO_STARTED":{
             console.log(action.payload)
             return {
-                ...state, loading:true
+                ...state, loading:true,
+                toHome:false
             }
         }
         case "SIGNUP_TWO_SUCCEDED":{
             console.log(action.payload)
-            // localStorage.setItem("access token", action.payload.token)
+            // sessionStorage.setItem("access token", action.payload.token)
             return {...state,
                 loading:false,
                 response:action.payload.msg,
-                error:""
+                error:"",
+                toHome:true,
+                user:action.payload.user,
             }
         }
         case "SIGNUP_TWO_FAILED":{
             console.log(action.payload)
-            console.log(action.payload.response.data.msg)
+            // console.log(action.payload.response.data.msg)
             return {
                 loading:false,
                 response:"",
-                error:action.payload.response.data.msg
+                error:action.payload.response.data.msg,
+                toHome:false
+            }
+        }
+        case "NAME_VIA_GOOGLE":{
+            return {
+             ...state , name2:action.payload.name, username2:action.payload.username
+            }
+        }
+        case "INFO_VIA_GOOGLE":{
+            console.log(action.payload)
+            return {...state, 
+            user:action.payload.user
             }
         }
         default: return state;

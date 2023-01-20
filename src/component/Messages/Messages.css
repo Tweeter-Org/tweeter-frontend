@@ -1,0 +1,513 @@
+.MSGS{
+    background-color: #161718;
+    width: 46.5vw;
+    height: 530px;
+    /* height: fit-content; */
+    margin-left: 22vw;
+    margin-top: 15vh;
+    padding-bottom: 5vh;
+    background: #161718;
+    border-radius: 8px;
+    z-index: 15;
+}
+.Messages1{
+    display: flex;
+    flex-direction: column;
+    padding-left:2vw;
+}
+.MsgText1{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 34px;
+    width:15vw;
+    line-height: 44px;
+    color: #FFFFFF;
+    margin-top: 100px;
+}
+.MsgText2{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    width:17vw;
+    color: rgba(255, 255, 255, 0.75);  
+}
+.MsgBtn1{
+    outline:none;
+    border:none;
+    width: 196px;
+    height: 40px;
+    background: #47C87A;
+    border-radius: 12px;
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 17px;
+cursor: pointer;
+color: rgba(255, 255, 255, 0.9);
+
+}
+.Messages2{
+    display:flex;
+    flex-direction: column;
+    margin-left:21vw;
+}
+
+
+/* .Messages3{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20vw;
+} */
+.MsgText2-1{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    width:45vw;
+    /* margin-top: 10px; */
+    line-height: 35px;
+    color: #FFFFFF;
+    margin-top: -60px;
+}
+.MsgText2-2{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    width:22vw;
+    color: rgba(255, 255, 255, 0.75);  
+}
+.MsgBtn2-1{
+    outline:none;
+    border:none;
+    width: 196px;
+    height: 40px;
+    background: #47C87A;
+    border-radius: 12px;
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 14px;
+line-height: 17px;
+cursor: pointer;
+color: rgba(255, 255, 255, 0.9);
+
+}
+
+/* MSG DROPDOWN */
+
+.msgDDBlock1{
+    position: fixed;
+    width: 35vw;
+    height: 250px;
+    left: 28vw;
+    top: 32vh;
+    background: #070808;
+    background-color: #121212;
+    box-shadow: 0px 264px 106px rgba(23, 25, 28, 0.01), 0px 149px 89px rgba(23, 25, 28, 0.05), 0px 66px 66px rgba(23, 25, 28, 0.09), 0px 17px 36px rgba(23, 25, 28, 0.1), 0px 0px 0px rgba(23, 25, 28, 0.1);
+    border-radius: 16px;
+    box-shadow: 0px 50px 80px #1A1C1E;
+    border: 0.7px solid rgba(255, 255, 255, 0.2);
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    padding-left: 0.5vw;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-bottom:20px;
+    padding-top: 10px;
+}
+#MSGDROPDOWN{
+    display: none;
+}
+.msgDDText1{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    width:35vw;
+    line-height: 35px;
+    color: #FFFFFF;
+    margin-bottom: 0px;
+    position: fixed;
+    z-index:20;
+}
+.msgDDSearchIpt{
+    border: none;
+    outline: none;
+    margin-top:5px;
+    width: 34vw;
+    height: 32px;
+    background: none;
+    border-bottom:0.5px solid rgba(255, 255, 255, 0.4);
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    display: inline-block;
+    padding-left: 2vw;
+    color: rgba(255, 255, 255, 0.7);   
+    position:fixed;
+    margin-top:30px;
+    z-index:20;
+}
+.msgSearchFlexbox{
+    display: flex;
+    flex-direction: column;
+    margin-top:60px;
+    z-index:16;
+}
+
+/* User searched css */
+
+.msgUser {
+    width:32vw;
+    height:53px;
+    border-bottom:0.5px solid rgba(255, 255, 255, 0.2);
+    margin-top:5px;
+    padding-left:1vw;
+    display: flex;
+    margin-left:1vw;
+    z-index:16;
+}
+.msgUser2{
+    display: flex;
+    flex-direction: column;
+}
+#msgPicincircle {
+    width: 42px;
+    height: 38.09px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    margin-top:8px;
+    margin-left:0.5vw;
+}
+.msgName {
+    margin-left: 0.5vw;
+    margin-top: 6px;
+    width:30vw;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 27px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.msgUsername {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #47C87A;
+    margin-top: -20px;
+    margin-left: 0.5vw;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* CHATS */
+
+.CHATS{
+    height: 550px;
+    width:74vw;
+    margin-left: 23vw;
+    margin-top: 15vh;
+    display: flex;
+    border-radius: 8px;
+    overflow-y: hidden;
+    /* padding-top:15px; */
+    /* background-color: #FFFFFF;
+    padding-top:5px; */
+    /* background-color: rosybrown; */
+}
+.Chat2{
+    /* background-color: #161718; */
+    width: 48vw;
+    height: 543px;
+    padding-bottom: 5vh;
+    background: #161718;
+    border-radius: 8px;
+    border-top-right-radius: 0;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    /* background-color: antiquewhite; */
+    /* margin-top:8px; */
+}
+.Chat1{
+    display: flex;
+    flex-direction: column;
+    padding-left:1vw;
+    background-color: rgb(22, 23, 24,0.4);
+    background: #161718;
+    width:25vw;
+    height:540px;
+    border:1px solid rgba(255, 255, 255, 0.3);
+    border-top-right-radius: 8px;
+    overflow-y: scroll;
+    /* background-color: aquamarine; */
+    scroll-behavior: smooth;
+    /* margin-top:20px; */
+}
+.ChatSearch1{
+    border: none;
+    outline: none;
+    margin-top:10px;
+    margin-bottom:10px;
+    width: 23vw;
+    height: 34px;
+    background: none;
+    border:0.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    display: inline-block;
+    padding-left: 2vw;
+    color: rgba(255, 255, 255, 0.7);
+}
+.chatUser {
+    width:32vw;
+    height:53px;
+    border-bottom:0.5px solid rgba(255, 255, 255, 0.2);
+    margin-top:5px;
+    padding-left:1vw;
+    display: flex;
+    margin-left:1vw;
+    z-index:16;
+}
+.ChatLine1{
+    position: absolute;
+    top:361px;
+    width: 39vw;
+    /* width:100px; */
+    /* height: -10px; */
+left: 20vw;
+    /* top: 778px; */
+    /* margin-top:400px; */
+
+    /* border: 1px solid rgba(255, 255, 255, 0.3); */
+    border: none;
+    border-bottom:0.2px solid rgba(255, 255, 255, 0.3);
+    z-index:110;
+    transform: rotate(90deg);
+}
+
+#ChatUser1{
+    border:none;
+    margin-top:4px;
+    width:25vw;
+    height:55px;
+    border-bottom:0.5px solid rgba(255, 255, 255, 0.2);
+    padding-left:1vw;
+    margin-left:-1vw;
+}
+.ChatInfo2{
+    width: 48vw;
+height: 50px;
+left: 0px;
+background: rgba(71, 200, 122, 0.8);
+display:flex;
+border-top-left-radius: 8px;
+}
+.ChatTypeDiv{
+height:45px;
+margin-top:11px;
+width: 48vw;
+}
+#ChatName{
+    margin-left:0.5vw;
+    margin-top:10px;
+    font-size: 18px;
+}
+.ChatType2{
+    width: 48vw;
+height: 45px;
+left: 0px;
+padding-left:6.5vw;
+outline: none;
+background: rgba(72, 77, 74, 0.4);
+border:0.5px solid rgba(255, 255, 255, 0.3);
+border-bottom-left-radius: 4px;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+color: #fff;
+padding-right:3vw;
+
+}
+.Chat2-1{
+    display:flex;
+    margin-top:-36px;
+    margin-left:0.7vw;
+}
+#chatuploadImg{
+        background: none;
+        border: none;
+        outline: none;
+    
+}
+.chatImage {
+    opacity: 0.8;
+    cursor: pointer;
+    width:22px;
+    margin-right: 0.2vw;
+    margin-top: 0.2vh;
+}
+.chatVideo{
+    width:25px;
+    margin-right: 0.2vw;
+}
+.chatSmile{
+    width:19px;
+    margin-right: 0.2vw;
+}
+.chatemojipicker{
+    /* margin-top:100px; */
+    position:absolute;
+    top:160px;
+    left:21vw;
+    z-index:150;
+    /* width:50px; */
+}
+.sendchaticon{
+    width:28px;
+    margin-left:39.3vw;
+    margin-top:-15px;
+    cursor: pointer;
+}
+
+/*chat screen */
+
+.Chat2Msgs{
+    display: flex;
+    flex-direction: column;
+    margin-top:1px;
+    width:48vw;
+    height:432px;
+    margin-bottom:1px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding:5px 0.5vw;
+    padding-top: 10px;
+}
+
+.scrollChatBlockYou{
+    width:fit-content;
+    height:fit-content;
+    background-color: rgb(72, 77, 74,0.8);
+    margin-bottom:5px;
+    padding:5px 10px;
+    border-radius: 16px;
+    border-bottom-left-radius:0;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color:#FFFFFF;
+    white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+        white-space: -pre-wrap;
+        white-space: -o-pre-wrap;
+        word-wrap: break-word;
+}
+
+.scrollChatBlockMine{
+    width:fit-content;
+    height:fit-content;
+    background-color: rgb(71, 200, 122,0.8);
+    margin-bottom:5px;
+    /* margin-left:37vw; */
+    margin-left: auto;
+    padding:5px 10px;
+    border-radius: 16px;
+    border-bottom-right-radius:0;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color:#FFFFFF;
+    white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+        white-space: -pre-wrap;
+        white-space: -o-pre-wrap;
+        word-wrap: break-word;
+        word-break: break-word;
+        z-index:10;
+}
+
+.scrollChatText{
+    margin-bottom:0;
+}
+#ChatImage{
+    display:none;
+  position: absolute;
+  top:470px;
+  left:24vw;
+  
+}
+.chatImageShow{
+    width:20vw;
+}
+.chatTweet{
+    display: flex;
+    width:20vw;
+    height:fit-content;
+    flex-direction: column;
+    border:0.5px solid rgb(22, 23, 24,0.4);
+    padding: 4px 1vw 4px 1vw ;
+}
+.chTw1{
+    display: flex;
+    margin-bottom:-6px;
+}
+.chTwProfile{
+width:25px;
+height:25px;
+border-radius: 50%;
+margin-right:0.5vw;
+}
+.chTwName1{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    color:rgba(255, 255, 255, 1);
+    margin-right:0.5vw;
+    
+}
+.chTwName2{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    color: #000;
+}
+.chTwImage{
+width:18vw;
+margin-bottom:4px;
+}
+.chTwVideo{
+    width:18vw;
+    margin-bottom:4px;
+}
+.chTwText{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight:600;
+    font-size: 16px;
+    color: #000;
+}

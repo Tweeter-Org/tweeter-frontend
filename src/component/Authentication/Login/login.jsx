@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import "./login.css";
 import emailIcon from "../../Assets/email.svg";
+import googleIcon from "../../Assets/google.svg";
 import lockIcon from "../../Assets/lock.svg";
 import LogInUser from '../../../react-redux/actions/authAction';
 import { useDispatch, useSelector } from 'react-redux';
@@ -44,12 +45,41 @@ function Login() {
     }
 
     const loginState = useSelector((state) => state.AuthReducer)
-    const { loading, response, error, toFgtPwd} = loginState;
+    const { loading, toFgtPwd} = loginState;
+    const [toastBool, setToastBool] = useState(false)
+    const {error, response} = loginState
     const navigate = useNavigate();
 
 //google authentication
-    const {loadingGoogle, responseGoogle} = useSelector((g)=>g.GoogleReducer)
-   
+const googleRed = useSelector((g)=>g.GoogleReducer)
+    const {loadingGoogle, responseGoogle} = googleRed
+
+    function LOGIN(){
+        dispatch(LogInUser(data, isAuthEmail)) 
+        console.log(error)
+        console.log("djs")
+    }
+
+    useEffect(()=>{
+        console.log(toastBool, loading)
+        if(error!="" && !loading){
+            console.log(error)
+            setToastBool(true)
+        }
+    },[loginState])
+
+    useEffect(()=>{
+        console.log(toastBool)
+        if(toastBool){
+                toast.error("Wrong Password", {
+                    position: "top-center",
+                    theme: "light",
+                });
+                setToastBool(false)
+            }
+    },[toastBool])
+
+
     useEffect(() => {
         if (loading === true || loadingGoogle===true) {
             document.body.style.opacity = 0.5;
@@ -59,45 +89,34 @@ function Login() {
         }
     }, [loading, loadingGoogle])
 
-    const [displayToaster, setDisplayToaster] = useState(false)
-    useEffect(() => {
-        let mounted = true;
-                    if (mounted) {
-                setDisplayToaster(true)
-            }
-       
-        return function cleanup() {
-            mounted = false;
-        }
-    }, [])
 
-    useEffect(() => {
-        if(displayToaster){
-            if (response != "") {
-                toast.success(`${response}`, {
-                    position: "top-center",
-                    theme: "light",
-                });
-            }
-            if (error != "") {
-                toast.error(`${error}`, {
-                    position: "top-center",
-                    theme: "light",
-                });
-            }
-        }  
-    },[displayToaster])
-
-    // useEffect(()=>{
-    //     if(toFgtPwd){
-    //         navigate("/fgtpwd")
-    //     }
-    // },[toFgtPwd])
-    
     useEffect(()=>{
-        if(responseGoogle!="")
-        window.location.href = `${responseGoogle}`
-    },[responseGoogle])
+        if(toFgtPwd){
+            navigate("/")
+        }
+    },[toFgtPwd])
+    
+    const [googleBool, setGoogleBool] = useState(false)
+    function navigateGoogle (){
+        dispatch(GoogleAction())
+        // if(responseGoogle!="")
+        // window.location.href = `${responseGoogle}`
+    }
+
+    useEffect(()=>{
+        console.log(googleBool, loadingGoogle)
+        if(responseGoogle!="" && !loadingGoogle){
+            setGoogleBool(true)
+        }
+    },[googleRed])
+
+    useEffect(()=>{
+        console.log(googleBool)
+        if(googleBool){
+            window.location.href = `${responseGoogle}`
+                setGoogleBool(false)
+            }
+    },[googleBool])
 
     return <>
         <Background />
@@ -117,12 +136,12 @@ function Login() {
             <input type={show ? "text" : "password"} className="authPwdInput" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
             <p className='fgtPwd' onClick={() => navigate("/fgtpwd")}>Forgot Password?</p>
             {/* <button className='authSignIn' onClick={()=>{dispatch(SignInUser(data))}}>Sign In</button>  */}
-            <button className='authSignIn' id="loginButton" onClick={() => { dispatch(LogInUser(data, isAuthEmail)) }}>Sign In</button>
+    1W        <button className='authSignIn' id="loginButton" onClick={() => {LOGIN()}}>Sign In</button>
             <hr id="hrOr" />
-            <button className='contGoogle' onClick={()=>{dispatch(GoogleAction())}} >Continue with Google</button>
+            <button className='contGoogle' onClick={navigateGoogle} ><img src={googleIcon} className="googleIcon" />Continue with Google</button>
             <p className='createAcc'>New to Tweeter? <span className="authSignUp" onClick={() => navigate("/signup")}>Create Account</span></p>
         </div>
-        {(loading == true || loadingGoogle===true) ? <Spinner animation="border" variant="light" id="loadSpinner" /> : null}
+        {(loading === true || loadingGoogle===true) ? <Spinner animation="border" variant="light" id="loadSpinner" /> : null}
         <ToastContainer />
     </>
 }

@@ -1,0 +1,41 @@
+.alterBM{
+    position: absolute;
+    top:15vh;
+    left:25vw;
+}
+.alterBMImage{
+    position:absolute;
+    left:12vw;
+    top:4vh;
+    width:22vw;
+}
+.alterBMText1{
+    color:rgba(255,255,255,0.7);
+    font-family: 'Montserrat';
+font-style: normal;
+width:30vw;
+font-weight: 600;
+font-size: 1.8rem;
+line-height: 18px;
+position:absolute;
+left:10vw;
+top:40vh;
+}
+.alterBMText2{
+    text-decoration: underline;
+    color:#47C87a;
+    opacity:0.98;
+    font-family: 'Montserrat';
+font-style: normal;
+width:25vw;
+font-weight: 500;
+font-size: 1.2rem;
+line-height: 18px;
+position:absolute;
+left:15.8vw;
+top:47vh;
+cursor: pointer;
+}
+#BOOKMARK{
+    margin-top:-60px;
+}

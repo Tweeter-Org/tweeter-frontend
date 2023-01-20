@@ -1,0 +1,648 @@
+.PROFILE {
+    /* position: absolute; */
+    width: 45vw;
+    /* height: 1500px; */
+    height: fit-content;
+    margin-left: 23vw;
+    margin-top: 15vh;
+    padding-bottom: 5vh;
+    background: #161718;
+    border-radius: 8px;
+    z-index: 15;
+}
+
+.pBlock1 {
+    display: flex;
+    margin-left: -4vw;
+    margin-top: 5vh;
+}
+
+.pBlock2 {
+    display: flex;
+    justify-content: space-evenly;
+    /* background-color:aliceblue; */
+    margin-left: -7vw;
+    /* margin-top: 5vh; */
+}
+
+.PBLOCK1 {
+    display: flex;
+    flex-direction: column;
+    margin-left:6.5vw;
+}
+
+.profileDiv1 {
+    display: flex;
+    padding-top: 5vh;
+    /* justify-content: space-around; */
+}
+
+.pImage {
+    margin-left: 2.5vw;
+    /* margin-left:0vw; */
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+}
+
+/* .pImage1{
+    margin-left: -5vw;
+    width: 10vw;
+    height: 20vh;
+} */
+
+.pTweet1 {
+    width: 5vw;
+    height: 3vh;
+    margin-right: 2vw;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.3rem;
+    line-height: 22px;
+    color: rgba(255, 255, 255, 0.65);
+    cursor: pointer;
+    margin-bottom: 1.5vh;
+}
+
+#pFollowers {
+    width: 7vw;
+}
+
+.pTweetCount {
+    width: 26px;
+    height: 38px;
+    font-family: 'Karma';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 38px;
+    color: rgba(255, 255, 255, 0.7);
+    /* margin-right: 5vw; */
+}
+
+#followCount {
+    margin-left: 2vw;
+    margin-right: -2vw;
+}
+
+/* #tweetCount {
+    /* margin-right: 25px; */
+/* margin-left: 0; 
+} */
+
+.pEdiitProfile {
+    border: none;
+    width: 24vw;
+    height: 32px;
+    margin-left: -4.35vw;
+    background: #2D2E30;
+    border-radius: 8px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+
+    color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+}
+.pMsgBtn {
+    border: none;
+    width: 11vw;
+    height: 32px;
+    margin-left: 1vw;
+    background: none;
+    border:1px solid #47c87a;
+    /* background: #2D2E30; */
+    border-radius: 8px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+.pProfileFollow {
+    border: none;
+    width: 11vw;
+    height: 32px;
+    margin-left: -4.35vw;
+    background: #47c87a;
+    border-radius: 8px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+
+    color: white;
+    /* color: #47c87a; */
+    cursor: pointer;
+
+}
+
+.profileDiv2 {
+    display: flex;
+    flex-direction: column;
+    text-transform: capitalize;
+    padding-left: 4vw;
+    margin-top: 2.5vh;
+}
+
+.pText1 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.3rem;
+    line-height: 27px;
+    margin-bottom: 0.5vh;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.pText2 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.9rem;
+    line-height: 20px;
+    /* margin-left: 0.8vw; */
+    margin-bottom: 0.5vh;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: underline;
+    text-transform: none;
+
+}
+
+.pText3 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    width: 20vw;
+    height: auto;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 1vh;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.pText4 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    width: 20vw;
+    height: auto;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 1vh;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.pText5 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    width: 30vw;
+    height: auto;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 0.5vh;
+}
+
+#create {
+    text-decoration: underline;
+}
+
+#update {
+    text-decoration: underline;
+}
+
+.pText6 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    width: 30vw;
+    height: auto;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.profileDiv3 {
+    display: flex;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.9);
+    /* padding-left:2vw; */
+    margin-top: 2.5vh;
+
+}
+
+.pTweetHead {
+    margin-right: 4vw;
+    margin-left: 4vw;
+    cursor: pointer;
+}
+
+.pLikehead:hover {
+    color: #47c87a;
+}
+
+.pTweetReply:hover {
+    color: #47c87a;
+}
+
+.pTweetHead:hover {
+    color: #47c87a;
+}
+
+.pTweet1:hover {
+    color: #47c87a;
+}
+
+.pTweetReply {
+    margin-right: 4vw;
+    margin-left: 5.5vw;
+    cursor: pointer;
+    /* height:5vh; */
+    /* width:20vw; */
+}
+
+.pLikehead {
+    margin-right: 4vw;
+    margin-left: 4vw;
+    cursor: pointer;
+}
+
+.pLine {
+    color: rgba(255, 255, 255, 0.2);
+    margin-top: -2vh;
+    height: 2vh;
+}
+
+.profileDiv4 {
+    display: flex;
+    flex-direction: row;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 2.5vh;
+    display: none;
+}
+
+.pFollowerHead {
+    margin-right: 8vw;
+    margin-left: 8vw;
+    cursor: pointer;
+    width: 8vw;
+}
+
+.pFollowerHead:hover {
+    color: #47c87a;
+}
+
+.pFollowingHead {
+    margin-right: 8vw;
+    width: 8vw;
+    margin-left: 4vw;
+    cursor: pointer;
+}
+
+.pFollowingHead:hover {
+    color: #47c87a;
+}
+
+.pPost {
+    width: 24px;
+    height: 24px;
+    margin-right: 2vw;
+    opacity: 0.7;
+    border: 1px solid #47c87a;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/*EDIT PROFILE*/
+
+.editPrDiv {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 15vh;
+    left: 25.5vw;
+    width: 40vw;
+    height: 75vh;
+    background-color: #121212;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* box-shadow: 0px 100px 80px #1A1C1E; */
+    border-radius: 16px;
+    display: none;
+    z-index: 10;
+}
+
+.pEditImage {
+    margin-left: 1.5vw;
+    margin-top: 4vh;
+    margin-bottom: 2vh;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+}
+#editprofileimage{
+    margin-left: 1.5vw;
+    margin-top: 4vh;
+    margin-bottom: 2vh;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    display:none;
+}
+.editImagetext {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    margin-left: 2vw;
+    line-height: 27px;
+    /* identical to box height */
+    cursor: pointer;
+    text-decoration: underline;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.editName {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    margin-left: 2vw;
+    line-height: 27px;
+    margin-bottom: 4vh;
+    /* identical to box height */
+
+
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.editNameInput {
+    background: none;
+    border: none;
+    outline: none;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.1rem;
+    line-height: 22px;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.div1 {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    width: 36vw;
+    margin-left: 2vw;
+    margin-top: -3vh;
+    margin-bottom: 3vh;
+}
+
+.editBio {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    margin-left: 2vw;
+    line-height: 27px;
+    /* identical to box height */
+
+    margin-bottom: 4vh;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.editBioInput {
+    background: none;
+    border: none;
+    outline: none;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.1rem;
+    line-height: 22px;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.div2 {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    width: 36vw;
+    margin-left: 2vw;
+    margin-top: -3vh;
+    margin-bottom: 3vh;
+}
+
+#editPCancel {
+    top: 68vh;
+    left: 21vw;
+}
+
+#editPDone {
+    top: 68vh;
+    left: 30vw;
+}
+
+/* FOLLOWERS */
+
+.followersFlex {
+    display: flex;
+    margin-left: 1.5vw;
+    flex-direction: column;
+    display: none;
+    /* margin-top:40vh; */
+    /* width */
+}
+
+.followingFlex {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5vw;
+    display: none;
+}
+
+.followCompDiv {
+    box-sizing: border-box;
+    width: 42vw;
+    height: 72px;
+    margin-bottom: 4vh;
+    border: 0.8px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    display: flex;
+}
+
+.followName {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.9);
+    /* margin-left: 5.5vw; */
+    margin-top: 2vh;
+    text-transform: capitalize;
+}
+
+.followPic {
+    margin-top: 2vh;
+    margin-left:1vw;
+    /* top:60vh; */
+}
+
+.followUsername {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 20px;
+    color: #47c87a;
+    /* margin-left:-3.5vw; */
+    position: absolute;
+    left: 30vw;
+    margin-top: 5vh;
+    text-transform: capitalize;
+    text-decoration: underline;
+    /* cursor: pointer; */
+}
+
+.alterFollower {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 20px;
+    position: fixed;
+    top: 80vh;
+    /* top:20vh; */
+    width: 15vw;
+    left: 40vw;
+    margin-bottom: 5vh;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.tweetPrFlexbox {
+    display: flex;
+    flex-direction: column;
+    margin-left: -20.8vw;
+    display: none;
+}
+
+#profileTweetBox {
+    background-color: aquamarine;
+}
+
+#profileTweetComp {
+    width: 42vw;
+    border: 0.8px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    /* background-color:#47c87a; */
+}
+
+#TWRProfile {
+    margin-left: 1vw;
+}
+
+#ProfileImage {
+    width: 39.8vw;
+}
+
+#ProfileVideo {
+    width: 39.8vw;
+}
+
+#bmIcon {
+    margin-left: 23vw;
+    margin-right: 0.4vw;
+    width:18px;
+}
+#delIcon{
+    width:18px;
+}
+#prTwReplying1{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 27px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-left:4vw;
+    margin-bottom:0;
+    /* margin-top:-3.2vh; */
+}
+#prTwReplying2{
+    color:#47c87a;
+    text-decoration: underline;
+    text-transform: none;
+    margin-left:0.4vw;
+    cursor: pointer;
+}
+.profileRetweetIcon {
+    margin-top: -2vh;
+    width: 25.2px;
+    margin-right: 0.5vw;
+    cursor: pointer;
+}
+
+/* DELETE TWEET POPUP */
+#DltPopUp {
+    display: flex;
+position:fixed;
+top:20vh;
+left:32vw;
+width:40vw;
+height:40vh;
+background-color: #121212;
+padding-left: 2vw;
+padding-top: 4vh;
+box-shadow: 0px 264px 106px rgba(23, 25, 28, 0.01), 0px 149px 89px rgba(23, 25, 28, 0.05), 0px 66px 66px rgba(23, 25, 28, 0.09), 0px 17px 36px rgba(23, 25, 28, 0.1), 0px 0px 0px rgba(23, 25, 28, 0.1);
+border-radius: 16px;
+box-shadow: 0px 50px 80px #1A1C1E;
+border: 0.7px solid rgba(255, 255, 255, 0.2);
+z-index:15;
+
+    align-items: center;
+    width: 30vw;
+    height: fit-content;
+    padding-bottom: 4vh;
+    z-index:999;
+    display: none;
+}
+
+#DltPopText1 {
+    margin-left: -2vw;
+}
+
+#DltPopText2 {
+    /* margin-left: -0.5vw; */
+    width: 25vw;
+}
+
+#DltPopBtn1 {
+    margin-left: 4vw;
+    background-color: #f4212e;
+}
+
+#DltPopBtn2 {
+    margin-left: 4vw;
+    background: none;
+    border-color: rgba(255, 255, 255, 0.8);
+    color:rgba(255, 255, 255, 0.8)
+    /* margin-bottom:3vh; */
+}

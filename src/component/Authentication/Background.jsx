@@ -18,9 +18,9 @@ color:"#63DF76",
 opacity:"0.79",
 zIndex:10}}>Tweeter</p>
         <img src={authBgImg} id="authBgImg" style={{
-          position:"absolute",
-           height:"100vh",
-    width:"100vw",
+          // position:"absolute",
+          //  height:"110vh",
+    // width:"100vw",
     backgroundSize: "cover",
     background: " noRepeat center fixed",
     overflow:"hidden",

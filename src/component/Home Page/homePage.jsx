@@ -1,42 +1,68 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { TweetFeedAction } from "../../react-redux/actions/TweetsFeedAct";
+import { TweetFeedAction, TweetFeedAction2, TweetFeedCount } from "../../react-redux/actions/Tweets.jsx";
 import Sidebar from "../Sidebar/SideBar";
 import "./homepage.css";
 import Tweet from "./TweetComp";
 import { Spinner } from 'react-bootstrap';
+import Loader from "../Assets/Loader.jsx";
+import { ToastContainer , toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function HomePage (){
     const dispatch = useDispatch();
 
-    const {loadingTweet, tweetData} = useSelector((s)=>s.TweetFeedReducer)
-
-    const [tweetArray, setTweetArray] = useState("");
+    const {loading, tweetData, liked, bookmarked} = useSelector((s)=>s.TweetFeedReducer)
+    const [tweeets, settweets] = useState([])
+    console.log(tweetData)
+   
+    const {response} = useSelector((t)=>t.TweetCreateReducer)
     useEffect(()=>{
         dispatch(TweetFeedAction())
     },[])
+    
    console.log(tweetData)
-   console.log(tweetData.length)
+   console.log(liked)
+   console.log(bookmarked)
    const tweetLength = tweetData.length
-console.log(tweetArray)
 
+const auth = useSelector((s)=>s.AuthReducer)
+const {user, toFgtPwd} = auth;
+const nameInApi = user.user_name
+sessionStorage.setItem("usernameInApi",nameInApi)
+const {count}= useSelector((t)=>t.TweetFeedCountRed)
+
+function handleShowMoreTweet(){
+    dispatch(TweetFeedCount())
+    console.log(count)
+dispatch(TweetFeedAction2(count))
+}
+console.log(tweetData)
 useEffect(()=>{
-    if(loadingTweet===true){
+    if(loading===true){
         document.body.style.opacity = 0.5;
     }
     else{
         document.body.style.opacity = 1;
     }
-},[loadingTweet])
-
+},[loading])
     return <>
     <Sidebar />
-    <div className="tweetFlexBox">
-    {tweetLength>0?(tweetData.map((tweet)=>{
-        return <Tweet text={tweet.text} image={tweet.image} video={tweet.video} username={tweet.user.user_name}/>;
+    <div className="HOMEPAGE">
+    <div className="tweetFlexBox POPUPBG">
+    {tweetLength>0?(tweetData.map((tweet, index)=>{
+        const likes= liked[index]
+        const bookmarks = bookmarked[index]
+        console.log(likes)
+        return <Tweet text={tweet.text} image={tweet.image} video={tweet.video} likeCount={parseInt(tweet.likes)} retweet={tweet.retweet} 
+        username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} name={tweet.user.name}
+         bookmarked ={bookmarks} LIKES= {likes} />;
     })):null}
     </div>
-    {(loadingTweet===true)?<Spinner animation="border" variant="light" id="loadSpinner" />:null}
+    <div className="TweetShowMore" onClick={()=>{handleShowMoreTweet()}}>...Show More</div>
+    </div>
+    {(loading===true)?<Loader loading={loading} />:null}
+    <ToastContainer />
     </>
 }
 export default HomePage

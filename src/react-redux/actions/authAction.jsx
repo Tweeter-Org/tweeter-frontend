@@ -1,11 +1,13 @@
 import axios from "axios"
+import { useEffect } from "react"
+import { useSelector } from "react-redux"
 import BaseUrl from "./BaseUrl"
 
 const LogInUser = (data, condition) => {
     return async function (dispatch) {
         if (condition) {
             dispatch({ type: "REQUEST_STARTED" })
-            await axios.post("https://twitterbackend-production-93ac.up.railway.app/login", data)
+            await BaseUrl.post(`/login`, data)
                 .then((res) => dispatch({
                     type: "REQUEST_SUCCEDED",
                     payload: res.data
@@ -26,7 +28,7 @@ const FgtPwdAction = (email, condition) => {
         if (condition) {
             console.log(email)
             dispatch({ type: "FGT_EMAIL_STARTED" })
-            await axios.post("https://twitterbackend-production-93ac.up.railway.app/forgotpwd", { email })
+            await BaseUrl.post(`/forgotpwd`, { email })
                 .then((res) => dispatch({
                     type: "FGT_EMAIL_SUCCEDED",
                     payload: res.data
@@ -45,7 +47,7 @@ export { FgtPwdAction }
 const OtpAction = (data) => {
     return async function (dispatch) {
         dispatch({ type: "OTP_STARTED" })
-        await axios.post("https://twitterbackend-production-93ac.up.railway.app/forgotpwd/verify", data)
+        await BaseUrl.post(`/forgotpwd/verify`, data)
             .then((res) => dispatch({
                 type: "OTP_SUCCEDED",
                 payload: res.data
@@ -63,7 +65,7 @@ export { OtpAction }
 const ResendOtpAction = (email) => {
     return async function (dispatch) {
         dispatch({ type: "RESEND_STARTED" })
-        await axios.post("https://twitterbackend-production-93ac.up.railway.app/resendotp", { email })
+        await BaseUrl.post(`/resendotp`, { email })
             .then((res) => dispatch({
                 type: "RESEND_SUCCEDED",
                 payload: res.data
@@ -83,7 +85,7 @@ const SignUpUser = (email, condition) => {
     return async function (dispatch) {
         if (condition) {
             dispatch({ type: "SIGNUP_STARTED" })
-            await axios.post("https://twitterbackend-production-93ac.up.railway.app/email", { email })
+            await BaseUrl.post(`/email`, { email })
                 .then((res) => dispatch({
                     type: "SIGNUP_SUCCEDED",
                     payload: res.data
@@ -104,7 +106,7 @@ export { SignUpUser }
 const EmailAction = (data) => {
     return async function (dispatch) {
         dispatch({ type: "EMAIL_VERIFY_STARTED" })
-        await axios.post("https://twitterbackend-production-93ac.up.railway.app/email/verify", data)
+        await BaseUrl.post(`/email/verify`, data)
             .then((res) => dispatch({
                 type: "EMAIL_VERIFY_SUCCEDED",
                 payload: res.data
@@ -120,39 +122,62 @@ const EmailAction = (data) => {
 }
 export { EmailAction }
 
-const SignUpResend=(email)=>{
-    return async function (dispatch){
-          dispatch({type:"SIGNUP_STARTED"})
-          await axios.post("https://twitterbackend-production-93ac.up.railway.app/email",{email})
-          .then((res)=>dispatch({
-             type:"SIGNUP_SUCCEDED",
-             payload:res.data }))
- 
-          .catch((err)=>{
-             dispatch({
-                type:"SIGNUP_FAILED",
-                payload:err
-             })
-          })   
-    }
- }
-export {SignUpResend} 
-
-const accessToken = localStorage.getItem("access token")
-console.log(accessToken)
-const config={
-    headers:{
-        "Authorization" : `Bearer ${accessToken}`
+const SignUpResend = (email) => {
+    return async function (dispatch) {
+        dispatch({ type: "SIGNUP_STARTED" })
+        await BaseUrl.post(`/email`, { email })
+            .then((res) => dispatch({
+                type: "SIGNUP_SUCCEDED",
+                payload: res.data
+            }))
+            .catch((err) => {
+                dispatch({
+                    type: "SIGNUP_FAILED",
+                    payload: err
+                })
+            })
     }
 }
-console.log(config)
+export { SignUpResend }
+
+
+// // const {token} = useSelector((t)=>t.AuthReducer)
+// var accesstoken,config
+// function AccesstToken (){
+//     // const {token} = useSelector((t)=>t.AuthReducer)
+//     const token = sessionStorage.getItem("isToken")
+//     // const token="a";
+//     console.log(token)
+//     if(token){
+//         accesstoken = sessionStorage.getItem("access token")
+//         console.log(accesstoken)
+//          config={
+//             headers:{
+//                 "Authorization" : `Bearer ${accesstoken}`
+//             }
+//         }
+//         console.log(config)
+//     }
+//     else{
+//         setTimeout(AccesstToken,500)
+//         // sessionStorage.removeItem("access token")
+//     }
+// }
+
+// AccesstToken()
+
 const SignUpTwoUser = (data) => {
+    const accessToken = localStorage.getItem("access token")
+    console.log(accessToken)
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
+    }
     return async function (dispatch) {
         // if(condition){
-        console.log(accessToken)
-        console.log(config)
         dispatch({ type: "SIGNUP_TWO_STARTED" })
-        await axios.post("https://twitterbackend-production-93ac.up.railway.app/signup", data, config)
+        await BaseUrl.post(`/signup`, data, config)
             .then((res) => dispatch({
                 type: "SIGNUP_TWO_SUCCEDED",
                 payload: res.data
@@ -168,35 +193,81 @@ const SignUpTwoUser = (data) => {
 }
 export { SignUpTwoUser }
 
-const ResetAction=(data)=>{
-    return async function (dispatch){
-          dispatch({type:"RESET_STARTED"})
-          await axios.post("https://twitterbackend-production-93ac.up.railway.app/resetpassword",data,config)
-          .then((res)=>dispatch({
-             type:"RESET_SUCCEDED",
-             payload:res.data }))
-          .catch((err)=>{
-             dispatch({
-                type:"RESET_FAILED",
-                payload:err
-             })
-          })   
+const ResetAction = (password) => {
+    const accessToken = localStorage.getItem("access token")
+    console.log(accessToken)
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
     }
- }
-export {ResetAction}
+    return async function (dispatch) {
+        dispatch({ type: "RESET_STARTED" })
+        await BaseUrl.post(`/resetpassword`, { password }, config)
+            .then((res) => dispatch({
+                type: "RESET_SUCCEDED",
+                payload: res.data
+            }))
+            .catch((err) => {
+                dispatch({
+                    type: "RESET_FAILED",
+                    payload: err
+                })
+            })
+    }
+}
+export { ResetAction }
 
-const GoogleAction =()=>{
-    return async function (dispatch){
+const GoogleAction = () => {
+    return async function (dispatch) {
         dispatch({ type: "GOOGLE_STARTED" })
-        await axios.get("https://twitterbackend-production-93ac.up.railway.app/auth/google/url/")
+        await BaseUrl.get(`/auth/google/url`)
             .then((res) => dispatch({
                 type: "GOOGLE_SUCCEDED",
                 payload: res.data
             }))
             .catch((err) => {
-               console.log(err)
+                console.log(err)
             })
-       
+
     }
 }
-export {GoogleAction}
+export { GoogleAction }
+
+const GoogleTwoAction = (url) => {
+    return async function (dispatch) {
+        dispatch({ type: "GOOGLE_TWO_STARTED" })
+        await BaseUrl.get(`/auth/google?code=${url}`)
+            .then((res) => dispatch({
+                type: "GOOGLE_TWO_SUCCEDED",
+                payload: res
+            }))
+            .catch((err) => {
+                console.log(err)
+                dispatch({
+                    type: "GOOGLE_TWO_FAILED",
+                    payload: err
+                })
+            })
+
+    }
+}
+export { GoogleTwoAction }
+
+export const nameViaGoogle=(name, username)=>{
+    return {
+        type:"NAME_VIA_GOOGLE",
+        payload:{
+            name, username
+        }
+    }
+}
+
+export const infoViaGoogle =(user)=>{
+    return {
+        type:"INFO_VIA_GOOGLE",
+        payload:{
+            user
+        }
+    }
+}
