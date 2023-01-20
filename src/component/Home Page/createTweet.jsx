@@ -294,10 +294,10 @@ function CreateTweet(props) {
     return <>
         <div className="createTweetDiv" id="CREATETWEET">
             <div className="CTBlock1">
-                {(displaypic === null) ? (<img src={avatar} id="ctCircle" />) :
+                {/* {(displaypic === null) ? (<img src={avatar} id="ctCircle" />) :
                     ((displaypic.startsWith("https:")) ? (<img src={displaypic} id="ctCircle" />) :
                         (<img src={displaypic} id="ctCircle" />))
-                }
+                } */}
                 <div className="CTDiv1">
                     <p className="ctName">{name}</p>
                     <p className="ctUserName">@{user_name}</p>

@@ -2,7 +2,7 @@ import React from "react";
 import BaseUrl from "./BaseUrl";
 
 function TweetDeleteAction(tweetId) {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     console.log(accessToken)
     const config = {
         headers: {

@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 export const TweetFeedAction = () => {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -41,7 +41,7 @@ export const TweetFeedCount = () => {
 export const TweetFeedAction2 = (count) => {
     var c= count++;
     console.warn(c)
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -69,7 +69,7 @@ export const TweetFeedAction2 = (count) => {
 }
 
 function TweetLikeAction(tweetId) {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -97,7 +97,7 @@ function TweetLikeAction(tweetId) {
 export default TweetLikeAction
 
 export const CreateTweetAct = (formData) => {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -134,7 +134,7 @@ export const CreateTweetAct = (formData) => {
 }
 
 export const CreateReTweetAct = (formData) => {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -170,7 +170,7 @@ export const CreateReTweetAct = (formData) => {
 }
 
 export const LikedTweetAction = (username) => {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -213,7 +213,7 @@ export const FakeReTweetFeedAction = (retweeet) => {
 }
 
 const TweetListWithTag = (tag) => {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`

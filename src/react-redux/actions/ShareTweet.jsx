@@ -1,7 +1,7 @@
 import BaseUrl from "./BaseUrl"
 
 export const ShareTweet = (data, socket) => {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`

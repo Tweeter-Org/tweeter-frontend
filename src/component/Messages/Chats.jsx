@@ -47,7 +47,7 @@ function Chats() {
 
     const [allChats, setAllChats] = useState([])
     const [cBool, setCBool] = useState(false)
-    // console.log(chatLists)
+    console.log(chatLists)
     useEffect(() => {
         dispatch(ViewChatList())
         setUesrlist(chatLists)
@@ -84,7 +84,7 @@ function Chats() {
                 })
             }
         }
-    }, [isActive, userid, cBool])
+    }, [isActive, userid])
 
     const [textMsg, setTextMsg] = useState("")
     const [showEmoji, setShowEmoji] = useState(false)

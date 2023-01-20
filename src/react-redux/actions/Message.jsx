@@ -19,7 +19,7 @@ const MsgSearchUser = (char) => {
 export default MsgSearchUser
 
 function CreateChat(id) {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -49,7 +49,7 @@ export {CreateChat}
 
 
 function ViewChatList () {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -94,7 +94,7 @@ function InactiveUserList (){
 export {InactiveUserList}
 
 export const SendChatsAction = (formData, socket) => {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -120,7 +120,7 @@ export const SendChatsAction = (formData, socket) => {
 }
 
 export const ViewChatsAction = (chatid) => {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`

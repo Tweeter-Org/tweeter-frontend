@@ -12,15 +12,14 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function EditProfile() {
     const navigate = useNavigate()
-    const NAME = sessionStorage.getItem("profile name")
-    const BIO = sessionStorage.getItem("profile bio")
+   
 
     const [sendImage, setSendImage] = useState([]);
     const profilee = useSelector((p) => p.ProfileReducer)
     const { profile, accessProfile, loading, editprofile, ifedit, profileTweet } = profilee;
-    const [name, setName] = useState();
-    const [username, setUsername] = useState();
-    const [bio, setBio] = useState();
+    const [name, setName] = useState("");
+    const [username, setUsername] = useState("");
+    const [bio, setBio] = useState("");
     const [editProfileImage, setEditprofileImage] = useState(null);
     const [toastBool, setToastBool] = useState(false)
     useEffect(() => {
@@ -86,12 +85,22 @@ function EditProfile() {
             <form enctype="multipart/form-data" onSubmit={(e) => e.preventDefault()}>
                 <label for="editProfileUploadImg"><p className="editImagetext">Edit Picture or Avatar</p></label>
                 <input type="file" id="editProfileUploadImg" accept="image/png, image/jpg, image/jpeg" onChange={handleSendImage} hidden />
-                <p className="editName">Name</p>
+                {accessProfile?(<>
+                    <p className="editName">Name</p>
                 <div className="div1"><input type="text" className="editNameInput" onChange={handleName} value={name} placeholder={profile.user.name} ></input></div>
                 <p className="editBio">Bio</p>
                 <div className="div2"><input type="text" className="editBioInput" onChange={handleBio} value={bio} placeholder={profile.user.bio}></input></div>
                 <button className="ctCancelTweet" id="editPCancel" onClick={handlecancel}>Cancel</button>
+                <button className="ctCreateTweet" id="editPDone" onClick={handleEditProfile}>Edit</button></>
+                ):<>
+                <p className="editName">Name</p>
+                <div className="div1"><input type="text" className="editNameInput" onChange={handleName} value={name} placeholder="Enter your name" ></input></div>
+                <p className="editBio">Bio</p>
+                <div className="div2"><input type="text" className="editBioInput" onChange={handleBio} value={bio} placeholder="About you"></input></div>
+                <button className="ctCancelTweet" id="editPCancel" onClick={handlecancel}>Cancel</button>
                 <button className="ctCreateTweet" id="editPDone" onClick={handleEditProfile}>Edit</button>
+                </>}
+                
             </form>
         </div>
         <ToastContainer />

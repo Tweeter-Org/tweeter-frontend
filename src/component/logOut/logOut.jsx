@@ -6,7 +6,7 @@ import "./logout.css"
 function LogOut() {
     const naavigate = useNavigate()
     function handleLogOut() {
-        sessionStorage.clear();
+        localStorage.clear();
         naavigate("/login");
         document.getElementsByClassName("logoutDiv")[0].style.display="none";
 

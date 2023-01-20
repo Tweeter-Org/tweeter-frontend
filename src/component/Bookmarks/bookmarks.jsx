@@ -45,7 +45,7 @@ console.log(tweets)
     },[loading])
     return <>
     <Sidebar />
-    <div className="tweetFlexBox POPUPBG">
+    <div className="tweetFlexBox POPUPBG" id="BOOKMARK">
     {bookmarkArray.length>0? (bookmarkArray.map((bm, index)=>{
         return <Tweet text={bm.text} image={bm.image} replies={bm.replyingto} retweet={bm.retweet} 
          likeCount={parseInt(bm.likes)} video={bm.video} username={bm.user.user_name} name={bm.user.name}

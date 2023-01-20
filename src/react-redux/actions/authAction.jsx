@@ -167,7 +167,7 @@ export { SignUpResend }
 // AccesstToken()
 
 const SignUpTwoUser = (data) => {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     console.log(accessToken)
     const config = {
         headers: {
@@ -194,7 +194,7 @@ const SignUpTwoUser = (data) => {
 export { SignUpTwoUser }
 
 const ResetAction = (password) => {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     console.log(accessToken)
     const config = {
         headers: {

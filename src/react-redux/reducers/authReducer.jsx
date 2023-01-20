@@ -16,15 +16,15 @@ const initialState ={
  const AuthReducer =(state=initialState, action)=>{
     switch(action.type){
         case "REQUEST_STARTED":{
-            sessionStorage.setItem("isToken", "false")
+            localStorage.setItem("isToken", "false")
             return {
                 ...state, loading:true, toFgtPwd:false
             }
         }
         case "REQUEST_SUCCEDED":{
             console.log(action.payload)
-            sessionStorage.setItem("access token", action.payload.token)
-            sessionStorage.setItem("isToken","true")
+            localStorage.setItem("access token", action.payload.token)
+            localStorage.setItem("isToken","true")
             return {...state,
                 loading:false,
                 response:action.payload.msg,
@@ -80,8 +80,8 @@ const initialState ={
         }
         case "OTP_SUCCEDED":{
             console.log(action.payload)
-            sessionStorage.setItem("access token", action.payload.token)
-            sessionStorage.setItem("isToken", "true")
+            localStorage.setItem("access token", action.payload.token)
+            localStorage.setItem("isToken", "true")
             return {...state,
                 loading:false,
                 response:action.payload.msg,
@@ -149,7 +149,7 @@ const initialState ={
             }
         }
         case "SIGNUP_STARTED":{
-        sessionStorage.setItem("isToken", "false")
+        localStorage.setItem("isToken", "false")
             console.log(action.payload)
             return {
                 ...state, loading:true, toSignOtp:false
@@ -182,8 +182,8 @@ const initialState ={
         }
         case "EMAIL_VERIFY_SUCCEDED":{
             console.log(action.payload)
-            sessionStorage.setItem("access token", action.payload.token)
-            sessionStorage.setItem("isToken", "true")
+            localStorage.setItem("access token", action.payload.token)
+            localStorage.setItem("isToken", "true")
             console.log(action.payload.token)
             return {...state,
                 loading:false,
