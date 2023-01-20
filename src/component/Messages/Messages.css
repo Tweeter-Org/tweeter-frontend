@@ -511,3 +511,40 @@ margin-bottom:4px;
     font-size: 16px;
     color: #000;
 }
+
+/* NO CHATS */
+
+#NOCHATBLOCK{
+display:flex;
+flex-direction: column;
+/* text-align: center; */
+position:absolute;
+top:265px;
+left:45vw;
+z-index:18;
+display: none;
+}
+.noChatProfile{
+width:50px;
+height:50px;
+border-radius: 50%;
+/* margin-left:5vw; */
+}
+.noChatUser{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight:600;
+    font-size: 18px;
+    color: #fff;
+    margin-left:-0.5vw;
+    margin-top:4px;
+}
+.noChatMsg{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight:500;
+    font-size: 16px;
+    color: rgb(71, 200, 122,0.8);
+    margin-left:-8vw;
+    margin-top:-15px;
+}
