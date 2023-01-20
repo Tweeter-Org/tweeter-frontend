@@ -5,6 +5,10 @@ body{
     display: flex;
     flex-direction: column;
 }
+.tweetFeedHashtag{
+cursor: pointer;
+color:#47C87A;
+}
 .tweetComp {
     display: flex;
     flex-direction: column;
@@ -574,7 +578,57 @@ body{
     margin-right:0.6vw;
     margin-top:-2vh;
 }
+/* TAGS IN CREATE TWEET */
+.ctSearchFlexBox{
+    display: flex;
+    flex-direction: column;
+    width:fit-content;
+    height:150px;
+    overflow-y: scroll;
+    background-color: #161718;
+    border:1px solid  rgba(255, 255, 255, 0.8);
+    margin-top:5px;
+    border-radius: 8px;
+    padding:4px 0.5vw;
+}
+.ctSearchBlock{
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    height:20px;
+    /* width:10vw; */
+    margin-left: -0.5vw;
+    margin-bottom:2px;
+padding:4px;
 
+}
+#ctSearchHash{
+color:rgba(255, 255, 255);
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+white-space: pre-wrap;
+white-space: -moz-pre-wrap;
+white-space: -pre-wrap;
+white-space: -o-pre-wrap;
+word-wrap: break-word;
+cursor: pointer;
+word-break: break-word;
+}
+#ctSearchATR{
+    color:rgba(255, 255, 255);
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+    word-break: break-word;
+    cursor: pointer;
+}
 /*TWEET POPUP*/
 .tweetPopcomp {
     margin-left: -44vw;

@@ -99,7 +99,7 @@ function Reply2(props) {
                 <div className="Reply1">
                     {(props.displaypic === null) ? (<img src={avatar} id="RepAvatar2" />) :
                         ((props.displaypic.startsWith("https:")) ? (<img src={props.displaypic} />) :
-                            (<img src={`https://tweeter-backend-7ngr.onrender.com/${props.displaypic}`} />))
+                            (<img src={props.displaypic} />))
                     }
                     <p id="RepName">{props.username}</p>
                     <img src={bookmark} className="RbookmarkIcon2" onClick={() => { handleTweetBookmark(props.num) }} />
@@ -110,9 +110,9 @@ function Reply2(props) {
                         navigate(`/profile/${name}`)
                     }}>@{name}</span>
                 })) : null}</p>
-                {props.image != null ? (<img src={`https://tweeter-backend-7ngr.onrender.com/${props.image}`} id="RepImage" alt="image" />) : null}
+                {props.image != null ? (<img src={props.image} id="RepImage" alt="image" />) : null}
                 {props.video != null ? <video controls>
-                    <source src={`https://tweeter-backend-7ngr.onrender.com/${props.video}`} id="RepImage" type="video/mp4" />
+                    <source src={props.video} id="RepImage" type="video/mp4" />
                 </video> : null}
                 <p className="RepText">{props.text}</p>
 

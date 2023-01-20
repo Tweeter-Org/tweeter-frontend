@@ -18,7 +18,7 @@ function TweetPopup(props) {
             {(props.displaypic === null) ? ( <span className="displayTweetPic"><img src={avatar}  id="picincircle" /></span>) :
                     ((props.displaypic.startsWith("https:")) ? ( <span className="displayTweetPic"><img src={props.displaypic} id="picincircle"/></span>) :
                         ( <span className="displayTweetPic">
-                        <img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`}  id="picincircle" /></span>))
+                        <img src={props.displaypic}  id="picincircle" /></span>))
                 }
             <p className="tweetUsername" onClick={(e) => { toProfile(e,props.name) }}>{props.name}</p>
         </div>

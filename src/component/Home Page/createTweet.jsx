@@ -15,6 +15,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import avatar from "../Assets/avatar.svg";
 import { FakeReplyTweetAction, ReplyToTweet } from "../../react-redux/actions/Replies";
+import SearchUser, { SearchTweetWithTag } from "../../react-redux/actions/SearchApi";
+import CreateSearch from "./CreateSearch";
+import CTSearchTag from "./SearchTag";
 
 function CreateTweet(props) {
     const [text, setText] = useState("");
@@ -126,6 +129,82 @@ function CreateTweet(props) {
             },
         }
     }
+    /*TAGS AND @ SEARCH */
+    const { list, tomap, tweetList, tohash } = useSelector((S) => S.SearchReducer)
+    const [searchListArray, setSearchListArray] = useState([]);
+    const [searchTweetList, setSearchTweetList] = useState([]);
+
+    function handleCreateTweetSearch(e){
+       setText(e.target.value)
+       if (e.target.value.startsWith('#')) {
+        console.log("hash")
+        dispatch(SearchTweetWithTag(e.target.value.slice(1)))
+    }
+    if (e.target.value.startsWith('@')) {
+        dispatch(SearchUser(e.target.value.slice(1))); 
+    }
+    setSearchListArray([])
+    setSearchTweetList([])
+    if (tomap) {
+        if (list.result.length > 0) {
+            setSearchListArray(list.result)
+        }
+        else {
+            setSearchListArray([])
+        }
+    }
+    if (tohash) {
+       
+        // document.getElementById("ctSearchHash").style.display="block";
+        // document.getElementById("ctSearchATR").style.display="none";
+        if (tweetList.length > 0) {
+            setSearchTweetList(tweetList)
+        }
+        else {
+            setSearchTweetList([])
+        }
+    }
+    if(!e.target.value){
+        setSearchListArray([])
+        setSearchTweetList([])
+    }
+    }
+// const [tag, setTag] = useState(false)
+    useEffect(() => {
+        if (tomap) {
+            if (list.result.length > 0) {
+                setSearchListArray(list.result)
+            }
+            else {
+                setSearchListArray([])
+            }
+        }
+        // if(!text){
+        //     setSearchListArray([])
+        //     setSearchTweetList([])
+        // }
+    }, [tomap, list, text])
+    useEffect(() => {
+        if (tohash) {
+            if (tweetList.length > 0) {
+                setSearchTweetList(tweetList)
+            }
+            else {
+                setSearchTweetList([])
+            }
+        }
+        if(!text){
+            setSearchListArray([])
+           setSearchTweetList([])
+        }
+    }, [tohash, tweetList, text])
+    useEffect(()=>{
+        if(searchListArray.length==0 && searchTweetList.length==0)
+        document.getElementById("CTSEARCH").style.display="none";
+        else
+        document.getElementById("CTSEARCH").style.display="flex";
+    },[searchListArray, searchTweetList])
+
     function handleCreateTweet(e) {
         e.preventDefault();
         fd.append("text", text)
@@ -230,8 +309,21 @@ function CreateTweet(props) {
                 <div id="CTweetText">
                     <p className="ctTagline">Share tweets with your followers</p>
                     <div className="ctWriteTweet">
-                        <input type="text" className="ctWriteTweetInput" value={text} onChange={(e) => { setText(e.target.value) }} />
+                        <input type="text" className="ctWriteTweetInput" value={text} onChange={handleCreateTweetSearch} />
                     </div>
+                    <div className="ctSearchFlexBox POPUPBG" id="CTSEARCH">
+                {tohash ? (
+                    searchTweetList.length > 0 ? (searchTweetList.map((se) => {
+                        return <CTSearchTag hashtag={se.hashtag} />
+
+                    })) : (null)
+                ) : null}
+                {
+                    tomap ? ((searchListArray.length > 0) ? (searchListArray.map((searchh) => {
+                        return <CreateSearch username={searchh.user_name}  />
+                    })) :null) : null
+                }
+            </div>
                 </div>
                 <div className="CTRetweetDiv" id="CTRETWEETDIV">
                     <div className="CTRet1">

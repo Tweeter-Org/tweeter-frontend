@@ -92,7 +92,7 @@ const googleRed = useSelector((g)=>g.GoogleReducer)
 
     useEffect(()=>{
         if(toFgtPwd){
-            navigate("/home")
+            navigate("/")
         }
     },[toFgtPwd])
     

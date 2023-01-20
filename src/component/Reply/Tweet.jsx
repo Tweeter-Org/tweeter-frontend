@@ -165,7 +165,7 @@ function ToTweet(props) {
             <div className="firstTweetBlock">
                 {(props.displaypic === null) ? (<span className="displaypie"><img src={avatar} id="picincircle" /></span>) :
                     ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
-                        (<span className="displaypie"><img src={`https://tweeter-backend-7ngr.onrender.com/${props.displaypic}`} id="picincircle" /></span>))
+                        (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>))
                 }
                 <div className="USERNAME">
                 <p className="username">{props.name}</p>
@@ -208,7 +208,7 @@ function ToTweet(props) {
             <div className="firstTweetBlock" >
                 {(props.displaypic === null) ? (<span className="displaypie"><img src={avatar} id="picincircle" /></span>) :
                     ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
-                        (<span className="displaypie"><img src={`https://tweeter-backend-7ngr.onrender.com/${props.displaypic}`} id="picincircle" /></span>))
+                        (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>))
                 }
                 <div className="USERNAME">
                 <p className="username">{props.name}</p>
@@ -226,13 +226,13 @@ function ToTweet(props) {
                 <div className="TWRBlock1">
                     {(retweets.user.displaypic === null) ? (<img src={avatar} className="TWRpic" />) :
                         ((retweets.user.displaypic.startsWith("https:")) ? (<img src={retweets.user.displaypic} className="TWRpic" />) :
-                            (<img src={`https://tweeter-backend-7ngr.onrender.com/${retweets.user.displaypic}`} id="picincircle" />))
+                            (<img src={retweets.user.displaypic} id="picincircle" />))
                     }
                     <p className="username">{retweets.user.user_name}</p>
                 </div>
-                {(retweets.image != null) ? (<img src={`https://tweeter-backend-7ngr.onrender.com/${retweets.image}`} className="TWRVideo" alt="image" />) : null}
+                {(retweets.image != null) ? (<img src={retweets.image} className="TWRVideo" alt="image" />) : null}
                 {(retweets.video != null) ? <video controls className="TWRVideo">
-                    <source src={`https://tweeter-backend-7ngr.onrender.com/${retweets.video}`} type="video/mp4" />
+                    <source src={retweets.video} type="video/mp4" />
                 </video> : null}
                 <p className="TWRText" >{retweets.text}</p>
             </div>

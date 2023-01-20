@@ -23,33 +23,37 @@ import GoogleSignin from './component/Authentication/GoogleSign/GoogleSignIn';
 import Counter from './component/counter';
 import Messages1 from './component/Messages/Messages1';
 import Chats from './component/Messages/Chats';
+import PrivateRoute from './component/PrivateRoute';
 
 function App() {
+
+  const isUser = sessionStorage.getItem("access token")?true:false;
   return <>
-  {/* <Counter /> */}
+    {/* <Counter /> */}
     <BrowserRouter>
       <Routes>
-      <Route path="/chats/:userid" element={<Chats />} />
-      <Route path="/messages" element={<Messages1 />} />
-        <Route path="/profile/:apiname" element={<ProfilePage />} />
-         <Route path="/toTweet/:TweetId" element={<OneTweet />} />
-        <Route path="/tagtweet" exact element={<TagTweets />} />
-        <Route path="/google" element={<Google />} />
-        <Route path="/logout" exact element={<LogOut />} />
-        <Route path="/editprofile" exact element={<EditProfile />} />
-        <Route path="/bookmark" exact element={<Bookmarks />} />
-        <Route path="/createtweet" exact element={<CreateTweet />} />
-        <Route path="/sidebar" exact element={<Sidebar />} />
-        <Route path="/home" exact element={<HomePage />} />
-        <Route path="/" exact element={<Login />} />
+        <Route path="/login" exact element={<Login />} />
         <Route exact path="/fgtpwd" element={<ForgotPwd />} />
         <Route exact path="/otp" element={<AuthOtp />} />
-        <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="/verifyemail" element={<EmailVerify />} />
         <Route exact path="/reset" element={<ResetPwd />} />
+        <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="/signuptwo" element={<SignUpTwo />} />
         <Route exact path="/googlesign" element={<GoogleSignin />} />
-        <Route exact path="/emojipicker" element={<EmojiPicker />} />
+
+        {isUser?(   <Route path="/" exact element={<HomePage />} />):(<Route path="*" element={<Error />} />)}
+       {isUser?( <Route path="/chats/:userid" element={<Chats />} />):(<Route path="*" element={<Error />} />)}
+       {isUser?(  <Route path="/messages" element={<Messages1 />} />):(<Route path="*" element={<Error />} />)}
+       {isUser?(  <Route path="/profile/:apiname" element={<ProfilePage />} />):(<Route path="*" element={<Error />} />)}
+       {isUser?(  <Route path="/toTweet/:TweetId" element={<OneTweet />} />):(<Route path="*" element={<Error />} />)}
+       {isUser?(<Route path="/tagtweet" exact element={<TagTweets />} />):(<Route path="*" element={<Error />} />)}
+       {isUser?( <Route path="/bookmark" exact element={<Bookmarks />} />):(<Route path="*" element={<Error />} />)}
+       {isUser?(   <Route path="/sidebar" exact element={<Sidebar />} />):(<Route path="*" element={<Error />} />)}
+       {isUser?( <Route path="/editprofile" exact element={<EditProfile />} />):(<Route path="*" element={<Error />} />)}
+       
+        <Route path="/google" element={<Google />} />
+        <Route path="/logout" exact element={<LogOut />} /> 
+        <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
   </>

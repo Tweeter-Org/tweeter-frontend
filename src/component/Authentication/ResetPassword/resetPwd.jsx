@@ -108,7 +108,7 @@ useEffect(()=>{
   const navigate = useNavigate();
   useEffect(() => {
     if (toHome) {
-      navigate("/")
+      navigate("/login")
     }
   }, [toHome])
 

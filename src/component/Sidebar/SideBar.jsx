@@ -168,7 +168,7 @@ document.getElementById("logout").style.display="block"
                 <p className="logoHead">Tweeter</p>
                 <img src={deleteIcon} className="sbDeleteIcon" onClick={closeSidebar} />
                 <ul className="sbList">
-                    <Link to="/home"><li className="sbListItem" onClick={() => { dispatch(Home(greenhome, "Home", 0)) }}><img className="sbListIcon" src={home} />
+                    <Link to="/"><li className="sbListItem" onClick={() => { dispatch(Home(greenhome, "Home", 0)) }}><img className="sbListIcon" src={home} />
                     <span className="sbListName">
                     Home
                     </span>

@@ -148,18 +148,20 @@ const navigate = useNavigate();
     }
     // console.log(props.text)
     const x = document.getElementsByClassName("tweetText")
-    // for(var i=0;i<x.length;i++){
+    for(var i=0;i<x.length;i++){
 
-    //     // console.log(x[i])
+        // console.log(x[i])
       
-    //     x[i].innerHTML = x[i].innerHTML.replace(/#(\S+)/g,<a></a>)
-    //     console.warn(x[i].innerHTML)
-    // }
-    const regex= /#(\S+)/g;
+        x[i].innerHTML = x[i].innerHTML.replace(/#(\S+)/g,1234)
 
+        console.warn(x[i].innerHTML)
+
+        x[i].innerHTML = x[i].innerHTML.replace(/(?<=@).*?(?=( |$))/g, "attherate")
+    }
+    const regex= /#(\S+)/g;
     const [HashArray, setHashArray] =useState([]);
 
-    // var words = props.text.match(regex)
+    var words = props.text.match(regex)
     // console.log(words)
     // useEffect(()=>{
     //     if(words.length>0){
@@ -167,16 +169,15 @@ const navigate = useNavigate();
     //             if(props.text.includes(w))
     //             {
     //                 return w;
-    //                 console.log(w)
     //             }
     //         })
     //     }
-    // },[])
+    // })
     // setHashArray(words)
     // props.text = props.text.replace(/#(\S+)/g,<>{HashArray.map((w)=>{
-    //     return <a>w</a>
+    //  return <a>w</a>
     // })}</>)
-    // console.log(props.text)
+    console.log(props.text)
     // useEffect(()=>{
     //     // if()
     //     var words = props.text.match(regex)
@@ -220,7 +221,7 @@ const navigate = useNavigate();
             <div className="firstTweetBlock" onClick={()=>{handleToTweet(props.tweetId)}} >
                 {(props.displaypic === null) ? (<img src={avatar} id="picincircle" />) :
                     ((props.displaypic.startsWith("https:")) ? (<img src={props.displaypic} id="picincircle" />) :
-                        (<img src={`https://tweeter-backend-7ngr.onrender.com/${props.displaypic}`} id="picincircle" />))
+                        (<img src={props.displaypic} id="picincircle" />))
                 }
                 <div className="USERNAME">
                 <p className="username">{props.name}</p>
@@ -272,7 +273,7 @@ const navigate = useNavigate();
         <div className="firstTweetBlock" onClick={()=>{handleToTweet(props.tweetId)}} >
                 {(props.displaypic === null) ? (<span className="displaypie"><img src={avatar} id="picincircle" /></span>) :
                     ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
-                        (<span className="displaypie"><img src={`https://tweeter-backend-7ngr.onrender.com/${props.displaypic}`} id="picincircle" /></span>))
+                        (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>))
                 }
                 <div className="USERNAME">
                 <p className="username">{props.name}</p>
@@ -296,7 +297,7 @@ const navigate = useNavigate();
             <div className="TWRBlock1">
             {(retweets.user.displaypic === null) ? (<img src={avatar} className="TWRpic" />) :
                     ((retweets.user.displaypic.startsWith("https:")) ? (<img src={retweets.user.displaypic}  className="TWRpic"/>) :
-                        (<img src={`https://tweeter-backend-7ngr.onrender.com/${retweets.user.displaypic}`} id="picincircle" />))
+                        (<img src={retweets.user.displaypic} id="picincircle" />))
                 }
                 <p className="username">{retweets.user.user_name}</p>
             </div>

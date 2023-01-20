@@ -129,7 +129,7 @@ const [bool, setBool] = useState(false)
             <div className="Reply1">
                 {(props.displaypic === null) ? (<img src={avatar} id="RepAvatar" />) :
                     ((props.displaypic.startsWith("https:")) ? (<img src={props.displaypic} id="RepAvatar"  />) :
-                        (<img src={`https://tweeter-backend-7ngr.onrender.com/${props.displaypic}`} id="RepAvatar"  />))
+                        (<img src={props.displaypic} id="RepAvatar"  />))
                 }
                 <p id="RepName">{props.username}</p>
                 <img src={bookmark} className="RbookmarkIcon" onClick={() => { handleTweetBookmark(props.num) }} />

@@ -7,7 +7,7 @@ function LogOut() {
     const naavigate = useNavigate()
     function handleLogOut() {
         sessionStorage.clear();
-        naavigate("/");
+        naavigate("/login");
         document.getElementsByClassName("logoutDiv")[0].style.display="none";
 
     }

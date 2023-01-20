@@ -8,7 +8,7 @@ function FollowComp (props){
         {(props.displaypic === null) ? ( <span className="displaySearchPic followPic"><img src={avatar}  id="picincircle" /></span>) :
                     ((props.displaypic.startsWith("https:")) ? ( <span className="displaySearchPic followPic"><img src={props.displaypic} id="picincircle"/></span>) :
                         ( <span className="displaySearchPic followPic">
-                        <img src={`https://tweeter-backend-7ngr.onrender.com/${props.displaypic}`}  id="picincircle" /></span>))
+                        <img src={props.displaypic}  id="picincircle" /></span>))
                 }
         {/* <span className="displaySearchPic followPic"><img src={avatar} id="picincircle"/></span> */}
         <p className="followName">{props.name}</p>

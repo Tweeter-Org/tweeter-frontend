@@ -80,7 +80,7 @@ function EditProfile() {
             {accessProfile ? ((editProfileImage === null) ? (<img src={avatar} id="editImage" className="pEditImage" />) :
                 ((editProfileImage.startsWith("https:")) ? (<img src={editProfileImage} id="editImage" className="pEditImage" />) :
                     (
-                        <img src={`https://tweeter-backend-7ngr.onrender.com/${editProfileImage}`} id="editImage" className="pEditImage" />))) : null}
+                        <img src={editProfileImage} id="editImage" className="pEditImage" />))) : null}
 
             <p><img id="editprofileimage" /></p>
             <form enctype="multipart/form-data" onSubmit={(e) => e.preventDefault()}>

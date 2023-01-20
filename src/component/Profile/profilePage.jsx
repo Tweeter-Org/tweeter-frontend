@@ -204,7 +204,7 @@ function ProfilePage() {
                 (displaypic != null && displaypic.startsWith("blob:"))?(
              <img src={displaypic} alt="image" className="pImage"  />):
                     ((displaypic.startsWith("https:")) ? (<img src={displaypic} className="pImage" />) :
-                        (<img src={`https://tweeter-backend-7ngr.onrender.com/${displaypic}`} className="pImage" />))
+                        (<img src={displaypic} className="pImage" />))
                 }
                 <div className="PBLOCK1">
                     <div className="pBlock1">

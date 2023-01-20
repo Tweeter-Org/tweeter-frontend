@@ -116,7 +116,7 @@ useEffect(()=>{
 
   useEffect(() => {
     if (toHome) {
-      navigate("/home")
+      navigate("/")
     }
   }, [toHome])
 

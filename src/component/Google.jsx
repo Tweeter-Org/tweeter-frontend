@@ -39,7 +39,7 @@ console.log(window.location.href.substring(34))
           console.log(user)
           dispatch(infoViaGoogle(user))
           alert(response2.msg)
-          navigate("/home")
+          navigate("/")
         }
         if (response2.msg === "signedup"){
           // console.log(msg)
@@ -50,7 +50,7 @@ console.log(window.location.href.substring(34))
         }
       }
       if(response2.success == false){
-        navigate("/")
+        navigate("/login")
         alert("Unable to login, Please try again")
       }
     }
