@@ -4,7 +4,8 @@
     /* height: 1500px; */
     height: fit-content;
     margin-left: 23vw;
-    margin-top: 15vh;
+    position:absolute;
+    top:90px;
     padding-bottom: 5vh;
     background: #161718;
     border-radius: 8px;
@@ -20,37 +21,26 @@
 .pBlock2 {
     display: flex;
     justify-content: space-evenly;
-    /* background-color:aliceblue; */
     margin-left: -7vw;
-    /* margin-top: 5vh; */
 }
 
 .PBLOCK1 {
     display: flex;
     flex-direction: column;
-    margin-left:6.5vw;
+    margin-left:7.5vw;
 }
 
 .profileDiv1 {
     display: flex;
     padding-top: 5vh;
-    /* justify-content: space-around; */
 }
 
 .pImage {
-    margin-left: 2.5vw;
-    /* margin-left:0vw; */
+    margin-left: 1.5vw;
     width: 170px;
     height: 170px;
     border-radius: 50%;
 }
-
-/* .pImage1{
-    margin-left: -5vw;
-    width: 10vw;
-    height: 20vh;
-} */
-
 .pTweet1 {
     width: 5vw;
     height: 3vh;
@@ -58,7 +48,7 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     line-height: 22px;
     color: rgba(255, 255, 255, 0.65);
     cursor: pointer;
@@ -85,12 +75,6 @@
     margin-left: 2vw;
     margin-right: -2vw;
 }
-
-/* #tweetCount {
-    /* margin-right: 25px; */
-/* margin-left: 0; 
-} */
-
 .pEdiitProfile {
     border: none;
     width: 24vw;
@@ -151,7 +135,7 @@
     display: flex;
     flex-direction: column;
     text-transform: capitalize;
-    padding-left: 4vw;
+    padding-left: 2vw;
     margin-top: 2.5vh;
 }
 
@@ -159,7 +143,7 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     line-height: 27px;
     margin-bottom: 0.5vh;
     color: rgba(255, 255, 255, 0.9);
@@ -194,6 +178,7 @@
 .pText4 {
     font-family: 'Montserrat';
     font-style: normal;
+    text-transform: none;
     font-weight: 400;
     width: 20vw;
     height: auto;
@@ -207,7 +192,7 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
-    width: 30vw;
+    width: max-content;
     height: auto;
     font-size: 14px;
     line-height: 20px;
@@ -239,7 +224,7 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 1.2rem;
     line-height: 24px;
     color: rgba(255, 255, 255, 0.9);
     /* padding-left:2vw; */
@@ -248,8 +233,8 @@
 }
 
 .pTweetHead {
-    margin-right: 4vw;
-    margin-left: 4vw;
+    margin-right: 8vw;
+    margin-left: 8vw;
     cursor: pointer;
 }
 
@@ -344,13 +329,14 @@
     top: 15vh;
     left: 25.5vw;
     width: 40vw;
-    height: 75vh;
+    padding-bottom:15px;
+    height: fit-content;
     background-color: #121212;
     border: 1px solid rgba(255, 255, 255, 0.3);
     /* box-shadow: 0px 100px 80px #1A1C1E; */
     border-radius: 16px;
     display: none;
-    z-index: 10;
+    z-index: 110;
 }
 
 .pEditImage {
@@ -482,7 +468,7 @@
     box-sizing: border-box;
     width: 42vw;
     height: 72px;
-    margin-bottom: 4vh;
+    margin-bottom: 10px;
     border: 0.8px solid rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     display: flex;
@@ -492,16 +478,16 @@
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    font-size: 19px;
+    font-size: 1.1rem;
     line-height: 24px;
     color: rgba(255, 255, 255, 0.9);
     /* margin-left: 5.5vw; */
-    margin-top: 2vh;
+    margin-top: 13px;
     text-transform: capitalize;
 }
 
 .followPic {
-    margin-top: 2vh;
+    margin-top: 15px;
     margin-left:1vw;
     /* top:60vh; */
 }
@@ -513,10 +499,10 @@
     font-size: 13px;
     line-height: 20px;
     color: #47c87a;
-    /* margin-left:-3.5vw; */
-    position: absolute;
-    left: 30vw;
-    margin-top: 5vh;
+   cursor: pointer;
+    margin-left:-5.2vw;
+  
+    margin-top: 30px;
     text-transform: capitalize;
     text-decoration: underline;
     /* cursor: pointer; */
@@ -529,9 +515,9 @@
     font-size: 1.2rem;
     line-height: 20px;
     position: fixed;
-    top: 80vh;
+    /* top: 80vh; */
     /* top:20vh; */
-    width: 15vw;
+    width: fit-content;
     left: 40vw;
     margin-bottom: 5vh;
     color: rgba(255, 255, 255, 0.6);
@@ -568,7 +554,7 @@
 }
 
 #bmIcon {
-    margin-left: 23vw;
+    margin-left: 18vw;
     margin-right: 0.4vw;
     width:18px;
 }
@@ -604,13 +590,14 @@
 #DltPopUp {
     display: flex;
 position:fixed;
-top:20vh;
+top:150px;
 left:32vw;
 width:40vw;
-height:40vh;
+height:fit-content;
 background-color: #121212;
 padding-left: 2vw;
-padding-top: 4vh;
+padding-top: 25px;
+padding-bottom:20px;
 box-shadow: 0px 264px 106px rgba(23, 25, 28, 0.01), 0px 149px 89px rgba(23, 25, 28, 0.05), 0px 66px 66px rgba(23, 25, 28, 0.09), 0px 17px 36px rgba(23, 25, 28, 0.1), 0px 0px 0px rgba(23, 25, 28, 0.1);
 border-radius: 16px;
 box-shadow: 0px 50px 80px #1A1C1E;
@@ -626,12 +613,13 @@ z-index:15;
 }
 
 #DltPopText1 {
-    margin-left: -2vw;
+    margin-left: 7vw;
 }
 
 #DltPopText2 {
     /* margin-left: -0.5vw; */
     width: 25vw;
+    margin-left:2vw;
 }
 
 #DltPopBtn1 {
@@ -645,4 +633,518 @@ z-index:15;
     border-color: rgba(255, 255, 255, 0.8);
     color:rgba(255, 255, 255, 0.8)
     /* margin-bottom:3vh; */
+}
+
+@media(max-width:1100px){
+.pImage{
+    width:150px;
+    height:150px;
+}
+.pTweet1{
+    font-size: 1.1rem;
+}
+.pTweetHead{
+    margin-left:6vw;
+}
+.pFollowerHead{
+    margin-left:6vw;
+    margin-right:6vw;
+}
+.followCompDiv{
+    height:57px;
+}
+.followPic{
+    margin-top:7px;
+}
+.followName{
+    margin-top:4px;
+}
+.followUsername{
+    margin-left:-7vw;
+    margin-top:25.5px;
+}
+#bmIcon{
+    margin-left:16vw;
+}
+.editPrDiv{
+    width:50vw;
+    margin-left:-4vw;
+}
+.editImagetext{
+    font-size: 1.2rem;
+}
+.div1, .div2{
+    width:46vw;
+}
+#editPCancel{
+    width:10vw;
+    margin-left:15vw;
+}
+#editPDone{
+    width:10vw;
+   
+}
+#DltPopUp{
+    width:35vw;
+}
+
+#DltPopText2{
+margin-left:4vw;
+width:25vw;
+}
+#DltPopBtn1 {
+    margin-left: 7vw;
+   margin-top:4px;
+}
+#DltPopBtn2 {
+    margin-left: 7vw;
+   
+}
+}
+@media(max-width:950px){
+    #bmIcon{
+        margin-left:14vw;
+    }
+   .PBLOCK1{
+    margin-left: 5vw;
+   }
+    .pTweet1{
+        font-size: 1.05rem;
+    }
+    .pTweetCount{
+        font-size: 1.5rem;
+    }
+    .pEdiitProfile{
+        height:32px;
+    }
+    .pTweetHead,.pFollowerHead, .pFollowingHead{
+        font-size: 1.1rem;
+    }
+    .pImage{
+        width:140px;
+        height:140px;
+        margin-left: 1.5vw;
+        margin-top:10px;
+    }
+    .followUsername{
+        margin-left: -8vw;
+    }
+  
+}
+@media(max-width:850px){
+    .PROFILE{
+        width:46vw;
+    }
+    .PBLOCK1{
+        margin-left:6vw;
+    }
+    .pTweet1{
+        font-size: 1rem;
+        margin-right:2.5vw;
+    }
+    .pImage{
+        width:120px;
+        height:120px;
+        margin-top:27px;
+    }
+    .pEdiitProfile{
+        height:30px;
+    }
+    .followName{
+        font-size: 1rem;
+    }
+    .followUsername{
+        margin-left:-8vw;
+    }
+    .pTweetHead, .pFollowerHead , .pFollowingHead{
+        font-size: 1.05rem;
+    }
+    .profileDiv2{
+        margin-left:1vw;
+    }
+    .editPrDiv{
+        width:55vw;
+    }
+    .div1, .div2{
+        width:50vw;
+    }
+    #editPCancel, #editPDone{
+        width:12vw;
+    }
+    .pProfileFollow{
+        width:12vw;
+        height:30px;
+        margin-left:-4vw;
+    }
+    .pMsgBtn{
+        height:30px;
+        width: 12vw;
+    }
+    #DltPopUp{
+        width:40vw;
+    }
+    
+    #DltPopText2{
+    margin-left:4vw;
+    width:30vw;
+    font-size: 0.95rem;
+    }
+    #DltPopBtn1 {
+        margin-left: 9vw;
+       margin-top:4px;
+    }
+    #DltPopBtn2 {
+        margin-left: 9vw;
+       
+    }
+}
+@media(max-width:730px){
+    .PROFILE{
+        margin-left:33vw;
+        width:60vw;
+    }
+    .profileDiv1{
+        padding-top: 10px;
+        padding-left:2vw;
+    }
+    .pTweet1{
+        font-size: 1.1rem;
+        margin-right:6vw;
+    }
+    #pFollowers{
+        margin-right:7vw;
+    }
+    .pEdiitProfile{
+        width:35vw;
+    }
+    .pTweetHead{
+margin-right:10vw;
+margin-left: 8vw;
+    }
+
+#profileTweetComp {
+    width: 56.5vw;
+}
+#bmIcon{
+    margin-left:1vw;
+}
+.followCompDiv {
+    height: 57px;
+    width:56.5vw;
+}
+.followUsername{
+    margin-left:-9vw
+}
+.pFollowerHead{
+    margin-left:10vw;
+    margin-right: 10vw;
+}
+.pFollowingHead{
+    margin-right: 14vw;
+}
+#DltPopUp{
+    width:45vw;
+}
+
+#DltPopText2{
+margin-left:4vw;
+width:30vw;
+font-size: 0.9rem;
+}
+#DltPopBtn1 {
+    margin-left: 9vw;
+   margin-top:4px;
+   width:22vw;
+}
+#DltPopBtn2 {
+    margin-left: 9vw;
+   width:22vw;
+}
+}
+@media(max-width:670px){
+    .pTweet1{
+        font-size: 1.1rem;
+    }
+    .pImage{
+        margin-left:-0.5vw;
+    }
+    .PBLOCK1{
+        margin-left:5vw;
+    }
+    .alterFollower{
+        width:fit-content;
+        left:55vw;
+    }
+    .editPrDiv{
+        width:60vw;
+        /* height:550px; */
+        margin-left:-8vw;
+    }
+    .pEditImage{
+        width:140px;
+        height:140px;
+    }
+    .div1, .div2{
+        width:53vw;
+    }
+    #editPCancel, #editPDone{
+        width:13vw;
+    }
+}
+@media (max-width:600px){
+    .PROFILE{
+        margin-left:36vw;
+    }
+    .pTweet1{
+        font-size: 1rem;
+    }
+    .pImage{
+        width:110px;
+        height:110px;
+        margin-left:-1vw;
+        margin-top:35px;
+    }
+    .pBlock2{
+        margin-top: -5px;
+    }
+    .pEdiitProfile{
+        margin-top:-5px;
+        height:30px;
+        margin-left:-2vw;
+    }
+    #bmIcon{
+        margin-left:5vw;
+    }
+    .followUsername{
+        margin-left: -11vw;
+    }
+    #DltPopUp{
+        width:50vw;
+        margin-left:-4vw;
+    }
+    
+    #DltPopText2{
+    margin-left:4vw;
+    width:40vw;
+    font-size: 0.95rem;
+    }
+    #DltPopBtn1 {
+        margin-left: 11vw;
+       margin-top:4px;
+    }
+    #DltPopBtn2 {
+        margin-left: 11vw;
+       
+    }
+}
+@media(max-width:550px){
+    .pTweet1{
+        font-size: 0.95rem;
+    }
+    .PBLOCK1{
+        margin-left:4vw;
+    }
+    .PROFILE{
+        margin-left: 35vw;
+        width:62vw;
+    }
+    #profileTweetComp {
+        width: 58vw;
+    }
+}
+@media(max-width:500px){
+    .PROFILE{
+        width:87vw;
+        margin-left:7vw;
+    }
+    #profileTweetComp{
+        width:81vw;
+    }
+    #TWRProfile{
+        width:76vw;
+    }
+    #bmIcon{
+        margin-left:27vw;
+    }
+.followCompDiv{
+    width:81vw;
+}
+.followUsername{
+    margin-left:-14vw;
+}
+.pImage{
+    width:130px;
+    height:130px;
+    margin-left:1vw;
+    margin-top:20px;
+}
+.pTweet1{
+    font-size: 1rem;
+    margin-right:9vw;
+}
+#pFollowers{
+    margin-right:11vw;
+}
+.PBLOCK1{
+    margin-left:5vw;
+}
+.pEdiitProfile{
+    width:45vw;
+}
+.pProfileFollow{
+    width:22vw;
+    height:28px;
+}
+.pMsgBtn{
+    height:28px;
+    width: 22vw;
+}
+.pTweetHead{
+    margin-left:12vw;
+    margin-right:12vw
+}
+.pFollowerHead{
+    margin-left:12vw;
+    margin-right:22vw;
+}
+.pFollowingHead{
+    margin-right: 22vw;
+}
+.editPrDiv{
+    width:68vw;
+    /* height:520px; */
+    margin-left:-10vw;
+}
+.pEditImage{
+    width:130px;
+    height:130px;
+}
+.div1, .div2{
+    width:63vw;
+}
+#editPCancel{
+    margin-left:17vw;
+}
+#editPCancel, #editPDone{
+    width:14vw;
+}
+#DltPopUp{
+    width:55vw;
+    margin-left:-9vw;
+}
+
+#DltPopText2{
+margin-left:4vw;
+width:45vw;
+font-size: 0.9rem;
+}
+#DltPopBtn1 {
+    margin-left: 12vw;
+   margin-top:4px;
+   height:32px;
+   width:25vw;
+}
+#DltPopBtn2 {
+    width:25vw;
+    margin-left: 12vw;
+    height:32px;
+   
+}
+}
+@media(max-width:400px){
+    .PROFILE{
+        width:88vw;
+        margin-left:6vw;
+    }
+    #profileTweetComp{
+        width:83vw;
+    }
+    #TWRProfile{
+        width:79vw;
+    }
+    #bmIcon{
+        margin-left:28vw;
+    }
+.followCompDiv{
+    width:83vw;
+}
+.followUsername{
+    margin-left:-16vw;
+}
+.pImage{
+    width:100px;
+    height:100px;
+    margin-left:1vw;
+    margin-top:20px;
+}
+.profileRetweetIcon{
+    width:18px;
+    margin-top:-7px;
+    /* height:20px; */
+}
+.pTweet1{
+    font-size: 0.8rem;
+    margin-right:9vw;
+    margin-left:1vw;
+}
+.pTweetCount{
+    /* font-size: 1.1rem; */
+}
+#pFollowers{
+    margin-right:11vw;
+}
+.PBLOCK1{
+    margin-left:4vw;
+}
+.pEdiitProfile{
+    width:45vw;
+    height:28px;
+}
+.pTweetHead{
+    font-size: 1rem;
+    margin-left:10vw;
+    margin-right:12vw
+}
+.pLikehead{
+    font-size: 1rem;
+}
+.pFollowerHead{
+    font-size: 1rem;
+    margin-left:10vw;
+    margin-right:22vw;
+}
+.pFollowingHead{
+    font-size: 1rem;
+    margin-right: 24vw;
+}
+.pProfileFollow{
+    width:23vw;
+    height:26px;
+    font-size: 0.85rem;
+}
+.pMsgBtn{
+    height:26px;
+    width: 23vw;
+    font-size: 0.85rem;
+}
+    .editPrDiv{
+        width:72vw;
+       
+        margin-left:-12vw;
+    }
+    .pEditImage{
+        width:120px;
+        height:120px;
+    }
+    .div1, .div2{
+        width:67vw;
+    }
+    #editPCancel, #editPDone{
+        width:16.5vw;
+    }
+    .pText1{font-size: 1rem;}
+    .pText2{
+        font-size: 0.9rem;
+        margin-top:-4px;
+    }
 }

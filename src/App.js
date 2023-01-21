@@ -25,6 +25,7 @@ import Messages1 from './component/Messages/Messages1';
 import Chats from './component/Messages/Chats';
 import PrivateRoute from './component/PrivateRoute';
 import PhoneSearch from './component/Sidebar/PhoneSearch';
+import ReactHashtag from 'react-hashtag';
 
 function App() {
 
@@ -32,6 +33,11 @@ function App() {
   console.log(isUser)
   return <>
     {/* <Counter /> */}
+    {/* <h1 style={{color:"white"}} >
+        <ReactHashtag style={{color:"green"}} onHashtagClick={val => alert(val)}>
+          {text}
+        </ReactHashtag>
+      </h1> */}
     <BrowserRouter>
       <Routes>
       {/* {isUser?(<Route path="/"):()} */}
@@ -62,7 +68,6 @@ function App() {
        <Route path="/profile/:apiname" element={<ProfilePage />} />
        <Route path="/toTweet/:TweetId" element={<OneTweet />} />
        <Route path="/tagtweet" exact element={<TagTweets />} />
-       {/* (<Route path="/tagtweet" exact element={<TagTweets />} />) */}
        <Route path="/bookmark" exact element={<Bookmarks />} />
        <Route path="/editprofile" exact element={<EditProfile />} />
        <Route path="/sidebar" exact element={<Sidebar />} />

@@ -7,7 +7,7 @@ import avatar from "../Assets/avatar.svg";
 import bookmark from "../Assets/bookmarks.svg";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import TweetLikeAction, { RetweetDetails } from "../../react-redux/actions/Tweets.jsx";
+import TweetLikeAction, { RetweetDetails, TweetListWithTag } from "../../react-redux/actions/Tweets.jsx";
 import greenLike from "../Assets/greenLike.svg"
 import greenComment from "../Assets/greenComment.svg"
 import greenRetweet from "../Assets/greenRetweet.svg"
@@ -21,6 +21,7 @@ import TweetPopup from "./tweetPopup";
 import CreateTweet from "./createTweet";
 import { Navigate, useNavigate } from "react-router-dom";
 import ShareTweet from "./ShareTweet";
+import ReactHashtag from "react-hashtag";
 
 function Tweet(props) {
     const video = props.video
@@ -147,54 +148,24 @@ const navigate = useNavigate();
     function handleToTweet (tweetId){
         navigate(`/totweet/${tweetId}`)
     }
-    // console.log(props.text)
-    // const x = document.getElementsByClassName("tweetText")
-    // for(var i=0;i<x.length;i++){
 
-    //     // console.log(x[i])
-      
-    //     x[i].innerHTML = x[i].innerHTML.replace(/#(\S+)/g,1234)
+    /* HASHTAGS */
+    const { loading, tagTweets, getTag } = useSelector((ta) => ta.TagTweetFeedReducer)
+    function showTagTweet(tag) {
+        console.log(tag)
+     
+        dispatch(TweetListWithTag(tag.slice(1)))
+        console.log("tag tweets")
+        if (getTag) {
+          navigate("/tagtweet")
+        }
+    }
 
-    //     console.warn(x[i].innerHTML)
-
-    //     x[i].innerHTML = x[i].innerHTML.replace(/(?<=@).*?(?=( |$))/g, "atTheRate")
-    // }
-    // const regex= /#(\S+)/g;
-    // const [HashArray, setHashArray] =useState([]);
-
-    // var words = props.text.match(regex)
-    // console.log(words)
-    // useEffect(()=>{
-    //     if(words.length>0){
-    //         words.map((w)=>{
-    //             if(props.text.includes(w))
-    //             {
-    //                 return w;
-    //             }
-    //         })
-    //     }
-    // })
-    // setHashArray(words)
-    // props.text = props.text.replace(/#(\S+)/g,<>{HashArray.map((w)=>{
-    //  return <a>w</a>
-    // })}</>)
-    console.log(props.text)
-    // useEffect(()=>{
-    //     // if()
-    //     var words = props.text.match(regex)
-    //   setHashArray([...HashArray, words])
-    //     console.log(HashArray)
-    //     console.warn(words)
-        
-    // },[])
- 
     return <>
     {retweets==null?(  <div className="tweetComp POPUPBG" >
             <div className="firstTweetBlock" onClick={()=>{handleToTweet(props.tweetId)}} >
                 {(props.displaypic === null) ? (<img src={avatar} id="picincircle" />) :
-                    ((props.displaypic.startsWith("https:")) ? (<img src={props.displaypic} id="picincircle" />) :
-                        (<img src={props.displaypic} id="picincircle" />))
-                }
+                    (<img src={props.displaypic} id="picincircle" />) }
                 <div className="USERNAME">
                 <p className="username">{props.name}</p>
                 <p className="tweetUsername2"  onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >@{props.username}</p>
@@ -222,7 +193,9 @@ const navigate = useNavigate();
             {/* {video != null ? <video className="tweetvideo" controls>
                 <source src={`https://twitterbackend-production-93ac.up.railway.app/${video}`} type="video/mp4" />
             </video> : null} */}
-            <p className="tweetText">{props.text}</p>
+            <p className="tweetText">
+            <ReactHashtag renderHashtag={val=><span onClick={()=>showTagTweet(val) }>{val}</span>} onHashTagClick={val=>console.log(val)}>{props.text}</ReactHashtag></p>
+          
             <div className="secondTweetBlock">
                 <div className="iconBlock">
                     <img src={like} className="likeIcon" onClick={() => { handleTweetLike(props.tweetId) }} />
@@ -277,7 +250,8 @@ const navigate = useNavigate();
             {(retweets.video != null) ? <video controls className="TWRVideo">
                 <source src={retweets.video} type="video/mp4" />
             </video> : null}
-            <p className="TWRText" >{retweets.text}</p>
+        
+            <p className="TWRText" ><ReactHashtag renderHashtag={val=><span onClick={()=>showTagTweet(val) }>{val}</span>} onHashTagClick={val=>console.log(val)}>{retweets.text}</ReactHashtag></p>
         </div>
             <div className="secondTweetBlock">
                 <div className="iconBlock">

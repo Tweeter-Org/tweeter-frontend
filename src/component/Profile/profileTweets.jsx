@@ -159,9 +159,9 @@ function handleToTweet (tweetId){
     return <>
     {retweets===null?(<div className="tweetComp POPUPBG" id="profileTweetComp">
             <div className="firstTweetBlock" onClick={()=>{handleToTweet(props.tweetId)}}>
-                {(props.displaypic === null) ? (<span className="displaypie"><img src={avatar} id="picincircle" /></span>) :
-                    ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
-                        (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>))
+                {(props.displaypic === null) ? (<img src={avatar} id="picincircle" />) :
+                    ((props.displaypic.startsWith("https:")) ? (<img src={props.displaypic} id="picincircle" />) :
+                        (<img src={props.displaypic} id="picincircle" />))
                 }
                 <div className="USERNAME">
                 <p className="username">{props.name}</p>
@@ -203,9 +203,9 @@ function handleToTweet (tweetId){
             </div>
         </div>):(<div className="tweetComp POPUPBG" id="profileTweetComp">
             <div className="firstTweetBlock" onClick={()=>{handleToTweet(props.tweetId)}}>
-                {(props.displaypic === null) ? (<span className="displaypie"><img src={avatar} id="picincircle" /></span>) :
-                    ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
-                        (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>))
+                {(props.displaypic === null) ? (<img src={avatar} id="picincircle" />) :
+                    ((props.displaypic.startsWith("https:")) ? (<img src={props.displaypic} id="picincircle" />) :
+                        (<img src={props.displaypic} id="picincircle" />))
                 }
                 <div className="USERNAME">
                 <p className="username">{props.name}</p>

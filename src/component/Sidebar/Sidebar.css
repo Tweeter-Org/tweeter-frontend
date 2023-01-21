@@ -362,16 +362,20 @@ margin-left:-0.2vw;
 #alterTagP {
     font-size: 1.5rem;
 }
-
+#PHONESEARCH{
+    display: none;
+}
  @media (max-width:730px){
     .sidebar{
         width:28vw;
     }
     .navbarIcon{
         margin-left:10vw;
+        display: none;
     }
     .navbarHead{
         margin-left:0.6vw;
+        display: none;
         }
       #navbarLine{
         display: none;
@@ -386,31 +390,40 @@ margin-left:-0.2vw;
         display: none;
        
     }
-    .searchcomp{
+    .searchcomp, .searchAlter{
         display: none;
           /* display:flex; */
       
     }
-    /* #phoneSearch1{
-        
+    #PHONESEARCH, #SIDESEARCH{
+        display: flex;
+        /* margin-left:-5vw; */
+        /* margin-top:5px; */
+    }
+    #phoneSearch1{
         display:flex;
-        margin-left:32vw;
+        margin-left:34vw;
         margin-top:-20px
      
     }
     #phoneSearch2{
         display:flex;
-      
         width:45vw;
-    } */
-    /* .phoneSearch3{
+    }
+    #phoneSearch3, #phoneSearch4{
         display:flex;
-        margin-left:-38vw;
-    } */
-    /* #phoneSearchList1, #phoneSearchList2{
-        display:none;
+        margin-left:-36vw;
+        height:fit-content;
         width:45vw;
-    } */
+    }
+    #phoneSearch4{
+        height:60px;
+    }
+   .noPhoneSearch{
+    display: block;
+    margin-left:-32vw;
+    width:45vw;
+   }
     .sideBarTweetBtn{
         width:16.5vw;
     }
@@ -423,15 +436,11 @@ margin-top:6px;
     }
     .navSearch1{
         border-radius: 50%;
-        background:pink;
+        background:#484D4A;
         padding:1px;
     }
     .navNotify{
-        width:24px;
-        height:24px;
-        margin-right:1vw;
-        margin-top:2px;
-        cursor: pointer;
+        display: none;
     }
     .navSearch2{
         width:22px;
@@ -468,6 +477,24 @@ margin-top:6px;
     .sideBarTweetBtn{
         width:19vw;
     }
+    #phoneSearch1{
+        margin-left:40vw;
+       
+    }
+    #phoneSearch3, #phoneSearch4{
+        margin-left:-30vw;
+    }
+    #phoneSearch2, #phoneSearch3 , #phoneSearch4 {
+        width:40vw;
+    }
+    .searchName{
+        font-size: 0.9rem;
+        width:25vw;
+    }
+    .searchUsername{
+        font-size: 0.8rem;
+        width:25vw;;
+    }
 }
 @media(max-width:500px){
     .sidebar{
@@ -487,7 +514,14 @@ margin-top:6px;
         /* margin-top:-2px; */
         /* background-color: #47C87A; */
     }
-    
+    .navNotify{
+      display: block;
+        width:24px;
+        height:24px;
+        margin-right:1vw;
+        margin-top:2px;
+        cursor: pointer;
+    }
     #navbarLine{
         display: none;
     }
@@ -571,6 +605,27 @@ margin-top:-23px;
    .sideBarTweetBtn{
     margin-left:6vw;
    }
+   #phoneSearch1{
+    margin-left:10vw;
+   
+}
+#phoneSearch3, #phoneSearch4{
+    margin-left:-60vw;
+}
+#phoneSearch2, #phoneSearch3 , #phoneSearch4 {
+    width:60vw;
+}
+.searchName{
+    font-size: 1rem;
+    width:50vw;
+}
+.searchUsername{
+    font-size: 0.9rem;
+    width:50vw;;
+}
+.noPhoneSearch{
+    margin-left:-54vw;
+}
 }
 @media(max-width:400px){
     .navbar3{

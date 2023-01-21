@@ -23,7 +23,7 @@
     line-height: 24px;
     color: #57E891; 
 }
-@media (max-width:1000px){
+/* @media (max-width:1000px){
     #otpHead{
         width:50vw;
     }
@@ -35,4 +35,4 @@
         top:32vh;
         left:72vw;
     }
-}
+} */

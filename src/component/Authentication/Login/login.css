@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@200&display=swap');
 
 body {
-    /* background-color: rgb(21, 22, 23); */
+   
     background-color: #121212;
     overflow-x: hidden;
     z-index: 1;
 }
 
 #loadSpinner {
-    z-index: 25;
+    z-index: 9999;
     position: fixed;
     top: 45vh;
     left: 50vw;
@@ -16,58 +16,57 @@ body {
 
 .loginBg {
     position: absolute;
-    width: 35vw;
-    height: 82vh;
+    width: 33vw;
+    height: fit-content;
     left: 34.6vw;
-    top: 11.5vh;
+    top: 80px;
     background: linear-gradient(180deg, #222423 3.12%, rgba(33, 36, 34, 0.26) 100%, rgba(43, 45, 43, 0.01) 100%);
     box-shadow: 4px 8px 2px 2px rgba(10, 9, 9, 0.25);
     border-radius: 16px;
     z-index: 10;
+    padding:5px 1vw 10px 1vw;
 }
 
 #emailIcon {
-    position: absolute;
-    left: 3.1vw;
-    top: 26.4vh;
-    width: 1.8vw;
+  margin-left:0.7vw;
+  position:relative;
+  top:22px;
+    width: 25px;
+    height:20px;
 }
 
 #LEye {
     color: white;
-    opacity: 0.6;
-    position: absolute;
-    top: 44.4vh;
-    left: 30vw;
+    opacity: 0.9;
+   
     z-index: 4;
+    margin-left:27.5vw;
+    position:relative;
+    top:23px;
     cursor: pointer;
 }
 
 #lockIcon {
-    position: absolute;
-    left: 0.56vw;
-    top: 43.7vh;
-    height: 3.4vh;
-    width: 6.5vw;
+    margin-left:0.5vw;
+    position:relative;
+    top:46px;
+  height:24px;
+  width:24px;
 }
 
 .authHead {
-    position: absolute;
-    height: 51px;
-    left: 2.5vw;
-    top: 7vh;
+   margin-top:20px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: bolder;
     font-size: 2.5rem;
     line-height: 51px;
-    color: #FFFFFF;
+    color:rgba(255, 255, 255, 0.9);
 }
 
 .authEmail {
-    position: absolute;
-    left: 2.5vw;
-    top: 20vh;
+    margin-top:30px;
+    margin-bottom: -10px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
@@ -79,12 +78,10 @@ body {
 .authEmailInput {
     outline: none;
     border: none;
-    position: absolute;
+margin-top:-50px;
     width: 30vw;
     padding-left: 3vw;
-    height: 7vh;
-    left: 2.4vw;
-    top: 24vh;
+    height: 45px;
     background: rgba(17, 19, 21, 0.6);
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -112,39 +109,36 @@ body {
     margin-top:-3px;
 }
 .invalidEmail {
-    position: absolute;
-    left: 2.5vw;
-    top: 32vh;
+    margin-top:4px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
-    font-size: 11px;
+    font-size: 0.85rem;
     line-height: 15px;
     color: #f37777;
-    /* opacity:0.; */
+   
 }
 
 .authPwd {
-    position: absolute;
-    left: 2.5vw;
-    top: 38vh;
+   
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     font-size: 1rem;
     line-height: 20px;
     color: rgba(255, 255, 255, 0.9);
+    margin-bottom: -35px;
 }
 
 .authPwdInput {
     outline: none;
     border: none;
-    position: absolute;
     width: 30vw;
     padding-left: 3vw;
-    height: 7vh;
-    left: 2.4vw;
-    top: 42vh;
+    height: 45px;
+    margin-top:-80px;
+    /* left: 2.4vw;
+    top: 42vh; */
     background: rgba(17, 19, 21, 0.6);
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -157,9 +151,6 @@ body {
 }
 
 .fgtPwd {
-    position: absolute;
-    left: 23.6vw;
-    top: 49.7vh;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
@@ -167,21 +158,22 @@ body {
     line-height: 17px;
     color: #63DF76;
     cursor: pointer;
+    margin-left:21vw;
+    margin-top:4px;
 }
 
 .authSignIn {
     border: none;
-    position: absolute;
     width: 9vw;
-    height: 5.5vh;
-    left: 2.5vw;
-    top: 55vh;
+    height: 38px;
+    margin-top:20px;
+    
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #63DF76;
     border-radius: 10px;
     font-family: "Montserrat";
     font-style: normal;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 1.1rem;
     line-height: 29px;
     color: rgba(255, 255, 255, 0.8);
     cursor: pointer;
@@ -206,18 +198,14 @@ body {
 #hrOr {
     border: 1px solid rgba(255, 255, 255, 0.25);
     width: 30vw;
-    position: absolute;
-    left: 2.5vw;
-    top: 61vh;
 }
 
 .contGoogle {
     border: none;
-    position: absolute;
+    
     width: 30vw;
-    height: 6vh;
-    left: 2.5vw;
-    top: 67vh;
+    height: 38px;
+    
     border: 1px solid #47C87A;
     border-radius: 10px;
     background: none;
@@ -231,240 +219,16 @@ body {
 }
 
 .createAcc {
-    position: absolute;
-    top: 75vh;
-    left: 8vw;
     font-family: "Montserrat";
     font-style: normal;
     font-weight: 500;
     font-size: 1rem;
+    margin-top:4px;
     line-height: 29px;
     color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+}
+.AUTHENTICATION {
+    overflow: hidden;
 }
 
-#loginInvEmail{
-    display: none;
-    font-size: 0.8rem;
-}
-@media (max-width:1000px) {
-    #authBgImg {
-        display: none;
-    }
-
-    body {
-        overflow: hidden;
-        overflow-y: hidden;
-    }
-
-    .loginBg {
-        width: 88vw;
-        height: 77vh;
-        left: 6vw;
-        top: 13vh;
-    }
-
-    .authHead {
-        left: 4vw;
-        top: 5vh;
-    }
-
-    .authEmail {
-        top: 17vh;
-        left: 4vw;
-    }
-
-    .authEmailInput {
-        width: 83vw;
-        padding-left: 11vw;
-        top: 20.7vh;
-
-    }
-
-    #emailIcon {
-        width: 6vw;
-        left: 5vw;
-        top: 23vh;
-    }
-
-    .invalidEmail {
-        font-size: 13px;
-        top: 28.2vh;
-        left: 4vw;
-    }
-
-    .authPwd {
-        top: 33vh;
-        left: 4vw;
-    }
-
-    .authPwdInput {
-        width: 83vw;
-        padding-left: 11vw;
-        top: 36.7vh;
-    }
-
-    #lockIcon {
-        left: 4vw;
-        top: 38.5vh;
-    }
-
-    #LEye {
-        left: 77.5vw;
-        top: 39vh;
-    }
-
-    .fgtPwd {
-        left: 52vw;
-        width: 40vw;
-        top: 44vh;
-    }
-
-    #loginButton {
-        width: 83vw;
-        top: 51vh;
-    }
-
-    #hrOr {
-        width: 83vw;
-        top: 56vh;
-    }
-
-    .contGoogle {
-        width: 83vw;
-        top: 60.5vh;
-    }
-
-    .createAcc {
-        top: 68vh;
-        left: 10vw;
-    }
-}
-
-@media (min-width:700px) and (max-width:950px) {
-    .loginBg {
-        left: 12vw;
-    }
-
-    #authBgImg {
-        display: block;
-        height: 200vh;
-        width: 100vw;
-        background-size: cover;
-    }
-
-    .authHead {
-        left: 4vw;
-        top: 5vh;
-        font-size: 3.5rem;
-    }
-
-    .authEmail {
-        top: 16vh;
-        left: 4vw;
-        font-size: 1.4rem;
-    }
-
-    .authEmailInput {
-        width: 83vw;
-        padding-left: 9vw;
-        top: 19vh;
-        left: 3vw;
-        font-size: 1.3rem;
-    }
-
-    /* ::placeholder {
-        font-size: 1.3rem;
-    } */
-
-    #emailIcon {
-        width: 5vw;
-        left: 5vw;
-        top: 21.4vh;
-    }
-
-    .invalidEmail {
-        font-size: 1.1rem;
-        top: 26.9vh;
-        left: 4vw;
-        display: none;
-    }
-
-    .authPwd {
-        top: 32vh;
-        left: 4vw;
-        font-size: 1.4rem;
-    }
-
-    .authPwdInput {
-        width: 83vw;
-        padding-left: 8vw;
-        top: 35vh;
-        left: 3vw;
-        font-size: 1.3rem;
-    }
-
-    #lockIcon {
-        left: 4vw;
-        top: 37vh;
-    }
-
-    #LEye {
-        left: 77.5vw;
-        top: 38vh;
-        width: 12vw;
-    }
-
-    .fgtPwd {
-        left: 62vw;
-        width: 40vw;
-        top: 43vh;
-        font-size: 1.3rem;
-    }
-
-    #loginButton {
-        width: 83vw;
-        top: 49vh;
-        font-size: 1.5rem;
-        left: 3vw;
-    }
-
-    #hrOr {
-        width: 83vw;
-        top: 55vh;
-        left: 3vw;
-    }
-
-    .contGoogle {
-        width: 83vw;
-        top: 59vh;
-        left: 3vw;
-        font-size: 1.5rem;
-    }
-
-    .createAcc {
-        top: 68vh;
-        left: 20vw;
-        font-size: 1.5rem;
-    }
-
-    .authSignUp {
-        font-size: 1.5rem;
-    }
-}
-
-@media (min-width:280px) and (max-width:280px) {
-    .createAcc {
-        font-size: 0.8rem;
-        left: 7vw;
-    }
-
-    .authSignUp {
-        font-size: 0.8rem;
-    }
-
-    .fgtPwd {
-        font-size: 0.8rem;
-        left: 45vw;
-        width: 50vw;
-    }
-}

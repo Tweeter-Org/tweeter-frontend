@@ -2,7 +2,6 @@
   "name": "tweeter",
   "homepage": "https://Sanikagoyal28.github.io/Tweeter",
   "version": "0.1.0",
-  "homepage": "https://Sanikagoyal28.github.io/Tweeter",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
@@ -23,6 +22,7 @@
     "react-dom": "^18.2.0",
     "react-form-data": "^0.2.4",
     "react-google-login": "^5.2.2",
+    "react-hashtag": "^2.1.2",
     "react-input-emoji": "^4.3.0",
     "react-outside-click-handler": "^1.3.0",
     "react-redux": "^8.0.5",

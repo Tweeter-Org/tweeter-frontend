@@ -46,6 +46,10 @@ function Sidebar() {
             document.getElementById("bm").src = bookmark;
             document.getElementById("msg").src = message;
             document.getElementById("profileIcon").src = profile;
+            document.getElementById("homeIcon2").src = greenhome
+            document.getElementById("bm2").src = bookmark;
+            document.getElementById("msg2").src = message;
+            document.getElementById("profileIcon2").src = profile;
         }
         else if (x == 1) {
             document.getElementById("homeIcon").src = home;
@@ -53,6 +57,10 @@ function Sidebar() {
             document.getElementById("bm").src = bookmark;
             document.getElementById("msg").src = message;
             document.getElementById("profileIcon").src = profile;
+            document.getElementById("homeIcon2").src = home;
+            document.getElementById("bm2").src = bookmark;
+            document.getElementById("msg2").src = message;
+            document.getElementById("profileIcon2").src = profile;
         }
         else if (x == 2) {
             document.getElementById("homeIcon").src = home;
@@ -60,6 +68,10 @@ function Sidebar() {
             document.getElementById("bm").src = greenbm;
             document.getElementById("msg").src = message;
             document.getElementById("profileIcon").src = profile;
+            document.getElementById("homeIcon2").src = home;
+            document.getElementById("bm2").src = greenbm;
+            document.getElementById("msg2").src = message;
+            document.getElementById("profileIcon2").src = profile;
         }
         else if (x == 3) {
             document.getElementById("homeIcon").src = home;
@@ -67,6 +79,10 @@ function Sidebar() {
             document.getElementById("bm").src = bookmark;
             document.getElementById("msg").src = greenmessage;
             document.getElementById("profileIcon").src = profile;
+            document.getElementById("homeIcon2").src = home;
+            document.getElementById("bm2").src = bookmark;
+            document.getElementById("msg2").src = greenmessage;
+            document.getElementById("profileIcon2").src = profile;
         }
         else {
             document.getElementById("homeIcon").src = home;
@@ -74,6 +90,10 @@ function Sidebar() {
             document.getElementById("bm").src = bookmark;
             document.getElementById("msg").src = message;
             document.getElementById("profileIcon").src = greenprofile;
+            document.getElementById("homeIcon2").src = home;
+            document.getElementById("bm2").src = bookmark;
+            document.getElementById("msg2").src = message;
+            document.getElementById("profileIcon2").src = greenprofile
         }
         for (var i = 0; i < 5; i++) {
             if (i != x) {
@@ -224,10 +244,10 @@ function Sidebar() {
                 </div>
             </div>
             <div className="navbar3">
-            <Link to="/"><img src={home}  id="homeIcon" className="NB3Home"  onClick={() => { dispatch(Home(greenhome, "Home", 0)) }}/></Link>
-            <Link to="/bookmark"> <img src={bookmark} id="bm" className="NB3bm" onClick={() => { dispatch(BookmarksNav(greenbm, "Bookmark", 2)) }} /></Link>
-            <img src={message} id="msg" className="NB3Msg" onClick={() => { MsgSidebar() }} />
-            <Link to={`/profile/${nameInApi}`}> <img src={profile} id="profileIcon" className="NB3Profile" onClick={() => { handleProfile() }} /></Link>
+            <Link to="/"><img src={home}  id="homeIcon2" className="NB3Home"  onClick={() => { dispatch(Home(greenhome, "Home", 0)) }}/></Link>
+            <Link to="/bookmark"> <img src={bookmark} id="bm2" className="NB3bm" onClick={() => { dispatch(BookmarksNav(greenbm, "Bookmark", 2)) }} /></Link>
+            <img src={message} id="msg2" className="NB3Msg" onClick={() => { MsgSidebar() }} />
+            <Link to={`/profile/${nameInApi}`}> <img src={profile} id="profileIcon2" className="NB3Profile" onClick={() => { handleProfile() }} /></Link>
             <img src={logoutIcon} className="NV3Logout" onClick={handleLogout} />
             </div>
             <div className="sidebar POPUPBG" id="SIDEBAR">

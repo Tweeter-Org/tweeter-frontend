@@ -1,6 +1,9 @@
 body{
     overflow-x: hidden;
 }
+span{
+    color:#47C87A
+}
 #HOME2{
     display: flex;
     flex-direction: column;
@@ -307,7 +310,7 @@ color:#47C87A;
     border-radius: 16px;
     box-shadow: 0px 50px 80px #1A1C1E;
     border: 0.7px solid rgba(255, 255, 255, 0.2);
-    z-index: 15;
+    z-index: 20;
     display: flex;
     flex-direction: column;
     padding-left: 1.5vw;

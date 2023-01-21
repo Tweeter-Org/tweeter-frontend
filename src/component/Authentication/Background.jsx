@@ -20,8 +20,15 @@ zIndex:10}}>Tweeter</p>
         <img src={authBgImg} id="authBgImg" style={{
           // position:"absolute",
           //  height:"110vh",
-    // width:"100vw",
+    // maxWidth:"100%",
+    // maxHeight:"100vh",
+    // height:"auto",
+    // marginTop:"-40px",
+    // width:"100vw" ,
+    // height:"100vh" ,
     backgroundSize: "cover",
+    backgroundAttachment:"fixed",
+    backgroundPosition:"center center",
     background: " noRepeat center fixed",
     overflow:"hidden",
     zIndex:5

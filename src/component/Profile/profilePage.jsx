@@ -20,6 +20,7 @@ import DltTweetPopup from "./DeleteTweetPopup";
 import emailIcon from "../Assets/email.svg";
 import { ActiveUserList, CreateChat } from "../../react-redux/actions/Message";
 import { Messages } from "../../react-redux/actions/SearchApi";
+import CreateTweet from "../Home Page/createTweet";
 
 function ProfilePage() {
     const dispatch = useDispatch();
@@ -182,6 +183,7 @@ function ProfilePage() {
     }
 
     const { likedTweets } = useSelector((l) => l.LikedTweetsPReducer)
+    console.log(likedTweets)
     useEffect(() => {
         if (loading === true) {
             document.body.style.opacity = 0.5;
@@ -195,16 +197,10 @@ function ProfilePage() {
         <Sidebar />
         <div className="PROFILE POPUPBG">
             <div className="profileDiv1">
-            {/* { (displaypic != null && displaypipc.startsWith("blob:"))?(
-             <img src={displaypic} alt="image" className="pImage"  />):(
-                (displaypic != null && displaypic.startsWith("https:")) ?(<img src={displaypic} className="pImage" />): 
-                (<img src={`https://tweeter-backend-7ngr.onrender.com/${displaypic}`} alt="image" className="pImage" />))} */}
-              
                 {(displaypic === null) ? (<img src={avatar} className="pImage" />) :
                 (displaypic != null && displaypic.startsWith("blob:"))?(
              <img src={displaypic} alt="image" className="pImage"  />):
-                    ((displaypic.startsWith("https:")) ? (<img src={displaypic} className="pImage" />) :
-                        (<img src={displaypic} className="pImage" />))
+                        (<img src={displaypic} className="pImage" />)
                 }
                 <div className="PBLOCK1">
                     <div className="pBlock1">
@@ -271,14 +267,18 @@ function ProfilePage() {
                 })) : null}
             </div>
             <div className="tweetPrFlexbox" id="likeTweetFlex">
-                {likedTweets.length > 0 ? (likedTweets.map((tweet, index) => {
-                    return <ProfileTweet text={tweet.text} likeCount={parseInt(tweet.likes)} image={tweet.image}
-                        video={tweet.video} username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} bookmarkb="false" />;
+                {likedTweets.length > 0 ? (likedTweets.map((tweet, index) => { 
+                    return <ProfileTweet text={tweet.text} likeCount={parseInt(tweet.likes)} replies={tweet.replyingto}
+                     image={tweet.image} name={tweet.user.name} displaypic={tweet.user.displaypic}
+                        video={tweet.video} username={tweet.user.user_name}
+                             retweet={tweet.retweet}
+                         tweetId={tweet._id} number={index} bookmarked="false" />;
                 })) : null}
             </div>
         </div>
         <EditProfile />
         <DltTweetPopup />
+        <CreateTweet />
         {loading === true ? <Loader loading={loading} /> : null}
     </>
 

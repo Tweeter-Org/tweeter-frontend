@@ -30,6 +30,7 @@ function HomePage (){
    console.log(liked)
    console.log(bookmarked)
    const tweetLength = tweetData.length
+//    const trendTweetLength = tren.length
 
 const auth = useSelector((s)=>s.AuthReducer)
 const {user, toFgtPwd} = auth;

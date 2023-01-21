@@ -123,7 +123,7 @@ function CreateTweet(props) {
             "text": Rtext,
             "_id": RId,
             user: {
-
+                "name":Rname,
                 "user_name": Rname,
                 displaypic: displaypic
             },
@@ -133,43 +133,59 @@ function CreateTweet(props) {
     const { list, tomap, tweetList, tohash } = useSelector((S) => S.SearchReducer)
     const [searchListArray, setSearchListArray] = useState([]);
     const [searchTweetList, setSearchTweetList] = useState([]);
+    const [hash, setHash] = useState(false)
+    const [mention, setMention] = useState(false)
 
-    function handleCreateTweetSearch(e){
-       setText(e.target.value)
-    //    if (e.target.value.startsWith('#')) {
-    //     console.log("hash")
-    //     dispatch(SearchTweetWithTag(e.target.value.slice(1)))
-    // }
-    // if (e.target.value.startsWith('@')) {
-    //     dispatch(SearchUser(e.target.value.slice(1))); 
-    // }
-    // setSearchListArray([])
-    // setSearchTweetList([])
-    // if (tomap) {
-    //     if (list.result.length > 0) {
-    //         setSearchListArray(list.result)
-    //     }
-    //     else {
-    //         setSearchListArray([])
-    //     }
-    // }
-    // if (tohash) {
+    function handleCreateTweetSearch(e) {
+        setText(e.target.value)
+        dispatch(SearchUser(e.target.value));
+        setMention(true)
+        if (e.target.value.startsWith('#')) {
+            console.log(e.target.value.slice(1))
+            setHash(true)
+            setMention(false)
+            dispatch(SearchTweetWithTag(e.target.value.slice(1)))
+        }
+        if (e.target.value.includes('@')) {
+            setMention(true)
+            console.log(e.target.value.slice(1))
+            setHash(false)
+            dispatch(SearchUser(e.target.value.slice(1)));
+        }
+        if(e.target.value==""){
+            setHash(false)
+            setMention(false)
+        }
+        // setSearchListArray([])
        
+        // setSearchTweetList([])
+        // if (tomap) {
+        //     if (list.result.length > 0) {
+        //         setSearchListArray(list.result)
+        //     }
+        //     else {
+        //         setSearchListArray([])
+        //     }
+        // }
+        // if (tohash) {
+
         // document.getElementById("ctSearchHash").style.display="block";
         // document.getElementById("ctSearchATR").style.display="none";
-    //     if (tweetList.length > 0) {
-    //         setSearchTweetList(tweetList)
-    //     }
-    //     else {
-    //         setSearchTweetList([])
-    //     }
-    // }
-    // if(!e.target.value){
-    //     setSearchListArray([])
-    //     setSearchTweetList([])
-    // }
+        //     if (tweetList.length > 0) {
+        //         setSearchTweetList(tweetList)
+        //     }
+        //     else {
+        //         setSearchTweetList([])
+        //     }
+        // }
+        // if(!e.target.value){
+        //     setSearchListArray([])
+        //     setSearchTweetList([])
+        // }
     }
-// const [tag, setTag] = useState(false)
+    console.log(list)
+    console.log(tweetList)
+    // const [tag, setTag] = useState(false)
     // useEffect(() => {
     //     if (tomap) {
     //         if (list.result.length > 0) {
@@ -179,10 +195,10 @@ function CreateTweet(props) {
     //             setSearchListArray([])
     //         }
     //     }
-        // if(!text){
-        //     setSearchListArray([])
-        //     setSearchTweetList([])
-        // }
+    // if(!text){
+    //     setSearchListArray([])
+    //     setSearchTweetList([])
+    // }
     // }, [tomap, list, text])
     // useEffect(() => {
     //     if (tohash) {
@@ -221,11 +237,11 @@ function CreateTweet(props) {
 
         backToHome(e)
         dispatch(FakeTweetFeedAction(newTweetCreated))
-      
+
         setSendImage(null);
         setSendVideo(null)
     }
-   
+
     // console.log(RId)
     function handleCreateReTweet(e) {
         e.preventDefault();
@@ -314,9 +330,9 @@ function CreateTweet(props) {
         <div className="createTweetDiv" id="CREATETWEET">
             <div className="CTBlock1">
                 {(displaypic === null) ? (<img src={avatar} id="ctCircle" />) :
-                   (<img src={displaypic} id="ctCircle" />) }
-                      
-                
+                    (<img src={displaypic} id="ctCircle" />)}
+
+
                 <div className="CTDiv1">
                     <p className="ctName">{name}</p>
                     <p className="ctUserName">@{user_name}</p>
@@ -328,7 +344,22 @@ function CreateTweet(props) {
                 <div id="CTweetText">
                     <p className="ctTagline">Share tweets with your followers</p>
                     <div className="ctWriteTweet">
-                        <input type="text" className="ctWriteTweetInput" value={text} onChange={handleCreateTweetSearch} />
+                        <input type="text" list="tagsInputList" className="ctWriteTweetInput" value={text} onChange={handleCreateTweetSearch} />
+                        <datalist id="tagsiInputList">
+                        {console.log(mention)}
+                            {hash ?(
+                                searchTweetList.length > 0 ? (searchTweetList.map((se) => {
+                                    return <option value={se.hashtag}>{se.hashtag}</option>
+
+                                })):null) : (mention ?(searchListArray.length > 0 ? (searchListArray.map((searchh) => {
+                                    return <option value={searchh.user_name}>{searchh.user_name}</option>
+                                })):null):null)}
+                            {/* {
+                                tomap ? ((searchListArray.length > 0) ? (searchListArray.map((searchh) => {
+                                    return <option value={searchh.user_name}>{searchh.user_name}</option>
+                                })) : null) : null
+                            } */}
+                        </datalist>
                     </div>
                     {/* <div className="ctSearchFlexBox POPUPBG" id="CTSEARCH">
                 {tohash ? (
