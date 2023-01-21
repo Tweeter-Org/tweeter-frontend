@@ -4,7 +4,6 @@ import Loader from '../Assets/Loader'
 import Tweet from '../Home Page/TweetComp'
 import Sidebar from './SideBar'
 import navTweet from "../Assets/navTweet.svg"
-import greenRetweet from "../Assets/greenRetweet.svg"
 import { TagtweetNav } from '../../react-redux/actions/SearchApi'
 
 const TagTweets = () => {
@@ -23,6 +22,16 @@ const dispatch = useDispatch()
     },[getTag, tagTweets])
 
     console.log(tagTweets)
+
+    useEffect(()=>{
+        if(loading===true){
+            document.body.style.opacity = 0.5;
+        }
+        else{
+            document.body.style.opacity = 1;
+        }
+    },[loading])
+    
     return <>
     <Sidebar />
         <div className="tweetFlexBox POPUPBG" id="HashTweetBox">

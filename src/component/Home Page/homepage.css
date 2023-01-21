@@ -1,7 +1,16 @@
 body{
     overflow-x: hidden;
 }
-.HOMEPAGE{
+#HOME2{
+    display: flex;
+    flex-direction: column;
+    position:absolute;
+    left:70vw;
+    top:90px;
+    /* margin-left:70vw; */
+    /* margin-top:50px; */
+}
+.HOME1{
     display: flex;
     flex-direction: column;
 }
@@ -29,7 +38,7 @@ color:#47C87A;
     width: 45vw;
     height:fit-content;
     margin-left: 22.5vw;
-    margin-top:100px;
+    margin-top:50px;
     justify-content: flex-end;
     /* margin-bottom: 14px; */
     padding-top:10px;
@@ -258,7 +267,7 @@ color:#47C87A;
 .tweetFlexBox {
     /* margin-top: 15vh; */
     position:absolute;
-    top:160px;
+    top:150px;
     display: flex;
     flex-direction: column;
 }
@@ -373,7 +382,7 @@ color:#47C87A;
 }
 
 .ctWriteTweet {
-    margin-top: 80px;
+    margin-top: 40px;
     width: 36.5vw;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -393,8 +402,8 @@ color:#47C87A;
 
 .CTBlock2 {
     display: flex;
-    justify-content: last baseline;
-    margin-top: 60px;
+    /* justify-content: last baseline; */
+    margin-top: 30px;
 }
 
 #ctuploadImg {
@@ -506,7 +515,7 @@ color:#47C87A;
     border-radius: 8px;
     margin-left: 1.5vw;
     margin-top: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 4px;
     padding: 1vw;
     padding-bottom: 0;
     display: flex;
@@ -519,6 +528,7 @@ color:#47C87A;
 
 .CTRVideo {
     width: 32.8vw;
+    height:150px;
     margin-top: 5px;
     margin-bottom: 5px;
     /* margin-bottom:1vh; */
@@ -1036,6 +1046,8 @@ margin-top:1.5px;
     .TweetShowMore{
         margin-left:32.5vw; 
         width:60vw;
+        margin-bottom:-5px;
+        margin-top:50px;
     }
     .tweetImage{
         width:58vw;

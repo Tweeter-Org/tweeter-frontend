@@ -17,7 +17,6 @@ import greenBookmarks from "../Assets/greenBookmarks.svg"
 import greencross from "../Assets/greencross.svg"
 import DoBookmarkAction from "../../react-redux/actions/Bookmarks.jsx";
 import deleteIcon from "../Assets/delete.svg"
-import TweetDeleteAction, { FakeTweetDeleteAction } from "../../react-redux/actions/deleteTweetAct";
 import { TweetFeedAction } from "../../react-redux/actions/Tweets.jsx";
 import { type } from "@testing-library/user-event/dist/type";
 import { ToastContainer , toast} from 'react-toastify';

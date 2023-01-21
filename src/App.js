@@ -24,6 +24,7 @@ import Counter from './component/counter';
 import Messages1 from './component/Messages/Messages1';
 import Chats from './component/Messages/Chats';
 import PrivateRoute from './component/PrivateRoute';
+import PhoneSearch from './component/Sidebar/PhoneSearch';
 
 function App() {
 
@@ -55,7 +56,7 @@ function App() {
        {isUser?( <Route path="/editprofile" exact element={<EditProfile />} />):(<Route path="*" element={<Error />} />)}
        {isUser?(  <Route path="/" exact element={<HomePage />} />):(<Route path="*" element={<Error />} />)} */}
 
-       
+       <Route path="/phonesearch" element={<PhoneSearch />} />
        <Route path="/chats/:userid" element={<Chats />} />
        <Route path="/messages" element={<Messages1 />} />
        <Route path="/profile/:apiname" element={<ProfilePage />} />

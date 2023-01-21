@@ -9,7 +9,8 @@ const initialState={
     username:"",
     Rimage:null,
     Rvideo:null,
-    Rtext:""
+    Rtext:"",
+    trendingTweet:{}
 }
 
 export const TweetFeedReducer = (state=initialState, action)=>{
@@ -51,6 +52,10 @@ export const TweetFeedReducer = (state=initialState, action)=>{
             return {
                 ...state, Rname:action.payload.name , Rtext:action.payload.text , Rimage:action.payload.image , Rvideo:action.payload.video
             }
+        }
+        case "TRENDING_TWEET_YES":{
+            console.log(action.payload)
+            return {...state, loading:false, trendingTweet:action.payload.data.tags}
         }
         default: return state;
     }

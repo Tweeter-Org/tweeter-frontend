@@ -250,3 +250,100 @@ export const RetweetDetails = (tweetid, name, video, text, image) => {
         }
     }
 }
+
+export const ShareTweet = (data, socket) => {
+    const accessToken = sessionStorage.getItem("access token")
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
+    }
+    return async function (dispatch) {
+        dispatch({
+            type:"SHARE_TWEET"
+        })
+        await BaseUrl.post("/c/share",data, config)
+            .then((Res) => {
+                console.log(Res)
+                toast.success("Message sent successfully", {
+                    position: "top-center",
+                    theme: "light",
+                });
+                socket.emit("new message", Res.data.msg)
+                dispatch({
+                    type: "SHARE_TWEET_YES",
+                    payload: Res
+                })
+            })
+            .catch((err) => {
+                dispatch({
+                    type: "SHARE_TWEET_NO",
+                    payload: err
+                })
+            })
+    }
+}
+
+
+function TweetDeleteAction(tweetId) {
+    const accessToken = sessionStorage.getItem("access token")
+    console.log(accessToken)
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
+    }
+    return async function (dispatch) {
+        dispatch({
+            type: "TWEETDLT_START",
+        })
+        await BaseUrl.delete(`/t/delete/${tweetId}`, config)
+            .then((res) => {
+                dispatch({
+                    type: "TWEETDLT_SUCCESS",
+                    payload: res
+                })
+            })
+            .catch((err) => {
+                dispatch({
+                    type: "TWEETDLT_FAILED",
+                    payload: err
+                })
+            })
+
+    }
+}
+export {TweetDeleteAction}
+
+export const FakeTweetDeleteAction = (tweeetId) => {
+    return {
+        type: "FAKE_TWEET_DELETE_ACTION",
+        payload: tweeetId,
+    }
+}
+
+const TrendingTweets = () => {
+    const accessToken = sessionStorage.getItem("access token")
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
+    }
+    return async function (dispatch) {
+        dispatch({ type: "TAG_TWEET_LIST_START" })
+        console.log("hash")
+        await BaseUrl.get('/t/trending', config)
+            .then((res) => dispatch({
+                type: "TRENDING_TWEET_YES",
+                payload: res
+            }))
+            .catch((err) => {
+                dispatch({
+                    type: "TRENDING_TWEET_NO",
+                    payload: err
+                })
+            })
+    }
+}
+
+export {TrendingTweets}

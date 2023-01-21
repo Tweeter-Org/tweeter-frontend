@@ -15,7 +15,6 @@ import greenShare from "../Assets/greenSend.svg"
 import greenBookmarks from "../Assets/greenBookmarks.svg"
 import DoBookmarkAction from "../../react-redux/actions/Bookmarks.jsx";
 import deleteIcon from "../Assets/delete.svg"
-import TweetDeleteAction from "../../react-redux/actions/deleteTweetAct";
 import { TweetFeedAction } from "../../react-redux/actions/Tweets.jsx";
 import { type } from "@testing-library/user-event/dist/type";
 import TweetPopup from "./tweetPopup";

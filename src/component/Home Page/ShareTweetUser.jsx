@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom"
 import { ActiveUserList, CreateChat } from "../../react-redux/actions/Message";
 import { Messages } from "../../react-redux/actions/SearchApi";
-import { ShareTweet } from "../../react-redux/actions/ShareTweet";
 import avatar from "../Assets/avatar.svg"
 import greenmessage from "../Assets/greenmsg.svg"
 import { ToastContainer , toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { io } from "socket.io-client";
+import { ShareTweet } from "../../react-redux/actions/Tweets";
 
 const ENDPOINT = "https://tweeter-backend-7ngr.onrender.com";
 var socket, currentChattingWith;

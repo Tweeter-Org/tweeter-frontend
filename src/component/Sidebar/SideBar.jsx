@@ -7,6 +7,7 @@ import notify from "../Assets/notifications.svg"
 import bookmark from "../Assets/bookmarks.svg"
 import message from "../Assets/comment.svg"
 import profile from "../Assets/account_box.svg"
+import searchIcon from "../Assets/search.svg"
 import logoutIcon from "../Assets/logoutIcon.svg"
 import greenhome from "../Assets/greenhome.svg"
 import greennotify from "../Assets/greennotifications.svg"
@@ -85,7 +86,7 @@ function Sidebar() {
     }
 
     useEffect(() => {
-      showTitle(x)
+        showTitle(x)
     }, [x])
 
 
@@ -98,11 +99,21 @@ function Sidebar() {
     function handleSearch(e) {
         setSearch(e.target.value)
         if (e.target.value.startsWith('#')) {
-            // dispatch(SearchUser(e.target.value));
+
             dispatch(SearchTweetWithTag(e.target.value.slice(1)))
             // console.log(e.target.value.slice(1))
         }
         dispatch(SearchUser(e.target.value));
+        if (e.target.value != "") {
+            document.getElementById("HOME2").style.display = "none"
+            document.getElementById("SIDESEARCH").style.display = "flex"
+        }
+
+        else {
+            document.getElementById("HOME2").style.display = "flex"
+            document.getElementById("SIDESEARCH").style.display = "none"
+        }
+
     }
     // console.log(tweetList, tohash)
     useEffect(() => {
@@ -193,18 +204,31 @@ function Sidebar() {
         document.getElementById("SIDEBAR").style.display = "none";
         // document.getElementById("SIDEBAR").style.transitionDelay="1s"
     }
+    const [show, setShow] = useState(false)
     return <>
         <div>
             <div className="navbar POPUPBG">
-                {/* <div className="menuIcon">
-           <img src={menubar} className="hamburgur" onClick={openSidebar} />
-           </div> */}
-
-                {/* </label> */}
                 <p className="logoHeadNav">Tweeter</p>
-                <img src={image} className="navbarIcon" />
-                <span><p className="navbarHead">{title}</p></span>
-                <span id="navbarLine" />
+                <div className="navbar1">
+                    <img src={image} className="navbarIcon" />
+                    <span><p className="navbarHead">{title}</p></span>
+                    <span id="navbarLine" />
+                </div>
+            </div>
+            <div className="navbar2">
+                <img src={notify} className="navNotify" />
+                <div className="navSearch1">
+                    <img src={searchIcon} className="navSearch2" onClick={()=>{
+                        navigate("/phonesearch")
+                    }} />
+                </div>
+            </div>
+            <div className="navbar3">
+            <Link to="/"><img src={home}  id="homeIcon" className="NB3Home"  onClick={() => { dispatch(Home(greenhome, "Home", 0)) }}/></Link>
+            <Link to="/bookmark"> <img src={bookmark} id="bm" className="NB3bm" onClick={() => { dispatch(BookmarksNav(greenbm, "Bookmark", 2)) }} /></Link>
+            <img src={message} id="msg" className="NB3Msg" onClick={() => { MsgSidebar() }} />
+            <Link to={`/profile/${nameInApi}`}> <img src={profile} id="profileIcon" className="NB3Profile" onClick={() => { handleProfile() }} /></Link>
+            <img src={logoutIcon} className="NV3Logout" onClick={handleLogout} />
             </div>
             <div className="sidebar POPUPBG" id="SIDEBAR">
                 <p className="logoHead">Tweeter</p>
@@ -226,9 +250,10 @@ function Sidebar() {
                 <button className="logOutBtn" onClick={handleLogout}><img src={logoutIcon} className="logoutIcon" />Log Out</button>
             </div>
             <div id="SEARCHBOX">
-                <div><input className="searchbar POPUPBG" type="text" value={search} onChange={handleSearch} placeholder="Search" />
+                <div className="searchBar"><img src={searchIcon} className="searchIcon" />
+                    <input className="searchbar POPUPBG" type="text" value={search} onChange={handleSearch} placeholder="Search" />
                 </div>
-                <div className="searchFlexBox POPUPBG">
+                <div className="searchFlexBox POPUPBG" id="SIDESEARCH">
                     {tohash ? (
                         searchTweetList.length > 0 ? (searchTweetList.map((se) => {
                             return <Tweetsearch hashtag={se.hashtag} />
@@ -253,4 +278,3 @@ function Sidebar() {
 }
 export default Sidebar
 
-//className="logout POPUPBG"
