@@ -259,8 +259,8 @@ function Sidebar() {
                             Home
                         </span>
                     </li></Link>
-                    <li className="sbListItem" onClick={() => { dispatch(Notifications(greennotify, "Notifications", 1)) }}><img src={notify} id="notify" className="sbListIcon" />   <span className="sbListName">
-                        Notifications  </span></li>
+                    <Link to="/notification"><li className="sbListItem" onClick={() => { dispatch(Notifications(greennotify, "Notifications", 1)) }}><img src={notify} id="notify" className="sbListIcon" />   <span className="sbListName">
+                        Notifications  </span></li></Link>
                     <Link to="/bookmark"> <li className="sbListItem" onClick={() => { dispatch(BookmarksNav(greenbm, "Bookmark", 2)) }}><img className="sbListIcon" id="bm" src={bookmark} />   <span className="sbListName">Bookmarks  </span></li></Link>
                     <li className="sbListItem" onClick={() => { MsgSidebar() }}><img src={message} className="sbListIcon" id="msg" />   <span className="sbListName">Messages  </span></li>
                     {/* <li className="sbListItem" onClick={() => { dispatch(Messages(greenmessage, "Messages", 3)) }}><span className="sbListIcon"><img src={message} /></span>Messages</li> */}

@@ -26,6 +26,7 @@ import Chats from './component/Messages/Chats';
 import PrivateRoute from './component/PrivateRoute';
 import PhoneSearch from './component/Sidebar/PhoneSearch';
 import ReactHashtag from 'react-hashtag';
+import Notifications from './component/Notification/Notification';
 
 function App() {
 
@@ -72,6 +73,7 @@ function App() {
        <Route path="/editprofile" exact element={<EditProfile />} />
        <Route path="/sidebar" exact element={<Sidebar />} />
        <Route path="/" exact element={<HomePage />} />
+       <Route path="/notification" exact element={<Notifications />} />
 
 
         <Route path="/google" element={<Google />} />
