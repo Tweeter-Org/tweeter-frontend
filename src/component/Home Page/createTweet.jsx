@@ -392,7 +392,7 @@ function CreateTweet(props) {
                     <p className="TWRText" >{Rtext}</p>
                 </div>
                 <div id="CTReplyDiv">
-                    <p className="ctName" id="replying-to-head">Replying to<span id="CTReplyAtName1"> @{atNames}</span>{
+                    {/* <p className="ctName" id="replying-to-head">Replying to<span id="CTReplyAtName1"> @{atNames}</span>{
                         showName ? (
                             nameInReply.length > 0 ? (nameInReply.map((name) => {
                                 return <span id="CTReplyAtName" onClick={() => {
@@ -402,8 +402,8 @@ function CreateTweet(props) {
                             })) : null
                         ) : null
                     }
-                    </p>
-                    {/* <p className="ctName">Replying to <span id="CTReplyAtName">@{Rname}</span></p> */}
+                    </p> */}
+                    <p className="ctName">Replying to <span id="CTReplyAtName">@{Rname}</span></p>
                     <div className="CTReplyTweet">
                         <input type="text" id="CTReplyInput" className="ctWriteTweetInput" value={text} onChange={(e) => { setText(e.target.value) }} />
                     </div>

@@ -5,39 +5,15 @@ import SearchUser from '../../react-redux/actions/SearchApi';
 import SearchComp from '../Sidebar/SearchComp';
 import Sidebar from '../Sidebar/SideBar'
 import "./Messages.css"
+import deleteIcon from "../Assets/delete.svg"
+import chatImage from "../Assets/chatImage.svg"
 import MsgDropdown from './MsgDropDown';
 import MsgUser from './User';
 const Messages1 = () => {
 
-    const [showMsg, setShowMsg] = useState(false)
     function handleMsgDD() {
-        setShowMsg(true)
-        // document.getElementById("MSGDROPDOWN").style.display = "flex";
+        document.getElementById("MSGDROPDOWN").style.display = "flex";
     }
-   
-    useEffect(() => {
-        if (showMsg)
-            document.getElementById("MSGDROPDOWN").style.display = "flex";
-        else
-            document.getElementById("MSGDROPDOWN").style.display = "none";
-    }, [showMsg])
-
-    useEffect(()=>{
-       const closeDropdown =(e)=>{
-        // console.log(e.path[0].tagName)
-        // console.log(e.path[0].className)
-        // console.log(e.path[0].id)
-        if(e.path[0].tagName=="BUTTON"){
-            // setShowMsg(true)
-        }
-        else{
-            // setShowMsg(false)
-        }
-       }
-       document.addEventListener("click",closeDropdown
-    )
-    },[])
-
 
     return <>
         <Sidebar />
@@ -47,11 +23,7 @@ const Messages1 = () => {
                 <p className='MsgText2'>Wants to chat with someone or to share your thoughts, any tweets. Just message</p>
                 <button className='MsgBtn1' onClick={handleMsgDD} >Write a new message</button>
             </div>
-            {/* <div className='Messages2'>
-            <p className='MsgText2-1'>Start a new Conversation</p>
-                <p className='MsgText2-2'>Wants to chat with someone or to share your thoughts, any tweets. Just message</p>
-                <button className='MsgBtn2-1'>Write a new message</button>
-            </div> */}
+            <img src={chatImage} className="messageImage" />
         </div>
         <MsgDropdown />
         {/* <span className='MsgLine1' /> */}

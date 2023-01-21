@@ -119,8 +119,9 @@ const googleRed = useSelector((g)=>g.GoogleReducer)
     },[googleBool])
 
     return <>
+     <Background />
     <div className='AUTHENTICATION'>
-        <Background />
+       
         <div className='loginBg'>
             <p className='authHead'>Sign In</p>
             <p className='authEmail'>Email Address</p>

@@ -1,51 +1,20 @@
-.signInvalidEmail{
-    position: absolute;
-    height: 15px;
-    left: 2.5vw;
-    top: 49.4vh;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 15px;
-    color: #F79E9E;
-    display:none;
+#signName1{
+    margin-bottom: 4px;
 }
 #signName{
-    width:20vw;
-    /* display:none; */
-    position: absolute;
-    height: 15px;
-    left: 2.5vw;
-    top: 32.4vh;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 15px;
-    color: #F79E9E;
+    display: none;
+}
+#signInvalidEmail{
+    display: none;
 }
 #signEmail{
-    top:38vh;
+    margin-top:10px;
+    margin-bottom:4px;
 }
-#signEmailInput{
-    top:42vh;
+.emailSignIcon{
+    margin-left:0.7vw;
+    position:relative;
+    top:66px;
+      width: 25px;
+      height:20px;
 }
-
-
-#signUpBtn{
-    top:60vh;
-    width:30vw;
-    height:7vh;
-}
-
-#emailIconS{
-    position:absolute;
-    left:1.2vw;
-    top:44vh;
-    height:2.8vh;
-    width:5.5vw;
-    z-index:4;
-}
-
-

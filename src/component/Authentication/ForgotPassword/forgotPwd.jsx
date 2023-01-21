@@ -19,11 +19,11 @@ function ForgotPwd(){
     const rightemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     useEffect(()=>{
         if(rightemail.test(email)){
-            document.getElementsByClassName('invalidFgtEmail')[0].style.display="none";
+            document.getElementById('fgtEmail').style.display="none";
             setCheckEmail(true)
         }
         else if(email){
-            document.getElementsByClassName('invalidFgtEmail')[0].style.display="block";
+            document.getElementById('fgtEmail').style.display="block";
             setCheckEmail(false)
         }
     })
@@ -76,34 +76,6 @@ function ForgotPwd(){
         }
     },[response])
 
-    // const [displayToaster, setDisplayToaster] = useState(false)
-    // useEffect(() => {
-    //     let mounted = true;
-    //                 if (mounted) {
-    //             setDisplayToaster(true)
-    //         }
-       
-    //     return function cleanup() {
-    //         mounted = false;
-    //     }
-    // }, [])
-    // useEffect(() => {
-    //     if(displayToaster){
-    //         if (response != "") {
-    //             toast.success(`${response}`, {
-    //                 position: "top-center",
-    //                 theme: "light",
-    //             });
-    //         }
-    //         if (error != "") {
-    //             toast.error(`${error}`, {
-    //                 position: "top-center",
-    //                 theme: "light",
-    //             });
-    //         }
-    //     }  
-    // },[displayToaster])
-
     useEffect(()=>{
         if(toOtp){
             navigate("/otp")
@@ -112,13 +84,13 @@ function ForgotPwd(){
 
 return <>
     <Background />
-    <div className='FgtPwdBg'>
+    <div className='loginBg'>
     <img src={arrow} id="arrow" onClick={()=>{navigate("/")}} />
     <p className='authHead' id="authHeadTwo">Forgot Password</p>
-    <p className='authFgtHead'>We will send you an Otp on example@gmail.com</p>
+    <p className='authEmail'>We will send you an Otp on example@gmail.com</p>
     <img src={emailIcon} id="emailIconFgt" />
-    <input type="text" className="authFgtEmailInput" placeholder="Enter your email" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
-    <p className='invalidFgtEmail'>Invalid Email Address</p>
+    <input type="text" className="authEmailInput" placeholder="Enter your email" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
+    <p className='invalidEmail' id="fgtEmail">Invalid Email Address</p>
     <button className='authFgtPwdBtn' onClick={()=>{FORGOTPWD()}}>Continue</button>
     </div>
     {loading===true?<Spinner animation="border" variant="light" id="loadSpinner" />:null}

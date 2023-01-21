@@ -5,7 +5,7 @@ import Sidebar from "../Sidebar/SideBar";
 import ChatUser from "./ChatUser";
 import MsgUser from "./User";
 import avatar from "../Assets/avatar.svg"
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import imageIcon from "../Assets/imageIcon.svg";
 import videoIcon from "../Assets/videoIcon.svg";
 import smileIcon from "../Assets/smileIcon.svg";
@@ -13,10 +13,12 @@ import sendChatIcon from "../Assets/sendChats.svg";
 import Picker from "emoji-picker-react"
 import FormData from "form-data";
 import ScrollableChat from "./ScrollableChats";
+import searchIcon from "../Assets/search.svg"
 import Loader from "../Assets/Loader";
 import { io } from "socket.io-client";
 import { AddChatNotify } from "../../react-redux/actions/Notifications";
 import NoChats from "./NoChats";
+import SearchChatUser from "./SearchChatPopUp";
 // import { Socket } from "socket.io-client";
 
 
@@ -68,7 +70,7 @@ function Chats() {
         dispatch(ViewChatList())
         setUesrlist(chatLists)
         setCBool(true)
-        // console.log(viewChatList)
+        console.log(viewChatList)
     }, [])
     // console.log(chatLists[0].users)
     useEffect(() => {
@@ -200,6 +202,7 @@ function Chats() {
             document.body.style.opacity = 1;
         }
     }, [loading])
+    const navigate = useNavigate();
 
     return <>
         <Sidebar />
@@ -212,6 +215,10 @@ function Chats() {
                        
                 }
                     <p className="msgName" id="ChatName">{list.name}</p>
+                    <img src={searchIcon} className="chatSearch" onClick={()=>{
+                        document.getElementById("SELECT_CHAT_BLOCK").style.display="flex"
+                    }} />
+
                 </div>
                 <div>
                     <ScrollableChat allchats={allChats} />
@@ -246,11 +253,15 @@ function Chats() {
                 </div>
             </div>
             <div className='Chat1'>
-                <input className=" ChatSearch1 POPUPBG" type="text" value={userN} onChange={handleSearch} placeholder="Search" />
+                {/* <input className=" ChatSearch1 POPUPBG" type="text" value={userN} onChange={handleSearch} placeholder="Search" /> */}
                 <div className="ChatUserFlex">
                     {(viewChatList) ? (chatLists.length > 0 ? (chatLists.map((chat, index) => {
                         {console.log(chat)}
                         return <ChatUser user={chat.users} msg={chat.latestmsg} indexx={index} viewChatid={chat._id} />
+                    })) : null) : null}
+                    {(viewChatList) ? (chatLists.length > 0 ? (chatLists.map((chat, index) => {
+                        {console.log(chat)}
+                        return <SearchChatUser user={chat.users} msg={chat.latestmsg} indexx={index} viewChatid={chat._id} />
                     })) : null) : null}
                     {/* {isActive ? (
                         <div className="msgUser" id="ChatUser1" >
@@ -272,6 +283,7 @@ function Chats() {
         </div>
         {(loading == true) ? <Loader loading={loading} /> : null}
         <NoChats />
+        <SearchChatUser />
         {/* <span className='ChatLine1' /> */}
     </>
 }

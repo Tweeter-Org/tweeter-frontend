@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MsgSearchUser from "../../react-redux/actions/Message";
 import MsgUser from "./User";
+import deleteIcon from "../Assets/delete.svg"
 
 function MsgDropdown() {
     const [user, setUser] = useState("");
@@ -25,16 +26,30 @@ function MsgDropdown() {
             }
         }
     }, [toMsgUser, msgUser])
+
+    function setOPacity() { /*SET BACKGROUND OPACITY*/
+        var items = document.getElementsByClassName("POPUPBG")
+        for (var i = 0; i < items.length; i++) {
+            document.getElementsByClassName("POPUPBG")[i].style.opacity = 1;
+        }
+    }
+
+
     return <>
         <div className="msgDDBlock1" id="MSGDROPDOWN">
             <p className="msgDDText1">New Message</p>
             <input className="msgDDSearchIpt" type="text" value={user} onChange={handleSearch} placeholder="Search" />
-            <div className="msgSearchFlexbox">
-                {searchListArray.length > 0 ? (searchListArray.map((searchh) => {
-                    return <MsgUser name={searchh.name} username={searchh.user_name} displaypic={searchh.displaypic} userNum={searchh._id} />
-                })) : null}
-            </div>
+            <div onClick={() => {
+                document.getElementById("MSGDROPDOWN").style.display = "none"
+                setOPacity();
+            }}>
+            <img src={deleteIcon} className="msgDelete" /></div>
+        <div className="msgSearchFlexbox">
+            {searchListArray.length > 0 ? (searchListArray.map((searchh) => {
+                return <MsgUser name={searchh.name} username={searchh.user_name} displaypic={searchh.displaypic} userNum={searchh._id} />
+            })) : null}
         </div>
+    </div>
 
     </>
 }

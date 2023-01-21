@@ -29,11 +29,11 @@ function SignUpTwo() {
   const rightname = /^[a-z ,.'-]+$/i;
   useEffect(() => {
     if (rightname.test(nameN)) {
-      document.getElementById('signName').style.display = "none";
+      document.getElementById('signNameWrong').style.display = "none";
       setCheckName(true)
     }
     else if (nameN) {
-      document.getElementById('signName').style.display = "block";
+      document.getElementById('signNameWrong').style.display = "block";
       setCheckName(false)
     }
   }, [nameN])
@@ -42,11 +42,11 @@ function SignUpTwo() {
     /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&#])[A-Za-z\d@$!%?&#]{8,}$/;
   useEffect(() => {
     if (rightpass.test(pass)) {
-      document.getElementById("signInvalidPwd").style.display = "none";
+      document.getElementById("signInvalidPwdWrong").style.display = "none";
       setCheckPass(true)
       console.log("true");
     } else if (pass) {
-      document.getElementById("signInvalidPwd").style.display = "block";
+      document.getElementById("signInvalidPwdWrong").style.display = "block";
       setCheckPass(false)
     }
   }, [pass]);
@@ -121,20 +121,20 @@ useEffect(()=>{
     <Background />
     <div className='loginBg'>
       <img src={arrow} id="arrow" onClick={() => { navigate("/verifyemail") }} />
-      <p className='authHead' id="authreset">Sign Up</p>
-      <p className='authEmail' id="resetPwdHead">Username</p>
-      <input type="text" className="authEmailInput" id="resetPwdHeadInput" placeholder="Enter your name" value={nameN} onChange={(e) => setNameN(e.target.value)} />
-      <p id="signName" className="sign2InvalidName">Name should consists of alphabet</p>
+      <p className='authHead' id="authHeadTwo">Sign Up</p>
+      <p className='authEmail' id="signInput">Username</p>
+      <input type="text" className="authEmailInput" placeholder="Enter your name" value={nameN} onChange={(e) => setNameN(e.target.value)} />
+      <p id="signNameWrong" className="invalidEmail" >Name should consists of alphabet</p>
       <img src={lockIcon} id="lockIconS" />
-      <p className='signPwd'>Password</p>
+      <p className='authPwd' id="signPwd">Password</p>
       {show1 ? (
         <FontAwesomeIcon icon={faEye} id="SEye" onClick={handleShow1} />
       ) : (
         <FontAwesomeIcon icon={faEyeSlash} id="SEye" onClick={handleShow1} />
       )}
-      <input type={show1 ? "text" : "password"} className="signPwdInput authPwdInput" placeholder="Password" value={pass} onChange={(e) => setPass(e.target.value)} />
-      <p className='invalidPwd' id="signInvalidPwd">Password must be 1 uppercase 1 lowercase 1 number 1 special digit character and 8 or more characters</p>
-      <button type="button" className='authSignIn' id="signTwoBtn" onClick={() => { SIGNUPTWO() }}>Sign Up</button>
+      <input type={show1 ? "text" : "password"} className="authPwdInput" id="signInput2" placeholder="Password" value={pass} onChange={(e) => setPass(e.target.value)} />
+      <p className='fgtRstPwd' id="signInvalidPwdWrong">Password must be 1 uppercase 1 lowercase 1 number 1 special digit character and 8 or more characters</p>
+      <button type="button" className='authFgtPwdBtn' onClick={() => { SIGNUPTWO() }}>Sign Up</button>
     </div>
     {loading === true ? <Spinner animation="border" variant="light" id="loadSpinner" /> : null}
     <ToastContainer />

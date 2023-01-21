@@ -94,12 +94,12 @@ function AuthOtp() {
     }, [toRstPwd])
     return <>
         <Background />
-        <div className='FgtPwdBg'>
+        <div className='loginBg'>
             <img src={arrow} id="arrow" onClick={() => { navigate("/fgtpwd") }} />
             <p className='authHead' id="authHeadTwo">Otp Verification</p>
-            <p className='authFgtHead' id="otpHead">Enter Otp sent to {email}</p>
-            <input type="text" className="authFgtEmailInput" placeholder="0  0  0  0  0  0" value={otp} onChange={(e) => setOtp(e.target.value)} />
-            <p className='invalidFgtEmail'>Incorrect Otp</p>
+            <p className='authEmail'>Enter Otp sent to {email}</p>
+            <input type="text" className="authEmailInput" id="otpInput" placeholder="0  0  0  0  0  0" value={otp} onChange={(e) => setOtp(e.target.value)} />
+            <p className='invalidEmail'>Incorrect Otp</p>
             <p className='resendFgtOtp' disabled={seconds !== 0 ? true : false} onClick={() => { dispatch(ResendOtpAction(email), setSeconds(59)) }}>Resend Otp</p>
             <span id="timer">00:{seconds}</span>
             <button className='authFgtPwdBtn' onClick={() => { OTP() }}>Continue</button>

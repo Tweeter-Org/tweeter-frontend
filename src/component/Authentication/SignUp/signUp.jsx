@@ -21,11 +21,11 @@ function SignUp(){
     const rightemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     useEffect(()=>{
         if(rightemail.test(email)){
-            document.getElementsByClassName('signInvalidEmail')[0].style.display="none";
+            document.getElementById('signInvalidEmail').style.display="none";
             setCheckEmail(true)
         }
         else if(email){
-            document.getElementsByClassName('signInvalidEmail')[0].style.display="block";
+            document.getElementById('signInvalidEmail').style.display="block";
             setCheckEmail(false)
         }
     },[email])
@@ -106,17 +106,18 @@ function SignUp(){
 return <>
 {/* <ToasterError error={error} /> */}
 <Background />
-<div className='loginBg' id="signUpBlock">
+<div className='loginBg'>
     <img src={arrow} id="arrow" onClick={()=>{navigate("/")}}/>
-    <p className='authHead' id="authreset">Sign Up</p>
-    <p className='authEmail' id="resetPwdHead">Name</p>
-    <input type="text" className="authEmailInput" id="resetPwdHeadInput" placeholder="Enter your name" value={name} onChange={(e)=>setName(e.target.value)} />
-    <p id="signName">Name should consists of alphabet</p>
-    <img src={emailIcon} id="emailIconS" />
+    <p className='authHead'>Sign Up</p>
+    <p className='authEmail' id="signName1">Name</p>
+    <input type="text" className="authEmailInput" placeholder="Enter your name" value={name} onChange={(e)=>setName(e.target.value)} />
+    <p id="signName" className='invalidEmail'
+    >Name should consists of alphabet</p>
+    <img src={emailIcon} className='emailSignIcon'  />
     <p className='authPwd' id="signEmail">Email Address</p>
-    <input type="text" className="authPwdInput" id="signEmailInput" placeholder="Enter your email"  value={email} onChange={(e)=>setEmail(e.target.value)}/>
-    <p className='signInvalidEmail'>Invalid Email Address</p>
-    <button type="button" className='authSignIn' id="signUpBtn" onClick={()=>{SIGNUP()}}>Sign Up</button>
+    <input type="text" className="authPwdInput" placeholder="Enter your email"  value={email} onChange={(e)=>setEmail(e.target.value)}/>
+    <p className='fgtRstPwd' id="signInvalidEmail">Invalid Email Address</p>
+    <button type="button" className='authSignIn authFgtPwdBtn' id="loginButton" onClick={()=>{SIGNUP()}}>Sign Up</button>
     </div>
     {loading===true?<Spinner animation="border" variant="light" id="loadSpinner" />:null}
     <ToastContainer />

@@ -17,7 +17,22 @@ fontFamily:"Kaushan Script",
 color:"#63DF76",
 opacity:"0.79",
 zIndex:10}}>Tweeter</p>
-        <img src={authBgImg} id="authBgImg" style={{
+<div className='backgroundImage'
+style={{
+  "position":"absolute",
+  "width":"200vw",
+  "height":"100vh",
+   "background": "norepeat center fixed",
+   "backgroundSize": "cover",
+   "overflow": "hidden",
+}}
+ >
+   <img src={authBgImg} style={{
+    "background": "norepeat center fixed",
+   "backgroundSize": "cover",
+   }} />
+</div>
+        {/* <img src={authBgImg} id="authBgImg" style={{
           // position:"absolute",
           //  height:"110vh",
     // maxWidth:"100%",
@@ -32,7 +47,7 @@ zIndex:10}}>Tweeter</p>
     background: " noRepeat center fixed",
     overflow:"hidden",
     zIndex:5
-        }} />
+        }} /> */}
     </div>
   )
 }
