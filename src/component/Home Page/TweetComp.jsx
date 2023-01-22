@@ -152,10 +152,10 @@ const navigate = useNavigate();
     /* HASHTAGS */
     const { loading, tagTweets, getTag } = useSelector((ta) => ta.TagTweetFeedReducer)
     function showTagTweet(tag) {
-        console.log(tag)
+        // console.log(tag)
      
         dispatch(TweetListWithTag(tag.slice(1)))
-        console.log("tag tweets")
+        // console.log("tag tweets")
         if (getTag) {
           navigate("/tagtweet")
         }
@@ -175,7 +175,7 @@ const navigate = useNavigate();
             </div>
             {replyingto.length>0?(<p id="prTwReplying1">Replying to {replyingto.length > 0 ? (replyingto.map((name) => {
                     return <span id="prTwReplying2" onClick={() => {
-                        console.log(`/profile/${name}`)
+                        // console.log(`/profile/${name}`)
                         navigate(`/profile/${name}`)
                     }}>@{name}</span>
                 })) : null}</p>):null}
@@ -229,7 +229,7 @@ const navigate = useNavigate();
             </div>
             {replyingto.length>0?(<p id="prTwReplying1">Replying to {replyingto.length > 0 ? (replyingto.map((name) => {
                     return <span id="prTwReplying2" onClick={() => {
-                        console.log(`/profile/${name}`)
+                        // console.log(`/profile/${name}`)
                         navigate(`/profile/${name}`)
                     }}>@{name}</span>
                 })) : null}</p>):null}

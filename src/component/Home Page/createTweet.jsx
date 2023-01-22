@@ -74,6 +74,7 @@ function CreateTweet(props) {
         document.getElementById("VIDEO").style.display = "none"
         document.getElementById("videoOutput").style.display = "none"
         document.getElementById("imageOutput").style.display = "none"
+        setShowEmoji(false)
         // document.getElementById("imageOutput").style.display = "none"
         // document.getElementById("videoOutput").style.display = "none"
         // document.getElementById("VIDEO").style.display = "none"
@@ -145,14 +146,14 @@ function CreateTweet(props) {
         dispatch(SearchUser(e.target.value));
         setMention(true)
         if (e.target.value.startsWith('#')) {
-            console.log(e.target.value.slice(1))
+        
             setHash(true)
             setMention(false)
             dispatch(SearchTweetWithTag(e.target.value.slice(1)))
         }
         if (e.target.value.includes('@')) {
             setMention(true)
-            console.log(e.target.value.slice(1))
+            // console.log(e.target.value.slice(1))
             setHash(false)
             dispatch(SearchUser(e.target.value.slice(1)));
         }
@@ -187,8 +188,8 @@ function CreateTweet(props) {
         //     setSearchTweetList([])
         // }
     }
-    console.log(list)
-    console.log(tweetList)
+    // console.log(list)
+    // console.log(tweetList)
     // const [tag, setTag] = useState(false)
     // useEffect(() => {
     //     if (tomap) {
@@ -248,19 +249,16 @@ function CreateTweet(props) {
         }
         if(text!=""){
             dispatch(CreateTweetAct(fd))
-
-            backToHome(e)
             dispatch(FakeTweetFeedAction(newTweetCreated))
+            backToHome(e)
         }
-      
+       
 setText("")
         setSendImage(null);
         setSendVideo(null)
         setImageInArr(null)
         setVdoInArr(null)
-        document.getElementById("VIDEO").style.display = "none"
-        document.getElementById("videoOutput").style.display = "none"
-        document.getElementById("imageOutput").style.display = "none"
+        setShowEmoji(false)
 
     }
 
@@ -280,7 +278,7 @@ setText("")
         }
         if(text!=""){
             dispatch(CreateReTweetAct(fd))
-            console.log(newReTweetCreated)
+            // console.log(newReTweetCreated)
             backToHome(e)
             dispatch(FakeReTweetFeedAction(newReTweetCreated))
         }
@@ -289,9 +287,7 @@ setText("")
         setSendVideo(null)
         setImageInArr(null)
         setVdoInArr(null)
-        document.getElementById("VIDEO").style.display = "none"
-        document.getElementById("videoOutput").style.display = "none"
-        document.getElementById("imageOutput").style.display = "none"
+       setShowEmoji(false)
     }
     const { responseT, errorT, nameInReply, showName } = useSelector((r) => r.ReplyReducer)
     const atNames = sessionStorage.getItem("replyName");
@@ -310,7 +306,7 @@ setText("")
     function handleTweetReply(e) {
         fd.append("text", text)
         fd.append("tweetId", RId)
-        console.warn(RId)
+        // console.warn(RId)
         if (sendImage != "") {
             fd.append("file", sendImage)
         }
@@ -329,7 +325,7 @@ setText("")
     function handleReplyReply(e) {
         fd.append("text", text)
         fd.append("tweetId", RId)
-        console.warn(RId)
+        // console.warn(RId)
         if (sendImage != "") {
             fd.append("file", sendImage)
         }
@@ -340,6 +336,7 @@ setText("")
             fd.append("file", null)
         }
         dispatch(ReplyToTweet(fd))
+        document.getElementById("EMOJI").style.display = "none"
         // console.
         // dispatch(FakeReplyTweetAction(replYtweet))
         backToHome(e)
@@ -376,7 +373,7 @@ setText("")
                     <div className="ctWriteTweet">
                         <input type="text" list="tagsInputList" className="ctWriteTweetInput" value={text} onChange={handleCreateTweetSearch} required />
                         <datalist id="tagsiInputList">
-                        {console.log(mention)}
+                        {/* {console.log(mention)} */}
                             {hash ?(
                                 searchTweetList.length > 0 ? (searchTweetList.map((se) => {
                                     return <option value={se.hashtag}>{se.hashtag}</option>
@@ -429,11 +426,11 @@ setText("")
                         <input type="text" id="CTReplyInput" className="ctWriteTweetInput" value={text} onChange={(e) => { setText(e.target.value) }} />
                     </div>
                 </div>
-                <p><img id="imageOutput" /></p>
+                {/* <p><img id="imageOutput" /></p>
                 <p><video id="VIDEO" width="200" controls>
                             <source id="videoOutput" width="200" type="video/mp4, audio/mp4" />
                         </video>
-                        </p>
+                        </p> */}
                 <div className="CTBlock2">
                     <div className="CTUPLIMG">
                         <label for="ctuploadImg"><img src={imageIcon} className="ctImage" /></label>
@@ -448,8 +445,9 @@ setText("")
                     </div>
                     <div>
                         <img src={smileIcon} className="ctSmile" onClick={() => { handleEmojis() }} />
-                        {showEmoji ? (<div className="emojipicker1" ><Picker className="emojipicker2" theme="dark" width="18vw" height="300px" onEmojiClick={onemojiclick} /></div>) : null}
-                        <p className="ctSmileText">Emojis</p>
+               {showEmoji ? (<div className="emojipicker1"><Picker className="emojipicker2" id="EMOJI" theme="dark" width="18vw" height="250px" onEmojiClick={onemojiclick} /></div>) : null}
+               <p className="ctSmileText">Emojis</p>
+                      
                     </div>
                     <button className="ctCancelTweet" onClick={backToHome}>Cancel</button>
                     <button className="ctCreateTweet" onClick={handleCreateTweet} id="buttonTweet" >Tweet</button>

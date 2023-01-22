@@ -44,20 +44,8 @@ function Chats() {
     },[])
     useEffect(()=>{
         dispatch(ViewChatList())
-        console.log(chatLists)
+        // console.log(chatLists)
         console.log(viewChatList)
-        // setSideChats(chatLists)
-        // chatLists.map((chatt)=>{
-        //     chatt.users.map((chatUser=>{
-        //         console.log(chatUser)
-        //         if(chatUser._id != user._id){
-        //             setChats([...chats, chatUser])
-        //             console.log(chatUser)
-        //             console.log(chats)
-        //         }
-        //     }))
-        // })
-        // console.log(chatReducer)
     },[])
     useEffect(()=>{
         if(viewChatList){
@@ -65,10 +53,10 @@ function Chats() {
             console.log(chatLists)
         }
     },[chatReducer])
-    console.log(chatLists)
-    console.log(chats)
+    // console.log(chatLists)
+    // console.log(chats)
     // set socket connection
-    console.log(userid)
+    // console.log(userid)
     useEffect(() => {
         socket = io(ENDPOINT)
         socket.emit("setup", user);
@@ -76,6 +64,7 @@ function Chats() {
         socket.on("connection", () => {
             setSocketConnected(true)
         })
+        
     }, [])
 
     useEffect(()=>{
@@ -97,14 +86,15 @@ const [chatMsgs, setChatMsgs] = useState([])
             if(viewChatList){
                 chatLists.map((chatt)=>{
                     chatt.users.map((chatUser=>{
-                        console.log(chatUser)
+                        // console.log(chatUser)
                         if(chatUser._id == userid){
-                          console.warn(chatUser)
+                        //   console.warn(chatUser)
                           setTopName(chatUser.name)
                           setTopPic(chatUser.displaypic)
                           setSendChatId(chatt._id)
+                          currentChattingWith = chatt._id;
                           dispatch(ViewChatsAction(chatt._id))
-                          console.log(viewChatMsgs)
+                        //   console.log(viewChatMsgs)
                         }
                     }))
                 })
@@ -115,67 +105,10 @@ const [chatMsgs, setChatMsgs] = useState([])
 
     useEffect(()=>{
         if(chatBool){
-            console.warn(viewChatMsgs)
+            // console.warn(viewChatMsgs)
             setChatMsgs(viewChatMsgs)
         }
     },[chatReducer])
-
-    // useEffect(()=>{
-
-    //     dispatch()
-    // },[userid])
-    // // const [userN, setUserN] = useState("")
-    // const [userlist, setUesrlist] = useState([])
-    //
-    // function handleSearch(e) {
-    //     setUserN(e.target.value)
-    // }
-    // 
-
-    // const [allChats, setAllChats] = useState([])
-    // const [cBool, setCBool] = useState(false)
-    // // console.log(chatLists)
-    // useEffect(() => {
-    //     dispatch(ViewChatList())
-    //     setUesrlist(chatLists)
-    //     setCBool(true)
-    //     console.log(viewChatList)
-    // }, [])
-    // // console.log(chatLists[0].users)
-    // useEffect(() => {
-    //     document.getElementById("SEARCHBOX").style.display = "none";
-    // }, [])
-
-    // // console.log(userlist)
-
-    // const [sendChatId, setSendChatId] = useState()
-    // const [list, setlist] = useState([])
-
-    // useEffect(() => {
-    //     if (isActive) {
-    //         if (cBool) {
-    //             chatLists.map((ch) => {
-    //                 // console.log(ch);
-    //                 ch.users.map((c) => {
-    //                     if (c.user_name != user.user_name)
-    //                         // console.warn(c)
-    //                         if (c._id == userid) {
-    //                             setlist(c)
-    //                             // console.warn(ch._id)
-    //                             sessionStorage.setItem("chatId", ch._id)
-    //                             setSendChatId(ch._id)
-    //                             currentChattingWith = ch._id;
-    //                             dispatch(ViewChatsAction(ch._id))
-    //                             setAllChats(viewChatMsgs)
-    //                             // console.log(c)
-                               
-    //                             // console.log(list.name)
-    //                         }
-    //                 })
-    //             })
-    //         }
-    //     }
-    // }, [isActive, userid])
 
     const [textMsg, setTextMsg] = useState("")
     const [showEmoji, setShowEmoji] = useState(false)
@@ -218,7 +151,7 @@ const [chatMsgs, setChatMsgs] = useState([])
   
     // console.log(sendChatId)
     function sendChatMsg(chattid) {
-        console.log(chattid)
+        // console.log(chattid)
         fd.append("text", textMsg)
         fd.append("chatId", chattid)
         if (sendImage != "") {
@@ -230,9 +163,19 @@ const [chatMsgs, setChatMsgs] = useState([])
         else {
             fd.append("file", null)
         }
-      if(textMsg!=""){
+        console.warn(socket.connected)
+      if(socket.connected && textMsg!=""){
         dispatch(SendChatsAction(fd, socket))
+        // setChatMsgs([...chatMsgs, sendChat])
         dispatch(FakeViewChatsAction(sendChat))
+      }
+      if(!socket.connected){
+        socket = io(ENDPOINT)
+        socket.emit("setup", user);
+
+        socket.on("connection", () => {
+            setSocketConnected(true)
+        })
       }
         setTextMsg("")
         setSendImage(null)
@@ -241,7 +184,6 @@ const [chatMsgs, setChatMsgs] = useState([])
     // console.warn(sendChatMessage)
 
     console.log(socket)
-    // console.log(currentChattingWith)
 
     // sockets : recieving new messages
     useEffect(() => {
@@ -250,7 +192,8 @@ const [chatMsgs, setChatMsgs] = useState([])
                 handleNotify(newChatMsgRecieved)
             }
             else {
-                // console.warn(newChatMsgRecieved)
+                console.warn(newChatMsgRecieved)
+                // setChatMsgs([...chatMsgs, sendChat])
                 dispatch(FakeViewChatsAction(newChatMsgRecieved))
                 // setAllChats([...allChats, newChatMsgRecieved])
 
@@ -289,9 +232,6 @@ const [chatMsgs, setChatMsgs] = useState([])
                     }} /> */}
 
                 </div>
-                {/* <div>
-                    <ScrollableChat allchats={allChats} />
-                </div> */}
                   <div>
                     <ScrollableChat chatMessage={chatMsgs} />
                 </div>
@@ -319,7 +259,7 @@ const [chatMsgs, setChatMsgs] = useState([])
                                 <img src={smileIcon} className="chatSmile" onClick={() => { handleEmojis() }} />
                                 {showEmoji ? (<div className="chatemojipicker"><Picker width="300px" height="420px" theme="dark" onEmojiClick={onemojiclick} /></div>) : null}
                             </div>
-                            {console.log(sendChatId)}
+                            {/* {console.log(sendChatId)} */}
                             <img className="sendchaticon" onClick={() => { sendChatMsg(sendChatId) }} src={sendChatIcon} />
                         </div>
                     </form>
@@ -328,7 +268,7 @@ const [chatMsgs, setChatMsgs] = useState([])
             <div className='Chat1'>
                
                 <div className="ChatUserFlex">
-                {console.log(chats)}
+                {/* {console.log(chats)} */}
                 {sideChats.map((oneChat, index)=>{
                     return <ChatUser sidechat={oneChat} indexx={index} />
                 })}

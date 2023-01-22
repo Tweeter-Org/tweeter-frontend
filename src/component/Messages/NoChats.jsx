@@ -5,7 +5,7 @@ import avatar from "../Assets/avatar.svg"
 function NoChats(){
 
     const {user} = useSelector((a)=>a.AuthReducer)
-    console.log(user)
+    // console.log(user)
     const [displaypic, setDisplaypic]= useState(null)
     useEffect(()=>{
         setDisplaypic(user.displaypic)

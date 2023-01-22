@@ -14,7 +14,7 @@ function ChatUser(props) {
     const dispatch = useDispatch();
     const[info, setInfo] = useState([])
     const chatList = props.sidechat
-    console.log(props.sidechat)
+    // console.log(props.sidechat)
 
     useEffect(()=>{
       props.sidechat.users.map((chat)=>{
@@ -61,7 +61,7 @@ function ChatUser(props) {
             }
         })
     },[userid])
-    console.log(props.sidechat)
+    // console.log(props.sidechat)
     function handleUserChat (usernum){
         dispatch(ActiveUserList());
         dispatch(Messages(greenmessage, "Messages", 3)) 
