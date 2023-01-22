@@ -71,20 +71,10 @@ function CreateTweet(props) {
         setSendVideo(null)
         setImageInArr(null)
         setVdoInArr(null)
-        document.getElementById("VIDEO").style.display = "none"
-        document.getElementById("videoOutput").style.display = "none"
-        document.getElementById("imageOutput").style.display = "none"
         setShowEmoji(false)
-        // document.getElementById("imageOutput").style.display = "none"
-        // document.getElementById("videoOutput").style.display = "none"
-        // document.getElementById("VIDEO").style.display = "none"
-
     }
     const TWEETREDUCER = useSelector((t) => t.TweetCreateReducer)
     const { response, error, tweetCreate, toastBoolR, toastBoolE, loading } = TWEETREDUCER;
-    const [toastErr, setToastErr] = useState(false)
-    const [toastRes, setToastRes] = useState(false)
-    const [toastBool, setToastBool] = useState(false)
    
     const auth = useSelector((s) => s.AuthReducer)
     const { user, toFgtPwd } = auth;
@@ -143,10 +133,11 @@ function CreateTweet(props) {
 
     function handleCreateTweetSearch(e) {
         setText(e.target.value)
-        dispatch(SearchUser(e.target.value));
+        
+        dispatch(SearchTweetWithTag(e.target.value))
+        // dispatch(SearchUser(e.target.value));
         setMention(true)
         if (e.target.value.startsWith('#')) {
-        
             setHash(true)
             setMention(false)
             dispatch(SearchTweetWithTag(e.target.value.slice(1)))
@@ -161,6 +152,28 @@ function CreateTweet(props) {
             setHash(false)
             setMention(false)
         }
+    }
+
+    useEffect(() => {
+        if (tomap) {
+            if (list.result.length > 0) {
+                setSearchListArray(list.result)
+            }
+            else {
+                setSearchListArray([])
+            }
+        }
+    }, [tomap, list])
+    useEffect(() => {
+        if (tohash) {
+            if (tweetList.length > 0) {
+                setSearchTweetList(tweetList)
+            }
+            else {
+                setSearchTweetList([])
+            }
+        }
+    }, [tohash, tweetList])
         // setSearchListArray([])
        
         // setSearchTweetList([])
@@ -187,7 +200,7 @@ function CreateTweet(props) {
         //     setSearchListArray([])
         //     setSearchTweetList([])
         // }
-    }
+    
     // console.log(list)
     // console.log(tweetList)
     // const [tag, setTag] = useState(false)
@@ -372,21 +385,26 @@ setText("")
                     <p className="ctTagline">Share tweets with your followers</p>
                     <div className="ctWriteTweet">
                         <input type="text" list="tagsInputList" className="ctWriteTweetInput" value={text} onChange={handleCreateTweetSearch} required />
-                        <datalist id="tagsiInputList">
+                        <datalist id="tagsInputList" className="dataList">
+                       {searchTweetList.length>0?searchTweetList.map((se)=>{
+                        console.log(se)
+                        return <option value={se.hashtag}>{se.hashtag}</option>
+                       }):null}
                         {/* {console.log(mention)} */}
-                            {hash ?(
+                            {/* {hash ?(
                                 searchTweetList.length > 0 ? (searchTweetList.map((se) => {
                                     return <option value={se.hashtag}>{se.hashtag}</option>
 
                                 })):null) : (mention ?(searchListArray.length > 0 ? (searchListArray.map((searchh) => {
                                     return <option value={searchh.user_name}>{searchh.user_name}</option>
                                 })):null):null)}
-                            {/* {
+                            {/* { 
                                 tomap ? ((searchListArray.length > 0) ? (searchListArray.map((searchh) => {
                                     return <option value={searchh.user_name}>{searchh.user_name}</option>
                                 })) : null) : null
                             } */}
                         </datalist>
+
                        
                     </div>
                     <p id="textRequired">Text is required</p>

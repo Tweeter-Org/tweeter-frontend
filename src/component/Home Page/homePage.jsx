@@ -25,10 +25,10 @@ function HomePage (){
         document.getElementById("HOME2").style.display="flex"
     },[])
     
-   console.log(tweetData)
-   console.log(trendingTweet)
-   console.log(liked)
-   console.log(bookmarked)
+//    console.log(tweetData)
+//    console.log(trendingTweet)
+//    console.log(liked)
+//    console.log(bookmarked)
    const tweetLength = tweetData.length
 //    const trendTweetLength = tren.length
 
@@ -40,10 +40,10 @@ const {count}= useSelector((t)=>t.TweetFeedCountRed)
 
 function handleShowMoreTweet(){
     dispatch(TweetFeedCount())
-    console.log(count)
+    // console.log(count)
 dispatch(TweetFeedAction2(count))
 }
-console.log(tweetData)
+// console.log(tweetData)
 useEffect(()=>{
     if(loading===true){
         document.body.style.opacity = 0.5;

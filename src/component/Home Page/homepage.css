@@ -2,7 +2,8 @@ body{
     overflow-x: hidden;
 }
 span{
-    color:#47C87A
+    color:#47C87A;
+    cursor: pointer;
 }
 #HOME2{
     display: flex;
@@ -16,6 +17,25 @@ span{
 .HOME1{
     display: flex;
     flex-direction: column;
+}
+.dataList{
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 550;
+    cursor: pointer;
+    background:#47C87A;
+    color:rgba(255, 255, 255, 0.9);
+    /* width:20vw; */
+}
+.dataList option{
+    margin-bottom:2px;
+}
+.hashtagg, .mention{
+    color:#47C87A;
+    cursor: pointer;
 }
 .tweetFeedHashtag{
 cursor: pointer;

@@ -161,6 +161,28 @@ const navigate = useNavigate();
         }
     }
 
+    const [specialText, setSpecialText] = useState(props.text)
+    useEffect(()=>{
+        console.log(props.text)
+        var y = document.getElementsByClassName("tweetText")
+        console.log(y)
+
+        // var x = "#world hello @alan ansari"
+        for(var i=0;i<y.length;i++){
+            console.log(y[i].innerHTML)
+            y[i].innerHTML = y[i].innerHTML.replace(/(^|\s)([#][a-z\d-]+)/, "$1<span class='hashtagg'>$2</span>")
+            y[i].innerHTML = y[i].innerHTML.replace(/(^|\s)([@][a-z\d-]+)/, "<span class='mention' >$2</span>")
+        }
+        var x = document.getElementsByClassName("hashtagg")
+        for(var j=0;j<x.length;j++){
+            // x[j].addEventListener("onClick", alert(`${x[j].innerHTML}`))
+        }
+
+        // setSpecialText(x)
+        // specialText.innerHTML = x;
+        // console.log(x)
+    },[])
+
     return <>
     {retweets==null?(  <div className="tweetComp POPUPBG" >
             <div className="firstTweetBlock" onClick={()=>{handleToTweet(props.tweetId)}} >
@@ -193,9 +215,10 @@ const navigate = useNavigate();
             {/* {video != null ? <video className="tweetvideo" controls>
                 <source src={`https://twitterbackend-production-93ac.up.railway.app/${video}`} type="video/mp4" />
             </video> : null} */}
-            <p className="tweetText">
+            <p className="tweetText">{props.text}</p>
+            {/* <p className="tweetText">
             <ReactHashtag renderHashtag={val=><span onClick={()=>showTagTweet(val) }>{val}</span>} onHashTagClick={val=>console.log(val)}>{props.text}</ReactHashtag></p>
-          
+           */}
             <div className="secondTweetBlock">
                 <div className="iconBlock">
                     <img src={like} className="likeIcon" onClick={() => { handleTweetLike(props.tweetId) }} />

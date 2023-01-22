@@ -65,6 +65,9 @@ function Chats() {
             setSocketConnected(true)
         })
         
+        return (()=>{
+            socket.disconnect()
+        })
     }, [])
 
     useEffect(()=>{
@@ -88,7 +91,7 @@ const [chatMsgs, setChatMsgs] = useState([])
                     chatt.users.map((chatUser=>{
                         // console.log(chatUser)
                         if(chatUser._id == userid){
-                        //   console.warn(chatUser)
+                          console.warn(chatUser)
                           setTopName(chatUser.name)
                           setTopPic(chatUser.displaypic)
                           setSendChatId(chatt._id)
@@ -101,7 +104,7 @@ const [chatMsgs, setChatMsgs] = useState([])
             }
         }
 
-    },[userid, viewChatList, isActive ])
+    },[userid, chatLists, viewChatList, isActive])
 
     useEffect(()=>{
         if(chatBool){
