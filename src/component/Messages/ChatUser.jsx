@@ -8,32 +8,47 @@ import avatar from "../Assets/avatar.svg"
 
 function ChatUser(props) {
     const {user} = useSelector((a)=>a.AuthReducer)
-    const viewChatIdd = props.viewChatid;
-    // console.log(viewChatIdd)
+    // const viewChatIdd = props.viewChatid;
+    // // console.log(viewChatIdd)
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { userid } = useParams();
-    // console.log(user)
-    // console.log(props.user)
-    const [info, setInfo] = useState({})
-    useEffect(()=>{
-        props.user.map((u)=>{
-            if(u.user_name!= user.user_name)
-            {
-                // console.log(u);
-                setInfo(u)
-                return u
-            }
-          
-        })
-    },[props.user, userid])
+    const[info, setInfo] = useState([])
+    const chatList = props.sidechat
+    console.log(props.sidechat)
 
     useEffect(()=>{
-        props.user.map((u)=>{
+      props.sidechat.users.map((chat)=>{
+        // console.log(chat)
+        if(chat._id != user._id){
+            // setChats([...chats, chatUser])
+            // console.log(chat)
+            // console.log(chats)
+            setInfo(chat)
+        }
+
+      })
+    },[user, chatList])
+    // console.log(chats)
+    const { userid } = useParams();
+    // // console.log(user)
+    // // console.log(props.user)
+    // const [info, setInfo] = useState({})
+    // useEffect(()=>{
+    //     props.user.map((u)=>{
+    //         if(u.user_name!= user.user_name)
+    //         {
+    //             // console.log(u);
+    //             setInfo(u)
+    //             return u
+    //         }
+          
+    //     })
+    // },[props.user, userid])
+
+    useEffect(()=>{
+        props.sidechat.users.map((u)=>{
             if(u._id == userid)
             {
-                // console.warn(u);
-                // console.log(props.indexx)
                 document.getElementsByClassName("chatUser")[props.indexx].style.backgroundColor="rgba(255,255,255,0.1)"
                 var ChatToColor =document.getElementsByClassName("chatUser")
                 for(var i=0;i<ChatToColor.length; i++ ){
@@ -46,12 +61,13 @@ function ChatUser(props) {
             }
         })
     },[userid])
+    console.log(props.sidechat)
     function handleUserChat (usernum){
         dispatch(ActiveUserList());
         dispatch(Messages(greenmessage, "Messages", 3)) 
         navigate(`/chats/${usernum}`)
         dispatch(CreateChat(usernum))
-        dispatch(ViewChatsAction(viewChatIdd))
+        // dispatch(ViewChatsAction(viewChatIdd))
     }
     // console.log(props.msg)
     return <>

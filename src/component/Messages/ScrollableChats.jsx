@@ -4,15 +4,16 @@ import { useSelector } from "react-redux";
 function ScrollableChat(props) {
     const { chatLists, viewChatList, isActive, viewChatMsgs } = useSelector((c) => c.MsgSearchReducer)
     const { user } = useSelector((a) => a.AuthReducer)
-    console.warn(viewChatMsgs)
+    // console.warn(viewChatMsgs)
+    console.log(props.chatMessage)
     const [chatmsg, setChatmsg] = useState([])
     const setScrollbar = useRef(null)
     useEffect(() => {
         setScrollbar.current?.scrollIntoView();
     }, [chatmsg])
-    useEffect(() => {
-        setChatmsg(viewChatMsgs)
-    }, [viewChatMsgs])
+    // useEffect(() => {
+    //     setChatmsg(viewChatMsgs)
+    // }, [viewChatMsgs])
     const scrolldiv = createRef();
     useEffect(() => {
         const scrollToBottom = (node) => {
@@ -23,7 +24,7 @@ function ScrollableChat(props) {
     
     return <>
         <div className="Chat2Msgs" id="SCROLLCHATS" ref={scrolldiv}>
-            {chatmsg.length > 0 ? (chatmsg.map((chat) => {
+            {props.chatMessage.length > 0 ? (props.chatMessage.map((chat) => {
                 if (chat.user.user_name != user.user_name) {
                     return (
                         <div className="scrollChatBlockYou" id="SCROLL1">

@@ -83,6 +83,7 @@ function Reply2(props) {
         document.getElementById("CTRETWEETDIV").style.display = "flex";
         document.getElementById("buttonTweet").style.display = "none";
         document.getElementById("buttonReply").style.display = "none";
+        document.getElementById("buttonReply2").style.display = "none";
         document.getElementById("buttonRetweet").style.display = "block";
         document.getElementById("CTReplyDiv").style.display = "none"
         if (retweetPath === "white") {

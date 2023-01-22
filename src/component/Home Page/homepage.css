@@ -276,21 +276,32 @@ color:#47C87A;
 }
 
 /*CREATE TWEET*/
+
+#textRequired{
+    margin-top:4px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.95rem;
+    line-height: 15px;
+    margin-bottom:0px;
+    color: #f37777;
+    display:none;
+}
 #imageOutput {
-    position: absolute;
-    right: 0vw;
-    top: 0vh;
+    /* position: absolute; */
+    /* right: 0vw; */
+    /* top: 0vh; */
     width: 200px;
-    height: 150px;
+    margin-left:0vw;
+    height: 100px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     display: none;
 }
 
 #VIDEO {
-    position: absolute;
-    right: 0vw;
-    top: 0vh;
-    width: 20vw;
+    width:15vw;
+    margin-left:0vw;
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -303,7 +314,7 @@ color:#47C87A;
     width: 40vw;
     height: fit-content;
     left: 29vw;
-    top: 140px;
+    top: 80px;
     background: #070808;
     background-color: #121212;
     box-shadow: 0px 264px 106px rgba(23, 25, 28, 0.01), 0px 149px 89px rgba(23, 25, 28, 0.05), 0px 66px 66px rgba(23, 25, 28, 0.09), 0px 17px 36px rgba(23, 25, 28, 0.1), 0px 0px 0px rgba(23, 25, 28, 0.1);
@@ -481,9 +492,10 @@ color:#47C87A;
 }
 
 .emojipicker1 {
-    position: absolute;
-    top:10px;
-    left: 18vw;
+    /* margin-left:-0.5vw; */
+    /* position: absolute; */
+    /* top:60px; */
+    /* left: 18vw; */
     /* z-index:9999; */
 }
 
@@ -530,8 +542,8 @@ color:#47C87A;
 }
 
 .CTRVideo {
-    width: 32.8vw;
-    height:150px;
+    width: 32.5vw;
+    height:80px;
     margin-top: 5px;
     margin-bottom: 5px;
     /* margin-bottom:1vh; */
@@ -551,10 +563,13 @@ color:#47C87A;
     height: 30px;
     border-radius: 50%;
     background-color: rgb(228, 219, 219);
-    margin-top: 0.5vh;
+    margin-top: -4px;
 }
 
-#CTRetweetName {}
+#CTRetweetName {
+margin-left:0.5vw;
+    margin-top: -6px;
+}
 
 #CTRetweetUsername {}
 

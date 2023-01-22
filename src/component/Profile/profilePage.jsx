@@ -18,7 +18,7 @@ import ProfileTweet from "./profileTweets";
 import FollowAction from "../../react-redux/actions/Follow";
 import DltTweetPopup from "./DeleteTweetPopup";
 import emailIcon from "../Assets/email.svg";
-import { ActiveUserList, CreateChat } from "../../react-redux/actions/Message";
+import { ActiveUserList, CreateChat, ViewChatList } from "../../react-redux/actions/Message";
 import { Messages } from "../../react-redux/actions/SearchApi";
 import CreateTweet from "../Home Page/createTweet";
 
@@ -47,49 +47,25 @@ function ProfilePage() {
     let y = useSelector((p) => p.ProfileReducer).profile.user
 
     const { profile, accessProfile, loading, editprofile, ifedit, profileTweet } = profilee;
-    console.log(profileTweet)
+    // console.log(profileTweet)
 
 
     const { apiname } = useParams();
-    console.log(apiname)
+    // console.log(apiname)
     useEffect(() => {
-        console.log(profilee)
+        // console.log(profilee)
         dispatch(ProfileAction(apiname));
-        // if (accessProfile) {
-        //     console.log(profile)
-        //     let x = Object.fromEntries(
-        //         Object.entries(profile.user).slice()
-        //     )
-        //     console.log(x)
-        //     console.log(y)
-        //     console.log(profilee)
-        //     setUser(x)
-
-        //     setFollower(profile.followers.length)
-        //     setFollowing(profile.following.length)
-        //     setMyProfile(profile.myprofile)
-        //     setName(profile.user.name)
-        //     setUserName(profile.user.user_name)
-        //     setBio(profile.user.bio)
-        //     setEmail(profile.user.email)
-        //     setCreatedAt(profile.user.createdAt)
-        //     setUpdatedAt(profile.user.updatedAt)
-        //     setDisplaypic(profile.user.displaypic)
-        //     setFollowerArray(profile.followers)
-        //     setFollowingArray(profile.following)
-        //     setTweetsArray(profileTweet)
-        // }
     }, [apiname])
     useEffect(() => {
         if (ifedit) {
-            console.log(editprofile)
+            // console.log(editprofile)
         }
     }, [ifedit])
 
     useEffect(() => {
-        console.warn(profilee)
+        // console.warn(profilee)
         if (accessProfile) {
-            console.log(profile)
+            // console.log(profile)
             setFollower(profile.followers.length)
             setFollowing(profile.following.length)
             setMyProfile(profile.myprofile)
@@ -106,7 +82,7 @@ function ProfilePage() {
         }
     }, [profilee])
 
-    console.log(profilee)
+    // console.log(profilee)
 
     function setOPacity() {
         var items = document.getElementsByClassName("POPUPBG")
@@ -174,16 +150,17 @@ function ProfilePage() {
         document.getElementById("profileTweetFlex").style.display = "none"
     }
     function handleUserChat(chatsUserID){
-        console.warn(chatsUserID)
+        // console.warn(chatsUserID)
         dispatch(ActiveUserList());
         dispatch(Messages(greenmessage, "Messages", 3)) 
         dispatch(CreateChat(chatsUserID))
         navigate(`/chats/${chatsUserID}`)
+        dispatch(ViewChatList())
 
     }
 
     const { likedTweets } = useSelector((l) => l.LikedTweetsPReducer)
-    console.log(likedTweets)
+    // console.log(likedTweets)
     useEffect(() => {
         if (loading === true) {
             document.body.style.opacity = 0.5;

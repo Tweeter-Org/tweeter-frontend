@@ -7,7 +7,8 @@ const initialState = {
     isActive:false,
     viewChatMsgs:{},
     sendChatMessage:{},
-    createChatList:{}
+    createChatList:{},
+    chatBool:false
 }
 const MsgSearchReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -29,7 +30,7 @@ const MsgSearchReducer = (state = initialState, action) => {
             return {...state , loading:true};
         }
         case "VIEW_CHAT_LIST_SUCCESS":{
-         
+         console.log(action.payload)
             return {
                 ...state, loading:false, chatLists:action.payload.data.mychats, viewChatList:true
             }
@@ -64,7 +65,7 @@ const MsgSearchReducer = (state = initialState, action) => {
         case "VIEW_CHATS_YES":{
            
             return {
-                ...state, viewChatMsgs:action.payload.data.messages, loading:false
+                ...state, viewChatMsgs:action.payload.data.messages, loading:false, chatBool:true
             }
         }
         case "VIEW_CHATS_NO":{

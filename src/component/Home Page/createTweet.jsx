@@ -67,6 +67,13 @@ function CreateTweet(props) {
         e.preventDefault();
         setText("")
         document.getElementById("CREATETWEET").style.display = "none"
+        setSendImage(null);
+        setSendVideo(null)
+        setImageInArr(null)
+        setVdoInArr(null)
+        document.getElementById("VIDEO").style.display = "none"
+        document.getElementById("videoOutput").style.display = "none"
+        document.getElementById("imageOutput").style.display = "none"
         // document.getElementById("imageOutput").style.display = "none"
         // document.getElementById("videoOutput").style.display = "none"
         // document.getElementById("VIDEO").style.display = "none"
@@ -77,15 +84,12 @@ function CreateTweet(props) {
     const [toastErr, setToastErr] = useState(false)
     const [toastRes, setToastRes] = useState(false)
     const [toastBool, setToastBool] = useState(false)
-    // console.log(response)
+   
     const auth = useSelector((s) => s.AuthReducer)
     const { user, toFgtPwd } = auth;
     const { name, user_name, displaypic } = user;
     const [DupTweetData, setDupTweetData] = useState([])
     const { tweetData, liked, Rname, Rimage, Rvideo, Rtext } = useSelector((s) => s.TweetFeedReducer)
-    // const tweetData =[];
-    // console.log(tweetData)
-    // console.log(Rimage, Rvideo)
     const RId = sessionStorage.getItem("retweetId")
     useEffect(() => {
         setDupTweetData(tweetData)
@@ -221,6 +225,15 @@ function CreateTweet(props) {
     //     document.getElementById("CTSEARCH").style.display="flex";
     // },[searchListArray, searchTweetList])
 
+    useEffect(()=>{
+        if(!text){
+            document.getElementById("textRequired").style.display="flex";
+        }
+            else{
+                document.getElementById("textRequired").style.display="none";
+            }    
+    },[text])
+
     function handleCreateTweet(e) {
         e.preventDefault();
         fd.append("text", text)
@@ -233,13 +246,22 @@ function CreateTweet(props) {
         else {
             fd.append("file", null)
         }
-        dispatch(CreateTweetAct(fd))
+        if(text!=""){
+            dispatch(CreateTweetAct(fd))
 
-        backToHome(e)
-        dispatch(FakeTweetFeedAction(newTweetCreated))
-
+            backToHome(e)
+            dispatch(FakeTweetFeedAction(newTweetCreated))
+        }
+      
+setText("")
         setSendImage(null);
         setSendVideo(null)
+        setImageInArr(null)
+        setVdoInArr(null)
+        document.getElementById("VIDEO").style.display = "none"
+        document.getElementById("videoOutput").style.display = "none"
+        document.getElementById("imageOutput").style.display = "none"
+
     }
 
     // console.log(RId)
@@ -256,14 +278,22 @@ function CreateTweet(props) {
         else {
             fd.append("file", null)
         }
-        dispatch(CreateReTweetAct(fd))
-        // setToastBool(true)
-        console.log(newReTweetCreated)
-        backToHome(e)
+        if(text!=""){
+            dispatch(CreateReTweetAct(fd))
+            console.log(newReTweetCreated)
+            backToHome(e)
+            dispatch(FakeReTweetFeedAction(newReTweetCreated))
+        }
+        setText("")
+        setSendImage(null);
+        setSendVideo(null)
+        setImageInArr(null)
+        setVdoInArr(null)
+        document.getElementById("VIDEO").style.display = "none"
+        document.getElementById("videoOutput").style.display = "none"
+        document.getElementById("imageOutput").style.display = "none"
     }
     const { responseT, errorT, nameInReply, showName } = useSelector((r) => r.ReplyReducer)
-
-    // console.log(responseT, errorT, nameInReply)
     const atNames = sessionStorage.getItem("replyName");
 
     const replYtweet = {
@@ -344,7 +374,7 @@ function CreateTweet(props) {
                 <div id="CTweetText">
                     <p className="ctTagline">Share tweets with your followers</p>
                     <div className="ctWriteTweet">
-                        <input type="text" list="tagsInputList" className="ctWriteTweetInput" value={text} onChange={handleCreateTweetSearch} />
+                        <input type="text" list="tagsInputList" className="ctWriteTweetInput" value={text} onChange={handleCreateTweetSearch} required />
                         <datalist id="tagsiInputList">
                         {console.log(mention)}
                             {hash ?(
@@ -360,7 +390,9 @@ function CreateTweet(props) {
                                 })) : null) : null
                             } */}
                         </datalist>
+                       
                     </div>
+                    <p id="textRequired">Text is required</p>
                     {/* <div className="ctSearchFlexBox POPUPBG" id="CTSEARCH">
                 {tohash ? (
                     searchTweetList.length > 0 ? (searchTweetList.map((se) => {
@@ -392,41 +424,31 @@ function CreateTweet(props) {
                     <p className="TWRText" >{Rtext}</p>
                 </div>
                 <div id="CTReplyDiv">
-                    {/* <p className="ctName" id="replying-to-head">Replying to<span id="CTReplyAtName1"> @{atNames}</span>{
-                        showName ? (
-                            nameInReply.length > 0 ? (nameInReply.map((name) => {
-                                return <span id="CTReplyAtName" onClick={() => {
-                                    console.log(`/profile/${name}`)
-                                    navigate(`/profile/${name}`)
-                                }}>@{name}</span>
-                            })) : null
-                        ) : null
-                    }
-                    </p> */}
                     <p className="ctName">Replying to <span id="CTReplyAtName">@{Rname}</span></p>
                     <div className="CTReplyTweet">
                         <input type="text" id="CTReplyInput" className="ctWriteTweetInput" value={text} onChange={(e) => { setText(e.target.value) }} />
                     </div>
                 </div>
+                <p><img id="imageOutput" /></p>
+                <p><video id="VIDEO" width="200" controls>
+                            <source id="videoOutput" width="200" type="video/mp4, audio/mp4" />
+                        </video>
+                        </p>
                 <div className="CTBlock2">
                     <div className="CTUPLIMG">
                         <label for="ctuploadImg"><img src={imageIcon} className="ctImage" /></label>
                         <input type="file" id="ctuploadImg" accept="image/png, image/jpg, image/jpeg" onChange={handleSendImage} hidden />
                         <p className="ctImageText">Image</p>
-                        <p><img id="imageOutput" width="200" /></p>
+                      
                     </div>
                     <div>
                         <label for="ctuploadVideo"><img src={videoIcon} className="ctVideo" /></label>
                         <input type="file" id="ctuploadVideo" accept="video/mp4, audio/mp4" onChange={handleSendVideo} hidden />
                         <p className="ctVideoText">Video</p>
-                        <p><video id="VIDEO" width="200" controls>
-                            <source id="videoOutput" width="200" type="video/mp4, audio/mp4" />
-                        </video>
-                        </p>
                     </div>
                     <div>
                         <img src={smileIcon} className="ctSmile" onClick={() => { handleEmojis() }} />
-                        {showEmoji ? (<div className="emojipicker1" ><Picker className="emojipicker2" theme="dark" width="20vw" height="300px" onEmojiClick={onemojiclick} /></div>) : null}
+                        {showEmoji ? (<div className="emojipicker1" ><Picker className="emojipicker2" theme="dark" width="18vw" height="300px" onEmojiClick={onemojiclick} /></div>) : null}
                         <p className="ctSmileText">Emojis</p>
                     </div>
                     <button className="ctCancelTweet" onClick={backToHome}>Cancel</button>

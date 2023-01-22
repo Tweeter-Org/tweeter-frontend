@@ -1,5 +1,6 @@
 .toTweetDiv{
-    margin-top:15vh;
+    position:absolute;
+    top:90px;
 }
 #RepTweet{
     padding-bottom:2vh;

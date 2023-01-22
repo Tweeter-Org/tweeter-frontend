@@ -102,6 +102,7 @@ function ToTweet(props) {
         document.getElementById("CTRETWEETDIV").style.display = "flex";
         document.getElementById("buttonTweet").style.display = "none";
         document.getElementById("buttonReply").style.display = "none";
+        document.getElementById("buttonReply2").style.display = "none";
         document.getElementById("buttonRetweet").style.display = "block";
         document.getElementById("CTReplyDiv").style.display = "none"
         var retweetPath = document.getElementsByClassName("tweetRetweet")[id].style.color;
@@ -164,9 +165,8 @@ function ToTweet(props) {
     return <>
         {retweets == null ? (<div className="tweetComp POPUPBG" id="RepTweet">
             <div className="firstTweetBlock">
-                {(props.displaypic === null) ? (<span className="displaypie"><img src={avatar} id="picincircle" /></span>) :
-                    ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
-                        (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>))
+                {(props.displaypic === null) ? (<img src={avatar} id="picincircle" />) :
+                   <img src={props.displaypic} id="picincircle" />
                 }
                 <div className="USERNAME">
                 <p className="username">{props.name}</p>

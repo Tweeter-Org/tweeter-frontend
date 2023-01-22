@@ -61,6 +61,7 @@ function ViewChatList () {
         })
         await BaseUrl.get("/c/mychats", config)
             .then((res) => {
+                console.log(res)
                 dispatch({
                     type: "VIEW_CHAT_LIST_SUCCESS",
                     payload: res
