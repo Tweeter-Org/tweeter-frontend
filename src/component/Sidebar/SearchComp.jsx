@@ -16,12 +16,11 @@ function SearchComp (props){
             console.log(`/profile?name=${name}`)
     }
     return <>
-        <div className="searchcomp POPUPBG">
+        <div className="searchcomp POPUPBG ">
 
         {(props.displaypic === null) ? ( <img src={avatar}  id="picincircle" />) :
-                    ((props.displaypic.startsWith("https:")) ? ( <img src={props.displaypic} id="picincircle"/>) :
-                        ( 
-                        <img src={props.displaypic}  id="picincircle" />))
+                   ( <img src={props.displaypic} id="picincircle"/>) 
+                    
                 }
                 <div className="searchNames">
                 <p className="searchName">{props.name}</p>

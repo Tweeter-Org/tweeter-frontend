@@ -1,73 +1,18 @@
-.FgtPwdBg{
-    position: absolute;
-    width: 35vw;
-    height: 62vh;
-    left: 34.6vw;
-    top: 11.5vh;
-    background: linear-gradient(180deg, #222423 3.12%, rgba(33, 36, 34, 0.26) 100%, rgba(43, 45, 43, 0.01) 100%);
-    box-shadow: 4px 8px 2px 2px rgba(10, 9, 9, 0.25);
-    border-radius: 16px;
-    z-index:10;
+#arrow{
+    width:30px;
+    height:30px;
+    margin-top:20px;
 }
 #authHeadTwo{
-    top:11vh;
-}
-#arrow{
-    position:absolute;
-    top:4vh;
-    left:2vw;
-    cursor: pointer;
-}
-.authFgtHead{
-position: absolute;
-left: 2.5vw;
-top: 24vh;
-font-family: 'Montserrat';
-font-style: normal;
-font-weight: 400;
-font-size: 1rem;
-line-height: 20px;
-color: rgba(255, 255, 255, 0.9);
-
-}
-.authFgtEmailInput{
-    outline:none;
-    border:none;
-    position: absolute;
-    width:30vw ;
-    padding-left:3vw;
-    height: 7vh;
-    left: 2.2vw;
-    top: 28.5vh;
-    background: rgba(17, 19, 21, 0.6);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.2); 
-    font-family: 'Montserrat';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 20px;
-color: rgba(255, 255, 255, 0.8);
-}
-.invalidFgtEmail{
-    position: absolute;
-    left: 2.5vw;
-    top: 36vh;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 15px;
-    color: #f37777;
-    /* display:none; */
+    margin-top:20px;
+    font-size: 2.4rem;
 }
 .authFgtPwdBtn{
     border:none;
-    position: absolute;
     width: 30vw;
-    height: 6.5vh;
-    left: 2.2vw;
-    top:44vh;
+    height:40px;
+    margin-top:50px;
+    margin-bottom: 15px;;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #63DF76;
     border-radius: 10px;
     font-family: "Montserrat";
@@ -79,120 +24,45 @@ color: rgba(255, 255, 255, 0.8);
     cursor:pointer;
 }
 #emailIconFgt{
-    position:absolute;
-    left:1vw;
-    top:30.5vh;
-    height:2.8vh;
-    width:5.5vw;
+    margin-left:0.7vw;
+    position:relative;
+    top:34px;
+    
+    width:24px;
+    height:24px;
     z-index:4;
 }
-
-@media (max-width:1000px){
-    #authBgImg{
-        display:none;
-    }
-    body{
-        overflow: hidden;
-        overflow-y: hidden;
-    }
-    .FgtPwdBg{
-        width:88vw;
-        height:58vh;
-        left:6vw;
-        top:18vh;
-    }
-    #arrow{
-        top:2vh;
-    }
-    #authHeadTwo{
-        font-size: 2.2rem;
-        top:8vh;
-    }
-    .authFgtHead{
-        top:18vh;
-        left:4vw;
-    }
-    .authFgtEmailInput{
-        width:80vw;
-        padding-left: 11vw;
-        top:25vh;
-        left:4vw;
-    }
-    #emailIconFgt{
-        top:27vh;
-        left:7vw;
-    }
-    .invalidFgtEmail{
-        left:4vw;
-        top:32.6vh;
-    }
+ 
+@media(max-width:1000px){
+ #authHeadTwo{
+    font-size:2rem;
+ }  
+}
+@media(max-width:950px){ 
+ .authFgtPwdBtn{
+    width:37vw;
+ }
+}
+@media(max-width:800px){ 
     .authFgtPwdBtn{
-        width:80vw;
-        top:40vh;
-        left:4vw;
+       width:42vw;
     }
-}
-@media (min-width:700px) and (max-width:1000px){
-    .loginBg{
-        left:12vw;
-    }
-    .FgtPwdBg{
-        width:88vw;
-        height:52vh;
-        left:6vw;
-        top:18vh;
-    }
-    #arrow{
-        top:2vh;
-    }
-    #authHeadTwo{
-        font-size:3.5rem;
-        top:8vh;
-    }
-    .authFgtHead{
-        top:18vh;
-        left:4vw;
-        font-size: 1.5rem;
-    }
-    .authFgtEmailInput{
-        width:80vw;
-        padding-left: 11vw;
-        top:21vh;
-        left:3vw;
-        font-size: 1.5rem;
-    }
-    /* ::placeholder{
-        font-size: 1.5rem;
-    } */
-    #emailIconFgt{
-        top:23.3vh;
-        left:5.5vw;
-    }
-    .invalidFgtEmail{
-        left:4vw;
-        top:29vh;
-        font-size: 1.2rem;
-    }
+   }
+   @media(max-width:650px){ 
     .authFgtPwdBtn{
-        width:80vw;
-        top:37vh;
-        left:3vw;
-        font-size: 1.4rem;
+       width:52vw;
     }
-}
-@media (min-width:540px) and (max-width:540px){
-    .authFgtHead{
-        top:21vh;
+   }
+   @media(max-width:500px){ 
+    .authFgtPwdBtn{
+       width:57vw;
     }
-}
-@media (min-width:280px) and (max-width:280px){
+   }
+   @media(max-width:450px){ 
+    .authFgtPwdBtn{
+       width:72vw;
+    }
     #authHeadTwo{
-        font-size: 1.7rem;
-        top:8vh;
+        font-size: 1.8rem;
     }
-}
-
-#emailOtp{
-    position:absolute;
-    left:21vw;
-}
+   }

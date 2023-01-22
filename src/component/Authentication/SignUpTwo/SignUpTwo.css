@@ -1,77 +1,40 @@
-.signPwd{
-    position: absolute;
-    left: 2.5vw;
-    top:39vh;
+#signInput{
+    margin-bottom:4px;
+}
+#signPwd{
+    margin-top:5px;
+}
+#signInput2{
+    margin-top:22px;
+}
+#SEye {
+    color: white;
+    opacity: 0.9;
+    z-index: 4;
+    margin-left:26.5vw;
+    position:relative;
+    top:52px;
+    cursor: pointer;
+}
+
+#lockIconS {
+    margin-left:0.5vw;
+    position:relative;
+    top:61px;
+  height:24px;
+  width:24px;
+}
+#signNameWrong{
+    margin-top:4px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
-    font-size: 1rem;
-    line-height: 20px; 
-    color: rgba(255, 255, 255, 0.9); 
-}
-.signPwdInput{
-    top: 43vh;
-}
-#signInvalidPwd{
-    top:50.4vh;
-    font-size: 12px;
-    line-height: 13px;
-    color: #F79E9E;
-    display:none;
-}
-.sign2InvalidName{
+    font-size: 0.85rem;
+    line-height: 15px;
+    margin-bottom:0px;
+    color: #f37777;
     display: none;
 }
-#lockIconS{
-    position:absolute;
-    left:0.6vw;
-    top:44.7vh;
-    height:3.4vh;
-    width:6.5vw;
-    z-index:4;
-}
-#SEye{
-    color:white;
-    opacity: 0.8;
-position:absolute;
-top:45vh;
-left:30vw;
-z-index:4;
-cursor:pointer;
-}
-#SignEye{
-    color:white;
-    opacity:0.8;
-    position:absolute;
-    top:63vh;
-    left:30vw;
-    z-index:4;
-    cursor:pointer;
-/* }
-#signLock2{
-    position:absolute;
-    left:0.7vw;
-    top:62.5vh;
-    height:3.4vh;
-    width:6.5vw;
-    z-index:4;
-}
-.signInvPwd{
-    position: absolute;
-    height: 15px;
-    width:29vw;
-    left: 2.5vw;
-    top: 68vh;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 15px;
-    color: #F79E9E; */
-}
-#signTwoBtn{
-    position:absolute;
-    top: 63vh;
-    width:30vw;
-    height:6.5vh;
+#signInvalidPwdWrong{
+    display:none;
 }

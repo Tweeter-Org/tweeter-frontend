@@ -1,0 +1,161 @@
+.NOTIFY{
+position:absolute;
+top:90px;
+left:23vw;
+}
+.notifyFlexbox{
+display: flex;
+flex-direction: column;
+}
+
+#notifyLine{
+    color: #47C87A;
+    width:fit-content;
+     
+    transform: rotate(90deg);
+    width:max-content;
+    height:5px;
+    
+}
+.notifyCard{
+    display: block;
+    margin-bottom: 10px;
+      padding:10px;
+        width: 43vw;
+        height:fit-content;
+        background: rgb(26, 28, 30);
+      display: flex;
+      /* flex-direction: column; */
+        border-radius: 8px;
+        padding-left: 1vw;;
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.1);
+     
+}
+.notifyCard:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.notify1{
+    display: flex;
+    flex-direction: column;
+}
+.notify2{
+    display: flex;
+    flex-direction: column;
+}
+.notifyInfo{
+    display: flex;
+}
+.notifyPic{
+    width:50px;
+    height:50px;
+    border-radius: 50%;
+    margin-right:1vw;
+    margin-top:4px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+.notifyName{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.1rem;
+    width:max-content;
+    line-height: 27px;
+    color: rgba(255, 255, 255, 1);
+    margin-bottom: 0px;
+}
+.notifyUsername{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 20px;
+    color: #47C87A;
+  /* margin-left:0.6vw; */
+    text-decoration: underline;
+    cursor: pointer;
+    width:fit-content;
+    margin-bottom:10px;
+}
+.notifyMsg{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1rem ;
+    width:fit-content;
+    line-height: 16px;
+    color: rgba(255, 255, 255, 0.9);
+margin-bottom: 0;
+margin-left:4.5vw;
+white-space: pre-wrap;
+white-space: -moz-pre-wrap;
+white-space: -pre-wrap;
+white-space: -o-pre-wrap;
+word-wrap: break-word;
+}
+.notifTweet{
+    cursor: pointer;
+    color:#47C87A
+}
+@media (max-width:950px){
+    .notifyName{
+        font-size: 1rem;
+    }
+    .notifyUsername{
+        font-size: 0.9rem;
+        margin-top:-4px;
+    }
+    .notifyMsg{
+        font-size: 0.9rem;
+        margin-left:6vw;
+    }
+}
+@media (max-width:800px){
+    .notifyCard{
+        width:45vw;
+    }
+    .notifyMsg{
+        margin-left: 7.2vw;
+    }
+}
+@media (max-width:730px){
+    .notifyCard{
+        width:60vw;
+        margin-left:10vw;
+    }
+    .notifyPic{
+        width:45px;
+        height:45px;
+    }
+    .notifyName{
+        font-size: 1rem;
+    }
+    .notifyUsername{
+        font-size: 0.9rem;
+        margin-top:-4px;
+    }
+    .notifyMsg{
+        font-size: 0.9rem;
+        margin-left:8vw;
+    }
+}
+@media(max-width:600px){
+    .notifyCard{
+        margin-left: 13vw;
+    }
+}
+@media (max-width:500px){
+    .notifyCard{
+        width:84vw;
+        margin-left:-15vw;
+    }
+    .notifyMsg{
+        font-size: 0.9rem;
+        margin-left:11vw;
+    }
+}
+@media (max-width:320px){
+    .notifyMsg{
+        width:70vw;
+        font-size:0.8rem;    }
+}

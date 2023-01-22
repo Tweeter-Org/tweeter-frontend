@@ -3,51 +3,50 @@
     position: fixed;
     width: 100vw;
     height: 64px;
-    /* left: 20vw; */
-    top: 0vh;
-    /* background: #1A1C1E; */
+   
+    top: 0px;
+   
     background-color: #161718;
     border: 1px solid rgba(255, 255, 255, 0.08);
     z-index: 100;
-    /* display: flex; */
-    /* padding-left: 3vw; */
-    /* justify-content: space-around; */
 }
-
+.navbar1{
+    display: flex;
+    margin-left:23vw;
+    margin-top:14px;
+}
 .navbarIcon {
-    position: absolute;
-    left:23vw;
-    width: 2.4vw;
-    /* margin-left: 3vw; */
-    /* margin-top: -20px; */
+   
+    width: 24px;
+    height:24px;
+   
 }
 
 .navbarHead {
-    position: absolute;
-    width: 6.3vw;
-    /* height: 4.3vh; */
-    left: 26.2vw;
-    /* background-color: #47C87A; */
-    margin-top: -12px;
-    /* margin-left:-68vw; */
+ width: 6.3vw;
+   
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 29px;
+    margin-left:0.3vw;
 
     color: #47C87A;
 }
 
 #navbarLine {
-    position: absolute;
+   
     width: 64px;
-    /* height: 0vh; */
-left: 65vw;
-    top: 30px;
+    height: 0px;
+    margin-left:34vw;
+    margin-top:7px;
 
     border: 1px solid rgba(255, 255, 255, 0.2);
     transform: rotate(90deg);
+}
+.navbar2, .navbar3{
+    display:none;
 }
 #SIDEBAR{
     display: block;
@@ -67,18 +66,12 @@ left: 65vw;
     flex-direction: column;
     padding-left: 1.5vw;
 }
-.hamburgur{
-    margin-left:4vw;
-    margin-top:-20px;
-    margin-right:0;
-    width:26px;
-    display: none;
-}
+
 
 .logoHead {
     /* position: absolute; */
     width: 8vw;
-    /* height: 6.5vh; */
+   
     margin-left: 2vw;
     margin-top: 10px;
 
@@ -153,8 +146,27 @@ left: 65vw;
     font-size: 1rem;
     line-height: 21px;
     color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
 }
-
+.logOutBtn{
+    width: 160px;
+    height: 40px;
+    /* margin-left: 2.5vw; */
+    /* margin-top: 5px; */
+    border: none;
+    outline:none;
+    background:none;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.15rem;
+    line-height: 21px;
+    color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    position:absolute;
+    bottom:10px;
+    left:4vw;
+}
 a {
     color: white;
     text-decoration: none;
@@ -163,7 +175,9 @@ a {
 a:hover {
     color: #47C87A;
 }
-
+#HashTweetBox{
+    margin-top: -60px;
+}
 /* LOG OUT */
 
 #logout {
@@ -199,21 +213,30 @@ a:hover {
 
 .searchFlexBox {
     position: absolute;
-    top:100px;
+    top:90px;
     left: 70vw;
     /* width: 50vw; */
     display: flex;
     flex-direction: column;
 }
+.searchBar{
+    display: flex;
+    margin-left:70vw;
+    margin-top:14px;
+}
+.searchIcon{
+    /* z-index:105; */
+    /* margin-left:5vw; */
 
+}
 .searchbar {
     border: none;
     outline: none;
     position: fixed;
     width: 24vw;
-    height: 36px;
-    left: 70vw;
-    top: 16px;
+    height: 34px;
+    /* left: 70vw; */
+    /* top: 16px; */
     background: #484D4A;
     border-radius: 8px;
     z-index: 102;
@@ -253,6 +276,7 @@ margin-bottom: 10px;
     height: 39.09px;
     border-radius: 50%;
     background: #D9D9D9;
+   
 }
 
 
@@ -260,11 +284,13 @@ margin-bottom: 10px;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
-    font-size: 17px;
+    font-size: 16px;
+    width:20vw;
     line-height: 27px;
     color: rgba(255, 255, 255, 0.9);
-margin-left:0.6vw;
+margin-top:-2px;
 margin-bottom:-4px;
+margin-left:-0.2vw;
 }
 
 .searchUsername {
@@ -274,10 +300,11 @@ margin-bottom:-4px;
     font-size: 13px;
     line-height: 20px;
     color: #47C87A;
-  margin-left:0.6vw;
+  /* margin-left:0.6vw; */
     text-decoration: underline;
     cursor: pointer;
     margin-top:0;
+    width:20vw;
 }
 
 .searchUsername:hover {
@@ -299,14 +326,14 @@ margin-bottom:-4px;
 
 #searchtweetBg {
     /* width:14vw; */
-    height: 8vh;
+    height: fit-content
 
 }
 
 #searchtweettag {
     text-decoration: underline;
     cursor: pointer;
-    margin-left: 2vw;
+    margin-left: 1vw;
 }
 
 #searchtweettag:hover {
@@ -335,51 +362,138 @@ margin-bottom:-4px;
 #alterTagP {
     font-size: 1.5rem;
 }
-
+#PHONESEARCH{
+    display: none;
+}
  @media (max-width:730px){
     .sidebar{
         width:28vw;
     }
     .navbarIcon{
-        margin-left:9vw;
+        margin-left:10vw;
+        display: none;
     }
     .navbarHead{
-        margin-left:10vw;
+        margin-left:0.6vw;
+        display: none;
         }
-      
-    /*
-   
-  
-    #navbarLine{
-        left:25vw;
-    } */
+      #navbarLine{
+        display: none;
+      }
+      #HOME2{
+        display: none;
+      }
     .searchbar{
         display: none;
     }
     .searchFlexBox{
         display: none;
+       
     }
-    .sidebar{
-        /* width:25vw; */
+    .searchcomp, .searchAlter{
+        display: none;
+          /* display:flex; */
+      
+    }
+    #PHONESEARCH, #SIDESEARCH{
+        display: flex;
+        /* margin-left:-5vw; */
+        /* margin-top:5px; */
+    }
+    #phoneSearch1{
+        display:flex;
+        margin-left:34vw;
+        margin-top:-20px
+     
+    }
+    #phoneSearch2{
+        display:flex;
+        width:45vw;
+    }
+    #phoneSearch3, #phoneSearch4{
+        display:flex;
+        margin-left:-36vw;
+        height:fit-content;
+        width:45vw;
+    }
+    #phoneSearch4{
+        height:60px;
+    }
+   .noPhoneSearch{
+    display: block;
+    margin-left:-32vw;
+    width:45vw;
+   }
+    .sideBarTweetBtn{
+        width:16.5vw;
+    }
+    .navbar2{
+        position:fixed;
+        display: flex;
+        margin-left:88vw;
+z-index:102;
+margin-top:6px;
+    }
+    .navSearch1{
+        border-radius: 50%;
+        background:#484D4A;
+        padding:1px;
+    }
+    .navNotify{
+        display: none;
+    }
+    .navSearch2{
+        width:22px;
+        height:22px;
+        cursor: pointer;
     }
 } 
 
 @media(max-width:940px){
     #picincircle{
-        width:25px;
-        height:10px;
+        /* width:25px; */
+        /* height:10px; */
     }
- 
+ .searchbar{
+    width:22vw;
+ }
+ .sideBarTweetBtn{
+    width:14vw;
+ }
 
 }
 @media(max-width:1024px){
     .navbarIcon{
-        width:26px;
+        /* width:26px; */
             }
 }
+#navbarLine{
+    margin-left:33vw;
+}
 @media(max-width:620px){
-    .navbarHead{
-        margin-left:11vw;
+    .navbar1{
+        margin-left:27vw;
+    }
+    .sideBarTweetBtn{
+        width:19vw;
+    }
+    #phoneSearch1{
+        margin-left:40vw;
+       
+    }
+    #phoneSearch3, #phoneSearch4{
+        margin-left:-30vw;
+    }
+    #phoneSearch2, #phoneSearch3 , #phoneSearch4 {
+        width:40vw;
+    }
+    .searchName{
+        font-size: 0.9rem;
+        width:25vw;
+    }
+    .searchUsername{
+        font-size: 0.8rem;
+        width:25vw;;
     }
 }
 @media(max-width:500px){
@@ -394,19 +508,71 @@ margin-bottom:-4px;
         display: block;
         font-size: 1.6rem;
         padding-top:0px;
-        margin-top:-2px;
+        margin-top:2px;
+        z-index:102;
+        margin-left:10vw;
+        /* margin-top:-2px; */
         /* background-color: #47C87A; */
     }
-    .menuIcon{
+    .navNotify{
+      display: block;
+        width:24px;
+        height:24px;
+        margin-right:1vw;
         margin-top:2px;
-    }
-    .hamburgur{
-        display: block;
         cursor: pointer;
-      
     }
     #navbarLine{
         display: none;
+    }
+    .navbar1{
+        display:none;
+    }
+    .navbar2{
+        margin-left:80vw;
+    }
+    .navbar3{
+        display:flex;
+        z-index:102;
+        position:absolute;
+        bottom:0px;
+        background-color: #161718;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    height:64px;
+    width:100vw;
+    padding-left: 10vw;
+    padding-right:2vw;
+    padding-top:10px;
+    position: fixed;
+    }
+    .NB3Home{
+        width:38px;
+        height:38px;
+        margin-right:10vw;
+    }
+    .NB3bm{
+        width:34px;
+        height:32px;
+        margin-right:10vw;
+        margin-top:3px;
+    }
+    .NB3Msg{
+        width:38px;
+        height:36px;
+        margin-right:10vw;
+        margin-top:3px;
+    }
+    .NB3Profile{
+        width:38px;
+        height:38px;
+        margin-right:10vw;
+        /* margin-top:3px; */
+    }
+    .NV3Logout{
+        width:40px;
+        height:39px;
+        margin-right:5vw;
+        /* margin-top:3px; */
     }
     .navbarIcon{
 margin-left:12vw;
@@ -425,7 +591,6 @@ margin-top:-23px;
         
     }
     .logoHead{
-       
         margin-left:5vw;
     }
     .sbDeleteIcon{
@@ -440,16 +605,41 @@ margin-top:-23px;
    .sideBarTweetBtn{
     margin-left:6vw;
    }
+   #phoneSearch1{
+    margin-left:10vw;
+   
 }
-
+#phoneSearch3, #phoneSearch4{
+    margin-left:-60vw;
+}
+#phoneSearch2, #phoneSearch3 , #phoneSearch4 {
+    width:60vw;
+}
+.searchName{
+    font-size: 1rem;
+    width:50vw;
+}
+.searchUsername{
+    font-size: 0.9rem;
+    width:50vw;;
+}
+.noPhoneSearch{
+    margin-left:-54vw;
+}
+}
+@media(max-width:400px){
+    .navbar3{
+        padding-left: 4vw;
+    }
+}
 @media(max-width:1110px) and (min-width:500px){
     .sbList{
         margin-left:-1vw;
     }
-    .sideBarTweetBtn{
+    /* .sideBarTweetBtn{
         margin-left:2vw;
         width:14vw;
-    }
+    } */
 }
 @media(max-width:1010px) and (min-width:500px){
     .sbListItem{

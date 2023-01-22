@@ -33,7 +33,7 @@ console.log(tweets)
    },[markBM, bookmarkedTweet])
    console.log(BMLength)
     function handleToHome (){
-        navigate("/home")
+        navigate("/")
     }
     useEffect(()=>{
         if(loading===true){

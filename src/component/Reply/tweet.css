@@ -1,5 +1,6 @@
 .toTweetDiv{
-    margin-top:15vh;
+    position:absolute;
+    top:90px;
 }
 #RepTweet{
     padding-bottom:2vh;
@@ -72,7 +73,7 @@ display: flex;
     font-size: 13px;
     line-height: 18px;
     color:#47c87a;
-    margin-top: -0.5vh;
+    margin-top: -10px;
     /* opacity:0.95; */
     cursor: pointer;
     margin-bottom:1vh;
@@ -199,9 +200,10 @@ display: flex;
     width:1.4vw;
     margin-top:-2vh;
     margin-right:0.3vw;
+    cursor:pointer;
 }
 #ReplyIconBlock{
-    margin-top:0vh;
+    margin-top:-4px;
 }
 #Reply2Block{
     display: flex;
@@ -251,8 +253,8 @@ display: flex;
     }
     
     .bookmarkIcon {
-        width: 20px;
-        height: 20px;
+        /* width: 20px; */
+        /* height: 20px; */
         /* margin-left: 6vw; */
     }
 }

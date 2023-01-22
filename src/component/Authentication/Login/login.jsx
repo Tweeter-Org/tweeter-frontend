@@ -119,7 +119,9 @@ const googleRed = useSelector((g)=>g.GoogleReducer)
     },[googleBool])
 
     return <>
-        <Background />
+     <Background />
+    <div className='AUTHENTICATION'>
+       
         <div className='loginBg'>
             <p className='authHead'>Sign In</p>
             <p className='authEmail'>Email Address</p>
@@ -136,13 +138,14 @@ const googleRed = useSelector((g)=>g.GoogleReducer)
             <input type={show ? "text" : "password"} className="authPwdInput" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
             <p className='fgtPwd' onClick={() => navigate("/fgtpwd")}>Forgot Password?</p>
             {/* <button className='authSignIn' onClick={()=>{dispatch(SignInUser(data))}}>Sign In</button>  */}
-    1W        <button className='authSignIn' id="loginButton" onClick={() => {LOGIN()}}>Sign In</button>
+            <button className='authSignIn' id="loginButton" onClick={() => {LOGIN()}}>Sign In</button>
             <hr id="hrOr" />
             <button className='contGoogle' onClick={navigateGoogle} ><img src={googleIcon} className="googleIcon" />Continue with Google</button>
             <p className='createAcc'>New to Tweeter? <span className="authSignUp" onClick={() => navigate("/signup")}>Create Account</span></p>
         </div>
         {(loading === true || loadingGoogle===true) ? <Spinner animation="border" variant="light" id="loadSpinner" /> : null}
         <ToastContainer />
+        </div>
     </>
 }
 

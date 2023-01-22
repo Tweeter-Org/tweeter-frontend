@@ -17,13 +17,13 @@ import greenBookmarks from "../Assets/greenBookmarks.svg"
 import greencross from "../Assets/greencross.svg"
 import DoBookmarkAction from "../../react-redux/actions/Bookmarks.jsx";
 import deleteIcon from "../Assets/delete.svg"
-import TweetDeleteAction, { FakeTweetDeleteAction } from "../../react-redux/actions/deleteTweetAct";
 import { TweetFeedAction } from "../../react-redux/actions/Tweets.jsx";
 import { type } from "@testing-library/user-event/dist/type";
 import { ToastContainer , toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DltTweetPopup from "./DeleteTweetPopup";
 import { useNavigate } from "react-router-dom";
+import ShareTweet from "../Home Page/ShareTweet"
 
 function ProfileTweet(props) {
     const video = props.video
@@ -127,6 +127,7 @@ function handleRetweet (tweetid, name, image, video, text){
     document.getElementById("CTRETWEETDIV").style.display="flex";
     document.getElementById("buttonTweet").style.display="none";
     document.getElementById("buttonReply").style.display="none";
+    document.getElementById("buttonReply2").style.display = "none";
     document.getElementById("buttonRetweet").style.display="block";
     document.getElementById("CTReplyDiv").style.display="none"
     if (retweetPath === "white") {
@@ -150,19 +151,25 @@ function handleTweetReply(tweetid, name, image, video, text){
     document.getElementById("buttonTweet").style.display="none";
     document.getElementById("buttonRetweet").style.display="none";
     document.getElementById("buttonReply").style.display="block";
+    document.getElementById("buttonReply2").style.display = "none";
 }
 
 function handleToTweet (tweetId){
     navigate(`/totweet/${tweetId}`)
     console.log("From outer div")
 }
+function handleTweetShare (tweetid){
+    sessionStorage.setItem("shareTweetId", tweetid)
+    document.getElementById("SHAREBLOCK").style.display="flex"
+    // setOPacity();
+}
 
     return <>
     {retweets===null?(<div className="tweetComp POPUPBG" id="profileTweetComp">
             <div className="firstTweetBlock" onClick={()=>{handleToTweet(props.tweetId)}}>
-                {(props.displaypic === null) ? (<span className="displaypie"><img src={avatar} id="picincircle" /></span>) :
-                    ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
-                        (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>))
+                {(props.displaypic === null) ? (<img src={avatar} id="picincircle" />) :
+                    ((props.displaypic.startsWith("https:")) ? (<img src={props.displaypic} id="picincircle" />) :
+                        (<img src={props.displaypic} id="picincircle" />))
                 }
                 <div className="USERNAME">
                 <p className="username">{props.name}</p>
@@ -198,15 +205,15 @@ function handleToTweet (tweetId){
                     <p className="tweetRetweet">Retweet</p>
                 </div>
                 <div className="iconBlock">
-                    <img src={share} id="shareIcon" />
+                    <img src={share} id="shareIcon"  onClick={()=>{handleTweetShare(props.tweetId)}}/>
                     <p className="tweetShare">Share</p>
                 </div>
             </div>
         </div>):(<div className="tweetComp POPUPBG" id="profileTweetComp">
             <div className="firstTweetBlock" onClick={()=>{handleToTweet(props.tweetId)}}>
-                {(props.displaypic === null) ? (<span className="displaypie"><img src={avatar} id="picincircle" /></span>) :
-                    ((props.displaypic.startsWith("https:")) ? (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>) :
-                        (<span className="displaypie"><img src={props.displaypic} id="picincircle" /></span>))
+                {(props.displaypic === null) ? (<img src={avatar} id="picincircle" />) :
+                    ((props.displaypic.startsWith("https:")) ? (<img src={props.displaypic} id="picincircle" />) :
+                        (<img src={props.displaypic} id="picincircle" />))
                 }
                 <div className="USERNAME">
                 <p className="username">{props.name}</p>
@@ -254,12 +261,13 @@ function handleToTweet (tweetId){
                     <p className="tweetRetweet">Retweet</p>
                 </div>
                 <div className="iconBlock">
-                    <img src={share} id="shareIcon" />
+                    <img src={share} id="shareIcon"  onClick={()=>{handleTweetShare(props.tweetId)}} />
                     <p className="tweetShare">Share</p>
                 </div>
             </div>
         </div>)}
         <ToastContainer />
+        <ShareTweet />
     </>
 }
 

@@ -98,7 +98,7 @@ export const TagtweetNav = (image, title) => {
       type: "TAG_TWEET_NAV",
       payload: {
          title,
-         image,
+         image
 
       }
    }

@@ -98,7 +98,8 @@ const [bool, setBool] = useState(false)
         document.getElementById("CTweetText").style.display = "none";
         document.getElementById("buttonTweet").style.display = "none";
         document.getElementById("buttonRetweet").style.display = "none";
-        document.getElementById("buttonReply").style.display = "block";
+        document.getElementById("buttonReply").style.display = "none";
+        document.getElementById("buttonReply2").style.display = "block";
     }
 
     function handleRetweet(tweetid, name, image, video, text) {
@@ -112,6 +113,7 @@ const [bool, setBool] = useState(false)
         document.getElementById("CTRETWEETDIV").style.display = "flex";
         document.getElementById("buttonTweet").style.display = "none";
         document.getElementById("buttonReply").style.display = "none";
+        document.getElementById("buttonReply2").style.display = "none";
         document.getElementById("buttonRetweet").style.display = "block";
         document.getElementById("CTReplyDiv").style.display = "none"
         if (retweetPath === "white") {
@@ -123,7 +125,12 @@ const [bool, setBool] = useState(false)
             document.getElementsByClassName("RtweetRetweet")[id].style.color = "white"
         }
     }
-
+    function handleTweetShare (tweetid){
+        sessionStorage.setItem("shareTweetId", tweetid)
+        console.log(tweetid)
+        document.getElementById("SHAREBLOCK").style.display="flex"
+        // setOPacity();
+    }
     return <>
         <div className="ReplyDiv">
             <div className="Reply1">
@@ -158,10 +165,10 @@ const [bool, setBool] = useState(false)
                     <img src={retweet} className="RretweetIcon" onClick={() => handleRetweet(props.num, props.username, props.image, props.video, props.text)} />
                     <p className="RtweetRetweet" id="RTLike">Retweet</p>
                 </div>
-                {/* <div className="iconBlock">
-                    <img src={share} id="ReplyShare" />
+                <div className="iconBlock">
+                    <img src={share} id="ReplyShare" onClick={()=>{handleTweetShare(props.num)}} />
                     <p className="tweetShare" id="RTLike">Share</p>
-                </div> */}
+                </div>
             </div>
             <p className="RepShowMore" onClick={() => { handleReplytoReply(props.num) }}>...Show more</p>
             {replyArr.length > 0? (replyArr.map((rep, index) => {

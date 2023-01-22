@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import TweetDeleteAction, { FakeTweetDeleteAction } from "../../react-redux/actions/deleteTweetAct";
 import { ToastContainer , toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FakeTweetDeleteAction, TweetDeleteAction } from "../../react-redux/actions/Tweets";
 
 function DltTweetPopup() {
     const naavigate = useNavigate()

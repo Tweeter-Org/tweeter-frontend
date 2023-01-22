@@ -1,7 +1,7 @@
 import React from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom"
-import { ActiveUserList, CreateChat } from "../../react-redux/actions/Message";
+import { ActiveUserList, CreateChat, ViewChatList } from "../../react-redux/actions/Message";
 import ProfileAction, { ProfileApi } from "../../react-redux/actions/Profile";
 import { Messages } from "../../react-redux/actions/SearchApi";
 import avatar from "../Assets/avatar.svg"
@@ -16,7 +16,7 @@ function MsgUser (props){
         dispatch(Messages(greenmessage, "Messages", 3)) 
         navigate(`/chats/${usernum}`)
         dispatch(CreateChat(usernum))
-        
+        dispatch(ViewChatList())
     }
     return <>
         <div className="msgUser POPUPBG">

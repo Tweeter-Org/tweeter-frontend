@@ -1,9 +1,41 @@
 body{
     overflow-x: hidden;
 }
-.HOMEPAGE{
+span{
+    color:#47C87A;
+    cursor: pointer;
+}
+#HOME2{
     display: flex;
     flex-direction: column;
+    position:absolute;
+    left:70vw;
+    top:90px;
+    /* margin-left:70vw; */
+    /* margin-top:50px; */
+}
+.HOME1{
+    display: flex;
+    flex-direction: column;
+}
+.dataList{
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 550;
+    cursor: pointer;
+    background:#47C87A;
+    color:rgba(255, 255, 255, 0.9);
+    /* width:20vw; */
+}
+.dataList option{
+    margin-bottom:2px;
+}
+.hashtagg, .mention{
+    color:#47C87A;
+    cursor: pointer;
 }
 .tweetFeedHashtag{
 cursor: pointer;
@@ -29,7 +61,7 @@ color:#47C87A;
     width: 45vw;
     height:fit-content;
     margin-left: 22.5vw;
-    margin-top:100px;
+    margin-top:50px;
     justify-content: flex-end;
     /* margin-bottom: 14px; */
     padding-top:10px;
@@ -175,10 +207,16 @@ color:#47C87A;
 .bookmarkIcon {
     width: 20px;
     height: 20px;
+    /* display: flex;/ */
+    /* flex-direction: column; */
+    /* justify-content: flex-start; */
     margin-left: 22vw;
     opacity: 0.8;
     cursor: pointer;
     z-index:500;
+}
+#BMICON{
+     /* justify-content: first baseline; */
 }
 
 .deleteIcon {
@@ -252,27 +290,38 @@ color:#47C87A;
 .tweetFlexBox {
     /* margin-top: 15vh; */
     position:absolute;
-    top:160px;
+    top:150px;
     display: flex;
     flex-direction: column;
 }
 
 /*CREATE TWEET*/
+
+#textRequired{
+    margin-top:4px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.95rem;
+    line-height: 15px;
+    margin-bottom:0px;
+    color: #f37777;
+    display:none;
+}
 #imageOutput {
-    position: absolute;
-    right: 0vw;
-    top: 0vh;
+    /* position: absolute; */
+    /* right: 0vw; */
+    /* top: 0vh; */
     width: 200px;
-    height: 150px;
+    margin-left:0vw;
+    height: 100px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     display: none;
 }
 
 #VIDEO {
-    position: absolute;
-    right: 0vw;
-    top: 0vh;
-    width: 20vw;
+    width:15vw;
+    margin-left:0vw;
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -285,19 +334,20 @@ color:#47C87A;
     width: 40vw;
     height: fit-content;
     left: 29vw;
-    top: 140px;
+    top: 80px;
     background: #070808;
     background-color: #121212;
     box-shadow: 0px 264px 106px rgba(23, 25, 28, 0.01), 0px 149px 89px rgba(23, 25, 28, 0.05), 0px 66px 66px rgba(23, 25, 28, 0.09), 0px 17px 36px rgba(23, 25, 28, 0.1), 0px 0px 0px rgba(23, 25, 28, 0.1);
     border-radius: 16px;
     box-shadow: 0px 50px 80px #1A1C1E;
     border: 0.7px solid rgba(255, 255, 255, 0.2);
-    z-index: 15;
+    z-index: 20;
     display: flex;
     flex-direction: column;
     padding-left: 1.5vw;
     overflow-x: hidden;
     overflow-y: scroll;
+    padding-bottom:20px;
 }
 
 #CREATETWEET {
@@ -367,7 +417,7 @@ color:#47C87A;
 }
 
 .ctWriteTweet {
-    margin-top: 80px;
+    margin-top: 40px;
     width: 36.5vw;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -387,8 +437,8 @@ color:#47C87A;
 
 .CTBlock2 {
     display: flex;
-    justify-content: last baseline;
-    margin-top: 60px;
+    /* justify-content: last baseline; */
+    margin-top: 30px;
 }
 
 #ctuploadImg {
@@ -463,9 +513,11 @@ color:#47C87A;
 }
 
 .emojipicker1 {
+    /* margin-left:-7vw; */
     position: absolute;
-    top:10px;
-    left: 18vw;
+    top:0px;
+    /* display: none; */
+    left: 20vw;
     /* z-index:9999; */
 }
 
@@ -495,12 +547,13 @@ color:#47C87A;
 
 .CTRetweetDiv {
     width: 35vw;
+    height:150px;
     background-color: #161718;
     border: 0.8px solid rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     margin-left: 1.5vw;
     margin-top: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 4px;
     padding: 1vw;
     padding-bottom: 0;
     display: flex;
@@ -512,7 +565,8 @@ color:#47C87A;
 }
 
 .CTRVideo {
-    width: 32.8vw;
+    width: 32.5vw;
+    height:80px;
     margin-top: 5px;
     margin-bottom: 5px;
     /* margin-bottom:1vh; */
@@ -532,10 +586,13 @@ color:#47C87A;
     height: 30px;
     border-radius: 50%;
     background-color: rgb(228, 219, 219);
-    margin-top: 0.5vh;
+    margin-top: -4px;
 }
 
-#CTRetweetName {}
+#CTRetweetName {
+margin-left:0.5vw;
+    margin-top: -6px;
+}
 
 #CTRetweetUsername {}
 
@@ -860,6 +917,9 @@ display: none;
     .ctCreateTweet{
         margin-right:2vw;
     }
+    .bookmarkIcon{
+        margin-left:21vw;
+    }
 }
 
 @media (max-width:950px){
@@ -876,7 +936,9 @@ display: none;
     .tweetShare{
         font-size: 0.9rem;
     }
-    
+    .bookmarkIcon{
+        margin-left: 19.5vw;
+    }
     #commentIcon {
         width: 19px;
         height: 16px;
@@ -953,7 +1015,7 @@ margin-left:11.5vw;
 @media(max-width:800px){
     .username{
         font-size: 1.1rem;
-       width: max-content;
+       /* width: 5; */
     }
     .createTweetDiv{
         width:45vw;
@@ -997,15 +1059,20 @@ margin-top:1.5px;
     .ctImageText , .ctVideoText, .ctSmileText{
         display: none;
     }
+    .bookmarkIcon{
+        margin-left:24vw;
+        width:18px;
+        height:18px;
+    }
 }
 @media(max-width:1300px){
     .bookmarkIcon{
-        margin-left:25vw;
+        /* margin-left:25vw; */
     }
 }
 @media(max-width:1090px){
     .bookmarkIcon{
-        margin-left:23vw;
+        /* margin-left:23vw; */
     }
 }
 @media(max-width:730px){
@@ -1016,10 +1083,17 @@ margin-top:1.5px;
         width:60vw;
         padding-left:8px;
     }
+   
+    .TweetShowMore{
+        margin-left:32.5vw; 
+        width:60vw;
+        margin-bottom:-5px;
+        margin-top:50px;
+    }
     .tweetImage{
         width:58vw;
     }
-    .tweetVideo{
+    .tweetvideo{
         width:58vw;
     }
     .TWRVideo{
@@ -1036,8 +1110,10 @@ margin-top:1.5px;
         height:35px;
     }
     .username{
-        width:fit-content;
-        font-size: 1.25rem;
+        width:40vw;
+        font-size: 1rem;
+        margin-top:-5px;
+        margin-bottom:-4px;
     }
     .createTweetDiv{
         width:55vw;
@@ -1073,6 +1149,9 @@ margin-top:1.5px;
         font-size: 0.9rem;
         margin-right:-2vw;
     }
+    .bookmarkIcon{
+        margin-left:8vw;
+    }
 }
 @media(max-width:600px){
    #picincircle{
@@ -1085,29 +1164,34 @@ margin-top:1.5px;
     }
     .username{
         width:35vw;
-        font-size: 1.15rem;
+        font-size: 1rem;
+        margin-bottom:2px;
     }
     .tweetUsername2{
         margin-top:-7px;
         font-size: 0.7rem;
     }
     .tweetComp{
-        width:65vw;
+        width:60vw;
+    }
+    .TweetShowMore{
+        margin-left:36.5vw;
+        width:60vw;
     }
     .tweetImage{
-        width:63vw;
-    }
-    .tweetVideo{
-        width:63vw;
-    }
-    .tweetWithRetwwet{
         width:57vw;
     }
+    .tweetvideo{
+        width:57vw;
+    }
+    .tweetWithRetwwet{
+        width:52vw;
+    }
     .TWRVideo{
-        width:55vw;
+        width:50vw;
     }
     .tweetFlexBox{
-        margin-left:15vw;
+        margin-left:13.5vw;
         margin-right:2vw;
     }
     .likeIcon {
@@ -1115,7 +1199,9 @@ margin-top:1.5px;
         height: 16px;
         margin-top:7px;
     }
-    
+    .bookmarkIcon{
+        margin-left:11vw;
+    }
     #shareIcon {
         width: 17px;
         height: 17px;
@@ -1180,11 +1266,15 @@ margin-top:1.5px;
     .tweetComp{
         width:82vw;
     }
+    .TweetShowMore{
+        width:82vw;
+        margin-left:9vw;
+    }
     .tweetImage{
         width:78vw;
     }
-    .tweetVideo{
-        width:78vw;
+    .tweetvideo{
+        width:78.5vw;
     }
     .tweetWithRetwwet{
         width:73vw;
@@ -1197,8 +1287,11 @@ margin-top:1.5px;
         margin-left: -14vw;
     }
     .username{
-        width:fit-content;
+        width:62vw;
         font-size: 1rem;
+    }
+    .tweetText{
+        width:75vw;
     }
     .createTweetDiv{
         margin-top:50px;
@@ -1246,22 +1339,35 @@ margin-top:1.5px;
         margin-right:3.5vw;
         width:13vw;
     }
+    .bookmarkIcon{
+        margin-left:4vw;
+    }
 }
 @media(max-width:450px){
     .tweetComp{
         width:85vw;
     }
     .tweetImage{
-width:83vw;
+width:80vw;
     }
-    .tweetVideo{
-        width:83vw;
+    .TweetShowMore{
+        width:85vw;
+        margin-left:7vw;
+    }
+    .tweetText{
+        width:82vw;
+    }
+    .tweetvideo{
+        width:80vw;
+    }
+    .username{
+        width:30vw;
     }
     .tweetWithRetwwet{
         width:76vw;
     }
     .TWRVideo{
-        width:74vw;
+        width:73vw;
     }
     .tweetFlexBox{
         /* width:85vw; */
@@ -1271,6 +1377,10 @@ width:83vw;
         width: 13px;
         height: 13px;
         margin-top:7px;
+    }
+    .tweetText{
+        font-size:0.8rem;
+        margin-top:4px;
     }
     .tweetLike{
         font-size: 0.75em;
@@ -1352,6 +1462,11 @@ width:83vw;
         font-weight: 600;
         height:28px;
     }
+    .bookmarkIcon{
+        margin-left:35vw;
+        width:16px;
+        height:16px
+    }
 }
 @media (max-width:320px){
     .tweetComm{
@@ -1378,6 +1493,19 @@ width:83vw;
         margin-left:-4vw;
         margin-top:0;
     }
+    .tweetText{
+font-size:0.75rem;
+width:70vw;
+    }
+    .bookmarkIcon{
+        width:14px;
+        height:14px;
+        margin-left:20vw;
+    }
+    .username{
+        font-size: 0.9rem;
+        width:40vw;
+    }
     .retweetIcon{
         width:18px;
         height: 18px;
@@ -1393,10 +1521,7 @@ width:83vw;
     .secondTweetBlock{
         margin-bottom:5px;
     }
-    .username{
-        font-size: 0.9rem;
-        width: fit-content;
-    }
+   
     .createTweetDiv{
         margin-top:50px;
         margin-left: -19vw;

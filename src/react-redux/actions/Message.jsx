@@ -61,6 +61,7 @@ function ViewChatList () {
         })
         await BaseUrl.get("/c/mychats", config)
             .then((res) => {
+                console.log(res)
                 dispatch({
                     type: "VIEW_CHAT_LIST_SUCCESS",
                     payload: res
@@ -103,6 +104,7 @@ export const SendChatsAction = (formData, socket) => {
     return async function (dispatch) {
         await BaseUrl.post("/c/message", formData, config)
             .then((Res) => {
+                console.log(Res)
                 socket.emit("new message", Res.data.msg)
                 dispatch(FakeViewChatsAction, Res.data.msg)
                 dispatch({
@@ -111,6 +113,7 @@ export const SendChatsAction = (formData, socket) => {
                 })
             })
             .catch((err) => {
+                console.log(err)
                 dispatch({
                     type: "Chat_not_sent",
                     payload: err

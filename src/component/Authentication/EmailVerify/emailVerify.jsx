@@ -96,13 +96,13 @@ function AuthOtp(){
     
 return <>
 <Background />
-<div className='FgtPwdBg'>
+<div className='loginBg'>
     <img src={arrow} id="arrow" onClick={()=>{navigate("/signup")}} />
     <p className='authHead' id="authHeadTwo">Email Verification</p>
-    <p className='authFgtHead'>Enter Otp sent to {email}</p>
-    <input type="text" className="authFgtEmailInput" placeholder="0  0  0  0  0  0" value={otp} onChange={(e)=>setOtp(e.target.value)}/>
-    {/* <p className='invalidFgtEmail'>Incorrect Otp</p> */}
-    <p className='resendFgtOtp' id="emailOtp" disabled={seconds!==0?true:false} onClick={()=>{dispatch(SignUpResend(email),setSeconds(59))}}>Resend Otp in</p>
+    <p className='authEmail'>Enter Otp sent to {email}</p>
+    <input type="text" className="authEmailInput" id="otpInput" placeholder="0  0  0  0  0  0" value={otp} onChange={(e)=>setOtp(e.target.value)}/>
+    <p className='invalidEmail'>Incorrect Otp</p>
+    <p className='resendFgtOtp' disabled={seconds!==0?true:false} onClick={()=>{dispatch(SignUpResend(email),setSeconds(59))}}>Resend Otp in</p>
     <span id="timer">00:{seconds}</span>
     <button className='authFgtPwdBtn' onClick={()=>{EMAILVERIFY()}} >Continue</button>
     </div>             

@@ -3,16 +3,16 @@ display: flex;
 position:absolute;
 top:20vh;
 left:29vw;
-width:40vw;
-height:40vh;
+width:38vw;
+height:270px;
 background-color: #121212;
-padding-left: 2vw;
+padding-left: 1.5vw;
 padding-top: 4vh;
 box-shadow: 0px 264px 106px rgba(23, 25, 28, 0.01), 0px 149px 89px rgba(23, 25, 28, 0.05), 0px 66px 66px rgba(23, 25, 28, 0.09), 0px 17px 36px rgba(23, 25, 28, 0.1), 0px 0px 0px rgba(23, 25, 28, 0.1);
 border-radius: 16px;
 box-shadow: 0px 50px 80px #1A1C1E;
 border: 0.7px solid rgba(255, 255, 255, 0.2);
-z-index:20;
+z-index:110;
 display: none;
 }
 .lOut1{
@@ -26,10 +26,10 @@ flex-direction: column;
     font-weight: 500;
     font-size: 24px;
     line-height: 29px;
-    text-align: center;
-    
+    /* text-align: center; */
+    width:30vw;
     color: rgba(255, 255, 255, 0.9);
-    margin-left:-11vw;
+    /* margin-left:-11vw; */
 }
 .logoutText2{
     font-family: 'Montserrat';
@@ -39,13 +39,13 @@ flex-direction: column;
     line-height: 20px;
     /* identical to box height */
     
-    text-align: center;
+    /* text-align: center; */
     
     color: rgba(255, 255, 255, 0.6);
 }
 .logoutbtn1{
-    width: 240px;
-    height: 6vh;
+    width: 18vw;
+    height: 38px;
     background: #47C87A;
     border-radius: 8px;
     font-family: 'Montserrat';
@@ -54,8 +54,8 @@ font-weight: 500;
 font-size: 16px;
 line-height: 20px;
 border: none;
-margin-bottom:2vh;
-margin-top:3vh;
+margin-bottom:12px;
+margin-top:25px;
 /* identical to box height */
 
 text-align: center;
@@ -66,8 +66,8 @@ color: #FFFFFF;
     box-sizing: border-box;
 
     /* position: absolute; */
-    width: 240px;
-    height: 6vh;
+    width: 18vw;
+    height: 38px;
     background: #252525;
     
     border: 0.5px solid #47C87A;
@@ -89,6 +89,137 @@ color: #47C87A;
 .logoutImage{
     width: 200px;
     height: 119.57px;
-    margin-top: 11.5vh;
-    margin-left:2vw;
+    margin-top: 80px;
+    margin-left:-10vw;
 }
+@media (max-width:1250px){
+    .logoutImage{
+width:180px;
+/* height:120px; */
+margin-left:-9.8vw;
+    } 
+}
+@media (max-width:1250px){
+    .logoutImage{
+width:160px;
+height:115px;
+margin-left:-9.8vw;
+    } 
+}
+@media (max-width:900px){
+    .logoutDiv{
+        width:45vw;
+    }
+    .logoutImage{
+width:160px;
+height:115px;
+margin-left:-20vw;
+    } 
+    .logoutText1{
+        width:40vw;
+    }
+}
+@media (max-width:730px){
+    .logoutDiv{
+        width:50vw;
+        margin-left: -4vw;
+    }
+    .logoutImage{
+width:160px;
+height:115px;
+margin-left:-17vw;
+    } 
+    .logoutText1{
+        width:40vw;
+    }
+    .logoutbtn2, .logoutbtn1{
+        width:20vw;
+    }
+}
+@media (max-width:650px){
+    .logoutDiv{
+        width:60vw;
+        margin-left: -4vw;
+    }
+    .logoutImage{
+width:160px;
+height:115px;
+margin-left:-21vw;
+    } 
+    .logoutText1{
+        width:50vw;
+    }
+    .logoutbtn2, .logoutbtn1{
+        width:25vw;
+    }
+}
+@media (max-width:550px){
+    .logoutDiv{
+        width:65vw;
+        margin-left: -13vw;
+    }
+    .logoutImage{
+width:160px;
+height:120px;
+margin-left:-30vw;
+    } 
+    .logoutText1{
+        width:50vw;
+    }
+    .logoutText2{
+        width:60vw;
+    }
+    .logoutbtn2, .logoutbtn1{
+        width:27vw;
+    }
+}
+@media (max-width:490px){
+    .logoutDiv{
+        width:75vw;
+        margin-left: -15vw;
+    }
+    .logoutImage{
+        width:140px;
+        height:110px;
+        margin-left:-28vw;
+            } 
+            .logoutText1, .logoutText2{
+                width:65vw;
+            }
+            .logoutbtn2, .logoutbtn1{
+                width:35vw;
+            }
+}
+@media(max-width:400px){
+    .logoutDiv{
+        margin-left: -16vw;
+        height:240px;
+    }
+.logoutImage{
+    width:140px;
+    /* height:160px; */
+    margin-left:-31vw;
+    margin-top:90px;
+        } 
+        .logoutText1{
+            width:40vw;
+            margin-bottom:10px;
+        }
+        .logoutbtn1{
+            margin-top: 14px;
+        }
+        .logoutbtn2, .logoutbtn1{
+            width:30vw;
+            height:32px
+        }
+    }
+
+    @media(max-width:300px){
+        .logoutDiv{
+            width:80vw;
+            margin-left: -18vw;
+        }
+        .logoutImage{
+            width:115px;
+        }
+    }

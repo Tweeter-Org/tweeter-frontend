@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { TweetFeedAction, TweetFeedAction2, TweetFeedCount } from "../../react-redux/actions/Tweets.jsx";
+import { TrendingTweets, TweetFeedAction, TweetFeedAction2, TweetFeedCount } from "../../react-redux/actions/Tweets.jsx";
 import Sidebar from "../Sidebar/SideBar";
 import "./homepage.css";
 import Tweet from "./TweetComp";
@@ -8,23 +8,29 @@ import { Spinner } from 'react-bootstrap';
 import Loader from "../Assets/Loader.jsx";
 import { ToastContainer , toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Tweetsearch from "../Sidebar/Tweetsearch.jsx";
 
 function HomePage (){
     const dispatch = useDispatch();
 
-    const {loading, tweetData, liked, bookmarked} = useSelector((s)=>s.TweetFeedReducer)
+    const {loading, tweetData, liked, bookmarked, trendingTweet} = useSelector((s)=>s.TweetFeedReducer)
     const [tweeets, settweets] = useState([])
     console.log(tweetData)
    
     const {response} = useSelector((t)=>t.TweetCreateReducer)
     useEffect(()=>{
         dispatch(TweetFeedAction())
+        dispatch(TrendingTweets())
+        document.getElementById("SIDESEARCH").style.display="none"
+        document.getElementById("HOME2").style.display="flex"
     },[])
     
-   console.log(tweetData)
-   console.log(liked)
-   console.log(bookmarked)
+//    console.log(tweetData)
+//    console.log(trendingTweet)
+//    console.log(liked)
+//    console.log(bookmarked)
    const tweetLength = tweetData.length
+//    const trendTweetLength = tren.length
 
 const auth = useSelector((s)=>s.AuthReducer)
 const {user, toFgtPwd} = auth;
@@ -34,10 +40,10 @@ const {count}= useSelector((t)=>t.TweetFeedCountRed)
 
 function handleShowMoreTweet(){
     dispatch(TweetFeedCount())
-    console.log(count)
+    // console.log(count)
 dispatch(TweetFeedAction2(count))
 }
-console.log(tweetData)
+// console.log(tweetData)
 useEffect(()=>{
     if(loading===true){
         document.body.style.opacity = 0.5;
@@ -49,6 +55,7 @@ useEffect(()=>{
     return <>
     <Sidebar />
     <div className="HOMEPAGE">
+    <div className="HOME1">
     <div className="tweetFlexBox POPUPBG">
     {tweetLength>0?(tweetData.map((tweet, index)=>{
         const likes= liked[index]
@@ -61,6 +68,13 @@ useEffect(()=>{
     </div>
     <div className="TweetShowMore" onClick={()=>{handleShowMoreTweet()}}>...Show More</div>
     </div>
+    </div>
+    <div id="HOME2">
+{trendingTweet.length>0?(trendingTweet.map((trend, index)=>{
+    return <Tweetsearch hashtag={trend.hashtag} />
+})):null}
+    </div>
+   
     {(loading===true)?<Loader loading={loading} />:null}
     <ToastContainer />
     </>

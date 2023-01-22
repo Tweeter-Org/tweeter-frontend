@@ -67,25 +67,20 @@ function CreateTweet(props) {
         e.preventDefault();
         setText("")
         document.getElementById("CREATETWEET").style.display = "none"
-        // document.getElementById("imageOutput").style.display = "none"
-        // document.getElementById("videoOutput").style.display = "none"
-        // document.getElementById("VIDEO").style.display = "none"
-
+        setSendImage(null);
+        setSendVideo(null)
+        setImageInArr(null)
+        setVdoInArr(null)
+        setShowEmoji(false)
     }
     const TWEETREDUCER = useSelector((t) => t.TweetCreateReducer)
     const { response, error, tweetCreate, toastBoolR, toastBoolE, loading } = TWEETREDUCER;
-    const [toastErr, setToastErr] = useState(false)
-    const [toastRes, setToastRes] = useState(false)
-    const [toastBool, setToastBool] = useState(false)
-    // console.log(response)
+   
     const auth = useSelector((s) => s.AuthReducer)
     const { user, toFgtPwd } = auth;
     const { name, user_name, displaypic } = user;
     const [DupTweetData, setDupTweetData] = useState([])
     const { tweetData, liked, Rname, Rimage, Rvideo, Rtext } = useSelector((s) => s.TweetFeedReducer)
-    // const tweetData =[];
-    // console.log(tweetData)
-    // console.log(Rimage, Rvideo)
     const RId = sessionStorage.getItem("retweetId")
     useEffect(() => {
         setDupTweetData(tweetData)
@@ -123,7 +118,7 @@ function CreateTweet(props) {
             "text": Rtext,
             "_id": RId,
             user: {
-
+                "name":Rname,
                 "user_name": Rname,
                 displaypic: displaypic
             },
@@ -133,43 +128,82 @@ function CreateTweet(props) {
     const { list, tomap, tweetList, tohash } = useSelector((S) => S.SearchReducer)
     const [searchListArray, setSearchListArray] = useState([]);
     const [searchTweetList, setSearchTweetList] = useState([]);
+    const [hash, setHash] = useState(false)
+    const [mention, setMention] = useState(false)
 
-    function handleCreateTweetSearch(e){
-       setText(e.target.value)
-    //    if (e.target.value.startsWith('#')) {
-    //     console.log("hash")
-    //     dispatch(SearchTweetWithTag(e.target.value.slice(1)))
-    // }
-    // if (e.target.value.startsWith('@')) {
-    //     dispatch(SearchUser(e.target.value.slice(1))); 
-    // }
-    // setSearchListArray([])
-    // setSearchTweetList([])
-    // if (tomap) {
-    //     if (list.result.length > 0) {
-    //         setSearchListArray(list.result)
-    //     }
-    //     else {
-    //         setSearchListArray([])
-    //     }
-    // }
-    // if (tohash) {
+    function handleCreateTweetSearch(e) {
+        setText(e.target.value)
+        
+        dispatch(SearchTweetWithTag(e.target.value))
+        // dispatch(SearchUser(e.target.value));
+        setMention(true)
+        if (e.target.value.startsWith('#')) {
+            setHash(true)
+            setMention(false)
+            dispatch(SearchTweetWithTag(e.target.value.slice(1)))
+        }
+        if (e.target.value.includes('@')) {
+            setMention(true)
+            // console.log(e.target.value.slice(1))
+            setHash(false)
+            dispatch(SearchUser(e.target.value.slice(1)));
+        }
+        if(e.target.value==""){
+            setHash(false)
+            setMention(false)
+        }
+    }
+
+    useEffect(() => {
+        if (tomap) {
+            if (list.result.length > 0) {
+                setSearchListArray(list.result)
+            }
+            else {
+                setSearchListArray([])
+            }
+        }
+    }, [tomap, list])
+    useEffect(() => {
+        if (tohash) {
+            if (tweetList.length > 0) {
+                setSearchTweetList(tweetList)
+            }
+            else {
+                setSearchTweetList([])
+            }
+        }
+    }, [tohash, tweetList])
+        // setSearchListArray([])
        
+        // setSearchTweetList([])
+        // if (tomap) {
+        //     if (list.result.length > 0) {
+        //         setSearchListArray(list.result)
+        //     }
+        //     else {
+        //         setSearchListArray([])
+        //     }
+        // }
+        // if (tohash) {
+
         // document.getElementById("ctSearchHash").style.display="block";
         // document.getElementById("ctSearchATR").style.display="none";
-    //     if (tweetList.length > 0) {
-    //         setSearchTweetList(tweetList)
-    //     }
-    //     else {
-    //         setSearchTweetList([])
-    //     }
-    // }
-    // if(!e.target.value){
-    //     setSearchListArray([])
-    //     setSearchTweetList([])
-    // }
-    }
-// const [tag, setTag] = useState(false)
+        //     if (tweetList.length > 0) {
+        //         setSearchTweetList(tweetList)
+        //     }
+        //     else {
+        //         setSearchTweetList([])
+        //     }
+        // }
+        // if(!e.target.value){
+        //     setSearchListArray([])
+        //     setSearchTweetList([])
+        // }
+    
+    // console.log(list)
+    // console.log(tweetList)
+    // const [tag, setTag] = useState(false)
     // useEffect(() => {
     //     if (tomap) {
     //         if (list.result.length > 0) {
@@ -179,10 +213,10 @@ function CreateTweet(props) {
     //             setSearchListArray([])
     //         }
     //     }
-        // if(!text){
-        //     setSearchListArray([])
-        //     setSearchTweetList([])
-        // }
+    // if(!text){
+    //     setSearchListArray([])
+    //     setSearchTweetList([])
+    // }
     // }, [tomap, list, text])
     // useEffect(() => {
     //     if (tohash) {
@@ -205,6 +239,15 @@ function CreateTweet(props) {
     //     document.getElementById("CTSEARCH").style.display="flex";
     // },[searchListArray, searchTweetList])
 
+    useEffect(()=>{
+        if(!text){
+            document.getElementById("textRequired").style.display="flex";
+        }
+            else{
+                document.getElementById("textRequired").style.display="none";
+            }    
+    },[text])
+
     function handleCreateTweet(e) {
         e.preventDefault();
         fd.append("text", text)
@@ -217,15 +260,21 @@ function CreateTweet(props) {
         else {
             fd.append("file", null)
         }
-        dispatch(CreateTweetAct(fd))
-
-        backToHome(e)
-        dispatch(FakeTweetFeedAction(newTweetCreated))
-      
+        if(text!=""){
+            dispatch(CreateTweetAct(fd))
+            dispatch(FakeTweetFeedAction(newTweetCreated))
+            backToHome(e)
+        }
+       
+setText("")
         setSendImage(null);
         setSendVideo(null)
+        setImageInArr(null)
+        setVdoInArr(null)
+        setShowEmoji(false)
+
     }
-   
+
     // console.log(RId)
     function handleCreateReTweet(e) {
         e.preventDefault();
@@ -240,14 +289,20 @@ function CreateTweet(props) {
         else {
             fd.append("file", null)
         }
-        dispatch(CreateReTweetAct(fd))
-        // setToastBool(true)
-        console.log(newReTweetCreated)
-        backToHome(e)
+        if(text!=""){
+            dispatch(CreateReTweetAct(fd))
+            // console.log(newReTweetCreated)
+            backToHome(e)
+            dispatch(FakeReTweetFeedAction(newReTweetCreated))
+        }
+        setText("")
+        setSendImage(null);
+        setSendVideo(null)
+        setImageInArr(null)
+        setVdoInArr(null)
+       setShowEmoji(false)
     }
     const { responseT, errorT, nameInReply, showName } = useSelector((r) => r.ReplyReducer)
-
-    // console.log(responseT, errorT, nameInReply)
     const atNames = sessionStorage.getItem("replyName");
 
     const replYtweet = {
@@ -264,7 +319,7 @@ function CreateTweet(props) {
     function handleTweetReply(e) {
         fd.append("text", text)
         fd.append("tweetId", RId)
-        console.log(RId)
+        // console.warn(RId)
         if (sendImage != "") {
             fd.append("file", sendImage)
         }
@@ -277,6 +332,26 @@ function CreateTweet(props) {
         dispatch(ReplyToTweet(fd))
         // console.
         dispatch(FakeReplyTweetAction(replYtweet))
+        backToHome(e)
+        // console.log(replYtweet)
+    }
+    function handleReplyReply(e) {
+        fd.append("text", text)
+        fd.append("tweetId", RId)
+        // console.warn(RId)
+        if (sendImage != "") {
+            fd.append("file", sendImage)
+        }
+        else if (sendVideo != "") {
+            fd.append("file", sendVideo)
+        }
+        else {
+            fd.append("file", null)
+        }
+        dispatch(ReplyToTweet(fd))
+        document.getElementById("EMOJI").style.display = "none"
+        // console.
+        // dispatch(FakeReplyTweetAction(replYtweet))
         backToHome(e)
         // console.log(replYtweet)
     }
@@ -294,10 +369,10 @@ function CreateTweet(props) {
     return <>
         <div className="createTweetDiv" id="CREATETWEET">
             <div className="CTBlock1">
-                {/* {(displaypic === null) ? (<img src={avatar} id="ctCircle" />) :
-                    ((displaypic.startsWith("https:")) ? (<img src={displaypic} id="ctCircle" />) :
-                        (<img src={displaypic} id="ctCircle" />))
-                } */}
+                {(displaypic === null) ? (<img src={avatar} id="ctCircle" />) :
+                    (<img src={displaypic} id="ctCircle" />)}
+
+
                 <div className="CTDiv1">
                     <p className="ctName">{name}</p>
                     <p className="ctUserName">@{user_name}</p>
@@ -309,8 +384,30 @@ function CreateTweet(props) {
                 <div id="CTweetText">
                     <p className="ctTagline">Share tweets with your followers</p>
                     <div className="ctWriteTweet">
-                        <input type="text" className="ctWriteTweetInput" value={text} onChange={handleCreateTweetSearch} />
+                        <input type="text" list="tagsInputList" className="ctWriteTweetInput" value={text} onChange={handleCreateTweetSearch} required />
+                        <datalist id="tagsInputList" className="dataList">
+                       {searchTweetList.length>0?searchTweetList.map((se)=>{
+                        console.log(se)
+                        return <option value={se.hashtag}>{se.hashtag}</option>
+                       }):null}
+                        {/* {console.log(mention)} */}
+                            {/* {hash ?(
+                                searchTweetList.length > 0 ? (searchTweetList.map((se) => {
+                                    return <option value={se.hashtag}>{se.hashtag}</option>
+
+                                })):null) : (mention ?(searchListArray.length > 0 ? (searchListArray.map((searchh) => {
+                                    return <option value={searchh.user_name}>{searchh.user_name}</option>
+                                })):null):null)}
+                            {/* { 
+                                tomap ? ((searchListArray.length > 0) ? (searchListArray.map((searchh) => {
+                                    return <option value={searchh.user_name}>{searchh.user_name}</option>
+                                })) : null) : null
+                            } */}
+                        </datalist>
+
+                       
                     </div>
+                    <p id="textRequired">Text is required</p>
                     {/* <div className="ctSearchFlexBox POPUPBG" id="CTSEARCH">
                 {tohash ? (
                     searchTweetList.length > 0 ? (searchTweetList.map((se) => {
@@ -333,56 +430,48 @@ function CreateTweet(props) {
                             {/* <p id="CTRetweetUsernname" className="ctUserName">{user_name}</p> */}
                         </div>
                     </div>
-                    {Rimage != null ? (<p className="TWRImageText" >Tweets's Image -: &ensp;<a id="TWRImageLink" href={Rimage} target="_blank">{Rimage}</a></p>) : null}
-                    {Rvideo != null ? (<p className="TWRImageText" >Tweets's Video -: &ensp;<a id="TWRImageLink" href={Rvideo} target="_blank">{Rvideo}</a></p>) : null}
-                    {/* {Rimage != null ? (<img src={`https://twitterbackend-production-93ac.up.railway.app/${Rimage}`} className="CTRVideo" alt="image" />) : null}
+                    {/* {Rimage != null ? (<p className="TWRImageText" >Tweets's Image -: &ensp;<a id="TWRImageLink" href={Rimage} target="_blank">{Rimage}</a></p>) : null} */}
+                    {/* {Rvideo != null ? (<p className="TWRImageText" >Tweets's Video -: &ensp;<a id="TWRImageLink" href={Rvideo} target="_blank">{Rvideo}</a></p>) : null} */}
+                    {Rimage != null ? (<img src={Rimage} className="CTRVideo" alt="image" />) : null}
                     {Rvideo != null ? <video controls className="CTRVideo">
-                        <source src={`https://twitterbackend-production-93ac.up.railway.app/${Rvideo}`} type="video/mp4" />
-                    </video> : null} */}
+                        <source src={Rvideo} type="video/mp4" />
+                    </video> : null}
                     <p className="TWRText" >{Rtext}</p>
                 </div>
                 <div id="CTReplyDiv">
-                    <p className="ctName" id="replying-to-head">Replying to<span id="CTReplyAtName1"> @{atNames}</span>{
-                        showName ? (
-                            nameInReply.length > 0 ? (nameInReply.map((name) => {
-                                return <span id="CTReplyAtName" onClick={() => {
-                                    console.log(`/profile/${name}`)
-                                    navigate(`/profile/${name}`)
-                                }}>@{name}</span>
-                            })) : null
-                        ) : null
-                    }
-                    </p>
-                    {/* <p className="ctName">Replying to <span id="CTReplyAtName">@{Rname}</span></p> */}
+                    <p className="ctName">Replying to <span id="CTReplyAtName">@{Rname}</span></p>
                     <div className="CTReplyTweet">
                         <input type="text" id="CTReplyInput" className="ctWriteTweetInput" value={text} onChange={(e) => { setText(e.target.value) }} />
                     </div>
                 </div>
+                {/* <p><img id="imageOutput" /></p>
+                <p><video id="VIDEO" width="200" controls>
+                            <source id="videoOutput" width="200" type="video/mp4, audio/mp4" />
+                        </video>
+                        </p> */}
                 <div className="CTBlock2">
                     <div className="CTUPLIMG">
                         <label for="ctuploadImg"><img src={imageIcon} className="ctImage" /></label>
                         <input type="file" id="ctuploadImg" accept="image/png, image/jpg, image/jpeg" onChange={handleSendImage} hidden />
                         <p className="ctImageText">Image</p>
-                        <p><img id="imageOutput" width="200" /></p>
+                      
                     </div>
                     <div>
                         <label for="ctuploadVideo"><img src={videoIcon} className="ctVideo" /></label>
                         <input type="file" id="ctuploadVideo" accept="video/mp4, audio/mp4" onChange={handleSendVideo} hidden />
                         <p className="ctVideoText">Video</p>
-                        <p><video id="VIDEO" width="200" controls>
-                            <source id="videoOutput" width="200" type="video/mp4, audio/mp4" />
-                        </video>
-                        </p>
                     </div>
                     <div>
                         <img src={smileIcon} className="ctSmile" onClick={() => { handleEmojis() }} />
-                        {showEmoji ? (<div className="emojipicker1" ><Picker className="emojipicker2" theme="dark" width="20vw" height="300px" onEmojiClick={onemojiclick} /></div>) : null}
-                        <p className="ctSmileText">Emojis</p>
+               {showEmoji ? (<div className="emojipicker1"><Picker className="emojipicker2" id="EMOJI" theme="dark" width="18vw" height="250px" onEmojiClick={onemojiclick} /></div>) : null}
+               <p className="ctSmileText">Emojis</p>
+                      
                     </div>
                     <button className="ctCancelTweet" onClick={backToHome}>Cancel</button>
                     <button className="ctCreateTweet" onClick={handleCreateTweet} id="buttonTweet" >Tweet</button>
                     <button className="ctCreateTweet" id="buttonRetweet" onClick={handleCreateReTweet}>ReTweet</button>
                     <button className="ctCreateTweet" id="buttonReply" onClick={handleTweetReply}>Reply</button>
+                    <button className="ctCreateTweet" id="buttonReply2" onClick={handleReplyReply}>Reply</button>
                 </div>
             </form>
         </div>

@@ -5,7 +5,7 @@ import Sidebar from "../Sidebar/SideBar";
 import ChatUser from "./ChatUser";
 import MsgUser from "./User";
 import avatar from "../Assets/avatar.svg"
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import imageIcon from "../Assets/imageIcon.svg";
 import videoIcon from "../Assets/videoIcon.svg";
 import smileIcon from "../Assets/smileIcon.svg";
@@ -13,10 +13,12 @@ import sendChatIcon from "../Assets/sendChats.svg";
 import Picker from "emoji-picker-react"
 import FormData from "form-data";
 import ScrollableChat from "./ScrollableChats";
+import searchIcon from "../Assets/search.svg"
 import Loader from "../Assets/Loader";
 import { io } from "socket.io-client";
 import { AddChatNotify } from "../../react-redux/actions/Notifications";
 import NoChats from "./NoChats";
+import SearchChatUser from "./SearchChatPopUp";
 // import { Socket } from "socket.io-client";
 
 
@@ -27,7 +29,32 @@ function Chats() {
     const [socketConnected, setSocketConnected] = useState(false)
     const { user } = useSelector((a) => a.AuthReducer)
     const { userid } = useParams();
+    const chatReducer =  useSelector((c) => c.MsgSearchReducer)
+    const { chatLists, viewChatList, isActive,chatBool, sendChatMessage, viewChatMsgs, loading } = chatReducer
+    const dispatch = useDispatch();
 
+    const [chats, setChats] = useState([])
+    const [sideChats, setSideChats] = useState([])
+    const [topName, setTopName] = useState("")
+    const [topPic, setTopPic] = useState("")
+    const [sendChatId, setSendChatId] = useState()
+
+    useEffect(()=>{
+        document.getElementById("SEARCHBOX").style.display="none"
+    },[])
+    useEffect(()=>{
+        dispatch(ViewChatList())
+        // console.log(chatLists)
+        console.log(viewChatList)
+    },[])
+    useEffect(()=>{
+        if(viewChatList){
+            setSideChats(chatLists)
+            console.log(chatLists)
+        }
+    },[chatReducer])
+    // console.log(chatLists)
+    // console.log(chats)
     // set socket connection
     // console.log(userid)
     useEffect(() => {
@@ -36,6 +63,10 @@ function Chats() {
 
         socket.on("connection", () => {
             setSocketConnected(true)
+        })
+        
+        return (()=>{
+            socket.disconnect()
         })
     }, [])
 
@@ -52,59 +83,35 @@ function Chats() {
         }
 
     },[userid])
-
-    const [userN, setUserN] = useState("")
-    const [userlist, setUesrlist] = useState([])
-    const dispatch = useDispatch();
-    function handleSearch(e) {
-        setUserN(e.target.value)
-    }
-    const { chatLists, viewChatList, isActive, sendChatMessage, viewChatMsgs, loading } = useSelector((c) => c.MsgSearchReducer)
-
-    const [allChats, setAllChats] = useState([])
-    const [cBool, setCBool] = useState(false)
-    console.log(chatLists)
-    useEffect(() => {
-        dispatch(ViewChatList())
-        setUesrlist(chatLists)
-        setCBool(true)
-        // console.log(viewChatList)
-    }, [])
-    // console.log(chatLists[0].users)
-    useEffect(() => {
-        document.getElementById("SEARCHBOX").style.display = "none";
-    }, [])
-
-    console.log(userlist)
-
-    const [sendChatId, setSendChatId] = useState()
-    const [list, setlist] = useState([])
-
-    useEffect(() => {
-        if (isActive) {
-            if (cBool) {
-                chatLists.map((ch) => {
-                    // console.log(ch);
-                    ch.users.map((c) => {
-                        if (c.user_name != user.user_name)
-                            console.warn(c)
-                            if (c._id == userid) {
-                                setlist(c)
-                                console.warn(ch._id)
-                                sessionStorage.setItem("chatId", ch._id)
-                                setSendChatId(ch._id)
-                                currentChattingWith = ch._id;
-                                dispatch(ViewChatsAction(ch._id))
-                                setAllChats(viewChatMsgs)
-                                // console.log(c)
-                               
-                                // console.log(list.name)
-                            }
-                    })
+const [chatMsgs, setChatMsgs] = useState([])
+    useEffect(()=>{
+        if(isActive){
+            if(viewChatList){
+                chatLists.map((chatt)=>{
+                    chatt.users.map((chatUser=>{
+                        // console.log(chatUser)
+                        if(chatUser._id == userid){
+                          console.warn(chatUser)
+                          setTopName(chatUser.name)
+                          setTopPic(chatUser.displaypic)
+                          setSendChatId(chatt._id)
+                          currentChattingWith = chatt._id;
+                          dispatch(ViewChatsAction(chatt._id))
+                        //   console.log(viewChatMsgs)
+                        }
+                    }))
                 })
             }
         }
-    }, [isActive, userid])
+
+    },[userid, chatLists, viewChatList, isActive])
+
+    useEffect(()=>{
+        if(chatBool){
+            // console.warn(viewChatMsgs)
+            setChatMsgs(viewChatMsgs)
+        }
+    },[chatReducer])
 
     const [textMsg, setTextMsg] = useState("")
     const [showEmoji, setShowEmoji] = useState(false)
@@ -134,7 +141,7 @@ function Chats() {
 
     const sendChat = {
         "image": imageInArr,
-        "chatId": sendChatId,
+        // "chatId": sendChatId,
         "text": textMsg,
         "video": vdoInArr,
         user: {
@@ -145,11 +152,11 @@ function Chats() {
         },
     }
   
-    console.log(sendChatId)
+    // console.log(sendChatId)
     function sendChatMsg(chattid) {
-        console.log(chattid)
+        // console.log(chattid)
         fd.append("text", textMsg)
-        fd.append("chatId", sessionStorage.getItem("chatId"))
+        fd.append("chatId", chattid)
         if (sendImage != "") {
             fd.append("file", sendImage)
         }
@@ -159,18 +166,27 @@ function Chats() {
         else {
             fd.append("file", null)
         }
-      if(textMsg!=""){
+        console.warn(socket.connected)
+      if(socket.connected && textMsg!=""){
         dispatch(SendChatsAction(fd, socket))
+        // setChatMsgs([...chatMsgs, sendChat])
         dispatch(FakeViewChatsAction(sendChat))
+      }
+      if(!socket.connected){
+        socket = io(ENDPOINT)
+        socket.emit("setup", user);
+
+        socket.on("connection", () => {
+            setSocketConnected(true)
+        })
       }
         setTextMsg("")
         setSendImage(null)
         setSendVideo(null)
     }
-    console.warn(sendChatMessage)
+    // console.warn(sendChatMessage)
 
     console.log(socket)
-    console.log(currentChattingWith)
 
     // sockets : recieving new messages
     useEffect(() => {
@@ -180,6 +196,7 @@ function Chats() {
             }
             else {
                 console.warn(newChatMsgRecieved)
+                // setChatMsgs([...chatMsgs, sendChat])
                 dispatch(FakeViewChatsAction(newChatMsgRecieved))
                 // setAllChats([...allChats, newChatMsgRecieved])
 
@@ -200,22 +217,28 @@ function Chats() {
             document.body.style.opacity = 1;
         }
     }, [loading])
+    const navigate = useNavigate();
 
     return <>
         <Sidebar />
         <div className='CHATS POPUPBG'>
             <div className="Chat2">
                 <div className="ChatInfo2">
-                    {/* <img src={avatar} id="msgPicincircle" /> */}
-                    {(list.displaypic === null) ? ( <img src={avatar}  id="msgPicincircle" />) :
-                    (<img src={list.displaypic} id="msgPicincircle"/>) 
+                    
+                    {(topPic === null) ? ( <img src={avatar}  id="msgPicincircle" />) :
+                    (<img src={topPic} id="msgPicincircle"/>) 
                        
                 }
-                    <p className="msgName" id="ChatName">{list.name}</p>
+                    <p className="msgName" id="ChatName">{topName}</p>
+                    {/* <img src={searchIcon} className="chatSearch" onClick={()=>{
+                        document.getElementById("SELECT_CHAT_BLOCK").style.display="flex"
+                    }} /> */}
+
                 </div>
-                <div>
-                    <ScrollableChat allchats={allChats} />
+                  <div>
+                    <ScrollableChat chatMessage={chatMsgs} />
                 </div>
+
                 <div className="ChatTypeDiv" id="CHATTYPE">
                     <form onSubmit={(e) => e.preventDefault()}
                         enctype="multipart/form-data" >
@@ -239,19 +262,32 @@ function Chats() {
                                 <img src={smileIcon} className="chatSmile" onClick={() => { handleEmojis() }} />
                                 {showEmoji ? (<div className="chatemojipicker"><Picker width="300px" height="420px" theme="dark" onEmojiClick={onemojiclick} /></div>) : null}
                             </div>
-                            {console.log(sendChatId)}
+                            {/* {console.log(sendChatId)} */}
                             <img className="sendchaticon" onClick={() => { sendChatMsg(sendChatId) }} src={sendChatIcon} />
                         </div>
                     </form>
                 </div>
             </div>
             <div className='Chat1'>
-                <input className=" ChatSearch1 POPUPBG" type="text" value={userN} onChange={handleSearch} placeholder="Search" />
+               
                 <div className="ChatUserFlex">
-                    {(viewChatList) ? (chatLists.length > 0 ? (chatLists.map((chat, index) => {
+                {/* {console.log(chats)} */}
+                {sideChats.map((oneChat, index)=>{
+                    return <ChatUser sidechat={oneChat} indexx={index} />
+                })}
+                {/* {(chats.map((sideChats, indexx)=>{
+                   return <ChatUser name={sideChats.name} username={sideChats.user_name} index={indexx} displaypic={sideChats.displaypic} userNum={sideChats._id} />
+
+                }))} */}
+                </div>
+                    {/* {(viewChatList) ? (chatLists.length > 0 ? (chatLists.map((chat, index) => {
                         {console.log(chat)}
                         return <ChatUser user={chat.users} msg={chat.latestmsg} indexx={index} viewChatid={chat._id} />
                     })) : null) : null}
+                    {(viewChatList) ? (chatLists.length > 0 ? (chatLists.map((chat, index) => {
+                        {console.log(chat)}
+                        return <SearchChatUser user={chat.users} msg={chat.latestmsg} indexx={index} viewChatid={chat._id} />
+                    })) : null) : null} */}
                     {/* {isActive ? (
                         <div className="msgUser" id="ChatUser1" >
                             {/* {(list.displaypic === null) ? ( <img src={avatar}  id="msgPicincircle" />) :
@@ -262,17 +298,17 @@ function Chats() {
                             <div className="ChatUser2">
                                 <p className="msgName">{list.name}</p>
                                 <p className="msgUsername">{list.user_name}</p>
-                                {/* <p className="msgUsername">{props.msg}</p> 
+                                 <p className="msgUsername">{props.msg}</p> 
                             </div>
                         </div>
                     ) : null} */}
 
                 </div>
             </div>
-        </div>
+        
         {(loading == true) ? <Loader loading={loading} /> : null}
         <NoChats />
-        {/* <span className='ChatLine1' /> */}
+        <SearchChatUser />
     </>
 }
 export default Chats;

@@ -42,6 +42,17 @@ function GoogleSignin() {
       setCheckName(false)
     }
   }, [nameN])
+  useEffect(() => {
+    if (rightname.test(name)) {
+      document.getElementById('googleInvalidName').style.display = "none";
+      setCheckName(true)
+    }
+    else if (name) {
+      document.getElementById('googleInvalidName').style.display = "block";
+      setCheckName(false)
+    }
+  }, [name])
+
 
   const rightpass =
     /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&#])[A-Za-z\d@$!%?&#]{8,}$/;
@@ -123,26 +134,25 @@ useEffect(()=>{
   return <>
     <Background />
     <div className='loginBg'>
-      <img src={arrow} id="arrow" onClick={() => { navigate("/verifyemail") }} />
-      <p className='authHead' id="authreset">Sign Up</p>
-      <img src={nameIcon} className="googleNameIcon1" />
-      <p className='authEmail' id="resetPwdHead">Full Name</p>
-      <input type="text" className="authEmailInput" id="resetPwdHeadInput" placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} />
-      <p id="googleInvalidName">Name should consists of alphabets</p>
-      <img src={nameIcon} className="googleNameIcon2" />
-      <p className='googlename'>Username</p>
-      <input type="text" className="googleEmailInput" placeholder="Enter your name" value={nameN} onChange={(e) => setNameN(e.target.value)} />
-      <p id="googleInvalidName2">Name should not contain any whitespaces</p>
-      <img src={lockIcon} id="googleLock" />
-      <p className='signPwd' id="googlePass">Password</p>
+      <p className='authHead' id="authSignTwo">Sign Up</p>
+      <p className='authEmail' id="sign2Name">Full Name</p>
+      <img src={nameIcon} id="emailIcon" />
+      <input type="text" className="authEmailInput" placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} />
+      <p id="googleInvalidName" className="invalidEmail">Name should consists of alphabets</p>
+      <img src={nameIcon} id="nameIcon"  />
+      <p className='authPwd' id="sign2Username">Username</p>
+      <input type="text" className="authEmailInput" placeholder="Enter your name" value={nameN} onChange={(e) => setNameN(e.target.value)} />
+      <p id="googleInvalidName2" className="invalidEmail">Name should not contain any whitespaces</p>
+      <img src={lockIcon} id="lockIconS" />
+      <p className='authPwd' id="googlePass">Password</p>
       {show1 ? (
-        <FontAwesomeIcon icon={faEye} id="googleEye" onClick={handleShow1} />
+        <FontAwesomeIcon icon={faEye} id="LEye" onClick={handleShow1} />
       ) : (
-        <FontAwesomeIcon icon={faEyeSlash} id="googleEye" onClick={handleShow1} />
+        <FontAwesomeIcon icon={faEyeSlash} id="LEye" onClick={handleShow1} />
       )}
-      <input type={show1 ? "text" : "password"} className="signPwdInput authPwdInput" id="googlePassInput" placeholder="Password" value={pass} onChange={(e) => setPass(e.target.value)} />
-      <p className='invalidPwd' id="googleInvalidPwd">Password must be 1 uppercase 1 lowercase 1 number 1 special digit character and 8 or more characters</p>
-      <button type="button" className='authSignIn' id="googleBtn" onClick={() => { SIGNUPTWO() }}>Sign Up</button>
+      <input type={show1 ? "text" : "password"} className="authPwdInput" placeholder="Password" value={pass} onChange={(e) => setPass(e.target.value)} />
+      <p className='invalidEmail' id="googleInvalidPwd">Password must be 1 uppercase 1 lowercase 1 number 1 special digit character and 8 or more characters</p>
+      <button type="button" className='authFgtPwdBtn' id="googleBtn" onClick={() => { SIGNUPTWO() }}>Sign Up</button>
     </div>
     {loading === true ? <Spinner animation="border" variant="light" id="loadSpinner" /> : null}
     <ToastContainer />

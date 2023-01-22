@@ -68,7 +68,7 @@ const TitleNavBar = (state = initial, action) => {
         }
         case "TAG_TWEET_NAV":{
             return {
-                ...state, title: action.payload.title, image: action.payload.image,
+                ...state, title: action.payload.title, image:action.payload.image
             }
         }
         default:{
