@@ -1,7 +1,7 @@
 import BaseUrl from "./BaseUrl";
 
 function DoBookmarkAction(tweetId) {
-    const accessToken =sessionStorage.getItem("access token")
+    const accessToken =localStorage.getItem("access token")
     console.log(accessToken)
     const config = {
         headers: {
@@ -33,7 +33,7 @@ export default DoBookmarkAction
 
 
 function SeeBookmarkAction() {
-    const accessToken =sessionStorage.getItem("access token")
+    const accessToken =localStorage.getItem("access token")
     console.log(accessToken)
     const config = {
         headers: {

@@ -141,33 +141,9 @@ const SignUpResend = (email) => {
 export { SignUpResend }
 
 
-// // const {token} = useSelector((t)=>t.AuthReducer)
-// var accesstoken,config
-// function AccesstToken (){
-//     // const {token} = useSelector((t)=>t.AuthReducer)
-//     const token = sessionStorage.getItem("isToken")
-//     // const token="a";
-//     console.log(token)
-//     if(token){
-//         accesstoken = sessionStorage.getItem("access token")
-//         console.log(accesstoken)
-//          config={
-//             headers:{
-//                 "Authorization" : `Bearer ${accesstoken}`
-//             }
-//         }
-//         console.log(config)
-//     }
-//     else{
-//         setTimeout(AccesstToken,500)
-//         // sessionStorage.removeItem("access token")
-//     }
-// }
-
-// AccesstToken()
 
 const SignUpTwoUser = (data) => {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     console.log(accessToken)
     const config = {
         headers: {
@@ -194,7 +170,7 @@ const SignUpTwoUser = (data) => {
 export { SignUpTwoUser }
 
 const ResetAction = (password) => {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     console.log(accessToken)
     const config = {
         headers: {

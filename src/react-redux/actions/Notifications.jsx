@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 export const ViewNotifyAction = () => {
-    const accessToken =sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -33,7 +33,7 @@ export const ViewNotifyAction = () => {
 
 
 export const ReadNotifyAction = (id) => {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`

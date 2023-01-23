@@ -23,8 +23,7 @@ const initialState ={
         }
         case "REQUEST_SUCCEDED":{
             console.log(action.payload)
-            sessionStorage.setItem("access token", action.payload.token)
-            sessionStorage.setItem("isToken","true")
+            localStorage.setItem("access token", action.payload.token)
             return {...state,
                 loading:false,
                 response:action.payload.msg,
@@ -37,7 +36,6 @@ const initialState ={
         }
         case "REQUEST_FAILED":{
             console.log(action.payload)
-            // sessionStorage.setItem("isToken", "false")
             return {
                 loading:false,
                 response:"",
@@ -47,14 +45,12 @@ const initialState ={
         }
         case "FGT_EMAIL_STARTED":{
             console.log(action.payload)
-            // sessionStorage.setItem("isToken", "false")
             return {
                 ...state, loading:true,toOtp:false
             }
         }
         case "FGT_EMAIL_SUCCEDED":{
             console.log(action.payload)
-            // sessionStorage.setItem("isToken", "false")
             return {...state,
                 loading:false,
                 response:action.payload.msg,
@@ -64,7 +60,6 @@ const initialState ={
         }
         case "FGT_EMAIL_FAILED":{
             console.log(action.payload)
-            // sessionStorage.setItem("isToken", "false")
             return {
                 loading:false,
                 response:"",
@@ -80,7 +75,7 @@ const initialState ={
         }
         case "OTP_SUCCEDED":{
             console.log(action.payload)
-            sessionStorage.setItem("access token", action.payload.token)
+            localStorage.setItem("access token", action.payload.token)
             localStorage.setItem("isToken", "true")
             return {...state,
                 loading:false,
@@ -182,8 +177,7 @@ const initialState ={
         }
         case "EMAIL_VERIFY_SUCCEDED":{
             console.log(action.payload)
-            sessionStorage.setItem("access token", action.payload.token)
-            localStorage.setItem("isToken", "true")
+            localStorage.setItem("access token", action.payload.token)
             console.log(action.payload.token)
             return {...state,
                 loading:false,
@@ -223,7 +217,6 @@ const initialState ={
         }
         case "SIGNUP_TWO_FAILED":{
             console.log(action.payload)
-            // console.log(action.payload.response.data.msg)
             return {
                 loading:false,
                 response:"",
