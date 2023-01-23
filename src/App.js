@@ -37,7 +37,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* {isUser?():(<Route path="/login" exact element={<Login />} />)} */}
-        <Route path="" exact element={<HomePage />} />
+        <Route path="/" exact element={<HomePage />} />
         <Route path="/login" exact element={<Login />} />
         <Route exact path="/fgtpwd" element={<ForgotPwd />} />
         <Route exact path="/otp" element={<AuthOtp />} />
