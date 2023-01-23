@@ -500,7 +500,7 @@
     line-height: 20px;
     color: #47c87a;
    cursor: pointer;
-    margin-left:-5.2vw;
+    margin-left:-8vw;
   
     margin-top: 30px;
     text-transform: capitalize;
@@ -860,6 +860,13 @@ font-size: 0.9rem;
     margin-left: 9vw;
    width:22vw;
 }
+#ProfileImage {
+    width: 56vw;
+}
+
+#ProfileVideo {
+    width: 56vw;
+}
 }
 @media(max-width:670px){
     .pTweet1{
@@ -935,6 +942,13 @@ font-size: 0.9rem;
     #DltPopBtn2 {
         margin-left: 11vw;
        
+    }
+    #ProfileImage {
+        width: 55vw;
+    }
+    
+    #ProfileVideo {
+        width: 55vw;
     }
 }
 @media(max-width:550px){
@@ -1146,5 +1160,12 @@ font-size: 0.9rem;
     .pText2{
         font-size: 0.9rem;
         margin-top:-4px;
+    }
+    #ProfileImage {
+        width: 78vw;
+    }
+    
+    #ProfileVideo {
+        width: 78vw;
     }
 }

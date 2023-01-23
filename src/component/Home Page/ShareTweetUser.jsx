@@ -78,11 +78,8 @@ function ShareTweetUser(props) {
 
     return <>
         <div className="shareUser POPUPBG">
-            {/* {(props.displaypic === null) ? (<img src={avatar} id="sharePicincircle" />) :
-                ((props.displaypic.startsWith("https:")) ? (<img src={props.displaypic} id="sharePicincircle" />) :
-                    (
-                        <img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`} id="sharePicincircle" />))
-            } */}
+            {(info.displaypic === null) ? (<img src={avatar} id="sharePicincircle" />) :
+               (<img src={info.displaypic} id="sharePicincircle" />) }
             <div className="shareUser2">
                 <p className="shareName">{info.name}</p>
                 <p className="shareUsername" onClick={() => {

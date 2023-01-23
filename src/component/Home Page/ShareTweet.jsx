@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MsgSearchUser from "../../react-redux/actions/Message";
 import ShareTweetUser from "./ShareTweetUser";
+import deleteIcon from "../Assets/delete.svg"
+
 
 function ShareTweet() {
     const [search, setSearch] = useState("")
@@ -15,41 +17,26 @@ function ShareTweet() {
     
     // const [info2, setInfo2] = useState([])
     const dispatch = useDispatch();
-    function handleSearch(e) {
-        setSearch(e.target.value)
-        dispatch(MsgSearchUser(e.target.value));
-        console.log(MsgSearchUser)
-    }
-    // useEffect(() => {
-    //     if (toMsgUser) {
-    //         if (msgUser.length > 0) {
-
-    //             setSearchListArray(msgUser)
-    //         }
-    //         else {
-    //             setSearchListArray([])
-    //         }
-    //     }
-    // }, [toMsgUser, msgUser])
-    // useEffect(() => {
-    //     if (msgUser.length > 0) {
-    //         setInfo(msgUser)
-    //         info.map((i, index) => {
-    //             console.log(i._id)
-    //             if (i._id === user._id) {
-    //                 console.warn(index)
-    //                 info.splice(index,1)
-    //             }
-    //         })
-    //     }
-    // }, [])
     console.log(info)
+    function setOPacity() { /*SET BACKGROUND OPACITY*/
+    var items = document.getElementsByClassName("POPUPBG")
+    for (var i = 0; i < items.length; i++) {
+        document.getElementsByClassName("POPUPBG")[i].style.opacity = 1;
+    }
+}
 
     return <>
         <div className="shareTweetDiv" id="SHAREBLOCK">
+        <div className="shareePopup">
             <p className="shareTweetText">Share with</p>
             <hr className="shareTweetLine" />
-            {/* <input className="shareTweetSearchIpt" type="text" value={search} onChange={handleSearch} placeholder="Search" /> */}
+            </div>
+            <div onClick={() => {
+                document.getElementById("SHAREBLOCK").style.display = "none"
+                setOPacity();
+            }}>
+            <img src={deleteIcon} className="msgDelete" /></div>
+          
             <div className="shareTweetFlexbox">
             {(viewChatList) ? (chatLists.length > 0 ? (chatLists.map((chat, index) => {
                         {/* console.log(chat) */ }

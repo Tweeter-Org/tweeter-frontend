@@ -5,6 +5,7 @@ import { ActiveUserList, CreateChat, ViewChatsAction } from "../../react-redux/a
 import { Messages } from "../../react-redux/actions/SearchApi";
 import greenmessage from "../Assets/greenmsg.svg"
 import avatar from "../Assets/avatar.svg"
+import { NotifyChatSeen } from "../../react-redux/actions/Notifications";
 
 function ChatUser(props) {
     const {user} = useSelector((a)=>a.AuthReducer)
@@ -14,18 +15,34 @@ function ChatUser(props) {
     const dispatch = useDispatch();
     const[info, setInfo] = useState([])
     const chatList = props.sidechat
-    // console.log(props.sidechat)
+    const newMsgNotify = localStorage.getItem("new Notify")
+    const {unseenChats} = useSelector((n)=>n.NotificationReducer) 
+    const [latestmsg, setLatestmsg] = useState("")
+   
+    useEffect(()=>{
+        console.log(unseenChats)
+        if(unseenChats.length>0){
+            unseenChats.map((unseen)=>{
+                console.log(unseen)
+                // if(unseen.chat._id == props.sidechat._id){
+                //     setLatestmsg(unseen.chat.latestmsg)
+                // }
+            })
+        }
+    }, [unseenChats])
+  
+    console.log(props.sidechat)
 
     useEffect(()=>{
       props.sidechat.users.map((chat)=>{
-        // console.log(chat)
         if(chat._id != user._id){
             // setChats([...chats, chatUser])
             // console.log(chat)
             // console.log(chats)
             setInfo(chat)
         }
-
+        // console.log(props.sidechat.users._id)
+        // console.log(newMsgNotify)
       })
     },[user, chatList])
     // console.log(chats)
@@ -67,7 +84,7 @@ function ChatUser(props) {
         dispatch(Messages(greenmessage, "Messages", 3)) 
         navigate(`/chats/${usernum}`)
         dispatch(CreateChat(usernum))
-        // dispatch(ViewChatsAction(viewChatIdd))
+       dispatch(NotifyChatSeen())
     }
     // console.log(props.msg)
     return <>
@@ -80,6 +97,10 @@ function ChatUser(props) {
         <p className="msgUsername" onClick={()=>{
                handleUserChat(info._id)
             }}>{info.user_name}</p>
+            {newMsgNotify?(
+                !newMsgNotify.is_read ? (<p className="msgNotify">New Chat:{latestmsg}</p>):null
+            ):null}
+           
         {/* <p className="msgUsername">{props.msg}</p> */}
         </div>
        </div>

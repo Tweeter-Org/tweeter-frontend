@@ -463,7 +463,7 @@ setText("")
                     </div>
                     <div>
                         <img src={smileIcon} className="ctSmile" onClick={() => { handleEmojis() }} />
-               {showEmoji ? (<div className="emojipicker1"><Picker className="emojipicker2" id="EMOJI" theme="dark" width="18vw" height="250px" onEmojiClick={onemojiclick} /></div>) : null}
+               {showEmoji ? (<div className="emojipicker1"><Picker className="emojipicker2" id="EMOJI" theme="dark" width="18vw" height="300px" onEmojiClick={onemojiclick} /></div>) : null}
                <p className="ctSmileText">Emojis</p>
                       
                     </div>

@@ -65,16 +65,17 @@ export const ReadNotifyAction = (id) => {
 
 
 
-export const AddChatNotify =(new_unseen_chat)=>{
+export const AddChatNotify =(newUnseenChat)=>{
+    console.log(newUnseenChat)
     return {
         type:"ADD_CHAT_NOTIFY",
-        payload:new_unseen_chat
+        payload:{newUnseenChat}
     }
 }
 
-export const NotifyChatSeen =(new_seen_chat)=>{
+export const NotifyChatSeen =(newSeenChat)=>{
     return {
         type:"NOTIFY_CHAT_SEEN",
-        payload:new_seen_chat
+        payload:{newSeenChat}
     }
 }

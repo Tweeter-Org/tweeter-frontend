@@ -1,6 +1,6 @@
 const initialState={
     notifications:0,
-    unseen_chats:[],
+    unseenChats:[],
     viewNotifs:{},
     loading:false,
     notifyBool:false,
@@ -30,11 +30,18 @@ export const NotificationReducer = (state= initialState, action) => {
       return {...state, loading:false,}
   }
       case "ADD_CHAT_NOTIFY":
+        console.warn(action.payload)
         return {
           ...state, 
-          unseen_chats: [action.payload.new_unseen_chat, ...state.unseen_chats],
-          notification: state.notification + 1,
+          unseenChats: [action.payload.newUnseenChat, ...state.unseenChats],
+          notifications: state.notifications + 1,
         };
+        case "NOTIFY_CHAT_SEEN":{
+          return {
+            ...state, 
+            // unseenChats:(state.unseenChats.filter(ch)=>{return ch._id != })
+          }
+        }
     //   case REMOVE_SEEN_MSG:
     //     return { ...store, notification: payload.length, unseenmsg: payload };
       default:

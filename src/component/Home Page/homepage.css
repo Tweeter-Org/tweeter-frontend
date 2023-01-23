@@ -347,7 +347,7 @@ color:#47C87A;
     padding-left: 1.5vw;
     overflow-x: hidden;
     overflow-y: scroll;
-    padding-bottom:20px;
+    padding-bottom:50px;
 }
 
 #CREATETWEET {
@@ -517,7 +517,7 @@ color:#47C87A;
     position: absolute;
     top:0px;
     /* display: none; */
-    left: 20vw;
+    left: 21vw;
     /* z-index:9999; */
 }
 
@@ -836,7 +836,7 @@ display: none;
 .shareTweetSearchIpt{
     border: none;
     outline: none;
-    margin-top:5px;
+    margin-top:10px;
     width: 34vw;
     height: 32px;
     background: none;
@@ -853,10 +853,24 @@ display: none;
     margin-top:30px;
     z-index:20;
 }
+.shareePopup{
+    background-color: rgb(255,255,255, 0.1);
+    background-color: #1A1C1E;
+    position: fixed;
+    z-index:80;
+    margin:0;
+    margin-left:-0.5vw;
+    width:35vw;
+    padding-bottom: 4px;
+    padding-top:4px;
+    border-top-right-radius:20px;
+    border-top-left-radius:18px;
+    margin-top:-10px;
+}
 .shareTweetFlexbox{
     display: flex;
     flex-direction: column;
-    margin-top:px;
+    margin-top:35px;
     z-index:16;
 }
 .shareUser {
@@ -907,9 +921,20 @@ display: none;
 }
 .shareTweetLine{
     border-bottom:0.5px solid rgba(255, 255, 255, 0.4);
-    width:34vw;
-    margin-top:35px;
-    margin-bottom:0;
+    width:35vw;
+    margin-top:40px;
+    margin-bottom:-4px;
+}
+
+.msgDelete {
+    width: 22px;
+    height: 22px;
+    opacity: 0.8;
+    cursor: pointer;
+    margin-top: 4px;
+    margin-left: 32vw;
+    z-index: 90;
+    position: fixed;
 }
 /* CREATE TWEET/ RETWEET */
 

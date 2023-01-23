@@ -22,6 +22,7 @@ function Notify(props) {
     function handleNotify(notifId) {
         console.log(notifId)
         document.getElementsByClassName("notifyCard")[index].style.backgroundColor = "rgb(26, 28, 30)"
+        document.getElementsByClassName("notifyCircle")[index].style.display="none"
         dispatch(ReadNotifyAction(notifId))
         // document.getElementsByClassName("notifyCard")[index].style.backgroundColor = "rgba(255, 255, 255, 0.1)"
         // if()
@@ -29,9 +30,11 @@ function Notify(props) {
     useEffect(() => {
         if (isRead) {
             document.getElementsByClassName("notifyCard")[index].style.backgroundColor = "rgb(26, 28, 30)"
+            document.getElementsByClassName("notifyCircle")[index].style.display="none"
         }
         else {
             document.getElementsByClassName("notifyCard")[index].style.backgroundColor = "rgba(255, 255, 255, 0.1)"
+            document.getElementsByClassName("notifyCircle")[index].style.display="block"
         }
     }, [isRead])
 
@@ -54,7 +57,7 @@ function Notify(props) {
                 }} className="notifTweet">#Tweet</b></p> : null}
                 {/* <p className="notifyMsg">There is no new cj:nullbcjhdbjlastestfyy bgguiyh mesjhbj,hvbvhhhh,nhghhjftcsage</p> */}
             </div>
-
+<span className="notifyCircle" />
         </div>
 
 

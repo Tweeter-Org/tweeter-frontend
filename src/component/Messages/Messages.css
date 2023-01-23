@@ -179,7 +179,7 @@
     cursor: pointer;
     margin-top: 4px;
     margin-left: 32vw;
-    z-index: 20;
+    z-index: 90;
     position: fixed;
 }
 
@@ -234,6 +234,16 @@
     text-decoration: underline;
     cursor: pointer;
 }
+.msgNotify{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 20px;
+    color:rgba(255, 255, 255, 0.8);
+    margin-top:-16px;
+    margin-left: 0.5vw;
+}
 .chatSearch{
     display: none;
 }
@@ -285,7 +295,9 @@
     scroll-behavior: smooth;
     /* margin-top:20px; */
 }
-
+#SELECT_CHAT_BLOCK{
+    display: none;
+}
 .ChatSearch1 {
     border: none;
     outline: none;
@@ -338,7 +350,7 @@
     border: none;
     margin-top: 4px;
     width: 25vw;
-    height: 55px;
+    height: 70px;
     border-bottom: 0.5px solid rgba(255, 255, 255, 0.2);
     padding-left: 1vw;
     margin-left: -1vw;
@@ -755,8 +767,25 @@ width:63vw;
     .msgDelete{
         margin-left:48vw;
     }
+    .searchPopup{
+        z-index:110;
+    }
+    .shareTweetFlexbox{
+        /* z-index:90; */
+        /* z-index:110; */
+    }
     #SELECT_CHAT_BLOCK{
-        display:none
+        display:flex;
+        width:54vw;
+        margin-top:-50px;
+        margin-left:-2vw;
+        z-index:110;
+    }
+    #shareBlock1{
+        width:54vw;
+    }
+    #shareDlt{
+        margin-top:-29px;
     }
     .chatSearch{
         display: flex;
@@ -768,6 +797,21 @@ width:63vw;
         background:rgba(255, 255, 255, 0.2);
         border-radius: 50%;
         height:30px;
+    }
+    #msgLine{
+        width:52vw;
+    }
+    #msgSearchUserr{
+        width:53vw;
+        border: none;
+    margin-top: 4px;
+    height: 70px;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.2);
+    padding-left: 1vw;
+    margin-left: -1vw;
+}
+    #ChatUser2{
+        width:52vw;
     }
 }
 @media(max-width:650px){
@@ -874,6 +918,24 @@ width:61vw;
     .msgDelete{
         margin-left:57vw;
     }
+    #SELECT_CHAT_BLOCK{
+        width:60vw;
+        margin-top:-50px;
+        margin-left:-8vw;
+    }
+    #shareBlock1{
+        width:60vw;
+    }
+    #shareDlt{
+        margin-top:-29px;
+        margin-left:52vw;
+    }
+    #msgLine{
+        width:60vw;
+    }
+    #msgSearchUserr{
+     width:58vw;
+}
 }
 @media(max-width:400px){
     .CHATS, .MSGS{

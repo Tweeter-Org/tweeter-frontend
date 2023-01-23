@@ -19,6 +19,7 @@ import { io } from "socket.io-client";
 import { AddChatNotify } from "../../react-redux/actions/Notifications";
 import NoChats from "./NoChats";
 import SearchChatUser from "./SearchChatPopUp";
+import deleteIcon from "../Assets/delete.svg"
 // import { Socket } from "socket.io-client";
 
 
@@ -29,8 +30,8 @@ function Chats() {
     const [socketConnected, setSocketConnected] = useState(false)
     const { user } = useSelector((a) => a.AuthReducer)
     const { userid } = useParams();
-    const chatReducer =  useSelector((c) => c.MsgSearchReducer)
-    const { chatLists, viewChatList, isActive,chatBool, sendChatMessage, viewChatMsgs, loading } = chatReducer
+    const chatReducer = useSelector((c) => c.MsgSearchReducer)
+    const { chatLists, viewChatList, isActive, chatBool, sendChatMessage, viewChatMsgs, loading } = chatReducer
     const dispatch = useDispatch();
 
     const [chats, setChats] = useState([])
@@ -39,20 +40,20 @@ function Chats() {
     const [topPic, setTopPic] = useState("")
     const [sendChatId, setSendChatId] = useState()
 
-    useEffect(()=>{
-        document.getElementById("SEARCHBOX").style.display="none"
-    },[])
-    useEffect(()=>{
+    useEffect(() => {
+        document.getElementById("SEARCHBOX").style.display = "none"
+    }, [])
+    useEffect(() => {
         dispatch(ViewChatList())
         // console.log(chatLists)
         console.log(viewChatList)
-    },[])
-    useEffect(()=>{
-        if(viewChatList){
+    }, [])
+    useEffect(() => {
+        if (viewChatList) {
             setSideChats(chatLists)
             console.log(chatLists)
         }
-    },[chatReducer])
+    }, [chatReducer])
     // console.log(chatLists)
     // console.log(chats)
     // set socket connection
@@ -64,60 +65,62 @@ function Chats() {
         socket.on("connection", () => {
             setSocketConnected(true)
         })
-        
-        return (()=>{
+
+        return (() => {
             socket.disconnect()
         })
     }, [])
 
-    useEffect(()=>{
-        if(isNaN(parseInt(userid))){
-            document.getElementById("NOCHATBLOCK").style.display="flex";
-            document.getElementById("SCROLLCHATS").style.display="none";
-            document.getElementById("CHATTYPE").style.visibility="hidden";
+    useEffect(() => {
+        if (isNaN(parseInt(userid))) {
+            document.getElementById("NOCHATBLOCK").style.display = "flex";
+            document.getElementById("SCROLLCHATS").style.display = "none";
+            document.getElementById("CHATTYPE").style.visibility = "hidden";
         }
-        else{
-            document.getElementById("NOCHATBLOCK").style.display="none";
-            document.getElementById("SCROLLCHATS").style.display="flex";
-            document.getElementById("CHATTYPE").style.visibility="visible"; 
+        else {
+            document.getElementById("NOCHATBLOCK").style.display = "none";
+            document.getElementById("SCROLLCHATS").style.display = "flex";
+            document.getElementById("CHATTYPE").style.visibility = "visible";
         }
 
-    },[userid])
-const [chatMsgs, setChatMsgs] = useState([])
-    useEffect(()=>{
-        if(isActive){
-            if(viewChatList){
-                chatLists.map((chatt)=>{
-                    chatt.users.map((chatUser=>{
+    }, [userid])
+    const [chatMsgs, setChatMsgs] = useState([])
+    useEffect(() => {
+        if (isActive) {
+            if (viewChatList) {
+                chatLists.map((chatt) => {
+                    chatt.users.map((chatUser => {
                         // console.log(chatUser)
-                        if(chatUser._id == userid){
-                          console.warn(chatUser)
-                          setTopName(chatUser.name)
-                          setTopPic(chatUser.displaypic)
-                          setSendChatId(chatt._id)
-                          currentChattingWith = chatt._id;
-                          dispatch(ViewChatsAction(chatt._id))
-                        //   console.log(viewChatMsgs)
+                        if (chatUser._id == userid) {
+                            console.warn(chatUser)
+                            setTopName(chatUser.name)
+                            setTopPic(chatUser.displaypic)
+                            setSendChatId(chatt._id)
+                            currentChattingWith = chatt._id;
+                            dispatch(ViewChatsAction(chatt._id))
+                            //   console.log(viewChatMsgs)
                         }
                     }))
                 })
             }
         }
 
-    },[userid, chatLists, viewChatList, isActive])
+    }, [userid, chatLists, viewChatList, isActive])
 
-    useEffect(()=>{
-        if(chatBool){
+    useEffect(() => {
+        if (chatBool) {
             // console.warn(viewChatMsgs)
             setChatMsgs(viewChatMsgs)
         }
-    },[chatReducer])
+    }, [chatReducer])
 
     const [textMsg, setTextMsg] = useState("")
     const [showEmoji, setShowEmoji] = useState(false)
     const [sendImage, setSendImage] = useState(null);
     const [imageInArr, setImageInArr] = useState(null)
     const [vdoInArr, setVdoInArr] = useState(null)
+    const [newChatMsg, setNewChatMsg] = useState("")
+    const [notifs, setNotifs] = useState([])
 
     const fd = new FormData();
     function handleSendImage(e) {
@@ -151,7 +154,7 @@ const [chatMsgs, setChatMsgs] = useState([])
             "_id": user._id
         },
     }
-  
+
     // console.log(sendChatId)
     function sendChatMsg(chattid) {
         // console.log(chattid)
@@ -167,19 +170,19 @@ const [chatMsgs, setChatMsgs] = useState([])
             fd.append("file", null)
         }
         console.warn(socket.connected)
-      if(socket.connected && textMsg!=""){
-        dispatch(SendChatsAction(fd, socket))
-        // setChatMsgs([...chatMsgs, sendChat])
-        dispatch(FakeViewChatsAction(sendChat))
-      }
-      if(!socket.connected){
-        socket = io(ENDPOINT)
-        socket.emit("setup", user);
+        if (socket.connected && textMsg != "") {
+            dispatch(SendChatsAction(fd, socket))
+            // setChatMsgs([...chatMsgs, sendChat])
+            dispatch(FakeViewChatsAction(sendChat))
+        }
+        if (!socket.connected) {
+            socket = io(ENDPOINT)
+            socket.emit("setup", user);
 
-        socket.on("connection", () => {
-            setSocketConnected(true)
-        })
-      }
+            socket.on("connection", () => {
+                setSocketConnected(true)
+            })
+        }
         setTextMsg("")
         setSendImage(null)
         setSendVideo(null)
@@ -192,18 +195,23 @@ const [chatMsgs, setChatMsgs] = useState([])
     useEffect(() => {
         socket.on("message recieved", (newChatMsgRecieved) => {
             if (newChatMsgRecieved.chat._id !== currentChattingWith || !currentChattingWith) {
-                handleNotify(newChatMsgRecieved)
+                if (!notifs.includes(newChatMsgRecieved)) {
+                    handleNotify(newChatMsgRecieved)
+                }
+                console.warn(newChatMsgRecieved)
+                setNewChatMsg(newChatMsgRecieved)
             }
             else {
                 console.warn(newChatMsgRecieved)
-                // setChatMsgs([...chatMsgs, sendChat])
+                setNewChatMsg(newChatMsgRecieved)
                 dispatch(FakeViewChatsAction(newChatMsgRecieved))
+                setChatMsgs([newChatMsgRecieved, ...chatMsgs])
                 // setAllChats([...allChats, newChatMsgRecieved])
 
             }
         })
-    },[])
-   
+    }, [])
+
     //Notifications handler : if not current user
     const handleNotify = (new_unseen_chat) => {
         dispatch(AddChatNotify(new_unseen_chat))
@@ -224,18 +232,15 @@ const [chatMsgs, setChatMsgs] = useState([])
         <div className='CHATS POPUPBG'>
             <div className="Chat2">
                 <div className="ChatInfo2">
-                    
-                    {(topPic === null) ? ( <img src={avatar}  id="msgPicincircle" />) :
-                    (<img src={topPic} id="msgPicincircle"/>) 
-                       
-                }
-                    <p className="msgName" id="ChatName">{topName}</p>
-                    {/* <img src={searchIcon} className="chatSearch" onClick={()=>{
-                        document.getElementById("SELECT_CHAT_BLOCK").style.display="flex"
-                    }} /> */}
 
+                    {(topPic === null) ? (<img src={avatar} id="msgPicincircle" />) :
+                        (<img src={topPic} id="msgPicincircle" />)}
+                    <p className="msgName" id="ChatName">{topName}</p>
+                    <img src={searchIcon} className="chatSearch" onClick={()=>{
+                        document.getElementById("SELECT_CHAT_BLOCK").style.display="flex"
+                    }} />
                 </div>
-                  <div>
+                <div>
                     <ScrollableChat chatMessage={chatMsgs} />
                 </div>
 
@@ -269,18 +274,17 @@ const [chatMsgs, setChatMsgs] = useState([])
                 </div>
             </div>
             <div className='Chat1'>
-               
+
                 <div className="ChatUserFlex">
-                {/* {console.log(chats)} */}
-                {sideChats.map((oneChat, index)=>{
-                    return <ChatUser sidechat={oneChat} indexx={index} />
-                })}
-                {/* {(chats.map((sideChats, indexx)=>{
+                    {sideChats.map((oneChat, index) => {
+                        return <ChatUser sidechat={oneChat} indexx={index} newMsgNotify={newChatMsg} />
+                    })}
+                    {/* {(chats.map((sideChats, indexx)=>{
                    return <ChatUser name={sideChats.name} username={sideChats.user_name} index={indexx} displaypic={sideChats.displaypic} userNum={sideChats._id} />
 
                 }))} */}
                 </div>
-                    {/* {(viewChatList) ? (chatLists.length > 0 ? (chatLists.map((chat, index) => {
+                {/* {(viewChatList) ? (chatLists.length > 0 ? (chatLists.map((chat, index) => {
                         {console.log(chat)}
                         return <ChatUser user={chat.users} msg={chat.latestmsg} indexx={index} viewChatid={chat._id} />
                     })) : null) : null}
@@ -288,7 +292,7 @@ const [chatMsgs, setChatMsgs] = useState([])
                         {console.log(chat)}
                         return <SearchChatUser user={chat.users} msg={chat.latestmsg} indexx={index} viewChatid={chat._id} />
                     })) : null) : null} */}
-                    {/* {isActive ? (
+                {/* {isActive ? (
                         <div className="msgUser" id="ChatUser1" >
                             {/* {(list.displaypic === null) ? ( <img src={avatar}  id="msgPicincircle" />) :
                     ((list.displaypic.startsWith("https:")) ? (<img src={list.displaypic} id="msgPicincircle"/>) :
@@ -303,12 +307,27 @@ const [chatMsgs, setChatMsgs] = useState([])
                         </div>
                     ) : null} */}
 
-                </div>
             </div>
-        
+        </div>
+
         {(loading == true) ? <Loader loading={loading} /> : null}
         <NoChats />
-        <SearchChatUser />
+        <div className="shareTweetDiv" id="SELECT_CHAT_BLOCK">
+        <div className="shareePopup" id="shareBlock1">
+        <p className="shareTweetText">Select a User</p>
+            <hr className="shareTweetLine" id="msgLine"/>
+            <img src={deleteIcon} className="msgDelete" id="shareDlt" onClick={()=>{
+                document.getElementById("SELECT_CHAT_BLOCK").style.display="none"
+            }} />
+        </div>
+            <div className="shareTweetFlexbox">
+          
+                    {sideChats.map((oneChat, index) => {
+                        return <SearchChatUser sidechat={oneChat} indexx={index} newMsgNotify={newChatMsg} />
+                    })}
+            </div>
+        </div>
+        {/* <SearchChatUser /> */}
     </>
 }
 export default Chats;
