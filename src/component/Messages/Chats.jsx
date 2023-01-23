@@ -54,7 +54,7 @@ function Chats() {
             console.log(chatLists)
         }
     }, [chatReducer])
-    // console.log(chatLists)
+    console.log(chatLists)
     // console.log(chats)
     // set socket connection
     // console.log(userid)

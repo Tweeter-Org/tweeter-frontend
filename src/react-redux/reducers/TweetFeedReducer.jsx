@@ -10,7 +10,8 @@ const initialState={
     Rimage:null,
     Rvideo:null,
     Rtext:"",
-    trendingTweet:{}
+    trendingTweet:{},
+    privateRoute:false
 }
 
 export const TweetFeedReducer = (state=initialState, action)=>{
@@ -20,11 +21,11 @@ export const TweetFeedReducer = (state=initialState, action)=>{
         }
         case "Tweet_Feed_Succeed":{
             console.log(action.payload)
-            return {...state, loading:false, tweetData:action.payload.data.tweets, liked:action.payload.data.liked, bookmarked:action.payload.data.bookmarked}
+            return {...state, loading:false,privateRoute:true, tweetData:action.payload.data.tweets, liked:action.payload.data.liked, bookmarked:action.payload.data.bookmarked}
         }
         case "Tweet_Feed_Failed":{
             console.log(action.payload)
-            return {...state, loading:false, tweetData:action.payload}
+            return {...state, loading:false, tweetData:action.payload, privateRoute:false}
         }
         case "Tweet_Feed_Two_Started":{
             return {...state, loading:true}

@@ -9,6 +9,7 @@ import { NotifyChatSeen } from "../../react-redux/actions/Notifications";
 
 function ChatUser(props) {
     const {user} = useSelector((a)=>a.AuthReducer)
+    console.log(user)
     // const viewChatIdd = props.viewChatid;
     // // console.log(viewChatIdd)
     const navigate = useNavigate();
@@ -35,9 +36,10 @@ function ChatUser(props) {
 
     useEffect(()=>{
       props.sidechat.users.map((chat)=>{
-        if(chat._id != user._id){
+        console.log(user._id)
+        if(chat._id !== user._id){
             // setChats([...chats, chatUser])
-            // console.log(chat)
+            console.log(chat)
             // console.log(chats)
             setInfo(chat)
         }

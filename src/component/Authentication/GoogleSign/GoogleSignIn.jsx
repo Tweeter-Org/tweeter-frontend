@@ -47,7 +47,7 @@ function GoogleSignin() {
       document.getElementById('googleInvalidName').style.display = "none";
       setCheckName(true)
     }
-    else if (name) {
+    else if (nameN) {
       document.getElementById('googleInvalidName').style.display = "block";
       setCheckName(false)
     }
