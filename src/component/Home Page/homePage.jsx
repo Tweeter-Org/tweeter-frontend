@@ -23,7 +23,7 @@ function HomePage() {
             navigate("/login")
         }
         else {
-            navigate("/")
+            navigate("")
         }
     }, [privateRoute])
     const { response } = useSelector((t) => t.TweetCreateReducer)
