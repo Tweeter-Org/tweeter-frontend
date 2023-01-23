@@ -39,7 +39,7 @@ console.log(window.location.href.substring(34))
           console.log(user)
           dispatch(infoViaGoogle(user))
           alert(response2.msg)
-          navigate("/")
+          navigate("")
         }
         if (response2.msg === "signedup"){
           // console.log(msg)
