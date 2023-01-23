@@ -21,6 +21,7 @@ const navigate = useNavigate();
     return <>
         <div className="searchcomp POPUPBG" id="searchtweetBg">
             <p className="searchName" id="searchtweettag" onClick={() => { showTagTweet(props.hashtag) }}>#{props.hashtag}</p>
+            <p className='trendTweetCount' id="tagTweetCount" >{props.tweetCount}</p>
         </div>
     </>
 }

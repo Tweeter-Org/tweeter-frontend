@@ -22,22 +22,23 @@ import CreateTweet from "./createTweet";
 import { Navigate, useNavigate } from "react-router-dom";
 import ShareTweet from "./ShareTweet";
 import ReactHashtag from "react-hashtag";
+import { unstable_createStaticHandler } from "@remix-run/router";
 
 function Tweet(props) {
     const video = props.video
     const image = props.image
     const id = props.number;
     const bookmarkShow = props.bookmarked
-    const retweets= props.retweet;
+    const retweets = props.retweet;
     const dispatch = useDispatch();
     const [tweetCount, setTweetCount] = useState(props.likeCount)
     const [replyingto, setReplyingto] = useState([])
-    useEffect(()=>{
-        if(props.replies!=null)
-        setReplyingto(props.replies)
+    useEffect(() => {
+        if (props.replies != null)
+            setReplyingto(props.replies)
         else
-        setReplyingto([])
-    },[props.replies])
+            setReplyingto([])
+    }, [props.replies])
     // console.log(props.replies)
     useEffect(() => {
         setTweetCount(props.likeCount)
@@ -74,8 +75,8 @@ function Tweet(props) {
     }
 
     const { responseBM, markBM } = useSelector((b) => b.BookmarkReducer)
-  
-    function handleTweetBookmark(e,tweetid) {
+
+    function handleTweetBookmark(e, tweetid) {
         e.stopPropagation();
         document.getElementsByClassName("bookmarkIcon")[id].src = greenBookmarks
         dispatch(DoBookmarkAction(tweetid))
@@ -94,20 +95,20 @@ function Tweet(props) {
             document.getElementsByClassName("POPUPBG")[i].style.opacity = 0.4;
         }
     }
-   
-    function handleRetweet (tweetid, name, image, video, text){
-        dispatch(RetweetDetails(tweetid,name, video, text, image))
+
+    function handleRetweet(tweetid, name, image, video, text) {
+        dispatch(RetweetDetails(tweetid, name, video, text, image))
         sessionStorage.setItem("retweetId", tweetid)
         setOPacity()
         var retweetPath = document.getElementsByClassName("tweetRetweet")[id].style.color;
         document.getElementById("CREATETWEET").style.display = "block"
-        document.getElementById("CTweetText").style.display="block";
-        document.getElementById("CTRETWEETDIV").style.display="flex";
-        document.getElementById("buttonTweet").style.display="none";
-        document.getElementById("buttonReply").style.display="none";
+        document.getElementById("CTweetText").style.display = "block";
+        document.getElementById("CTRETWEETDIV").style.display = "flex";
+        document.getElementById("buttonTweet").style.display = "none";
+        document.getElementById("buttonReply").style.display = "none";
         document.getElementById("buttonReply2").style.display = "none";
-        document.getElementById("buttonRetweet").style.display="block";
-        document.getElementById("CTReplyDiv").style.display="none"
+        document.getElementById("buttonRetweet").style.display = "block";
+        document.getElementById("CTReplyDiv").style.display = "none"
         if (retweetPath === "white") {
             document.getElementsByClassName("tweetRetweet")[id].style.color = "green"
             document.getElementsByClassName("retweetIcon")[id].src = greenRetweet
@@ -117,101 +118,114 @@ function Tweet(props) {
             document.getElementsByClassName("tweetRetweet")[id].style.color = "white"
         }
     }
-  
-    function handleTweetReply(tweetid, name, image, video, text){
-        dispatch(RetweetDetails(tweetid,name, video, text, image))
+
+    function handleTweetReply(tweetid, name, image, video, text) {
+        dispatch(RetweetDetails(tweetid, name, video, text, image))
         sessionStorage.setItem("retweetId", tweetid)
         setOPacity()
         document.getElementById("CREATETWEET").style.display = "block"
-        document.getElementById("CTReplyDiv").style.display="block"
-        document.getElementById("CTRETWEETDIV").style.display="none";
-        document.getElementById("CTweetText").style.display="none";
-        document.getElementById("buttonTweet").style.display="none";
-        document.getElementById("buttonRetweet").style.display="none";
-        document.getElementById("buttonReply").style.display="block";
+        document.getElementById("CTReplyDiv").style.display = "block"
+        document.getElementById("CTRETWEETDIV").style.display = "none";
+        document.getElementById("CTweetText").style.display = "none";
+        document.getElementById("buttonTweet").style.display = "none";
+        document.getElementById("buttonRetweet").style.display = "none";
+        document.getElementById("buttonReply").style.display = "block";
         document.getElementById("buttonReply2").style.display = "none";
     }
 
-    function handleTweetShare (tweetid){
+    function handleTweetShare(tweetid) {
         sessionStorage.setItem("shareTweetId", tweetid)
-        document.getElementById("SHAREBLOCK").style.display="flex"
+        document.getElementById("SHAREBLOCK").style.display = "flex"
         // setOPacity();
     }
-    function showProfilePopup(){
-        document.getElementsByClassName("tweetPopcomp")[id].style.display="block"
+    function showProfilePopup() {
+        document.getElementsByClassName("tweetPopcomp")[id].style.display = "block"
     }
 
-    function hideProfilePopup(){
-        document.getElementsByClassName("tweetPopcomp")[id].style.display="none"
+    function hideProfilePopup() {
+        document.getElementsByClassName("tweetPopcomp")[id].style.display = "none"
     }
-const navigate = useNavigate();
-    function handleToTweet (tweetId){
+    const navigate = useNavigate();
+    function handleToTweet(tweetId) {
         navigate(`/totweet/${tweetId}`)
     }
 
     /* HASHTAGS */
     const { loading, tagTweets, getTag } = useSelector((ta) => ta.TagTweetFeedReducer)
-    function showTagTweet(tag) {
-        // console.log(tag)
-     
+    function showTagTweet(e, tag) {
+        e.stopPropagation();
+        console.log(tag)
         dispatch(TweetListWithTag(tag.slice(1)))
-        // console.log("tag tweets")
+        navigate("/tagtweet")
         if (getTag) {
-          navigate("/tagtweet")
+            navigate("/tagtweet")
         }
     }
 
-    const [specialText, setSpecialText] = useState(props.text)
-    useEffect(()=>{
-        console.log(props.text)
-        var y = document.getElementsByClassName("tweetText")
-        console.log(y)
+    function showMentionedUser(name){
+        console.log(name)
+        navigate(`/profile/${name.slice(1)}`)
+    }
 
-        // var x = "#world hello @alan ansari"
-        for(var i=0;i<y.length;i++){
-            console.log(y[i].innerHTML)
+    const [specialText, setSpecialText] = useState(props.text)
+   
+    useEffect(() => {
+       
+        var y = document.getElementsByClassName("tweetText")
+        for (var i = 0; i < y.length; i++) {
             y[i].innerHTML = y[i].innerHTML.replace(/(^|\s)([#][a-z\d-]+)/, "$1<span class='hashtagg'>$2</span>")
             y[i].innerHTML = y[i].innerHTML.replace(/(^|\s)([@][a-z\d-]+)/, "<span class='mention' >$2</span>")
         }
         var x = document.getElementsByClassName("hashtagg")
-        for(var j=0;j<x.length;j++){
-            // x[j].addEventListener("onClick", alert(`${x[j].innerHTML}`))
+        for (let j = 0; j < x.length; j++) {
+            let hashtag = x[j].innerHTML
+            x[j].onclick = function (e) {
+                console.log(hashtag)
+                showTagTweet(e, hashtag)
+            }
         }
-
-        // setSpecialText(x)
-        // specialText.innerHTML = x;
-        // console.log(x)
-    },[])
+       
+        var z = document.getElementsByClassName("mention")
+        console.log(z)
+        for (let j = 0; j < z.length; j++) {
+            // console.log(z[j].innerHTML)
+            let mention= z[j].innerHTML
+            let count=j;
+            z[j].onclick = function () {
+               showMentionedUser( mention)
+            }
+        }
+    }, [])
 
     return <>
-    {retweets==null?(  <div className="tweetComp POPUPBG" >
-            <div className="firstTweetBlock" onClick={()=>{handleToTweet(props.tweetId)}} >
+        {retweets == null ? (<div className="tweetComp POPUPBG" >
+            <div className="firstTweetBlock" onClick={() => { handleToTweet(props.tweetId) }} >
                 {(props.displaypic === null) ? (<img src={avatar} id="picincircle" />) :
-                    (<img src={props.displaypic} id="picincircle" />) }
+                    (<img src={props.displaypic} id="picincircle" />)}
                 <div className="USERNAME">
-                <p className="username">{props.name}</p>
-                <p className="tweetUsername2"  onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >@{props.username}</p>
+                    <p className="username">{props.name}</p>
+                    <p className="tweetUsername2" onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >@{props.username}</p>
                 </div>
-                <img src={bookmark} className="bookmarkIcon" id="BMICON" onClick={(e)=>{handleTweetBookmark(e,props.tweetId)}} />
-                <TweetPopup name={props.username} num={id} displaypic={props.displaypic}/>
+                <img src={bookmark} className="bookmarkIcon" id="BMICON" onClick={(e) => { handleTweetBookmark(e, props.tweetId) }} />
+                <TweetPopup name={props.username} num={id} displaypic={props.displaypic} />
             </div>
-            {replyingto.length>0?(<p id="prTwReplying1">Replying to {replyingto.length > 0 ? (replyingto.map((name) => {
-                    return <span id="prTwReplying2" onClick={() => {
-                        // console.log(`/profile/${name}`)
-                        navigate(`/profile/${name}`)
-                    }}>@{name}</span>
-                })) : null}</p>):null}
-             { (image != null && image.startsWith("blob:"))?(
-             <img src={image} alt="image" className="tweetImage" />):(
-                image != null? (<img src={image} alt="image" className="tweetImage" />) : null)}
-              
-                { (video != null && video.startsWith("blob:"))?(
-                    <video className="tweetvideo" controls>
-                <source src={video} type="video/mp4" />
-            </video>):(
-                video != null? (<video className="tweetvideo" controls>
-                <source src={video} type="video/mp4" />
-            </video>) : null)}
+            {replyingto.length > 0 ? (<p id="prTwReplying1">Replying to {replyingto.length > 0 ? (replyingto.map((name) => {
+                return <span id="prTwReplying2" onClick={() => {
+                    // console.log(`/profile/${name}`)
+                    navigate(`/profile/${name}`)
+                }}>@{name}</span>
+            })) : null}</p>) : null}
+            {(image != null && image.startsWith("blob:")) ? (
+                <img src={image} alt="image" className="tweetImage" />) : (
+                image != null ? (<img src={image} alt="image" className="tweetImage" />) : null)}
+
+            {(video != null && video.startsWith("blob:")) ? (
+                <video className="tweetvideo" controls>
+                    <source src={video} type="video/mp4" />
+                </video>) : (
+                video != null ? (<video className="tweetvideo" controls>
+                    <source src={video} type="video/mp4" />
+                </video>) : null)}
             {/* {video != null ? <video className="tweetvideo" controls>
                 <source src={`https://twitterbackend-production-93ac.up.railway.app/${video}`} type="video/mp4" />
             </video> : null} */}
@@ -225,77 +239,77 @@ const navigate = useNavigate();
                     <p className="tweetLike">{tweetCount}</p>
                 </div>
                 <div className="iconBlock">
-                    <img src={comment} id="commentIcon" onClick={()=>{handleTweetReply(props.tweetId, props.username, image, video, props.text)}} />
+                    <img src={comment} id="commentIcon" onClick={() => { handleTweetReply(props.tweetId, props.username, image, video, props.text) }} />
                     <p className="tweetComm">Comment</p>
                 </div>
-                <div className="iconBlock"> 
-                    <img src={retweet} className="retweetIcon" onClick={()=>handleRetweet(props.tweetId, props.username, image, video, props.text)} />
+                <div className="iconBlock">
+                    <img src={retweet} className="retweetIcon" onClick={() => handleRetweet(props.tweetId, props.username, image, video, props.text)} />
                     <p className="tweetRetweet">Retweet</p>
                 </div>
                 <div className="iconBlock">
-                    <img src={share} id="shareIcon" onClick={()=>{handleTweetShare(props.tweetId)}} />
+                    <img src={share} id="shareIcon" onClick={() => { handleTweetShare(props.tweetId) }} />
                     <p className="tweetShare">Share</p>
                 </div>
             </div>
-        </div>):(  <div className="tweetComp POPUPBG" id="tweetRet" >
-        <div className="firstTweetBlock" onClick={()=>{handleToTweet(props.tweetId)}} >
+        </div>) : (<div className="tweetComp POPUPBG" id="tweetRet" >
+            <div className="firstTweetBlock" onClick={() => { handleToTweet(props.tweetId) }} >
                 {(props.displaypic === null) ? (<img src={avatar} id="picincircle" />) :
-                   (<img src={props.displaypic} id="picincircle" />) 
-                        
+                    (<img src={props.displaypic} id="picincircle" />)
+
                 }
                 <div className="USERNAME">
-                <p className="username">{props.name}</p>
-                <p className="tweetUsername2"  onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >@{props.username}</p>
+                    <p className="username">{props.name}</p>
+                    <p className="tweetUsername2" onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >@{props.username}</p>
                 </div>
-                <img src={bookmark} className="bookmarkIcon" onClick={(e) => { handleTweetBookmark(e,props.tweetId) }} />
-                <TweetPopup name={props.username} num={id} displaypic={props.displaypic}/>
+                <img src={bookmark} className="bookmarkIcon" onClick={(e) => { handleTweetBookmark(e, props.tweetId) }} />
+                <TweetPopup name={props.username} num={id} displaypic={props.displaypic} />
             </div>
-            {replyingto.length>0?(<p id="prTwReplying1">Replying to {replyingto.length > 0 ? (replyingto.map((name) => {
-                    return <span id="prTwReplying2" onClick={() => {
-                        // console.log(`/profile/${name}`)
-                        navigate(`/profile/${name}`)
-                    }}>@{name}</span>
-                })) : null}</p>):null}
+            {replyingto.length > 0 ? (<p id="prTwReplying1">Replying to {replyingto.length > 0 ? (replyingto.map((name) => {
+                return <span id="prTwReplying2" onClick={() => {
+                    // console.log(`/profile/${name}`)
+                    navigate(`/profile/${name}`)
+                }}>@{name}</span>
+            })) : null}</p>) : null}
             {(image != null) ? (<img src={image} alt="image" className="tweetImage" />) : null}
             {(video != null) ? <video className="tweetvideo" controls>
                 <source src={video} type="video/mp4" />
             </video> : null}
             <p className="tweetText">{props.text}</p>
             <div className="tweetWithRetwwet">
-            <div className="TWRBlock1">
-            {(retweets.user.displaypic === null) ? (<img src={avatar} className="TWRpic" />) :
-                    ((retweets.user.displaypic.startsWith("https:")) ? (<img src={retweets.user.displaypic}  className="TWRpic"/>) :
-                        (<img src={retweets.user.displaypic} id="picincircle" />))
-                }
-                <p className="username">{retweets.user.user_name}</p>
+                <div className="TWRBlock1">
+                    {(retweets.user.displaypic === null) ? (<img src={avatar} className="TWRpic" />) :
+                        ((retweets.user.displaypic.startsWith("https:")) ? (<img src={retweets.user.displaypic} className="TWRpic" />) :
+                            (<img src={retweets.user.displaypic} id="picincircle" />))
+                    }
+                    <p className="username">{retweets.user.user_name}</p>
+                </div>
+                {(retweets.image != null) ? (<img src={retweets.image} className="TWRVideo" alt="image" />) : null}
+                {(retweets.video != null) ? <video controls className="TWRVideo">
+                    <source src={retweets.video} type="video/mp4" />
+                </video> : null}
+
+                <p className="TWRText" ><ReactHashtag renderHashtag={val => <span onClick={() => showTagTweet(val)}>{val}</span>} onHashTagClick={val => console.log(val)}>{retweets.text}</ReactHashtag></p>
             </div>
-        {(retweets.image != null) ? (<img src={retweets.image} className="TWRVideo" alt="image" />) : null}
-            {(retweets.video != null) ? <video controls className="TWRVideo">
-                <source src={retweets.video} type="video/mp4" />
-            </video> : null}
-        
-            <p className="TWRText" ><ReactHashtag renderHashtag={val=><span onClick={()=>showTagTweet(val) }>{val}</span>} onHashTagClick={val=>console.log(val)}>{retweets.text}</ReactHashtag></p>
-        </div>
             <div className="secondTweetBlock">
                 <div className="iconBlock">
                     <img src={like} className="likeIcon" onClick={() => { handleTweetLike(props.tweetId) }} />
                     <p className="tweetLike">{tweetCount}</p>
                 </div>
                 <div className="iconBlock">
-                    <img src={comment} id="commentIcon" onClick={()=>{handleTweetReply(props.tweetId, props.username, image, video, props.text)}} />
+                    <img src={comment} id="commentIcon" onClick={() => { handleTweetReply(props.tweetId, props.username, image, video, props.text) }} />
                     <p className="tweetComm">Comment</p>
                 </div>
                 <div className="iconBlock">
-                    <img src={retweet} className="retweetIcon" onClick={()=>handleRetweet(props.tweetId, props.username, image, video, props.text)} />
+                    <img src={retweet} className="retweetIcon" onClick={() => handleRetweet(props.tweetId, props.username, image, video, props.text)} />
                     <p className="tweetRetweet">Retweet</p>
                 </div>
                 <div className="iconBlock">
-                    <img src={share} id="shareIcon"  onClick={()=>{handleTweetShare(props.tweetId)}} />
+                    <img src={share} id="shareIcon" onClick={() => { handleTweetShare(props.tweetId) }} />
                     <p className="tweetShare">Share</p>
                 </div>
-            </div>    
+            </div>
         </div>)}
-        <CreateTweet/>
+        <CreateTweet />
         <ShareTweet />
     </>
 }

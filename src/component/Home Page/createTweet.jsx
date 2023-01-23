@@ -28,22 +28,23 @@ function CreateTweet(props) {
     const dispatch = useDispatch();
     const fd = new FormData();
     function handleSendImage(e) {
-        document.getElementById("imageOutput").style.display = "block"
-        var imageoutput = document.getElementById("imageOutput");
-        imageoutput.src = URL.createObjectURL(e.target.files[0])
+        // document.getElementById("imageOutput").style.display = "block"
+        // var imageoutput = document.getElementById("imageOutput");
+        // imageoutput.src = URL.createObjectURL(e.target.files[0])
         setImageInArr(URL.createObjectURL(e.target.files[0]))
+        console.warn(URL.createObjectURL(e.target.files[0]))
         setSendImage(e.target.files[0])
 
     }
     const [sendVideo, setSendVideo] = useState(null);
     function handleSendVideo(e) {
-        var videooutput = document.getElementById("videoOutput");
-        videooutput.src = URL.createObjectURL(e.target.files[0])
+        // var videooutput = document.getElementById("videoOutput");
+        // videooutput.src = URL.createObjectURL(e.target.files[0])
         setVdoInArr(URL.createObjectURL(e.target.files[0]))
-        // console.log(URL.createObjectURL(e.target.files[0]))
+        console.log(URL.createObjectURL(e.target.files[0]))
         setSendVideo(e.target.files[0])
-        document.getElementById("VIDEO").style.display = "block"
-        document.getElementById("videoOutput").style.display = "block"
+        // document.getElementById("VIDEO").style.display = "block"
+        // document.getElementById("videoOutput").style.display = "block"
     }
 
     function handleEmojis() {
@@ -144,7 +145,6 @@ function CreateTweet(props) {
         }
         if (e.target.value.includes('@')) {
             setMention(true)
-            // console.log(e.target.value.slice(1))
             setHash(false)
             dispatch(SearchUser(e.target.value.slice(1)));
         }
@@ -262,6 +262,7 @@ function CreateTweet(props) {
         }
         if(text!=""){
             dispatch(CreateTweetAct(fd))
+            console.log(newTweetCreated)
             dispatch(FakeTweetFeedAction(newTweetCreated))
             backToHome(e)
         }
@@ -452,7 +453,7 @@ setText("")
                 <div className="CTBlock2">
                     <div className="CTUPLIMG">
                         <label for="ctuploadImg"><img src={imageIcon} className="ctImage" /></label>
-                        <input type="file" id="ctuploadImg" accept="image/png, image/jpg, image/jpeg" onChange={handleSendImage} hidden />
+                        <input type="file" id="ctuploadImg" accept="image/png, image/jpg, image/jpeg" onChange={(e)=>{handleSendImage(e)}} hidden />
                         <p className="ctImageText">Image</p>
                       
                     </div>

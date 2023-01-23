@@ -7,7 +7,7 @@ import comment from "../Assets/tweetComm.svg";
 import retweet from "../Assets/retweet.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { NameInReplyAction, ViewRepliesToReply } from "../../react-redux/actions/Replies";
-import TweetLikeAction, { RetweetDetails } from "../../react-redux/actions/Tweets";
+import TweetLikeAction, { RetweetDetails, TweetListWithTag } from "../../react-redux/actions/Tweets";
 import greenLike from "../Assets/greenLike.svg"
 import bookmark from "../Assets/bookmarks.svg";
 import greenBookmarks from "../Assets/greenBookmarks.svg"
@@ -101,6 +101,50 @@ function Reply2(props) {
         document.getElementById("SHAREBLOCK").style.display="flex"
         // setOPacity();
     }
+
+         /* HASHTAGS */
+         const { tagTweets, getTag } = useSelector((ta) => ta.TagTweetFeedReducer)
+         function showTagTweet(e, tag) {
+             e.stopPropagation();
+             console.log(tag)
+             dispatch(TweetListWithTag(tag.slice(1)))
+             navigate("/tagtweet")
+             if (getTag) {
+                 navigate("/tagtweet")
+             }
+         }
+     
+         function showMentionedUser(name){
+             console.log(name)
+             navigate(`/profile/${name.slice(1)}`)
+         }
+     
+         useEffect(() => {
+             var y = document.getElementsByClassName("RepText")
+             for (var i = 0; i < y.length; i++) {
+                 y[i].innerHTML = y[i].innerHTML.replace(/(^|\s)([#][a-z\d-]+)/, "$1<span class='hashtagg'>$2</span>")
+                 y[i].innerHTML = y[i].innerHTML.replace(/(^|\s)([@][a-z\d-]+)/, "<span class='mention' >$2</span>")
+             }
+             var x = document.getElementsByClassName("hashtagg")
+             for (let j = 0; j < x.length; j++) {
+                 let hashtag = x[j].innerHTML
+                 x[j].onclick = function (e) {
+                     console.log(hashtag)
+                     showTagTweet(e, hashtag)
+                 }
+             }
+            
+             var z = document.getElementsByClassName("mention")
+             console.log(z)
+             for (let j = 0; j < z.length; j++) {
+                 // console.log(z[j].innerHTML)
+                 let mention= z[j].innerHTML
+                 let count=j;
+                 z[j].onclick = function () {
+                    showMentionedUser( mention)
+                 }
+             }
+         }, [])
 
     return <>
         <div className="Reply2Block">

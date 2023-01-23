@@ -40,7 +40,7 @@ function ChatUser(props) {
         if(chat._id !== user._id){
             // setChats([...chats, chatUser])
             console.log(chat)
-            // console.log(chats)
+            // conso              le.log(chats)
             setInfo(chat)
         }
         // console.log(props.sidechat.users._id)

@@ -6,6 +6,7 @@ left:23vw;
 .notifyFlexbox{
 display: flex;
 flex-direction: column;
+padding-bottom: 20vh;
 }
 
 #notifyLine{
@@ -39,7 +40,7 @@ flex-direction: column;
     width:12px;
     height:12px;
     margin-top:20px;
-    margin-left:27vw;
+    margin-left:-5vw;
     border-radius: 50%;
     background-color: #47C87A;
 }
@@ -90,7 +91,7 @@ flex-direction: column;
     font-style: normal;
     font-weight: 500;
     font-size: 1rem ;
-    width:fit-content;
+    width:40vw;
     line-height: 16px;
     color: rgba(255, 255, 255, 0.9);
 margin-bottom: 0;

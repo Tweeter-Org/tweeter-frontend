@@ -261,7 +261,10 @@ else{
             <div className="navbar2">
             <img src={menubar} className="menubar" onClick={handleShowOption} />
             <div id="dropdown">
-            <img src={notify} className="navNotify" />
+            <img src={notify} className="navNotify" onClick={()=>{
+                dispatch(Notifications(greennotify, "Notifications", 1))
+                navigate("/notification")
+            }}/>
                 <div className="navSearch1">
                     <img src={searchIcon} className="navSearch2" onClick={() => {
                         navigate("/phonesearch")
@@ -305,7 +308,7 @@ else{
                 <div className="searchFlexBox POPUPBG" id="SIDESEARCH">
                     {tohash ? (
                         searchTweetList.length > 0 ? (searchTweetList.map((se) => {
-                            return <Tweetsearch hashtag={se.hashtag} />
+                            return <Tweetsearch hashtag={se.hashtag} tweetCount={se.tweet_cnt} />
 
                         })) : (<p className="searchAlter">No search found</p>)
                     ) : null}

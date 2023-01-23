@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { TrendingTweets, TweetFeedAction, TweetFeedAction2, TweetFeedCount } from "../../react-redux/actions/Tweets.jsx";
+import { TrendingTweets, TweetFeedAction, TweetFeedAction2, TweetFeedCount, TweetListWithTag } from "../../react-redux/actions/Tweets.jsx";
 import Sidebar from "../Sidebar/SideBar";
 import "./homepage.css";
 import Tweet from "./TweetComp";
@@ -17,6 +17,7 @@ function HomePage() {
     const { loading, tweetData, liked, bookmarked, privateRoute, trendingTweet } = useSelector((s) => s.TweetFeedReducer)
     const [tweeets, settweets] = useState([])
     console.log(tweetData)
+    console.log(trendingTweet)
     const navigate = useNavigate()
     const isUser = localStorage.getItem("access token") ? true : false;
     console.log(isUser)
@@ -24,14 +25,7 @@ function HomePage() {
         if(!isUser)
         navigate("/login")
     },[isUser])
-    // useEffect(() => {
-    //     if (!privateRoute) {
-    //         navigate("/login")
-    //     }
-    //     else {
-    //         navigate("/")
-    //     }
-    // }, [privateRoute])
+
     const { response } = useSelector((t) => t.TweetCreateReducer)
     useEffect(() => {
         dispatch(TweetFeedAction())
@@ -59,6 +53,15 @@ function HomePage() {
         dispatch(TweetFeedAction2(count))
     }
     // console.log(tweetData)
+    const {tagTweets, getTag } = useSelector((ta) => ta.TagTweetFeedReducer)
+    function showTagTweet(tag) {
+        dispatch(TweetListWithTag(tag))
+        console.log("tag tweets")
+        if (getTag) {
+          navigate("/tagtweet")
+        }
+    }
+
     useEffect(() => {
         if (loading === true) {
             document.body.style.opacity = 0.5;
@@ -85,8 +88,12 @@ function HomePage() {
             </div>
         </div>
         <div id="HOME2">
+        <p className="trendTweetHead">#TRENDING</p>
             {trendingTweet.length > 0 ? (trendingTweet.map((trend, index) => {
-                return <Tweetsearch hashtag={trend.hashtag} />
+                return <div className="trendTweet">
+                <p className="trendTweetTag" onClick={() => { showTagTweet(trend.hashtag) }}>#{trend.hashtag}</p>
+                <p className="trendTweetCount">{trend.tweet_cnt}</p>
+                </div>
             })) : null}
         </div>
 

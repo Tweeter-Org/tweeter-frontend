@@ -27,15 +27,15 @@ function ShareTweet() {
 
     return <>
         <div className="shareTweetDiv" id="SHAREBLOCK">
-        <div className="shareePopup">
+        <div className="shareePopup" id="shareBlock1">
             <p className="shareTweetText">Share with</p>
-            <hr className="shareTweetLine" />
+            <hr className="shareTweetLine" id="msgLine" />
             </div>
             <div onClick={() => {
                 document.getElementById("SHAREBLOCK").style.display = "none"
                 setOPacity();
             }}>
-            <img src={deleteIcon} className="msgDelete" /></div>
+            <img src={deleteIcon} className="msgDelete" id="msgDltIcon" /></div>
           
             <div className="shareTweetFlexbox">
             {(viewChatList) ? (chatLists.length > 0 ? (chatLists.map((chat, index) => {

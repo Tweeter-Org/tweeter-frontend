@@ -10,6 +10,7 @@
     background: #161718;
     border-radius: 8px;
     z-index: 15;
+    padding-bottom: 15vh;
 }
 
 .pBlock1 {
@@ -528,6 +529,7 @@
     flex-direction: column;
     margin-left: -20.8vw;
     display: none;
+   
 }
 
 #profileTweetBox {

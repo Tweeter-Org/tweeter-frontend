@@ -11,8 +11,50 @@ span{
     position:absolute;
     left:70vw;
     top:90px;
+    padding:10px 4px 20px 8px;
+    background: #1A1C1E;
+    border-radius: 8px;
     /* margin-left:70vw; */
     /* margin-top:50px; */
+}
+.trendTweetHead{
+    color:#47C87A;
+    font-style: italic;
+    font-size: 1.1rem;
+    font-family: Montserrat;
+    font-weight:500;
+}
+.trendTweet{
+    padding:10px;
+    width: 24vw;
+    margin-top:-10px;
+    height: 60px;
+}
+.trendTweetTag{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    width:20vw;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 0.9);
+margin-bottom:-2px;
+margin-left:-0.2vw;
+cursor: pointer;
+}
+.trendTweetTag:hover{
+    color: #47c87a;
+}
+.trendTweetCount{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    width:20vw;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.5);
+margin-bottom:-4px;
+margin-left:-0.2vw;
 }
 .HOME1{
     display: flex;
@@ -293,6 +335,7 @@ color:#47C87A;
     top:150px;
     display: flex;
     flex-direction: column;
+    padding-bottom: 20vh;
 }
 
 /*CREATE TWEET*/
@@ -945,6 +988,31 @@ display: none;
     .bookmarkIcon{
         margin-left:21vw;
     }
+    #SHAREBLOCK{
+        display:none;
+        width:50vw;
+        margin-top:-50px;
+        margin-left:-2vw;
+        z-index:110;
+    }
+    #msgDltIcon{
+        margin-top:2px;
+    }
+    .shareUser{
+        width:50vw;
+        border: none;
+    margin-top: 4px;
+    height: 70px;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.2);
+    padding-left: 1vw;
+    margin-left: -1vw;
+}
+#shareBlock1, #msgLine{
+    width:50vw;
+}
+#msgDltIcon{
+    margin-left:45vw;
+}
 }
 
 @media (max-width:950px){
@@ -1034,10 +1102,36 @@ margin-left:11.5vw;
     .emojipicker2{
         width:100vw;
     }
+    #SHAREBLOCK{
+        display:none;
+        width:50vw;
+        margin-top:-50px;
+        margin-left:-2vw;
+        z-index:110;
+    }
+    #msgDltIcon{
+        margin-top:2px;
+    }
+    .shareUser{
+        width:50vw;
+        border: none;
+    margin-top: 4px;
+    height: 70px;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.2);
+    padding-left: 1vw;
+    margin-left: -1vw;
+}
+#shareBlock1, #msgLine{
+    width:50vw;
+}
+#msgDltIcon{
+    margin-left:45vw;
+}
 
 }
 
 @media(max-width:800px){
+   
     .username{
         font-size: 1.1rem;
        /* width: 5; */
@@ -1177,6 +1271,25 @@ margin-top:1.5px;
     .bookmarkIcon{
         margin-left:8vw;
     }
+    #SHAREBLOCK{
+        display:none;
+        width:54vw;
+        margin-top:-50px;
+        margin-left:-2vw;
+        z-index:110;
+    }
+    #msgDltIcon{
+        margin-top:2px;
+    }
+    .shareUser{
+        width:53vw;
+        border: none;
+    margin-top: 4px;
+    height: 70px;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.2);
+    padding-left: 1vw;
+    margin-left: -1vw;
+}
 }
 @media(max-width:600px){
    #picincircle{
@@ -1366,6 +1479,18 @@ margin-top:1.5px;
     }
     .bookmarkIcon{
         margin-left:4vw;
+    }
+    #SHAREBLOCK{
+        width:60vw;
+        margin-top:-50px;
+        margin-left:-8vw;
+    }
+    .shareUser{
+            width:58vw;
+    }
+    #msgDltIcon{
+        margin-top:2px;
+        margin-left:52vw;
     }
 }
 @media(max-width:450px){

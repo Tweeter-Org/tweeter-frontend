@@ -276,7 +276,8 @@ margin-bottom: 10px;
     background: #1A1C1E;
   display: flex;
     border-radius: 8px;
- 
+    display: flex;
+    flex-direction: column;
 }
 #picincircle {
     width: 43px;
@@ -365,7 +366,10 @@ margin-left:-0.2vw;
 #alterTagTweet {
     top: -3vh;
 }
-
+#tagTweetCount{
+    margin-left:1vw;
+    margin-top:0.2vw;
+}
 #alterTagP {
     font-size: 1.5rem;
 }

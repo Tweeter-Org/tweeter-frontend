@@ -52,6 +52,7 @@ function Notify(props) {
                         </p>
                     </div>
                 </div>
+                {mention=="like"? <p className="notifyMsg">{props.name} liked a tweet posted by you</p>:null}
                 {mention == "mention" ? <p className="notifyMsg">Mentioned in <b onClick={() => {
                     handleToTweet(tweetId)
                 }} className="notifTweet">#Tweet</b></p> : null}
