@@ -18,6 +18,12 @@ function HomePage() {
     const [tweeets, settweets] = useState([])
     console.log(tweetData)
     const navigate = useNavigate()
+    const isUser = localStorage.getItem("access token") ? true : false;
+    console.log(isUser)
+    useEffect(()=>{
+        if(!isUser)
+        navigate("/login")
+    },[isUser])
     // useEffect(() => {
     //     if (!privateRoute) {
     //         navigate("/login")
