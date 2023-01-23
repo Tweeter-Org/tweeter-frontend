@@ -18,14 +18,14 @@ function HomePage() {
     const [tweeets, settweets] = useState([])
     console.log(tweetData)
     const navigate = useNavigate()
-    useEffect(() => {
-        if (!privateRoute) {
-            navigate("/login")
-        }
-        else {
-            navigate("/")
-        }
-    }, [privateRoute])
+    // useEffect(() => {
+    //     if (!privateRoute) {
+    //         navigate("/login")
+    //     }
+    //     else {
+    //         navigate("/")
+    //     }
+    // }, [privateRoute])
     const { response } = useSelector((t) => t.TweetCreateReducer)
     useEffect(() => {
         dispatch(TweetFeedAction())

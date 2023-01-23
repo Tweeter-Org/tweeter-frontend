@@ -37,7 +37,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* {isUser?():(<Route path="/login" exact element={<Login />} />)} */}
-        <Route path="/" exact element={<HomePage />} />
+        {/* <Route path="/" exact element={<HomePage />} /> */}
         <Route path="/login" exact element={<Login />} />
         <Route exact path="/fgtpwd" element={<ForgotPwd />} />
         <Route exact path="/otp" element={<AuthOtp />} />
@@ -48,7 +48,7 @@ function App() {
         <Route exact path="/googlesign" element={<GoogleSignin />} />
         {/* <Route path="/" exact element={<AuthHome />} /> */}
        
-        {/* {isUser ? ( <Route path="/home" exact element={<HomePage />} />) : (<Route path="/error" element={<Error />} />)} */}
+        {isUser ? ( <Route path="/" exact element={<HomePage />} />) : (<Route path="/login" element={<Login />} />)}
         {isUser ? (<Route path="/chats/:userid" element={<Chats />} />) : (<Route path="/error" element={<Error />} />)}
         {isUser ? (<Route path="/messages" element={<Messages1 />} />) : (<Route path="/error" element={<Error />} />)}
         {isUser ? (<Route path="/profile/:apiname" element={<ProfilePage />} />) : (<Route path="/error" element={<Error />} />)}
