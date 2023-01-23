@@ -46,7 +46,7 @@ function App() {
         <Route exact path="/signuptwo" element={<SignUpTwo />} />
         <Route exact path="/googlesign" element={<GoogleSignin />} />
 
-        {/* {isUser?(  ):(<Route path="*" element={<Error />} />)} */}
+        <Route path="" exact element={<HomePage />} />
        {isUser?( <Route path="/chats/:userid" element={<Chats />} />):(<Route path="/error" element={<Error />} />)}
        {isUser?(  <Route path="/messages" element={<Messages1 />} />):(<Route path="/error" element={<Error />} />)}
        {isUser?(  <Route path="/profile/:apiname" element={<ProfilePage />} />):(<Route path="/error" element={<Error />} />)}
@@ -68,7 +68,7 @@ function App() {
        <Route path="/bookmark" exact element={<Bookmarks />} />
        <Route path="/editprofile" exact element={<EditProfile />} />
        <Route path="/sidebar" exact element={<Sidebar />} />
-       <Route path="" exact element={<HomePage />} />
+       
        <Route path="/notification" exact element={<Notifications />} /> */}
         <Route path="/google" element={<Google />} />
         <Route path="/logout" exact element={<LogOut />} /> 
