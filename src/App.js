@@ -47,17 +47,17 @@ function App() {
         <Route exact path="/googlesign" element={<GoogleSignin />} />
 
         {/* {isUser?(  ):(<Route path="*" element={<Error />} />)} */}
-       {isUser?( <Route path="/chats/:userid" element={<Chats />} />):(<Route path="*" element={<Error />} />)}
-       {isUser?(  <Route path="/messages" element={<Messages1 />} />):(<Route path="*" element={<Error />} />)}
-       {isUser?(  <Route path="/profile/:apiname" element={<ProfilePage />} />):(<Route path="*" element={<Error />} />)}
+       {isUser?( <Route path="/chats/:userid" element={<Chats />} />):(<Route path="/error" element={<Error />} />)}
+       {isUser?(  <Route path="/messages" element={<Messages1 />} />):(<Route path="/error" element={<Error />} />)}
+       {isUser?(  <Route path="/profile/:apiname" element={<ProfilePage />} />):(<Route path="/error" element={<Error />} />)}
        {isUser?(  <Route path="/toTweet/:TweetId" element={<OneTweet />} />):(<Route path="*" element={<Error />} />)}
-       {isUser?(<Route path="/tagtweet" exact element={<TagTweets />} />):(<Route path="*" element={<Error />} />)}
-       {isUser?( <Route path="/bookmark" exact element={<Bookmarks />} />):(<Route path="*" element={<Error />} />)}
-       {isUser?(   <Route path="/sidebar" exact element={<Sidebar />} />):(<Route path="*" element={<Error />} />)}
-       {isUser?( <Route path="/editprofile" exact element={<EditProfile />} />):(<Route path="*" element={<Error />} />)}
+       {isUser?(<Route path="/tagtweet" exact element={<TagTweets />} />):(<Route path="/error" element={<Error />} />)}
+       {isUser?( <Route path="/bookmark" exact element={<Bookmarks />} />):(<Route path="/error" element={<Error />} />)}
+       {isUser?(   <Route path="/sidebar" exact element={<Sidebar />} />):(<Route path="/error" element={<Error />} />)}
+       {isUser?( <Route path="/editprofile" exact element={<EditProfile />} />):(<Route path="/error" element={<Error />} />)}
        {/* {isUser?(  <Route path="/" exact element={<HomePage />} />):(<Route path="*" element={<Error />} />)} */}
-       {isUser?( <Route path="/phonesearch" element={<PhoneSearch />} />):(<Route path="*" element={<Error />} />)}
-       {isUser?(<Route path="/notification" exact element={<Notifications />} />):(<Route path="*" element={<Error />} />)}
+       {isUser?( <Route path="/phonesearch" element={<PhoneSearch />} />):(<Route path="/error" element={<Error />} />)}
+       {isUser?(<Route path="/notification" exact element={<Notifications />} />):(<Route path="/error" element={<Error />} />)}
 {/* 
        <Route path="/phonesearch" element={<PhoneSearch />} />
        <Route path="/chats/:userid" element={<Chats />} />
@@ -72,7 +72,7 @@ function App() {
        <Route path="/notification" exact element={<Notifications />} /> */}
         <Route path="/google" element={<Google />} />
         <Route path="/logout" exact element={<LogOut />} /> 
-        <Route path="*" element={<Error />} />
+        {/* <Route path="*" element={<Error />} /> */}
       </Routes>
     </BrowserRouter>
   </>
