@@ -72,10 +72,8 @@ function App() {
        <Route path="/bookmark" exact element={<Bookmarks />} />
        <Route path="/editprofile" exact element={<EditProfile />} />
        <Route path="/sidebar" exact element={<Sidebar />} />
-       <Route path="/" exact element={<HomePage />} />
+       <Route path="" exact element={<HomePage />} />
        <Route path="/notification" exact element={<Notifications />} />
-
-
         <Route path="/google" element={<Google />} />
         <Route path="/logout" exact element={<LogOut />} /> 
         <Route path="*" element={<Error />} />
