@@ -248,8 +248,8 @@ function ProfilePage() {
                     return <ProfileTweet text={tweet.text} likeCount={parseInt(tweet.likes)} replies={tweet.replyingto}
                      image={tweet.image} name={tweet.user.name} displaypic={tweet.user.displaypic}
                         video={tweet.video} username={tweet.user.user_name}
-                             retweet={tweet.retweet}
-                         tweetId={tweet._id} number={index} bookmarked="false" />;
+                             retweet={tweet.retweet} 
+                         tweetId={tweet._id} number={index} />;
                 })) : null}
             </div>
         </div>

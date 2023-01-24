@@ -36,15 +36,17 @@ function MsgDropdown() {
 
 
     return <>
-        <div className="msgDDBlock1" id="MSGDROPDOWN">
-        <div className="msgDDHead">
-        <p className="msgDDText1">New Message</p>
+        <div className="shareTweetDiv" id="MSGDROPDOWN">
+        <div className="shareePopup">
+        <p className="shareTweetText">New Message</p>
+       
             <input className="msgDDSearchIpt" type="text" value={user} onChange={handleSearch} placeholder="Search" />
             <div onClick={() => {
                 document.getElementById("MSGDROPDOWN").style.display = "none"
                 setOPacity();
             }}>
             <img src={deleteIcon} className="msgDelete" /></div>
+            <hr className="shareTweetLine" id="msgLine" />
         </div>
         <div className="msgSearchFlexbox">
             {searchListArray.length > 0 ? (searchListArray.map((searchh) => {

@@ -1,22 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import MsgSearchUser from "../../react-redux/actions/Message";
+import MsgSearchUser, { ViewChatList } from "../../react-redux/actions/Message";
 import ShareTweetUser from "./ShareTweetUser";
 import deleteIcon from "../Assets/delete.svg"
 
 
 function ShareTweet() {
     const [search, setSearch] = useState("")
-    // const { toMsgUser, loading, msgUser } = useSelector((S) => S.MsgSearchReducer)
-    const { chatLists, viewChatList, isActive, sendChatMessage, viewChatMsgs, loading } = useSelector((c) => c.MsgSearchReducer)
+    const chatReducer = useSelector((c) => c.MsgSearchReducer)
+    const { chatLists, viewChatList, isActive, chatBool, sendChatMessage, viewChatMsgs, loading } = chatReducer
     // console.log(msgUser)
     // const [searchListArray, setSearchListArray] = useState([]);
     // const { user } = useSelector((a) => a.AuthReducer)
 
     const [info, setInfo] = useState([])
-    
+    const [sideChats, setSideChats] = useState([])
     // const [info2, setInfo2] = useState([])
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(ViewChatList())
+        // console.log(chatLists)
+        console.log(viewChatList)
+    }, [])
+    useEffect(() => {
+        if (viewChatList) {
+            setSideChats(chatLists)
+            console.log(chatLists)
+        }
+    }, [chatReducer])
+    console.log(chatLists)
+
     console.log(info)
     function setOPacity() { /*SET BACKGROUND OPACITY*/
     var items = document.getElementsByClassName("POPUPBG")

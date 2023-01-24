@@ -14,9 +14,13 @@ span{
     padding:10px 4px 20px 8px;
     background: #1A1C1E;
     border-radius: 8px;
+    position: fixed;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
     /* margin-left:70vw; */
     /* margin-top:50px; */
 }
+
 .trendTweetHead{
     color:#47C87A;
     font-style: italic;

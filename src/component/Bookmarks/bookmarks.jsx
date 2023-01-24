@@ -49,7 +49,7 @@ console.log(tweets)
     {bookmarkArray.length>0? (bookmarkArray.map((bm, index)=>{
         return <Tweet text={bm.text} image={bm.image} replies={bm.replyingto} retweet={bm.retweet} 
          likeCount={parseInt(bm.likes)} video={bm.video} username={bm.user.user_name} name={bm.user.name}
-          displaypic={bm.user.displaypic} tweetId={bm._id} number={index} bookmarkb="true" />;
+          displaypic={bm.user.displaypic} tweetId={bm._id} number={index} bookmarked="true" />;
 
     })):<div className="alterBM"><img src={BMAlter} className="alterBMImage"/>
     <p className="alterBMText1">No Tweets Bookmarked yet</p>

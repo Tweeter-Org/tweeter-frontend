@@ -218,6 +218,12 @@ a:hover {
 
 /* SEARCH BAR */
 
+/* #SIDESEARCH{
+    position:fixed;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+} */
+
 .searchFlexBox {
     position: absolute;
     top:90px;

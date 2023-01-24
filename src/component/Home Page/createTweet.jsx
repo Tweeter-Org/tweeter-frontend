@@ -332,9 +332,10 @@ setText("")
             fd.append("file", null)
         }
         dispatch(ReplyToTweet(fd))
+        backToHome(e)
         // console.
         dispatch(FakeReplyTweetAction(replYtweet))
-        backToHome(e)
+        
         // console.log(replYtweet)
     }
     function handleReplyReply(e) {
