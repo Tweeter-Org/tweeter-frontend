@@ -35,8 +35,10 @@ function NotifTweet() {
     return <>
         <Sidebar />
         <div className="toTweetDiv">
-            {showTweet ? (<ToTweet text={tweet.text} image={tweet.image} video={tweet.video} likeCount={parseInt(tweet.likes)} retweet={tweet.retweet}
-              name={tweet.user.name}  username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} />) : null}
+            {notifTweet ? (<ToTweet text={notifTweet.text} image={notifTweet.image} video={notifTweet.video}
+             likeCount={parseInt(notifTweet.likes)} retweet={notifTweet.retweet}
+              name={notifTweet.user.name}  username={notifTweet.user.user_name} displaypic={notifTweet.user.displaypic} 
+              tweetId={notifTweet._id} />) : null}
         </div>
     </>
 }

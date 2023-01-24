@@ -94,6 +94,7 @@ export const ViewNotifyTweet = (id) => {
         })
         await BaseUrl.get(`/t/tweet/${id}`, config)
             .then((res) => {
+                console.log(res)
                 dispatch({
                     type: "View_Notif_Tweet_Succeed",
                     payload: res

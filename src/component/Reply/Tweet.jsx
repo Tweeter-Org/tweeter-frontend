@@ -184,8 +184,8 @@ function ToTweet(props) {
         useEffect(() => {
             var y = document.getElementsByClassName("tweetText")
             for (var i = 0; i < y.length; i++) {
-                y[i].innerHTML = y[i].innerHTML.replace(/(^|\s)([#][a-z\d-]+)/, "$1<span class='hashtagg'>$2</span>")
-                y[i].innerHTML = y[i].innerHTML.replace(/(^|\s)([@][a-z\d-]+)/, "<span class='mention' >$2</span>")
+                y[i].innerHTML = y[i].innerHTML.replace(/(^|\s)([#][A-Za-z\d-]+)/, "$1<span class='hashtagg'>$2</span>")
+                y[i].innerHTML = y[i].innerHTML.replace(/(^|\s)([@][A-Za-z\d-]+)/, "<span class='mention' >$2</span>")
             }
             var x = document.getElementsByClassName("hashtagg")
             for (let j = 0; j < x.length; j++) {
