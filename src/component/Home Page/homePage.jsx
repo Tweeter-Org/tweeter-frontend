@@ -45,10 +45,13 @@ function HomePage() {
     const { user, toFgtPwd } = auth;
     const nameInApi = user.user_name
     sessionStorage.setItem("usernameInApi", nameInApi)
-    const { count } = useSelector((t) => t.TweetFeedCountRed)
+    // const { count } = useSelector((t) => t.TweetFeedCuntRed)
+    const [count, setCount] = useState(1)
 
     function handleShowMoreTweet() {
-        dispatch(TweetFeedCount())
+        // dispatch(TweetFeedCount())
+        setCount(count+1)
+        console.log(count)
         // console.log(count)
         dispatch(TweetFeedAction2(count))
     }

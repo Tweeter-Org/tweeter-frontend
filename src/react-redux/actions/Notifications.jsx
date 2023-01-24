@@ -73,9 +73,37 @@ export const AddChatNotify =(newUnseenChat)=>{
     }
 }
 
-export const NotifyChatSeen =(newSeenChat)=>{
+export const NotifyChatSeen =(id)=>{
     return {
         type:"NOTIFY_CHAT_SEEN",
-        payload:{newSeenChat}
+        payload:{id}
+    }
+}
+
+export const ViewNotifyTweet = (id) => {
+    const accessToken = localStorage.getItem("access token")
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
+    }
+    return async function (dispatch) {
+        dispatch({
+            type: "View_Notif_Tweet_Started",
+            payload: ""
+        })
+        await BaseUrl.get(`/t/tweet/${id}`, config)
+            .then((res) => {
+                dispatch({
+                    type: "View_Notif_Tweet_Succeed",
+                    payload: res
+                })
+            })
+            .catch((err) => {
+                dispatch({
+                    type: "View_Notif_Tweet_Failed",
+                    payload: err
+                })
+            })
     }
 }

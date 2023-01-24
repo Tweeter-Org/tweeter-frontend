@@ -126,7 +126,21 @@
     padding-bottom: 20px;
     padding-top: 10px;
 }
-
+/* .msgDDHead{
+    background-color: rgb(255,255,255, 0.1);
+    background-color: #1A1C1E;
+    position: fixed;
+    z-index:80;
+    margin:0;
+    margin-left:-0.5vw;
+    width:35vw;
+    height: fit-content;
+    padding-bottom: 4px;
+    padding-top:4px;
+    border-top-right-radius:20px;
+    border-top-left-radius:18px;
+    margin-top:-10px;
+} */
 #MSGDROPDOWN {
     display: none;
 }
@@ -240,7 +254,7 @@
     font-weight: 500;
     font-size: 13px;
     line-height: 20px;
-    color:rgba(255, 255, 255, 0.8);
+    color:rgba(255, 255, 255, 0.4);
     margin-top:-16px;
     margin-left: 0.5vw;
 }
@@ -780,6 +794,7 @@ width:63vw;
         margin-top:-50px;
         margin-left:-2vw;
         z-index:110;
+        display: none;
     }
     #shareBlock1{
         width:54vw;

@@ -28,6 +28,7 @@ import PhoneSearch from './component/Sidebar/PhoneSearch';
 import ReactHashtag from 'react-hashtag';
 import Notifications from './component/Notification/Notification';
 import AuthHome from './component/Authentication/AuthHome';
+import NotifTweet from './component/Notification/NotifTweet';
 
 function App() {
 
@@ -53,6 +54,7 @@ function App() {
         {isUser ? (<Route path="/messages" element={<Messages1 />} />) : (<Route path="/error" element={<Error />} />)}
         {isUser ? (<Route path="/profile/:apiname" element={<ProfilePage />} />) : (<Route path="/error" element={<Error />} />)}
         {isUser ? (<Route path="/toTweet/:TweetId" element={<OneTweet />} />) : (<Route path="/error" element={<Error />} />)}
+        {isUser ? (<Route path="/notiftweet/:TweetId" element={<NotifTweet />} />) : (<Route path="/error" element={<Error />} />)}
         {isUser ? (<Route path="/tagtweet" exact element={<TagTweets />} />) : (<Route path="/error" element={<Error />} />)}
         {isUser ? (<Route path="/bookmark" exact element={<Bookmarks />} />) : (<Route path="/error" element={<Error />} />)}
         {isUser ? (<Route path="/sidebar" exact element={<Sidebar />} />) : (<Route path="/error" element={<Error />} />)}

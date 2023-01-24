@@ -561,6 +561,7 @@ color:#47C87A;
     top:0px;
     /* display: none; */
     left: 21vw;
+    width:10vw;
     /* z-index:9999; */
 }
 
@@ -1097,10 +1098,10 @@ margin-left:11.5vw;
     }
     .emojipicker1{
         /* height:150px; */
-        width:100vw;
+        width:200px;
     }
     .emojipicker2{
-        width:100vw;
+        width:400px;
     }
     #SHAREBLOCK{
         display:none;
@@ -1195,6 +1196,10 @@ margin-top:1.5px;
     }
 }
 @media(max-width:730px){
+    #HOME2{
+        display:none;
+        visibility: hidden;
+    }
     body{
         overflow-y: scroll;
     }

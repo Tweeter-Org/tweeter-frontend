@@ -203,7 +203,7 @@ function Chats() {
             }
             else {
                 console.warn(newChatMsgRecieved)
-                setNewChatMsg(newChatMsgRecieved)
+                // setNewChatMsg(newChatMsgRecieved)
                 dispatch(FakeViewChatsAction(newChatMsgRecieved))
                 setChatMsgs([newChatMsgRecieved, ...chatMsgs])
                 // setAllChats([...allChats, newChatMsgRecieved])
@@ -236,8 +236,8 @@ function Chats() {
                     {(topPic === null) ? (<img src={avatar} id="msgPicincircle" />) :
                         (<img src={topPic} id="msgPicincircle" />)}
                     <p className="msgName" id="ChatName">{topName}</p>
-                    <img src={searchIcon} className="chatSearch" onClick={()=>{
-                        document.getElementById("SELECT_CHAT_BLOCK").style.display="flex"
+                    <img src={searchIcon} className="chatSearch" onClick={() => {
+                        document.getElementById("SELECT_CHAT_BLOCK").style.display = "flex"
                     }} />
                 </div>
                 <div>
@@ -313,18 +313,17 @@ function Chats() {
         {(loading == true) ? <Loader loading={loading} /> : null}
         <NoChats />
         <div className="shareTweetDiv" id="SELECT_CHAT_BLOCK">
-        <div className="shareePopup" id="shareBlock1">
-        <p className="shareTweetText">Select a User</p>
-            <hr className="shareTweetLine" id="msgLine"/>
-            <img src={deleteIcon} className="msgDelete" id="shareDlt" onClick={()=>{
-                document.getElementById("SELECT_CHAT_BLOCK").style.display="none"
-            }} />
-        </div>
+            <div className="shareePopup" id="shareBlock1">
+                <p className="shareTweetText">Select a User</p>
+                <hr className="shareTweetLine" id="msgLine" />
+                <img src={deleteIcon} className="msgDelete" id="shareDlt" onClick={() => {
+                    document.getElementById("SELECT_CHAT_BLOCK").style.display = "none"
+                }} />
+            </div>
             <div className="shareTweetFlexbox">
-          
-                    {sideChats.map((oneChat, index) => {
-                        return <SearchChatUser sidechat={oneChat} indexx={index} newMsgNotify={newChatMsg} />
-                    })}
+                {sideChats.map((oneChat, index) => {
+                    return <SearchChatUser sidechat={oneChat} indexx={index} newMsgNotify={newChatMsg} />
+                })}
             </div>
         </div>
         {/* <SearchChatUser /> */}

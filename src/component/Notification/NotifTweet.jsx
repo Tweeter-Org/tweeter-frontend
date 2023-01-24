@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { ViewNotifyTweet } from "../../react-redux/actions/Notifications";
 import { ViewTweetsReply } from "../../react-redux/actions/Replies";
+import ToTweet from "../Reply/Tweet";
 import Sidebar from "../Sidebar/SideBar";
-import ToTweet from "./Tweet";
-import "./tweet.css"
+// import ToTweet from "./Tweet";
+// import "./tweet.css"
 
-function OneTweet() {
+function NotifTweet() {
     console.log(useParams())
     const { TweetId } = useParams();
     const [tweet, setTweet] = useState();
@@ -14,19 +16,16 @@ function OneTweet() {
     const [replyArr, setReplyArr] = useState([])
     const { loading, tweetData, liked, bookmarked } = useSelector((s) => s.TweetFeedReducer)
     const {responseT, errorT, replyT} = useSelector((r) => r.ReplyReducer)
+    const {notifTweet} = useSelector((n)=>n. NotificationReducer)
     console.log(responseT, errorT, replyT)
     console.log(replyT)
     console.log(tweetData)
     const dispatch = useDispatch();
-    useEffect(() => {
-        tweetData.filter((t) => {
-            if (t._id == TweetId) {
-                setShowTweet(true)
-                setTweet(t);
-                return t;
-            }
-        }, [TweetId])
-    })
+   
+    useEffect(()=>{
+        dispatch(ViewNotifyTweet(TweetId))
+        console.log(notifTweet)
+    },[TweetId])
     useEffect(()=>{
         dispatch(ViewTweetsReply(TweetId))
         setReplyArr(replyT)
@@ -43,4 +42,4 @@ function OneTweet() {
 }
 
 
-export default OneTweet
+export default NotifTweet

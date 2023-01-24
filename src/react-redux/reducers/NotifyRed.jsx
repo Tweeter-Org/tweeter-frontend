@@ -4,7 +4,8 @@ const initialState={
     viewNotifs:{},
     loading:false,
     notifyBool:false,
-    notifyRead:false
+    notifyRead:false,
+    notifTweet:{}
 }
 
 export const NotificationReducer = (state= initialState, action) => {
@@ -40,6 +41,21 @@ export const NotificationReducer = (state= initialState, action) => {
           return {
             ...state, 
             // unseenChats:(state.unseenChats.filter(ch)=>{return ch._id != })
+          }
+        }
+        case "View_Notif_Tweet_Started":{
+          return {
+            loading:true, ...state
+          }
+        }
+        case "View_Notif_Tweet_Succeed":{
+          return {
+            loading:false, ...state, notifTweet:action.payload.data.tweet
+          }
+        }
+        case "View_Notif_Tweet_Failed":{
+          return {
+            loading:false, ...state
           }
         }
     //   case REMOVE_SEEN_MSG:

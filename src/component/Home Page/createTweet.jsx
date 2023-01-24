@@ -41,8 +41,9 @@ function CreateTweet(props) {
         // var videooutput = document.getElementById("videoOutput");
         // videooutput.src = URL.createObjectURL(e.target.files[0])
         setVdoInArr(URL.createObjectURL(e.target.files[0]))
-        console.log(URL.createObjectURL(e.target.files[0]))
+        console.warn(URL.createObjectURL(e.target.files[0]))
         setSendVideo(e.target.files[0])
+        console.log(e.target.files[0])
         // document.getElementById("VIDEO").style.display = "block"
         // document.getElementById("videoOutput").style.display = "block"
     }
@@ -350,7 +351,7 @@ setText("")
             fd.append("file", null)
         }
         dispatch(ReplyToTweet(fd))
-        document.getElementById("EMOJI").style.display = "none"
+        // document.getElementById("EMOJI").style.display = "none"
         // console.
         // dispatch(FakeReplyTweetAction(replYtweet))
         backToHome(e)
@@ -386,42 +387,16 @@ setText("")
                     <p className="ctTagline">Share tweets with your followers</p>
                     <div className="ctWriteTweet">
                         <input type="text" list="tagsInputList" className="ctWriteTweetInput" value={text} onChange={handleCreateTweetSearch} required />
-                        <datalist id="tagsInputList" className="dataList">
+                        {/* <datalist id="tagsInputList" className="dataList">
                        {searchTweetList.length>0?searchTweetList.map((se)=>{
                         console.log(se)
                         return <option value={se.hashtag}>{se.hashtag}</option>
-                       }):null}
-                        {/* {console.log(mention)} */}
-                            {/* {hash ?(
-                                searchTweetList.length > 0 ? (searchTweetList.map((se) => {
-                                    return <option value={se.hashtag}>{se.hashtag}</option>
-
-                                })):null) : (mention ?(searchListArray.length > 0 ? (searchListArray.map((searchh) => {
-                                    return <option value={searchh.user_name}>{searchh.user_name}</option>
-                                })):null):null)}
-                            {/* { 
-                                tomap ? ((searchListArray.length > 0) ? (searchListArray.map((searchh) => {
-                                    return <option value={searchh.user_name}>{searchh.user_name}</option>
-                                })) : null) : null
-                            } */}
-                        </datalist>
+                       }):null} */}
+                        {/* </datalist> */}
 
                        
                     </div>
                     <p id="textRequired">Text is required</p>
-                    {/* <div className="ctSearchFlexBox POPUPBG" id="CTSEARCH">
-                {tohash ? (
-                    searchTweetList.length > 0 ? (searchTweetList.map((se) => {
-                        return <CTSearchTag hashtag={se.hashtag} />
-
-                    })) : (null)
-                ) : null}
-                {
-                    tomap ? ((searchListArray.length > 0) ? (searchListArray.map((searchh) => {
-                        return <CreateSearch username={searchh.user_name}  />
-                    })) :null) : null
-                }
-            </div> */}
                 </div>
                 <div className="CTRetweetDiv" id="CTRETWEETDIV">
                     <div className="CTRet1">
@@ -459,7 +434,7 @@ setText("")
                     </div>
                     <div>
                         <label for="ctuploadVideo"><img src={videoIcon} className="ctVideo" /></label>
-                        <input type="file" id="ctuploadVideo" accept="video/mp4, audio/mp4" onChange={handleSendVideo} hidden />
+                        <input type="file" id="ctuploadVideo" accept="video/mp4, audio/mp4" onChange={(e)=>{handleSendVideo(e)}} hidden />
                         <p className="ctVideoText">Video</p>
                     </div>
                     <div>

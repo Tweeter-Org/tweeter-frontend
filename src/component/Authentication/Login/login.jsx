@@ -17,6 +17,7 @@ import axios from 'axios';
 import { GoogleAction } from '../../../react-redux/actions/authAction';
 
 function Login() {
+
     const dispatch = useDispatch();
 
     const [email, setEmail] = useState("")
@@ -117,6 +118,14 @@ const googleRed = useSelector((g)=>g.GoogleReducer)
                 setGoogleBool(false)
             }
     },[googleBool])
+
+    const isUser = localStorage.getItem("access token") ? true : false;
+    console.log(isUser)
+    useEffect(()=>{
+        if(isUser)
+        navigate("/")
+    },[isUser])
+
 
     return <>
      <Background />

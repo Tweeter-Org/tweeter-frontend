@@ -37,13 +37,15 @@ function MsgDropdown() {
 
     return <>
         <div className="msgDDBlock1" id="MSGDROPDOWN">
-            <p className="msgDDText1">New Message</p>
+        <div className="msgDDHead">
+        <p className="msgDDText1">New Message</p>
             <input className="msgDDSearchIpt" type="text" value={user} onChange={handleSearch} placeholder="Search" />
             <div onClick={() => {
                 document.getElementById("MSGDROPDOWN").style.display = "none"
                 setOPacity();
             }}>
             <img src={deleteIcon} className="msgDelete" /></div>
+        </div>
         <div className="msgSearchFlexbox">
             {searchListArray.length > 0 ? (searchListArray.map((searchh) => {
                 return <MsgUser name={searchh.name} username={searchh.user_name} displaypic={searchh.displaypic} userNum={searchh._id} />

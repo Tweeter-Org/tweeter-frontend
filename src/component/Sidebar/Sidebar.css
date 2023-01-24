@@ -276,8 +276,6 @@ margin-bottom: 10px;
     background: #1A1C1E;
   display: flex;
     border-radius: 8px;
-    display: flex;
-    flex-direction: column;
 }
 #picincircle {
     width: 43px;
@@ -334,6 +332,8 @@ margin-left:-0.2vw;
 
 #searchtweetBg {
     /* width:14vw; */
+    display: flex;
+    flex-direction: column;
     height: fit-content
 
 }

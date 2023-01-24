@@ -17,7 +17,8 @@ function Notify(props) {
     const { notifyread } = notify;
     function handleToTweet(tweetId) {
         console.log(tweetId)
-        navigate(`/totweet/${tweetId}`)
+        
+        navigate(`/notiftweet/${tweetId}`)
     }
     function handleNotify(notifId) {
         console.log(notifId)
@@ -52,7 +53,9 @@ function Notify(props) {
                         </p>
                     </div>
                 </div>
-                {mention=="like"? <p className="notifyMsg">{props.name} liked a tweet posted by you</p>:null}
+                {mention=="like"? <p className="notifyMsg">{props.name} liked a <b onClick={() => {
+                    handleToTweet(tweetId)
+                }} className="notifTweet">Tweet</b> posted by you</p>:null}
                 {mention == "mention" ? <p className="notifyMsg">Mentioned in <b onClick={() => {
                     handleToTweet(tweetId)
                 }} className="notifTweet">#Tweet</b></p> : null}

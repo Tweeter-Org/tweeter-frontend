@@ -64,7 +64,7 @@ export const TweetFeedReducer = (state=initialState, action)=>{
 
 
 const initialCount={
-    count:0
+    count:1
 }
 
 export const TweetFeedCountRed =(state=initialCount, action)=>{
