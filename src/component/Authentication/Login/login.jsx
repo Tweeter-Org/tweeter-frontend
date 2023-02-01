@@ -57,20 +57,15 @@ const googleRed = useSelector((g)=>g.GoogleReducer)
 
     function LOGIN(){
         dispatch(LogInUser(data, isAuthEmail)) 
-        console.log(error)
-        console.log("djs")
     }
 
     useEffect(()=>{
-        console.log(toastBool, loading)
         if(error!="" && !loading){
-            console.log(error)
             setToastBool(true)
         }
     },[loginState])
 
     useEffect(()=>{
-        console.log(toastBool)
         if(toastBool){
                 toast.error("Wrong Password", {
                     position: "top-center",
@@ -105,14 +100,12 @@ const googleRed = useSelector((g)=>g.GoogleReducer)
     }
 
     useEffect(()=>{
-        console.log(googleBool, loadingGoogle)
         if(responseGoogle!="" && !loadingGoogle){
             setGoogleBool(true)
         }
     },[googleRed])
 
     useEffect(()=>{
-        console.log(googleBool)
         if(googleBool){
             window.location.href = `${responseGoogle}`
                 setGoogleBool(false)

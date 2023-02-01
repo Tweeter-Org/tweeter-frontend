@@ -35,19 +35,20 @@ function ResetPwd() {
       setIsPass(true)
       console.log("true");
     } else if (pass) {
-      document.getElementById("resetpwd1").style.display = "none";
+      document.getElementById("resetpwd1").style.display = "block";
       setIsPass(false)
+      console.log("falseee")
     }
   }, [pass]);
 
   useEffect(() => {
     if (pass == cPass) {
       setIsCPass(true)
-      document.getElementsByClassName("fgtRstPwd")[0].style.display = "none";
+      document.getElementById("resetPass2").style.display = "none";
     }
     else {
       setIsCPass(false)
-      document.getElementsByClassName("fgtRstPwd")[0].style.display = "block";
+      document.getElementById("resetPass2").style.display = "block";
     }
   }, [cPass])
 
@@ -69,15 +70,12 @@ function ResetPwd() {
   }
 
   useEffect(()=>{
-    console.log(toastBool, loading)
     if(error!="" && !loading){
-        console.log(error)
         setToastBool(true)
     }
 },[reset])
 
 useEffect(()=>{
-    console.log(toastBool)
     if(toastBool){
             toast.error(`${error}`, {
                 position: "top-center",
@@ -134,7 +132,7 @@ useEffect(()=>{
         <FontAwesomeIcon icon={faEyeSlash} id="LEye" onClick={handleShow2} />
       )}
       <input type={show2 ? "text" : "password"} className="authPwdInput" placeholder="Password" value={cPass} onChange={(e) => setCPass(e.target.value)} />
-      <p className='fgtRstPwd'>Password and confirm password should match</p>
+      <p className='fgtRstPwd' id="resetPass2">Password and confirm password should match</p>
       <button className='authFgtPwdBtn' onClick={() => { RESETPWD() }} >Continue</button>
     </div>
     {loading === true ? <Spinner animation="border" variant="light" id="loadSpinner" /> : null}

@@ -51,21 +51,16 @@ function ProfilePage() {
 
 
     const { apiname } = useParams();
-    // console.log(apiname)
     useEffect(() => {
-        // console.log(profilee)
         dispatch(ProfileAction(apiname));
     }, [apiname])
     useEffect(() => {
         if (ifedit) {
-            // console.log(editprofile)
         }
     }, [ifedit])
 
     useEffect(() => {
-        // console.warn(profilee)
         if (accessProfile) {
-            // console.log(profile)
             setFollower(profile.followers.length)
             setFollowing(profile.following.length)
             setMyProfile(profile.myprofile)
@@ -150,7 +145,6 @@ function ProfilePage() {
         document.getElementById("profileTweetFlex").style.display = "none"
     }
     function handleUserChat(chatsUserID){
-        // console.warn(chatsUserID)
         dispatch(ActiveUserList());
         dispatch(Messages(greenmessage, "Messages", 3)) 
         dispatch(CreateChat(chatsUserID))
@@ -160,7 +154,6 @@ function ProfilePage() {
     }
 
     const { likedTweets } = useSelector((l) => l.LikedTweetsPReducer)
-    // console.log(likedTweets)
     useEffect(() => {
         if (loading === true) {
             document.body.style.opacity = 0.5;
@@ -214,7 +207,6 @@ function ProfilePage() {
             </div>
             <div className="profileDiv3">
                 <p className="pTweetHead" onClick={() => { showTweets() }}>Tweets & Replies</p>
-                {/* <p className="pTweetReply">Tweets & Replies</p> */}
                 <p className="pLikehead" onClick={showLikedTweets}>Likes</p>
             </div>
             <div className="profileDiv4">
@@ -247,8 +239,8 @@ function ProfilePage() {
                 {likedTweets.length > 0 ? (likedTweets.map((tweet, index) => { 
                     return <ProfileTweet text={tweet.text} likeCount={parseInt(tweet.likes)} replies={tweet.replyingto}
                      image={tweet.image} name={tweet.user.name} displaypic={tweet.user.displaypic}
-                        video={tweet.video} username={tweet.user.user_name}
-                             retweet={tweet.retweet} 
+                        video={tweet.video} username={tweet.user.user_name} 
+                             retweet={tweet.retweet}
                          tweetId={tweet._id} number={index} />;
                 })) : null}
             </div>

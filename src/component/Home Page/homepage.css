@@ -192,7 +192,10 @@ color:#47C87A;
 /* .username:hover {
     color: #47C87A;
 } */
-
+.tweetImageBG{
+    width: 43vw;
+    height: auto;
+}
 .tweetImage {
     height: auto;
     /* width:fit-content; */

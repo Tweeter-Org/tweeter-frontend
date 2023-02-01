@@ -39,14 +39,14 @@ export const ReadNotifyAction = (id) => {
             "Authorization": `Bearer ${accessToken}`
         }
     }
-    console.log(config)
     return async function (dispatch) {
         dispatch({
             type: "Read_Notifs_Started",
             payload: ""
         })
-        await BaseUrl.patch(`/p/readnotif/${id}`, config)
+        await BaseUrl.put(`/p/readnotif/${id}`, config)
             .then((res) => {
+                console.log(res)
                 dispatch({
                     type: "Read_Notifs_Succeed",
                     payload: res

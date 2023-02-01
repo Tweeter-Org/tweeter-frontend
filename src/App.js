@@ -59,21 +59,8 @@ function App() {
         {isUser ? (<Route path="/bookmark" exact element={<Bookmarks />} />) : (<Route path="/error" element={<Error />} />)}
         {isUser ? (<Route path="/sidebar" exact element={<Sidebar />} />) : (<Route path="/error" element={<Error />} />)}
         {isUser ? (<Route path="/editprofile" exact element={<EditProfile />} />) : (<Route path="/error" element={<Error />} />)}
-        {/* {isUser?(  <Route path="/" exact element={<HomePage />} />):(<Route path="*" element={<Error />} />)} */}
         {isUser ? (<Route path="/phonesearch" element={<PhoneSearch />} />) : (<Route path="/error" element={<Error />} />)}
         {isUser ? (<Route path="/notification" exact element={<Notifications />} />) : (<Route path="/error" element={<Error />} />)}
-        {/* 
-       <Route path="/phonesearch" element={<PhoneSearch />} />
-       <Route path="/chats/:userid" element={<Chats />} />
-       <Route path="/messages" element={<Messages1 />} />
-       <Route path="/profile/:apiname" element={<ProfilePage />} />
-       <Route path="/toTweet/:TweetId" element={<OneTweet />} />
-       <Route path="/tagtweet" exact element={<TagTweets />} />
-       <Route path="/bookmark" exact element={<Bookmarks />} />
-       <Route path="/editprofile" exact element={<EditProfile />} />
-       <Route path="/sidebar" exact element={<Sidebar />} />
-       
-       <Route path="/notification" exact element={<Notifications />} /> */}
         <Route path="/google" element={<Google />} />
         <Route path="/logout" exact element={<LogOut />} />
         {/* <Route path="*" element={<Error />} /> */}

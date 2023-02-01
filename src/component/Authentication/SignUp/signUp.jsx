@@ -58,15 +58,15 @@ function SignUp(){
             }
 
             useEffect(()=>{
-                console.log(toastBool, loading)
+              
                 if(error!="" && !loading){
-                    console.log(error)
+                
                     setToastBool(true)
                 }
             },[responseApi])
             
             useEffect(()=>{
-                console.log(toastBool)
+             
                 if(toastBool){
                         toast.error(`${error}`, {
                             position: "top-center",

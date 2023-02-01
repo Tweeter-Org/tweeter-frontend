@@ -31,12 +31,11 @@ function OneTweet() {
         dispatch(ViewTweetsReply(TweetId))
         setReplyArr(replyT)
     },[TweetId])
-    console.log(tweet)
-    console.log(replyArr)
+    
     return <>
         <Sidebar />
         <div className="toTweetDiv">
-            {showTweet ? (<ToTweet text={tweet.text} image={tweet.image} video={tweet.video} likeCount={parseInt(tweet.likes)} retweet={tweet.retweet}
+            {showTweet ? (<ToTweet text={tweet.text} image={tweet.image} video={tweet.video} replyCount={parseInt(tweet.reply_cnt)} likeCount={parseInt(tweet.likes)} retweet={tweet.retweet}
               name={tweet.user.name}  username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} />) : null}
         </div>
     </>

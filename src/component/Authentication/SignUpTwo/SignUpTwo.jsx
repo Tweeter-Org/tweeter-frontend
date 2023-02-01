@@ -26,7 +26,7 @@ function SignUpTwo() {
 
   const name = sessionStorage.getItem("NameToBeUsed")
 
-  const rightname = /^[a-z ,.'-]+$/i;
+  const rightname = /^[a-z,.'-]+$/i;
   useEffect(() => {
     if (rightname.test(nameN)) {
       document.getElementById('signNameWrong').style.display = "none";
@@ -44,7 +44,7 @@ function SignUpTwo() {
     if (rightpass.test(pass)) {
       document.getElementById("signInvalidPwdWrong").style.display = "none";
       setCheckPass(true)
-      console.log("true");
+    
     } else if (pass) {
       document.getElementById("signInvalidPwdWrong").style.display = "block";
       setCheckPass(false)
@@ -82,15 +82,15 @@ function SignUpTwo() {
     dispatch(SignUpTwoUser(data))
   }
   useEffect(()=>{
-    console.log(toastBool, loading)
+    
     if(error!="" && !loading){
-        console.log(error)
+       
         setToastBool(true)
     }
 },[signUp])
 
 useEffect(()=>{
-    console.log(toastBool)
+    
     if(toastBool){
             toast.error(`${error}`, {
                 position: "top-center",
@@ -124,7 +124,7 @@ useEffect(()=>{
       <p className='authHead' id="authHeadTwo">Sign Up</p>
       <p className='authEmail' id="signInput">Username</p>
       <input type="text" className="authEmailInput" placeholder="Enter your name" value={nameN} onChange={(e) => setNameN(e.target.value)} />
-      <p id="signNameWrong" className="invalidEmail" >Name should consists of alphabet</p>
+      <p id="signNameWrong" className="invalidEmail" >Name should only consists of alphabet without any whitespaces</p>
       <img src={lockIcon} id="lockIconS" />
       <p className='authPwd' id="signPwd">Password</p>
       {show1 ? (

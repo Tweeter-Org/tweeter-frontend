@@ -31,9 +31,10 @@ function GoogleSignin() {
     setShow1(!show1)
   }
 
-  const rightname = /^[a-z ,.'-]+$/i;
+  const rightname1 = /^[a-z,.'-]+$/i;
+  const rightname2 = /^[a-z ,.'-]+$/i;
   useEffect(() => {
-    if (rightname.test(nameN)) {
+    if (rightname1.test(nameN)) {
       document.getElementById('googleInvalidName2').style.display = "none";
       setCheckName(true)
     }
@@ -43,11 +44,11 @@ function GoogleSignin() {
     }
   }, [nameN])
   useEffect(() => {
-    if (rightname.test(name)) {
+    if (rightname2.test(name)) {
       document.getElementById('googleInvalidName').style.display = "none";
       setCheckName(true)
     }
-    else if (nameN) {
+    else if (name) {
       document.getElementById('googleInvalidName').style.display = "block";
       setCheckName(false)
     }
@@ -60,7 +61,7 @@ function GoogleSignin() {
     if (rightpass.test(pass)) {
       document.getElementById("googleInvalidPwd").style.display = "none";
       setCheckPass(true)
-      console.log("true");
+   
     } else if (pass) {
       document.getElementById("googleInvalidPwd").style.display = "block";
       setCheckPass(false)
@@ -79,7 +80,7 @@ function GoogleSignin() {
     user_name: nameN,
     password: pass
   }
- console.log(data)
+ 
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -96,15 +97,15 @@ function GoogleSignin() {
   }
 
   useEffect(()=>{
-    console.log(toastBool, loading)
+   
     if(error!="" && !loading){
-        console.log(error)
+       
         setToastBool(true)
     }
 },[signUp])
 
 useEffect(()=>{
-    console.log(toastBool)
+   
     if(toastBool){
             toast.error(`{error}`, {
                 position: "top-center",

@@ -23,7 +23,6 @@ function ShareTweetUser(props) {
         })
     }, [])
 
-
     const viewChatIdd = props.viewChatid;
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -41,40 +40,22 @@ function ShareTweetUser(props) {
     },[props.user])
 
     const tweetId = sessionStorage.getItem("shareTweetId")
-    // console.log(tweetId)
 
     const { createChatList } = useSelector((m) => m.MsgSearchReducer)
     const shared = useSelector((m) => m.ShareTweetRed)
     const [shareBool, setShareBool] = useState(false)
 
     function handleShareUser() {
-        console.log(viewChatIdd)
-        console.log(createChatList.chat._id)
 
         const data = {
             "tweetId": sessionStorage.getItem("shareTweetId"),
             "chatId": viewChatIdd
         }
-        console.log(data)
         dispatch(ShareTweet(data, socket))
         if(shared.sharedSuccess)
         setShareBool(true)
         document.getElementById("SHAREBLOCK").style.display="none"
     }
-    // useEffect(() => {
-    //     console.log(shared.sharedSuccess)
-    //     if (shareBool)
-    //     {
-    //         toast.success("Message sent successfully", {
-    //             position: "top-center",
-    //             theme: "light",
-    //         });
-    //         setShareBool(false)
-    //     }
-           
-    // }, [shareBool, shared])
-    
-
 
     return <>
         <div className="shareUser POPUPBG">

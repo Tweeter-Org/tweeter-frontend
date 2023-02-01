@@ -16,11 +16,8 @@ function HomePage() {
 
     const { loading, tweetData, liked, bookmarked, privateRoute, trendingTweet } = useSelector((s) => s.TweetFeedReducer)
     const [tweeets, settweets] = useState([])
-    console.log(tweetData)
-    console.log(trendingTweet)
     const navigate = useNavigate()
     const isUser = localStorage.getItem("access token") ? true : false;
-    console.log(isUser)
     useEffect(()=>{
         if(!isUser)
         navigate("/login")
@@ -29,17 +26,13 @@ function HomePage() {
     const { response } = useSelector((t) => t.TweetCreateReducer)
     useEffect(() => {
         dispatch(TweetFeedAction())
+        console.log(tweetData)
         dispatch(TrendingTweets())
         document.getElementById("SIDESEARCH").style.display = "none"
         document.getElementById("HOME2").style.display = "flex"
     }, [])
 
-    //    console.log(tweetData)
-    //    console.log(trendingTweet)
-    //    console.log(liked)
-    //    console.log(bookmarked)
     const tweetLength = tweetData.length
-    //    const trendTweetLength = tren.length
 
     const auth = useSelector((s) => s.AuthReducer)
     const { user, toFgtPwd } = auth;
@@ -51,15 +44,12 @@ function HomePage() {
     function handleShowMoreTweet() {
         // dispatch(TweetFeedCount())
         setCount(count+1)
-        console.log(count)
-        // console.log(count)
         dispatch(TweetFeedAction2(count))
     }
-    // console.log(tweetData)
+  
     const {tagTweets, getTag } = useSelector((ta) => ta.TagTweetFeedReducer)
     function showTagTweet(tag) {
         dispatch(TweetListWithTag(tag))
-        console.log("tag tweets")
         if (getTag) {
           navigate("/tagtweet")
         }
@@ -81,8 +71,7 @@ function HomePage() {
                     {tweetLength > 0 ? (tweetData.map((tweet, index) => {
                         const likes = liked[index]
                         const bookmarks = bookmarked[index]
-                        console.log(likes)
-                        return <Tweet text={tweet.text} image={tweet.image} video={tweet.video} likeCount={parseInt(tweet.likes)} retweet={tweet.retweet}
+                        return <Tweet text={tweet.text} image={tweet.image} video={tweet.video} replyCount={parseInt(tweet.reply_cnt)} likeCount={parseInt(tweet.likes)} retweet={tweet.retweet}
                             username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} number={index} name={tweet.user.name}
                             bookmarked={bookmarks} LIKES={likes} />;
                     })) : null}

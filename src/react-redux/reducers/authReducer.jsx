@@ -39,7 +39,7 @@ const initialState ={
             return {
                 loading:false,
                 response:"",
-                error:action.payload.response.data.msg,
+                // error:action.payload.response.data.msg,
                 toFgtPwd:false
             }
         }
@@ -63,7 +63,7 @@ const initialState ={
             return {
                 loading:false,
                 response:"",
-                error:action.payload.response.data.msg,
+                // error:action.payload.response.data.msg,
                 toOtp:false
             }
         }
@@ -91,7 +91,7 @@ const initialState ={
             return {
                 loading:false,
                 response:"",
-                error:action.payload.response.data.msg,
+                // error:action.payload.response.data.msg,
                 toRstPwd:false
             }
         }

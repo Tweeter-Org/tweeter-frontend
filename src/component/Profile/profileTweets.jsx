@@ -41,13 +41,11 @@ function ProfileTweet(props) {
         else
         setReplyingto([])
     },[props.replies])
-   
-    // console.warn(props.replies)
-    // console.warn(replyingto)
 
     useEffect(() => {
         setTweetCount(props.likeCount)
-        if (props.LIKES) {
+        console.log(props.likeCount)
+        if (props.likeCount>0) {
             document.getElementsByClassName("tweetLike")[id].style.color = "green"
             document.getElementsByClassName("likeIcon")[id].src = greenLike
         }
@@ -55,7 +53,7 @@ function ProfileTweet(props) {
             document.getElementsByClassName("likeIcon")[id].src = like
             document.getElementsByClassName("tweetLike")[id].style.color = "white"
         }
-    }, [props.LIKES])
+    }, [props.likeCount])
     useEffect(() => {
         if (bookmarkShow) {
             document.getElementsByClassName("bookmarkIcon")[id].src = greenBookmarks
@@ -76,8 +74,6 @@ function ProfileTweet(props) {
             document.getElementsByClassName("likeIcon")[id].src = like
             document.getElementsByClassName("tweetLike")[id].style.color = "white"
             setTweetCount(tweetCount => tweetCount - 1)
-            console.log(tweetCount)
-
         }
     }
 
@@ -156,7 +152,6 @@ function handleTweetReply(tweetid, name, image, video, text){
 
 function handleToTweet (tweetId){
     navigate(`/totweet/${tweetId}`)
-    console.log("From outer div")
 }
 function handleTweetShare (tweetid){
     sessionStorage.setItem("shareTweetId", tweetid)
@@ -181,7 +176,6 @@ function handleTweetShare (tweetid){
             </div>
             {replyingto.length>0?(<p id="prTwReplying1">Replying to {replyingto.length > 0 ? (replyingto.map((name) => {
                     return <span id="prTwReplying2" onClick={() => {
-                        console.log(`/profile/${name}`)
                         navigate(`/profile/${name}`)
                     }}>@{name}</span>
                 })) : null}</p>):null}
@@ -224,7 +218,6 @@ function handleTweetShare (tweetid){
             </div>
             {replyingto.length>0?(<p id="RepReply">Replying to {replyingto.length > 0 ? (replyingto.map((name) => {
                     return <span id="RepAtName" onClick={() => {
-                        console.log(`/profile/${name}`)
                         navigate(`/profile/${name}`)
                     }}>@{name}</span>
                 })) : null}</p>):null}

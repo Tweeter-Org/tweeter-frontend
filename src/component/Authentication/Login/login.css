@@ -102,7 +102,7 @@ body {
     line-height: 15px;
     margin-bottom:0px;
     color: #f37777;
-   
+   display: none;
 }
 
 .authPwd {

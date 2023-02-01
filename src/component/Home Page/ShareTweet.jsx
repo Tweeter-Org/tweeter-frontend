@@ -9,29 +9,19 @@ function ShareTweet() {
     const [search, setSearch] = useState("")
     const chatReducer = useSelector((c) => c.MsgSearchReducer)
     const { chatLists, viewChatList, isActive, chatBool, sendChatMessage, viewChatMsgs, loading } = chatReducer
-    // console.log(msgUser)
-    // const [searchListArray, setSearchListArray] = useState([]);
-    // const { user } = useSelector((a) => a.AuthReducer)
-
     const [info, setInfo] = useState([])
     const [sideChats, setSideChats] = useState([])
-    // const [info2, setInfo2] = useState([])
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(ViewChatList())
-        // console.log(chatLists)
-        console.log(viewChatList)
     }, [])
     useEffect(() => {
         if (viewChatList) {
             setSideChats(chatLists)
-            console.log(chatLists)
         }
     }, [chatReducer])
-    console.log(chatLists)
 
-    console.log(info)
     function setOPacity() { /*SET BACKGROUND OPACITY*/
     var items = document.getElementsByClassName("POPUPBG")
     for (var i = 0; i < items.length; i++) {
@@ -53,7 +43,7 @@ function ShareTweet() {
           
             <div className="shareTweetFlexbox">
             {(viewChatList) ? (chatLists.length > 0 ? (chatLists.map((chat, index) => {
-                        {/* console.log(chat) */ }
+                      
                         return <ShareTweetUser user={chat.users} msg={chat.latestmsg} indexx={index} viewChatid={chat._id} />
                     })) : null) : null}
                 {/* {info.length > 0 ? (info.map((searchh) => {

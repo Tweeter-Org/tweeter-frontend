@@ -16,17 +16,12 @@ function Notify(props) {
     const notify = useSelector((n) => n.NotificationReducer)
     const { notifyread } = notify;
     function handleToTweet(tweetId) {
-        console.log(tweetId)
-        
         navigate(`/notiftweet/${tweetId}`)
     }
     function handleNotify(notifId) {
-        console.log(notifId)
         document.getElementsByClassName("notifyCard")[index].style.backgroundColor = "rgb(26, 28, 30)"
         document.getElementsByClassName("notifyCircle")[index].style.display="none"
         dispatch(ReadNotifyAction(notifId))
-        // document.getElementsByClassName("notifyCard")[index].style.backgroundColor = "rgba(255, 255, 255, 0.1)"
-        // if()
     }
     useEffect(() => {
         if (isRead) {
