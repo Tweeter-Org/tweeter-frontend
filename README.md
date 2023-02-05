@@ -6,7 +6,7 @@ FEATURES :
 2. Create, Share, Reply, Retweet, Like or Bookmark any tweet
 3. Notifications section to have all new notification
 4. Bookmarks section to see your bookmarks
-5. Real time chat application using 
+5. Real time chat application using web-sockets.
 6. Profile page
 
 TECH-STACKS :
