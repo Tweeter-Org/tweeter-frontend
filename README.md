@@ -11,7 +11,7 @@ FEATURES :
 
 TECH-STACKS :
 Frontend: HTML, CSS, JS, ReactJS, Redux
-Backend: NodeJS, ExpressJS, MongoDB
+Backend: NodeJS, ExpressJS, PostgreSql
 Designing: Figma
 
 IMAGES :
