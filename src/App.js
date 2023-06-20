@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './App.css';
 import EmailVerify from './component/Authentication/EmailVerify/emailVerify';
 import ForgotPwd from './component/Authentication/ForgotPassword/forgotPwd';
 import Login from './component/Authentication/Login/login';
@@ -11,7 +10,6 @@ import SignUpTwo from './component/Authentication/SignUpTwo/SignUpTwo';
 import Sidebar from './component/Sidebar/SideBar';
 import HomePage from './component/Home Page/homePage';
 import CreateTweet from './component/Home Page/createTweet';
-import EmojiPicker from 'emoji-picker-react';
 import Bookmarks from './component/Bookmarks/bookmarks';
 import ProfilePage from './component/Profile/profilePage';
 import EditProfile from './component/Profile/EditProfile';
@@ -20,15 +18,14 @@ import Google from "./component/Google"
 import TagTweets from './component/Sidebar/TagTweets';
 import OneTweet from './component/Reply/OneTweet';
 import GoogleSignin from './component/Authentication/GoogleSign/GoogleSignIn';
-import Counter from './component/counter';
 import Messages1 from './component/Messages/Messages1';
 import Chats from './component/Messages/Chats';
 import PrivateRoute from './component/PrivateRoute';
 import PhoneSearch from './component/Sidebar/PhoneSearch';
-import ReactHashtag from 'react-hashtag';
 import Notifications from './component/Notification/Notification';
 import AuthHome from './component/Authentication/AuthHome';
 import NotifTweet from './component/Notification/NotifTweet';
+import './App.css';
 
 function App() {
 
