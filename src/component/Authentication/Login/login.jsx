@@ -85,7 +85,6 @@ const googleRed = useSelector((g)=>g.GoogleReducer)
         }
     }, [loading, loadingGoogle])
 
-
     useEffect(()=>{
         if(toFgtPwd){
             navigate("/")
@@ -113,12 +112,11 @@ const googleRed = useSelector((g)=>g.GoogleReducer)
     },[googleBool])
 
     const isUser = localStorage.getItem("access token") ? true : false;
-    console.log(isUser)
+   
     useEffect(()=>{
         if(isUser)
         navigate("/")
     },[isUser])
-
 
     return <>
      <Background />

@@ -247,3 +247,9 @@ export const infoViaGoogle =(user)=>{
         }
     }
 }
+
+export const setLogout = ()=>{
+    return {
+        type:"LOG_OUT"
+    }
+}

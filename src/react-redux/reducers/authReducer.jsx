@@ -22,7 +22,7 @@ const initialState ={
             }
         }
         case "REQUEST_SUCCEDED":{
-            console.log(action.payload)
+          
             localStorage.setItem("access token", action.payload.token)
             return {...state,
                 loading:false,
@@ -35,7 +35,7 @@ const initialState ={
             }
         }
         case "REQUEST_FAILED":{
-            console.log(action.payload)
+          
             return {
                 loading:false,
                 response:"",
@@ -44,13 +44,11 @@ const initialState ={
             }
         }
         case "FGT_EMAIL_STARTED":{
-            console.log(action.payload)
             return {
                 ...state, loading:true,toOtp:false
             }
         }
         case "FGT_EMAIL_SUCCEDED":{
-            console.log(action.payload)
             return {...state,
                 loading:false,
                 response:action.payload.msg,
@@ -59,7 +57,6 @@ const initialState ={
             }
         }
         case "FGT_EMAIL_FAILED":{
-            console.log(action.payload)
             return {
                 loading:false,
                 response:"",
@@ -68,13 +65,11 @@ const initialState ={
             }
         }
         case "OTP_STARTED":{
-            console.log(action.payload)
             return {
                 ...state, loading:true,toRstPwd:false
             }
         }
         case "OTP_SUCCEDED":{
-            console.log(action.payload)
             localStorage.setItem("access token", action.payload.token)
             localStorage.setItem("isToken", "true")
             return {...state,
@@ -86,8 +81,6 @@ const initialState ={
             }
         }
         case "OTP_FAILED":{
-            console.log(action.payload)
-            console.log(action.payload.response.data.msg)
             return {
                 loading:false,
                 response:"",
@@ -96,13 +89,11 @@ const initialState ={
             }
         }
         case "RESEND_STARTED":{
-            console.log(action.payload)
             return {
                 ...state, loading:true,toHome:false
             }
         }
         case "RESEND_SUCCEDED":{
-            console.log(action.payload)
             return {...state,
                 loading:false,
                 response:action.payload.msg,
@@ -111,8 +102,6 @@ const initialState ={
             }
         }
         case "RESEND_FAILED":{
-            console.log(action.payload)
-            console.log(action.payload.response.data.msg)
             return {
                 loading:false,
                 response:"",
@@ -121,13 +110,11 @@ const initialState ={
             }
         }
         case "RESET_STARTED":{
-            console.log(action.payload)
             return {
                 ...state, loading:true
             }
         }
         case "RESET_SUCCEDED":{
-            console.log(action.payload)
             return {...state,
                 loading:false,
                 response:action.payload.msg,
@@ -135,8 +122,6 @@ const initialState ={
             }
         }
         case "RESET_FAILED":{
-            console.log(action.payload)
-            console.log(action.payload.response.data.msg)
             return {
                 loading:false,
                 response:"",
@@ -145,13 +130,11 @@ const initialState ={
         }
         case "SIGNUP_STARTED":{
         localStorage.setItem("isToken", "false")
-            console.log(action.payload)
             return {
                 ...state, loading:true, toSignOtp:false
             }
         }
         case "SIGNUP_SUCCEDED":{
-            console.log(action.payload)
             return {...state,
                 loading:false,
                 response:action.payload.msg,
@@ -160,8 +143,6 @@ const initialState ={
             }
         }
         case "SIGNUP_FAILED":{
-            console.log(action.payload)
-            console.log(action.payload.response.data.msg)
             return {
                 loading:false,
                 response:"",
@@ -170,15 +151,12 @@ const initialState ={
             }
         }
         case "EMAIL_VERIFY_STARTED":{
-            console.log(action.payload)
             return {
                 ...state, loading:true,toSignUpTwo:false
             }
         }
         case "EMAIL_VERIFY_SUCCEDED":{
-            console.log(action.payload)
             localStorage.setItem("access token", action.payload.token)
-            console.log(action.payload.token)
             return {...state,
                 loading:false,
                 response:action.payload.msg,
@@ -188,8 +166,6 @@ const initialState ={
             }
         }
         case "EMAIL_VERIFY_FAILED":{
-            console.log(action.payload)
-            console.log(action.payload.response.data.msg)
             return {
                 loading:false,
                 response:"",
@@ -198,15 +174,12 @@ const initialState ={
             }
         }
         case "SIGNUP_TWO_STARTED":{
-            console.log(action.payload)
             return {
                 ...state, loading:true,
                 toHome:false
             }
         }
         case "SIGNUP_TWO_SUCCEDED":{
-            console.log(action.payload)
-            // sessionStorage.setItem("access token", action.payload.token)
             return {...state,
                 loading:false,
                 response:action.payload.msg,
@@ -216,7 +189,6 @@ const initialState ={
             }
         }
         case "SIGNUP_TWO_FAILED":{
-            console.log(action.payload)
             return {
                 loading:false,
                 response:"",
@@ -230,9 +202,13 @@ const initialState ={
             }
         }
         case "INFO_VIA_GOOGLE":{
-            console.log(action.payload)
             return {...state, 
             user:action.payload.user
+            }
+        }
+        case "LOG_OUT":{
+            return {
+                ...state, toFgtPwd: false
             }
         }
         default: return state;

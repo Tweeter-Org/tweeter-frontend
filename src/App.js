@@ -30,7 +30,6 @@ import './App.css';
 function App() {
 
   const isUser = localStorage.getItem("access token") ? true : false;
-  console.log(isUser)
   return <>
     <BrowserRouter>
       <Routes>
