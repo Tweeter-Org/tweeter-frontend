@@ -19,6 +19,7 @@ function AuthOtp() {
     const email = sessionStorage.getItem("email")
 
     const [seconds, setSeconds] = useState(59)
+    const [showErr, setShowErr] = useState(false)
     const [otp, setOtp] = useState("")
     useEffect(() => {
         const timer =
@@ -46,30 +47,19 @@ function AuthOtp() {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (response !== "") {
-            toast.success(`${response}`, {
-                position: "top-center",
-                theme: "light",
-            });
-        }
-    }, [response])
-
     function OTP() {
         dispatch(OtpAction(data, navigate))
+        setShowErr(true)
     }
 
     useEffect(() => {
-       
         if (error != "" && !loading) {
-           
             setToastBool(true)
         }
     }, [otpR])
 
     useEffect(() => {
-      
-        if (toastBool) {
+        if (toastBool && showErr) {
             toast.error(`${error}`, {
                 position: "top-center",
                 theme: "light",
@@ -92,6 +82,7 @@ function AuthOtp() {
             navigate("/reset")
         }
     }, [toRstPwd])
+    
     return <>
         <Background />
         <div className='loginBg'>

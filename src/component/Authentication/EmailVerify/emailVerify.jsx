@@ -19,6 +19,7 @@ function AuthOtp(){
 
     const [seconds, setSeconds] = useState(59)
     const [otp, setOtp] = useState("")
+    const [showErr, setShowErr] = useState(false)
     useEffect(()=>{
         const timer=
         seconds >0 && setInterval(()=>{
@@ -40,9 +41,7 @@ function AuthOtp(){
     }
 
     const otpR= useSelector((o)=>o.AuthReducer)
-    console.log(otpR)
     const {loading, response, error,toSignUpTwo} = otpR;
-    console.log(loading,response,error)
     const [toastBool, setToastBool] = useState(false)
 
     useEffect(()=>{
@@ -56,19 +55,17 @@ function AuthOtp(){
 
     function EMAILVERIFY (){
         dispatch(EmailAction(data))
+        setShowErr(true)
     }
 
     useEffect(()=>{
-        console.log(toastBool, loading)
         if(error!="" && !loading){
-            console.log(error)
             setToastBool(true)
         }
     },[otpR])
     
     useEffect(()=>{
-        console.log(toastBool)
-        if(toastBool){
+        if(toastBool && showErr){
                 toast.error(`${error}`, {
                     position: "top-center",
                     theme: "light",
@@ -76,16 +73,6 @@ function AuthOtp(){
                 setToastBool(false)
             }
     },[toastBool])
-
-    useEffect(()=>{
-        if(response!==""){
-            toast.success(`${response}`, {
-                position: "top-center",
-                theme: "light",
-                });
-        }
-    },[response])
-
    
     const navigate=useNavigate();
     useEffect(()=>{

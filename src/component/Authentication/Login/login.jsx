@@ -21,6 +21,7 @@ function Login() {
     const dispatch = useDispatch();
 
     const [email, setEmail] = useState("")
+    const [showErr, setShowErr] = useState(false)
     const [password, setPassword] = useState("")
     const [isAuthEmail, setIsAuthEmail] = useState(false)
     const [show, setShow] = useState(false)
@@ -57,6 +58,7 @@ const googleRed = useSelector((g)=>g.GoogleReducer)
 
     function LOGIN(){
         dispatch(LogInUser(data, isAuthEmail)) 
+        setShowErr(true)
     }
 
     useEffect(()=>{
@@ -66,7 +68,7 @@ const googleRed = useSelector((g)=>g.GoogleReducer)
     },[loginState])
 
     useEffect(()=>{
-        if(toastBool){
+        if(toastBool && showErr){
                 toast.error("Wrong Password", {
                     position: "top-center",
                     theme: "light",

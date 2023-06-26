@@ -20,12 +20,12 @@ function SignUpTwo() {
   const [checkPass, setCheckPass] = useState(false)
   const [show1, setShow1] = useState(false)
   const [callApi, setCallApi] = useState(false)
+  const [showErr, setShowErr] = useState(false)
   function handleShow1() {
     setShow1(!show1)
   }
 
   const name = sessionStorage.getItem("NameToBeUsed")
-
   const rightname = /^[a-z,.'-]+$/i;
   useEffect(() => {
     if (rightname.test(nameN)) {
@@ -44,7 +44,7 @@ function SignUpTwo() {
     if (rightpass.test(pass)) {
       document.getElementById("signInvalidPwdWrong").style.display = "none";
       setCheckPass(true)
-    
+
     } else if (pass) {
       document.getElementById("signInvalidPwdWrong").style.display = "block";
       setCheckPass(false)
@@ -63,7 +63,7 @@ function SignUpTwo() {
     user_name: nameN,
     password: pass
   }
- 
+
   const signUp = useSelector((s) => s.AuthReducer)
   const { loading, error, response, toHome } = signUp;
   const [toastBool, setToastBool] = useState(false)
@@ -80,34 +80,23 @@ function SignUpTwo() {
 
   function SIGNUPTWO() {
     dispatch(SignUpTwoUser(data))
+    setShowErr(true)
   }
-  useEffect(()=>{
-    
-    if(error!="" && !loading){
-       
-        setToastBool(true)
+  useEffect(() => {
+    if (error != "" && !loading) {
+      setToastBool(true)
     }
-},[signUp])
+  }, [signUp])
 
-useEffect(()=>{
-    
-    if(toastBool){
-            toast.error(`${error}`, {
-                position: "top-center",
-                theme: "light",
-            });
-            setToastBool(false)
-        }
-},[toastBool])
-
-  useEffect(()=>{
-    if(response!==""){
-        toast.success(`${response}`, {
-            position: "top-center",
-            theme: "light",
-            });
+  useEffect(() => {
+    if (toastBool && showErr) {
+      toast.error(`${error}`, {
+        position: "top-center",
+        theme: "light",
+      });
+      setToastBool(false)
     }
-  },[response])
+  }, [toastBool])
 
   const navigate = useNavigate();
 

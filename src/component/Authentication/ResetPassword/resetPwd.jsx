@@ -6,7 +6,6 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Background from '../Background';
 import arrow from "../../Assets/arrow-back.svg";
 import { useDispatch, useSelector } from 'react-redux';
-// import ResetPassword from '../../../react-redux/actions/ResetPwdAction';
 import { Spinner } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -20,6 +19,7 @@ function ResetPwd() {
   const [isCPass, setIsCPass] = useState(false)
   const [callApi, setCallApi] = useState(false)
   const [show1, setShow1] = useState(false)
+  const [showErr, setShowErr] = useState(false)
   function handleShow1() {
     setShow1(!show1)
   }
@@ -33,11 +33,9 @@ function ResetPwd() {
     if (rightpass.test(pass)) {
       document.getElementById("resetpwd1").style.display = "none";
       setIsPass(true)
-      console.log("true");
     } else if (pass) {
       document.getElementById("resetpwd1").style.display = "block";
       setIsPass(false)
-      console.log("falseee")
     }
   }, [pass]);
 
@@ -67,6 +65,7 @@ function ResetPwd() {
 
   function RESETPWD() {
     dispatch(ResetAction(pass))
+    setShowErr(true)
   }
 
   useEffect(()=>{
@@ -76,7 +75,7 @@ function ResetPwd() {
 },[reset])
 
 useEffect(()=>{
-    if(toastBool){
+    if(toastBool && showErr){
             toast.error(`${error}`, {
                 position: "top-center",
                 theme: "light",
@@ -84,7 +83,6 @@ useEffect(()=>{
             setToastBool(false)
         }
 },[toastBool])
-
 
     useEffect(()=>{
       if(loading===true){
@@ -95,14 +93,6 @@ useEffect(()=>{
       }
   },[loading])
 
-  useEffect(()=>{
-    if(response!==""){
-        toast.success(`${response}`, {
-            position: "top-center",
-            theme: "light",
-            });
-    }
-  },[response])
   const navigate = useNavigate();
   useEffect(() => {
     if (toHome) {

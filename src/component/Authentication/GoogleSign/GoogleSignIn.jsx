@@ -26,6 +26,7 @@ function GoogleSignin() {
   const [checkName, setCheckName] = useState(false);
   const [checkPass, setCheckPass] = useState(false)
   const [show1, setShow1] = useState(false)
+  const [showErr, setShowErr] = useState(false)
   const [callApi, setCallApi] = useState(false)
   function handleShow1() {
     setShow1(!show1)
@@ -80,7 +81,6 @@ function GoogleSignin() {
     user_name: nameN,
     password: pass
   }
- 
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -94,19 +94,18 @@ function GoogleSignin() {
 
   function SIGNUPTWO() {
     dispatch(SignUpTwoUser(data))
+    setShowErr(true)
   }
 
   useEffect(()=>{
-   
     if(error!="" && !loading){
-       
         setToastBool(true)
     }
 },[signUp])
 
 useEffect(()=>{
    
-    if(toastBool){
+    if(toastBool && showErr){
             toast.error(`{error}`, {
                 position: "top-center",
                 theme: "light",
