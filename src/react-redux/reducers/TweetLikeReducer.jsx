@@ -11,8 +11,7 @@ const TweetLikeReducer =(state=initialState, action)=>{
             return {...state}
         }
         case "TWEETLIKE_SUCCESS":{
-            console.log(action.payload)
-            return {...state , response:action.payload.data.msg, isLiked:true, error:""}
+   return {...state , response:action.payload.data.msg, isLiked:true, error:""}
         }
         case "TWEETLIKE_FAILED":{
             return {...state , error:action.payload , isLiked:false}
@@ -21,11 +20,10 @@ const TweetLikeReducer =(state=initialState, action)=>{
         //     return {...state}
         // }
         // case "TWEETDLT_SUCCESS":{
-        //     console.log(action.payload)
+        //   
         //     return {...state , response:action.payload.data.msg, isDelete:true, error:""}
         // }
         // case "TWEETDLT_FAILED":{
-        //     console.log(action.payload)
         //     return {...state , error:action.payload , isDelete:false}
         // }
         default : return state

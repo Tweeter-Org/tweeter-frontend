@@ -9,11 +9,9 @@ function SearchComp (props){
     const dispatch = useDispatch();
     const pro = useSelector((p)=>p.ProfileNameReducer)
     function toProfile (name){
-        console.log(name)
         // dispatch(ProfileApi(name))
         
             navigate(`/profile/${name}`)
-            console.log(`/profile?name=${name}`)
     }
     return <>
         <div className="searchcomp POPUPBG ">

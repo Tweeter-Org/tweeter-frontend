@@ -15,7 +15,6 @@ export const ReplyToTweet = (formData) => {
         })
         await BaseUrl.post("/r/create", formData, config)
             .then((Res) => {
-                console.log(Res)
                 toast.success(`${Res.data.msg}`, {
                     position: "top-center",
                     theme: "light",
@@ -52,7 +51,7 @@ export const ViewTweetsReply = (id) => {
         })
         await BaseUrl.get(`/r/tweetreplies/${id}`,config)
             .then((Res) => {
-                console.log(Res)
+             
                 dispatch({
                     type: "VIEW_REPLY_TWEET_YES",
                     payload: Res
@@ -80,7 +79,7 @@ export const ViewRepliesToReply = (id) => {
         })
         await BaseUrl.get(`/r/tweetreplies/${id}`,config)
             .then((Res) => {
-                console.log(Res)
+            
                 dispatch({
                     type: "VIEW_REPLY_TO_REPLY_YES",
                     payload: Res

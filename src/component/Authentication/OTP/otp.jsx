@@ -21,6 +21,8 @@ function AuthOtp() {
     const [seconds, setSeconds] = useState(59)
     const [showErr, setShowErr] = useState(false)
     const [otp, setOtp] = useState("")
+    const [bool, setBool] = useState(false)
+    
     useEffect(() => {
         const timer =
             seconds > 0 && setInterval(() => {
@@ -43,30 +45,25 @@ function AuthOtp() {
 
     const otpR = useSelector((o) => o.AuthReducer)
     const { loading, response, error, toRstPwd } = otpR;
-    const [toastBool, setToastBool] = useState(false)
 
     const navigate = useNavigate();
 
-    function OTP() {
+    function OTP(e) {
+        e.preventDefault();
         dispatch(OtpAction(data, navigate))
         setShowErr(true)
+        setBool(true)
     }
 
     useEffect(() => {
-        if (error != "" && !loading) {
-            setToastBool(true)
-        }
-    }, [otpR])
-
-    useEffect(() => {
-        if (toastBool && showErr) {
-            toast.error(`${error}`, {
+        if (error && !loading && showErr) {
+            toast.error(error, {
                 position: "top-center",
                 theme: "light",
             });
-            setToastBool(false)
+            setShowErr(false)
         }
-    }, [toastBool])
+    }, [error, showErr, loading])
 
     useEffect(() => {
         if (loading === true) {
@@ -78,23 +75,26 @@ function AuthOtp() {
     }, [loading])
 
     useEffect(() => {
-        if (toRstPwd) {
+        if (toRstPwd, bool ) {
             navigate("/reset")
+            setBool(false)
         }
-    }, [toRstPwd])
+    }, [toRstPwd, bool])
     
     return <>
         <Background />
+        <form onSubmit={OTP}>
         <div className='loginBg'>
             <img src={arrow} id="arrow" onClick={() => { navigate("/fgtpwd") }} />
             <p className='authHead' id="authHeadTwo">Otp Verification</p>
             <p className='authEmail'>Enter Otp sent to {email}</p>
-            <input type="text" className="authEmailInput" id="otpInput" placeholder="0  0  0  0  0  0" value={otp} onChange={(e) => setOtp(e.target.value)} />
+            <input type="text" className="authEmailInput" id="otpInput" placeholder="0  0  0  0  0  0" value={otp} onChange={(e) => setOtp(e.target.value)} required />
             <p className='invalidEmail'>Incorrect Otp</p>
             <p className='resendFgtOtp' disabled={seconds !== 0 ? true : false} onClick={() => { dispatch(ResendOtpAction(email), setSeconds(59)) }}>Resend Otp</p>
             <span id="timer">00:{seconds}</span>
-            <button className='authFgtPwdBtn' onClick={() => { OTP() }}>Continue</button>
+            <button className='authFgtPwdBtn' type="submit">Continue</button>
         </div>
+        </form>
         <ToastContainer />
         {(loading === true) ? <Spinner animation="border" variant="light" id="loadSpinner" /> : null}
     </>

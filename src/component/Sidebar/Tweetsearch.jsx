@@ -12,12 +12,10 @@ const navigate = useNavigate();
 
     function showTagTweet(tag) {
         dispatch(TweetListWithTag(tag))
-        console.log("tag tweets")
         if (getTag) {
           navigate("/tagtweet")
         }
     }
-    console.log(tagTweets)
     return <>
         <div className="searchcomp POPUPBG" id="searchtweetBg">
             <p className="searchName" id="searchtweettag" onClick={() => { showTagTweet(props.hashtag) }}>#{props.hashtag}</p>

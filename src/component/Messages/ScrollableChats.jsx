@@ -4,8 +4,7 @@ import { useSelector } from "react-redux";
 function ScrollableChat(props) {
     const { chatLists, viewChatList, isActive, viewChatMsgs } = useSelector((c) => c.MsgSearchReducer)
     const { user } = useSelector((a) => a.AuthReducer)
-    // console.warn(viewChatMsgs)
-    // console.log(props.chatMessage)
+   
     const [chatmsg, setChatmsg] = useState([])
     const setScrollbar = useRef(null)
     useEffect(() => {

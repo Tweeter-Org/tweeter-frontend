@@ -19,23 +19,20 @@ function Reply(props) {
     const dispatch = useDispatch()
     const id = props.indexx;
     const lengthR = props.replyingto.length;
-    console.warn( props.replyingto)
-    console.log(lengthR)
+   
     const { responseT, errorT, replyR, replyShow, loading } = useSelector((r) => r.ReplyReducer)
-    console.log(replyR, replyShow, loading)
-    // console.log(document.getElementsByClassName("RepShowMore"))
+  
     const [replyArr, setReplyArr] = useState([])
     const [replyArr2, setReplyArr2] = useState([])
     const [update, setupdate] = useState(false)
-    console.log(update)
+   
 
 const [bool, setBool] = useState(false)
     function handleReplytoReply(idd) {
         setBool(true)
         setupdate(true)
         dispatch(ViewRepliesToReply(idd))
-        console.log(replyR)
-        console.log(replyArr)
+       
         if ((replyShow==true && loading==false) > 0)
             document.getElementsByClassName("RepShowMore")[id].style.display = "none";
     }
@@ -103,7 +100,6 @@ const [bool, setBool] = useState(false)
     }
 
     function handleRetweet(tweetid, name, image, video, text) {
-        // console.log("replyyy")
         dispatch(RetweetDetails(tweetid, name, video, text, image))
         sessionStorage.setItem("retweetId", tweetid)
         setOPacity()
@@ -127,7 +123,7 @@ const [bool, setBool] = useState(false)
     }
     function handleTweetShare (tweetid){
         sessionStorage.setItem("shareTweetId", tweetid)
-        console.log(tweetid)
+        
         document.getElementById("SHAREBLOCK").style.display="flex"
         // setOPacity();
     }
@@ -135,7 +131,6 @@ const [bool, setBool] = useState(false)
      const { tagTweets, getTag } = useSelector((ta) => ta.TagTweetFeedReducer)
      function showTagTweet(e, tag) {
          e.stopPropagation();
-         console.log(tag)
          dispatch(TweetListWithTag(tag.slice(1)))
          navigate("/tagtweet")
          if (getTag) {
@@ -144,7 +139,7 @@ const [bool, setBool] = useState(false)
      }
  
      function showMentionedUser(name){
-         console.log(name)
+       
          navigate(`/profile/${name.slice(1)}`)
      }
  
@@ -158,15 +153,15 @@ const [bool, setBool] = useState(false)
          for (let j = 0; j < x.length; j++) {
              let hashtag = x[j].innerHTML
              x[j].onclick = function (e) {
-                 console.log(hashtag)
+                
                  showTagTweet(e, hashtag)
              }
          }
         
          var z = document.getElementsByClassName("mention")
-         console.log(z)
+       
          for (let j = 0; j < z.length; j++) {
-             // console.log(z[j].innerHTML)
+           
              let mention= z[j].innerHTML
              let count=j;
              z[j].onclick = function () {
@@ -187,7 +182,6 @@ const [bool, setBool] = useState(false)
             </div>
             <p id="RepReply">Replying to {lengthR > 0 ? (props.replyingto.map((name) => {
                 return <span id="RepAtName" onClick={() => {
-                    console.log(`/profile/${name}`)
                     navigate(`/profile/${name}`)
                 }}>@{name}</span>
             })) : null}</p>

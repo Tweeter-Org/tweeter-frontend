@@ -140,8 +140,6 @@ const SignUpResend = (email) => {
 }
 export { SignUpResend }
 
-
-
 const SignUpTwoUser = (data) => {
     const accessToken = localStorage.getItem("access token")
     console.log(accessToken)
@@ -170,7 +168,7 @@ const SignUpTwoUser = (data) => {
 export { SignUpTwoUser }
 
 const ResetAction = (password) => {
-    const accessToken = localStorage.getItem("access token")
+    const accessToken = localStorage.getItem("otp token")
     console.log(accessToken)
     const config = {
         headers: {
@@ -198,10 +196,14 @@ const GoogleAction = () => {
     return async function (dispatch) {
         dispatch({ type: "GOOGLE_STARTED" })
         await BaseUrl.get(`/auth/google/url`)
-            .then((res) => dispatch({
-                type: "GOOGLE_SUCCEDED",
-                payload: res.data
-            }))
+            .then((res) => {
+                console.log(res)
+                dispatch({
+                    type: "GOOGLE_SUCCEDED",
+                    payload: res.data
+                })
+            })
+
             .catch((err) => {
                 console.log(err)
             })
@@ -230,26 +232,26 @@ const GoogleTwoAction = (url) => {
 }
 export { GoogleTwoAction }
 
-export const nameViaGoogle=(name, username)=>{
+export const nameViaGoogle = (name, username) => {
     return {
-        type:"NAME_VIA_GOOGLE",
-        payload:{
+        type: "NAME_VIA_GOOGLE",
+        payload: {
             name, username
         }
     }
 }
 
-export const infoViaGoogle =(user)=>{
+export const infoViaGoogle = (user) => {
     return {
-        type:"INFO_VIA_GOOGLE",
-        payload:{
+        type: "INFO_VIA_GOOGLE",
+        payload: {
             user
         }
     }
 }
 
-export const setLogout = ()=>{
+export const setLogout = () => {
     return {
-        type:"LOG_OUT"
+        type: "LOG_OUT"
     }
 }

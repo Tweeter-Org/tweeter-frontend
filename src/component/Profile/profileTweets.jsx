@@ -44,7 +44,6 @@ function ProfileTweet(props) {
 
     useEffect(() => {
         setTweetCount(props.likeCount)
-        console.log(props.likeCount)
         if (props.likeCount>0) {
             document.getElementsByClassName("tweetLike")[id].style.color = "green"
             document.getElementsByClassName("likeIcon")[id].src = greenLike

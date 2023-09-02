@@ -32,7 +32,7 @@ function CreateTweet(props) {
         // var imageoutput = document.getElementById("imageOutput");
         // imageoutput.src = URL.createObjectURL(e.target.files[0])
         setImageInArr(URL.createObjectURL(e.target.files[0]))
-        console.warn(URL.createObjectURL(e.target.files[0]))
+       
         setSendImage(e.target.files[0])
 
     }
@@ -41,9 +41,9 @@ function CreateTweet(props) {
         // var videooutput = document.getElementById("videoOutput");
         // videooutput.src = URL.createObjectURL(e.target.files[0])
         setVdoInArr(URL.createObjectURL(e.target.files[0]))
-        console.warn(URL.createObjectURL(e.target.files[0]))
+      
         setSendVideo(e.target.files[0])
-        console.log(e.target.files[0])
+       
         // document.getElementById("VIDEO").style.display = "block"
         // document.getElementById("videoOutput").style.display = "block"
     }
@@ -80,7 +80,7 @@ function CreateTweet(props) {
    
     const auth = useSelector((s) => s.AuthReducer)
     const { user, toFgtPwd } = auth;
-    const { name, user_name, displaypic } = user;
+    const { name, user_name, displaypic } = user? user : "";
     const [DupTweetData, setDupTweetData] = useState([])
     const { tweetData, liked, Rname, Rimage, Rvideo, Rtext } = useSelector((s) => s.TweetFeedReducer)
     const RId = sessionStorage.getItem("retweetId")
@@ -88,7 +88,7 @@ function CreateTweet(props) {
         setDupTweetData(tweetData)
         DupTweetData.filter((t) => {
             if (t._id == props.TWRId) {
-                // console.log(t)
+                
             }
             return t._id == props.TWRId
         })
@@ -202,8 +202,7 @@ function CreateTweet(props) {
         //     setSearchTweetList([])
         // }
     
-    // console.log(list)
-    // console.log(tweetList)
+   
     // const [tag, setTag] = useState(false)
     // useEffect(() => {
     //     if (tomap) {
@@ -263,7 +262,7 @@ function CreateTweet(props) {
         }
         if(text!=""){
             dispatch(CreateTweetAct(fd))
-            console.log(newTweetCreated)
+           
             dispatch(FakeTweetFeedAction(newTweetCreated))
             backToHome(e)
         }
@@ -276,8 +275,7 @@ setText("")
         setShowEmoji(false)
 
     }
-
-    // console.log(RId)
+   
     function handleCreateReTweet(e) {
         e.preventDefault();
         fd.append("text", text)
@@ -293,7 +291,7 @@ setText("")
         }
         if(text!=""){
             dispatch(CreateReTweetAct(fd))
-            // console.log(newReTweetCreated)
+           
             backToHome(e)
             dispatch(FakeReTweetFeedAction(newReTweetCreated))
         }
@@ -321,7 +319,7 @@ setText("")
     function handleTweetReply(e) {
         fd.append("text", text)
         fd.append("tweetId", RId)
-        // console.warn(RId)
+       
         if (sendImage != "") {
             fd.append("file", sendImage)
         }
@@ -333,15 +331,13 @@ setText("")
         }
         dispatch(ReplyToTweet(fd))
         backToHome(e)
-        // console.
+       
         dispatch(FakeReplyTweetAction(replYtweet))
         
-        // console.log(replYtweet)
     }
     function handleReplyReply(e) {
         fd.append("text", text)
         fd.append("tweetId", RId)
-        // console.warn(RId)
         if (sendImage != "") {
             fd.append("file", sendImage)
         }
@@ -352,11 +348,10 @@ setText("")
             fd.append("file", null)
         }
         dispatch(ReplyToTweet(fd))
-        // document.getElementById("EMOJI").style.display = "none"
-        // console.
+       
         // dispatch(FakeReplyTweetAction(replYtweet))
         backToHome(e)
-        // console.log(replYtweet)
+        
     }
 
     useEffect(() => {
@@ -390,7 +385,7 @@ setText("")
                         <input type="text" list="tagsInputList" className="ctWriteTweetInput" value={text} onChange={handleCreateTweetSearch} required />
                         {/* <datalist id="tagsInputList" className="dataList">
                        {searchTweetList.length>0?searchTweetList.map((se)=>{
-                        console.log(se)
+                        
                         return <option value={se.hashtag}>{se.hashtag}</option>
                        }):null} */}
                         {/* </datalist> */}

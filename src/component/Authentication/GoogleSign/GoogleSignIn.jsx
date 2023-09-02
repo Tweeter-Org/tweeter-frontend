@@ -18,7 +18,6 @@ function GoogleSignin() {
   const userName =  sessionStorage.getItem("Google_name")
   const signUp = useSelector((s) => s.AuthReducer)
   const { loading, error, name2, username2 , response, toHome } = signUp;
-  const [toastBool, setToastBool] = useState(false)
 
   const [nameN, setNameN] = useState(username2)
   const [name, setName] = useState(name2)
@@ -28,6 +27,7 @@ function GoogleSignin() {
   const [show1, setShow1] = useState(false)
   const [showErr, setShowErr] = useState(false)
   const [callApi, setCallApi] = useState(false)
+  const [bool, setBool] = useState(false)
   function handleShow1() {
     setShow1(!show1)
   }
@@ -55,9 +55,8 @@ function GoogleSignin() {
     }
   }, [name])
 
+  const rightpass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%*?&])[A-Za-z\d@#$!%*?&]{8,}$/;
 
-  const rightpass =
-    /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&#])[A-Za-z\d@$!%?&#]{8,}$/;
   useEffect(() => {
     if (rightpass.test(pass)) {
       document.getElementById("googleInvalidPwd").style.display = "none";
@@ -97,51 +96,38 @@ function GoogleSignin() {
     setShowErr(true)
   }
 
-  useEffect(()=>{
-    if(error!="" && !loading){
-        setToastBool(true)
-    }
-},[signUp])
-
 useEffect(()=>{
    
-    if(toastBool && showErr){
-            toast.error(`{error}`, {
+    if(error && !loading && showErr){
+            toast.error(error, {
                 position: "top-center",
                 theme: "light",
             });
-            setToastBool(false)
+            setShowErr(false)
         }
-},[toastBool])
-
-  useEffect(()=>{
-    if(response!==""){
-        toast.success(`${response}`, {
-            position: "top-center",
-            theme: "light",
-            });
-    }
-  },[response])
+},[error, loading, showErr])
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (toHome) {
+    if (toHome && bool) {
       navigate("/")
+      setBool(false)
     }
-  }, [toHome])
+  }, [toHome, bool])
 
   return <>
     <Background />
+    <form onSubmit={SIGNUPTWO}>
     <div className='loginBg'>
       <p className='authHead' id="authSignTwo">Sign Up</p>
       <p className='authEmail' id="sign2Name">Full Name</p>
       <img src={nameIcon} id="emailIcon" />
-      <input type="text" className="authEmailInput" placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} />
+      <input type="text" className="authEmailInput" placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} required/>
       <p id="googleInvalidName" className="invalidEmail">Name should consists of alphabets</p>
       <img src={nameIcon} id="nameIcon"  />
       <p className='authPwd' id="sign2Username">Username</p>
-      <input type="text" className="authEmailInput" placeholder="Enter your name" value={nameN} onChange={(e) => setNameN(e.target.value)} />
+      <input type="text" className="authEmailInput" placeholder="Enter your name" value={nameN} onChange={(e) => setNameN(e.target.value)} required />
       <p id="googleInvalidName2" className="invalidEmail">Name should not contain any whitespaces</p>
       <img src={lockIcon} id="lockIconS" />
       <p className='authPwd' id="googlePass">Password</p>
@@ -150,10 +136,11 @@ useEffect(()=>{
       ) : (
         <FontAwesomeIcon icon={faEyeSlash} id="LEye" onClick={handleShow1} />
       )}
-      <input type={show1 ? "text" : "password"} className="authPwdInput" placeholder="Password" value={pass} onChange={(e) => setPass(e.target.value)} />
+      <input type={show1 ? "text" : "password"} className="authPwdInput" placeholder="Password" value={pass} onChange={(e) => setPass(e.target.value)} required />
       <p className='invalidEmail' id="googleInvalidPwd">Password must be 1 uppercase 1 lowercase 1 number 1 special digit character and 8 or more characters</p>
-      <button type="button" className='authFgtPwdBtn' id="googleBtn" onClick={() => { SIGNUPTWO() }}>Sign Up</button>
+      <button type="submit" className='authFgtPwdBtn' id="googleBtn">Sign Up</button>
     </div>
+    </form>
     {loading === true ? <Spinner animation="border" variant="light" id="loadSpinner" /> : null}
     <ToastContainer />
   </>

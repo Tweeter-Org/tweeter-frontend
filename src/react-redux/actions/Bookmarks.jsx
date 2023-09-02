@@ -2,7 +2,6 @@ import BaseUrl from "./BaseUrl";
 
 function DoBookmarkAction(tweetId) {
     const accessToken =localStorage.getItem("access token")
-    console.log(accessToken)
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -34,7 +33,6 @@ export default DoBookmarkAction
 
 function SeeBookmarkAction() {
     const accessToken =localStorage.getItem("access token")
-    console.log(accessToken)
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`

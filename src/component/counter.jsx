@@ -7,10 +7,8 @@ const Counter = () => {
     //         if(count==0)
     //         setcount(59)
     //         else{
-    //             console.warn(count)
     //             let newcount=count-1;
-    //             // console.log(newcount)
-    //             // console.log(count-1)
+    //          
     //             setcount(newcount)
     //         }
     //     },1000)

@@ -15,23 +15,23 @@ export const NotificationReducer = (state= initialState, action) => {
         return {...state, loading:true}
     }
     case "View_Notifs_Succeed":{
-        console.log(action.payload)
+      
         return {...state, loading:false, viewNotifs:action.payload.data.notifications, notifyBool:true}
     }
     case "View_Notifs_Failed":{
-        console.log(action.payload)
+       
         return {...state, loading:false,}
     }
     case "Read_Notifs_Succeed":{
-      console.log(action.payload)
+     
       return {...state, loading:false, notifyRead:action.payload}
   }
   case "Read_Notifs_Failed":{
-      console.log(action.payload)
+     
       return {...state, loading:false,}
   }
       case "ADD_CHAT_NOTIFY":
-        console.warn(action.payload)
+       
         return {
           ...state, 
           unseenChats: [action.payload.newUnseenChat, ...state.unseenChats],

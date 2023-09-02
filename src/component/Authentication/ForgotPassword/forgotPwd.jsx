@@ -17,6 +17,7 @@ function ForgotPwd() {
     const [email, setEmail] = useState("")
     const [showErr, setShowErr] = useState(false)
     const [checkEmail, setCheckEmail] = useState(false)
+    const [bool, setBool] = useState(false)
     const rightemail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     useEffect(() => {
         if (rightemail.test(email)) {
@@ -32,29 +33,24 @@ function ForgotPwd() {
 
     const state = useSelector((s) => s.AuthReducer)
     const { loading, response, error, toOtp } = state;
-    const [toastBool, setToastBool] = useState(false)
     const navigate = useNavigate();
 
-    function FORGOTPWD() {
+    function FORGOTPWD(e) {
+        e.preventDefault();
         dispatch(FgtPwdAction(email, checkEmail), sessionStorage.setItem("email", email))
         setShowErr(true)
+        setBool(true)
     }
 
     useEffect(() => {
-        if (error != "" && !loading) {
-            setToastBool(true)
-        }
-    }, [state])
-
-    useEffect(() => {
-        if (toastBool && showErr) {
-            toast.error(`${error}`, {
+        if (error && !loading && showErr) {
+            toast.error(error, {
                 position: "top-center",
                 theme: "light",
             });
-            setToastBool(false)
+            setShowErr(false)
         }
-    }, [toastBool])
+    }, [state, showErr])
 
 
     useEffect(() => {
@@ -67,22 +63,25 @@ function ForgotPwd() {
     }, [loading])
 
     useEffect(() => {
-        if (toOtp) {
+        if (toOtp && bool) {
             navigate("/otp")
+            setBool(false)
         }
-    }, [toOtp])
+    }, [toOtp, bool])
 
     return <>
         <Background />
+        <form onSubmit={FORGOTPWD}>
         <div className='loginBg'>
             <img src={arrow} id="arrow" onClick={() => { navigate("/") }} />
             <p className='authHead' id="authHeadTwo">Forgot Password</p>
-            <p className='authEmail'>We will send you an Otp on example@gmail.com</p>
+            <p className='authEmail'>Enter an email address to recieve OTP</p>
             <img src={emailIcon} id="emailIconFgt" />
-            <input type="text" className="authEmailInput" placeholder="Enter your email" value={email} onChange={(e) => { setEmail(e.target.value) }} />
+            <input type="text" className="authEmailInput" placeholder="Enter your email" value={email} onChange={(e) => { setEmail(e.target.value) }} required/>
             <p className='invalidEmail' id="fgtEmail">Invalid Email Address</p>
-            <button className='authFgtPwdBtn' onClick={() => { FORGOTPWD() }}>Continue</button>
+            <button className='authFgtPwdBtn' type="submit">Continue</button>
         </div>
+        </form>
         {loading === true ? <Spinner animation="border" variant="light" id="loadSpinner" /> : null}
         <ToastContainer />
     </>

@@ -47,7 +47,6 @@ function EditProfileAction(fd) {
         })
         await BaseUrl.put("/p/editprofile", fd, config)
             .then((res) => {
-                console.log(res)
                 toast.success(`${res.data.msg}`, {
                     position: "top-center",
                     theme: "light",
@@ -58,7 +57,6 @@ function EditProfileAction(fd) {
                 })
             })
             .catch((err) => {
-                console.log(err)
                 toast.error(`${err.response.data.msg}`, {
                     position: "top-center",
                     theme: "light",

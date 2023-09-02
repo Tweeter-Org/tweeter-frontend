@@ -144,8 +144,15 @@ body {
     line-height: 17px;
     color: #63DF76;
     cursor: pointer;
-    margin-left:21vw;
-    margin-top:4px;
+    /* margin-left:21vw;
+    margin-top:4px; */
+}
+
+.fgtPwd2 {
+    display: flex;
+    justify-content: flex-end;
+    width:100%;
+    margin-top: 4px;
 }
 #LEye {
     color: white;
@@ -249,9 +256,9 @@ height:20px;
 width:20px;
 margin-left:27vw;
     }
-    .fgtPwd{
+    /* .fgtPwd{
         margin-left:17vw;
-    }
+    } */
 }
 @media(max-width:950px){
     .loginBg{
@@ -267,9 +274,9 @@ margin-left:27vw;
     #LEye{
         margin-left:34vw;
     }
-    .fgtPwd{
+    /* .fgtPwd{
         margin-left:23vw;
-    }
+    } */
     #loginButton{
         width:37vw;
     }
@@ -299,9 +306,9 @@ margin-left:27vw;
     #LEye{
         margin-left:38vw;
     }
-    .fgtPwd{
+    /* .fgtPwd{
         margin-left:26vw;
-    }
+    } */
     #loginButton{
         width:42vw;
     }
@@ -334,9 +341,9 @@ margin-left:27vw;
     #emailIcon{
         width:20px;
     }
-    .fgtPwd{
+    /* .fgtPwd{
         margin-left:29vw;
-    }
+    } */
     #loginButton{
         width:52vw;
     }
@@ -369,9 +376,9 @@ margin-left:27vw;
     #emailIcon{
         width:20px;
     }
-    .fgtPwd{
+    /* .fgtPwd{
         margin-left:31vw;
-    }
+    } */
     #loginButton, .contGoogle, .authSignIn, #hrOr{
         width:57vw;
     }
@@ -398,9 +405,9 @@ margin-left:27vw;
     #emailIcon{
         width:20px;
     }
-    .fgtPwd{
+    /* .fgtPwd{
         margin-left:40vw;
-    }
+    } */
     #loginButton, .contGoogle, .authSignIn, #hrOr{
         width:72vw;
     }

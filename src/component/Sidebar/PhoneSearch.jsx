@@ -36,7 +36,6 @@ function PhoneSearch() {
         }
 
     }
-    // console.log(tweetList, tohash)
     useEffect(() => {
         if (tomap) {
             if (list.result.length > 0) {
@@ -63,18 +62,15 @@ function PhoneSearch() {
     const { tagTweets, getTag } = useSelector((ta) => ta.TagTweetFeedReducer)
     function showTagTweet(tag) {
         dispatch(TweetListWithTag(tag))
-        console.log("tag tweets")
         if (getTag) {
             navigate("/tagtweet")
         }
     }
 
     function toProfile (name){
-        console.log(name)
         // dispatch(ProfileApi(name))
         
             navigate(`/profile/${name}`)
-            console.log(`/profile?name=${name}`)
     }
 
     return <>

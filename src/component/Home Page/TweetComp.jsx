@@ -40,7 +40,7 @@ function Tweet(props) {
         else
             setReplyingto([])
     }, [props.replies])
-    // console.log(props.replies)
+   
     useEffect(() => {
         setTweetCount(props.likeCount)
         if (props.LIKES) {
@@ -156,7 +156,6 @@ function Tweet(props) {
     const { loading, tagTweets, getTag } = useSelector((ta) => ta.TagTweetFeedReducer)
     function showTagTweet(e, tag) {
         e.stopPropagation();
-        console.log(tag)
         dispatch(TweetListWithTag(tag.slice(1)))
         navigate("/tagtweet")
         if (getTag) {
@@ -263,7 +262,7 @@ function Tweet(props) {
             </div>
             {replyingto.length > 0 ? (<p id="prTwReplying1">Replying to {replyingto.length > 0 ? (replyingto.map((name) => {
                 return <span id="prTwReplying2" onClick={() => {
-                    // console.log(`/profile/${name}`)
+                    
                     navigate(`/profile/${name}`)
                 }}>@{name}</span>
             })) : null}</p>) : null}

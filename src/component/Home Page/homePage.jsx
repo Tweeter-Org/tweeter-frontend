@@ -26,7 +26,6 @@ function HomePage() {
     const { response } = useSelector((t) => t.TweetCreateReducer)
     useEffect(() => {
         dispatch(TweetFeedAction())
-        console.log(tweetData)
         dispatch(TrendingTweets())
         document.getElementById("SIDESEARCH").style.display = "none"
         document.getElementById("HOME2").style.display = "flex"
@@ -36,7 +35,7 @@ function HomePage() {
 
     const auth = useSelector((s) => s.AuthReducer)
     const { user, toFgtPwd } = auth;
-    const nameInApi = user.user_name
+    const nameInApi = user?.user_name
     sessionStorage.setItem("usernameInApi", nameInApi)
     // const { count } = useSelector((t) => t.TweetFeedCuntRed)
     const [count, setCount] = useState(1)

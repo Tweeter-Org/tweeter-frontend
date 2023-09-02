@@ -9,9 +9,7 @@ import { NotifyChatSeen } from "../../react-redux/actions/Notifications";
 
 function ChatUser(props) {
     const { user } = useSelector((a) => a.AuthReducer)
-    // console.log(user)
-    // const viewChatIdd = props.viewChatid;
-    // // console.log(viewChatIdd)
+   
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [info, setInfo] = useState([])
@@ -24,13 +22,13 @@ function ChatUser(props) {
     const finalArray = []
 
     useEffect(() => {
-        console.log(unseenChats)
+       
         if (unseenChats.length > 0) {
             unseenChats.map((unseen) => {
-                console.log(unseen)
+               
                 setId(unseen.userId)
                 if (unseen.userId != userid) {
-                    console.warn(unseen.text)
+                   
                     // document.getElementsByClassName("notifyCircle2")[props.indexx].style.backgroundColor="pink"
                 }
                 // setLatestmsg(unseen.text)
@@ -40,8 +38,6 @@ function ChatUser(props) {
             })
         }
     }, [unseenChats])
-
-    // console.log(props.sidechat)
 
     useEffect(() => {
         props.sidechat.users.map((chat) => {
@@ -67,7 +63,7 @@ function ChatUser(props) {
             }
         })
     }, [userid])
-    // console.log(props.sidechat)
+ 
     function handleUserChat(usernum) {
         dispatch(ActiveUserList());
         dispatch(Messages(greenmessage, "Messages", 3))
@@ -75,7 +71,6 @@ function ChatUser(props) {
         dispatch(CreateChat(usernum))
         dispatch(NotifyChatSeen())
     }
-    // console.log(props.msg)
     return <>
         <div className="chatUser" id="ChatUser1" >
             {(info.displaypic === null) ? (<img src={avatar} id="msgPicincircle" />) :

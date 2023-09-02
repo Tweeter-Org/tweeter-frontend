@@ -9,7 +9,7 @@ function DltTweetPopup() {
     const naavigate = useNavigate()
     const dispatch = useDispatch()
     const {deleteTweet, errorTweet, deleteSym} = useSelector((d)=>d.DeleteTweetsPReducer)
-    console.log(deleteTweet, errorTweet, deleteSym)
+ 
     var DltTwId =  sessionStorage.getItem("dlttweetId")
    
     function setOPacity (){
@@ -25,7 +25,6 @@ function DltTweetPopup() {
    
     function handleLogOut() {
         document.getElementById("DltPopUp").style.display="none";
-        console.log(sessionStorage.getItem("dlttweetId"))
        setOPacity()
         dispatch(TweetDeleteAction(sessionStorage.getItem("dlttweetId")))
         dispatch(FakeTweetDeleteAction(sessionStorage.getItem("dlttweetId")))

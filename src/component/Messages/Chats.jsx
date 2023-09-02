@@ -22,7 +22,6 @@ import SearchChatUser from "./SearchChatPopUp";
 import deleteIcon from "../Assets/delete.svg"
 // import { Socket } from "socket.io-client";
 
-
 const ENDPOINT = "https://tweeter-backend-7ngr.onrender.com";
 var socket, currentChattingWith;
 function Chats() {
@@ -45,19 +44,14 @@ function Chats() {
     }, [])
     useEffect(() => {
         dispatch(ViewChatList())
-        // console.log(chatLists)
-        console.log(viewChatList)
+        
     }, [])
     useEffect(() => {
         if (viewChatList) {
             setSideChats(chatLists)
-            console.log(chatLists)
         }
     }, [chatReducer])
-    console.log(chatLists)
-    // console.log(chats)
-    // set socket connection
-    // console.log(userid)
+   
     useEffect(() => {
         socket = io(ENDPOINT)
         socket.emit("setup", user);
@@ -90,15 +84,15 @@ function Chats() {
             if (viewChatList) {
                 chatLists.map((chatt) => {
                     chatt.users.map((chatUser => {
-                        // console.log(chatUser)
+                       
                         if (chatUser._id == userid) {
-                            console.warn(chatUser)
+                           
                             setTopName(chatUser.name)
                             setTopPic(chatUser.displaypic)
                             setSendChatId(chatt._id)
                             currentChattingWith = chatt._id;
                             dispatch(ViewChatsAction(chatt._id))
-                            //   console.log(viewChatMsgs)
+                            
                         }
                     }))
                 })
@@ -109,7 +103,6 @@ function Chats() {
 
     useEffect(() => {
         if (chatBool) {
-            // console.warn(viewChatMsgs)
             setChatMsgs(viewChatMsgs)
         }
     }, [chatReducer])
@@ -155,9 +148,7 @@ function Chats() {
         },
     }
 
-    // console.log(sendChatId)
     function sendChatMsg(chattid) {
-        // console.log(chattid)
         fd.append("text", textMsg)
         fd.append("chatId", chattid)
         if (sendImage != "") {
@@ -169,7 +160,6 @@ function Chats() {
         else {
             fd.append("file", null)
         }
-        console.warn(socket.connected)
         if (socket.connected && textMsg != "") {
             dispatch(SendChatsAction(fd, socket))
             // setChatMsgs([...chatMsgs, sendChat])
@@ -187,9 +177,6 @@ function Chats() {
         setSendImage(null)
         setSendVideo(null)
     }
-    // console.warn(sendChatMessage)
-
-    console.log(socket)
 
     // sockets : recieving new messages
     useEffect(() => {
@@ -198,11 +185,11 @@ function Chats() {
                 if (!notifs.includes(newChatMsgRecieved)) {
                     handleNotify(newChatMsgRecieved)
                 }
-                console.warn(newChatMsgRecieved)
+                
                 setNewChatMsg(newChatMsgRecieved)
             }
             else {
-                console.warn(newChatMsgRecieved)
+                
                 // setNewChatMsg(newChatMsgRecieved)
                 dispatch(FakeViewChatsAction(newChatMsgRecieved))
                 setChatMsgs([newChatMsgRecieved, ...chatMsgs])
@@ -267,7 +254,7 @@ function Chats() {
                                 <img src={smileIcon} className="chatSmile" onClick={() => { handleEmojis() }} />
                                 {showEmoji ? (<div className="chatemojipicker"><Picker width="300px" height="420px" theme="dark" onEmojiClick={onemojiclick} /></div>) : null}
                             </div>
-                            {/* {console.log(sendChatId)} */}
+                           
                             <img className="sendchaticon" onClick={() => { sendChatMsg(sendChatId) }} src={sendChatIcon} />
                         </div>
                     </form>
@@ -285,11 +272,10 @@ function Chats() {
                 }))} */}
                 </div>
                 {/* {(viewChatList) ? (chatLists.length > 0 ? (chatLists.map((chat, index) => {
-                        {console.log(chat)}
+                      
                         return <ChatUser user={chat.users} msg={chat.latestmsg} indexx={index} viewChatid={chat._id} />
                     })) : null) : null}
                     {(viewChatList) ? (chatLists.length > 0 ? (chatLists.map((chat, index) => {
-                        {console.log(chat)}
                         return <SearchChatUser user={chat.users} msg={chat.latestmsg} indexx={index} viewChatid={chat._id} />
                     })) : null) : null} */}
                 {/* {isActive ? (

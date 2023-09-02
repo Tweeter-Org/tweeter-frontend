@@ -37,7 +37,6 @@ function EditProfile() {
         imageProfile.src = URL.createObjectURL(e.target.files[0])
         setEditprofileImage(URL.createObjectURL(e.target.files[0]))
         setSendImage(e.target.files[0])
-        console.log(URL.createObjectURL(e.target.files[0]))
         document.getElementById("editprofileimage").style.display = "block";
         document.getElementById("editImage").style.display = "none"
     }

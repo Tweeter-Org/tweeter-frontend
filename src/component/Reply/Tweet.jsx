@@ -149,7 +149,7 @@ function ToTweet(props) {
         }
     
         function showMentionedUser(name){
-            console.log(name)
+            
             navigate(`/profile/${name.slice(1)}`)
         }
     
@@ -171,7 +171,7 @@ function ToTweet(props) {
            
             var z = document.getElementsByClassName("mention")
             for (let j = 0; j < z.length; j++) {
-                // console.log(z[j].innerHTML)
+                
                 let mention= z[j].innerHTML
                 let count=j;
                 z[j].onclick = function () {

@@ -8,7 +8,6 @@ function MsgDropdown() {
     const [user, setUser] = useState("");
     const dispatch = useDispatch();
     const { toMsgUser, loading, msgUser } = useSelector((S) => S.MsgSearchReducer)
-    console.log(msgUser)
     const [searchListArray, setSearchListArray] = useState([]);
     const [searchTweetList, setSearchTweetList] = useState([]);
 

@@ -46,7 +46,7 @@ export const ReadNotifyAction = (id) => {
         })
         await BaseUrl.put(`/p/readnotif/${id}`, config)
             .then((res) => {
-                console.log(res)
+               
                 dispatch({
                     type: "Read_Notifs_Succeed",
                     payload: res
@@ -61,12 +61,7 @@ export const ReadNotifyAction = (id) => {
     }
 }
 
-
-
-
-
 export const AddChatNotify =(newUnseenChat)=>{
-    console.log(newUnseenChat)
     return {
         type:"ADD_CHAT_NOTIFY",
         payload:{newUnseenChat}
@@ -94,7 +89,6 @@ export const ViewNotifyTweet = (id) => {
         })
         await BaseUrl.get(`/t/tweet/${id}`, config)
             .then((res) => {
-                console.log(res)
                 dispatch({
                     type: "View_Notif_Tweet_Succeed",
                     payload: res

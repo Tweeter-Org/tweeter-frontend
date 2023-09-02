@@ -10,7 +10,6 @@ import Notify from "./Notify";
 function Notifications() {
     const dispatch = useDispatch();
     const notify = useSelector((n) => n.NotificationReducer)
-    console.log(notify)
     const { notifyBool, viewNotifs, loading } = notify
     const [notifyList, setNotifylist] = useState([])
 
@@ -19,7 +18,6 @@ function Notifications() {
     }, [])
     useEffect(() => {
         if (notifyBool) {
-            console.log(viewNotifs)
             setNotifylist(viewNotifs)
         }
     }, [notifyBool])

@@ -16,12 +16,11 @@ const dispatch = useDispatch()
         if (getTag) {
           
             setTitle(tagTweets.tag)
-            console.log(title)
+          
             setTweetArr(tagTweets.tweets)
         }
     },[getTag, tagTweets])
 
-    console.log(tagTweets)
 
     useEffect(()=>{
         if(loading===true){

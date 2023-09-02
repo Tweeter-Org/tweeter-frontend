@@ -14,7 +14,7 @@ const GoogleReducer =(state=initialState, action)=>{
             ...state, responseGoogle:action.payload, mark:true
         }
         case "GOOGLE_TWO_STARTED":return {
-             state
+             ...state
         }
         case "GOOGLE_TWO_SUCCEDED":{console.log(action.payload.data.token)
             localStorage.setItem("access token", action.payload.data.token)

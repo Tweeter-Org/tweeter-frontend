@@ -15,9 +15,7 @@ function Bookmarks (){
     const [bookmarkArray, setBookmarkArray] = useState([])
 const { bookmarkedTweet, markBM, loading} = tweets
 const navigate = useNavigate();
-console.log( bookmarkedTweet)
 var BMLength ;
-console.log(tweets)
     useEffect(()=>{
         dispatch(SeeBookmarkAction())
     },[])
@@ -31,7 +29,7 @@ console.log(tweets)
         setBookmarkArray([])
     }
    },[markBM, bookmarkedTweet])
-   console.log(BMLength)
+   
     function handleToHome (){
         navigate("/")
     }

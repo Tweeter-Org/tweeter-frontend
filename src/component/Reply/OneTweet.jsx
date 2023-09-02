@@ -7,16 +7,13 @@ import ToTweet from "./Tweet";
 import "./tweet.css"
 
 function OneTweet() {
-    console.log(useParams())
     const { TweetId } = useParams();
     const [tweet, setTweet] = useState();
     const [showTweet, setShowTweet] = useState(false)
     const [replyArr, setReplyArr] = useState([])
     const { loading, tweetData, liked, bookmarked } = useSelector((s) => s.TweetFeedReducer)
     const {responseT, errorT, replyT} = useSelector((r) => r.ReplyReducer)
-    console.log(responseT, errorT, replyT)
-    console.log(replyT)
-    console.log(tweetData)
+    
     const dispatch = useDispatch();
     useEffect(() => {
         tweetData.filter((t) => {

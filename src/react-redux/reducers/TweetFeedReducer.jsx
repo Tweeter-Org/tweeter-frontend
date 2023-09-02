@@ -20,23 +20,18 @@ export const TweetFeedReducer = (state=initialState, action)=>{
             return {...state, loading:true}
         }
         case "Tweet_Feed_Succeed":{
-            console.log(action.payload)
             return {...state, loading:false,privateRoute:true, tweetData:action.payload.data.tweets, liked:action.payload.data.liked, bookmarked:action.payload.data.bookmarked}
         }
         case "Tweet_Feed_Failed":{
-            console.log(action.payload)
             return {...state, loading:false, tweetData:action.payload, privateRoute:false}
         }
         case "Tweet_Feed_Two_Started":{
             return {...state, loading:true}
         }
         case "Tweet_Feed_Two_Succeed":{
-            console.log(action.payload)
-            // return {...state}
             return {...state, loading:false,  tweetData:[...action.payload.data.tweets, ...state.tweetData], liked:action.payload.data.liked, bookmarked:action.payload.data.bookmarked}
         }
         case "Tweet_Feed_Two_Failed":{
-            console.log(action.payload)
             return {...state}
         }
         case "TWEET_FEED_ADD_ACTION":{
@@ -55,7 +50,6 @@ export const TweetFeedReducer = (state=initialState, action)=>{
             }
         }
         case "TRENDING_TWEET_YES":{
-            console.log(action.payload)
             return {...state, loading:false, trendingTweet:action.payload.data.tags}
         }
         default: return state;

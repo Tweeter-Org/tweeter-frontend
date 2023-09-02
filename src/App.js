@@ -14,7 +14,7 @@ import Bookmarks from './component/Bookmarks/bookmarks';
 import ProfilePage from './component/Profile/profilePage';
 import EditProfile from './component/Profile/EditProfile';
 import LogOut from './component/logOut/logOut';
-import Google from "./component/Google"
+import Google from "./component/Authentication/GoogleSign/Google"
 import TagTweets from './component/Sidebar/TagTweets';
 import OneTweet from './component/Reply/OneTweet';
 import GoogleSignin from './component/Authentication/GoogleSign/GoogleSignIn';

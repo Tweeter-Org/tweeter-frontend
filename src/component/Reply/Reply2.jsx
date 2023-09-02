@@ -17,14 +17,13 @@ function Reply2(props) {
     const navigate = useNavigate();
     const dispatch = useDispatch()
     const id = props.indexx;
-    console.log(id)
+  
     const { responseT, errorT, replyR, loading } = useSelector((r) => r.ReplyReducer)
-    console.log(replyR)
+  
 
     function handleReplyLike(replyid) {
-        console.log(replyid)
+     
         // dispatch(TweetLikeAction(replyid))
-        console.log("like")
         var imagepath = document.getElementsByClassName("replyLike2")[id].style.color;
         if (imagepath === "white") {
             document.getElementsByClassName("replyLike2")[id].style.color = "green"
@@ -61,7 +60,6 @@ function Reply2(props) {
         sessionStorage.setItem("replyName", name)
         // dispatch()
         dispatch(RetweetDetails(tweetid, name, video, text, image))
-        console.warn(tweetid)
         sessionStorage.setItem("retweetId", tweetid)
         setOPacity()
         document.getElementById("CREATETWEET").style.display = "block"
@@ -97,7 +95,6 @@ function Reply2(props) {
     }
     function handleTweetShare (tweetid){
         sessionStorage.setItem("shareTweetId", tweetid)
-        console.log(tweetid)
         document.getElementById("SHAREBLOCK").style.display="flex"
         // setOPacity();
     }
@@ -106,7 +103,6 @@ function Reply2(props) {
          const { tagTweets, getTag } = useSelector((ta) => ta.TagTweetFeedReducer)
          function showTagTweet(e, tag) {
              e.stopPropagation();
-             console.log(tag)
              dispatch(TweetListWithTag(tag.slice(1)))
              navigate("/tagtweet")
              if (getTag) {
@@ -115,7 +111,6 @@ function Reply2(props) {
          }
      
          function showMentionedUser(name){
-             console.log(name)
              navigate(`/profile/${name.slice(1)}`)
          }
      
@@ -129,15 +124,12 @@ function Reply2(props) {
              for (let j = 0; j < x.length; j++) {
                  let hashtag = x[j].innerHTML
                  x[j].onclick = function (e) {
-                     console.log(hashtag)
                      showTagTweet(e, hashtag)
                  }
              }
             
              var z = document.getElementsByClassName("mention")
-             console.log(z)
              for (let j = 0; j < z.length; j++) {
-                 // console.log(z[j].innerHTML)
                  let mention= z[j].innerHTML
                  let count=j;
                  z[j].onclick = function () {
@@ -160,7 +152,7 @@ function Reply2(props) {
                 </div>
                 <p id="RepReply">Replying to {props.replyingto.length > 0 ? (props.replyingto.map((name) => {
                     return <span id="RepAtName" onClick={() => {
-                        console.log(`/profile/${name}`)
+                      
                         navigate(`/profile/${name}`)
                     }}>@{name}</span>
                 })) : null}</p>

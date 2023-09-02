@@ -9,7 +9,7 @@ const initialState={
 export const BookmarkReducer =(state=initialState, action)=>{
 switch(action.type){
     case "DO_BOOKMARK": return {...state, loading:true};
-    case "DO_BOOKMARK_SUCCESS":{console.log(action.payload)
+    case "DO_BOOKMARK_SUCCESS":{
         return {
         ...state , responseBM:action.payload.data.msg, markBM:true, loading:false
     }}

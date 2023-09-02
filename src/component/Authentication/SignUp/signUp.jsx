@@ -52,28 +52,24 @@ function SignUp() {
 
     const responseApi = useSelector((state) => state.AuthReducer)
     const { loading, response, error, toSignOtp } = responseApi
-    const [toastBool, setToastBool] = useState(false)
+    const [bool, setBool] = useState(false)
 
-    function SIGNUP() {
+    function SIGNUP(e) {
+        e.preventDefault();
         dispatch(SignUpUser(email, callApi), sessionStorage.setItem("signupemail", email), sessionStorage.setItem("NameToBeUsed", name))
         setShowErr(true)
+        setBool(true)
     }
 
     useEffect(() => {
-        if (error != "" && !loading) {
-            setToastBool(true)
-        }
-    }, [responseApi])
-
-    useEffect(() => {
-        if (toastBool && showErr) {
+        if (error && !loading && showErr) {
             toast.error(`${error}`, {
                 position: "top-center",
                 theme: "light",
             });
-            setToastBool(false)
+            setShowErr(false)
         }
-    }, [toastBool])
+    }, [showErr, loading, error])
 
     useEffect(() => {
         if (loading === true) {
@@ -87,27 +83,30 @@ function SignUp() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (toSignOtp) {
+        if (toSignOtp && bool) {
             navigate("/verifyemail")
+            setBool(false)
         }
-    }, [toSignOtp])
+    }, [toSignOtp, bool])
 
     return <>
         {/* <ToasterError error={error} /> */}
         <Background />
+        <form onSubmit={SIGNUP}>
         <div className='loginBg'>
             <img src={arrow} id="arrow" onClick={() => { navigate("/") }} />
             <p className='authHead'>Sign Up</p>
             <p className='authEmail' id="signName1">Name</p>
-            <input type="text" className="authEmailInput" placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} />
+            <input type="text" className="authEmailInput" placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} required />
             <p id="signName" className='invalidEmail'
             >Name should consists of alphabet</p>
             <img src={emailIcon} className='emailSignIcon' />
             <p className='authPwd' id="signEmail">Email Address</p>
-            <input type="text" className="authPwdInput" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input type="text" className="authPwdInput" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
             <p className='fgtRstPwd' id="signInvalidEmail">Invalid Email Address</p>
-            <button type="button" className='authSignIn authFgtPwdBtn' id="loginButton" onClick={() => { SIGNUP() }}>Sign Up</button>
+            <button type="submit" className='authSignIn authFgtPwdBtn' id="loginButton">Sign Up</button>
         </div>
+        </form>
         {loading === true ? <Spinner animation="border" variant="light" id="loadSpinner" /> : null}
         <ToastContainer />
     </>

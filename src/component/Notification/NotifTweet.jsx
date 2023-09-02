@@ -9,7 +9,6 @@ import Sidebar from "../Sidebar/SideBar";
 // import "./tweet.css"
 
 function NotifTweet() {
-    console.log(useParams())
     const { TweetId } = useParams();
     const [tweet, setTweet] = useState();
     const [showTweet, setShowTweet] = useState(false)
@@ -17,21 +16,18 @@ function NotifTweet() {
     const { loading, tweetData, liked, bookmarked } = useSelector((s) => s.TweetFeedReducer)
     const {responseT, errorT, replyT} = useSelector((r) => r.ReplyReducer)
     const {notifTweet} = useSelector((n)=>n. NotificationReducer)
-    console.log(responseT, errorT, replyT)
-    console.log(replyT)
-    console.log(tweetData)
+  
     const dispatch = useDispatch();
    
     useEffect(()=>{
         dispatch(ViewNotifyTweet(TweetId))
-        console.log(notifTweet)
+       
     },[TweetId])
     useEffect(()=>{
         dispatch(ViewTweetsReply(TweetId))
         setReplyArr(replyT)
     },[TweetId])
-    console.log(tweet)
-    console.log(replyArr)
+    
     return <>
         <Sidebar />
         <div className="toTweetDiv">

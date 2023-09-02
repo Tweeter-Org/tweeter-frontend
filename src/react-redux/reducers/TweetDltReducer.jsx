@@ -8,11 +8,10 @@ const initialState={
 export const DeleteTweetsPReducer =(state=initialState, action)=>{
 switch(action.type){
     case "TWEETDLT_SUCCESS":{
-        console.log(action.payload)
         return {
         ...state, deleteTweet :action.payload.data.msg,loading:false, deleteSym:true, errorTweet:""
     }}
-    case "TWEETDLT_FAILED":{console.log(action.payload)
+    case "TWEETDLT_FAILED":{
         return {...state, loading:false , errorTweet:action.payload,deleteTweet:"", deleteSym:false}}
     default: return state;
 }

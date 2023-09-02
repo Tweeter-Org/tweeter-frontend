@@ -11,7 +11,8 @@ const initialState ={
     toSignOtp:false,
     toSignUpTwo:false,
     toHome:false,
-    token:false
+    token:false,
+    toLogin: false
 }
  const AuthReducer =(state=initialState, action)=>{
     switch(action.type){
@@ -22,7 +23,6 @@ const initialState ={
             }
         }
         case "REQUEST_SUCCEDED":{
-          
             localStorage.setItem("access token", action.payload.token)
             return {...state,
                 loading:false,
@@ -30,16 +30,15 @@ const initialState ={
                 user:action.payload.user,
                 error:"",
                 toFgtPwd:true,
-                toHome:true,
                 token:true,
             }
         }
         case "REQUEST_FAILED":{
-          
-            return {
+            return { 
+                ...state,
                 loading:false,
                 response:"",
-                // error:action.payload.response.data.msg,
+                error:action.payload.response.data.msg,
                 toFgtPwd:false
             }
         }
@@ -58,9 +57,10 @@ const initialState ={
         }
         case "FGT_EMAIL_FAILED":{
             return {
+                ...state,
                 loading:false,
                 response:"",
-                // error:action.payload.response.data.msg,
+                error:action.payload.response.data.msg,
                 toOtp:false
             }
         }
@@ -70,7 +70,7 @@ const initialState ={
             }
         }
         case "OTP_SUCCEDED":{
-            localStorage.setItem("access token", action.payload.token)
+            localStorage.setItem("otp token", action.payload.token)
             localStorage.setItem("isToken", "true")
             return {...state,
                 loading:false,
@@ -82,15 +82,16 @@ const initialState ={
         }
         case "OTP_FAILED":{
             return {
+                ...state,
                 loading:false,
                 response:"",
-                // error:action.payload.response.data.msg,
+                error:action.payload.response.data.msg,
                 toRstPwd:false
             }
         }
         case "RESEND_STARTED":{
             return {
-                ...state, loading:true,toHome:false
+                ...state, loading:true, toRstPwd:false
             }
         }
         case "RESEND_SUCCEDED":{
@@ -98,34 +99,37 @@ const initialState ={
                 loading:false,
                 response:action.payload.msg,
                 error:"",
-                toHome:true
+                toRstPwd: true
             }
         }
         case "RESEND_FAILED":{
             return {
+                ...state,
                 loading:false,
                 response:"",
                 error:action.payload.response.data.msg,
-                toHome:false
+                toRstPwd:false
             }
         }
         case "RESET_STARTED":{
             return {
-                ...state, loading:true
+                ...state, loading:true, toLogin: false
             }
         }
         case "RESET_SUCCEDED":{
             return {...state,
                 loading:false,
                 response:action.payload.msg,
-                error:""
+                error:"",
+                toLogin:true
             }
         }
         case "RESET_FAILED":{
-            return {
+            return {...state,
                 loading:false,
                 response:"",
-                error:action.payload.response.data.msg
+                error:action.payload.response.data.msg,
+                toLogin:false
             }
         }
         case "SIGNUP_STARTED":{
@@ -144,6 +148,7 @@ const initialState ={
         }
         case "SIGNUP_FAILED":{
             return {
+                ...state,
                 loading:false,
                 response:"",
                 error:action.payload.response.data.msg,
@@ -167,6 +172,7 @@ const initialState ={
         }
         case "EMAIL_VERIFY_FAILED":{
             return {
+                ...state,
                 loading:false,
                 response:"",
                 error:action.payload.response.data.msg,
@@ -190,6 +196,7 @@ const initialState ={
         }
         case "SIGNUP_TWO_FAILED":{
             return {
+                ...state,
                 loading:false,
                 response:"",
                 error:action.payload.response.data.msg,

@@ -47,8 +47,6 @@ function ProfilePage() {
     let y = useSelector((p) => p.ProfileReducer).profile.user
 
     const { profile, accessProfile, loading, editprofile, ifedit, profileTweet } = profilee;
-    // console.log(profileTweet)
-
 
     const { apiname } = useParams();
     useEffect(() => {
@@ -76,8 +74,6 @@ function ProfilePage() {
             setTweetsArray(profileTweet)
         }
     }, [profilee])
-
-    // console.log(profilee)
 
     function setOPacity() {
         var items = document.getElementsByClassName("POPUPBG")

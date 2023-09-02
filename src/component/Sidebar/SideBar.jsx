@@ -36,11 +36,10 @@ function Sidebar() {
 
     const auth = useSelector((s) => s.AuthReducer)
     const { user, toFgtPwd } = auth;
-    const nameInApi = user.user_name
+    const nameInApi = user?.user_name
     const { title, image, x } = useSelector((n) => n.TitleNavBar)
 
     function showTitle(x) {
-        console.warn(x)
         if (x == 0) {
             document.getElementById("homeIcon").src = greenhome
             document.getElementById("notify").src = notify;
@@ -122,7 +121,6 @@ function Sidebar() {
         if (e.target.value.startsWith('#')) {
 
             dispatch(SearchTweetWithTag(e.target.value.slice(1)))
-            // console.log(e.target.value.slice(1))
         }
         dispatch(SearchUser(e.target.value));
         if (e.target.value != "") {
@@ -136,7 +134,7 @@ function Sidebar() {
         }
 
     }
-    // console.log(tweetList, tohash)
+    
     useEffect(() => {
         if (tomap) {
             if (list.result.length > 0) {
@@ -168,8 +166,6 @@ function Sidebar() {
         }
     }, [loading])
     const navigate = useNavigate();
-    // console.log(searchListArray)
-
     function setOPacity() {
         var items = document.getElementsByClassName("POPUPBG")
         for (var i = 0; i < items.length; i++) {
@@ -244,7 +240,7 @@ else{
             else
             setNotifBool(false)
         }
-        console.log(notifBool)
+       
     },[notifyBool])
 
    

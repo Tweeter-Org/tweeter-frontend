@@ -40,7 +40,7 @@ export const TweetFeedCount = () => {
 }
 export const TweetFeedAction2 = (count) => {
     var c= count++;
-    console.warn(c)
+ 
     const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
@@ -109,7 +109,7 @@ export const CreateTweetAct = (formData) => {
         })
         await BaseUrl.post("/t/create", formData, config)
             .then((Res) => {
-                console.log(Res)
+             
                 dispatch({
                     type: "TWEETCREATED",
                     payload: Res
@@ -146,7 +146,7 @@ export const CreateReTweetAct = (formData) => {
         })
         await BaseUrl.post("/t/retweet", formData, config)
             .then((Res) => {
-                console.log(Res)
+              
                 toast.success(`${Res.data.msg}`, {
                     position: "top-center",
                     theme: "light",
@@ -179,7 +179,7 @@ export const LikedTweetAction = (username) => {
     return async function (dispatch) {
         await BaseUrl.get(`/p/liked/${username}`, config)
             .then((Res) => {
-                console.log(Res)
+             
                 dispatch({
                     type: "LIKEDTWEETLISTYES",
                     payload: Res
@@ -221,7 +221,7 @@ const TweetListWithTag = (tag) => {
     }
     return async function (dispatch) {
         dispatch({ type: "TAG_TWEET_LIST_START" })
-        console.log("hash")
+
         await BaseUrl.get(`/t/tagged/${tag}`, config)
             .then((res) => dispatch({
                 type: "TAG_TWEET_LIST_SUCCEDED",
@@ -264,7 +264,7 @@ export const ShareTweet = (data, socket) => {
         })
         await BaseUrl.post("/c/share",data, config)
             .then((Res) => {
-                console.log(Res)
+             
                 toast.success("Message sent successfully", {
                     position: "top-center",
                     theme: "light",
@@ -287,7 +287,6 @@ export const ShareTweet = (data, socket) => {
 
 function TweetDeleteAction(tweetId) {
     const accessToken = localStorage.getItem("access token")
-    console.log(accessToken)
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -331,7 +330,6 @@ const TrendingTweets = () => {
     }
     return async function (dispatch) {
         dispatch({ type: "TAG_TWEET_LIST_START" })
-        console.log("hash")
         await BaseUrl.get('/t/trending', config)
             .then((res) => dispatch({
                 type: "TRENDING_TWEET_YES",

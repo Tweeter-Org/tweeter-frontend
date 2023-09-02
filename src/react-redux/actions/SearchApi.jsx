@@ -8,7 +8,6 @@ const SearchUser = (char) => {
             payload: res.data
          }))
          .catch((err) => {
-            console.log(err)
             dispatch({
                type: "SEARCH_FAILED",
                payload: err

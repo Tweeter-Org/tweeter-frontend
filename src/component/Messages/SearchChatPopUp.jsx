@@ -11,7 +11,6 @@ function SearchChatUser(props) {
 
     const {user} = useSelector((a)=>a.AuthReducer)
     // const viewChatIdd = props.viewChatid;
-    // // console.log(viewChatIdd)
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const[info, setInfo] = useState([])
@@ -20,34 +19,29 @@ function SearchChatUser(props) {
     const {unseenChats} = useSelector((n)=>n.NotificationReducer) 
    
     useEffect(()=>{
-        console.log(unseenChats)
+        
     }, [unseenChats])
   
-    // console.log(props.sidechat)
 
     useEffect(()=>{
       props.sidechat.users.map((chat)=>{
-        // console.log(chat)
+   
         if(chat._id != user._id){
             // setChats([...chats, chatUser])
-            // console.log(chat)
-            // console.log(chats)
+           
             setInfo(chat)
         }
-        // console.log(props.sidechat.users._id)
-        // console.log(newMsgNotify)
+        
       })
     },[user, chatList])
-    // console.log(chats)
     const { userid } = useParams();
-    // // console.log(user)
-    // // console.log(props.user)
+    
     // const [info, setInfo] = useState({})
     // useEffect(()=>{
     //     props.user.map((u)=>{
     //         if(u.user_name!= user.user_name)
     //         {
-    //             // console.log(u);
+    //          
     //             setInfo(u)
     //             return u
     //         }
@@ -71,7 +65,6 @@ function SearchChatUser(props) {
             }
         })
     },[userid])
-    // console.log(props.sidechat)
     function handleUserChat (usernum){
         dispatch(ActiveUserList());
         dispatch(Messages(greenmessage, "Messages", 3)) 
@@ -79,7 +72,7 @@ function SearchChatUser(props) {
         dispatch(CreateChat(usernum))
         document.getElementById("SELECT_CHAT_BLOCK").style.display="none"
     }
-    // console.log(props.msg)
+    
     return <>
        <div className="chatUser" id="msgSearchUserr" >
        {(info.displaypic === null) ? ( <img src={avatar}  id="msgPicincircle" />) :
