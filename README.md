@@ -1,5 +1,5 @@
-TWEETER : a socio website which provides users with the feature to grow their social connections, raise any issue or get updated of what's happening around
-          Users can join TWEETER by simply creating their account, having an updated profile, and can create any tweets. Tweeter provides u the feature to have an                 experience of real-time chats with your connections.
+TWEETER : a social media website which provides users with the feature to grow their social connections, raise any issue or get updated of what's happening around
+          Users can join TWEETER by simply creating their account, having an updated profile, and can create any tweets. Tweeter also provides you the feature to have the                 experience of real-time chats with your connections.
           
 FEATURES :
 1. SignIn/ SignUp or Google Authentication
