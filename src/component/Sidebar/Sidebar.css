@@ -225,7 +225,7 @@ a:hover {
 } */
 
 .searchFlexBox {
-    position: absolute;
+    position: fixed;
     top:90px;
     left: 70vw;
     /* width: 50vw; */
