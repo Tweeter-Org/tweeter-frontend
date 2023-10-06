@@ -201,7 +201,7 @@ function Tweet(props) {
                     (<img src={props.displaypic} id="picincircle" />)}
                 <div className="USERNAME">
                     <p className="username">{props.name}</p>
-                    <p className="tweetUsername2" onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >@{props.username}</p>
+                    <p className="tweetUsername2" onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >{props.username}</p>
                 </div>
                 <img src={bookmark} className="bookmarkIcon" id="BMICON" onClick={(e) => { handleTweetBookmark(e, props.tweetId) }} />
                 <TweetPopup name={props.username} num={id} displaypic={props.displaypic} />
