@@ -159,6 +159,17 @@ function ProfilePage() {
         }
     }, [loading])
 
+
+    function formatDateToDDMMYYYY(createdAt) {
+        const date = new Date(createdAt);
+        const day = date.getUTCDate();
+        const month = date.getUTCMonth() + 1;
+        const year = date.getUTCFullYear();
+        const formattedDate = `${day.toString().padStart(2, '0')}-${month.toString().padStart(2, '0')}-${year}`;
+      
+        return formattedDate;
+      }
+
     return <>
         <Sidebar />
         <div className="PROFILE POPUPBG">
@@ -198,7 +209,7 @@ function ProfilePage() {
                 <p className="pText3">
                     {bio}
                 </p>
-                <p className="pText5"><span id="create">Join In: </span>{createdAt}</p>
+                <p className="pText5"><span id="create">Join In: </span> {formatDateToDDMMYYYY(createdAt)}</p>
               
             </div>
             <div className="profileDiv3">
