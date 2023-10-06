@@ -15,7 +15,6 @@ import greenShare from "../Assets/greenSend.svg"
 import greenBookmarks from "../Assets/greenBookmarks.svg"
 import DoBookmarkAction from "../../react-redux/actions/Bookmarks.jsx";
 import { Navigate, useNavigate } from "react-router-dom";
-import TweetPopup from "../Home Page/tweetPopup";
 import CreateTweet from "../Home Page/createTweet";
 import { NameInReplyAction, ShowNameInReplyAction, ViewTweetsReply } from "../../react-redux/actions/Replies";
 import Reply from "./Reply";

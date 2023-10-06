@@ -17,7 +17,6 @@ import DoBookmarkAction from "../../react-redux/actions/Bookmarks.jsx";
 import deleteIcon from "../Assets/delete.svg"
 import { TweetFeedAction } from "../../react-redux/actions/Tweets.jsx";
 import { type } from "@testing-library/user-event/dist/type";
-import TweetPopup from "./tweetPopup";
 import CreateTweet from "./createTweet";
 import { Navigate, useNavigate } from "react-router-dom";
 import ShareTweet from "./ShareTweet";
@@ -204,7 +203,6 @@ function Tweet(props) {
                     <p className="tweetUsername2" onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >@{props.username}</p>
                 </div>
                 <img src={bookmark} className="bookmarkIcon" id="BMICON" onClick={(e) => { handleTweetBookmark(e, props.tweetId) }} />
-                <TweetPopup name={props.username} num={id} displaypic={props.displaypic} />
             </div>
             {replyingto.length > 0 ? (<p id="prTwReplying1">Replying to {replyingto.length > 0 ? (replyingto.map((name) => {
                 return <span id="prTwReplying2" onClick={() => {
@@ -258,7 +256,6 @@ function Tweet(props) {
                     <p className="tweetUsername2" onMouseOver={showProfilePopup} onMouseOut={hideProfilePopup} >@{props.username}</p>
                 </div>
                 <img src={bookmark} className="bookmarkIcon" onClick={(e) => { handleTweetBookmark(e, props.tweetId) }} />
-                <TweetPopup name={props.username} num={id} displaypic={props.displaypic} />
             </div>
             {replyingto.length > 0 ? (<p id="prTwReplying1">Replying to {replyingto.length > 0 ? (replyingto.map((name) => {
                 return <span id="prTwReplying2" onClick={() => {
