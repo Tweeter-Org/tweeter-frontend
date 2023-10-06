@@ -110,9 +110,9 @@ function AuthOtp() {
               dispatch(SignUpResend(email), setSeconds(59));
             }}
           >
-            Resend Otp in
+            Resend Otp in{" "}
+            <span id="timer">00:{seconds < 10 ? "0" + seconds : seconds}</span>
           </p>
-          <span id="timer">00:{seconds}</span>
           <button className="authFgtPwdBtn" type="submit">
             Continue
           </button>

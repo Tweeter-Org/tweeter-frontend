@@ -90,8 +90,10 @@ function AuthOtp() {
             <p className='authEmail'>Enter Otp sent to {email}</p>
             <input type="text" className="authEmailInput" id="otpInput" placeholder="0  0  0  0  0  0" value={otp} onChange={(e) => setOtp(e.target.value)} required />
             <p className='invalidEmail'>Incorrect Otp</p>
-            <p className='resendFgtOtp' disabled={seconds !== 0 ? true : false} onClick={() => { dispatch(ResendOtpAction(email), setSeconds(59)) }}>Resend Otp</p>
-            <span id="timer">00:{seconds}</span>
+            <p className='resendFgtOtp' disabled={seconds !== 0 ? true : false} onClick={() => { dispatch(ResendOtpAction(email), setSeconds(59)) }}>
+              Resend Otp{" "}
+              <span id="timer">00:{seconds < 10 ? "0" + seconds : seconds }</span>
+            </p>
             <button className='authFgtPwdBtn' type="submit">Continue</button>
         </div>
         </form>
