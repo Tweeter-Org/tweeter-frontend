@@ -6,7 +6,6 @@
 
 - [About our project](#About-our-project)
 - [Tech Stack Used](#Tech-Stack-Used)
-- [Website Overview](#Website-Overview)
 - [Key Features ✨](#Key-Features-✨)
 - [Components of Website](#Components-of-Website)
 - [🔖Steps to Contribute ✅](#🔖Steps-to-Contribute-✅)
