@@ -10,7 +10,7 @@
 - [Components of Website](#Components-of-Website)
 - [🔖Steps to Contribute ✅](#🔖Steps-to-Contribute-✅)
 - [🔑Guidelines✨](#🔑Guidelines✨)
-- [Thanks to all the Contributors ❤️](#Thanks-to-all-the-Contributors-❤️)
+- [Thanks to all the Contributors ❤️](#thanks-to-all-the-contributors-❤️)
 
 # About our project
 
@@ -138,7 +138,7 @@ it is an Issue or a Pull Request.
 12. Make sure you **discuss issues** before working on the issue.
 13. Pull requests will be merged after being **reviewed** by a mentor or PA.
 14. It might take **a day or two** to review your pull request. Please have patience and be nice.
-15. Always create a pull request from a **branch** other than `main`.
+15. Always create a pull request from a **branch** other than `master`.
 16. Participants/contributors have to complete issues before they decided Deadline. If you fail to make a PR within the deadline, then the issue will be assigned to 
 another person in the queue.
 17. While making PRs, don't forget to **add a description** of your work.
