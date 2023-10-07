@@ -211,68 +211,6 @@ function CreateTweet(props) {
       }
     }
   }, [tohash, tweetList]);
-  // setSearchListArray([])
-
-  // setSearchTweetList([])
-  // if (tomap) {
-  //     if (list.result.length > 0) {
-  //         setSearchListArray(list.result)
-  //     }
-  //     else {
-  //         setSearchListArray([])
-  //     }
-  // }
-  // if (tohash) {
-
-  // document.getElementById("ctSearchHash").style.display="block";
-  // document.getElementById("ctSearchATR").style.display="none";
-  //     if (tweetList.length > 0) {
-  //         setSearchTweetList(tweetList)
-  //     }
-  //     else {
-  //         setSearchTweetList([])
-  //     }
-  // }
-  // if(!e.target.value){
-  //     setSearchListArray([])
-  //     setSearchTweetList([])
-  // }
-
-  // const [tag, setTag] = useState(false)
-  // useEffect(() => {
-  //     if (tomap) {
-  //         if (list.result.length > 0) {
-  //             setSearchListArray(list.result)
-  //         }
-  //         else {
-  //             setSearchListArray([])
-  //         }
-  //     }
-  // if(!text){
-  //     setSearchListArray([])
-  //     setSearchTweetList([])
-  // }
-  // }, [tomap, list, text])
-  // useEffect(() => {
-  //     if (tohash) {
-  //         if (tweetList.length > 0) {
-  //             setSearchTweetList(tweetList)
-  //         }
-  //         else {
-  //             setSearchTweetList([])
-  //         }
-  //     }
-  //     if(!text){
-  //         setSearchListArray([])
-  //        setSearchTweetList([])
-  //     }
-  // }, [tohash, tweetList, text])
-  // useEffect(()=>{
-  //     if(searchListArray.length==0 && searchTweetList.length==0)
-  //     document.getElementById("CTSEARCH").style.display="none";
-  //     else
-  //     document.getElementById("CTSEARCH").style.display="flex";
-  // },[searchListArray, searchTweetList])
 
   useEffect(() => {
     if (!text) {
@@ -285,13 +223,12 @@ function CreateTweet(props) {
   function handleCreateTweet(e) {
     e.preventDefault();
     fd.append("text", text);
-    if (sendImage != "") {
+    if (sendImage != "" && sendImage != null && sendImage != undefined) {
       fd.append("file", sendImage);
-    } else if (sendVideo != "") {
+    } else if (sendVideo != "" && sendVideo != null && sendVideo != undefined) {
       fd.append("file", sendVideo);
-    } else {
-      fd.append("file", null);
-    }
+    } else fd.append("file", null);
+    
     if (text != "") {
       dispatch(CreateTweetAct(fd));
 
