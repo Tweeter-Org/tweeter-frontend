@@ -222,6 +222,7 @@ span {
   height: auto;
   width: 43vw;
   margin-top: 2vh;
+  border-radius: 10px;
 }
 
 .likeIcon {
