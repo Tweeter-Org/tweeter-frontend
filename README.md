@@ -10,7 +10,7 @@
 - [Components of Website](#Components-of-Website)
 - [🔖Steps to Contribute ✅](#🔖Steps-to-Contribute-✅)
 - [🔑Guidelines✨](#🔑Guidelines✨)
-- [Thanks to all the Contributors ❤️](#thanks-to-all-the-contributors-❤️)
+- [Thanks to all the Contributors ❤️](#thanks-to-all-the-contributors-%EF%B8%8F)
 
 # About our project
 
