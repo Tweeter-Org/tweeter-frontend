@@ -298,8 +298,11 @@ else{
                 <button className="logOutBtn" onClick={handleLogout}><img src={logoutIcon} className="logoutIcon" />Log Out</button>
             </div>
             <div id="SEARCHBOX">
-                <div className="searchBar"><img src={searchIcon} className="searchIcon" />
+                <div className="searchBar">
+                    <div className="searchBar_box">
+                    <img src={searchIcon} className="searchIcon" />
                     <input className="searchbar POPUPBG" type="text" value={search} onChange={handleSearch} placeholder="Search" />
+                    </div>
                 </div>
                 <div className="searchFlexBox POPUPBG" id="SIDESEARCH">
                     {tohash ? (

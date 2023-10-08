@@ -237,10 +237,14 @@ a:hover {
     margin-left:70vw;
     margin-top:14px;
 }
+.searchBar_box{    
+    position: fixed;
+    z-index: 105;}
 .searchIcon{
-    /* z-index:105; */
-    /* margin-left:5vw; */
-
+    z-index:105;
+    position: relative;
+    left: 3vw;
+    top: 4px;
 }
 .searchbar {
     border: none;
