@@ -473,6 +473,8 @@
     border: 0.8px solid rgba(255, 255, 255, 0.15);
     border-radius: 8px;
     display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .followName {
@@ -482,15 +484,18 @@
     font-size: 1.1rem;
     line-height: 24px;
     color: rgba(255, 255, 255, 0.9);
-    /* margin-left: 5.5vw; */
-    margin-top: 13px;
+    margin: 0;
     text-transform: capitalize;
 }
 
 .followPic {
-    margin-top: 15px;
     margin-left:1vw;
     /* top:60vh; */
+}
+
+.followNameContainer {
+    display: flex;
+    flex-direction: column;
 }
 
 .followUsername {
@@ -500,12 +505,10 @@
     font-size: 13px;
     line-height: 20px;
     color: #47c87a;
-   cursor: pointer;
-    margin-left:-8vw;
-  
-    margin-top: 30px;
+    cursor: pointer;
     text-transform: capitalize;
     text-decoration: underline;
+    margin: 0;
     /* cursor: pointer; */
 }
 
@@ -655,16 +658,6 @@ z-index:15;
 .followCompDiv{
     height:57px;
 }
-.followPic{
-    margin-top:7px;
-}
-.followName{
-    margin-top:4px;
-}
-.followUsername{
-    margin-left:-7vw;
-    margin-top:25.5px;
-}
 #bmIcon{
     margin-left:16vw;
 }
@@ -728,9 +721,6 @@ width:25vw;
         margin-left: 1.5vw;
         margin-top:10px;
     }
-    .followUsername{
-        margin-left: -8vw;
-    }
   
 }
 @media(max-width:850px){
@@ -754,9 +744,6 @@ width:25vw;
     }
     .followName{
         font-size: 1rem;
-    }
-    .followUsername{
-        margin-left:-8vw;
     }
     .pTweetHead, .pFollowerHead , .pFollowingHead{
         font-size: 1.05rem;
@@ -833,9 +820,6 @@ margin-left: 8vw;
 .followCompDiv {
     height: 57px;
     width:56.5vw;
-}
-.followUsername{
-    margin-left:-9vw
 }
 .pFollowerHead{
     margin-left:10vw;
@@ -924,9 +908,6 @@ font-size: 0.9rem;
     #bmIcon{
         margin-left:5vw;
     }
-    .followUsername{
-        margin-left: -11vw;
-    }
     #DltPopUp{
         width:50vw;
         margin-left:-4vw;
@@ -984,9 +965,6 @@ font-size: 0.9rem;
     }
 .followCompDiv{
     width:81vw;
-}
-.followUsername{
-    margin-left:-14vw;
 }
 .pImage{
     width:130px;
@@ -1083,9 +1061,6 @@ font-size: 0.9rem;
     }
 .followCompDiv{
     width:83vw;
-}
-.followUsername{
-    margin-left:-16vw;
 }
 .pImage{
     width:100px;
