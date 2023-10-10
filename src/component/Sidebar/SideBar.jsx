@@ -123,7 +123,7 @@ function Sidebar() {
             dispatch(SearchTweetWithTag(e.target.value.slice(1)))
         }
         dispatch(SearchUser(e.target.value));
-        if (e.target.value != "") {
+        if (e.target.value !== "") {
             document.getElementById("HOME2").style.display = "none"
             document.getElementById("SIDESEARCH").style.display = "flex"
         }
@@ -262,7 +262,7 @@ else{
                 navigate("/notification")
             }}/>
                 <div className="navSearch1">
-                    <img src={searchIcon} className="navSearch2" onClick={() => {
+                    <img src={searchIcon}alt="search" className="navSearch2" onClick={() => {
                         navigate("/phonesearch")
                     }} />
                 </div>
@@ -300,10 +300,11 @@ else{
             <div id="SEARCHBOX">
                 <div className="searchBar">
                     <div className="searchBar_box">
-                    <img src={searchIcon} className="searchIcon" />
+                    <img src={searchIcon} className="searchIcon" alt="search" />
                     <input className="searchbar POPUPBG" type="text" value={search} onChange={handleSearch} placeholder="Search" />
                     </div>
                 </div>
+            
                 <div className="searchFlexBox POPUPBG" id="SIDESEARCH">
                     {tohash ? (
                         searchTweetList.length > 0 ? (searchTweetList.map((se) => {

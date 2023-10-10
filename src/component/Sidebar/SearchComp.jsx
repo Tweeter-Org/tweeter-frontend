@@ -16,8 +16,8 @@ function SearchComp (props){
     return <>
         <div className="searchcomp POPUPBG ">
 
-        {(props.displaypic === null) ? ( <img src={avatar}  id="picincircle" />) :
-                   ( <img src={props.displaypic} id="picincircle"/>) 
+        {(props.displaypic === null) ? ( <img src={avatar}  id="picincircle" alt="avatar" />) :
+                   ( <img src={props.displaypic} id="picincircle" alt="displaypic"/>) 
                     
                 }
                 <div className="searchNames">
