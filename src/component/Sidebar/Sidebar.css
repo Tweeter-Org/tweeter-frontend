@@ -218,19 +218,19 @@ a:hover {
 
 /* SEARCH BAR */
 
-/* #SIDESEARCH{
-    position:fixed;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-} */
-
 .searchFlexBox {
     position: fixed;
-    top:90px;
+    top: 90px;
     left: 70vw;
     /* width: 50vw; */
     display: flex;
     flex-direction: column;
+    position:fixed;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    position: absolute;
+    max-height: 550px; 
+    overflow-y: auto;
 }
 .searchBar{
     display: flex;
@@ -410,10 +410,10 @@ margin-left:-0.2vw;
     .searchbar{
         display: none;
     }
-    .searchFlexBox{
+    /* .searchFlexBox{
         display: none;
        
-    }
+    } */
     .searchcomp, .searchAlter{
         display: none;
           /* display:flex; */
