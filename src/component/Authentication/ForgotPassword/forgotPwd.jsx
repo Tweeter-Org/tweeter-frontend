@@ -1,16 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react'
 import "./fgtPwd.css"
-import fgtPwdImg from "../../Assets/fgtPwdImage.svg";
+import 'react-toastify/dist/ReactToastify.css';
+
+import React, { useEffect, useRef, useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
+
+import Background from '../Background';
 import { FgtPwdAction } from '../../../react-redux/actions/authAction';
 import { Spinner } from 'react-bootstrap';
-import emailIcon from "../../Assets/email.svg";
-import { useNavigate } from 'react-router-dom';
 import ToasterError from '../../Assets/ToasterError';
-import Background from '../Background';
 import arrow from "../../Assets/arrow-back.svg";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import emailIcon from "../../Assets/email.svg";
+import fgtPwdImg from "../../Assets/fgtPwdImage.svg";
+import { useNavigate } from 'react-router-dom';
 
 function ForgotPwd() {
 
@@ -71,7 +73,7 @@ function ForgotPwd() {
 
     return <>
         <Background />
-        <form onSubmit={FORGOTPWD}>
+        <form className='formContainer' onSubmit={FORGOTPWD}>
         <div className='loginBg'>
             <img src={arrow} id="arrow" onClick={() => { navigate("/") }} />
             <p className='authHead' id="authHeadTwo">Forgot Password</p>

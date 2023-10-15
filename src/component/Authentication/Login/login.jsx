@@ -1,20 +1,22 @@
-import React, { useEffect, useRef, useState } from "react";
 import "./login.css";
+import "react-toastify/dist/ReactToastify.css";
+
+import React, { useEffect, useRef, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+
+import Background from "../Background";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { GoogleAction } from "../../../react-redux/actions/authAction";
+import LogInUser from "../../../react-redux/actions/authAction";
+import { Spinner } from "react-bootstrap";
+import ToasterError from "../../Assets/ToasterError";
+import axios from "axios";
 import emailIcon from "../../Assets/email.svg";
 import googleIcon from "../../Assets/google.svg";
 import lockIcon from "../../Assets/lock.svg";
-import LogInUser from "../../../react-redux/actions/authAction";
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Spinner } from "react-bootstrap";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import ToasterError from "../../Assets/ToasterError";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import Background from "../Background";
-import axios from "axios";
-import { GoogleAction } from "../../../react-redux/actions/authAction";
 
 function Login() {
   const dispatch = useDispatch();
@@ -90,7 +92,7 @@ function Login() {
   const [googleBool, setGoogleBool] = useState(false);
 
   function navigateGoogle() {
-    dispatch(GoogleAction())
+    dispatch(GoogleAction());
     setGoogleBool(true);
   }
 
@@ -111,7 +113,7 @@ function Login() {
     <>
       <Background />
       <div className="AUTHENTICATION">
-        <form onSubmit={LOGIN}>
+        <form className="formContainer" onSubmit={LOGIN}>
           <div className="loginBg">
             <p className="authHead">Sign In</p>
             <p className="authEmail">Email Address</p>
@@ -128,24 +130,27 @@ function Login() {
               Invalid Email Address
             </p>
             <p className="authPwd">Password</p>
-            <img src={lockIcon} id="lockIcon" />
-            {show ? (
-              <FontAwesomeIcon icon={faEye} id="LEye" onClick={handleShow} />
-            ) : (
-              <FontAwesomeIcon
-                icon={faEyeSlash}
-                id="LEye"
-                onClick={handleShow}
+
+            <div className="pwdContainer">
+              <img src={lockIcon} id="lockIcon" />
+              {show ? (
+                <FontAwesomeIcon icon={faEye} id="LEye" onClick={handleShow} />
+              ) : (
+                <FontAwesomeIcon
+                  icon={faEyeSlash}
+                  id="LEye"
+                  onClick={handleShow}
+                />
+              )}
+              <input
+                type={show ? "text" : "password"}
+                className="authPwdInput"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                required
               />
-            )}
-            <input
-              type={show ? "text" : "password"}
-              className="authPwdInput"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-              required
-            />
+            </div>
             <div className="fgtPwd2">
               <p className="fgtPwd" onClick={() => navigate("/fgtpwd")}>
                 Forgot Password?

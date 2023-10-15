@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react";
 import "./resetPwd.css";
-import lockIcon from "../../Assets/lock.svg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import Background from "../Background";
-import arrow from "../../Assets/arrow-back.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { Spinner } from "react-bootstrap";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
+
+import React, { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+
+import Background from "../Background";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ResetAction } from "../../../react-redux/actions/authAction";
+import { Spinner } from "react-bootstrap";
+import arrow from "../../Assets/arrow-back.svg";
+import lockIcon from "../../Assets/lock.svg";
+import { useNavigate } from "react-router-dom";
 
 function ResetPwd() {
   const [pass, setPass] = useState("");
@@ -98,7 +100,7 @@ function ResetPwd() {
   return (
     <>
       <Background />
-      <form onSubmit={RESETPWD}>
+      <form className='formContainer' onSubmit={RESETPWD}>
         <div className="loginBg">
           <img
             src={arrow}
