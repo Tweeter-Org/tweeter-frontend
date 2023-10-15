@@ -47,7 +47,7 @@ function CreateTweet(props) {
 
     setSendImage(e.target.files[0]);
     simulateUploadProgress(e.target.files[0], true);
-  }
+  } 
   const simulateUploadProgress = (file, isImage) => {
     const totalSize = file.size;
     let uploadedSize = 0;

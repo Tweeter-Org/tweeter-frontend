@@ -25,7 +25,7 @@ export const TweetFeedAction = () => {
                 })
             })
             .catch((err) => {
-                dispatch({
+                dispatch({ 
                     type: "Tweet_Feed_Failed",
                     payload: err
                 })

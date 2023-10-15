@@ -1,6 +1,7 @@
 import BaseUrl from "./BaseUrl"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { TweetFeedAction } from "./Tweets";
 
 export const ReplyToTweet = (formData) => {
     const accessToken = localStorage.getItem("access token")
@@ -23,6 +24,7 @@ export const ReplyToTweet = (formData) => {
                     type: "REPLY_TWEET_YES",
                     payload: Res
                 })
+                dispatch(TweetFeedAction())
             })
             .catch((err) => {
                 toast.error(`${err.response.data.msg}`, {

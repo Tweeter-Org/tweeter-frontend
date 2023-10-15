@@ -33,13 +33,24 @@ function Tweet(props) {
     const [tweetCount, setTweetCount] = useState(props.likeCount)
     const [replyCount, setReplyCount] = useState(props.replyCount)
     const [replyingto, setReplyingto] = useState([])
+    const { tweetData } = useSelector((s) => s.TweetFeedReducer)
     useEffect(() => {
-        if (props.replies != null)
+    if (localStorage.getItem('idx')==props.number) {
+        console.log("hi");
+        const index = localStorage.getItem('idx');
+        setReplyCount(replyCount+1); 
+        localStorage.removeItem('idx')
+    }
+}, [tweetData]);
+
+    useEffect(() => {
+        if (props.replies != null){
             setReplyingto(props.replies)
-        else
+        }
+        else{
             setReplyingto([])
+        }    
     }, [props.replies])
-   
     useEffect(() => {
         setTweetCount(props.likeCount)
         if (props.LIKES) {
@@ -120,7 +131,8 @@ function Tweet(props) {
     }
 
     function handleTweetReply(tweetid, name, image, video, text) {
-        setReplyCount(replyCount=> replyCount+1)
+        // setReplyCount(replyCount=> replyCount+1)
+        localStorage.setItem('idx',props.number)
         dispatch(RetweetDetails(tweetid, name, video, text, image))
         sessionStorage.setItem("retweetId", tweetid)
         setOPacity()
