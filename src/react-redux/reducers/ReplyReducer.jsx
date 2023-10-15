@@ -8,6 +8,7 @@ const initialState = {
   nameInReply: [],
   replyShow: false,
   showName: false,
+  success:false
 };
 
 export const ReplyReducer = (state = initialState, action) => {
@@ -21,6 +22,7 @@ export const ReplyReducer = (state = initialState, action) => {
         loading: false,
         responseT: action.payload.data.msg,
         errorT: "",
+        success:true
       };
     }
     case "REPLY_TWEET_NO": {
@@ -30,6 +32,7 @@ export const ReplyReducer = (state = initialState, action) => {
         loading: false,
         errorT: action.payload.data.msg,
         responseT: "",
+        success:false
       };
     }
     case "VIEW_REPLY_TWEET_YES": {
