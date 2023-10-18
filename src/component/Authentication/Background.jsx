@@ -4,7 +4,7 @@ import authBgImg from "../Assets/AuthBgImage.svg";
 function Background() {
   return (
     <div>
-      <p classname="tweeterHeadd" style={{
+      <p className="tweeterHeadd" style={{
         position: "absolute",
         width: "9vh",
         height: "9vh",
