@@ -186,8 +186,6 @@ function Tweet(props) {
   useEffect(() => {
     var y = document.getElementsByClassName("tweetText");
     for (var i = 0; i < y.length; i++) {
-      console.log("Text ", y);
-
       y[i].innerHTML = y[i].innerHTML.replace(
         /(^|\s)([#][A-Za-z\d-]+)/g,
         "$1<span class='hashtagg'>$2</span>"
@@ -270,9 +268,9 @@ function Tweet(props) {
           ) : null}
           <div className="tweetImageBG">
             {image != null && image.startsWith("blob:") ? (
-              <img src={image} alt="image" className="tweetImage" />
+              <img src={image} alt="user" className="tweetImage" />
             ) : image != null ? (
-              <img src={image} alt="image" className="tweetImage" />
+              <img src={image} alt="user" className="tweetImage" />
             ) : null}
           </div>
 
@@ -353,9 +351,9 @@ function Tweet(props) {
             }}
           >
             {props.displaypic === null ? (
-              <img src={avatar} id="picincircle" />
+              <img src={avatar} id="picincircle" alt="user" />
             ) : (
-              <img src={props.displaypic} id="picincircle" />
+              <img src={props.displaypic} id="picincircle" alt="user" />
             )}
             <div className="USERNAME">
               <p className="username">{props.name}</p>
@@ -373,6 +371,7 @@ function Tweet(props) {
               onClick={(e) => {
                 handleTweetBookmark(e, props.tweetId);
               }}
+              alt="bookmark"
             />
           </div>
           {replyingto.length > 0 ? (
@@ -395,7 +394,7 @@ function Tweet(props) {
             </p>
           ) : null}
           {image != null ? (
-            <img src={image} alt="image" className="tweetImage" />
+            <img src={image} alt="tweet" className="tweetImage" />
           ) : null}
           {video != null ? (
             <video className="tweetvideo" controls>
@@ -406,16 +405,24 @@ function Tweet(props) {
           <div className="tweetWithRetwwet">
             <div className="TWRBlock1">
               {retweets.user.displaypic === null ? (
-                <img src={avatar} className="TWRpic" />
+                <img src={avatar} alt="avatar" className="TWRpic" />
               ) : retweets.user.displaypic.startsWith("https:") ? (
-                <img src={retweets.user.displaypic} className="TWRpic" />
+                <img
+                  src={retweets.user.displaypic}
+                  alt="user"
+                  className="TWRpic"
+                />
               ) : (
-                <img src={retweets.user.displaypic} id="picincircle" />
+                <img
+                  src={retweets.user.displaypic}
+                  alt="user"
+                  id="picincircle"
+                />
               )}
               <p className="username">{retweets.user.user_name}</p>
             </div>
             {retweets.image != null ? (
-              <img src={retweets.image} className="TWRVideo" alt="image" />
+              <img src={retweets.image} className="TWRVideo" alt="retweet" />
             ) : null}
             {retweets.video != null ? (
               <video controls className="TWRVideo">
@@ -442,6 +449,7 @@ function Tweet(props) {
                 onClick={() => {
                   handleTweetLike(props.tweetId);
                 }}
+                alt="like"
               />
               <p className="tweetLike">{tweetCount}</p>
             </div>
@@ -458,6 +466,7 @@ function Tweet(props) {
                     props.text
                   );
                 }}
+                alt="comment"
               />
               <p className="tweetComm">{replyCount}</p>
             </div>
@@ -474,6 +483,7 @@ function Tweet(props) {
                     props.text
                   )
                 }
+                alt="retweet"
               />
               <p className="tweetRetweet">Retweet</p>
             </div>
@@ -484,6 +494,7 @@ function Tweet(props) {
                 onClick={() => {
                   handleTweetShare(props.tweetId);
                 }}
+                alt="share"
               />
               <p className="tweetShare">Share</p>
             </div>
