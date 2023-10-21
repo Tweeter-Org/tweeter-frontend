@@ -63,6 +63,7 @@ function ProfilePage() {
   }, [ifedit]);
 
   useEffect(() => {
+    console.log(profile)
     if (accessProfile) {
       setFollower(profile.followers.length);
       setFollowing(profile.following.length);
@@ -181,6 +182,16 @@ function ProfilePage() {
 
     return formattedDate;
   }
+
+  if(Object.keys(profile).length === 0) return (
+    <>
+    <Sidebar />
+    <div className="PROFILE POPUPBG">
+    <h1>User @{apiname} not found :(</h1>
+    </div>
+    </>
+    )
+  
 
   return (
     <>
