@@ -186,9 +186,16 @@ function ProfilePage() {
   if(!accessProfile) return (
     <>
     <Sidebar />
-    <div className="PROFILE">
-    <h1>User @{apiname} not found :(</h1>
-    </div>
+    <div className="PROFILE POPUPBG">
+        <div className="profileDiv1">
+            <img src={avatar} className="pImage" alt="Avatar" />
+          <div className="PBLOCK1">
+            <div className="pBlock1">
+              User @{apiname} not found ☹️
+            </div>
+            </div>
+          </div>
+          </div>
     </>
     )
   
