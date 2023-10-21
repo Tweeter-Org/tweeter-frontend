@@ -82,6 +82,8 @@ function ProfilePage() {
 
   useEffect(() => {
     // When the component mounts, call showTweets to display the tweets
+
+    //ensuring that tweets arent shown when the user doesnt exist(could lead to errors and hence the if condition)
    if(accessProfile) showTweets();
     dispatch(ProfileAction(apiname));
   }, [apiname]);
@@ -182,6 +184,7 @@ function ProfilePage() {
     return formattedDate;
   }
 
+  /* Used to display user not found message */
   if(!accessProfile) return (
     <>
     <Sidebar />
