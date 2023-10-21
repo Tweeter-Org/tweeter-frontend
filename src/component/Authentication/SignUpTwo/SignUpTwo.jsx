@@ -1,16 +1,18 @@
-import React from "react";
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Background from '../Background';
-import arrow from "../../Assets/arrow-back.svg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import lockIcon from "../../Assets/lock.svg";
-import { useState, useEffect } from "react";
 import "./SignUpTwo.css";
+
+import { ToastContainer, toast } from 'react-toastify';
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+
+import Background from '../Background';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
 import { SignUpTwoUser } from "../../../react-redux/actions/authAction";
 import { Spinner } from 'react-bootstrap';
+import arrow from "../../Assets/arrow-back.svg";
+import lockIcon from "../../Assets/lock.svg";
 import { useNavigate } from "react-router-dom";
 
 function SignUpTwo() {
@@ -106,7 +108,7 @@ function SignUpTwo() {
 
   return <>
     <Background />
-    <form onSubmit={SIGNUPTWO}>
+    <form className='formContainer' onSubmit={SIGNUPTWO}>
     <div className='loginBg'>
       <img src={arrow} id="arrow" onClick={() => { navigate("/verifyemail") }} />
       <p className='authHead' id="authHeadTwo">Sign Up</p>

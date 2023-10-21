@@ -1,17 +1,28 @@
+import "react-toastify/dist/ReactToastify.css";
+import "../ForgotPassword/fgtPwd.css";
+
 import React, { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
+
+import Background from "../Background";
+import { EmailAction } from "../../../react-redux/actions/authAction";
+import { SignUpResend } from "../../../react-redux/actions/authAction";
+import { Spinner } from "react-bootstrap";
+import arrow from "../../Assets/arrow-back.svg";
 import { useNavigate } from "react-router-dom";
+
 // import ToasterSuccess from '../../Assets/ToasterSuccess'gt;
 // import ToasterError from '../../Assets/ToasterError';
-import { EmailAction } from "../../../react-redux/actions/authAction";
-import { Spinner } from "react-bootstrap";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import Background from "../Background";
-import arrow from "../../Assets/arrow-back.svg";
-import { SignUpResend } from "../../../react-redux/actions/authAction";
+
+
+
+
+
+
+
 // import SpinnerLoad from '../../Assets/Spinner';
-import "../ForgotPassword/fgtPwd.css";
+
 
 function AuthOtp() {
   const email = sessionStorage.getItem("signupemail");
@@ -80,7 +91,7 @@ function AuthOtp() {
   return (
     <>
       <Background />
-      <form onSubmit={EMAILVERIFY}>
+      <form className='formContainer' onSubmit={EMAILVERIFY}>
         <div className="loginBg">
           <img
             src={arrow}

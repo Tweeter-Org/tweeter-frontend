@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { SignUpUser } from '../../../react-redux/actions/authAction';
-import { Spinner } from 'react-bootstrap';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./signUp.css";
-import { useNavigate } from 'react-router-dom';
+
+import React, { useEffect, useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+
+import Background from '../Background';
+import { SignUpUser } from '../../../react-redux/actions/authAction';
+import { Spinner } from 'react-bootstrap';
 import ToasterError from '../../Assets/ToasterError';
+import arrow from "../../Assets/arrow-back.svg";
 import emailIcon from "../../Assets/email.svg";
 import lockIcon from "../../Assets/lock.svg";
-import Background from '../Background';
-import arrow from "../../Assets/arrow-back.svg";
+import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
     const [name, setName] = useState("")
@@ -92,7 +94,7 @@ function SignUp() {
     return <>
         {/* <ToasterError error={error} /> */}
         <Background />
-        <form onSubmit={SIGNUP}>
+        <form className="formContainer" onSubmit={SIGNUP}>
         <div className='loginBg'>
             <img src={arrow} id="arrow" onClick={() => { navigate("/") }} />
             <p className='authHead'>Sign Up</p>

@@ -9,7 +9,7 @@
 }
 .authFgtPwdBtn{
     border:none;
-    width: 30vw;
+    width: 100%;
     height:40px;
     margin-top:50px;
     margin-bottom: 15px;;
@@ -38,31 +38,3 @@
     font-size:2rem;
  }  
 }
-@media(max-width:950px){ 
- .authFgtPwdBtn{
-    width:37vw;
- }
-}
-@media(max-width:800px){ 
-    .authFgtPwdBtn{
-       width:42vw;
-    }
-   }
-   @media(max-width:650px){ 
-    .authFgtPwdBtn{
-       width:52vw;
-    }
-   }
-   @media(max-width:500px){ 
-    .authFgtPwdBtn{
-       width:57vw;
-    }
-   }
-   @media(max-width:450px){ 
-    .authFgtPwdBtn{
-       width:72vw;
-    }
-    #authHeadTwo{
-        font-size: 1.8rem;
-    }
-   }
