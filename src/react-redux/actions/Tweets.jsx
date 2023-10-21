@@ -231,8 +231,8 @@ const TweetListWithTag = (tag) => {
                 dispatch({
                     type: "TAG_TWEET_LIST_FAILED",
                     payload: err
-                })
             })
+        })
     }
 }
 

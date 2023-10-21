@@ -1,13 +1,35 @@
-import React, { Children } from "react";
+import React, { useEffect, useState } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import Error from "./Assets/Error404/Error";
 
-import {Route, useAsyncValue, useNavigate} from "react-router-dom";
-import { redirect } from "react-router-dom";
+const PrivateRoute = (props) => {
+  const navigate = useNavigate();
 
-const PrivateRoute=({children , ...rest})=>{
-    const navigate = useNavigate()
-    const isUser = sessionStorage.getItem("access token")?true:false;
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const checkUserToken = () => {
+    const userToken = localStorage.getItem("access token");
+    if (!userToken || userToken === undefined || userToken == null) {
+      setIsLoggedIn(false);
+      return navigate("/");
+    }
+    setIsLoggedIn(true);
+  };
 
-    return (<Route {...rest} render={()=>isUser?(children):(navigate("/"))} />)
-}
+  console.log(isLoggedIn);
+  useEffect(() => {
+    checkUserToken();
+  }, [isLoggedIn]);
+  return (
+    <>
+      {isLoggedIn ? (
+        props.children
+      ) : (
+        <Routes>
+          <Route path="/error" element={<Error />} />
+        </Routes>
+      )}
+    </>
+  );
+};
 
-export default PrivateRoute
+export default PrivateRoute;

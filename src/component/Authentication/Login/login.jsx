@@ -72,13 +72,24 @@ function Login() {
     }
   }, [error, showErr, loading]);
 
+  const [loadTime, setLoadTime] = useState(10);
+  useEffect(()=>{
+      if(loading){
+          const time = loadTime >0 && setInterval(()=>{
+              setLoadTime((time)=> time-1);
+          },1000)
+
+          return ()=> clearInterval(time)
+      }
+  }, [loading, loadTime])
+
   useEffect(() => {
-    if (loading === true || loadingGoogle === true) {
-      document.body.style.opacity = 0.5;
-    } else {
-      document.body.style.opacity = 1;
-    }
-  }, [loading, loadingGoogle]);
+      if (loadTime>0 && (loading === true || loadingGoogle === true)) {
+        document.body.style.opacity = 0.5;
+      } else {
+        document.body.style.opacity = 1;
+      }
+  }, [loading, loadingGoogle, loadTime]);
 
   useEffect(() => {
     if (toFgtPwd && bool) {
@@ -101,11 +112,14 @@ function Login() {
     }
   }, [googleRed]);
 
-  const isUser = localStorage.getItem("access token") ? true : false;
-
-  useEffect(() => {
-    if (isUser) navigate("/");
-  }, [isUser]);
+     const accessToken = localStorage.getItem("access token");
+     const isUser = accessToken ? true : false;
+     
+     useEffect(() => {
+       if (isUser) {
+         navigate("/");
+       }
+     }, [isUser]);
 
   return (
     <>
@@ -168,7 +182,7 @@ function Login() {
             </p>
           </div>
         </form>
-        {loading === true || loadingGoogle === true ? (
+        {loadTime>0 && (loading === true || loadingGoogle === true) ? (
           <Spinner animation="border" variant="light" id="loadSpinner" />
         ) : null}
         <ToastContainer />

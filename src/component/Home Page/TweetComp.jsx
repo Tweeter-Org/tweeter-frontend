@@ -38,8 +38,7 @@ function Tweet(props) {
   const [replyingto, setReplyingto] = useState([]);
   const { tweetData } = useSelector((s) => s.TweetFeedReducer);
   useEffect(() => {
-    if (localStorage.getItem("idx") == props.number) {
-      console.log("hi");
+    if (localStorage.getItem("idx") == props.number) {     
       const index = localStorage.getItem("idx");
       setReplyCount(replyCount + 1);
       localStorage.removeItem("idx");

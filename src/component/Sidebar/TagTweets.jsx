@@ -14,16 +14,13 @@ const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(TagtweetNav(navTweet, `${tagTweets.tag}`))
         if (getTag) {
-          
             setTitle(tagTweets.tag)
-          
             setTweetArr(tagTweets.tweets)
         }
     },[getTag, tagTweets])
 
-
     useEffect(()=>{
-        if(loading===true){
+        if(loading){
             document.body.style.opacity = 0.5;
         }
         else{
