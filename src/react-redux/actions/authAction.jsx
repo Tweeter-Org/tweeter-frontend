@@ -26,7 +26,6 @@ export default LogInUser
 const FgtPwdAction = (email, condition) => {
     return async function (dispatch) {
         if (condition) {
-            console.log(email)
             dispatch({ type: "FGT_EMAIL_STARTED" })
             await BaseUrl.post(`/forgotpwd`, { email })
                 .then((res) => dispatch({
@@ -142,7 +141,6 @@ export { SignUpResend }
 
 const SignUpTwoUser = (data) => {
     const accessToken = localStorage.getItem("access token")
-    console.log(accessToken)
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -169,7 +167,6 @@ export { SignUpTwoUser }
 
 const ResetAction = (password) => {
     const accessToken = localStorage.getItem("otp token")
-    console.log(accessToken)
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -197,7 +194,6 @@ const GoogleAction = () => {
         dispatch({ type: "GOOGLE_STARTED" })
         await BaseUrl.get(`/auth/google/url`)
             .then((res) => {
-                console.log(res)
                 dispatch({
                     type: "GOOGLE_SUCCEDED",
                     payload: res.data
@@ -205,7 +201,6 @@ const GoogleAction = () => {
             })
 
             .catch((err) => {
-                console.log(err)
             })
 
     }
@@ -221,7 +216,6 @@ const GoogleTwoAction = (url) => {
                 payload: res
             }))
             .catch((err) => {
-                console.log(err)
                 dispatch({
                     type: "GOOGLE_TWO_FAILED",
                     payload: err

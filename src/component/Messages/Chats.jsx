@@ -215,7 +215,6 @@ function Chats() {
     }
   }, [loading]);
   const navigate = useNavigate();
-  console.log("Top pic ", topPic);
   return (
     <>
       <Sidebar />

@@ -9,7 +9,8 @@ import rootReducer from "./reducers";
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const persistconfig ={
     key:"root",
-    storage: localStorage
+    storage: localStorage,
+    blacklist: ['TweetFeedReducer']
 }
 
 const persistreducer = persistReducer(persistconfig, rootReducer)

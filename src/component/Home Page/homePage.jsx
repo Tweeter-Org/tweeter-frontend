@@ -18,11 +18,27 @@ function HomePage() {
     const { loading, tweetData, liked, bookmarked, privateRoute, trendingTweet } = useSelector((s) => s.TweetFeedReducer)
     const [tweeets, settweets] = useState([])
     const navigate = useNavigate()
-    const isUser = localStorage.getItem("access token") ? true : false;
-    useEffect(()=>{
-        if(!isUser)
-        navigate("/login")
-    },[isUser])
+
+    // access token
+    // const [token, setToken]= useState(null)
+    // async function getValue() {
+    //     const x = await localStorage.getItem("access token");
+    //     console.log(x)
+    //     setToken(x)
+    // }
+      
+    // useEffect(()=>{
+    // getValue();
+    // },[])
+
+    const accessToken = localStorage.getItem("access token");
+    const isUser = accessToken ? true : false;
+    
+    useEffect(() => {
+      if (!isUser) {
+        navigate("/login");
+      }
+    }, [isUser]);
     
     const { response } = useSelector((t) => t.TweetCreateReducer)
     useEffect(() => {
@@ -42,7 +58,6 @@ function HomePage() {
     const [count, setCount] = useState(1)
 
     function handleShowMoreTweet() {
-        // dispatch(TweetFeedCount())
         setCount(count+1)
         dispatch(TweetFeedAction2(count))
     }
@@ -55,14 +70,25 @@ function HomePage() {
         }
     }
 
+    const [loadTime, setLoadTime] = useState(2);
+    useEffect(()=>{
+        if(loading){
+            const time = loadTime >0 && setInterval(()=>{
+                setLoadTime((time)=> time-1);
+            },1000)
+
+            return ()=> clearInterval(time)
+        }
+    }, [loading, loadTime])
+
     useEffect(() => {
         if (loading === true) {
-            document.body.style.opacity = 0.5;
+          document.body.style.opacity = 0.5;
+        } else {
+          document.body.style.opacity = 1;
         }
-        else {
-            document.body.style.opacity = 1;
-        }
-    }, [loading])
+      }, [loading]);
+
     return <>
         <Sidebar />
         <div className="HOMEPAGE">
@@ -89,7 +115,7 @@ function HomePage() {
             })) : null}
         </div>
 
-        {(loading === true) ? <Loader loading={loading} /> : null}
+        {(loading === true) ? <Loader loading={loading} time={loadTime} /> : null}
         <ToastContainer />
     </>
 }

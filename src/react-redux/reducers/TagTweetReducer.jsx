@@ -9,7 +9,7 @@ const initialState={
 export const TagTweetFeedReducer = (state=initialState, action)=>{
     switch(action.type){
         case "TAG_TWEET_LIST_START":{
-            return {...state, loading:true}
+            return {...state, loading:true }
         }
         case "TAG_TWEET_LIST_SUCCEDED":{
             return {...state, loading:false, tagTweets:action.payload.data, getTag:true}
