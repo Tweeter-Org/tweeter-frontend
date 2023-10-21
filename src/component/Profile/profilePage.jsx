@@ -63,7 +63,7 @@ function ProfilePage() {
   }, [ifedit]);
 
   useEffect(() => {
-    console.log(profile)
+    console.log(profile, accessProfile)
     if (accessProfile) {
       setFollower(profile.followers.length);
       setFollowing(profile.following.length);
@@ -83,7 +83,7 @@ function ProfilePage() {
 
   useEffect(() => {
     // When the component mounts, call showTweets to display the tweets
-    showTweets();
+   if(accessProfile) showTweets();
     dispatch(ProfileAction(apiname));
   }, [apiname]);
 
@@ -183,10 +183,10 @@ function ProfilePage() {
     return formattedDate;
   }
 
-  if(Object.keys(profile).length === 0) return (
+  if(!accessProfile) return (
     <>
     <Sidebar />
-    <div className="PROFILE POPUPBG">
+    <div className="PROFILE">
     <h1>User @{apiname} not found :(</h1>
     </div>
     </>
