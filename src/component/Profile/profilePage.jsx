@@ -63,7 +63,6 @@ function ProfilePage() {
   }, [ifedit]);
 
   useEffect(() => {
-    console.log(profile, accessProfile)
     if (accessProfile) {
       setFollower(profile.followers.length);
       setFollowing(profile.following.length);
@@ -186,16 +185,16 @@ function ProfilePage() {
   if(!accessProfile) return (
     <>
     <Sidebar />
-    <div className="PROFILE POPUPBG">
+          {loading === true ? <Loader loading={loading} /> : <div className="PROFILE POPUPBG">
         <div className="profileDiv1">
             <img src={avatar} className="pImage" alt="Avatar" />
           <div className="PBLOCK1">
             <div className="pBlock1">
-              User @{apiname} not found ☹️
+             <h3 className="not-found">User @{apiname} not found ☹️</h3>
             </div>
             </div>
           </div>
-          </div>
+          </div>}
     </>
     )
   

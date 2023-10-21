@@ -1146,3 +1146,8 @@ font-size: 0.9rem;
         width: 78vw;
     }
 }
+
+.not-found{
+    color: rgb(71, 200, 122, 0.9);
+    text-align: center;
+}
