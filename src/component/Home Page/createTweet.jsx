@@ -71,7 +71,6 @@ function CreateTweet(props) {
   function handleSendVideo(e) {
     // var videooutput = document.getElementById("videoOutput");
     // videooutput.src = URL.createObjectURL(e.target.files[0])
-    console.log("---->");
     setVdoInArr(URL.createObjectURL(e.target.files[0]));
 
     setSendVideo(e.target.files[0]);

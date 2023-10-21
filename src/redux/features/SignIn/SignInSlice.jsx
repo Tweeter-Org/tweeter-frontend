@@ -11,7 +11,6 @@ const initialState={
 //action
 const SignInUser = createAsyncThunk("login/SignInUser",(data)=>{
     // if(isAuthEmail){
-        // console.log(isAuthEmail)
        const api = axios.post("https://twitterbackend-production-93ac.up.railway.app/login",data)
     //    .then((res)=>{
     //     return res;
@@ -30,12 +29,9 @@ const loginSlice = createSlice({
     initialState,
     extraReducers:(builder)=>{
         builder.addCase(SignInUser.pending, (state, action)=>{
-            console.log(action)
             state.loading = true
         })
         builder.addCase(SignInUser.fulfilled, function(state, action){
-            console.log(action)
-            console.log(action.payload)
             return (
                 state.loading = false,
                 state.response = action.payload.data.msg,
@@ -44,8 +40,6 @@ const loginSlice = createSlice({
             // return state;
         })
         builder.addCase(SignInUser.rejected,(state,action)=>{
-            console.log(action)
-            // console.log(action.payload)
             return (
                 state.loading = false,
                 state.response = "",
