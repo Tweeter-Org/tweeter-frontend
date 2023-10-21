@@ -82,7 +82,9 @@ function ProfilePage() {
 
   useEffect(() => {
     // When the component mounts, call showTweets to display the tweets
-    showTweets();
+
+    //ensuring that tweets arent shown when the user doesnt exist(could lead to errors and hence the if condition)
+   if(accessProfile) showTweets();
     dispatch(ProfileAction(apiname));
   }, [apiname]);
 
@@ -181,6 +183,24 @@ function ProfilePage() {
 
     return formattedDate;
   }
+
+  /* Used to display user not found message */
+  if(!accessProfile) return (
+    <>
+    <Sidebar />
+          {loading === true ? <Loader loading={loading} /> : <div className="PROFILE POPUPBG">
+        <div className="profileDiv1">
+            <img src={avatar} className="pImage" alt="Avatar" />
+          <div className="PBLOCK1">
+            <div className="pBlock1">
+             <h3 className="not-found">User @{apiname} not found ☹️</h3>
+            </div>
+            </div>
+          </div>
+          </div>}
+    </>
+    )
+  
 
   return (
     <>
