@@ -15,7 +15,6 @@ const PrivateRoute = (props) => {
     setIsLoggedIn(true);
   };
 
-  console.log(isLoggedIn);
   useEffect(() => {
     checkUserToken();
   }, [isLoggedIn]);

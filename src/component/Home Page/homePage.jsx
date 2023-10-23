@@ -4,13 +4,10 @@ import { TrendingTweets, TweetFeedAction, TweetFeedAction2, TweetFeedCount, Twee
 import Sidebar from "../Sidebar/SideBar";
 import "./homepage.css";
 import Tweet from "./TweetComp";
-import { Spinner } from 'react-bootstrap';
 import Loader from "../Assets/Loader.jsx";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Tweetsearch from "../Sidebar/Tweetsearch.jsx";
 import { useNavigate } from "react-router";
-import localStorage from "redux-persist/es/storage";
 
 function HomePage() {
     const dispatch = useDispatch();
@@ -19,21 +16,9 @@ function HomePage() {
     const [tweeets, settweets] = useState([])
     const navigate = useNavigate()
 
-    // access token
-    // const [token, setToken]= useState(null)
-    // async function getValue() {
-    //     const x = await localStorage.getItem("access token");
-    //     console.log(x)
-    //     setToken(x)
-    // }
-      
-    // useEffect(()=>{
-    // getValue();
-    // },[])
-
     const accessToken = localStorage.getItem("access token");
     const isUser = accessToken ? true : false;
-    
+
     useEffect(() => {
       if (!isUser) {
         navigate("/login");
