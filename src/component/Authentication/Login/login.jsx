@@ -9,11 +9,9 @@ import { useNavigate } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ToasterError from "../../Assets/ToasterError";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Background from "../Background";
-import axios from "axios";
 import { GoogleAction } from "../../../react-redux/actions/authAction";
 
 function Login() {
