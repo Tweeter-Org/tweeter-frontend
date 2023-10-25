@@ -33,7 +33,7 @@ import NoChats from "../Messages/NoChats";
 import { ViewNotifyAction } from "../../react-redux/actions/Notifications";
 
 function Sidebar() {
-
+    const [isLogoutModalOpen, setIsLogoutModalOpen] = useState();
     const auth = useSelector((s) => s.AuthReducer)
     const { user, toFgtPwd } = auth;
     const nameInApi = user?.user_name
@@ -183,9 +183,9 @@ function Sidebar() {
         document.getElementById("CTReplyDiv").style.display = "none"
         setOPacity()
     }
-    function handleLogout() {
-        document.getElementsByClassName("logoutDiv")[0].style.display = "flex";
-        setOPacity()
+
+    function openLogoutModal() {
+        setIsLogoutModalOpen(true);
     }
 
     const pro = useSelector((p) => p.ProfileNameReducer)
@@ -266,7 +266,7 @@ else{
                         navigate("/phonesearch")
                     }} />
                 </div>
-                <img src={logoutIcon} className="NV3Logout" onClick={handleLogout} />
+                <img src={logoutIcon} className="NV3Logout" onClick={openLogoutModal} />
             </div>
             </div>
             <div className="navbar3">
@@ -295,7 +295,7 @@ else{
                     <Link to={`/profile/${nameInApi}`}><li className="sbListItem" onClick={() => { handleProfile() }}><img className="sbListIcon" src={profile} id="profileIcon" />   <span className="sbListName">Profile  </span></li></Link>
                 </ul>
                 <button className="sideBarTweetBtn" onClick={() => { xyz() }}>Create Tweet</button>
-                <button className="logOutBtn" onClick={handleLogout}><img src={logoutIcon} className="logoutIcon" />Log Out</button>
+                <button className="logOutBtn" onClick={openLogoutModal}><img src={logoutIcon} className="logoutIcon" />Log Out</button>
             </div>
             <div id="SEARCHBOX">
                 <div className="searchBar">
@@ -321,7 +321,7 @@ else{
             </div>
 
             <CreateTweet />
-            <LogOut />
+            {isLogoutModalOpen ? <LogOut onClose={() => setIsLogoutModalOpen(false)} /> : null}
 
         </div>
         {(loading === true) ? <Spinner animation="border" variant="light" id="loadSpinner" /> : null}
