@@ -1,6 +1,6 @@
 .logoutDiv{
 display: flex;
-position:absolute;
+position: fixed;
 top:20vh;
 left:29vw;
 width:38vw;
