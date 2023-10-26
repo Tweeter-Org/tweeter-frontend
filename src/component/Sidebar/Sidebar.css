@@ -41,8 +41,8 @@
     height: 0px;
     margin-left:34vw;
     margin-top:7px;
-
-    border: 1px solid rgba(255, 255, 255, 0.2);
+/* issue here*/
+    /* border: 1px solid rgba(255, 255, 255, 0.2); */
     transform: rotate(90deg);
 }
 .navbar2, .navbar3{
