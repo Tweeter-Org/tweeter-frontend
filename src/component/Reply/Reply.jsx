@@ -8,7 +8,7 @@ import retweet from "../Assets/retweet.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { NameInReplyAction, ReplyToTweet, ViewRepliesToReply } from "../../react-redux/actions/Replies";
 import Reply2 from "./Reply2";
-import TweetLikeAction, { RetweetDetails } from "../../react-redux/actions/Tweets";
+import TweetLikeAction, { RetweetDetails, TweetListWithTag } from "../../react-redux/actions/Tweets";
 import greenLike from "../Assets/greenLike.svg"
 import bookmark from "../Assets/bookmarks.svg";
 import greenBookmarks from "../Assets/greenBookmarks.svg"
@@ -19,23 +19,20 @@ function Reply(props) {
     const dispatch = useDispatch()
     const id = props.indexx;
     const lengthR = props.replyingto.length;
-    console.warn( props.replyingto)
-    console.log(lengthR)
+   
     const { responseT, errorT, replyR, replyShow, loading } = useSelector((r) => r.ReplyReducer)
-    console.log(replyR, replyShow, loading)
-    // console.log(document.getElementsByClassName("RepShowMore"))
+  
     const [replyArr, setReplyArr] = useState([])
     const [replyArr2, setReplyArr2] = useState([])
     const [update, setupdate] = useState(false)
-    console.log(update)
+   
 
 const [bool, setBool] = useState(false)
     function handleReplytoReply(idd) {
         setBool(true)
         setupdate(true)
         dispatch(ViewRepliesToReply(idd))
-        console.log(replyR)
-        console.log(replyArr)
+       
         if ((replyShow==true && loading==false) > 0)
             document.getElementsByClassName("RepShowMore")[id].style.display = "none";
     }
@@ -103,7 +100,6 @@ const [bool, setBool] = useState(false)
     }
 
     function handleRetweet(tweetid, name, image, video, text) {
-        // console.log("replyyy")
         dispatch(RetweetDetails(tweetid, name, video, text, image))
         sessionStorage.setItem("retweetId", tweetid)
         setOPacity()
@@ -127,10 +123,53 @@ const [bool, setBool] = useState(false)
     }
     function handleTweetShare (tweetid){
         sessionStorage.setItem("shareTweetId", tweetid)
-        console.log(tweetid)
+        
         document.getElementById("SHAREBLOCK").style.display="flex"
         // setOPacity();
     }
+     /* HASHTAGS */
+     const { tagTweets, getTag } = useSelector((ta) => ta.TagTweetFeedReducer)
+     function showTagTweet(e, tag) {
+         e.stopPropagation();
+         dispatch(TweetListWithTag(tag.slice(1)))
+         navigate("/tagtweet")
+         if (getTag) {
+             navigate("/tagtweet")
+         }
+     }
+ 
+     function showMentionedUser(name){
+       
+         navigate(`/profile/${name.slice(1)}`)
+     }
+ 
+     useEffect(() => {
+         var y = document.getElementsByClassName("RepText")
+         for (var i = 0; i < y.length; i++) {
+             y[i].innerHTML = y[i].innerHTML.replace(/(^|\s)([#][a-z\d-]+)/, "$1<span class='hashtagg'>$2</span>")
+             y[i].innerHTML = y[i].innerHTML.replace(/(^|\s)([@][a-z\d-]+)/, "<span class='mention' >$2</span>")
+         }
+         var x = document.getElementsByClassName("hashtagg")
+         for (let j = 0; j < x.length; j++) {
+             let hashtag = x[j].innerHTML
+             x[j].onclick = function (e) {
+                
+                 showTagTweet(e, hashtag)
+             }
+         }
+        
+         var z = document.getElementsByClassName("mention")
+       
+         for (let j = 0; j < z.length; j++) {
+           
+             let mention= z[j].innerHTML
+             let count=j;
+             z[j].onclick = function () {
+                showMentionedUser( mention)
+             }
+         }
+     }, [])
+
     return <>
         <div className="ReplyDiv">
             <div className="Reply1">
@@ -143,7 +182,6 @@ const [bool, setBool] = useState(false)
             </div>
             <p id="RepReply">Replying to {lengthR > 0 ? (props.replyingto.map((name) => {
                 return <span id="RepAtName" onClick={() => {
-                    console.log(`/profile/${name}`)
                     navigate(`/profile/${name}`)
                 }}>@{name}</span>
             })) : null}</p>

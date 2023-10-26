@@ -1,58 +1,49 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import MsgSearchUser from "../../react-redux/actions/Message";
+import MsgSearchUser, { ViewChatList } from "../../react-redux/actions/Message";
 import ShareTweetUser from "./ShareTweetUser";
+import deleteIcon from "../Assets/delete.svg"
+
 
 function ShareTweet() {
     const [search, setSearch] = useState("")
-    // const { toMsgUser, loading, msgUser } = useSelector((S) => S.MsgSearchReducer)
-    const { chatLists, viewChatList, isActive, sendChatMessage, viewChatMsgs, loading } = useSelector((c) => c.MsgSearchReducer)
-    // console.log(msgUser)
-    // const [searchListArray, setSearchListArray] = useState([]);
-    // const { user } = useSelector((a) => a.AuthReducer)
-
+    const chatReducer = useSelector((c) => c.MsgSearchReducer)
+    const { chatLists, viewChatList, isActive, chatBool, sendChatMessage, viewChatMsgs, loading } = chatReducer
     const [info, setInfo] = useState([])
-    
-    // const [info2, setInfo2] = useState([])
+    const [sideChats, setSideChats] = useState([])
     const dispatch = useDispatch();
-    function handleSearch(e) {
-        setSearch(e.target.value)
-        dispatch(MsgSearchUser(e.target.value));
-        console.log(MsgSearchUser)
-    }
-    // useEffect(() => {
-    //     if (toMsgUser) {
-    //         if (msgUser.length > 0) {
 
-    //             setSearchListArray(msgUser)
-    //         }
-    //         else {
-    //             setSearchListArray([])
-    //         }
-    //     }
-    // }, [toMsgUser, msgUser])
-    // useEffect(() => {
-    //     if (msgUser.length > 0) {
-    //         setInfo(msgUser)
-    //         info.map((i, index) => {
-    //             console.log(i._id)
-    //             if (i._id === user._id) {
-    //                 console.warn(index)
-    //                 info.splice(index,1)
-    //             }
-    //         })
-    //     }
-    // }, [])
-    console.log(info)
+    useEffect(() => {
+        dispatch(ViewChatList())
+    }, [])
+    useEffect(() => {
+        if (viewChatList) {
+            setSideChats(chatLists)
+        }
+    }, [chatReducer])
+
+    function setOPacity() { /*SET BACKGROUND OPACITY*/
+    var items = document.getElementsByClassName("POPUPBG")
+    for (var i = 0; i < items.length; i++) {
+        document.getElementsByClassName("POPUPBG")[i].style.opacity = 1;
+    }
+}
 
     return <>
         <div className="shareTweetDiv" id="SHAREBLOCK">
+        <div className="shareePopup" id="shareBlock1">
             <p className="shareTweetText">Share with</p>
-            <hr className="shareTweetLine" />
-            {/* <input className="shareTweetSearchIpt" type="text" value={search} onChange={handleSearch} placeholder="Search" /> */}
+            <hr className="shareTweetLine" id="msgLine" />
+            </div>
+            <div onClick={() => {
+                document.getElementById("SHAREBLOCK").style.display = "none"
+                setOPacity();
+            }}>
+            <img src={deleteIcon} className="msgDelete" id="msgDltIcon" /></div>
+          
             <div className="shareTweetFlexbox">
             {(viewChatList) ? (chatLists.length > 0 ? (chatLists.map((chat, index) => {
-                        {/* console.log(chat) */ }
+                      
                         return <ShareTweetUser user={chat.users} msg={chat.latestmsg} indexx={index} viewChatid={chat._id} />
                     })) : null) : null}
                 {/* {info.length > 0 ? (info.map((searchh) => {

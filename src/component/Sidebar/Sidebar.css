@@ -41,8 +41,8 @@
     height: 0px;
     margin-left:34vw;
     margin-top:7px;
-
-    border: 1px solid rgba(255, 255, 255, 0.2);
+/* issue here*/
+    /* border: 1px solid rgba(255, 255, 255, 0.2); */
     transform: rotate(90deg);
 }
 .navbar2, .navbar3{
@@ -115,7 +115,14 @@
     color: rgba(255, 255, 255, 0.9);
 
 }
-
+#notifMark{
+    background-color: #47C87A;
+    border-radius: 50%;
+    width:8px;
+    height:8px;
+    display: block;
+    margin-left:1vw;
+}
 .sbListItem {
     margin-bottom: 35px;
     cursor: pointer;
@@ -212,22 +219,32 @@ a:hover {
 /* SEARCH BAR */
 
 .searchFlexBox {
-    position: absolute;
-    top:90px;
+    position: fixed;
+    top: 90px;
     left: 70vw;
     /* width: 50vw; */
     display: flex;
     flex-direction: column;
+    position:fixed;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    position: absolute;
+    max-height: 550px; 
+    overflow-y: auto;
 }
 .searchBar{
     display: flex;
     margin-left:70vw;
     margin-top:14px;
 }
+.searchBar_box{    
+    position: fixed;
+    z-index: 105;}
 .searchIcon{
-    /* z-index:105; */
-    /* margin-left:5vw; */
-
+    z-index:105;
+    position: relative;
+    left: 3vw;
+    top: 4px;
 }
 .searchbar {
     border: none;
@@ -269,7 +286,6 @@ margin-bottom: 10px;
     background: #1A1C1E;
   display: flex;
     border-radius: 8px;
- 
 }
 #picincircle {
     width: 43px;
@@ -326,6 +342,8 @@ margin-left:-0.2vw;
 
 #searchtweetBg {
     /* width:14vw; */
+    display: flex;
+    flex-direction: column;
     height: fit-content
 
 }
@@ -358,12 +376,18 @@ margin-left:-0.2vw;
 #alterTagTweet {
     top: -3vh;
 }
-
+#tagTweetCount{
+    margin-left:1vw;
+    margin-top:0.2vw;
+}
 #alterTagP {
     font-size: 1.5rem;
 }
 #PHONESEARCH{
     display: none;
+}
+#dropdown{
+    display:none;
 }
  @media (max-width:730px){
     .sidebar{
@@ -386,10 +410,10 @@ margin-left:-0.2vw;
     .searchbar{
         display: none;
     }
-    .searchFlexBox{
+    /* .searchFlexBox{
         display: none;
        
-    }
+    } */
     .searchcomp, .searchAlter{
         display: none;
           /* display:flex; */
@@ -443,9 +467,33 @@ margin-top:6px;
         display: none;
     }
     .navSearch2{
-        width:22px;
-        height:22px;
+        width:28px;
+        height:28px;
+        cursor: pointer; 
+    }
+    .menubar{
+        position:fixed;
+        margin-top:14px;
+        margin-left:6vw;
         cursor: pointer;
+    }
+    #dropdown{
+        display: flex;
+        flex-direction: column;
+        background-color: #484D4A;
+        width:8vw;
+      display:none;
+        padding-left:2vw;
+        padding-top:8px;
+        margin-top:40px;
+        border-radius: 4px;
+        margin-left:3vw;
+    }
+    .NV3Logout{
+        width:30px;
+        height:30px;
+        margin-bottom:20px;
+        margin-left:0.5vw;
     }
 } 
 
@@ -548,6 +596,7 @@ margin-top:6px;
     .NB3Home{
         width:38px;
         height:38px;
+        margin-left:6vw;
         margin-right:10vw;
     }
     .NB3bm{
@@ -626,10 +675,29 @@ margin-top:-23px;
 .noPhoneSearch{
     margin-left:-54vw;
 }
+.menubar{
+    margin-left:11vw;
+}
+#dropdown{
+    width:15vw;
+    padding-left: 5vw;
+}
+.navSearch2{
+    width:29px;
+    height:29px;
+    margin-top:4px;
+}
+.NV3Logout{
+    width:30px;
+    height:30px;
+}
 }
 @media(max-width:400px){
     .navbar3{
         padding-left: 4vw;
+    }
+    .NB3Home{
+        margin-left:9vw;
     }
 }
 @media(max-width:1110px) and (min-width:500px){

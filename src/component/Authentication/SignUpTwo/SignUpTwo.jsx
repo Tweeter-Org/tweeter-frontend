@@ -20,13 +20,13 @@ function SignUpTwo() {
   const [checkPass, setCheckPass] = useState(false)
   const [show1, setShow1] = useState(false)
   const [callApi, setCallApi] = useState(false)
+  const [showErr, setShowErr] = useState(false)
   function handleShow1() {
     setShow1(!show1)
   }
 
   const name = sessionStorage.getItem("NameToBeUsed")
-
-  const rightname = /^[a-z ,.'-]+$/i;
+  const rightname = /^[a-z,.'-]+$/i;
   useEffect(() => {
     if (rightname.test(nameN)) {
       document.getElementById('signNameWrong').style.display = "none";
@@ -38,13 +38,13 @@ function SignUpTwo() {
     }
   }, [nameN])
 
-  const rightpass =
-    /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&#])[A-Za-z\d@$!%?&#]{8,}$/;
+  const rightpass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%*?&])[A-Za-z\d@#$!%*?&]{8,}$/;
+  
   useEffect(() => {
     if (rightpass.test(pass)) {
       document.getElementById("signInvalidPwdWrong").style.display = "none";
       setCheckPass(true)
-      console.log("true");
+
     } else if (pass) {
       document.getElementById("signInvalidPwdWrong").style.display = "block";
       setCheckPass(false)
@@ -63,10 +63,10 @@ function SignUpTwo() {
     user_name: nameN,
     password: pass
   }
- 
+
   const signUp = useSelector((s) => s.AuthReducer)
   const { loading, error, response, toHome } = signUp;
-  const [toastBool, setToastBool] = useState(false)
+  const [bool, setBool] = useState(false)
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -78,53 +78,41 @@ function SignUpTwo() {
     }
   }, [loading])
 
-  function SIGNUPTWO() {
+  function SIGNUPTWO(e) {
+    e.preventDefault();
     dispatch(SignUpTwoUser(data))
+    setShowErr(true)
+    setBool(true)
   }
-  useEffect(()=>{
-    console.log(toastBool, loading)
-    if(error!="" && !loading){
-        console.log(error)
-        setToastBool(true)
-    }
-},[signUp])
 
-useEffect(()=>{
-    console.log(toastBool)
-    if(toastBool){
-            toast.error(`${error}`, {
-                position: "top-center",
-                theme: "light",
-            });
-            setToastBool(false)
-        }
-},[toastBool])
-
-  useEffect(()=>{
-    if(response!==""){
-        toast.success(`${response}`, {
-            position: "top-center",
-            theme: "light",
-            });
+  useEffect(() => {
+    if (error && !loading && showErr) {
+      toast.error(error, {
+        position: "top-center",
+        theme: "light",
+      });
+      setShowErr(false)
     }
-  },[response])
+  }, [showErr, loading, error])
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (toHome) {
+    if (toHome && bool) {
       navigate("/")
+      setBool(false)
     }
-  }, [toHome])
+  }, [toHome, bool])
 
   return <>
     <Background />
+    <form onSubmit={SIGNUPTWO}>
     <div className='loginBg'>
       <img src={arrow} id="arrow" onClick={() => { navigate("/verifyemail") }} />
       <p className='authHead' id="authHeadTwo">Sign Up</p>
       <p className='authEmail' id="signInput">Username</p>
-      <input type="text" className="authEmailInput" placeholder="Enter your name" value={nameN} onChange={(e) => setNameN(e.target.value)} />
-      <p id="signNameWrong" className="invalidEmail" >Name should consists of alphabet</p>
+      <input type="text" className="authEmailInput" placeholder="Enter your name" value={nameN} onChange={(e) => setNameN(e.target.value)} required/>
+      <p id="signNameWrong" className="invalidEmail" >Name should only consists of alphabet without any whitespaces</p>
       <img src={lockIcon} id="lockIconS" />
       <p className='authPwd' id="signPwd">Password</p>
       {show1 ? (
@@ -132,10 +120,11 @@ useEffect(()=>{
       ) : (
         <FontAwesomeIcon icon={faEyeSlash} id="SEye" onClick={handleShow1} />
       )}
-      <input type={show1 ? "text" : "password"} className="authPwdInput" id="signInput2" placeholder="Password" value={pass} onChange={(e) => setPass(e.target.value)} />
+      <input type={show1 ? "text" : "password"} className="authPwdInput" id="signInput2" placeholder="Password" value={pass} onChange={(e) => setPass(e.target.value)} required />
       <p className='fgtRstPwd' id="signInvalidPwdWrong">Password must be 1 uppercase 1 lowercase 1 number 1 special digit character and 8 or more characters</p>
-      <button type="button" className='authFgtPwdBtn' onClick={() => { SIGNUPTWO() }}>Sign Up</button>
+      <button type="submit" className='authFgtPwdBtn'>Sign Up</button>
     </div>
+    </form>
     {loading === true ? <Spinner animation="border" variant="light" id="loadSpinner" /> : null}
     <ToastContainer />
   </>

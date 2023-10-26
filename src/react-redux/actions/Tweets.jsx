@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 export const TweetFeedAction = () => {
-    const accessToken =sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -25,7 +25,7 @@ export const TweetFeedAction = () => {
                 })
             })
             .catch((err) => {
-                dispatch({
+                dispatch({ 
                     type: "Tweet_Feed_Failed",
                     payload: err
                 })
@@ -40,8 +40,8 @@ export const TweetFeedCount = () => {
 }
 export const TweetFeedAction2 = (count) => {
     var c= count++;
-    console.warn(c)
-    const accessToken = sessionStorage.getItem("access token")
+ 
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -69,7 +69,7 @@ export const TweetFeedAction2 = (count) => {
 }
 
 function TweetLikeAction(tweetId) {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -97,7 +97,7 @@ function TweetLikeAction(tweetId) {
 export default TweetLikeAction
 
 export const CreateTweetAct = (formData) => {
-    const accessToken =sessionStorage.getItem("access token")
+    const accessToken =localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -109,7 +109,7 @@ export const CreateTweetAct = (formData) => {
         })
         await BaseUrl.post("/t/create", formData, config)
             .then((Res) => {
-                console.log(Res)
+             
                 dispatch({
                     type: "TWEETCREATED",
                     payload: Res
@@ -134,7 +134,7 @@ export const CreateTweetAct = (formData) => {
 }
 
 export const CreateReTweetAct = (formData) => {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -146,7 +146,7 @@ export const CreateReTweetAct = (formData) => {
         })
         await BaseUrl.post("/t/retweet", formData, config)
             .then((Res) => {
-                console.log(Res)
+              
                 toast.success(`${Res.data.msg}`, {
                     position: "top-center",
                     theme: "light",
@@ -170,7 +170,7 @@ export const CreateReTweetAct = (formData) => {
 }
 
 export const LikedTweetAction = (username) => {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -179,7 +179,7 @@ export const LikedTweetAction = (username) => {
     return async function (dispatch) {
         await BaseUrl.get(`/p/liked/${username}`, config)
             .then((Res) => {
-                console.log(Res)
+             
                 dispatch({
                     type: "LIKEDTWEETLISTYES",
                     payload: Res
@@ -213,7 +213,7 @@ export const FakeReTweetFeedAction = (retweeet) => {
 }
 
 const TweetListWithTag = (tag) => {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -221,7 +221,7 @@ const TweetListWithTag = (tag) => {
     }
     return async function (dispatch) {
         dispatch({ type: "TAG_TWEET_LIST_START" })
-        console.log("hash")
+
         await BaseUrl.get(`/t/tagged/${tag}`, config)
             .then((res) => dispatch({
                 type: "TAG_TWEET_LIST_SUCCEDED",
@@ -231,8 +231,8 @@ const TweetListWithTag = (tag) => {
                 dispatch({
                     type: "TAG_TWEET_LIST_FAILED",
                     payload: err
-                })
             })
+        })
     }
 }
 
@@ -252,7 +252,7 @@ export const RetweetDetails = (tweetid, name, video, text, image) => {
 }
 
 export const ShareTweet = (data, socket) => {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -264,7 +264,7 @@ export const ShareTweet = (data, socket) => {
         })
         await BaseUrl.post("/c/share",data, config)
             .then((Res) => {
-                console.log(Res)
+             
                 toast.success("Message sent successfully", {
                     position: "top-center",
                     theme: "light",
@@ -286,8 +286,7 @@ export const ShareTweet = (data, socket) => {
 
 
 function TweetDeleteAction(tweetId) {
-    const accessToken = sessionStorage.getItem("access token")
-    console.log(accessToken)
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -323,7 +322,7 @@ export const FakeTweetDeleteAction = (tweeetId) => {
 }
 
 const TrendingTweets = () => {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -331,7 +330,6 @@ const TrendingTweets = () => {
     }
     return async function (dispatch) {
         dispatch({ type: "TAG_TWEET_LIST_START" })
-        console.log("hash")
         await BaseUrl.get('/t/trending', config)
             .then((res) => dispatch({
                 type: "TRENDING_TWEET_YES",

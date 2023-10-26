@@ -1,9 +1,10 @@
 import BaseUrl from "./BaseUrl"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { TweetFeedAction } from "./Tweets";
 
 export const ReplyToTweet = (formData) => {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -15,7 +16,6 @@ export const ReplyToTweet = (formData) => {
         })
         await BaseUrl.post("/r/create", formData, config)
             .then((Res) => {
-                console.log(Res)
                 toast.success(`${Res.data.msg}`, {
                     position: "top-center",
                     theme: "light",
@@ -24,6 +24,7 @@ export const ReplyToTweet = (formData) => {
                     type: "REPLY_TWEET_YES",
                     payload: Res
                 })
+                dispatch(TweetFeedAction())
             })
             .catch((err) => {
                 toast.error(`${err.response.data.msg}`, {
@@ -40,7 +41,7 @@ export const ReplyToTweet = (formData) => {
 
 
 export const ViewTweetsReply = (id) => {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -52,7 +53,7 @@ export const ViewTweetsReply = (id) => {
         })
         await BaseUrl.get(`/r/tweetreplies/${id}`,config)
             .then((Res) => {
-                console.log(Res)
+             
                 dispatch({
                     type: "VIEW_REPLY_TWEET_YES",
                     payload: Res
@@ -68,7 +69,7 @@ export const ViewTweetsReply = (id) => {
 }
 
 export const ViewRepliesToReply = (id) => {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -80,7 +81,7 @@ export const ViewRepliesToReply = (id) => {
         })
         await BaseUrl.get(`/r/tweetreplies/${id}`,config)
             .then((Res) => {
-                console.log(Res)
+            
                 dispatch({
                     type: "VIEW_REPLY_TO_REPLY_YES",
                     payload: Res

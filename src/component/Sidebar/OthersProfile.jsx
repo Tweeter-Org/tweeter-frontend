@@ -36,12 +36,10 @@ const OthersProfile = () => {
     const [likedTweetsArray, setLikedTweetsArray] = useState([])
 
     // const usernameApi = sessionStorage.getItem("usernameInApi")
-    // console.log(auth)
     const profilee = useSelector((p) => p.ProfileReducer)
     const { profile, accessProfile, loading } = profilee;
     useEffect(() => {
         const usernameApi = sessionStorage.getItem("usernameInApi")
-        // console.log(usernameApi)
         dispatch(ProfileAction(usernameApi));
         if (accessProfile) {
             setFollower(profile.followers.length)
@@ -59,13 +57,10 @@ const OthersProfile = () => {
             setTweetsArray(profile.tweets)
         }
     }, [])
-    console.log(profile.isfollowing)
-    console.log(profilee)
 
     function displayFollowers() {
         document.getElementsByClassName("profileDiv3")[0].style.display = "none";
         document.getElementsByClassName("profileDiv4")[0].style.display = "flex";
-
     }
     function displayTweets() {
         document.getElementsByClassName("profileDiv3")[0].style.display = "flex";
@@ -77,7 +72,7 @@ const OthersProfile = () => {
         document.getElementsByClassName("editPrDiv")[0].style.display = "flex";
     }
     const followed = useSelector((f) => f.FollowReducer)
-    console.log(followed)
+   
     function handleFollowers() {
         dispatch(FollowAction(username))
         var imagepath = document.getElementsByClassName("pProfileFollow")[0].innerHTML;
@@ -117,7 +112,6 @@ function showLikedTweets (){
     document.getElementById("profileTweetFlex").style.display="none"
 }
 const {likedTweets} = useSelector((l)=>l.LikedTweetsPReducer)
-console.log(likedTweets)
     return <>
         <Sidebar />
         <div className="PROFILE">

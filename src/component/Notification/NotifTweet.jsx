@@ -1,29 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { ViewNotifyTweet } from "../../react-redux/actions/Notifications";
 import { ViewTweetsReply } from "../../react-redux/actions/Replies";
+import ToTweet from "../Reply/Tweet";
 import Sidebar from "../Sidebar/SideBar";
-import ToTweet from "./Tweet";
-import "./tweet.css"
+// import ToTweet from "./Tweet";
+// import "./tweet.css"
 
-function OneTweet() {
+function NotifTweet() {
     const { TweetId } = useParams();
     const [tweet, setTweet] = useState();
     const [showTweet, setShowTweet] = useState(false)
     const [replyArr, setReplyArr] = useState([])
     const { loading, tweetData, liked, bookmarked } = useSelector((s) => s.TweetFeedReducer)
     const {responseT, errorT, replyT} = useSelector((r) => r.ReplyReducer)
-    
+    const {notifTweet} = useSelector((n)=>n. NotificationReducer)
+  
     const dispatch = useDispatch();
-    useEffect(() => {
-        tweetData.filter((t) => {
-            if (t._id == TweetId) {
-                setShowTweet(true)
-                setTweet(t);
-                return t;
-            }
-        }, [TweetId])
-    })
+   
+    useEffect(()=>{
+        dispatch(ViewNotifyTweet(TweetId))
+       
+    },[TweetId])
     useEffect(()=>{
         dispatch(ViewTweetsReply(TweetId))
         setReplyArr(replyT)
@@ -32,11 +31,13 @@ function OneTweet() {
     return <>
         <Sidebar />
         <div className="toTweetDiv">
-            {showTweet ? (<ToTweet text={tweet.text} image={tweet.image} video={tweet.video} replyCount={parseInt(tweet.reply_cnt)} likeCount={parseInt(tweet.likes)} retweet={tweet.retweet}
-              name={tweet.user.name}  username={tweet.user.user_name} displaypic={tweet.user.displaypic} tweetId={tweet._id} />) : null}
+            {notifTweet ? (<ToTweet text={notifTweet.text} image={notifTweet.image} video={notifTweet.video}
+             likeCount={parseInt(notifTweet.likes)} retweet={notifTweet.retweet}
+              name={notifTweet.user.name}  username={notifTweet.user.user_name} displaypic={notifTweet.user.displaypic} 
+              tweetId={notifTweet._id} />) : null}
         </div>
     </>
 }
 
 
-export default OneTweet
+export default NotifTweet

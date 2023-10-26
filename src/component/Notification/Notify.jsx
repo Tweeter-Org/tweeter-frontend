@@ -16,22 +16,21 @@ function Notify(props) {
     const notify = useSelector((n) => n.NotificationReducer)
     const { notifyread } = notify;
     function handleToTweet(tweetId) {
-        console.log(tweetId)
-        navigate(`/totweet/${tweetId}`)
+        navigate(`/notiftweet/${tweetId}`)
     }
     function handleNotify(notifId) {
-        console.log(notifId)
         document.getElementsByClassName("notifyCard")[index].style.backgroundColor = "rgb(26, 28, 30)"
+        document.getElementsByClassName("notifyCircle")[index].style.display="none"
         dispatch(ReadNotifyAction(notifId))
-        // document.getElementsByClassName("notifyCard")[index].style.backgroundColor = "rgba(255, 255, 255, 0.1)"
-        // if()
     }
     useEffect(() => {
         if (isRead) {
             document.getElementsByClassName("notifyCard")[index].style.backgroundColor = "rgb(26, 28, 30)"
+            document.getElementsByClassName("notifyCircle")[index].style.display="none"
         }
         else {
             document.getElementsByClassName("notifyCard")[index].style.backgroundColor = "rgba(255, 255, 255, 0.1)"
+            document.getElementsByClassName("notifyCircle")[index].style.display="block"
         }
     }, [isRead])
 
@@ -49,12 +48,15 @@ function Notify(props) {
                         </p>
                     </div>
                 </div>
+                {mention=="like"? <p className="notifyMsg">{props.name} liked a <b onClick={() => {
+                    handleToTweet(tweetId)
+                }} className="notifTweet">Tweet</b> posted by you</p>:null}
                 {mention == "mention" ? <p className="notifyMsg">Mentioned in <b onClick={() => {
                     handleToTweet(tweetId)
                 }} className="notifTweet">#Tweet</b></p> : null}
                 {/* <p className="notifyMsg">There is no new cj:nullbcjhdbjlastestfyy bgguiyh mesjhbj,hvbvhhhh,nhghhjftcsage</p> */}
             </div>
-
+<span className="notifyCircle" />
         </div>
 
 

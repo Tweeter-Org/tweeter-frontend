@@ -26,7 +26,6 @@ export default LogInUser
 const FgtPwdAction = (email, condition) => {
     return async function (dispatch) {
         if (condition) {
-            console.log(email)
             dispatch({ type: "FGT_EMAIL_STARTED" })
             await BaseUrl.post(`/forgotpwd`, { email })
                 .then((res) => dispatch({
@@ -140,35 +139,8 @@ const SignUpResend = (email) => {
 }
 export { SignUpResend }
 
-
-// // const {token} = useSelector((t)=>t.AuthReducer)
-// var accesstoken,config
-// function AccesstToken (){
-//     // const {token} = useSelector((t)=>t.AuthReducer)
-//     const token = sessionStorage.getItem("isToken")
-//     // const token="a";
-//     console.log(token)
-//     if(token){
-//         accesstoken = sessionStorage.getItem("access token")
-//         console.log(accesstoken)
-//          config={
-//             headers:{
-//                 "Authorization" : `Bearer ${accesstoken}`
-//             }
-//         }
-//         console.log(config)
-//     }
-//     else{
-//         setTimeout(AccesstToken,500)
-//         // sessionStorage.removeItem("access token")
-//     }
-// }
-
-// AccesstToken()
-
 const SignUpTwoUser = (data) => {
-    const accessToken = sessionStorage.getItem("access token")
-    console.log(accessToken)
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -194,8 +166,7 @@ const SignUpTwoUser = (data) => {
 export { SignUpTwoUser }
 
 const ResetAction = (password) => {
-    const accessToken = sessionStorage.getItem("access token")
-    console.log(accessToken)
+    const accessToken = localStorage.getItem("otp token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -222,12 +193,14 @@ const GoogleAction = () => {
     return async function (dispatch) {
         dispatch({ type: "GOOGLE_STARTED" })
         await BaseUrl.get(`/auth/google/url`)
-            .then((res) => dispatch({
-                type: "GOOGLE_SUCCEDED",
-                payload: res.data
-            }))
+            .then((res) => {
+                dispatch({
+                    type: "GOOGLE_SUCCEDED",
+                    payload: res.data
+                })
+            })
+
             .catch((err) => {
-                console.log(err)
             })
 
     }
@@ -243,7 +216,6 @@ const GoogleTwoAction = (url) => {
                 payload: res
             }))
             .catch((err) => {
-                console.log(err)
                 dispatch({
                     type: "GOOGLE_TWO_FAILED",
                     payload: err
@@ -254,20 +226,26 @@ const GoogleTwoAction = (url) => {
 }
 export { GoogleTwoAction }
 
-export const nameViaGoogle=(name, username)=>{
+export const nameViaGoogle = (name, username) => {
     return {
-        type:"NAME_VIA_GOOGLE",
-        payload:{
+        type: "NAME_VIA_GOOGLE",
+        payload: {
             name, username
         }
     }
 }
 
-export const infoViaGoogle =(user)=>{
+export const infoViaGoogle = (user) => {
     return {
-        type:"INFO_VIA_GOOGLE",
-        payload:{
+        type: "INFO_VIA_GOOGLE",
+        payload: {
             user
         }
+    }
+}
+
+export const setLogout = () => {
+    return {
+        type: "LOG_OUT"
     }
 }

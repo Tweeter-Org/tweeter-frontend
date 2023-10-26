@@ -6,6 +6,7 @@ left:23vw;
 .notifyFlexbox{
 display: flex;
 flex-direction: column;
+padding-bottom: 20vh;
 }
 
 #notifyLine{
@@ -34,6 +35,14 @@ flex-direction: column;
 }
 .notifyCard:hover{
     background-color: rgba(255, 255, 255, 0.1);
+}
+.notifyCircle{
+    width:12px;
+    height:12px;
+    margin-top:20px;
+    margin-left:-5vw;
+    border-radius: 50%;
+    background-color: #47C87A;
 }
 .notify1{
     display: flex;
@@ -82,7 +91,7 @@ flex-direction: column;
     font-style: normal;
     font-weight: 500;
     font-size: 1rem ;
-    width:fit-content;
+    width:40vw;
     line-height: 16px;
     color: rgba(255, 255, 255, 0.9);
 margin-bottom: 0;
@@ -92,6 +101,12 @@ white-space: -moz-pre-wrap;
 white-space: -pre-wrap;
 white-space: -o-pre-wrap;
 word-wrap: break-word;
+}
+.alterNotify{
+    margin-left:14vw;
+}
+.alterNotText{
+    margin-left:2vw;
 }
 .notifTweet{
     cursor: pointer;
@@ -138,10 +153,19 @@ word-wrap: break-word;
         font-size: 0.9rem;
         margin-left:8vw;
     }
+    .alterNotify{
+        margin-left:25vw;
+    }
 }
 @media(max-width:600px){
     .notifyCard{
         margin-left: 13vw;
+    }
+    .alterNotify{
+        margin-left: 23vw;;
+    }
+    .alterNotText{
+        width:50vw;
     }
 }
 @media (max-width:500px){
@@ -152,6 +176,13 @@ word-wrap: break-word;
     .notifyMsg{
         font-size: 0.9rem;
         margin-left:11vw;
+    }
+    .alterNotify{
+        margin-left:-5vw;;
+    }
+    .alterNotText{
+        width:50vw;
+        margin-left:10vw;
     }
 }
 @media (max-width:320px){

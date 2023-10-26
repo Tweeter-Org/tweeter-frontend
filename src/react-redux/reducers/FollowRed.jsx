@@ -11,7 +11,7 @@ const FollowReducer =(state=initialState, action)=>{
             return {...state, loading:true}
         }
         case "FOLLOW_SUCCESS":{
-            console.log(action.payload)
+        
             return {...state ,loading:false, response:action.payload.data.msg, isFollow :true, error:""}
         }
         case "FOLLOW_FAILED":{

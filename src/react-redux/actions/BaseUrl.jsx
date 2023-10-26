@@ -2,6 +2,6 @@ import React from "react";
 import axios from "axios"
 
 export default axios.create({
-    baseURL:"https://tweeter-backend-7ngr.onrender.com"
+    baseURL:"https://tweeter.devalan.tech/"
 })
 

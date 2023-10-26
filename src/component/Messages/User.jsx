@@ -21,9 +21,7 @@ function MsgUser (props){
     return <>
         <div className="msgUser POPUPBG">
         {(props.displaypic === null) ? ( <img src={avatar}  id="msgPicincircle" />) :
-                    ((props.displaypic.startsWith("https:")) ? (<img src={props.displaypic} id="msgPicincircle"/>) :
-                        ( 
-                        <img src={`https://twitterbackend-production-93ac.up.railway.app/${props.displaypic}`}  id="msgPicincircle" />))
+                    (<img src={props.displaypic} id="msgPicincircle"/>) 
                 }
                 <div className="msgUser2">
                 <p className="msgName">{props.name}</p>

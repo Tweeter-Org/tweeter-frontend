@@ -7,7 +7,7 @@ import avatar from "../Assets/avatar.svg";
 import bookmark from "../Assets/bookmarks.svg";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import TweetLikeAction, { RetweetDetails } from "../../react-redux/actions/Tweets.jsx";
+import TweetLikeAction, { RetweetDetails, TweetListWithTag } from "../../react-redux/actions/Tweets.jsx";
 import greenLike from "../Assets/greenLike.svg"
 import greenComment from "../Assets/greenComment.svg"
 import greenRetweet from "../Assets/greenRetweet.svg"
@@ -15,7 +15,6 @@ import greenShare from "../Assets/greenSend.svg"
 import greenBookmarks from "../Assets/greenBookmarks.svg"
 import DoBookmarkAction from "../../react-redux/actions/Bookmarks.jsx";
 import { Navigate, useNavigate } from "react-router-dom";
-import TweetPopup from "../Home Page/tweetPopup";
 import CreateTweet from "../Home Page/createTweet";
 import { NameInReplyAction, ShowNameInReplyAction, ViewTweetsReply } from "../../react-redux/actions/Replies";
 import Reply from "./Reply";
@@ -30,40 +29,18 @@ function ToTweet(props) {
     const retweets = props.retweet;
     const dispatch = useDispatch();
     const [tweetCount, setTweetCount] = useState(props.likeCount)
-    console.log(props.retweet)
-    // useEffect(() => {
-    //     setTweetCount(props.likeCount)
-    //     if (props.LIKES) {
-    //         document.getElementsByClassName("tweetLike")[id].style.color = "green"
-    //         document.getElementsByClassName("likeIcon")[id].src = greenLike
-    //     }
-    //     else {
-    //         document.getElementsByClassName("likeIcon")[id].src = like
-    //         document.getElementsByClassName("tweetLike")[id].style.color = "white"
-    //     }
-    // }, [props.LIKES])
-    // useEffect(() => {
-    //     if (bookmarkShow) {
-    //         document.getElementsByClassName("bookmarkIcon")[id].src = greenBookmarks
-    //     }
-    //     else {
-    //         document.getElementsByClassName("bookmarkIcon")[id].src = bookmark
-    //     }
-    // }, [bookmarkShow])
+    const [replyCount, setReplyCount] = useState(props.replyCount)
 
     //to like a tweet
     function handleTweetLike(tweetid) {
         dispatch(TweetLikeAction(tweetid))
         var imagepath = document.getElementById("LIKET").style.color;
-        console.log(imagepath)
         if (imagepath == "white") {
-            console.warn("white")
             document.getElementById("LIKET").style.color = "green"
             document.getElementById("LIKE").src = greenLike
             setTweetCount(tweetCount => tweetCount + 1)
         }
         else {
-            console.warn("green")
             document.getElementById("LIKE").src  = like
             document.getElementById("LIKET").style.color = "white"
             setTweetCount(tweetCount => tweetCount - 1)
@@ -118,7 +95,7 @@ function ToTweet(props) {
 
     //reply to a tweet
     function handleTweetReply(tweetid, name, image, video, text) {
-        console.log("replyy")
+      setReplyCount(replyCount=> replyCount+1)
         dispatch(RetweetDetails(tweetid, name, video, text, image))
         sessionStorage.setItem("replyName",name)
         dispatch(ShowNameInReplyAction())
@@ -137,14 +114,11 @@ function ToTweet(props) {
 
     //view reply to tweet 
     const { responseT, errorT, replyT, loading, replies } = useSelector((r) => r.ReplyReducer)
-    console.log(responseT, errorT, replyT)
-    console.log(replies)
     const replyLength = replies.length;
     const [replyArr, setReplyArr] = useState([])
     useEffect(() => {
         setReplyArr(replies)
     }, [replies])
-    console.log(replyArr)
 
     function handleTweetShare (tweetid){
         sessionStorage.setItem("shareTweetId", tweetid)
@@ -152,15 +126,58 @@ function ToTweet(props) {
         // setOPacity();
     }
 
-    // //for loader
-    // useEffect(() => {
-    //     if (loading === true) {
-    //         document.body.style.opacity = 0.5;
-    //     }
-    //     else {
-    //         document.body.style.opacity = 1;
-    //     }
-    // }, [loading])
+    //for loader
+    useEffect(() => {
+        if (loading === true) {
+            document.body.style.opacity = 0.5;
+        }
+        else {
+            document.body.style.opacity = 1;
+        }
+    }, [loading])
+
+        /* HASHTAGS */
+        const { tagTweets, getTag } = useSelector((ta) => ta.TagTweetFeedReducer)
+        function showTagTweet(e, tag) {
+            e.stopPropagation();
+            dispatch(TweetListWithTag(tag.slice(1)))
+            navigate("/tagtweet")
+            if (getTag) {
+                navigate("/tagtweet")
+            }
+        }
+    
+        function showMentionedUser(name){
+            
+            navigate(`/profile/${name.slice(1)}`)
+        }
+    
+        const [specialText, setSpecialText] = useState(props.text)
+       
+        useEffect(() => {
+            var y = document.getElementsByClassName("tweetText")
+            for (var i = 0; i < y.length; i++) {
+                y[i].innerHTML = y[i].innerHTML.replace(/(^|\s)([#][A-Za-z\d-]+)/, "$1<span class='hashtagg'>$2</span>")
+                y[i].innerHTML = y[i].innerHTML.replace(/(^|\s)([@][A-Za-z\d-]+)/, "<span class='mention' >$2</span>")
+            }
+            var x = document.getElementsByClassName("hashtagg")
+            for (let j = 0; j < x.length; j++) {
+                let hashtag = x[j].innerHTML
+                x[j].onclick = function (e) {
+                    showTagTweet(e, hashtag)
+                }
+            }
+           
+            var z = document.getElementsByClassName("mention")
+            for (let j = 0; j < z.length; j++) {
+                
+                let mention= z[j].innerHTML
+                let count=j;
+                z[j].onclick = function () {
+                   showMentionedUser( mention)
+                }
+            }
+        }, [])
 
     return <>
         {retweets == null ? (<div className="tweetComp POPUPBG" id="RepTweet">
@@ -187,7 +204,7 @@ function ToTweet(props) {
                 </div>
                 <div className="iconBlock">
                     <img src={comment} id="commentIcon" onClick={() => { handleTweetReply(props.tweetId, props.username, image, video, props.text) }} />
-                    <p className="tweetComm">Comment</p>
+                    <p className="tweetComm">{replyCount}</p>
                 </div>
                 <div className="iconBlock">
                     <img src={retweet} className="retweetIcon" onClick={() => handleRetweet(props.tweetId, props.username, image, video, props.text)} />
@@ -244,7 +261,7 @@ function ToTweet(props) {
                 </div>
                 <div className="iconBlock">
                     <img src={comment} id="commentIcon" onClick={() => { handleTweetReply(props.tweetId, props.username, image, video, props.text) }} />
-                    <p className="tweetComm">Comment</p>
+                    <p className="tweetComm">{replyCount}</p>
                 </div>
                 <div className="iconBlock">
                     <img src={retweet} className="retweetIcon" onClick={() => handleRetweet(props.tweetId, props.username, image, video, props.text)} />
@@ -265,7 +282,7 @@ function ToTweet(props) {
         </div>)}
         <CreateTweet />
         <ShareTweet />
-        {/* {(loading === true) ? <Loader loading={loading} /> : null} */}
+        {(loading === true) ? <Loader loading={loading} /> : null}
     </>
 }
 

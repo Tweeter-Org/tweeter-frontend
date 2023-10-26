@@ -1,100 +1,21 @@
  .resendFgtOtp{
-    width: 172px;
-    height: 24px;
-  margin-left: 20vw;
     cursor:pointer;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
     font-size: 0.9rem;
+    text-align: right;
     line-height: 24px;
     color: #57E891;
-    margin-top:-18px;
     margin-bottom:0;
 }
+
 #timer {
-    margin-top:-23px;
-    margin-left:27vw;
     font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 0.9rem;
-    line-height: 24px;
     color: #57E891; 
 }
+
 #otpInput{
     margin-top:20px;
 }
 
-@media(max-width:1150px){
-    .resendFgtOtp{
-margin-left:18vw;
-    }
-    #timer{
-margin-left:26vw;
-    }
-}
-@media(max-width:1050px){
-    .resendFgtOtp{
-margin-left:17vw;
-    }
-    #timer{
-margin-left:26vw;
-    }
-}
-@media(max-width:950px){
-    .resendFgtOtp{
-margin-left:23vw;
-    }
-    #timer{
-margin-left:33vw;
-    }
-}
-@media(max-width:850px){
-    .resendFgtOtp{
-margin-left:21vw;
-    }
-    #timer{
-margin-left:32vw;
-    }
-}
-@media(max-width:750px){
-    .resendFgtOtp{
-margin-left:24vw;
-    }
-    #timer{
-margin-left:37vw;
-    }
-}
-@media(max-width:700px){
-    .resendFgtOtp{
-margin-left:21vw;
-    }
-    #timer{
-margin-left:35vw;
-    }
-}
-@media(max-width:600px){
-    .resendFgtOtp{
-margin-left:29vw;
-    }
-    #timer{
-margin-left:45vw;
-    }
-}
-@media(max-width:500px){
-    .resendFgtOtp{
-margin-left:29vw;
-    }
-    #timer{
-margin-left:48vw;
-    }
-}
-@media(max-width:450px){
-    .resendFgtOtp{
-margin-left:38vw;
-    }
-    #timer{
-margin-left:62vw;
-    }
-}

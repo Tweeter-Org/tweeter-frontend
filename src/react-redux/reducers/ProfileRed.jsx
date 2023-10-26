@@ -10,12 +10,10 @@ const initialState = {
     ifedit: false
 }
 
-
 export function ProfileReducer(state = initialState, action) {
     switch (action.type) {
         case "VIEW_PROFILE": return { ...state, loading: true, accessProfile: false };
         case "VIEW_PROFILE_SUCCED": {
-            console.log(action.payload)
             return {
                 ...state, loading: false, profile: action.payload.data, accessProfile: true, 
                 profileTweet: action.payload.data.tweets, editprofile:{}, error:""
@@ -26,20 +24,17 @@ export function ProfileReducer(state = initialState, action) {
         }
         case "EDIT_PROFILE": return { ...state, loading: true, ifedit: false ,accessProfile:true}
         case "EDIT_PROFILE_SUCCED": {
-            console.log(action.payload)
             return {
                 ...state, loading: false, editprofile: action.payload.data, accessProfile: true, ifedit: true , error:""
             }
 
         }
         case "EDIT_PROFILE_FAIL": {
-            console.log(action.payload)
             return {
                 ...state, loading: false, editprofile: action.payload, accessProfile: false, ifedit: true
             }
         }
         case "FAKE_TWEET_DELETE_ACTION": {
-            console.log(action.payload)
             return {
                 ...state, profileTweet: (state.profileTweet.filter((tw) => { return tw._id != action.payload }))
             };

@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 export const ViewNotifyAction = () => {
-    const accessToken =sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -33,20 +33,20 @@ export const ViewNotifyAction = () => {
 
 
 export const ReadNotifyAction = (id) => {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
         }
     }
-    console.log(config)
     return async function (dispatch) {
         dispatch({
             type: "Read_Notifs_Started",
             payload: ""
         })
-        await BaseUrl.patch(`/p/readnotif/${id}`, config)
+        await BaseUrl.put(`/p/readnotif/${id}`, config)
             .then((res) => {
+               
                 dispatch({
                     type: "Read_Notifs_Succeed",
                     payload: res
@@ -61,20 +61,44 @@ export const ReadNotifyAction = (id) => {
     }
 }
 
-
-
-
-
-export const AddChatNotify =(new_unseen_chat)=>{
+export const AddChatNotify =(newUnseenChat)=>{
     return {
         type:"ADD_CHAT_NOTIFY",
-        payload:new_unseen_chat
+        payload:{newUnseenChat}
     }
 }
 
-export const NotifyChatSeen =(new_seen_chat)=>{
+export const NotifyChatSeen =(id)=>{
     return {
         type:"NOTIFY_CHAT_SEEN",
-        payload:new_seen_chat
+        payload:{id}
+    }
+}
+
+export const ViewNotifyTweet = (id) => {
+    const accessToken = localStorage.getItem("access token")
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${accessToken}`
+        }
+    }
+    return async function (dispatch) {
+        dispatch({
+            type: "View_Notif_Tweet_Started",
+            payload: ""
+        })
+        await BaseUrl.get(`/t/tweet/${id}`, config)
+            .then((res) => {
+                dispatch({
+                    type: "View_Notif_Tweet_Succeed",
+                    payload: res
+                })
+            })
+            .catch((err) => {
+                dispatch({
+                    type: "View_Notif_Tweet_Failed",
+                    payload: err
+                })
+            })
     }
 }

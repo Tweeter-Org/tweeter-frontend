@@ -8,7 +8,6 @@ const SearchUser = (char) => {
             payload: res.data
          }))
          .catch((err) => {
-            console.log(err)
             dispatch({
                type: "SEARCH_FAILED",
                payload: err
@@ -19,7 +18,7 @@ const SearchUser = (char) => {
 export default SearchUser
 
 const SearchTweetWithTag = (char) => {
-   const accessToken =sessionStorage.getItem("access token")
+   const accessToken = localStorage.getItem("access token")
    const config = {
       headers: {
          "Authorization": `Bearer ${accessToken}`

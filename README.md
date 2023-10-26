@@ -1,70 +1,151 @@
-# Getting Started with Create React App
+# TWEETER
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Check the Website [here](https://tweeter-frontend-sooty.vercel.app/login)**.
 
-## Available Scripts
+## TABLE OF CONTENTS
 
-In the project directory, you can run:
+- [About our project](#About-our-project)
+- [Tech Stack Used](#Tech-Stack-Used)
+- [Key Features ✨](#Key-Features-✨)
+- [Components of Website](#Components-of-Website)
+- [🔖Steps to Contribute ✅](#🔖Steps-to-Contribute-✅)
+- [🔑Guidelines✨](#🔑Guidelines✨)
+- [Thanks to all the Contributors ❤️](#thanks-to-all-the-contributors-%EF%B8%8F)
 
-### `npm start`
+# About our project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Welcome to TWEETER, a social media website which provides users with the feature to grow their social connections, raise any issue or get updated of what's happening around. Users can join Tweeter by simply creating their account, having an updated profile, and can create any tweets. Tweeter also provides you the feature to have the experience of real-time chats with your connections.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Tech Stack Used
 
-### `npm test`
+<div align="left">
+ <img src="https://img.shields.io/badge/HTML5-E34F26.svg?style=for-the-badge&logo=HTML5&logoColor=white">
+ <img src="https://img.shields.io/badge/CSS3-1572B6.svg?style=for-the-badge&logo=CSS3&logoColor=white">
+ <img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=for-the-badge&logo=JavaScript&logoColor=white">
+ <img src="https://img.shields.io/badge/-ReactJs-61DAFB?logo=react&logoColor=white&style=for-the-badge">
+  <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a><a href="https://expressjs.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="express" width="40" height="40"/> </a><a> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" height="40" width="52" alt="figma logo"  /></a>
+</div>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+# Key Features ✨
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **User Authentication:** Secure user registration and login system to protect user data.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Tweet Creation:** Write and post tweets through an intuitive interface.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Interactions:** Like, retweet, and reply to tweets to engage with other users.
 
-### `npm run eject`
+- **Follow and Unfollow:** Build a network by following and unfollowing other users.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Real-time Updates:** Stay up-to-date with real-time notifications for new tweets and interactions.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **User Profiles:** Customize your profile with a profile picture and bio.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Search Functionality:** Easily find tweets and users with a robust search feature.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Components of Website
+---
+ 
+## Login Page
+The login page is the entry point for users, where they securely authenticate using their credentials.
+![tweeter login](https://user-images.githubusercontent.com/104606182/216806589-f8b0da49-5e79-4acf-89b3-1bd48c2735d4.PNG)
 
-## Learn More
+<br>
+  
+<br>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Services Page
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![tweeter 2](https://user-images.githubusercontent.com/104606182/216806632-5243785a-56eb-49eb-a251-c9c2736dfb2f.PNG)
+![tweeter 1](https://user-images.githubusercontent.com/104606182/216806660-7ce5e45a-0780-43b0-b7d6-d186693b0746.PNG)
+![tweeter 5](https://user-images.githubusercontent.com/104606182/216806661-0cd4e4a9-2f8f-4d31-b77a-aa4dfe0cf72b.PNG)
+![tweeter 6](https://user-images.githubusercontent.com/104606182/216806663-9ad60ccc-46a2-446d-adf3-b1cb47e91fdc.PNG)
+![tweeter 7](https://user-images.githubusercontent.com/104606182/216806664-0a591521-af34-471c-b954-791b8fd5228f.PNG)
+![tweeter 8](https://user-images.githubusercontent.com/104606182/216806666-0f982288-6447-4628-9f29-ffd29946e9f7.PNG)
+![tweeter 9](https://user-images.githubusercontent.com/104606182/216806667-b4b4940d-3fba-45f1-87b3-514fbdd6338a.PNG)
 
-### Code Splitting
+# 🔖Steps to Contribute ✅
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Contribution is the best way to support and get involved in the community!
+- Contributions to `TWEETER` Please check our [CONTRIBUTING.md](./CONTRIBUTING.md)
+   <br>
 
-### Analyzing the Bundle Size
+### Get started on the local machine
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Follow these instructions to get Tweeter Frontend up and running on your local machine.
 
-### Making a Progressive Web App
+### Prerequisites
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Before you begin, ensure you have the following installed:
 
-### Advanced Configuration
+- **Node.js:** Download and install Node.js from [here](https://nodejs.org/).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Installation
 
-### Deployment
+1. Clone the repository:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   ```bash
+   git clone https://github.com/[yourusername]/tweeter-frontend.git
 
-### `npm run build` fails to minify
+2. Navigate to the project directory:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   ```bash
+   cd tweeter-frontend
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+
+### Usage
+
+1. Start the development server:
+   ```bash
+   npm start
+2. Open your web browser and navigate to http://localhost:3000.
+3. Create an account, log in, and start tweeting!
+
+### Contributing
+
+We welcome contributions from the community. To contribute to Tweeter Frontend, follow these steps:
+
+1. Fork the project on GitHub.
+2. Create a new branch with a descriptive name for your feature or fix.
+3. Make your changes and ensure that your code follows best practices.
+4. Test your changes thoroughly.
+5. Create a pull request (PR) to the main repository, explaining the changes you made and why they are valuable.
+
+### ✨🔨Note:
+
+> - Do not edit/delete someone else's script in this repository. You can only insert new files/folders into this repository.
+
+  > - Give a meaningful name to whatever file or folder you are adding, changing, etc. 
+ 
+ ## 🔑Guidelines✨
+
+1. Welcome to this repository, if you are here as an open-source program participant/contributor.
+2. Participants/contributors have to **comment** on issues they would like to work on, and mentors or the PA will assign you.
+3. Issues will be assigned on a **first-come, first-serve basis.**
+4. Participants/contributors can also **open their issues** using issue_template,
+but it needs to be verified and labeled by a mentor or PA. Please discuss this with the team once before opening your issues. We respect all your contributions, whether 
+it is an Issue or a Pull Request.
+6. When you raise an issue, make sure you get it assigned to you before you start working on that project.
+7. Each participant/contributor will be **assigned 1 issue (max)** at a time to work.
+8. Participants are expected to follow **project guidelines** and **coding style** . **Structured code** is one of our top priorities.
+9. Try to **explain your approach** to solving any issue in the comments. This will increase the chances of you being assigned.
+10. Don't create issues that are **already listed**.
+11. Please don't pick up an issue already assigned to someone else. Work on the issues after it gets **assigned to you**.
+12. Make sure you **discuss issues** before working on the issue.
+13. Pull requests will be merged after being **reviewed** by a mentor or PA.
+14. It might take **a day or two** to review your pull request. Please have patience and be nice.
+15. Always create a pull request from a **branch** other than `master`.
+16. Participants/contributors have to complete issues before they decided Deadline. If you fail to make a PR within the deadline, then the issue will be assigned to 
+another person in the queue.
+17. While making PRs, don't forget to **add a description** of your work.
+18. Include the issue number (Fixes: issue number) in your commit message while creating a pull request.
+19. Make sure your solution to any issue is better in terms of performance and other parameters in comparison to the previous work.
+20. We all are here to learn. You are allowed to make mistakes. That's how you learn, right?
+
+## Thanks to all the Contributors ❤️
+
+We would like to thank the open-source community and the developers of the technologies used in this project for their valuable contributions.

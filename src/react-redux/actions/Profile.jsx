@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function ProfileAction(username) {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -35,7 +35,7 @@ function ProfileAction(username) {
 export default ProfileAction
 
 function EditProfileAction(fd) {
-    const accessToken = sessionStorage.getItem("access token")
+    const accessToken = localStorage.getItem("access token")
     const config = {
         headers: {
             "Authorization": `Bearer ${accessToken}`
@@ -47,7 +47,6 @@ function EditProfileAction(fd) {
         })
         await BaseUrl.put("/p/editprofile", fd, config)
             .then((res) => {
-                console.log(res)
                 toast.success(`${res.data.msg}`, {
                     position: "top-center",
                     theme: "light",
@@ -58,7 +57,6 @@ function EditProfileAction(fd) {
                 })
             })
             .catch((err) => {
-                console.log(err)
                 toast.error(`${err.response.data.msg}`, {
                     position: "top-center",
                     theme: "light",

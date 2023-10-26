@@ -30,16 +30,16 @@ import { InactiveUserList } from "../../react-redux/actions/Message";
 import deleteIcon from "../Assets/delete.svg"
 import ScrollableChat from "../Messages/ScrollableChats";
 import NoChats from "../Messages/NoChats";
+import { ViewNotifyAction } from "../../react-redux/actions/Notifications";
 
 function Sidebar() {
 
     const auth = useSelector((s) => s.AuthReducer)
     const { user, toFgtPwd } = auth;
-    const nameInApi = user.user_name
+    const nameInApi = user?.user_name
     const { title, image, x } = useSelector((n) => n.TitleNavBar)
 
     function showTitle(x) {
-        console.warn(x)
         if (x == 0) {
             document.getElementById("homeIcon").src = greenhome
             document.getElementById("notify").src = notify;
@@ -121,10 +121,9 @@ function Sidebar() {
         if (e.target.value.startsWith('#')) {
 
             dispatch(SearchTweetWithTag(e.target.value.slice(1)))
-            // console.log(e.target.value.slice(1))
         }
         dispatch(SearchUser(e.target.value));
-        if (e.target.value != "") {
+        if (e.target.value !== "") {
             document.getElementById("HOME2").style.display = "none"
             document.getElementById("SIDESEARCH").style.display = "flex"
         }
@@ -135,7 +134,7 @@ function Sidebar() {
         }
 
     }
-    // console.log(tweetList, tohash)
+    
     useEffect(() => {
         if (tomap) {
             if (list.result.length > 0) {
@@ -167,8 +166,6 @@ function Sidebar() {
         }
     }, [loading])
     const navigate = useNavigate();
-    // console.log(searchListArray)
-
     function setOPacity() {
         var items = document.getElementsByClassName("POPUPBG")
         for (var i = 0; i < items.length; i++) {
@@ -209,13 +206,6 @@ function Sidebar() {
         else
             navigate("/messages")
     }
-
-    function LogoutMouseover() {
-        document.getElementById("logout").style.display = "block"
-    }
-    function LogoutMouseout() {
-        document.getElementById("logout").style.display = "none"
-    }
     function openSidebar() {
         document.getElementById("SIDEBAR").style.display = "block"
         // document.getElementById("SIDEBAR").style.transitionDelay="1s"
@@ -225,6 +215,35 @@ function Sidebar() {
         // document.getElementById("SIDEBAR").style.transitionDelay="1s"
     }
     const [show, setShow] = useState(false)
+function handleShowOption(){
+setShow(!show)
+if(show){
+    document.getElementById("dropdown").style.display="block"
+    setShow(false)
+}
+else{
+    document.getElementById("dropdown").style.display="none"
+    setShow(true)
+}
+}
+
+    /* SIDEBAR NOTIFICATION MARK */
+    const [notifBool, setNotifBool] = useState(false)
+    const { notifyBool, viewNotifs} = useSelector((n) => n.NotificationReducer)
+    useEffect(() => {
+        dispatch(ViewNotifyAction())
+    }, [])
+    useEffect(()=>{
+        if(notifyBool){
+            if(viewNotifs.length>0)
+            setNotifBool(true)
+            else
+            setNotifBool(false)
+        }
+       
+    },[notifyBool])
+
+   
     return <>
         <div>
             <div className="navbar POPUPBG">
@@ -236,19 +255,26 @@ function Sidebar() {
                 </div>
             </div>
             <div className="navbar2">
-                <img src={notify} className="navNotify" />
+            <img src={menubar} className="menubar" onClick={handleShowOption} />
+            <div id="dropdown">
+            <img src={notify} className="navNotify" onClick={()=>{
+                dispatch(Notifications(greennotify, "Notifications", 1))
+                navigate("/notification")
+            }}/>
                 <div className="navSearch1">
-                    <img src={searchIcon} className="navSearch2" onClick={()=>{
+                    <img src={searchIcon}alt="search" className="navSearch2" onClick={() => {
                         navigate("/phonesearch")
                     }} />
                 </div>
+                <img src={logoutIcon} className="NV3Logout" onClick={handleLogout} />
+            </div>
             </div>
             <div className="navbar3">
-            <Link to="/"><img src={home}  id="homeIcon2" className="NB3Home"  onClick={() => { dispatch(Home(greenhome, "Home", 0)) }}/></Link>
-            <Link to="/bookmark"> <img src={bookmark} id="bm2" className="NB3bm" onClick={() => { dispatch(BookmarksNav(greenbm, "Bookmark", 2)) }} /></Link>
-            <img src={message} id="msg2" className="NB3Msg" onClick={() => { MsgSidebar() }} />
-            <Link to={`/profile/${nameInApi}`}> <img src={profile} id="profileIcon2" className="NB3Profile" onClick={() => { handleProfile() }} /></Link>
-            <img src={logoutIcon} className="NV3Logout" onClick={handleLogout} />
+                <Link to="/"><img src={home} id="homeIcon2" className="NB3Home" onClick={() => { dispatch(Home(greenhome, "Home", 0)) }} /></Link>
+                <Link to="/bookmark"> <img src={bookmark} id="bm2" className="NB3bm" onClick={() => { dispatch(BookmarksNav(greenbm, "Bookmark", 2)) }} /></Link>
+                <img src={message} id="msg2" className="NB3Msg" onClick={() => { MsgSidebar() }} />
+                <Link to={`/profile/${nameInApi}`}> <img src={profile} id="profileIcon2" className="NB3Profile" onClick={() => { handleProfile() }} /></Link>
+               
             </div>
             <div className="sidebar POPUPBG" id="SIDEBAR">
                 <p className="logoHead">Tweeter</p>
@@ -259,7 +285,9 @@ function Sidebar() {
                             Home
                         </span>
                     </li></Link>
-                    <Link to="/notification"><li className="sbListItem" onClick={() => { dispatch(Notifications(greennotify, "Notifications", 1)) }}><img src={notify} id="notify" className="sbListIcon" />   <span className="sbListName">
+                    {notifBool?<span id="notifMark" />:null}
+                    <Link to="/notification"><li className="sbListItem" onClick={() => { dispatch(Notifications(greennotify, "Notifications", 1)) }}>
+                    <img src={notify} id="notify" className="sbListIcon" /><span className="sbListName">
                         Notifications  </span></li></Link>
                     <Link to="/bookmark"> <li className="sbListItem" onClick={() => { dispatch(BookmarksNav(greenbm, "Bookmark", 2)) }}><img className="sbListIcon" id="bm" src={bookmark} />   <span className="sbListName">Bookmarks  </span></li></Link>
                     <li className="sbListItem" onClick={() => { MsgSidebar() }}><img src={message} className="sbListIcon" id="msg" />   <span className="sbListName">Messages  </span></li>
@@ -270,13 +298,17 @@ function Sidebar() {
                 <button className="logOutBtn" onClick={handleLogout}><img src={logoutIcon} className="logoutIcon" />Log Out</button>
             </div>
             <div id="SEARCHBOX">
-                <div className="searchBar"><img src={searchIcon} className="searchIcon" />
+                <div className="searchBar">
+                    <div className="searchBar_box">
+                    <img src={searchIcon} className="searchIcon" alt="search" />
                     <input className="searchbar POPUPBG" type="text" value={search} onChange={handleSearch} placeholder="Search" />
+                    </div>
                 </div>
+            
                 <div className="searchFlexBox POPUPBG" id="SIDESEARCH">
                     {tohash ? (
                         searchTweetList.length > 0 ? (searchTweetList.map((se) => {
-                            return <Tweetsearch hashtag={se.hashtag} />
+                            return <Tweetsearch hashtag={se.hashtag} tweetCount={se.tweet_cnt} />
 
                         })) : (<p className="searchAlter">No search found</p>)
                     ) : null}

@@ -8,13 +8,11 @@ export const ShareTweetRed = (state = initialState, action) => {
             return state;
         }
         case "SHARE_TWEET_YES": {
-            console.log(action.payload)
             return {
                 ...state, sharedSuccess: action.payload.data.success
             }
         }
         case "SHARE_TWEET_NO": {
-            console.log(action.payload)
             return {
                 ...state, sharedSuccess: action.payload.data.success
             }
