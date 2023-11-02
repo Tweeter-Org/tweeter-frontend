@@ -251,7 +251,6 @@ else{
                 <div className="navbar1">
                     <img src={image} className="navbarIcon" />
                     <span><p className="navbarHead">{title}</p></span>
-                    <span id="navbarLine" />
                 </div>
             </div>
             <div className="navbar2">
