@@ -16,7 +16,7 @@ const Google = () => {
 
   useEffect(() => {
     setPath(window.location.href);
-    setUrl(path.substring(34));
+    setUrl(path.split("=")[1]);
   }, []);
 
   const google = useSelector((g) => g.GoogleReducer);
@@ -24,7 +24,7 @@ const Google = () => {
   // const {  msg, success } = response2;
 
   useEffect(() => {
-    dispatch(GoogleTwoAction(window.location.href.substring(34)));
+    dispatch(GoogleTwoAction(window.location.href.split("=")[1]));
   }, []);
 
   useEffect(() => {
