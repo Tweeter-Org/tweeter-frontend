@@ -96,14 +96,14 @@ function ScrollableChat(props) {
                             <p className="scrollChatText">{chat.text}</p>
                             {(chat.image != null && chat.image.startsWith("blob:")) ? (
                                 <img src={chat.image} alt="image" className="chatImageShow" />) : (
-                                chat.image != null ? (<img src={`https://tweeter-backend-7ngr.onrender.com/${chat.image}`} alt="image" className="chatImageShow" />) : null)}
+                                chat.image != null ? (<img src={`https://tweeter.devalan.tech//${chat.image}`} alt="image" className="chatImageShow" />) : null)}
 
                             {(chat.video != null && chat.video.startsWith("blob:")) ? (
                                 <video className="chatImageShow" controls>
                                     <source src={chat.video} type="video/mp4" />
                                 </video>) : (
                                 chat.video != null ? (<video className="chatImageShow" controls>
-                                    <source src={`https://tweeter-backend-7ngr.onrender.com/${chat.video}`} type="video/mp4" />
+                                    <source src={`https://tweeter.devalan.tech//${chat.video}`} type="video/mp4" />
                                 </video>) : null)}
                         </div>)
                 }
@@ -113,14 +113,14 @@ function ScrollableChat(props) {
                             <p className="scrollChatText">{chat.text}</p>
                             {(chat.image != null && chat.image.startsWith("blob:")) ? (
                                 <img src={chat.image} alt="image" className="chatImageShow" />) : (
-                                chat.image != null ? (<img src={`https://tweeter-backend-7ngr.onrender.com/${chat.image}`} alt="image" className="chatImageShow" />) : null)}
+                                chat.image != null ? (<img src={`https://tweeter.devalan.tech//${chat.image}`} alt="image" className="chatImageShow" />) : null)}
 
                             {(chat.video != null && chat.video.startsWith("blob:")) ? (
                                 <video className="chatImageShow" controls>
                                     <source src={chat.video} type="video/mp4" />
                                 </video>) : (
                                 chat.video != null ? (<video className="chatImageShow" controls>
-                                    <source src={`https://tweeter-backend-7ngr.onrender.com/${chat.video}`} type="video/mp4" />
+                                    <source src={`https://tweeter.devalan.tech//${chat.video}`} type="video/mp4" />
                                 </video>) : null)}
                         </div>)
                 }

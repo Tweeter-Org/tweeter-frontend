@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { io } from "socket.io-client";
 import { ShareTweet } from "../../react-redux/actions/Tweets";
 
-const ENDPOINT = "https://tweeter-backend-7ngr.onrender.com";
+const ENDPOINT = "https://tweeter.devalan.tech/";
 var socket, currentChattingWith;
 function ShareTweetUser(props) {
 

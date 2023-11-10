@@ -27,7 +27,7 @@ import SearchChatUser from "./SearchChatPopUp";
 import deleteIcon from "../Assets/delete.svg";
 // import { Socket } from "socket.io-client";
 
-const ENDPOINT = "https://tweeter-backend-7ngr.onrender.com";
+const ENDPOINT = "https://tweeter.devalan.tech/";
 var socket, currentChattingWith;
 function Chats() {
   const [socketConnected, setSocketConnected] = useState(false);
